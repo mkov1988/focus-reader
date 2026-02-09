@@ -1,73 +1,124 @@
-# React + TypeScript + Vite
+# Focus Reader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Read to understand, faster.** A cognitive efficiency tool that enables deep focus and high-speed comprehension.
 
-Currently, two official plugins are available:
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://github.com/mkov1988/focus-reader)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## What is Focus Reader?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Focus Reader uses **RSVP (Rapid Serial Visual Presentation)** to display text one word at a time, with a **pixel-stable red focal letter** that never moves. This eliminates eye movement, reduces fatigue, and enables sustainable reading at 2-3x your normal speed.
 
-## Expanding the ESLint configuration
+**Why it's different:** Most speed-reading apps fail because they prioritize raw WPM over comprehension. Focus Reader is built around **cognitive science**—rhythm, pauses, and recovery—so your brain can actually process what you're reading.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Core Reading Engine
+- **Pixel-Perfect Focal Centering** — The red focal letter stays absolutely fixed. No jitter, even at 800+ WPM.
+- **Smart Pacing** — Automatic pauses at punctuation (3x for sentences, 2x for commas, 5x for paragraphs).
+- **Adjustable Speed** — 100 to 1,000 WPM with instant controls.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Controls & Recovery
+- **Keyboard Shortcuts** — `Space` play/pause, `←→` skip ±10 words, `↑↓` adjust speed, `Esc` exit.
+- **Progress Bar** — Click anywhere to jump to that point.
+- **Never Get Lost** — Strong recovery primitives so distraction doesn't break your flow.
+
+### Input
+- **Paste Text** — Just Ctrl+V and go.
+- **Drag & Drop** — Drop a `.txt` file to start reading instantly.
+- **PDF/EPUB** — Coming soon in v0.2.
+
+### Design
+- **Dark Mode by Default** — Reduces eye strain for long sessions.
+- **Distraction-Free** — Minimal UI during reading. Just you and the words.
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repo
+git clone https://github.com/mkov1988/focus-reader.git
+cd focus-reader
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open **http://localhost:5173** and paste some text to try it out.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 The Science Behind It
+
+Focus Reader is grounded in cognitive research, not marketing hype.
+
+| Principle | What It Means | How We Apply It |
+|:---|:---|:---|
+| **Sensory Clearness** | Attention is finite. Competing stimuli reduce comprehension. | Pixel-stable focal point. No animations during reading. |
+| **Logical Memory** | Understanding requires time to encode meaning, not just see words. | Smart pauses at sentence/paragraph breaks. |
+| **The "No Exceptions" Rule** | Habits form through consistency, not intensity. | Low friction design. < 10 seconds to start reading. |
+
+> "One can have a good rote memory without understanding, but one cannot have a good logical memory without understanding." — Pyle (1921)
+
+---
+
+## 📁 Project Structure
+
 ```
+src/
+├── components/
+│   ├── Reader/
+│   │   ├── RSVPDisplay.tsx    # Core word display with focal centering
+│   │   └── Controls.tsx       # Playback controls
+│   └── Input/
+│       └── TextInput.tsx      # Paste and file upload
+├── hooks/
+│   └── useRSVP.ts             # Timing engine (requestAnimationFrame)
+├── utils/
+│   └── textProcessing.ts      # Focal point algorithm, tokenization
+└── App.tsx                    # Main orchestrator
+
+docs/
+├── research-report.md         # Full research synthesis (12 sections)
+├── PRD.md                     # Product requirements
+├── use-cases.md               # User journey mappings
+└── CHANGELOG.md               # Version history
+```
+
+---
+
+## 🗺️ Roadmap
+
+| Version | Status | Features |
+|:---|:---|:---|
+| **v0.1.0** | ✅ Done | Core RSVP engine, focal centering, smart pacing, paste/txt input |
+| **v0.1.1** | ✅ Done | Research framework, paragraph pauses, cognitive efficiency positioning |
+| **v0.2.0** | 🔜 Next | PDF/EPUB support, session memory, settings modal |
+| **v0.3.0** | Planned | Browser extension, URL-to-article extraction |
+| **v1.0.0** | Planned | Book mode, email integration, library system |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read the research report first to understand the design philosophy:
+- [Research Readout](docs/research-report.md) — Why we built it this way
+- [PRD](docs/PRD.md) — What we're building and why
+
+---
+
+## 📜 License
+
+MIT © 2026 Michael Kovalev
+
+---
+
+**Built with ❤️ and lots of iteration.**
