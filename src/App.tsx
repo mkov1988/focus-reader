@@ -1,29 +1,64 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Moon, Sun, ArrowLeft } from 'lucide-react';
-import { RSVPDisplay } from './components/Reader/RSVPDisplay';
-import { Controls } from './components/Reader/Controls';
+import { ReaderView } from './components/Reader/ReaderView';
+import { type VisualizationMode } from './components/Reader/VisualizationSelector';
 import { TextInput } from './components/Input/TextInput';
 import { useRSVP } from './hooks/useRSVP';
-import { tokenizeText } from './utils/textProcessing';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { parseText, type ParsedText } from './utils/textProcessing';
 import './index.css';
 
 type AppView = 'input' | 'reader';
 
+// Configuration Constants
+const DEFAULT_WPM = 300;
+const DEFAULT_FONT_SIZE = 56;
+const SENTENCE_START_MULTIPLIER = 1.8;
+const SENTENCE_START_OFFSET = 500;
+const LINE_START_MULTIPLIER = 1.5;
+
 function App() {
   const [view, setView] = useState<AppView>('input');
-  const [words, setWords] = useState<string[]>([]);
-  const [wpm, setWpm] = useState(300);
-  const [fontSize, setFontSize] = useState(56);
+  const [parsedText, setParsedText] = useState<ParsedText | null>(null);
+  const [visMode, setVisMode] = useState<VisualizationMode>('rsvp');
+  const [wpm, setWpm] = useState(DEFAULT_WPM);
+  const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
   const [isDark, setIsDark] = useState(true);
 
   const handleComplete = useCallback(() => {
     // Optional: show completion message or reset
   }, []);
 
+  // Track visual line breaks for Sentence Mode
+  const [lineStartIndices, setLineStartIndices] = useState<Set<number>>(new Set());
+
   const rsvp = useRSVP({
-    words,
+    tokens: parsedText?.tokens || [],
     wpm,
+    sentenceStartMultiplier: visMode === 'sentence' ? SENTENCE_START_MULTIPLIER : 1,
+    sentenceStartOffset: visMode === 'sentence' ? SENTENCE_START_OFFSET : 0,
+    lineStartMultiplier: visMode === 'sentence' ? LINE_START_MULTIPLIER : 1,
+    lineStartIndices,
     onComplete: handleComplete,
+  });
+
+  // Handle Vis Mode change and reset line indices if needed
+  const handleVisModeChange = (mode: VisualizationMode) => {
+    setVisMode(mode);
+    if (mode !== 'sentence') {
+      setLineStartIndices(new Set());
+    }
+  };
+
+  // Keyboard shortcuts
+  useKeyboardShortcuts({
+    isActive: view === 'reader',
+    rsvp,
+    setWpm,
+    onEscape: () => {
+      rsvp.pause();
+      setView('input');
+    }
   });
 
   // Apply dark mode to body
@@ -31,51 +66,9 @@ function App() {
     document.body.classList.toggle('dark', isDark);
   }, [isDark]);
 
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (view !== 'reader') return;
-
-      // Ignore if typing in an input
-      if (e.target instanceof HTMLTextAreaElement || e.target instanceof HTMLInputElement) {
-        return;
-      }
-
-      switch (e.code) {
-        case 'Space':
-          e.preventDefault();
-          rsvp.toggle();
-          break;
-        case 'ArrowLeft':
-          e.preventDefault();
-          rsvp.skip(-10);
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          rsvp.skip(10);
-          break;
-        case 'ArrowUp':
-          e.preventDefault();
-          setWpm(prev => Math.min(1000, prev + 50));
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setWpm(prev => Math.max(100, prev - 50));
-          break;
-        case 'Escape':
-          rsvp.pause();
-          setView('input');
-          break;
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [view, rsvp]);
-
   const handleTextSubmit = (text: string) => {
-    const tokenized = tokenizeText(text);
-    setWords(tokenized);
+    const parsed = parseText(text);
+    setParsedText(parsed);
     rsvp.reset();
     setView('reader');
   };
@@ -86,7 +79,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col transition-colors duration-300 dark:bg-gray-900 bg-white dark:text-gray-100 text-gray-900">
       {/* Header */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800">
         <div className="flex items-center gap-4">
@@ -130,32 +123,20 @@ function App() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col items-center justify-center p-8">
+      <main className="flex-1 flex flex-col items-center justify-center p-8 relative overflow-hidden">
         {view === 'input' ? (
           <TextInput onTextSubmit={handleTextSubmit} />
         ) : (
-          <div className="w-full max-w-4xl space-y-12">
-            {/* RSVP Display */}
-            <RSVPDisplay
-              word={rsvp.currentWord}
-              fontSize={fontSize}
-              className="mb-8"
-            />
-
-            {/* Controls */}
-            <Controls
-              isPlaying={rsvp.isPlaying}
-              wpm={wpm}
-              progress={rsvp.progress}
-              currentIndex={rsvp.currentIndex}
-              totalWords={words.length}
-              onToggle={rsvp.toggle}
-              onReset={rsvp.reset}
-              onSkip={rsvp.skip}
-              onSeek={rsvp.seek}
-              onWpmChange={setWpm}
-            />
-          </div>
+          <ReaderView
+            parsedText={parsedText}
+            rsvp={rsvp}
+            visMode={visMode}
+            onChangeVisMode={handleVisModeChange}
+            fontSize={fontSize}
+            wpm={wpm}
+            onWpmChange={setWpm}
+            onLineBreaksChange={setLineStartIndices}
+          />
         )}
       </main>
     </div>

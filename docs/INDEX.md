@@ -19,7 +19,7 @@ Project overview, quick start guide, and installation instructions.
 
 ## 📖 Planning & Strategy
 
-### [PRD.md](PRD.md) - Product Requirements Document
+### [PRD.md](planning/PRD.md) - Product Requirements Document
 **Purpose**: Define product vision, target users, and feature roadmap
 
 **Key Sections**:
@@ -34,7 +34,7 @@ Project overview, quick start guide, and installation instructions.
 
 ---
 
-### [use-cases.md](use-cases.md) - Comprehensive Use Cases
+### [use-cases.md](planning/use-cases.md) - Comprehensive Use Cases
 **Purpose**: Explore UX workflows for different content types
 
 **Key Sections**:
@@ -51,7 +51,7 @@ Project overview, quick start guide, and installation instructions.
 
 ---
 
-### [brainstorm-input-sources.md](brainstorm-input-sources.md) - Input Strategy
+### [brainstorm-input-sources.md](planning/brainstorm-input-sources.md) - Input Strategy
 **Purpose**: Explore how Focus Reader becomes the universal reading interface
 
 **Key Ideas**:
@@ -69,7 +69,7 @@ Project overview, quick start guide, and installation instructions.
 
 ## 🔬 Research & Insights
 
-### [research-report.md](research-report.md) - The Cognitive Science of Reading
+### [research-report.md](research/research-report.md) - The Cognitive Science of Reading
 **Purpose**: The 8-point UX framework for Focus Reader
 
 **Key Insights**:
@@ -78,17 +78,17 @@ Project overview, quick start guide, and installation instructions.
 - **Habit Formation**: The "No Exception" rule for reading habits
 - **Persona Context**: Detailed needs of students vs. professionals
 
-### [research-extraction.md](research-extraction.md) - Extracted Evidence
+### [research-extraction.md](research/research-extraction.md) - Extracted Evidence
 **Purpose**: 5,000+ line repository of filtered evidence from 176k words of raw data.
 
-### [user-research-raw.md](user-research-raw.md) - The Raw Corpus
+### [user-research-raw.md](research/user-research-raw.md) - The Raw Corpus
 **Purpose**: Primary research source (Scott Young, Pyle, US Patents, Reddit, Hacker News).
 
 ---
 
 ## 🛠️ Technical
 
-### [implementation_plan.md](implementation_plan.md) - Technical Architecture
+### [implementation_plan.md](technical/implementation_plan.md) - Technical Architecture
 **Purpose**: Technical specifications and build plan
 
 **Key Sections**:
@@ -121,12 +121,12 @@ All documents updated **2026-02-08** to reflect Cognitive Science pivot:
 ## 🎯 Quick Reference
 
 **Want to know...**
-- Why we built this? → [PRD.md](PRD.md#vision)
-- How users will interact? → [use-cases.md](use-cases.md)
+- Why we built this? → [PRD.md](planning/PRD.md#vision)
+- How users will interact? → [use-cases.md](planning/use-cases.md)
 - What's been built? → [CHANGELOG.md](../CHANGELOG.md#v010---2026-02-07)
-- How the engine works? → [implementation_plan.md](implementation_plan.md#rsvp-engine-usersvp)
-- What's next? → [PRD.md](PRD.md#p1--input-expansion)
-- Revenue strategy? → [brainstorm-input-sources.md](brainstorm-input-sources.md#revenue-angle)
+- How the engine works? → [implementation_plan.md](technical/implementation_plan.md#rsvp-engine-usersvp)
+- What's next? → [PRD.md](planning/PRD.md#p1--input-expansion)
+- Revenue strategy? → [brainstorm-input-sources.md](planning/brainstorm-input-sources.md#revenue-angle)
 
 ---
 
@@ -143,7 +143,7 @@ All documents updated **2026-02-08** to reflect Cognitive Science pivot:
 
 **What's Next** (v0.2.0):
 - 📚 Book Mode with persistent position
-- 📧 Email integration (forward-to-read)
+- 📱 Responsive Mobile Layout (Web)
 - 📄 PDF/EPUB text extraction
 - 🌐 Browser extension MVP
 - ⚙️ Settings modal
@@ -157,12 +157,12 @@ All documents updated **2026-02-08** to reflect Cognitive Science pivot:
                            │
         ┌──────────────────┼──────────────────┐
         │                  │                  │
-    PRD.md          use-cases.md     brainstorm.md
-  (What & Why)      (User Flows)     (Input Ideas)
+  planning/PRD.md  planning/use-cases.md  planning/brainstorm.md
+   (What & Why)      (User Flows)          (Input Ideas)
         │                  │                  │
         └──────────────────┼──────────────────┘
                            │
-                  implementation_plan.md
+             technical/implementation_plan.md
                     (How to Build)
                            │
                       CHANGELOG.md

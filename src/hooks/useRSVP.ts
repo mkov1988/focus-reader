@@ -1,15 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getDelayMultiplier, wpmToDelay } from '../utils/textProcessing';
+import { wpmToDelay, type TextToken } from '../utils/textProcessing';
 
 export interface UseRSVPOptions {
-    words: string[];
+    tokens: TextToken[];
     wpm: number;
+    sentenceStartMultiplier?: number;
+    sentenceStartOffset?: number; // Extra fixed delay in ms
+    lineStartMultiplier?: number;
+    lineStartIndices?: Set<number>;
     onComplete?: () => void;
 }
 
 export interface UseRSVPReturn {
     currentIndex: number;
-    currentWord: string;
+    currentToken: TextToken | null;
     isPlaying: boolean;
     progress: number;
     play: () => void;
@@ -21,12 +25,17 @@ export interface UseRSVPReturn {
 }
 
 /**
- * The RSVP Engine Hook
- * 
- * Handles the timing loop for displaying words at the specified WPM.
- * Uses requestAnimationFrame for smooth, jitter-free updates.
+ * The RSVP Engine Hook (Tokenized)
  */
-export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPReturn {
+export function useRSVP({
+    tokens,
+    wpm,
+    sentenceStartMultiplier = 1,
+    sentenceStartOffset = 0,
+    lineStartMultiplier = 1,
+    lineStartIndices = new Set(),
+    onComplete
+}: UseRSVPOptions): UseRSVPReturn {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -36,13 +45,41 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
     const rafIdRef = useRef<number | null>(null);
     const indexRef = useRef<number>(0);
 
+    // Refs for options to avoid restarting the loop when they change
+    const optionsRef = useRef({ sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices });
+    useEffect(() => {
+        optionsRef.current = { sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices };
+    }, [sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices]);
+
     // Keep indexRef in sync
     useEffect(() => {
         indexRef.current = currentIndex;
     }, [currentIndex]);
 
-    const currentWord = words[currentIndex] || '';
-    const progress = words.length > 0 ? (currentIndex / (words.length - 1)) * 100 : 0;
+    const currentToken = tokens[currentIndex] || null;
+    const progress = tokens.length > 0 ? (currentIndex / (tokens.length - 1)) * 100 : 0;
+
+    // Helper to calculate delay for a token based on current options
+    const calculateWordDelay = (token: TextToken, baseDelay: number) => {
+        const {
+            sentenceStartMultiplier: ssm,
+            sentenceStartOffset: sso,
+            lineStartMultiplier: lsm,
+            lineStartIndices: lsi
+        } = optionsRef.current; // Read latest options
+
+        let multiplier = token.delayMultiplier;
+        let extraTime = 0;
+
+        if (token.isSentenceStart) {
+            if (ssm > 1) multiplier *= ssm;
+            if (sso > 0) extraTime += sso;
+        } else if (lsi.has(token.id) && lsm > 1) {
+            multiplier *= lsm;
+        }
+
+        return (baseDelay * multiplier) + extraTime;
+    };
 
     // Animation loop using RAF for butter-smooth updates
     const tick = useCallback((timestamp: number) => {
@@ -54,20 +91,20 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
         lastTimeRef.current = timestamp;
         accumulatedTimeRef.current += deltaTime;
 
-        const word = words[indexRef.current];
-        if (!word) {
+        const token = tokens[indexRef.current];
+        if (!token) {
             setIsPlaying(false);
             onComplete?.();
             return;
         }
 
         const baseDelay = wpmToDelay(wpm);
-        const wordDelay = baseDelay * getDelayMultiplier(word);
+        const wordDelay = calculateWordDelay(token, baseDelay);
 
         if (accumulatedTimeRef.current >= wordDelay) {
-            accumulatedTimeRef.current = 0;
+            accumulatedTimeRef.current = 0; // Reset accumulator
 
-            if (indexRef.current < words.length - 1) {
+            if (indexRef.current < tokens.length - 1) {
                 const nextIndex = indexRef.current + 1;
                 indexRef.current = nextIndex;
                 setCurrentIndex(nextIndex);
@@ -79,11 +116,11 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
         } else {
             rafIdRef.current = requestAnimationFrame(tick);
         }
-    }, [words, wpm, onComplete]);
+    }, [tokens, wpm, onComplete]); // Options are read from ref, so no dependency needed
 
     // Start/stop animation based on isPlaying
     useEffect(() => {
-        if (isPlaying && words.length > 0) {
+        if (isPlaying && tokens.length > 0) {
             lastTimeRef.current = 0;
             accumulatedTimeRef.current = 0;
             rafIdRef.current = requestAnimationFrame(tick);
@@ -97,13 +134,13 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
                 cancelAnimationFrame(rafIdRef.current);
             }
         };
-    }, [isPlaying, tick, words.length]);
+    }, [isPlaying, tick, tokens.length]);
 
     const play = useCallback(() => {
-        if (words.length > 0 && currentIndex < words.length - 1) {
+        if (tokens.length > 0 && currentIndex < tokens.length - 1) {
             setIsPlaying(true);
         }
-    }, [words.length, currentIndex]);
+    }, [tokens.length, currentIndex]);
 
     const pause = useCallback(() => {
         setIsPlaying(false);
@@ -125,11 +162,11 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
     }, []);
 
     const seek = useCallback((index: number) => {
-        const clampedIndex = Math.max(0, Math.min(index, words.length - 1));
+        const clampedIndex = Math.max(0, Math.min(index, tokens.length - 1));
         setCurrentIndex(clampedIndex);
         indexRef.current = clampedIndex;
         accumulatedTimeRef.current = 0;
-    }, [words.length]);
+    }, [tokens.length]);
 
     const skip = useCallback((delta: number) => {
         seek(currentIndex + delta);
@@ -137,7 +174,7 @@ export function useRSVP({ words, wpm, onComplete }: UseRSVPOptions): UseRSVPRetu
 
     return {
         currentIndex,
-        currentWord,
+        currentToken,
         isPlaying,
         progress,
         play,

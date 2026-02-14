@@ -12,6 +12,20 @@ Welcome to the Focus Reader changelog! This document tells the story of how this
 
 ---
 
+## [v0.1.2] - 2026-02-13
+### 📜 The "Natural Flow" Update (Sentence View)
+Refined the **Sentence View** to mimic the natural rhythm of reading, eliminating jarring visual jumps and robotic pacing.
+
+**Key Refinements:**
+-   **Teleprompter Centering**: The active sentence is now perfectly vertically centered. As you advance, the *new* sentence instantly snaps to the center (invisibly), then fades in. No more chasing text down the page.
+-   **Visual Stability**: Removed `font-bold` based highlighting. Now uses **Scale (1.1x)** and **Color** to highlight words without causing the rest of the sentence to jitter or reflow.
+-   **Cognitive Pacing Engine**:
+    -   **Sentence Start**: **1.8x delay + 500ms fixed pause**. Gives your brain a "cognitive reset" moment before starting a new thought.
+    -   **Line Wraps**: **1.5x delay** on the first word of a new visual line. helping your eyes track the return sweep.
+-   **Fade Transitions**: Smooth cross-fade between sentences masks the underlying data swap.
+
+---
+
 ## [v0.1.1] - 2026-02-08
 ### 🧠 The Cognitive Science Deep-Dive
 Completed a massive research ingest and analysis phase to move from "simple RSVP" to "Evidence-Based Cognitive Efficiency."
@@ -600,6 +614,8 @@ body.dark {
 
 | Version | Date | Description |
 |---------|------|-------------|
+| **v0.1.2** | 2026-02-13 | Sentence View overhaul: Teleprompter centering, rhythm pacing (1.8x/1.5x), stable layout |
+| **v0.1.1** | 2026-02-08 | Cognitive Science research ingest, pivots to "Cognitive Efficiency" |
 | **v0.1.0** | 2026-02-07 | MVP with core RSVP engine, perfect centering, intelligent pausing |
 | **v0.2.0** | TBD | Book mode, email integration, PDF/EPUB support |
 

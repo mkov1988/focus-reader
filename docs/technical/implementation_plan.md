@@ -98,21 +98,56 @@ To meet the specific requirement where the red letter *never moves* and letters 
 1.  **Input Phase**: User inputs text -> Processed into `string[]` (words) -> Stored in Global Context or Main State.
 2.  **Reading Phase**: `currentIndex` integer tracks position. `RSVPDisplay` component receives `words[currentIndex]`.
 
-## 5. Step-by-Step Build Plan
+### Visualization Modes
+To support different reading styles, the `RSVPDisplay` component will support three modes via a selector:
 
-## 5. Step-by-Step Build Plan
+1.  **Default (RSVP)**:
+    -   Standard single-word display with fixed center alignment.
+    -   Clean, distraction-free.
 
-1.  **Project Setup**: Create `index.html`, `style.css`, and `script.js`.
-2.  **Core Component (RSVP Display)**:
-    -   Implement the logic to split a word into `left`, `center`, `right`.
-    -   Implement the CSS centering hack to ensure the red letter is dead center.
-3.  **Reading Engine**:
-    -   Build the timer loop for WPM using `requestAnimationFrame` or `setTimeout`.
-    -   Connect Play/Pause controls.
-4.  **Input & Parsing**:
-    -   Create text area input.
-    -   Add basic PDF/EPUB text extraction (using CDNs).
-5.  **UI Polish**:
-    -   Settings modal.
-    -   Themes.
-    -   Keyboard shortcuts.
+2.  **Paragraph View**:
+    -   Renders the full current paragraph as a block of text.
+    -   **Active Word Highlight**: A visual marker (background highlight or bold color) moves through the text in sync with the WPM timer.
+    -   **Auto-Scroll**: Container ensures the active line is always visible.
+    -   **Transition**: When a paragraph ends (`[P]` token), smooth scroll/fade to the next paragraph block.
+
+3.  **Sentence View**:
+    -   Displays only the *current sentence*.
+    -   **Karaoke Style**: Words highlight in sequence.
+    -   **Context**: Prevents overwhelming the reader with a full wall of text, but offers more context than a single word.
+
+4.  **Hybrid View**:
+    -   **Top**: Standard RSVP display (the "Driver").
+    -   **Bottom**: Paragraph context (faded/smaller text) showing where the reader is in the flow.
+    -   *Purpose*: Combines speed of RSVP with the context of traditional reading.
+
+### Data Flow (Updated)
+1.  **Input Phase**: Text processed into `string[]` (words) including `[P]` tokens for paragraph breaks.
+2.  **Reading Phase**: `currentIndex` drives the state. All views react to `currentIndex`.
+
+## 5. Implementation Roadmap (Revised Strategy: Responsive Web App)
+
+### Phase 1: Core Mechanics & Responsiveness (Desktop First)
+*Goal: A perfect desktop experience that adapts gracefully to smaller screens.*
+-   [x] Project Setup (React + Vite + Tailwind).
+-   [x] Basic RSVP Component.
+-   [ ] **Responsive Typography**: Ensure text scales readable on all devices (clamp/fluid type).
+-   [ ] **Layout Adaptation**: Controls stack/move for mobile viewports without breaking desktop flow.
+-   [ ] **Frame-Perfect Timing**: Ensure loop is jitter-free at 1000 WPM.
+
+### Phase 2: Content Pipeline (The "Moat")
+*Goal: Ensure we can actually ingest real-world content.*
+-   [ ] **PDF Extraction**: Implement robust parsing.
+-   [ ] **EPUB Parsing**: Extract chapter text cleanly.
+-   [ ] **"Smart Splitting"**: Algorithm to chunk text intelligently.
+
+### Phase 3: Mobile Interactions (Future)
+*Goal: Add touch-specific gestures once layout is stable.*
+-   [ ] Swipe to rewind/forward.
+-   [ ] Touch-friendly hit areas.
+
+### Phase 4: Native Migration (Long Term)
+*Goal: Port the perfected logic to a truly Native App.*
+-   [ ] **iOS (Swift)**: Rebuild UI using SwiftUI, porting `textProcessing.ts` logic.
+-   [ ] **Android (Kotlin)**: Rebuild UI using Jetpack Compose.
+-   [ ] **Note**: The React app serves as the "Living Spec" for these native builds.

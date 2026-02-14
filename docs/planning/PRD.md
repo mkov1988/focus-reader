@@ -85,8 +85,9 @@ During active reading:
 
 | Feature | Notes |
 |---------|-------|
-| Browser extension | Highlight text → Read in Focus Reader |
-| Mobile PWA | Offline capable, installable |
+| **Responsive Mobile Layout** | Desktop-class experience on phone screens (no separate app) |
+| **Native Mobile Apps (P4)** | Full rewrite in Swift/Kotlin using React app as spec |
+| Browser extension | Highlight text → Read in Focus Reader query param |
 | Keyboard-only navigation | Accessibility requirement |
 | Voice speed control | "Faster" / "Slower" / "Pause" |
 
