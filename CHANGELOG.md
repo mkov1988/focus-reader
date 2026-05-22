@@ -5,10 +5,39 @@ Welcome to the Focus Reader changelog! This document tells the story of how this
 ---
 
 ## 📖 Table of Contents
-- [Current Version (v0.1.0)](#v010---2026-02-07)
+- [Latest (v0.1.4)](#v014---2026-02-21)
+- [Previous (v0.1.3)](#v013---2026-02-18)
+- [MVP Version (v0.1.0)](#v010---2026-02-07)
 - [What's Coming Next (v0.2.0)](#unreleased---v020)
 - [Design Evolution Story](#design-evolution-story)
 - [Technical Deep-Dives](#technical-deep-dives)
+
+---
+
+## [v0.1.4] - 2026-02-21
+### 📱 The "Storefront & Discovery" UI Update
+Transitioned the project focus from the core reading engine to building an expansive, native-feeling Storefront discovery UI in preparation for the upcoming Gutendex library integration.
+
+**What Changed:**
+-   **Quad-Scroller Layout**: Implemented a responsive multi-carousel architecture replacing the standard text input screen. Added full horizontal scroll sections dynamically sliced into four categories: `Popular`, `Latest`, `Title`, and `Random`.
+-   **Vertical Category Navigation**: Built a sleek, iOS App Store-style vertical list at the bottom of the feed for exploring core Gutenberg genres (Literature, History, Arts & Culture).
+-   **Native Scroll Fixes**: Tracked down and stripped out legacy core CSS locks (`overflow: hidden` on `#root` tags) that were prohibiting mobile touch swipe-to-scroll gestures.
+-   **Realistic Prototyping**: Injected 20 historically accurate Project Gutenberg titles into the memory arrays to stress-test UI density, typography truncation (`line-clamp-2`), and visual cadence before live API fetching begins.
+
+---
+
+## [v0.1.3] - 2026-02-18
+### 📖 The "Deep Dive" Sample Text Update
+Expanded all five sample texts from short blurbs (~80-100 words each) to **500+ word passages** sourced from the original works, giving users a much richer demo experience.
+
+**What Changed:**
+-   **Shakespeare — Hamlet**: Extended from the opening lines of the soliloquy to the full "To be or not to be" speech plus the Hamlet/Ophelia exchange that follows (Act 3, Scene 1).
+-   **Marcus Aurelius — Meditations**: Replaced the paraphrased quotes with the first several verses of Book 2 in the George Long translation from Project Gutenberg.
+-   **Carl Sagan — Pale Blue Dot**: Expanded from the first paragraph to the **complete** Pale Blue Dot reflection, including the passages on cosmic insignificance and our responsibility to cherish Earth.
+-   **Mary Shelley — Frankenstein**: Extended Chapter 1 from the opening paragraph to Victor's full account of the Beaufort tragedy and his father's benevolence.
+-   **Oscar Wilde — The Picture of Dorian Gray**: Extended from the studio description to the full opening scene including the Basil/Lord Henry dialogue about art, vanity, and Dorian's portrait.
+
+**Why:** Short samples didn't give the reader enough time to settle into the RSVP rhythm. 500+ word passages let users actually experience the pacing engine, cognitive pauses, and sentence view transitions in a meaningful way.
 
 ---
 
@@ -614,6 +643,8 @@ body.dark {
 
 | Version | Date | Description |
 |---------|------|-------------|
+| **v0.1.4** | 2026-02-21 | The "Storefront & Discovery" Update: Layout prototyping and native-scroll integration |
+| **v0.1.3** | 2026-02-18 | Sample texts expanded to 500+ words from original sources |
 | **v0.1.2** | 2026-02-13 | Sentence View overhaul: Teleprompter centering, rhythm pacing (1.8x/1.5x), stable layout |
 | **v0.1.1** | 2026-02-08 | Cognitive Science research ingest, pivots to "Cognitive Efficiency" |
 | **v0.1.0** | 2026-02-07 | MVP with core RSVP engine, perfect centering, intelligent pausing |
@@ -621,6 +652,6 @@ body.dark {
 
 ---
 
-*Last updated: February 7, 2026*
+*Last updated: February 21, 2026*
 
 *Built with ❤️ and lots of iteration*

@@ -33,12 +33,10 @@
 2.  **Installation**: I successfully used `winget install -e --id OpenJS.NodeJS` to install Node v25.6.0.
 3.  **PATH Issue**: The current terminal session cannot see the new installation until it is restarted.
 
-## 3. Immediate Action Plan (Post-Restart)
-1.  **Restart Environment**: User must close VS Code / Terminal completely and reopen it.
-2.  **Verify Node**: Run `node -v` to confirm the installation is recognized.
-3.  **Install Vite**: Run `npm create vite@latest . -- --template react-ts` to scaffold the React app in the root.
-4.  **Install Deps**: Install `tailwindcss`, `lucide-react`, `pdfjs-dist`, and `epubjs`.
-5.  **Begin Dev**: Create the `RSVPDisplay` component with the critical "perfect centering" logic.
+### Phase 8: High-Volume Sample Content (v0.1.3)
+1.  **Requirement Update**: Recognized that short sample blurbs (~100 words) were insufficient for testing long-duration RSVP focus.
+2.  **Content Sourcing**: Fetched 500+ word contiguous passages for all 5 default samples from original sources (Hamlet, Meditations, Pale Blue Dot, Frankenstein, Dorian Gray).
+3.  **Documentation**: Updated `CHANGELOG.md` to reflect the transition from MVP snippets to "Deep Dive" testing content.
 
 ### Phase 5: Implementation of Core Logic & Strategy
 1.  **Architecture**: Scaffolding the React app with Tailwind CSS.
@@ -62,5 +60,11 @@
     -   **Strategic Pivot**: Positioned Focus Reader as a "Cognitive Efficiency" tool rather than a generic speed reading app.
 
 ## 3. Current Project Status
--   **Ready for Execution**: Core UI logic and comprehensive research foundation are complete.
--   **Next Major Objective**: Implement "Advanced Ingestion" (PDF/EPUB parsing) to fulfill the "Ingest Anything" promise.
+-   **Core Engine**: RSVP logic is stable with 500+ word test capability.
+-   **Environment**: Node v25.6.0 and npm 11.8.0 are installed and verified.
+-   **Documentation**: `CHANGELOG.md` and `conversation_log.md` are synchronized with the latest deployment state.
+
+## 4. Immediate Action Plan
+1.  **PDF/EPUB Wiring**: The next major UX hurdle is transitioning from plain text paste to robust file ingestion using the installed `pdfjs-dist` and `epubjs` libraries.
+2.  **Library View**: Implement the 3D stone-slab library view as outlined in the `implementation_plan.md` to move toward the Book Mode vision.
+3.  **Settings UI**: Refactor hardcoded font sizes in `App.tsx` into a proper user-controlled Settings modal.

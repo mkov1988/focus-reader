@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { RSVPDisplay } from './RSVPDisplay';
+import { GhostTrailDisplay } from './GhostTrailDisplay';
 import { ParagraphDisplay } from './ParagraphDisplay';
 import { SentenceDisplay } from './SentenceDisplay';
 import { VisualizationSelector, type VisualizationMode } from './VisualizationSelector';
@@ -59,6 +60,15 @@ export function ReaderView({
                     />
                 )}
 
+                {/* Ghost Trail Mode */}
+                {visMode === 'trail' && parsedText && (
+                    <GhostTrailDisplay
+                        tokens={parsedText.tokens}
+                        currentIndex={rsvp.currentIndex}
+                        fontSize={fontSize}
+                    />
+                )}
+
                 {/* Paragraph Mode */}
                 {visMode === 'paragraph' && (
                     <ParagraphDisplay
@@ -109,7 +119,7 @@ export function ReaderView({
                 totalWords={parsedText?.tokens.length || 0}
                 onToggle={rsvp.toggle}
                 onReset={rsvp.reset}
-                onSkip={rsvp.skip}
+                onSkipSentence={rsvp.skipToSentence}
                 onSeek={rsvp.seek}
                 onWpmChange={onWpmChange}
             />

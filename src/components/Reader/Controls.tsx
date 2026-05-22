@@ -16,7 +16,7 @@ interface ControlsProps {
     totalWords: number;
     onToggle: () => void;
     onReset: () => void;
-    onSkip: (delta: number) => void;
+    onSkipSentence: (direction: -1 | 1) => void;
     onSeek: (index: number) => void;
     onWpmChange: (wpm: number) => void;
 }
@@ -24,8 +24,7 @@ interface ControlsProps {
 /**
  * Controls Component
  * 
- * Provides playback controls, WPM adjustment, and progress tracking.
- * Designed for keyboard-first interaction (accessibility).
+ * Dark-themed playback controls with red accent color.
  */
 export function Controls({
     isPlaying,
@@ -35,7 +34,7 @@ export function Controls({
     totalWords,
     onToggle,
     onReset,
-    onSkip,
+    onSkipSentence,
     onSeek,
     onWpmChange,
 }: ControlsProps) {
@@ -50,12 +49,15 @@ export function Controls({
     const decreaseWpm = () => onWpmChange(Math.max(100, wpm - 50));
     const increaseWpm = () => onWpmChange(Math.min(1000, wpm + 50));
 
+    // Shared styles for secondary buttons
+    const secondaryBtn = 'p-3 rounded-full bg-white/[0.05] border border-white/[0.08] text-gray-400 hover:bg-white/[0.1] hover:text-gray-200 transition-all';
+
     return (
         <div className="w-full max-w-2xl mx-auto space-y-6">
             {/* Progress Bar */}
             <div className="space-y-2">
                 <div
-                    className="h-2 bg-gray-200 dark:bg-gray-800 rounded-full cursor-pointer overflow-hidden"
+                    className="h-2 bg-white/[0.08] rounded-full cursor-pointer overflow-hidden"
                     onClick={handleProgressClick}
                     role="slider"
                     aria-label="Reading progress"
@@ -65,11 +67,11 @@ export function Controls({
                     tabIndex={0}
                 >
                     <div
-                        className="h-full bg-gradient-to-r from-focal to-red-400 rounded-full transition-all duration-75"
+                        className="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-75"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
-                <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex justify-between text-sm text-gray-500">
                     <span>Word {currentIndex + 1} of {totalWords}</span>
                     <span>{Math.round(progress)}%</span>
                 </div>
@@ -79,23 +81,23 @@ export function Controls({
             <div className="flex items-center justify-center gap-4">
                 <button
                     onClick={onReset}
-                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    className={secondaryBtn}
                     aria-label="Reset to beginning"
                 >
                     <RotateCcw className="w-5 h-5" />
                 </button>
 
                 <button
-                    onClick={() => onSkip(-10)}
-                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                    aria-label="Skip back 10 words"
+                    onClick={() => onSkipSentence(-1)}
+                    className={secondaryBtn}
+                    aria-label="Previous sentence"
                 >
                     <ChevronLeft className="w-6 h-6" />
                 </button>
 
                 <button
                     onClick={onToggle}
-                    className="p-5 rounded-full bg-focal text-white hover:bg-red-600 transition-colors shadow-lg shadow-red-500/25"
+                    className="p-5 rounded-full bg-red-600 text-white hover:bg-red-500 transition-all shadow-lg shadow-red-900/40"
                     aria-label={isPlaying ? 'Pause' : 'Play'}
                 >
                     {isPlaying ? (
@@ -106,28 +108,28 @@ export function Controls({
                 </button>
 
                 <button
-                    onClick={() => onSkip(10)}
-                    className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                    aria-label="Skip forward 10 words"
+                    onClick={() => onSkipSentence(1)}
+                    className={secondaryBtn}
+                    aria-label="Next sentence"
                 >
                     <ChevronRight className="w-6 h-6" />
                 </button>
 
                 {/* WPM Control */}
-                <div className="flex items-center gap-2 ml-4 bg-gray-100 dark:bg-gray-800 rounded-full px-3 py-2">
+                <div className="flex items-center gap-2 ml-4 bg-white/[0.05] border border-white/[0.08] rounded-full px-3 py-2">
                     <button
                         onClick={decreaseWpm}
-                        className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+                        className="p-1 hover:bg-white/[0.08] rounded-full transition-colors text-gray-400 hover:text-gray-200"
                         aria-label="Decrease speed"
                     >
                         <Minus className="w-4 h-4" />
                     </button>
-                    <span className="w-16 text-center font-medium text-sm">
+                    <span className="w-16 text-center font-medium text-sm text-gray-300 tabular-nums">
                         {wpm} WPM
                     </span>
                     <button
                         onClick={increaseWpm}
-                        className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition-colors"
+                        className="p-1 hover:bg-white/[0.08] rounded-full transition-colors text-gray-400 hover:text-gray-200"
                         aria-label="Increase speed"
                     >
                         <Plus className="w-4 h-4" />
@@ -136,10 +138,12 @@ export function Controls({
             </div>
 
             {/* Keyboard hints */}
-            <div className="text-center text-xs text-gray-400 dark:text-gray-500">
-                <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">Space</span> Play/Pause
-                <span className="mx-3">•</span>
-                <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">←/→</span> Skip 10 words
+            <div className="text-center text-xs text-gray-500">
+                <span className="px-2 py-1 bg-white/[0.05] border border-white/[0.08] rounded text-gray-400">Space</span>
+                <span className="mx-1 text-gray-600">Play/Pause</span>
+                <span className="mx-3 text-gray-700">•</span>
+                <span className="px-2 py-1 bg-white/[0.05] border border-white/[0.08] rounded text-gray-400">←/→</span>
+                <span className="mx-1 text-gray-600">Prev / Next sentence</span>
             </div>
         </div>
     );

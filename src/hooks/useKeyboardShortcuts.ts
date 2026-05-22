@@ -30,11 +30,11 @@ export function useKeyboardShortcuts({
                     break;
                 case 'ArrowLeft':
                     e.preventDefault();
-                    rsvp.skip(-10);
+                    rsvp.skipToSentence(-1);
                     break;
                 case 'ArrowRight':
                     e.preventDefault();
-                    rsvp.skip(10);
+                    rsvp.skipToSentence(1);
                     break;
                 case 'ArrowUp':
                     e.preventDefault();

@@ -187,8 +187,8 @@ export function parseText(text: string): ParsedText {
     let currentSentenceIndex = 0;
     let currentParagraphIndex = 0;
 
-    let currentSentence: TextToken[] = [];
-    let currentParagraph: TextToken[] = [];
+    const currentSentence: TextToken[] = [];
+    const currentParagraph: TextToken[] = [];
 
     // Helper to finalize a structural unit (sentence or paragraph)
     const finalizeUnit = (

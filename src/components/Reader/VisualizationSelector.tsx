@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { Eye, AlignJustify, AlignLeft, Layers } from 'lucide-react';
+import { Eye, ScanLine, AlignJustify, AlignLeft, Layers } from 'lucide-react';
 
-export type VisualizationMode = 'rsvp' | 'paragraph' | 'sentence' | 'hybrid';
+export type VisualizationMode = 'rsvp' | 'trail' | 'paragraph' | 'sentence' | 'hybrid';
 
 interface VisualizationSelectorProps {
     mode: VisualizationMode;
@@ -9,8 +9,10 @@ interface VisualizationSelectorProps {
 }
 
 export const VisualizationSelector: FC<VisualizationSelectorProps> = ({ mode, onChange }) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const options: { id: VisualizationMode; icon: FC<any>; label: string }[] = [
         { id: 'rsvp', icon: Eye, label: 'Focus' },
+        { id: 'trail', icon: ScanLine, label: 'Ghost Trail' },
         { id: 'sentence', icon: AlignLeft, label: 'Sentence' },
         { id: 'paragraph', icon: AlignJustify, label: 'Paragraph' },
         { id: 'hybrid', icon: Layers, label: 'Hybrid' },

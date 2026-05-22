@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Heavy design assets — kept local, not needed in the repo
+docs/UI Inspo/
+docs/assets/references/
+
+# Stray package tarballs / extracted packages
+*.tgz
+/package/
+
+# Lint run artifact
+lint_output.txt

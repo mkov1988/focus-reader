@@ -22,6 +22,7 @@ export interface UseRSVPReturn {
     reset: () => void;
     seek: (index: number) => void;
     skip: (delta: number) => void;
+    skipToSentence: (direction: -1 | 1) => void;
 }
 
 /**
@@ -172,6 +173,29 @@ export function useRSVP({
         seek(currentIndex + delta);
     }, [currentIndex, seek]);
 
+    const skipToSentence = useCallback((direction: -1 | 1) => {
+        if (direction === -1) {
+            // Go backward: find previous sentence start
+            // If we're already at a sentence start, skip to the one before it
+            for (let i = currentIndex - 1; i >= 0; i--) {
+                if (tokens[i]?.isSentenceStart) {
+                    seek(i);
+                    return;
+                }
+            }
+            seek(0); // Fallback: go to beginning
+        } else {
+            // Go forward: find next sentence start
+            for (let i = currentIndex + 1; i < tokens.length; i++) {
+                if (tokens[i]?.isSentenceStart) {
+                    seek(i);
+                    return;
+                }
+            }
+            seek(tokens.length - 1); // Fallback: go to end
+        }
+    }, [currentIndex, tokens, seek]);
+
     return {
         currentIndex,
         currentToken,
@@ -183,5 +207,6 @@ export function useRSVP({
         reset,
         seek,
         skip,
+        skipToSentence,
     };
 }

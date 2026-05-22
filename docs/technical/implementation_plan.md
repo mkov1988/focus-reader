@@ -51,8 +51,15 @@ A web-based RSVP (Rapid Serial Visual Presentation) speed-reading application de
 src/
 ├── components/
 │   ├── Layout/           # Main page structure
+│   │   ├── Canvas/           # NEW: The 3D World
+│   │   │   ├── Scene.tsx     # Lights, Camera, Environment
+│   │   │   ├── Library.tsx   # The Shelves and Floating Islands
+│   │   │   └── BookMesh.tsx  # The interactive 3D book object
+│   ├── UI/               # NEW: 2D Overlay (HUD)
+│   │   ├── Navigation.tsx    # "Home", "Search", "Settings"
+│   │   └── SearchBar.tsx     # Floating search input
 │   ├── Reader/           # The high-performance RSVP engine
-│   │   ├── RSVPDisplay.tsx
+│   │   ├── RSVPDisplay.tsx   # 2D reading view (overlay)
 │   │   ├── Controls.tsx
 │   │   └── ProgressBar.tsx
 │   ├── Input/            # File upload & text paste
@@ -62,41 +69,68 @@ src/
 │       └── SettingsModal.tsx
 ├── hooks/
 │   ├── useRSVP.ts        # The "Brain": handles the WPM timer loop
-│   └── useFileParser.ts  # Handles .pdf / .epub extraction
+│   ├── useFileParser.ts  # Handles .pdf / .epub extraction
+│   └── useLibrary3D.ts   # NEW: Handles 3D interactions (raycasting, selection)
 ├── utils/
 │   ├── textProcessing.ts # Splitting text, finding focal points
 │   └── alignment.ts      # The math for "Perfect Center"
 └── App.tsx
 ```
 
+## 4. Technical Stack (Updated for 3D Pivot)
+
+-   **Core**: React 18+ (Vite) + TypeScript.
+-   **3D Engine**: **React Three Fiber (R3F)**.
+    -   *Why?* Declarative simplified Three.js integration that shares React state.
+    -   **@react-three/drei**: For pre-built abstractions (Text, OrbitControls, Environment).
+    -   **React Spring / Framer Motion**: For smooth transitions between "Shelf View" and "Reading View".
+-   **Styling**: Tailwind CSS (for the 2D UI overlay).
+-   **State Management**: Zustand.
+    -   *Why?* We need to share state between the 3D Canvas (outside React context usually) and the 2D DOM. Zustand handles this transient state updates better than Context for high-frequency changes (like scroll or WPM).
+-   **Performance**: `use-asset` or `Suspense` for lazy loading book textures.
+
 ## 4. Specific Implementation Details
 
-### The "Perfect Alignment" Logic (Crucial)
-To meet the specific requirement where the red letter *never moves* and letters don't overlap:
-1.  **Monospace assumption?** No, variable width fonts are allowed.
-2.  **Measurement Strategy**:
-    -   Render the active word invisibly to measure the width of the characters *before* the focal letter.
-    -   Calculate `offset = width_of_preceding_portion + (width_of_focal_letter / 2)`.
-    -   Apply `transform: translateX(-offset)` to the container of the word, assuming the container's left edge starts at the screen center.
-    -   **Alternative (Simpler)**:
-        -   Flex container tailored for each word split into: `[Prefix] [Focal] [Suffix]`.
-        -   `Prefix`: Align text-right, fixed width (50% of screen).
-        -   `Focal`: Fixed center.
-        -   `Suffix`: Align text-left, fixed width (50% of screen).
-        -   *Correction*: This creates gaps if not careful. The explicit `translateX` method ensures natural kerneling.
+## 4. Specific Implementation Details (The "Slug Through" Strategy)
 
-### RSVP Engine (`useRSVP`)
--   `useEffect` using `requestAnimationFrame` for smooth, jitter-free timing.
--   **WPM Calculation**: `delay = 60000 / WPM`.
--   **Pause on Punctuation**: Intelligent delays for comprehension:
-    -   Sentence endings (`.` `!` `?`): **3x pause**
-    -   Commas (`,`): **2x pause**
-    -   Minor punctuation (`;` `:`): **1.5x pause**
-    -   Long words (8+ chars): **+0.2x**, (12+ chars): **+0.5x**
+### A. The 3D Scene Architecture (R3F)
+We will build a "Hybrid" scene where the environment is 3D, but content is optimized for readability.
 
-### Data Flow
-1.  **Input Phase**: User inputs text -> Processed into `string[]` (words) -> Stored in Global Context or Main State.
-2.  **Reading Phase**: `currentIndex` integer tracks position. `RSVPDisplay` component receives `words[currentIndex]`.
+#### 1. The Environment (`<Library />`)
+*   **Geometry**: Low-poly "Stone Slabs" created programmatically (Extruded Shapes) or via simple glTF assets.
+*   **Optimization**:
+    *   **InstancedMesh**: For repetitive elements like stone blocks or shelf segments to keep draw calls low (<50).
+    *   **Baked Lighting**: Use generic "matcaps" or simple ambient light + directional light. No expensive real-time shadows if possible; bake AO into vertex colors or textures.
+    *   **Mist**: `fog` attached to the scene to blend distant shelves into the background hue.
+
+#### 2. The Books (`<BookShelf />` & `<BookItem />`)
+*   **The Mesh**: A thick, chunky book geometry (BoxBufferGeometry).
+*   **The "Holographic" Cover (Scanability Fix)**:
+    *   Instead of just mapping the texture to the angled book face, we will use a **`Billboard`** component (from `@react-three/drei`) or a slightly detached plane that rotates to face the camera more directly when hovering or by default.
+    *   *Alternative*: Keep the book isometric but map high-contrast, large-type generated covers, not just raw Gutenberg scans.
+
+#### 3. Text & UI in 3D (Contrast Fix)
+*   **Labels**: Use `@react-three/drei/Text` for "Popular", "eBooks".
+*   **The Inset Technique**: Render a dark generic plane *behind* the white text to simulate a "carved plaque". This guarantees contrast regardless of the stone texture brightness.
+*   **Interaction**: `onPointerOver` triggers a spring-based scale up (x1.1) and a cyan emissive glow on the book spine/edges.
+
+### B. State Management (Zustand)
+*   **Store**: `useStore`
+    *   `viewMode`: 'LIBRARY' | 'READING'
+    *   `hoveredBookId`: string | null
+    *   `books`: Array<BookMetadata>
+*   **Bridge**: The 3D canvas pushes events to the Zustand store, which updates the 2D overlay (e.g., showing a detailed tooltip or the Search bar).
+
+### C. Performance (The "Slug")
+*   **Lazy Loading**: Gutenberg covers are fetched only when the shelf comes into view (Intersection Observer for the Canvas or `useInView` for 3D objects).
+*   **Texture Recycling**: Reuse geometry and materials (`useMemo`). All books share the same geometry, just different textures/uniforms.
+
+### D. The Reading "Portal"
+*   Transition from Library -> Reader:
+    *   Camera zooms *into* the selected book.
+    *   Screen fades to the Reader background color.
+    *   2D RSVP interface mounts on top.
+    *   3D Canvas unmounts or pauses rendering loop to save battery while reading.
 
 ### Visualization Modes
 To support different reading styles, the `RSVPDisplay` component will support three modes via a selector:
