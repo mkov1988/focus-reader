@@ -19,7 +19,7 @@ export const VisualizationSelector: FC<VisualizationSelectorProps> = ({ mode, on
     ];
 
     return (
-        <div className="flex items-center justify-center space-x-2 bg-gray-900/50 p-1 rounded-full backdrop-blur-sm">
+        <div className="flex items-center justify-center space-x-2 bg-espresso/[0.06] ring-1 ring-espresso/10 p-1 rounded-full">
             {options.map((option) => (
                 <button
                     key={option.id}
@@ -27,8 +27,8 @@ export const VisualizationSelector: FC<VisualizationSelectorProps> = ({ mode, on
                     className={`
                         p-2 rounded-full transition-all duration-200
                         ${mode === option.id
-                            ? 'bg-red-500 text-white shadow-lg scale-105'
-                            : 'text-gray-400 hover:text-white hover:bg-white/10'
+                            ? 'bg-coral-accent text-white shadow-lg scale-105'
+                            : 'text-mocha hover:text-espresso hover:bg-espresso/[0.08]'
                         }
                     `}
                     title={option.label}

@@ -1,18 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { BookCard } from './BookCard';
 import { BookCover, type CoverVariant } from './BookCover';
 import { usePress } from '../../hooks/usePress';
+import { useStore, type TabKey } from '../../store/useStore';
 import { webLibraryService as library } from '../../services/library';
 import type { BookMetadata } from '../../services/types';
+import { THEMES } from '../../theme';
 import {
     Coffee, Search, BookOpen, Library, Bookmark, Notebook,
     ChevronRight, ArrowRight, ArrowLeft, Moon, Clock, Leaf, Feather, Loader2, X,
+    Menu, Settings, Info, BarChart3, Check, Sun,
 } from 'lucide-react';
-
-// Featured hero book (Project Gutenberg id) — Walden, to match the quote.
-const HERO_ID = '205';
-const HERO_TITLE = 'Walden; or, Life in the Woods';
 
 // Shown only if Gutendex can't be reached, so the shelf is never empty.
 const FALLBACK_BOOKS: (BookMetadata & { variant?: CoverVariant; tint?: string })[] = [
@@ -25,44 +24,22 @@ const FALLBACK_BOOKS: (BookMetadata & { variant?: CoverVariant; tint?: string })
 ];
 
 const DOORS = [
-    { icon: Moon, title: 'Bedtime Read', sub: 'soft endings, no cliffhangers', tint: '#ECE9DE', topic: 'fairy tales' },
-    { icon: Coffee, title: 'Sunday Morning', sub: 'savor with a second cup', tint: '#F1E8D6', topic: 'poetry' },
-    { icon: Clock, title: 'Under 30 Minutes', sub: 'a story between trains', tint: '#EFE9DB', topic: 'short stories' },
-    { icon: Leaf, title: 'Garden & Hearth', sub: 'pastorals & quiet rooms', tint: '#EAF0E2', topic: 'nature' },
-    { icon: Feather, title: 'Essays by Lamplight', sub: 'slow thinking, slow weather', tint: '#F0EAD9', topic: 'essays' },
+    { icon: Moon, title: 'Bedtime Read', sub: 'soft endings, no cliffhangers', topic: 'fairy tales' },
+    { icon: Coffee, title: 'Sunday Morning', sub: 'savor with a second cup', topic: 'poetry' },
+    { icon: Clock, title: 'Under 30 Minutes', sub: 'a story between trains', topic: 'short stories' },
+    { icon: Leaf, title: 'Garden & Hearth', sub: 'pastorals & quiet rooms', topic: 'nature' },
+    { icon: Feather, title: 'Essays by Lamplight', sub: 'slow thinking, slow weather', topic: 'essays' },
 ];
 
-const TABS = [
-    { icon: BookOpen, label: 'Today' },
-    { icon: Library, label: 'Library' },
-    { icon: Bookmark, label: 'Shelves' },
-    { icon: Notebook, label: 'Notebook' },
+const TABS: { key: TabKey; icon: LucideIcon; label: string }[] = [
+    { key: 'today', icon: BookOpen, label: 'Today' },
+    { key: 'library', icon: Library, label: 'Library' },
+    { key: 'shelves', icon: Bookmark, label: 'Shelves' },
+    { key: 'notebook', icon: Notebook, label: 'Notebook' },
 ];
-
-const THEMES = [
-    ['bg-cream', 'bg-coral-accent', 'bg-espresso', 'bg-warm-oat'],
-    ['bg-cream', 'bg-sage', 'bg-espresso', 'bg-mocha'],
-    ['bg-warm-oat', 'bg-mocha', 'bg-coral-accent', 'bg-cream'],
-    ['bg-cream', 'bg-mustard', 'bg-espresso', 'bg-sage'],
-];
-
-function greeting() {
-    const h = new Date().getHours();
-    if (h < 12) return { hi: 'Good morning', line: "the coffee's on." };
-    if (h < 17) return { hi: 'Good afternoon', line: "a fresh pot's brewing." };
-    return { hi: 'Good evening', line: 'the kettle is on.' };
-}
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
     <p className="text-center text-[10px] font-semibold tracking-[0.22em] text-mocha/80 uppercase">{children}</p>
-);
-
-const Squiggle = () => (
-    <div className="flex justify-center my-7" aria-hidden>
-        <svg width="64" height="10" viewBox="0 0 64 10" fill="none">
-            <path d="M1 5 Q 9 0 17 5 T 33 5 T 49 5 T 63 5" stroke="#6B5544" strokeOpacity="0.35" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
-    </div>
 );
 
 const CoverSkeleton = () => (
@@ -74,16 +51,15 @@ const CoverSkeleton = () => (
 );
 
 // A "small door" row. Press-down nudges the icon + chevron; release runs onClick.
-function Door({ icon: Icon, title, sub, tint, onClick }: { icon: LucideIcon; title: string; sub: string; tint: string; onClick: () => void }) {
+function Door({ icon: Icon, title, sub, onClick }: { icon: LucideIcon; title: string; sub: string; onClick: () => void }) {
     const { pressed, pressProps } = usePress();
     return (
         <button
             onClick={onClick}
             {...pressProps}
-            className={`w-full flex items-center gap-3.5 rounded-2xl px-4 py-3.5 ring-1 text-left select-none transition-[transform,box-shadow,border-color] duration-150 ${pressed ? 'ring-coral-accent/40 scale-[0.99] shadow-[inset_0_1px_4px_rgba(58,42,30,0.08)]' : 'ring-espresso/8'}`}
-            style={{ backgroundColor: tint }}
+            className={`w-full min-h-[64px] flex items-center gap-3.5 rounded-2xl px-4 py-3 ring-1 text-left select-none bg-cream/70 transition-[transform,box-shadow,border-color] duration-150 ${pressed ? 'ring-coral-accent/40 scale-[0.99] shadow-[inset_0_1px_4px_rgba(58,42,30,0.08)]' : 'ring-espresso/10'}`}
         >
-            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/8 flex items-center justify-center text-coral-accent shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
+            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/10 flex items-center justify-center text-coral-accent shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
                 <Icon size={18} />
             </span>
             <span className="flex-1 min-w-0">
@@ -95,17 +71,53 @@ function Door({ icon: Icon, title, sub, tint, onClick }: { icon: LucideIcon; tit
     );
 }
 
-interface StoreFrontProps {
-    onOpenText: (text: string, title: string) => void;
-    onManualInput?: () => void;
+function EmptyTab({ icon: Icon, title, body }: { icon: LucideIcon; title: string; body: string }) {
+    return (
+        <div className="rounded-3xl bg-cream/60 ring-1 ring-espresso/10 px-6 py-10 text-center">
+            <span className="inline-flex w-12 h-12 rounded-2xl bg-cream ring-1 ring-espresso/10 items-center justify-center text-coral-accent">
+                <Icon size={22} />
+            </span>
+            <h3 className="font-serif text-[20px] font-semibold text-espresso mt-4">{title}</h3>
+            <p className="font-serif italic text-[13px] text-mocha leading-relaxed mt-2 max-w-xs mx-auto">{body}</p>
+            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/60 uppercase mt-5">Coming soon</p>
+        </div>
+    );
 }
 
-export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
-    const { hi, line } = greeting();
-    const heroPress = usePress();
+interface StoreFrontProps {
+    /**
+     * Fire-and-forget: kick the App-level "open this book" flow on touch-down.
+     * The transition takes over the gesture and decides commit vs cancel on
+     * touch-up. The App handles download + open animation.
+     */
+    onOpenBook: (book: BookMetadata, originRect: DOMRect | null, opts: { slotId: string; startIndex?: number; targetRect?: DOMRect | null }) => void;
+    onManualInput?: () => void;
+    /** Slot identifier of the *specific physical instance* currently being
+     *  lifted (e.g. "hero" vs "shelf:84"). The matching slot hides itself so
+     *  the floating cover doesn't visually double — other slots for the same
+     *  book id stay put. */
+    openingSlotId?: string | null;
+}
+
+export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFrontProps) {
+    /** Cover-rect source for the lift visual (where the cover starts from). */
+    const heroCoverRef = useRef<HTMLDivElement>(null);
+    /** Full hero-card rect — used as the gesture target so taps on Resume /
+     *  Restart / Start Reading buttons still count as "inside target". */
+    const heroCardRef = useRef<HTMLDivElement>(null);
+
+    const themeIndex = useStore((s) => s.themeIndex);
+    const setThemeIndex = useStore((s) => s.setThemeIndex);
+    const themeMode = useStore((s) => s.mode);
+    const toggleMode = useStore((s) => s.toggleMode);
+    const activeTab = useStore((s) => s.activeTab);
+    const setActiveTab = useStore((s) => s.setActiveTab);
+    const progress = useStore((s) => s.progress);
+    // Note: applying the accent + mode to the document root happens in the App
+    // shell (always mounted), so the reader stays themed too.
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
-    const [searchOpen, setSearchOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [query, setQuery] = useState('');
 
     const [mode, setMode] = useState<'home' | 'results'>('home');
@@ -113,45 +125,37 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
     const [resultsLabel, setResultsLabel] = useState('');
     const [searching, setSearching] = useState(false);
 
-    const [openingTitle, setOpeningTitle] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     // Load the curated shelf once on mount.
     useEffect(() => {
         let alive = true;
         library.getCurated()
-            .then((books) => { if (alive) setCurated(books.slice(0, 8)); })
+            .then((books) => { if (alive) setCurated(books.slice(0, 12)); })
             .catch(() => { if (alive) setCurated(FALLBACK_BOOKS); });
         return () => { alive = false; };
     }, []);
 
-    const openBook = useCallback(async (book: BookMetadata) => {
-        setError(null);
-        setOpeningTitle(book.title);
-        try {
-            const text = await library.fetchContent(book);
-            onOpenText(text, book.title);
-        } catch (e) {
-            setError(e instanceof Error ? e.message : 'Could not open that book.');
-        } finally {
-            setOpeningTitle(null);
-        }
-    }, [onOpenText]);
+    // The featured book shown when there is no real reading progress yet.
+    const todaysPick = useMemo<BookMetadata | null>(() => curated?.[0] ?? null, [curated]);
 
-    const openHero = useCallback(async () => {
-        setError(null);
-        setOpeningTitle('Walden');
-        try {
-            const book = await library.getById(HERO_ID);
-            if (!book) throw new Error('Featured book is unavailable right now.');
-            const text = await library.fetchContent(book);
-            onOpenText(text, HERO_TITLE);
-        } catch (e) {
-            setError(e instanceof Error ? e.message : 'Could not open Walden.');
-        } finally {
-            setOpeningTitle(null);
-        }
-    }, [onOpenText]);
+    /** Touch-down handler for any "open this book" surface. The transition
+     *  will then track the rest of the gesture (move / up) at the window level.
+     *  `targetRect` is the press-target area (e.g. the whole hero card so its
+     *  Resume button counts as "inside"); origin is always the cover.
+     *  `slotId` identifies which physical instance was pressed so we only
+     *  hide that one — not every copy of the same book on screen. */
+    const press = useCallback(
+        (book: BookMetadata, originRect: DOMRect | null, opts: { slotId: string; startIndex?: number; targetRect?: DOMRect | null }) => {
+            onOpenBook(book, originRect, opts);
+        },
+        [onOpenBook],
+    );
+
+    /** Convenience: grab the hero cover's rect (lift origin). */
+    const heroOrigin = () => heroCoverRef.current?.getBoundingClientRect() ?? null;
+    /** Convenience: grab the hero card's rect (gesture target = full card). */
+    const heroTarget = () => heroCardRef.current?.getBoundingClientRect() ?? null;
 
     const runQuery = useCallback(async (label: string, fn: () => Promise<BookMetadata[]>) => {
         setMode('results');
@@ -177,66 +181,72 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
     const clearResults = () => {
         setMode('home');
         setQuery('');
-        setSearchOpen(false);
         setResults([]);
     };
 
     const shelf = curated ?? [];
 
+    // ─── Hero card content: real progress vs. today's pick ────────────────
+    const hasProgress = progress !== null && progress.totalTokens > 0;
+    const progressPct = hasProgress
+        ? Math.min(100, Math.round((progress.currentIndex / progress.totalTokens) * 100))
+        : 0;
+
+    /** Press-down on any "Resume / Restart / cover" surface in the hero card. */
+    const pressHero = useCallback((book: BookMetadata, startIndex?: number) => {
+        press(book, heroOrigin(), { slotId: 'hero', startIndex, targetRect: heroTarget() });
+    }, [press]);
+
+    const progressBook = (): BookMetadata | null => progress && {
+        id: progress.bookId,
+        title: progress.title,
+        author: progress.author,
+        coverUrl: progress.coverUrl,
+        textUrl: progress.textUrl,
+    };
+
     return (
         <div
-            className="min-h-screen bg-warm-beige pb-14 font-sans text-espresso selection:bg-coral-accent/20 overflow-x-hidden"
+            className="min-h-screen bg-warm-beige font-sans text-espresso selection:bg-coral-accent/20 overflow-x-clip"
             style={{
                 backgroundImage:
                     'radial-gradient(120% 80% at 50% -10%, rgba(212,154,63,0.10), transparent 55%), radial-gradient(90% 60% at 100% 0%, rgba(194,103,75,0.07), transparent 50%)',
             }}
         >
-            <main className="max-w-md mx-auto px-5 pt-6">
-                {/* Brand + search */}
-                <header className="mb-5">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2.5">
-                            <span className="w-9 h-9 rounded-xl bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-coral-accent shadow-sm">
-                                <Coffee size={18} />
-                            </span>
-                            <div className="leading-tight">
-                                <h1 className="font-serif text-[18px] font-semibold text-espresso">Focus Reader</h1>
-                                <p className="text-[9px] font-semibold tracking-[0.22em] text-mocha/70 uppercase">A Quiet Library</p>
-                            </div>
+            {/* ── Sticky search header ── */}
+            <header className="sticky top-0 z-30 bg-warm-beige border-b border-espresso/[0.08]">
+                <div
+                    className="max-w-md mx-auto px-5 py-3.5 flex items-center gap-2.5"
+                    style={{ paddingTop: 'max(0.875rem, env(safe-area-inset-top))' }}
+                >
+                    <form onSubmit={submitSearch} className="flex-1">
+                        <div className="bg-cream rounded-full px-5 py-3.5 flex items-center gap-3 ring-1 ring-espresso/10 shadow-[inset_0_1px_3px_rgba(58,42,30,0.08)] focus-within:ring-coral-accent/40 transition-shadow">
+                            <Search size={18} className="text-mocha/70 shrink-0" />
+                            <input
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Search Focus Reader"
+                                aria-label="Search Focus Reader"
+                                className="bg-transparent border-none outline-none w-full text-espresso placeholder-mocha/60 font-medium"
+                            />
+                            {query && (
+                                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="text-mocha/60 hover:text-espresso shrink-0">
+                                    <X size={16} />
+                                </button>
+                            )}
                         </div>
-                        <button
-                            aria-label="Search"
-                            onClick={() => setSearchOpen((v) => !v)}
-                            className={`w-10 h-10 rounded-full ring-1 flex items-center justify-center select-none active:scale-90 transition-[transform,color,background-color] duration-150 shadow-sm ${searchOpen ? 'bg-espresso text-cream ring-espresso' : 'bg-cream text-mocha ring-espresso/10 hover:text-coral-accent'}`}
-                        >
-                            {searchOpen ? <X size={18} /> : <Search size={18} />}
-                        </button>
-                    </div>
+                    </form>
+                    <button
+                        aria-label="Menu"
+                        onClick={() => setMenuOpen(true)}
+                        className="w-12 h-12 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-espresso shrink-0 shadow-sm active:scale-90 transition-transform"
+                    >
+                        <Menu size={20} />
+                    </button>
+                </div>
+            </header>
 
-                    {searchOpen ? (
-                        <form onSubmit={submitSearch} className="mt-4 flex gap-2.5">
-                            <div className="flex-1 bg-cream rounded-full px-5 py-3 flex items-center gap-3 ring-1 ring-espresso/10 shadow-[inset_0_1px_3px_rgba(58,42,30,0.08)] focus-within:ring-coral-accent/40 transition-shadow">
-                                <Search size={18} className="text-mocha/70 shrink-0" />
-                                <input
-                                    autoFocus
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="Search by title or author…"
-                                    className="bg-transparent border-none outline-none w-full text-espresso placeholder-mocha/60 font-medium"
-                                />
-                            </div>
-                            <button type="submit" className="bg-coral-accent text-cream w-12 h-12 rounded-full flex items-center justify-center shadow-[0_3px_8px_rgba(194,103,75,0.35)] hover:scale-95 active:scale-90 transition-transform shrink-0">
-                                <Search size={20} />
-                            </button>
-                        </form>
-                    ) : (
-                        <div className="mt-5">
-                            <p className="font-serif italic text-[15px] text-mocha">{hi}, friend &mdash;</p>
-                            <h2 className="font-serif text-[30px] font-semibold text-espresso leading-tight tracking-tight">{line}</h2>
-                        </div>
-                    )}
-                </header>
-
+            <main className="max-w-md mx-auto px-5 pt-5 pb-28">
                 {error && (
                     <div className="mb-5 flex items-start gap-2 rounded-2xl bg-coral-accent/10 ring-1 ring-coral-accent/30 px-4 py-3 text-[13px] text-espresso">
                         <span className="flex-1">{error}</span>
@@ -265,92 +275,153 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
                             <p className="text-center text-[14px] text-mocha italic py-10">Nothing on the shelf for that. Try another title or author.</p>
                         ) : (
                             <div className="grid grid-cols-2 gap-y-6 justify-items-center">
-                                {results.map((book) => (
-                                    <BookCard key={book.id} title={book.title} author={book.author} coverUrl={book.coverUrl} onClick={() => openBook(book)} />
-                                ))}
+                                {results.map((book) => {
+                                    const slotId = `search:${book.id}`;
+                                    return (
+                                        <BookCard
+                                            key={book.id}
+                                            title={book.title}
+                                            author={book.author}
+                                            coverUrl={book.coverUrl}
+                                            hidden={openingSlotId === slotId}
+                                            onPress={(rect) => press(book, rect, { slotId })}
+                                        />
+                                    );
+                                })}
                             </div>
                         )}
                     </section>
-                ) : (
-                    /* ── Home ── */
-                    <>
-                        {/* Theme swatches */}
-                        <section className="mb-6 -mx-5 px-5 overflow-hidden">
-                            <div className="flex gap-2.5 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                                {THEMES.map((bars, i) => (
-                                    <button key={i} className={`shrink-0 flex items-center gap-1 rounded-full px-2.5 py-2 select-none active:scale-95 active:gap-[5px] transition-[transform,gap,box-shadow] duration-150 ${i === 0 ? 'bg-cream ring-2 ring-coral-accent/50 shadow-sm' : 'bg-cream/70 ring-1 ring-espresso/10'}`} aria-label={`Theme ${i + 1}`}>
-                                        {bars.map((b, j) => (<span key={j} className={`w-1.5 h-5 rounded-[2px] ${b} ring-1 ring-espresso/5`} />))}
-                                    </button>
-                                ))}
-                                <div className="w-2 shrink-0" />
+                ) : activeTab === 'today' ? (
+                    /* ── Today feed (each bottom-tab is its own screen) ── */
+                    <div>
+                        {/* Hero card: real progress if available, else today's pick.
+                            Whole card is the press-target — pressing the cover, the title,
+                            Resume, or Restart all start the same gesture. */}
+                        <section>
+                            <div
+                                ref={heroCardRef}
+                                className="rounded-3xl bg-cream ring-1 ring-espresso/10 shadow-[0_4px_18px_rgba(58,42,30,0.07)] p-5"
+                                style={{ touchAction: 'manipulation' }}
+                            >
+                                {hasProgress ? (
+                                    <>
+                                        <Eyebrow>&middot; Pick up where you left off &middot;</Eyebrow>
+                                        <div className="flex gap-4 mt-4">
+                                            <div
+                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, progress.currentIndex); }}
+                                                ref={heroCoverRef}
+                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none"
+                                                style={{ visibility: openingSlotId === 'hero' ? 'hidden' : 'visible' }}
+                                            >
+                                                <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
+                                                <BookCover title={progress.title} author={progress.author} coverUrl={progress.coverUrl} variant="framed" size="sm" />
+                                            </div>
+                                            <div className="flex-1 min-w-0 pt-1">
+                                                <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight line-clamp-2">
+                                                    {progress.title}
+                                                </h3>
+                                                <p className="font-serif italic text-[12px] text-mocha mt-1">{progress.author}</p>
+                                            </div>
+                                        </div>
+                                        <div className="mt-5">
+                                            <div className="flex justify-between text-[10px] font-semibold tracking-[0.12em] text-mocha uppercase mb-1.5">
+                                                <span>{progressPct}% complete</span>
+                                                <span>{progress.currentIndex.toLocaleString()} / {progress.totalTokens.toLocaleString()} words</span>
+                                            </div>
+                                            <div className="h-1.5 rounded-full bg-espresso/10 overflow-hidden">
+                                                <div className="h-full rounded-full bg-coral-accent transition-[width] duration-300" style={{ width: `${progressPct}%` }} />
+                                            </div>
+                                        </div>
+                                        <div className="flex gap-3 mt-5">
+                                            <button
+                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, progress.currentIndex); }}
+                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25"
+                                            >
+                                                <BookOpen size={18} /> Resume
+                                            </button>
+                                            <button
+                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, 0); }}
+                                                className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px]"
+                                            >
+                                                Restart
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : todaysPick ? (
+                                    <>
+                                        <Eyebrow>&middot; Today's pick &middot;</Eyebrow>
+                                        <div className="flex gap-4 mt-4">
+                                            <div
+                                                onPointerDown={(e) => { e.preventDefault(); pressHero(todaysPick); }}
+                                                ref={heroCoverRef}
+                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none"
+                                                style={{ visibility: openingSlotId === 'hero' ? 'hidden' : 'visible' }}
+                                            >
+                                                <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
+                                                <BookCover title={todaysPick.title} author={todaysPick.author} coverUrl={todaysPick.coverUrl} variant="framed" size="sm" />
+                                            </div>
+                                            <div className="flex-1 min-w-0 pt-1">
+                                                <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight line-clamp-2">
+                                                    {todaysPick.title}
+                                                </h3>
+                                                <p className="font-serif italic text-[12px] text-mocha mt-1">{todaysPick.author}</p>
+                                            </div>
+                                        </div>
+                                        <p className="font-serif italic text-[13px] text-mocha leading-relaxed mt-4">
+                                            A quiet beginning &mdash; press and hold to open the book.
+                                        </p>
+                                        <div className="flex gap-3 mt-5">
+                                            <button
+                                                onPointerDown={(e) => { e.preventDefault(); pressHero(todaysPick); }}
+                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25"
+                                            >
+                                                <BookOpen size={18} /> Start Reading
+                                            </button>
+                                            {onManualInput && (
+                                                <button onClick={onManualInput} className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] active:scale-[0.98] transition-transform">
+                                                    Paste
+                                                </button>
+                                            )}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <div className="py-6 text-center">
+                                        <Loader2 size={22} className="inline-block text-coral-accent animate-spin" />
+                                        <p className="font-serif italic text-[13px] text-mocha mt-2">Setting the table…</p>
+                                    </div>
+                                )}
                             </div>
                         </section>
 
-                        {/* Continue reading hero */}
-                        <section className="mb-2">
-                            <div className="rounded-3xl bg-cream ring-1 ring-espresso/10 shadow-[0_4px_18px_rgba(58,42,30,0.07)] p-5">
-                                <Eyebrow>&middot; Pick up where you left off &middot;</Eyebrow>
-                                <div className="flex gap-4 mt-4">
-                                    <div
-                                        onClick={openHero}
-                                        {...heroPress.pressProps}
-                                        className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 cursor-pointer select-none"
-                                    >
-                                        <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
-                                        <BookCover title="Walden" author="H. D. Thoreau" variant="framed" size="sm" pressed={heroPress.pressed} />
-                                    </div>
-                                    <div className="flex-1 min-w-0 pt-1">
-                                        <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight">
-                                            Walden; <span className="italic text-coral-accent">or, Life in the Woods</span>
-                                        </h3>
-                                        <p className="font-serif italic text-[12px] text-mocha mt-1">Henry David Thoreau &middot; Ch. II</p>
-                                    </div>
-                                </div>
-                                <p className="font-serif italic text-[13px] text-mocha leading-relaxed mt-4">
-                                    &ldquo;I went to the woods because I wished to live deliberately&hellip;&rdquo; &mdash; three pages remain in this sitting. Settle in.
-                                </p>
-                                <div className="mt-4">
-                                    <div className="flex justify-between text-[10px] font-semibold tracking-[0.12em] text-mocha uppercase mb-1.5">
-                                        <span>Page 142 / 312</span>
-                                        <span>2h 18m &middot; 280 wpm</span>
-                                    </div>
-                                    <div className="h-1.5 rounded-full bg-espresso/10 overflow-hidden">
-                                        <div className="h-full rounded-full bg-coral-accent" style={{ width: '46%' }} />
-                                    </div>
-                                </div>
-                                <div className="flex gap-3 mt-5">
-                                    <button onClick={openHero} className="flex-1 flex items-center justify-center gap-2 bg-espresso text-cream rounded-full py-3.5 font-semibold text-[15px] shadow-[0_4px_12px_rgba(58,42,30,0.25)] hover:bg-espresso/90 active:scale-[0.98] transition-all">
-                                        <BookOpen size={18} /> Resume
-                                    </button>
-                                    <button onClick={openHero} className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] hover:ring-coral-accent/40 active:scale-[0.98] transition-all">
-                                        RSVP
-                                    </button>
-                                </div>
-                            </div>
-                        </section>
-
-                        <Squiggle />
-
-                        {/* Front table shelf */}
-                        <section className="mb-7">
-                            <Eyebrow>Staff Picks &middot; This Week</Eyebrow>
-                            <div className="flex justify-between items-end mt-3 mb-3">
+                        {/* Front table shelf — horizontally scrolls; larger, tappable covers */}
+                        <section className="mt-14">
+                            <div className="flex justify-between items-end mb-4">
                                 <div>
-                                    <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">On the front table</h2>
-                                    <p className="text-[12px] text-mocha italic mt-1">Hand-picked from the public domain.</p>
+                                    <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">Staff picks</h2>
+                                    <p className="text-[12px] text-mocha italic mt-1">Hand picked for the front table</p>
                                 </div>
                                 <button onClick={() => runQuery('Most loved', () => library.getCurated())} className="group flex items-center text-[13px] font-semibold text-coral-accent hover:text-coral-accent/80 active:text-coral-accent/70 transition-colors shrink-0 pb-0.5 select-none">
                                     see all <ArrowRight size={14} className="ml-1 transition-transform duration-150 group-active:translate-x-1" />
                                 </button>
                             </div>
-                            <div className="flex gap-4 overflow-x-auto pb-6 snap-x scroll-pl-5 -mx-5 px-5" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                 {curated === null
-                                    ? Array.from({ length: 4 }).map((_, i) => <div key={i} className="snap-start flex-shrink-0"><CoverSkeleton /></div>)
+                                    ? Array.from({ length: 4 }).map((_, i) => <div key={i} className="snap-start flex-shrink-0 w-44"><CoverSkeleton /></div>)
                                     : shelf.map((book) => {
                                         const fb = book as BookMetadata & { variant?: CoverVariant; tint?: string };
+                                        const slotId = `shelf:${book.id}`;
                                         return (
                                             <div key={book.id} className="snap-start flex-shrink-0">
-                                                <BookCard title={book.title} author={book.author} coverUrl={book.coverUrl} variant={fb.variant} tint={fb.tint} onClick={() => openBook(book)} />
+                                                <BookCard
+                                                    title={book.title}
+                                                    author={book.author}
+                                                    coverUrl={book.coverUrl}
+                                                    variant={fb.variant}
+                                                    tint={fb.tint}
+                                                    widthClass="w-44"
+                                                    hidden={openingSlotId === slotId}
+                                                    onPress={(rect) => press(book, rect, { slotId })}
+                                                />
                                             </div>
                                         );
                                     })}
@@ -358,36 +429,25 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
                             </div>
                         </section>
 
-                        {/* Segmented sections */}
-                        <section className="mb-6 -mx-5 px-5 overflow-hidden">
-                            <div className="flex gap-1.5 overflow-x-auto bg-espresso/5 ring-1 ring-espresso/8 rounded-full p-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                                {TABS.map((t, i) => {
-                                    const Icon = t.icon;
-                                    return (
-                                        <button key={t.label} className={`shrink-0 flex items-center gap-1.5 rounded-full px-4 py-2 text-[13px] font-semibold select-none active:scale-95 transition-all duration-150 ${i === 0 ? 'bg-espresso text-cream shadow-sm' : 'text-mocha hover:text-espresso'}`}>
-                                            <Icon size={15} /> {t.label}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-                        </section>
-
-                        {/* Mood doors */}
-                        <section className="mb-7">
-                            <div className="flex items-center justify-between mb-3">
-                                <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight">A few small doors</h2>
-                                <Coffee size={18} className="text-mocha/50" />
+                        {/* Mood doors — 44px+ touch targets, consistent iconography */}
+                        <section className="mt-14">
+                            <div className="flex items-start justify-between mb-4">
+                                <div>
+                                    <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">A few small doors</h2>
+                                    <p className="text-[12px] text-mocha italic mt-1">Curated collections for specific moods.</p>
+                                </div>
+                                <Coffee size={18} className="text-mocha/50 mt-1" />
                             </div>
                             <div className="flex flex-col gap-2.5">
                                 {DOORS.map((d) => (
-                                    <Door key={d.title} icon={d.icon} title={d.title} sub={d.sub} tint={d.tint} onClick={() => runQuery(d.title, () => library.getByTopic(d.topic))} />
+                                    <Door key={d.title} icon={d.icon} title={d.title} sub={d.sub} onClick={() => runQuery(d.title, () => library.getByTopic(d.topic))} />
                                 ))}
                             </div>
                         </section>
 
-                        {/* Weekly stats */}
-                        <section className="mb-5">
-                            <div className="rounded-2xl bg-cream/70 ring-1 ring-espresso/8 px-5 py-5">
+                        {/* Weekly stats — placeholder until real session tracking exists */}
+                        <section className="mt-14">
+                            <div className="rounded-2xl bg-cream/70 ring-1 ring-espresso/10 px-5 py-5">
                                 <Eyebrow>&middot; This Quiet Week &middot;</Eyebrow>
                                 <div className="grid grid-cols-3 mt-4">
                                     {[{ n: '184', l: 'Minutes' }, { n: '92', l: 'Pages' }, { n: '276', l: 'Avg WPM' }].map((s, i) => (
@@ -401,7 +461,7 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
                         </section>
 
                         {/* A note from the room */}
-                        <section>
+                        <section className="mt-14">
                             <div className="relative rounded-2xl bg-espresso text-cream px-5 py-5 overflow-hidden">
                                 <Coffee size={86} className="absolute -right-4 -bottom-5 text-cream/5" />
                                 <p className="text-[10px] font-semibold tracking-[0.22em] text-mustard/80 uppercase">&middot; A note from the room &middot;</p>
@@ -416,17 +476,137 @@ export function StoreFront({ onOpenText, onManualInput }: StoreFrontProps) {
                                 )}
                             </div>
                         </section>
-                    </>
+                    </div>
+                ) : activeTab === 'library' ? (
+                    <EmptyTab
+                        icon={Library}
+                        title="Your library is empty"
+                        body="Books you’ve started or finished will live here, with the page you left them on."
+                    />
+                ) : activeTab === 'shelves' ? (
+                    <EmptyTab
+                        icon={Bookmark}
+                        title="No shelves yet"
+                        body="Save books into shelves like ‘Lazy Sundays’ or ‘Train Rides’ to keep a private collection."
+                    />
+                ) : (
+                    <EmptyTab
+                        icon={Notebook}
+                        title="The notebook is blank"
+                        body="Passages you highlight while reading will gather here — quiet thoughts kept aside."
+                    />
                 )}
             </main>
 
-            {/* Opening overlay */}
-            {openingTitle && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-espresso/30 backdrop-blur-sm px-8">
-                    <div className="bg-cream rounded-3xl ring-1 ring-espresso/10 shadow-xl px-7 py-6 flex flex-col items-center text-center max-w-xs">
-                        <Loader2 size={28} className="text-coral-accent animate-spin" />
-                        <p className="font-serif text-[16px] text-espresso mt-3">Brewing your book&hellip;</p>
-                        <p className="text-[12px] italic text-mocha mt-1 line-clamp-2">{openingTitle}</p>
+            {/* ── Fixed bottom tab bar ── */}
+            <nav
+                className="fixed bottom-0 inset-x-0 z-30 bg-warm-beige border-t border-espresso/10"
+                style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+            >
+                <div className="max-w-md mx-auto flex">
+                    {TABS.map((t) => {
+                        const Icon = t.icon;
+                        const selected = mode !== 'results' && activeTab === t.key;
+                        return (
+                            <button
+                                key={t.key}
+                                onClick={() => { setActiveTab(t.key); clearResults(); }}
+                                aria-pressed={selected}
+                                aria-label={t.label}
+                                className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 select-none active:scale-95 transition-[transform,color] duration-150 ${selected ? 'text-coral-accent' : 'text-mocha'}`}
+                            >
+                                <Icon size={21} strokeWidth={selected ? 2.4 : 2} />
+                                <span className="text-[10px] font-semibold tracking-wide">{t.label}</span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </nav>
+
+            {/* ═══ MENU DRAWER ═══ */}
+            {menuOpen && (
+                <div className="fixed inset-0 z-[70]" role="dialog" aria-label="Menu" aria-modal="true">
+                    {/* Scrim */}
+                    <div
+                        className="absolute inset-0 bg-espresso/40 animate-fade-in"
+                        onClick={() => setMenuOpen(false)}
+                    />
+                    {/* Panel */}
+                    <div className="absolute right-0 top-0 bottom-0 w-[82%] max-w-xs bg-warm-beige shadow-2xl flex flex-col animate-slide-in-right">
+                        <div className="flex items-center justify-between px-5 pt-6 pb-4">
+                            <h2 className="font-serif text-[20px] font-semibold text-espresso">Menu</h2>
+                            <button
+                                onClick={() => setMenuOpen(false)}
+                                aria-label="Close menu"
+                                className="w-9 h-9 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha active:scale-90 transition-transform"
+                            >
+                                <X size={18} />
+                            </button>
+                        </div>
+
+                        <div className="px-5 pb-6 flex-1 overflow-y-auto">
+                            {/* Appearance: light / dark */}
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Appearance</p>
+                            <div className="flex gap-1.5 bg-espresso/[0.06] ring-1 ring-espresso/10 rounded-full p-1 mb-6">
+                                {([
+                                    { key: 'light', icon: Sun, label: 'Light' },
+                                    { key: 'dark', icon: Moon, label: 'Dark' },
+                                ] as const).map(({ key, icon: Icon, label }) => {
+                                    const active = themeMode === key;
+                                    return (
+                                        <button
+                                            key={key}
+                                            onClick={() => { if (themeMode !== key) toggleMode(); }}
+                                            aria-pressed={active}
+                                            className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-[13px] font-semibold select-none active:scale-[0.98] transition-all duration-150 ${active ? 'bg-cream text-espresso shadow-sm ring-1 ring-espresso/10' : 'text-mocha'}`}
+                                        >
+                                            <Icon size={15} /> {label}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Theme */}
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Accent</p>
+                            <div className="flex flex-col gap-2">
+                                {THEMES.map((t, i) => {
+                                    const selected = i === themeIndex;
+                                    return (
+                                        <button
+                                            key={t.label}
+                                            onClick={() => setThemeIndex(i)}
+                                            aria-label={`Theme: ${t.label}`}
+                                            aria-pressed={selected}
+                                            className={`flex items-center gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
+                                        >
+                                            <span className="flex items-center gap-1 shrink-0">
+                                                {t.pills.map((color, j) => (
+                                                    <span key={j} className="w-1.5 h-5 rounded-[2px] ring-1 ring-espresso/5" style={{ backgroundColor: color }} />
+                                                ))}
+                                            </span>
+                                            <span className="flex-1 text-left font-serif text-[15px] text-espresso">{t.label}</span>
+                                            {selected && <Check size={16} className="text-coral-accent shrink-0" />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Placeholders */}
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mt-7 mb-2">More</p>
+                            <div className="flex flex-col">
+                                {[
+                                    { icon: BarChart3, label: 'Reading Stats' },
+                                    { icon: Settings, label: 'Settings' },
+                                    { icon: Info, label: 'About' },
+                                ].map(({ icon: Icon, label }) => (
+                                    <div key={label} className="flex items-center gap-3 rounded-2xl px-3.5 py-3 opacity-45 select-none cursor-default">
+                                        <Icon size={18} className="text-mocha shrink-0" />
+                                        <span className="flex-1 font-serif text-[15px] text-espresso">{label}</span>
+                                        <span className="text-[9px] font-semibold tracking-[0.16em] text-mocha/70 uppercase">Soon</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
             )}

@@ -37,10 +37,20 @@ interface BookCoverProps {
     size?: 'sm' | 'md';
     /** When true, the cover peels open from the spine to reveal the page. */
     pressed?: boolean;
+    /** When true, the cover swings fully open (used by the loading transition). */
+    open?: boolean;
+    /** Optional custom content for the page revealed under the cover. */
+    pageContent?: ReactNode;
+    /** Forward a ref to the rotating cover-face element so an external
+     *  animator can drive `transform` directly (used by BookOpenTransition). */
+    coverFaceRef?: React.Ref<HTMLDivElement>;
+    /** Override the CSS transition on the cover face — `'none'` lets an
+     *  external animator take over without fighting the built-in tween. */
+    coverFaceTransition?: string;
     className?: string;
 }
 
-export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pressed = false, className = '' }: BookCoverProps) {
+export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pressed = false, open = false, pageContent, coverFaceRef, coverFaceTransition, className = '' }: BookCoverProps) {
     const seed = hash(title + author);
     const v: CoverVariant = variant ?? (['framed', 'label', 'solid'] as const)[seed % 3];
     const solidTint = tint ?? SOLID_TINTS[seed % SOLID_TINTS.length];
@@ -114,14 +124,20 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
         );
     }
 
+    // Choose the most-open angle: full open beats pressed beats rest.
+    const rotateDeg = open ? -158 : pressed ? -24 : 0;
+    const transitionMs = open ? 700 : 240;
+
     return (
-        <div className={`relative w-full aspect-[2/3] ${className}`} style={{ perspective: '760px' }}>
+        <div className={`relative w-full aspect-[2/3] ${className}`} style={{ perspective: '900px' }}>
             {/* Page revealed when the cover peels back */}
             <div className="absolute inset-0 rounded-l-[3px] rounded-r-xl bg-[#FBF7EE] overflow-hidden ring-1 ring-espresso/10">
-                <div
-                    className="absolute inset-y-[14%] left-[40%] right-[10%] opacity-50"
-                    style={{ backgroundImage: 'repeating-linear-gradient(to bottom, rgba(107,85,68,0.30) 0 1px, transparent 1px 6px)' }}
-                />
+                {pageContent ?? (
+                    <div
+                        className="absolute inset-y-[14%] left-[40%] right-[10%] opacity-50"
+                        style={{ backgroundImage: 'repeating-linear-gradient(to bottom, rgba(107,85,68,0.30) 0 1px, transparent 1px 6px)' }}
+                    />
+                )}
                 <span className="absolute right-0 inset-y-0 w-[3px] bg-espresso/10" />
                 {/* gutter shadow near the spine */}
                 <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-espresso/15 to-transparent" />
@@ -129,13 +145,16 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
 
             {/* The cover face (hinged at the spine) */}
             <div
-                className={`absolute inset-0 rounded-l-[3px] rounded-r-xl overflow-hidden ring-1 ring-espresso/10 ${coverBg} ${pressed ? 'shadow-[0_16px_28px_rgba(58,42,30,0.30)]' : 'shadow-[0_6px_14px_rgba(58,42,30,0.18)]'}`}
+                ref={coverFaceRef}
+                className={`absolute inset-0 rounded-l-[3px] rounded-r-xl overflow-hidden ring-1 ring-espresso/10 ${coverBg} ${pressed || open ? 'shadow-[0_16px_28px_rgba(58,42,30,0.30)]' : 'shadow-[0_6px_14px_rgba(58,42,30,0.18)]'}`}
                 style={{
                     transformOrigin: 'left center',
-                    transform: pressed ? 'rotateY(-24deg)' : 'rotateY(0deg)',
-                    transition: 'transform 240ms cubic-bezier(.2,.7,.25,1), box-shadow 240ms ease',
+                    transform: `rotateY(${rotateDeg}deg)`,
+                    transition: coverFaceTransition ?? `transform ${transitionMs}ms cubic-bezier(.2,.7,.25,1), box-shadow ${transitionMs}ms ease`,
                     willChange: 'transform',
-                    backfaceVisibility: 'hidden',
+                    // Don't hide backface during the open animation — we want the
+                    // back of the cover to look like the inside flyleaf.
+                    backfaceVisibility: open ? 'visible' : 'hidden',
                 }}
             >
                 {inner}

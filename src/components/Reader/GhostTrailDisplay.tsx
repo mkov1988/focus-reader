@@ -42,8 +42,8 @@ export function GhostTrailDisplay({
     }, [before, focal, after, fontSize]);
 
     const halfFocal = focalWidth / 2;
-    const barColor = 'rgb(50, 50, 50)';
-    const lineColor = 'rgb(60, 60, 60)';
+    const barColor = 'rgb(var(--text) / 0.14)';
+    const lineColor = 'rgb(var(--text) / 0.22)';
 
     // Build ghost word lists
     const { leftGhosts, rightGhosts } = useMemo(() => {
@@ -67,7 +67,7 @@ export function GhostTrailDisplay({
     }, [tokens, currentIndex]);
 
     const ghostFontSize = fontSize * 0.82;
-    const ghostColor = 'rgb(100, 100, 110)';
+    const ghostColor = 'rgb(var(--text-muted))';
 
     if (!currentWord) {
         return (
@@ -77,7 +77,7 @@ export function GhostTrailDisplay({
             >
                 <GuideFrame barColor={barColor} lineColor={lineColor} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gray-500 font-serif">Ready</span>
+                    <span className="text-mocha font-serif">Ready</span>
                 </div>
             </div>
         );

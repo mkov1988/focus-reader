@@ -8,24 +8,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        focal: '#ef4444', // Red focal letter
-        surface: {
-          dark: '#0f0f0f',
-          light: '#fafafa',
-        },
-        // Cozy 90s coffeeshop palette
+        focal: 'var(--focal-color)', // RSVP focal letter (red, softens on dark)
+        // ── Theme-aware semantic palette ──
+        // These map to CSS vars set by [data-mode] (light/dark) in index.css.
+        // `espresso`(ink) and `cream`(paper) invert together between modes, so
+        // existing usages — body text AND filled buttons — flip correctly with
+        // zero per-component changes.
+        cream: 'rgb(var(--surface) / <alpha-value>)',     // card / surface
+        espresso: 'rgb(var(--text) / <alpha-value>)',     // primary ink
+        mocha: 'rgb(var(--text-muted) / <alpha-value>)',  // secondary ink
         warm: {
-          beige: '#F3E9D8', // warm oat background
-          oat: '#EADBC4',   // deeper warm tone
+          beige: 'rgb(var(--bg) / <alpha-value>)',          // page background
+          oat: 'rgb(var(--surface-sunken) / <alpha-value>)',// deeper surface
         },
-        cream: '#FBF5EA',     // card / surface cream
-        espresso: '#3A2A1E',  // primary text, deep roast
-        mocha: '#6B5544',     // secondary text
         coral: {
-          accent: '#C2674B',  // terracotta accent
+          // Accent — driven by `--coral-accent-rgb` (set by the theme picker).
+          accent: 'rgb(var(--coral-accent-rgb) / <alpha-value>)',
+          'accent-text': 'rgb(var(--coral-accent-text) / <alpha-value>)',
         },
-        mustard: '#D49A3F',   // warm highlight
-        sage: '#7E8F6E',      // muted green accent
+        // Fixed brand hues (used for specific decorative accents).
+        mustard: '#D49A3F',
+        sage: '#7E8F6E',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -34,12 +37,17 @@ export default {
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-out',
+        'slide-in-right': 'slideInRight 0.28s cubic-bezier(.2,.8,.25,1)',
       },
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
-        }
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       }
     },
   },

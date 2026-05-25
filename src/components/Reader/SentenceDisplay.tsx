@@ -174,8 +174,8 @@ export function SentenceDisplay({
                                 ${isActive
                                     ? 'bg-focal/10 text-focal scale-110 shadow-sm'
                                     : isPassed
-                                        ? 'text-gray-400 dark:text-gray-600 opacity-60'
-                                        : 'text-gray-800 dark:text-gray-200 opacity-100'
+                                        ? 'text-mocha/50 opacity-60'
+                                        : 'text-espresso opacity-100'
                                 }
                             `}
                         >

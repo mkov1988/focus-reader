@@ -60,9 +60,8 @@ export function ParagraphDisplay({
         <div
             ref={containerRef}
             className={`
-                w-full max-w-2xl mx-auto h-[60vh] overflow-y-auto 
-                leading-relaxed px-8 py-[30vh] rounded-xl bg-white/5 dark:bg-black/20
-                scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600
+                w-full max-w-2xl mx-auto h-[60vh] overflow-y-auto
+                leading-relaxed px-8 py-[30vh] rounded-xl bg-espresso/[0.04]
                 ${className}
             `}
             style={{ fontSize: `${displaySize}px` }}
@@ -82,8 +81,8 @@ export function ParagraphDisplay({
                                 ${isActive
                                     ? 'bg-focal/20 text-focal scale-105'
                                     : isPassed
-                                        ? 'text-gray-400 dark:text-gray-600'
-                                        : 'text-gray-700 dark:text-gray-300'
+                                        ? 'text-mocha/50'
+                                        : 'text-espresso/85'
                                 }
                             `}
                         >

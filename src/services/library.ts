@@ -1,13 +1,20 @@
 /**
  * Web implementation of the native-ready LibraryService.
  *
- * Metadata comes from Gutendex (CORS-friendly). Book *content* is fetched from
- * Project Gutenberg, which is not CORS-friendly from a browser, so in dev we
- * route those requests through the Vite proxy (`/gutenberg` -> gutenberg.org).
- * A native app would fetch the same URLs directly — only `toProxyUrl` differs.
+ * Storefront metadata for the top ~1000 most-downloaded English books is
+ * bundled in `src/data/curated.json` so the home shelf paints instantly and
+ * works offline. Search filters that local list first and only falls back to
+ * the live Gutendex API for misses. Book *content* is still streamed from
+ * Project Gutenberg at read-time, via the Vite dev proxy (CORS workaround).
  */
 import type { BookMetadata, LibraryService } from './types';
 import { gutendex } from './gutendex';
+import curatedJson from '../data/curated.json';
+
+const CURATED: BookMetadata[] = curatedJson as BookMetadata[];
+
+/** Index curated books by id for O(1) getById hits. */
+const CURATED_BY_ID = new Map(CURATED.map((b) => [b.id, b]));
 
 /** Rewrite a Gutenberg origin to the dev proxy path to dodge browser CORS. */
 function toProxyUrl(url: string): string {
@@ -37,11 +44,35 @@ export function stripGutenbergBoilerplate(raw: string): string {
     return text.trim();
 }
 
+function localSearch(q: string): BookMetadata[] {
+    const needle = q.trim().toLowerCase();
+    if (!needle) return [];
+    return CURATED.filter(
+        (b) => b.title.toLowerCase().includes(needle) || b.author.toLowerCase().includes(needle),
+    );
+}
+
 export const webLibraryService: LibraryService = {
-    search: (q) => gutendex.search(q),
-    getCurated: () => gutendex.popular(),
+    async search(q) {
+        const local = localSearch(q);
+        if (local.length > 0) return local;
+        // Nothing in our bundled shelf — try the live catalog as a fallback.
+        try {
+            return await gutendex.search(q);
+        } catch {
+            return [];
+        }
+    },
+
+    async getCurated() {
+        return CURATED;
+    },
+
     getByTopic: (t) => gutendex.topic(t),
-    getById: (id) => gutendex.byId(id),
+
+    async getById(id) {
+        return CURATED_BY_ID.get(id) ?? gutendex.byId(id);
+    },
 
     async fetchContent(book: BookMetadata): Promise<string> {
         if (!book.textUrl) {

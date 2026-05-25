@@ -29,8 +29,10 @@ export function RSVPDisplay({ word, fontSize = 48, className = '' }: RSVPDisplay
     }, [focal, fontSize]);
 
     const halfFocal = focalWidth / 2;
-    const barColor = 'rgb(50, 50, 50)'; // Faint gray for bars
-    const lineColor = 'rgb(60, 60, 60)'; // Slightly lighter for center lines
+    // Theme-aware guides: derived from the ink colour so they read correctly
+    // in both light and dark modes.
+    const barColor = 'rgb(var(--text) / 0.14)';
+    const lineColor = 'rgb(var(--text) / 0.22)';
 
     if (!word) {
         return (
@@ -40,7 +42,7 @@ export function RSVPDisplay({ word, fontSize = 48, className = '' }: RSVPDisplay
             >
                 <GuideFrame barColor={barColor} lineColor={lineColor} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-gray-500 font-serif">Ready</span>
+                    <span className="text-mocha font-serif">Ready</span>
                 </div>
             </div>
         );
