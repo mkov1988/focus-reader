@@ -75,14 +75,7 @@ export const gutendex = {
     search(q: string): Promise<BookMetadata[]> {
         return query(new URLSearchParams({ search: q, languages: 'en' }));
     },
-    popular(): Promise<BookMetadata[]> {
-        return query(new URLSearchParams({ languages: 'en', sort: 'popular' }));
-    },
     topic(t: string): Promise<BookMetadata[]> {
         return query(new URLSearchParams({ topic: t, languages: 'en', sort: 'popular' }));
-    },
-    async byId(id: string): Promise<BookMetadata | null> {
-        const results = await query(new URLSearchParams({ ids: id }));
-        return results[0] ?? null;
     },
 };

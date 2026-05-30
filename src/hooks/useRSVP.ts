@@ -21,7 +21,6 @@ export interface UseRSVPReturn {
     toggle: () => void;
     reset: () => void;
     seek: (index: number) => void;
-    skip: (delta: number) => void;
     skipToSentence: (direction: -1 | 1) => void;
 }
 
@@ -82,7 +81,11 @@ export function useRSVP({
         return (baseDelay * multiplier) + extraTime;
     };
 
-    // Animation loop using RAF for butter-smooth updates
+    // Animation loop using RAF for butter-smooth updates.
+    // Self-recursion goes through `tickRef` (set below) instead of referencing
+    // `tick` from inside its own definition — keeps `react-hooks/immutability`
+    // happy without changing the runtime behaviour.
+    const tickRef = useRef<((t: number) => void) | null>(null);
     const tick = useCallback((timestamp: number) => {
         if (!lastTimeRef.current) {
             lastTimeRef.current = timestamp;
@@ -109,15 +112,18 @@ export function useRSVP({
                 const nextIndex = indexRef.current + 1;
                 indexRef.current = nextIndex;
                 setCurrentIndex(nextIndex);
-                rafIdRef.current = requestAnimationFrame(tick);
+                rafIdRef.current = requestAnimationFrame(tickRef.current!);
             } else {
                 setIsPlaying(false);
                 onComplete?.();
             }
         } else {
-            rafIdRef.current = requestAnimationFrame(tick);
+            rafIdRef.current = requestAnimationFrame(tickRef.current!);
         }
     }, [tokens, wpm, onComplete]); // Options are read from ref, so no dependency needed
+    // Keep ref in sync with the latest tick — done inside an effect so we
+    // don't mutate refs during render (react-hooks/refs).
+    useEffect(() => { tickRef.current = tick; }, [tick]);
 
     // Start/stop animation based on isPlaying
     useEffect(() => {
@@ -169,10 +175,6 @@ export function useRSVP({
         accumulatedTimeRef.current = 0;
     }, [tokens.length]);
 
-    const skip = useCallback((delta: number) => {
-        seek(currentIndex + delta);
-    }, [currentIndex, seek]);
-
     const skipToSentence = useCallback((direction: -1 | 1) => {
         if (direction === -1) {
             // Go backward: find previous sentence start
@@ -206,7 +208,6 @@ export function useRSVP({
         toggle,
         reset,
         seek,
-        skip,
         skipToSentence,
     };
 }

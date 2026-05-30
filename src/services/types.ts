@@ -27,8 +27,6 @@ export interface LibraryService {
     getCurated(): Promise<BookMetadata[]>;
     /** Books matching a subject/bookshelf topic. */
     getByTopic(topic: string): Promise<BookMetadata[]>;
-    /** Single book by id (used for the featured hero). */
-    getById(id: string): Promise<BookMetadata | null>;
     /** Fetch + sanitize the readable plain text for a book. */
     fetchContent(book: BookMetadata): Promise<string>;
 }

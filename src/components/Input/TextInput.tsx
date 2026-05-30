@@ -175,6 +175,7 @@ export function TextInput({ onTextSubmit }: TextInputProps) {
                 </label>
 
                 <button
+                    type="button"
                     onClick={handleSubmit}
                     disabled={!text.trim()}
                     className={`
@@ -201,6 +202,7 @@ export function TextInput({ onTextSubmit }: TextInputProps) {
                 <div className="flex flex-wrap justify-center gap-2">
                     {SAMPLE_TEXTS.map((sample, i) => (
                         <button
+                            type="button"
                             key={i}
                             onClick={() => handleSampleSelect(sample.text)}
                             className="px-3.5 py-1.5 rounded-lg text-xs font-medium

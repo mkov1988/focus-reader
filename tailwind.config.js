@@ -8,12 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        focal: 'var(--focal-color)', // RSVP focal letter (red, softens on dark)
+        // RSVP focal letter — triplet so opacity utilities (`text-focal/50`) work.
+        focal: 'rgb(var(--focal-color) / <alpha-value>)',
         // ── Theme-aware semantic palette ──
-        // These map to CSS vars set by [data-mode] (light/dark) in index.css.
-        // `espresso`(ink) and `cream`(paper) invert together between modes, so
-        // existing usages — body text AND filled buttons — flip correctly with
-        // zero per-component changes.
+        // These map to CSS vars written at runtime by `App.tsx` from the active
+        // theme + mode (see src/theme.ts). `espresso`(ink) and `cream`(paper)
+        // invert together between modes, so existing usages — body text AND
+        // filled buttons — flip correctly with zero per-component changes.
         cream: 'rgb(var(--surface) / <alpha-value>)',     // card / surface
         espresso: 'rgb(var(--text) / <alpha-value>)',     // primary ink
         mocha: 'rgb(var(--text-muted) / <alpha-value>)',  // secondary ink

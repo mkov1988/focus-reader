@@ -80,6 +80,7 @@ export function Controls({
             {/* Main Controls */}
             <div className="flex items-center justify-center gap-4">
                 <button
+                    type="button"
                     onClick={onReset}
                     className={secondaryBtn}
                     aria-label="Reset to beginning"
@@ -88,6 +89,7 @@ export function Controls({
                 </button>
 
                 <button
+                    type="button"
                     onClick={() => onSkipSentence(-1)}
                     className={secondaryBtn}
                     aria-label="Previous sentence"
@@ -96,6 +98,7 @@ export function Controls({
                 </button>
 
                 <button
+                    type="button"
                     onClick={onToggle}
                     className="p-5 rounded-full bg-coral-accent text-white hover:brightness-110 transition-all shadow-lg shadow-coral-accent/30"
                     aria-label={isPlaying ? 'Pause' : 'Play'}
@@ -108,6 +111,7 @@ export function Controls({
                 </button>
 
                 <button
+                    type="button"
                     onClick={() => onSkipSentence(1)}
                     className={secondaryBtn}
                     aria-label="Next sentence"
@@ -118,6 +122,7 @@ export function Controls({
                 {/* WPM Control */}
                 <div className="flex items-center gap-2 ml-4 bg-espresso/[0.06] border border-espresso/[0.1] rounded-full px-3 py-2">
                     <button
+                        type="button"
                         onClick={decreaseWpm}
                         className="p-1 hover:bg-espresso/[0.1] rounded-full transition-colors text-mocha hover:text-espresso"
                         aria-label="Decrease speed"
@@ -128,6 +133,7 @@ export function Controls({
                         {wpm} WPM
                     </span>
                     <button
+                        type="button"
                         onClick={increaseWpm}
                         className="p-1 hover:bg-espresso/[0.1] rounded-full transition-colors text-mocha hover:text-espresso"
                         aria-label="Increase speed"

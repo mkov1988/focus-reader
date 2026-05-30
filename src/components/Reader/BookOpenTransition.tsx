@@ -8,12 +8,13 @@
  *     centre + peel. While the finger is on the target rect, the spring
  *     targets 1. While off the rect, it targets 0. Reversible at any point.
  *   - On release inside the rect: COMMIT.
- *       · If text is already loaded → shortcut from current openness toward 0
- *         (close), fade overlay, hand off to reader.
+ *       · If text is already loaded → freeze position, fade the cover + scrim
+ *         out in place, hand off to reader. The book stays floating until the
+ *         reader replaces it; it does NOT return to its slot first.
  *       · If text is still loading → FREEZE openness at the current value,
- *         reveal a small "still loading" badge, then close on load.
- *   - On release outside the rect: CANCEL. Spring to 0, dismiss, abort fetch
- *     (handled at App level).
+ *         reveal a small "still loading" badge, then fade out on load (same).
+ *   - On release outside the rect: CANCEL. Spring to 0 (book returns to its
+ *     slot — the universal "didn't mean to open this" gesture), abort fetch.
  *   - The animation IS the loading signal. No glow, no breathing, no scrim
  *     beyond a very faint dim.
  *   - Held indefinitely → stays at the max state (centred, half-open, with
@@ -28,6 +29,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Loader2 } from 'lucide-react';
 import { BookCover } from '../Input/BookCover';
 import type { BookMetadata } from '../../services/types';
+import { haptics } from '../../utils/haptics';
 
 interface Props {
     book: BookMetadata;
@@ -45,6 +47,11 @@ interface Props {
     onComplete: () => void;
     /** Called after the cancel animation settles; App clears pending state. */
     onCancel: () => void;
+    /** Keyboard / accessibility activation: skip the press-and-hold gesture
+     *  tracking entirely. The cover springs open on mount, the loading badge
+     *  shows, and the transition closes into the reader as soon as text loads
+     *  (or cancels on error). Mouse and touch users still get the gesture. */
+    autoCommit?: boolean;
 }
 
 // ── Visual constants ───────────────────────────────────────────────────
@@ -56,6 +63,15 @@ const MAX_PEEL_DEG = 50;
 /** Scrim opacity at fully-open. Kept faint so the storefront stays visible. */
 const MAX_SCRIM_OPACITY = 0.10;
 
+// ── Elastic-finger constants ───────────────────────────────────────────
+// The floating cover is mostly anchored at the screen-centre target, but
+// nudged toward the finger with rubber-band resistance: easy to move when the
+// finger is close to the centre, asymptotically harder as it moves away.
+// MAX_FOLLOW_PX caps how far the cover can drift from centre regardless of
+// how far the finger has gone — keeps the book from flying across the screen.
+const FOLLOW_RESISTANCE = 220;
+const MAX_FOLLOW_PX = 90;
+
 // ── Spring constants ───────────────────────────────────────────────────
 // Tuned for a calm, ease-in-out feel. Critical-ish damping (no bounce).
 const STIFFNESS = 110;
@@ -65,7 +81,7 @@ const SETTLE_VEL = 0.01;
 
 type Phase = 'tracking' | 'committed' | 'closing' | 'cancelling';
 
-export function BookOpenTransition({ book, originRect, targetRect, loaded, error, onComplete, onCancel }: Props) {
+export function BookOpenTransition({ book, originRect, targetRect, loaded, error, onComplete, onCancel, autoCommit = false }: Props) {
     const trackingRect = targetRect ?? originRect;
     const wrapRef = useRef<HTMLDivElement>(null);
     const faceRef = useRef<HTMLDivElement>(null);
@@ -80,23 +96,39 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
     const lastTimeRef = useRef<number | null>(null);
 
     // ── Phase state (re-renders only on transition; cheap) ─────────────
-    const [phase, setPhase] = useState<Phase>('tracking');
+    // Keyboard activation jumps straight to 'committed' — no pointer gesture
+    // to track, just wait for load and close. The mount-effect still springs
+    // the cover open (target=1) so users see the same animation.
+    const [phase, setPhase] = useState<Phase>(autoCommit ? 'committed' : 'tracking');
+    // Mirrors of phase + props in refs so the long-lived rAF loop always reads
+    // the LATEST value (avoids a stale closure where `onComplete` captured a
+    // pre-load value and early-returns, hanging the overlay). Refs are written
+    // in effects (react-hooks/refs).
     const phaseRef = useRef<Phase>(phase);
-    phaseRef.current = phase;
     const loadedRef = useRef(loaded);
-    loadedRef.current = loaded;
-    // Callbacks via refs so the long-lived rAF loop always invokes the LATEST
-    // version (avoids a stale closure where `onComplete` captured pre-load
-    // state and early-returns, hanging the overlay).
     const onCompleteRef = useRef(onComplete);
-    onCompleteRef.current = onComplete;
     const onCancelRef = useRef(onCancel);
-    onCancelRef.current = onCancel;
+    useEffect(() => { phaseRef.current = phase; }, [phase]);
+    useEffect(() => { loadedRef.current = loaded; }, [loaded]);
+    useEffect(() => { onCompleteRef.current = onComplete; }, [onComplete]);
+    useEffect(() => { onCancelRef.current = onCancel; }, [onCancel]);
 
     // ── Geometry: origin → centre ─────────────────────────────────────
-    // Captured once at mount — handles rotation/scrolling poorly, but the
-    // gesture is short enough that this is fine in practice.
-    const geom = useRef(computeGeometry(originRect)).current;
+    // Captured once at mount via useState lazy init. Parent re-keys the
+    // component on every new open, so a stale geom can't leak across opens.
+    const [geom] = useState(() => computeGeometry(originRect));
+
+    // ── Finger tracking (for elastic rubber-band offset on the cover) ─
+    // Initialised at the centre of the tracking rect so the cover sits
+    // centred until the user actually moves. Updated by the move listener.
+    // `trackingCenter` is precomputed because trackingRect is stable across
+    // the lifetime of this transition (parent re-keys on book change).
+    const trackingCenterX = trackingRect.left + trackingRect.width / 2;
+    const trackingCenterY = trackingRect.top + trackingRect.height / 2;
+    const fingerRef = useRef<{ x: number; y: number }>({
+        x: trackingCenterX,
+        y: trackingCenterY,
+    });
 
     // ── Apply: write spring value to the DOM. Called every animation frame. ─
     const apply = useCallback((o: number) => {
@@ -108,8 +140,20 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
         // edge, its apparent centre shifts left. Nudge right to keep it true-centred.
         const peelRad = (MAX_PEEL_DEG * Math.PI / 180) * o;
         const visualOffset = ((1 - Math.cos(peelRad)) * COVER_W * scale) / 2;
-        const left = cx - (COVER_W * scale) / 2 + visualOffset;
-        const top = cy - (COVER_H * scale) / 2;
+        // Rubber-band: pull the cover toward the finger relative to the
+        // tracking-rect centre, with asymptotic damping so it can never fly
+        // off screen. Scaled by `o` so a cancel (book returning to slot)
+        // smoothly drops the offset back to zero alongside the close animation.
+        const fingerDx = fingerRef.current.x - trackingCenterX;
+        const fingerDy = fingerRef.current.y - trackingCenterY;
+        const fingerDist = Math.hypot(fingerDx, fingerDy);
+        const followFactor = fingerDist === 0
+            ? 0
+            : (FOLLOW_RESISTANCE * (1 - Math.exp(-fingerDist / FOLLOW_RESISTANCE)) / fingerDist);
+        const followX = Math.max(-MAX_FOLLOW_PX, Math.min(MAX_FOLLOW_PX, fingerDx * followFactor)) * o;
+        const followY = Math.max(-MAX_FOLLOW_PX, Math.min(MAX_FOLLOW_PX, fingerDy * followFactor)) * o;
+        const left = cx - (COVER_W * scale) / 2 + visualOffset + followX;
+        const top = cy - (COVER_H * scale) / 2 + followY;
         if (wrapRef.current) {
             wrapRef.current.style.transform = `translate3d(${left}px, ${top}px, 0)`;
             wrapRef.current.style.width = `${COVER_W * scale}px`;
@@ -131,14 +175,17 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
             const pagesOpacity = Math.max(0, (o - 0.55) / 0.45);
             pagesWrapRef.current.style.opacity = String(pagesOpacity);
         }
-    }, [geom]);
+    }, [geom, trackingCenterX, trackingCenterY]);
 
     // ── Spring tick ────────────────────────────────────────────────────
+    // Self-recursion goes through `tickRef` (synced below) so the rAF
+    // self-reference doesn't trip react-hooks/immutability.
+    const tickRef = useRef<((t: number) => void) | null>(null);
     const tick = useCallback((now: number) => {
         const last = lastTimeRef.current;
         if (last === null) {
             lastTimeRef.current = now;
-            rafRef.current = requestAnimationFrame(tick);
+            rafRef.current = requestAnimationFrame(tickRef.current!);
             return;
         }
         // Clamp dt to keep one big frame skip from yeeting the spring.
@@ -160,15 +207,16 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
             apply(opennessRef.current);
             lastTimeRef.current = null;
             rafRef.current = null;
-            // Fire completion based on current phase (via refs → always latest)
-            if (phaseRef.current === 'closing') onCompleteRef.current();
-            else if (phaseRef.current === 'cancelling') onCancelRef.current();
+            // 'cancelling' settles back at the slot — only path that hands off
+            // via spring. 'closing' is handled by the fade-out effect below.
+            if (phaseRef.current === 'cancelling') onCancelRef.current();
             return;
         }
 
         apply(opennessRef.current);
-        rafRef.current = requestAnimationFrame(tick);
+        rafRef.current = requestAnimationFrame(tickRef.current!);
     }, [apply]);
+    useEffect(() => { tickRef.current = tick; }, [tick]);
 
     const ensureTick = useCallback(() => {
         if (rafRef.current === null) {
@@ -198,6 +246,8 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
             x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
 
         const onMove = (e: PointerEvent) => {
+            // Track the finger for the rubber-band offset in apply().
+            fingerRef.current = { x: e.clientX, y: e.clientY };
             targetRef.current = inside(e.clientX, e.clientY) ? 1 : 0;
             ensureTick();
         };
@@ -205,18 +255,12 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
         const onUp = (e: PointerEvent) => {
             const stillInside = inside(e.clientX, e.clientY);
             if (stillInside) {
-                // COMMIT
-                if (loadedRef.current) {
-                    // Shortcut: close from wherever we are.
-                    targetRef.current = 0;
-                    setPhase('closing');
-                } else {
-                    // Freeze in place + show "still loading" badge.
-                    targetRef.current = opennessRef.current;
-                    setPhase('committed');
-                }
+                // COMMIT — freeze the cover in mid-air; the closing-phase
+                // effect will fade it out in place (no return to slot).
+                targetRef.current = opennessRef.current;
+                setPhase(loadedRef.current ? 'closing' : 'committed');
             } else {
-                // CANCEL
+                // CANCEL — universal "didn't mean to" gesture, spring back to slot.
                 targetRef.current = 0;
                 setPhase('cancelling');
             }
@@ -233,23 +277,48 @@ export function BookOpenTransition({ book, originRect, targetRect, loaded, error
         };
     }, [phase, trackingRect, ensureTick]);
 
-    // Loaded while committed → close
+    // Loaded while committed → close (fade out in place, no spring-to-slot).
     useEffect(() => {
         if (loaded && phase === 'committed') {
-            targetRef.current = 0;
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setPhase('closing');
-            ensureTick();
         }
-    }, [loaded, phase, ensureTick]);
+    }, [loaded, phase]);
 
-    // Error → cancel cleanly
+    // Error → cancel cleanly. Same rationale as the close-on-load effect.
     useEffect(() => {
         if (error && phase !== 'cancelling') {
+            haptics.error();
             targetRef.current = 0;
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setPhase('cancelling');
             ensureTick();
         }
     }, [error, phase, ensureTick]);
+
+    // Closing phase: stop the spring (no return to slot), fade the cover + scrim
+    // out in place over CLOSE_FADE_MS, then hand off to the reader.
+    useEffect(() => {
+        if (phase !== 'closing') return;
+        // Tactile confirmation that the book opened (Android; iOS silently no-ops).
+        haptics.commit();
+        // Stop the spring loop — apply() must not overwrite the CSS opacity.
+        if (rafRef.current !== null) {
+            cancelAnimationFrame(rafRef.current);
+            rafRef.current = null;
+        }
+        const CLOSE_FADE_MS = 240;
+        if (wrapRef.current) {
+            wrapRef.current.style.transition = `opacity ${CLOSE_FADE_MS}ms ease-out`;
+            wrapRef.current.style.opacity = '0';
+        }
+        if (scrimRef.current) {
+            scrimRef.current.style.transition = `opacity ${CLOSE_FADE_MS}ms ease-out`;
+            scrimRef.current.style.opacity = '0';
+        }
+        const t = window.setTimeout(() => onCompleteRef.current(), CLOSE_FADE_MS);
+        return () => window.clearTimeout(t);
+    }, [phase]);
 
     // ── Render ─────────────────────────────────────────────────────────
     // The wrap is `pointer-events: none` — gesture is tracked at window level

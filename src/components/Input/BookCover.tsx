@@ -35,10 +35,6 @@ interface BookCoverProps {
     variant?: CoverVariant;
     tint?: string;
     size?: 'sm' | 'md';
-    /** When true, the cover peels open from the spine to reveal the page. */
-    pressed?: boolean;
-    /** When true, the cover swings fully open (used by the loading transition). */
-    open?: boolean;
     /** Optional custom content for the page revealed under the cover. */
     pageContent?: ReactNode;
     /** Forward a ref to the rotating cover-face element so an external
@@ -50,7 +46,7 @@ interface BookCoverProps {
     className?: string;
 }
 
-export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pressed = false, open = false, pageContent, coverFaceRef, coverFaceTransition, className = '' }: BookCoverProps) {
+export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pageContent, coverFaceRef, coverFaceTransition, className = '' }: BookCoverProps) {
     const seed = hash(title + author);
     const v: CoverVariant = variant ?? (['framed', 'label', 'solid'] as const)[seed % 3];
     const solidTint = tint ?? SOLID_TINTS[seed % SOLID_TINTS.length];
@@ -75,6 +71,8 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
                     src={coverUrl}
                     alt={title}
                     draggable={false}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover select-none [-webkit-touch-callout:none]"
                 />
                 <Stitch tone="light" />
@@ -124,9 +122,7 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
         );
     }
 
-    // Choose the most-open angle: full open beats pressed beats rest.
-    const rotateDeg = open ? -158 : pressed ? -24 : 0;
-    const transitionMs = open ? 700 : 240;
+    const transitionMs = 240;
 
     return (
         <div className={`relative w-full aspect-[2/3] ${className}`} style={{ perspective: '900px' }}>
@@ -146,15 +142,13 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
             {/* The cover face (hinged at the spine) */}
             <div
                 ref={coverFaceRef}
-                className={`absolute inset-0 rounded-l-[3px] rounded-r-xl overflow-hidden ring-1 ring-espresso/10 ${coverBg} ${pressed || open ? 'shadow-[0_16px_28px_rgba(58,42,30,0.30)]' : 'shadow-[0_6px_14px_rgba(58,42,30,0.18)]'}`}
+                className={`absolute inset-0 rounded-l-[3px] rounded-r-xl overflow-hidden ring-1 ring-espresso/10 ${coverBg} shadow-[0_6px_14px_rgba(58,42,30,0.18)]`}
                 style={{
                     transformOrigin: 'left center',
-                    transform: `rotateY(${rotateDeg}deg)`,
+                    transform: 'rotateY(0deg)',
                     transition: coverFaceTransition ?? `transform ${transitionMs}ms cubic-bezier(.2,.7,.25,1), box-shadow ${transitionMs}ms ease`,
                     willChange: 'transform',
-                    // Don't hide backface during the open animation — we want the
-                    // back of the cover to look like the inside flyleaf.
-                    backfaceVisibility: open ? 'visible' : 'hidden',
+                    backfaceVisibility: 'hidden',
                 }}
             >
                 {inner}

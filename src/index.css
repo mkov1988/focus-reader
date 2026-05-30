@@ -18,7 +18,8 @@
   --text: 58 42 30;
   --text-muted: 107 85 68;
   --coral-accent-rgb: 194 103 75;
-  --focal-color: rgb(201 60 24);
+  /* Triplet form (R G B), wrapped with `rgb(...)` at the use site. */
+  --focal-color: 201 60 24;
 }
 
 * {
@@ -142,7 +143,7 @@ body {
    UTILITIES
    ═══════════════════════════════════════════ */
 .focal-letter {
-  color: var(--focal-color);
+  color: rgb(var(--focal-color));
   font-weight: 700;
 }
 

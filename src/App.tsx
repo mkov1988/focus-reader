@@ -8,14 +8,15 @@ import { BookOpenTransition } from './components/Reader/BookOpenTransition';
 import { useStore } from './store/useStore';
 import { useRSVP } from './hooks/useRSVP';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
+import { useReaderGestures } from './hooks/useReaderGestures';
 import { parseText, type ParsedText } from './utils/textProcessing';
+import { haptics } from './utils/haptics';
 import { webLibraryService as library } from './services/library';
 import type { BookMetadata } from './services/types';
 import { THEMES } from './theme';
 import './index.css';
 
 // Configuration Constants
-const DEFAULT_WPM = 300;
 const DEFAULT_FONT_SIZE = 56;
 const SENTENCE_START_MULTIPLIER = 1.8;
 const SENTENCE_START_OFFSET = 500;
@@ -43,14 +44,21 @@ interface PendingOpen {
      *  slot (Today's Pick + On the front table) stays in place. */
     slotId: string;
     startIndex?: number;
+    /** Keyboard / screen-reader activation: skip pointer tracking, auto-open. */
+    keyboardActivated?: boolean;
 }
 
 function App() {
     const viewMode = useStore((s) => s.viewMode);
     const setViewMode = useStore((s) => s.setViewMode);
     const updateProgress = useStore((s) => s.updateProgress);
+    const addSession = useStore((s) => s.addSession);
     const themeIndex = useStore((s) => s.themeIndex);
     const mode = useStore((s) => s.mode);
+    const wpm = useStore((s) => s.wpm);
+    const setWpm = useStore((s) => s.setWpm);
+    const visMode = useStore((s) => s.visMode);
+    const setVisMode = useStore((s) => s.setVisMode);
 
     // Apply the active theme + light/dark mode to the document root. Doing this
     // at the App shell (always mounted) keeps the storefront AND the reader in
@@ -68,7 +76,9 @@ function App() {
         
         root.style.setProperty('--coral-accent-rgb', palette.accentRgb);
         root.style.setProperty('--coral-accent-text', palette.accentText);
-        root.style.setProperty('--focal-color', `rgb(${palette.focalRgb})`);
+        // Triplet (R G B) so Tailwind's `text-focal/50` etc. resolve correctly
+        // via `rgb(var(--focal-color) / <alpha-value>)`.
+        root.style.setProperty('--focal-color', palette.focalRgb);
         
         root.dataset.mode = mode;
     }, [themeIndex, mode]);
@@ -76,8 +86,6 @@ function App() {
     const [parsedText, setParsedText] = useState<ParsedText | null>(null);
     const [bookTitle, setBookTitle] = useState<string>('Focus Reader');
     const [activeBook, setActiveBook] = useState<BookMetadata | null>(null);
-    const [visMode, setVisMode] = useState<VisualizationMode>('rsvp');
-    const [wpm, setWpm] = useState(DEFAULT_WPM);
     const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
 
     // ── Book-open transition state ─────────────────────────────────────
@@ -106,10 +114,16 @@ function App() {
         if (mode !== 'sentence') setLineStartIndices(new Set());
     };
 
+    // Adapter: the store's setWpm takes a value, the keyboard hook prefers
+    // an updater function. Pull the latest wpm from the store on demand.
+    const setWpmUpdater = useCallback((update: (prev: number) => number) => {
+        setWpm(update(useStore.getState().wpm));
+    }, [setWpm]);
+
     useKeyboardShortcuts({
         isActive: viewMode === 'READING',
         rsvp,
-        setWpm,
+        setWpm: setWpmUpdater,
         onEscape: () => { rsvp.pause(); setViewMode('INPUT'); },
     });
 
@@ -132,6 +146,21 @@ function App() {
             targetRect: opts.targetRect ?? undefined,
             slotId: opts.slotId,
             startIndex: opts.startIndex,
+        });
+    }, []);
+
+    /** Keyboard / screen-reader path. Same animation, no gesture: the cover
+     *  springs open on mount, "Brewing your book…" shows, and the transition
+     *  closes into the reader as soon as text is parsed. */
+    const handleOpenBookInstant = useCallback((book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => {
+        setPendingError(null);
+        setPendingParsed(null);
+        setPending({
+            book,
+            originRect: originRect ?? fallbackRect(),
+            slotId: `kbd:${book.id}`,
+            startIndex,
+            keyboardActivated: true,
         });
     }, []);
 
@@ -190,6 +219,15 @@ function App() {
         setViewMode('INPUT');
     };
 
+    // Touch gestures for the reading view: tap to pause/play, swipe L/R to
+    // skip sentence, swipe down to exit. Haptic confirmation on tap.
+    const readerGestures = useReaderGestures({
+        onTap: () => { haptics.tick(); rsvp.toggle(); },
+        onSwipeLeft: () => rsvp.skipToSentence(1),
+        onSwipeRight: () => rsvp.skipToSentence(-1),
+        onSwipeDown: handleBack,
+    });
+
     // ── Persist reading progress for library books, throttled. ────────────
     const lastSavedAtRef = useRef(0);
     const lastSavedIndexRef = useRef(-1);
@@ -232,12 +270,33 @@ function App() {
         }
     }, [viewMode, activeBook, parsedText, rsvp.currentIndex, updateProgress]);
 
+    // ── Track reading sessions (one span of continuous play → pause). ─────
+    // On play, snapshot the start; on pause, emit (words, ms) and clear.
+    // Drives the "Your Reading" card on the storefront.
+    const sessionStartRef = useRef<{ at: number; index: number } | null>(null);
+    const currentIndexRef = useRef(rsvp.currentIndex);
+    useEffect(() => { currentIndexRef.current = rsvp.currentIndex; }, [rsvp.currentIndex]);
+    useEffect(() => {
+        if (rsvp.isPlaying) {
+            sessionStartRef.current = { at: Date.now(), index: rsvp.currentIndex };
+        } else if (sessionStartRef.current) {
+            const { at, index } = sessionStartRef.current;
+            const ms = Date.now() - at;
+            const words = Math.max(0, currentIndexRef.current - index);
+            if (ms > 0 && words > 0) addSession(words, ms);
+            sessionStartRef.current = null;
+        }
+        // currentIndexRef is read at pause-time only, not a dependency.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [rsvp.isPlaying, addSession]);
+
     return (
         <div className="app-root">
             {/* ═══ STORE FRONT VIEW ═══ */}
             {viewMode === 'INPUT' && (
                 <StoreFront
                     onOpenBook={handleOpenBook}
+                    onOpenBookInstant={handleOpenBookInstant}
                     onManualInput={handlePlay}
                     openingSlotId={pending?.slotId ?? null}
                 />
@@ -247,7 +306,7 @@ function App() {
             {viewMode === 'TEXT_INPUT' && (
                 <div className="reading-view">
                     <header className="reading-header">
-                        <button onClick={() => setViewMode('INPUT')} className="icon-btn">
+                        <button type="button" onClick={() => setViewMode('INPUT')} className="icon-btn">
                             <ArrowLeft size={20} />
                         </button>
                         <span className="reading-title">Paste or Pick Text</span>
@@ -262,7 +321,7 @@ function App() {
             {viewMode === 'READING' && (
                 <div className="reading-view">
                     <header className="reading-header">
-                        <button onClick={handleBack} className="icon-btn">
+                        <button type="button" onClick={handleBack} className="icon-btn">
                             <ArrowLeft size={20} />
                         </button>
                         <span className="reading-title">{bookTitle}</span>
@@ -278,7 +337,7 @@ function App() {
                             />
                         </div>
                     </header>
-                    <main className="reading-main">
+                    <main className="reading-main" {...readerGestures} style={{ touchAction: 'pan-y' }}>
                         <ReaderView
                             parsedText={parsedText}
                             rsvp={rsvp}
@@ -293,14 +352,19 @@ function App() {
                 </div>
             )}
 
-            {/* ═══ BOOK-OPEN TRANSITION ═══ */}
+            {/* ═══ BOOK-OPEN TRANSITION ═══
+                Keyed by book + slot so React unmounts/remounts cleanly between
+                rapid sequential opens — otherwise the transition's geometry
+                ref stays locked to the first book's slot position. */}
             {pending && (
                 <BookOpenTransition
+                    key={`${pending.slotId}:${pending.book.id}`}
                     book={pending.book}
                     originRect={pending.originRect}
                     targetRect={pending.targetRect}
                     loaded={pendingParsed !== null}
                     error={pendingError}
+                    autoCommit={pending.keyboardActivated}
                     onComplete={completePendingOpen}
                     onCancel={cancelPendingOpen}
                 />
@@ -313,7 +377,7 @@ function App() {
                         <p className="font-semibold">Couldn't open that book.</p>
                         <p className="text-mocha italic mt-0.5">{pendingError}</p>
                     </div>
-                    <button onClick={() => setPendingError(null)} aria-label="Dismiss" className="text-mocha hover:text-espresso shrink-0 mt-0.5">
+                    <button type="button" onClick={() => setPendingError(null)} aria-label="Dismiss" className="text-mocha hover:text-espresso shrink-0 mt-0.5">
                         <X size={16} />
                     </button>
                 </div>

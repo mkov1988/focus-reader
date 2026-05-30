@@ -13,9 +13,6 @@ import curatedJson from '../data/curated.json';
 
 const CURATED: BookMetadata[] = curatedJson as BookMetadata[];
 
-/** Index curated books by id for O(1) getById hits. */
-const CURATED_BY_ID = new Map(CURATED.map((b) => [b.id, b]));
-
 /** Rewrite a Gutenberg origin to the dev proxy path to dodge browser CORS. */
 function toProxyUrl(url: string): string {
     if (import.meta.env.DEV) {
@@ -29,17 +26,26 @@ export function stripGutenbergBoilerplate(raw: string): string {
     let text = raw.replace(/\r\n/g, '\n');
 
     const start = text.match(/\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (start && start.index !== undefined) {
-        text = text.slice(start.index + start[0].length);
+    const startFound = start !== null && start.index !== undefined;
+    if (startFound && start) {
+        text = text.slice(start.index! + start[0].length);
     }
 
     const end = text.match(/\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (end && end.index !== undefined) {
-        text = text.slice(0, end.index);
+    const endFound = end !== null && end.index !== undefined;
+    if (endFound && end) {
+        text = text.slice(0, end.index!);
     }
 
     // Drop a leading transcriber/credits line if one survived.
     text = text.replace(/^\s*Produced by[^\n]*\n/i, '');
+
+    // Defensive: if neither marker matched, Gutenberg may have changed their
+    // wrapper format — surface a warning so we notice instead of silently
+    // serving legal boilerplate to the reader.
+    if (!startFound && !endFound && /project gutenberg/i.test(text.slice(0, 1500))) {
+        console.warn('[library] Gutenberg boilerplate markers not found; reader may show legal header.');
+    }
 
     return text.trim();
 }
@@ -69,10 +75,6 @@ export const webLibraryService: LibraryService = {
     },
 
     getByTopic: (t) => gutendex.topic(t),
-
-    async getById(id) {
-        return CURATED_BY_ID.get(id) ?? gutendex.byId(id);
-    },
 
     async fetchContent(book: BookMetadata): Promise<string> {
         if (!book.textUrl) {

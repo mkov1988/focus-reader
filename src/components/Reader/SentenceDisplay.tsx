@@ -74,9 +74,14 @@ export function SentenceDisplay({
         return () => cancelAnimationFrame(raf);
     }, [visibleTokens, fontSize, onLineBreaksChange]);
 
-    // Detect new sentence -> Trigger Fade Out
+    // Detect new sentence -> Trigger Fade Out.
+    // setState in effect is intentional here: this is the sentence-change
+    // transition state machine, kicked by an externally-changing input
+    // (currentFirstId). Deriving during render wouldn't let us schedule the
+    // fade-then-swap timing dance.
     useEffect(() => {
         if (currentFirstId !== visibleFirstId) {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setOpacity(0);
             setIsTransitioning(true);
 

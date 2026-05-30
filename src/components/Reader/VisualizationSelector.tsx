@@ -22,6 +22,7 @@ export const VisualizationSelector: FC<VisualizationSelectorProps> = ({ mode, on
         <div className="flex items-center justify-center space-x-2 bg-espresso/[0.06] ring-1 ring-espresso/10 p-1 rounded-full">
             {options.map((option) => (
                 <button
+                    type="button"
                     key={option.id}
                     onClick={() => onChange(option.id)}
                     className={`

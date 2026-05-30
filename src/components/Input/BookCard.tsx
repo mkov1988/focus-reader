@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { BookCover, type CoverVariant } from './BookCover';
+import { startPressGesture } from '../../utils/pressGesture';
 
 interface BookCardProps {
     title: string;
@@ -13,46 +14,75 @@ interface BookCardProps {
     /** True while this card's book is being lifted by the open-transition.
      *  We hide the card so the floating cover doesn't visually double. */
     hidden?: boolean;
-    /** Fires on touch-down (NOT release). The open-transition then takes over
-     *  the gesture at the window level — pointer-up decides commit vs cancel.
-     *  Receives the cover's rect so the transition knows where to lift from. */
+    /** Press-and-hold gesture. Fires once the user has clearly committed
+     *  to "open this book" (held briefly OR pulled the cover up). The
+     *  open-transition then tracks the gesture at the window level until
+     *  release. Receives the cover's rect so the transition knows where
+     *  to lift from. */
     onPress: (originRect: DOMRect) => void;
+    /** Instant-open path: keyboard activation (Enter / Space) AND quick
+     *  taps that released before the hold threshold. The transition skips
+     *  the gesture-tracking phase and goes straight to "waiting for load,
+     *  then close into reader". */
+    onActivate?: (originRect: DOMRect | null) => void;
 }
 
-export function BookCard({ title, author, coverUrl, variant, tint, widthClass = 'w-36', hidden, onPress }: BookCardProps) {
+export function BookCard({ title, author, coverUrl, variant, tint, widthClass = 'w-36', hidden, onPress, onActivate }: BookCardProps) {
     const coverRef = useRef<HTMLDivElement>(null);
 
     const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-        // Don't capture pointer — we want move/up to bubble to the window so
-        // the transition can track the gesture against the original rect.
-        const rect = coverRef.current?.getBoundingClientRect();
-        if (rect) onPress(rect);
-        e.preventDefault(); // suppress synthetic mouse / context menu on long-press
+        if (hidden) return;
+        startPressGesture(e, {
+            onPress: () => {
+                const rect = coverRef.current?.getBoundingClientRect();
+                if (rect) onPress(rect);
+            },
+            onActivate: () => {
+                onActivate?.(coverRef.current?.getBoundingClientRect() ?? null);
+            },
+        });
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if ((e.key === 'Enter' || e.key === ' ') && onActivate) {
+            e.preventDefault();
+            onActivate(coverRef.current?.getBoundingClientRect() ?? null);
+        }
     };
 
     return (
         <div
-            onPointerDown={handlePointerDown}
-            className={`relative flex flex-col ${widthClass} select-none group`}
+            role={hidden ? undefined : 'button'}
+            tabIndex={hidden ? -1 : 0}
+            aria-label={hidden ? undefined : `Open ${title} by ${author}`}
+            aria-hidden={hidden || undefined}
+            onPointerDown={hidden ? undefined : handlePointerDown}
+            onKeyDown={hidden ? undefined : handleKeyDown}
+            className={`relative flex flex-col ${widthClass} select-none group rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-warm-beige`}
             style={{
                 touchAction: 'manipulation',
-                // While the transition owns this book, keep the slot in the
-                // layout but hide the visual so the floating cover stands alone.
-                visibility: hidden ? 'hidden' : 'visible',
+                pointerEvents: hidden ? 'none' : undefined,
             }}
         >
             <div ref={coverRef} className="mb-2.5">
-                <BookCover
-                    title={title}
-                    author={author}
-                    coverUrl={coverUrl}
-                    variant={variant}
-                    tint={tint}
-                    size="md"
-                />
+                {hidden ? (
+                    <div
+                        aria-hidden="true"
+                        className="w-full aspect-[2/3] rounded-l-[3px] rounded-r-xl bg-espresso/[0.13] ring-1 ring-espresso/10 shadow-[inset_0_3px_10px_rgba(58,42,30,0.22)] animate-fade-in"
+                    />
+                ) : (
+                    <BookCover
+                        title={title}
+                        author={author}
+                        coverUrl={coverUrl}
+                        variant={variant}
+                        tint={tint}
+                        size="md"
+                    />
+                )}
             </div>
-            <h3 className="font-serif text-[14px] font-medium leading-snug line-clamp-1 text-espresso">{title}</h3>
-            <p className="text-[11px] text-mocha mt-0.5 italic line-clamp-1">{author}</p>
+            <h3 className={`font-serif text-[14px] font-medium leading-snug line-clamp-1 text-espresso transition-opacity ${hidden ? 'opacity-40' : ''}`}>{title}</h3>
+            <p className={`text-[11px] text-mocha mt-0.5 italic line-clamp-1 transition-opacity ${hidden ? 'opacity-40' : ''}`}>{author}</p>
         </div>
     );
 }

@@ -22,7 +22,6 @@ const DELAY_LONG_WORD_8 = 0.2; // Added to base
 const DELAY_LONG_WORD_12 = 0.3; // Added to base
 
 // Regex Patterns (Compiled once for efficiency)
-const REGEX_PAUSE_PUNCTUATION = /[.!?;:]$/;
 const REGEX_MINOR_PUNCTUATION = /[,]$/;
 const REGEX_SENTENCE_END = /[.!?]$/;
 const REGEX_SUB_CLAUSE = /[;:]$/;
@@ -64,32 +63,6 @@ export function splitWord(word: string): WordParts {
 }
 
 /**
- * Split text into words, preserving punctuation attached to words.
- * Marks paragraph breaks with a special [P] token.
- */
-export function tokenizeText(text: string): string[] {
-    return text
-        .trim()
-        .replace(/\n\s*\n/g, ' [P] ')
-        .split(/\s+/)
-        .filter(word => word.length > 0);
-}
-
-/**
- * Check if a word ends with punctuation that warrants a pause.
- */
-export function hasPausePunctuation(word: string): boolean {
-    return REGEX_PAUSE_PUNCTUATION.test(word);
-}
-
-/**
- * Check if a word has minor punctuation (comma).
- */
-export function hasMinorPunctuation(word: string): boolean {
-    return REGEX_MINOR_PUNCTUATION.test(word);
-}
-
-/**
  * Calculate delay multiplier based on word characteristics.
  * - Long words get slightly more time
  * - Periods get 2x pause time
@@ -128,30 +101,6 @@ export function getDelayMultiplier(word: string): number {
  */
 export function wpmToDelay(wpm: number): number {
     return 60000 / wpm;
-}
-
-/**
- * Estimate reading time for a text at given WPM.
- */
-export function estimateReadingTime(words: string[], wpm: number): number {
-    const baseDelay = wpmToDelay(wpm);
-    let totalMs = 0;
-
-    for (const word of words) {
-        totalMs += baseDelay * getDelayMultiplier(word);
-    }
-
-    return totalMs;
-}
-
-/**
- * Format milliseconds to MM:SS display.
- */
-export function formatTime(ms: number): string {
-    const totalSeconds = Math.ceil(ms / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
 // --- Structured Data Types for Advanced Views ---

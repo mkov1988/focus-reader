@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { BookCard } from './BookCard';
 import { BookCover, type CoverVariant } from './BookCover';
@@ -7,6 +7,8 @@ import { useStore, type TabKey } from '../../store/useStore';
 import { webLibraryService as library } from '../../services/library';
 import type { BookMetadata } from '../../services/types';
 import { THEMES } from '../../theme';
+import { startPressGesture } from '../../utils/pressGesture';
+import { haptics } from '../../utils/haptics';
 import {
     Coffee, Search, BookOpen, Library, Bookmark, Notebook,
     ChevronRight, ArrowRight, ArrowLeft, Moon, Clock, Leaf, Feather, Loader2, X,
@@ -55,6 +57,7 @@ function Door({ icon: Icon, title, sub, onClick }: { icon: LucideIcon; title: st
     const { pressed, pressProps } = usePress();
     return (
         <button
+            type="button"
             onClick={onClick}
             {...pressProps}
             className={`w-full min-h-[64px] flex items-center gap-3.5 rounded-2xl px-4 py-3 ring-1 text-left select-none bg-cream/70 transition-[transform,box-shadow,border-color] duration-150 ${pressed ? 'ring-coral-accent/40 scale-[0.99] shadow-[inset_0_1px_4px_rgba(58,42,30,0.08)]' : 'ring-espresso/10'}`}
@@ -91,6 +94,9 @@ interface StoreFrontProps {
      * touch-up. The App handles download + open animation.
      */
     onOpenBook: (book: BookMetadata, originRect: DOMRect | null, opts: { slotId: string; startIndex?: number; targetRect?: DOMRect | null }) => void;
+    /** Keyboard / screen-reader path: open a book without the press-and-hold
+     *  gesture. The animation still plays, but commit is automatic. */
+    onOpenBookInstant: (book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => void;
     onManualInput?: () => void;
     /** Slot identifier of the *specific physical instance* currently being
      *  lifted (e.g. "hero" vs "shelf:84"). The matching slot hides itself so
@@ -99,7 +105,7 @@ interface StoreFrontProps {
     openingSlotId?: string | null;
 }
 
-export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFrontProps) {
+export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openingSlotId }: StoreFrontProps) {
     /** Cover-rect source for the lift visual (where the cover starts from). */
     const heroCoverRef = useRef<HTMLDivElement>(null);
     /** Full hero-card rect — used as the gesture target so taps on Resume /
@@ -113,12 +119,109 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
     const activeTab = useStore((s) => s.activeTab);
     const setActiveTab = useStore((s) => s.setActiveTab);
     const progress = useStore((s) => s.progress);
+    const stats = useStore((s) => s.stats);
     // Note: applying the accent + mode to the document root happens in the App
     // shell (always mounted), so the reader stays themed too.
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
     const [query, setQuery] = useState('');
+
+    // ── Menu drawer: slide-in / swipe-to-dismiss / animated close ─────────
+    const drawerPanelRef = useRef<HTMLDivElement>(null);
+    const [drawerOffset, setDrawerOffset] = useState(0);
+    const [drawerDragging, setDrawerDragging] = useState(false);
+    const [drawerClosing, setDrawerClosing] = useState(false);
+    const DRAWER_MS = 240;
+
+    // Open animation: when the menu mounts, snap the panel offscreen
+    // synchronously (before paint) then animate it back to 0 next frame.
+    useLayoutEffect(() => {
+        if (menuOpen && !drawerClosing) {
+            const w = drawerPanelRef.current?.offsetWidth ?? 320;
+            setDrawerOffset(w);
+            const id = requestAnimationFrame(() => setDrawerOffset(0));
+            return () => cancelAnimationFrame(id);
+        }
+    }, [menuOpen, drawerClosing]);
+
+    const closeMenu = useCallback(() => {
+        if (drawerClosing) return;
+        haptics.tick();
+        setDrawerClosing(true);
+        const w = drawerPanelRef.current?.offsetWidth ?? 320;
+        setDrawerOffset(w);
+        window.setTimeout(() => {
+            setMenuOpen(false);
+            setDrawerClosing(false);
+            setDrawerOffset(0);
+        }, DRAWER_MS);
+    }, [drawerClosing]);
+
+    const handleDrawerPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+        if (drawerClosing) return;
+        // Don't start a swipe from interactive controls — they need their taps.
+        const t = e.target as HTMLElement;
+        if (t.closest('button, input, [role="button"], a, label, select, textarea')) return;
+
+        const startX = e.clientX;
+        const startY = e.clientY;
+        const startTime = Date.now();
+        const pointerId = e.pointerId;
+        let captured = false;
+
+        const cleanup = () => {
+            window.removeEventListener('pointermove', onMove);
+            window.removeEventListener('pointerup', onUp);
+            window.removeEventListener('pointercancel', onCancel);
+        };
+
+        const onMove = (ev: PointerEvent) => {
+            if (ev.pointerId !== pointerId) return;
+            const dx = ev.clientX - startX;
+            const dy = ev.clientY - startY;
+            if (!captured) {
+                // Vertical-dominant — user is scrolling the drawer's contents.
+                if (Math.abs(dy) > Math.abs(dx) + 4 && Math.abs(dy) > 8) {
+                    cleanup();
+                    return;
+                }
+                // Leftward — not a dismiss, bail.
+                if (dx < -8) { cleanup(); return; }
+                // Rightward — claim it as a swipe-to-close gesture.
+                if (dx > 8) {
+                    captured = true;
+                    setDrawerDragging(true);
+                }
+            }
+            if (captured) setDrawerOffset(Math.max(0, dx));
+        };
+
+        const onUp = (ev: PointerEvent) => {
+            if (ev.pointerId !== pointerId) return;
+            cleanup();
+            setDrawerDragging(false);
+            if (!captured) return;
+            const dx = ev.clientX - startX;
+            const elapsed = Date.now() - startTime;
+            const velocity = elapsed > 0 ? dx / elapsed : 0;
+            const w = drawerPanelRef.current?.offsetWidth ?? 320;
+            // Commit on either: dragged past 35% of width, OR fast rightward flick.
+            if (dx > w * 0.35 || velocity > 0.5) closeMenu();
+            else setDrawerOffset(0);
+        };
+
+        const onCancel = (ev: PointerEvent) => {
+            if (ev.pointerId !== pointerId) return;
+            cleanup();
+            setDrawerDragging(false);
+            setDrawerOffset(0);
+        };
+
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+        window.addEventListener('pointercancel', onCancel);
+    };
 
     const [mode, setMode] = useState<'home' | 'results'>('home');
     const [results, setResults] = useState<BookMetadata[]>([]);
@@ -197,6 +300,12 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
         press(book, heroOrigin(), { slotId: 'hero', startIndex, targetRect: heroTarget() });
     }, [press]);
 
+    /** Keyboard activation (Enter/Space) on hero surface — no gesture available,
+     *  fall back to instant-open. */
+    const keyboardOpenHero = useCallback((book: BookMetadata, startIndex?: number) => {
+        onOpenBookInstant(book, heroOrigin(), startIndex);
+    }, [onOpenBookInstant]);
+
     const progressBook = (): BookMetadata | null => progress && {
         id: progress.bookId,
         title: progress.title,
@@ -237,8 +346,9 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                         </div>
                     </form>
                     <button
+                        type="button"
                         aria-label="Menu"
-                        onClick={() => setMenuOpen(true)}
+                        onClick={() => { haptics.tick(); setMenuOpen(true); }}
                         className="w-12 h-12 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-espresso shrink-0 shadow-sm active:scale-90 transition-transform"
                     >
                         <Menu size={20} />
@@ -250,7 +360,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                 {error && (
                     <div className="mb-5 flex items-start gap-2 rounded-2xl bg-coral-accent/10 ring-1 ring-coral-accent/30 px-4 py-3 text-[13px] text-espresso">
                         <span className="flex-1">{error}</span>
-                        <button onClick={() => setError(null)} aria-label="Dismiss" className="text-mocha hover:text-espresso shrink-0"><X size={16} /></button>
+                        <button type="button" onClick={() => setError(null)} aria-label="Dismiss" className="text-mocha hover:text-espresso shrink-0"><X size={16} /></button>
                     </div>
                 )}
 
@@ -258,7 +368,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                     /* ── Search / topic results ── */
                     <section className="mb-7">
                         <div className="flex items-center gap-3 mb-4">
-                            <button onClick={clearResults} className="w-9 h-9 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha hover:text-coral-accent select-none active:scale-90 transition-[transform,color] duration-150 shrink-0">
+                            <button type="button" onClick={clearResults} className="w-9 h-9 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha hover:text-coral-accent select-none active:scale-90 transition-[transform,color] duration-150 shrink-0">
                                 <ArrowLeft size={18} />
                             </button>
                             <div className="min-w-0">
@@ -285,6 +395,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                             coverUrl={book.coverUrl}
                                             hidden={openingSlotId === slotId}
                                             onPress={(rect) => press(book, rect, { slotId })}
+                                            onActivate={(rect) => onOpenBookInstant(book, rect)}
                                         />
                                     );
                                 })}
@@ -308,13 +419,27 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                         <Eyebrow>&middot; Pick up where you left off &middot;</Eyebrow>
                                         <div className="flex gap-4 mt-4">
                                             <div
-                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, progress.currentIndex); }}
+                                                role={openingSlotId === 'hero' ? undefined : 'button'}
+                                                tabIndex={openingSlotId === 'hero' ? -1 : 0}
+                                                aria-label={openingSlotId === 'hero' ? undefined : `Resume ${progress.title}`}
+                                                aria-hidden={openingSlotId === 'hero' || undefined}
+                                                onPointerDown={openingSlotId === 'hero' ? undefined : (e) => startPressGesture(e, {
+                                                    onPress: () => { const b = progressBook(); if (b) pressHero(b, progress.currentIndex); },
+                                                    onActivate: () => { const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); },
+                                                })}
+                                                onKeyDown={openingSlotId === 'hero' ? undefined : (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); } }}
                                                 ref={heroCoverRef}
-                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none"
-                                                style={{ visibility: openingSlotId === 'hero' ? 'hidden' : 'visible' }}
+                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent rounded-md"
+                                                style={{ pointerEvents: openingSlotId === 'hero' ? 'none' : undefined, touchAction: 'manipulation' }}
                                             >
-                                                <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
-                                                <BookCover title={progress.title} author={progress.author} coverUrl={progress.coverUrl} variant="framed" size="sm" />
+                                                {openingSlotId === 'hero' ? (
+                                                    <div aria-hidden="true" className="w-full aspect-[2/3] rounded-l-[3px] rounded-r-xl bg-espresso/[0.13] ring-1 ring-espresso/10 shadow-[inset_0_3px_10px_rgba(58,42,30,0.22)] animate-fade-in" />
+                                                ) : (
+                                                    <>
+                                                        <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
+                                                        <BookCover title={progress.title} author={progress.author} coverUrl={progress.coverUrl} variant="framed" size="sm" />
+                                                    </>
+                                                )}
                                             </div>
                                             <div className="flex-1 min-w-0 pt-1">
                                                 <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight line-clamp-2">
@@ -334,14 +459,26 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                         </div>
                                         <div className="flex gap-3 mt-5">
                                             <button
-                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, progress.currentIndex); }}
-                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25"
+                                                type="button"
+                                                onPointerDown={(e) => startPressGesture(e, {
+                                                    onPress: () => { const b = progressBook(); if (b) pressHero(b, progress.currentIndex); },
+                                                    onActivate: () => { const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); },
+                                                })}
+                                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); } }}
+                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                                                style={{ touchAction: 'manipulation' }}
                                             >
                                                 <BookOpen size={18} /> Resume
                                             </button>
                                             <button
-                                                onPointerDown={(e) => { e.preventDefault(); const b = progressBook(); if (b) pressHero(b, 0); }}
-                                                className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px]"
+                                                type="button"
+                                                onPointerDown={(e) => startPressGesture(e, {
+                                                    onPress: () => { const b = progressBook(); if (b) pressHero(b, 0); },
+                                                    onActivate: () => { const b = progressBook(); if (b) keyboardOpenHero(b, 0); },
+                                                })}
+                                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const b = progressBook(); if (b) keyboardOpenHero(b, 0); } }}
+                                                className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                                                style={{ touchAction: 'manipulation' }}
                                             >
                                                 Restart
                                             </button>
@@ -352,13 +489,27 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                         <Eyebrow>&middot; Today's pick &middot;</Eyebrow>
                                         <div className="flex gap-4 mt-4">
                                             <div
-                                                onPointerDown={(e) => { e.preventDefault(); pressHero(todaysPick); }}
+                                                role={openingSlotId === 'hero' ? undefined : 'button'}
+                                                tabIndex={openingSlotId === 'hero' ? -1 : 0}
+                                                aria-label={openingSlotId === 'hero' ? undefined : `Open ${todaysPick.title}`}
+                                                aria-hidden={openingSlotId === 'hero' || undefined}
+                                                onPointerDown={openingSlotId === 'hero' ? undefined : (e) => startPressGesture(e, {
+                                                    onPress: () => pressHero(todaysPick),
+                                                    onActivate: () => keyboardOpenHero(todaysPick),
+                                                })}
+                                                onKeyDown={openingSlotId === 'hero' ? undefined : (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); keyboardOpenHero(todaysPick); } }}
                                                 ref={heroCoverRef}
-                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none"
-                                                style={{ visibility: openingSlotId === 'hero' ? 'hidden' : 'visible' }}
+                                                className="relative shrink-0 w-[88px] rotate-[-4deg] mt-1 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent rounded-md"
+                                                style={{ pointerEvents: openingSlotId === 'hero' ? 'none' : undefined, touchAction: 'manipulation' }}
                                             >
-                                                <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
-                                                <BookCover title={todaysPick.title} author={todaysPick.author} coverUrl={todaysPick.coverUrl} variant="framed" size="sm" />
+                                                {openingSlotId === 'hero' ? (
+                                                    <div aria-hidden="true" className="w-full aspect-[2/3] rounded-l-[3px] rounded-r-xl bg-espresso/[0.13] ring-1 ring-espresso/10 shadow-[inset_0_3px_10px_rgba(58,42,30,0.22)] animate-fade-in" />
+                                                ) : (
+                                                    <>
+                                                        <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
+                                                        <BookCover title={todaysPick.title} author={todaysPick.author} coverUrl={todaysPick.coverUrl} variant="framed" size="sm" />
+                                                    </>
+                                                )}
                                             </div>
                                             <div className="flex-1 min-w-0 pt-1">
                                                 <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight line-clamp-2">
@@ -372,13 +523,19 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                         </p>
                                         <div className="flex gap-3 mt-5">
                                             <button
-                                                onPointerDown={(e) => { e.preventDefault(); pressHero(todaysPick); }}
-                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25"
+                                                type="button"
+                                                onPointerDown={(e) => startPressGesture(e, {
+                                                    onPress: () => pressHero(todaysPick),
+                                                    onActivate: () => keyboardOpenHero(todaysPick),
+                                                })}
+                                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); keyboardOpenHero(todaysPick); } }}
+                                                className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                                                style={{ touchAction: 'manipulation' }}
                                             >
                                                 <BookOpen size={18} /> Start Reading
                                             </button>
                                             {onManualInput && (
-                                                <button onClick={onManualInput} className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] active:scale-[0.98] transition-transform">
+                                                <button type="button" onClick={onManualInput} className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] active:scale-[0.98] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream">
                                                     Paste
                                                 </button>
                                             )}
@@ -400,7 +557,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                     <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">Staff picks</h2>
                                     <p className="text-[12px] text-mocha italic mt-1">Hand picked for the front table</p>
                                 </div>
-                                <button onClick={() => runQuery('Most loved', () => library.getCurated())} className="group flex items-center text-[13px] font-semibold text-coral-accent hover:text-coral-accent/80 active:text-coral-accent/70 transition-colors shrink-0 pb-0.5 select-none">
+                                <button type="button" onClick={() => runQuery('Most loved', () => library.getCurated())} className="group flex items-center text-[13px] font-semibold text-coral-accent hover:text-coral-accent/80 active:text-coral-accent/70 transition-colors shrink-0 pb-0.5 select-none">
                                     see all <ArrowRight size={14} className="ml-1 transition-transform duration-150 group-active:translate-x-1" />
                                 </button>
                             </div>
@@ -421,6 +578,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                                     widthClass="w-44"
                                                     hidden={openingSlotId === slotId}
                                                     onPress={(rect) => press(book, rect, { slotId })}
+                                                    onActivate={(rect) => onOpenBookInstant(book, rect)}
                                                 />
                                             </div>
                                         );
@@ -445,18 +603,35 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                             </div>
                         </section>
 
-                        {/* Weekly stats — placeholder until real session tracking exists */}
+                        {/* Reading stats — derived from real session tracking in App.tsx.
+                            Cumulative across all books/time; weekly buckets are a future
+                            enhancement (would need timestamped sessions, not just totals). */}
                         <section className="mt-14">
                             <div className="rounded-2xl bg-cream/70 ring-1 ring-espresso/10 px-5 py-5">
-                                <Eyebrow>&middot; This Quiet Week &middot;</Eyebrow>
-                                <div className="grid grid-cols-3 mt-4">
-                                    {[{ n: '184', l: 'Minutes' }, { n: '92', l: 'Pages' }, { n: '276', l: 'Avg WPM' }].map((s, i) => (
-                                        <div key={s.l} className={`text-center ${i !== 0 ? 'border-l border-espresso/10' : ''}`}>
-                                            <p className="font-serif text-[28px] font-semibold text-espresso leading-none">{s.n}</p>
-                                            <p className="text-[10px] font-semibold tracking-[0.15em] text-mocha uppercase mt-1.5">{s.l}</p>
+                                <Eyebrow>&middot; Your Reading &middot;</Eyebrow>
+                                {(() => {
+                                    const minutes = Math.round(stats.msRead / 60000);
+                                    // ~250 words/page is the standard publishing approximation.
+                                    const pages = Math.floor(stats.wordsRead / 250);
+                                    const avgWpm = stats.msRead > 0
+                                        ? Math.round(stats.wordsRead / (stats.msRead / 60000))
+                                        : null;
+                                    const cells = [
+                                        { n: minutes.toLocaleString(), l: 'Minutes' },
+                                        { n: pages.toLocaleString(), l: 'Pages' },
+                                        { n: avgWpm !== null ? avgWpm.toLocaleString() : '—', l: 'Avg WPM' },
+                                    ];
+                                    return (
+                                        <div className="grid grid-cols-3 mt-4">
+                                            {cells.map((s, i) => (
+                                                <div key={s.l} className={`text-center ${i !== 0 ? 'border-l border-espresso/10' : ''}`}>
+                                                    <p className="font-serif text-[28px] font-semibold text-espresso leading-none tabular-nums">{s.n}</p>
+                                                    <p className="text-[10px] font-semibold tracking-[0.15em] text-mocha uppercase mt-1.5">{s.l}</p>
+                                                </div>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
+                                    );
+                                })()}
                             </div>
                         </section>
 
@@ -470,7 +645,7 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                 </p>
                                 <p className="text-[10px] font-semibold tracking-[0.18em] text-mustard/70 uppercase mt-3">&mdash; Francis Bacon</p>
                                 {onManualInput && (
-                                    <button onClick={onManualInput} className="group mt-4 text-[12px] font-semibold text-mustard hover:text-mustard/80 transition-colors inline-flex items-center gap-1 select-none">
+                                    <button type="button" onClick={onManualInput} className="group mt-4 text-[12px] font-semibold text-mustard hover:text-mustard/80 transition-colors inline-flex items-center gap-1 select-none">
                                         or paste your own text <ArrowRight size={13} className="transition-transform duration-150 group-active:translate-x-1" />
                                     </button>
                                 )}
@@ -509,8 +684,9 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                         const selected = mode !== 'results' && activeTab === t.key;
                         return (
                             <button
+                                type="button"
                                 key={t.key}
-                                onClick={() => { setActiveTab(t.key); clearResults(); }}
+                                onClick={() => { if (activeTab !== t.key || mode === 'results') haptics.tick(); setActiveTab(t.key); clearResults(); }}
                                 aria-pressed={selected}
                                 aria-label={t.label}
                                 className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 select-none active:scale-95 transition-[transform,color] duration-150 ${selected ? 'text-coral-accent' : 'text-mocha'}`}
@@ -523,20 +699,38 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                 </div>
             </nav>
 
-            {/* ═══ MENU DRAWER ═══ */}
+            {/* ═══ MENU DRAWER ═══
+                Slides in from the right on open; swipe-right (or tap scrim,
+                or tap the X) to dismiss with the same animation. */}
             {menuOpen && (
                 <div className="fixed inset-0 z-[70]" role="dialog" aria-label="Menu" aria-modal="true">
-                    {/* Scrim */}
+                    {/* Scrim — fades in on mount via animation, fades out via inline opacity. */}
                     <div
-                        className="absolute inset-0 bg-espresso/40 animate-fade-in"
-                        onClick={() => setMenuOpen(false)}
+                        className={`absolute inset-0 bg-espresso/40 ${drawerClosing ? '' : 'animate-fade-in'}`}
+                        style={drawerClosing ? { opacity: 0, transition: `opacity ${DRAWER_MS}ms ease` } : undefined}
+                        onClick={closeMenu}
                     />
                     {/* Panel */}
-                    <div className="absolute right-0 top-0 bottom-0 w-[82%] max-w-xs bg-warm-beige shadow-2xl flex flex-col animate-slide-in-right">
+                    <div
+                        ref={drawerPanelRef}
+                        className="absolute right-0 top-0 bottom-0 w-[82%] max-w-xs bg-warm-beige shadow-2xl flex flex-col"
+                        style={{
+                            transform: `translate3d(${drawerOffset}px, 0, 0)`,
+                            transition: drawerDragging ? 'none' : `transform ${DRAWER_MS}ms cubic-bezier(.2,.8,.25,1)`,
+                            // Allow vertical pan inside the drawer (scrolling its content)
+                            // while we still handle horizontal swipe-to-dismiss in JS.
+                            touchAction: 'pan-y',
+                        }}
+                        onPointerDown={handleDrawerPointerDown}
+                    >
+                        {/* Tactile grab handle along the left edge — telegraphs the swipe affordance */}
+                        <div className="absolute left-1 top-1/2 -translate-y-1/2 w-1 h-12 rounded-full bg-espresso/15 pointer-events-none" aria-hidden="true" />
+
                         <div className="flex items-center justify-between px-5 pt-6 pb-4">
                             <h2 className="font-serif text-[20px] font-semibold text-espresso">Menu</h2>
                             <button
-                                onClick={() => setMenuOpen(false)}
+                                type="button"
+                                onClick={closeMenu}
                                 aria-label="Close menu"
                                 className="w-9 h-9 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha active:scale-90 transition-transform"
                             >
@@ -556,7 +750,8 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                     return (
                                         <button
                                             key={key}
-                                            onClick={() => { if (themeMode !== key) toggleMode(); }}
+                                            type="button"
+                                            onClick={() => { if (themeMode !== key) { toggleMode(); haptics.tick(); } }}
                                             aria-pressed={active}
                                             className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-[13px] font-semibold select-none active:scale-[0.98] transition-all duration-150 ${active ? 'bg-cream text-espresso shadow-sm ring-1 ring-espresso/10' : 'text-mocha'}`}
                                         >
@@ -574,7 +769,8 @@ export function StoreFront({ onOpenBook, onManualInput, openingSlotId }: StoreFr
                                     return (
                                         <button
                                             key={t.label}
-                                            onClick={() => setThemeIndex(i)}
+                                            type="button"
+                                            onClick={() => { if (i !== themeIndex) { setThemeIndex(i); haptics.tick(); } }}
                                             aria-label={`Theme: ${t.label}`}
                                             aria-pressed={selected}
                                             className={`flex items-center gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}

@@ -52,8 +52,10 @@ export const THEMES: ThemeDef[] = [
             text: '245 239 235',
             textMuted: '184 160 138',
             focalRgb: '204 125 81',
-            accentRgb: '135 106 84',
-            accentText: '28 18 12',
+            // Accent darkened from 135/106/84 so cream button text clears
+            // WCAG AA 4.5:1 (was 3.70:1 — failed). New ratio: 4.96:1 text, 3.21:1 UI.
+            accentRgb: '125 98 77',
+            accentText: '245 239 235',
         }
     },
     {
@@ -115,7 +117,9 @@ export const THEMES: ThemeDef[] = [
             textMuted: '107 85 68',
             focalRgb: '165 95 12',
             accentRgb: '176 122 37',
-            accentText: '252 251 245',
+            // Dark text on gold instead of cream — was 3.58:1 (cream-on-gold,
+            // failed AA). New ratio with espresso text: 4.96:1.
+            accentText: '26 20 15',
         },
         dark: {
             bg: '28 26 18',
