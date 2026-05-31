@@ -117,8 +117,10 @@ export function ReaderView({
                 progress={rsvp.progress}
                 currentIndex={rsvp.currentIndex}
                 totalWords={parsedText?.tokens.length || 0}
+                chapters={parsedText?.chapters ?? []}
+                paragraphs={parsedText?.paragraphs ?? []}
                 onToggle={rsvp.toggle}
-                onReset={rsvp.reset}
+                onPause={rsvp.pause}
                 onSkipSentence={rsvp.skipToSentence}
                 onSeek={rsvp.seek}
                 onWpmChange={onWpmChange}

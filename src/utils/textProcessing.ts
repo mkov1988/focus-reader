@@ -4,6 +4,7 @@
  * These utilities handle word splitting, focal point calculation,
  * and intelligent text chunking for the speed reading engine.
  */
+import { detectChapters, type Chapter, type ChapterConfidence } from './chapterDetection';
 
 /**
  * Determines the optimal focal point index for a word.
@@ -121,6 +122,8 @@ export interface ParsedText {
     tokens: TextToken[];
     sentences: TextToken[][]; // Array of sentences (arrays of tokens)
     paragraphs: TextToken[][]; // Array of paragraphs (arrays of tokens)
+    chapters: Chapter[]; // Detected structural landmarks (empty if none found)
+    chapterConfidence: ChapterConfidence; // 'none' => fall back to paragraphs
 }
 
 /**
@@ -128,7 +131,15 @@ export interface ParsedText {
  * This supports Sentence View, Paragraph View, and Hybrid View.
  */
 export function parseText(text: string): ParsedText {
-    const rawTokens = text.trim().split(/\s+/);
+    // Source blank lines are paragraph boundaries. Convert them to explicit [P]
+    // markers before tokenizing — otherwise `split(/\s+/)` collapses every
+    // newline and the whole book becomes a single paragraph, breaking
+    // paragraph-aware features (Paragraph view, scrubber paragraph-snapping).
+    // [P] markers are skipped during tokenization (they never become tokens), so
+    // real-word token ids are unchanged and stay aligned with chapterDetection's
+    // offsets, which run on the original `text` below.
+    const marked = text.replace(/\r\n?/g, '\n').replace(/\n[ \t]*\n+/g, ' [P] ');
+    const rawTokens = marked.trim().split(/\s+/);
     const tokens: TextToken[] = [];
     const sentences: TextToken[][] = [];
     const paragraphs: TextToken[][] = [];
@@ -199,5 +210,16 @@ export function parseText(text: string): ParsedText {
     finalizeUnit(currentSentence, sentences, true);
     finalizeUnit(currentParagraph, paragraphs, false);
 
-    return { tokens, sentences, paragraphs };
+    // Recover spatial structure (chapters) from the original line-broken text —
+    // word offsets align with token ids since both tokenize on /\s+/.
+    const { chapters, confidence } = detectChapters(text);
+
+    if (import.meta.env.DEV) {
+        console.info(
+            `[chapters] ${chapters.length} found (confidence: ${confidence})`,
+            chapters.slice(0, 8).map((c) => `${(c.wordIndex / tokens.length * 100).toFixed(1)}% ${c.title}`),
+        );
+    }
+
+    return { tokens, sentences, paragraphs, chapters, chapterConfidence: confidence };
 }
