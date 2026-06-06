@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 import type { ThemeMode } from '../theme';
 import type { VisualizationMode } from '../components/Reader/VisualizationSelector';
 
-export type ViewMode = 'INPUT' | 'TEXT_INPUT' | 'READING';
+export type ViewMode = 'INPUT' | 'READING';
 export type TabKey = 'today' | 'library' | 'shelves' | 'notebook';
 
 export interface ReadingProgress {
@@ -33,7 +33,10 @@ interface AppState {
     themeIndex: number;
     mode: ThemeMode;
     activeTab: TabKey;
-    progress: ReadingProgress | null;
+    /** Per-book reading position, keyed by bookId. Every book keeps its own
+     *  spot, so starting/switching books never clobbers another book's place.
+     *  Also the data source for the Recents list (sort by lastReadAt). */
+    progressById: Record<string, ReadingProgress>;
     stats: ReadingStats;
     /** Persisted reader preferences — survive reload. */
     wpm: number;
@@ -60,7 +63,7 @@ export const useStore = create<AppState>()(
             themeIndex: 0,
             mode: 'light',
             activeTab: 'today',
-            progress: null,
+            progressById: {},
             stats: { wordsRead: 0, msRead: 0 },
             wpm: DEFAULT_WPM,
             visMode: 'rsvp',
@@ -69,7 +72,12 @@ export const useStore = create<AppState>()(
             setThemeIndex: (i) => set({ themeIndex: i }),
             toggleMode: () => set((s) => ({ mode: s.mode === 'light' ? 'dark' : 'light' })),
             setActiveTab: (tab) => set({ activeTab: tab }),
-            updateProgress: (p) => set({ progress: { ...p, lastReadAt: Date.now() } }),
+            updateProgress: (p) => set((s) => ({
+                progressById: {
+                    ...s.progressById,
+                    [p.bookId]: { ...p, lastReadAt: Date.now() },
+                },
+            })),
             addSession: (words, ms) => set((s) => ({
                 stats: {
                     wordsRead: s.stats.wordsRead + Math.max(0, words),
@@ -83,30 +91,36 @@ export const useStore = create<AppState>()(
             name: 'focus-reader-state',
             // Bump on incompatible shape changes. Pair with a migrate step
             // below so existing users don't get a hard reset.
-            version: 1,
+            version: 2,
             // viewMode is ephemeral (don't restore mid-reading on reload).
+            // activeTab is ephemeral too: Recents/Shelves/Notebook are inner
+            // pages you back out of, so the app always boots to the Today home
+            // page — the same way the reader resets to the storefront on reload.
             partialize: (s) => ({
                 themeIndex: s.themeIndex,
                 mode: s.mode,
-                activeTab: s.activeTab,
-                progress: s.progress,
+                progressById: s.progressById,
                 stats: s.stats,
                 wpm: s.wpm,
                 visMode: s.visMode,
             }),
             migrate: (persistedState, version) => {
-                // v0 → v1: added stats / wpm / visMode. Preserve existing
-                // theme + progress; fill in defaults for the new fields.
+                const prev = (persistedState ?? {}) as Record<string, unknown>;
+                // v0 → v1: added stats / wpm / visMode. Fill in defaults.
                 if (version === 0) {
-                    const prev = (persistedState ?? {}) as Partial<AppState>;
-                    return {
-                        ...prev,
-                        stats: prev.stats ?? { wordsRead: 0, msRead: 0 },
-                        wpm: prev.wpm ?? DEFAULT_WPM,
-                        visMode: prev.visMode ?? 'rsvp',
-                    } as AppState;
+                    prev.stats = prev.stats ?? { wordsRead: 0, msRead: 0 };
+                    prev.wpm = prev.wpm ?? DEFAULT_WPM;
+                    prev.visMode = prev.visMode ?? 'rsvp';
                 }
-                return persistedState as AppState;
+                // v0/v1 → v2: single `progress` slot became a per-book map.
+                // Wrap any existing single progress under its bookId so the
+                // user keeps the book they were last reading.
+                if (version < 2) {
+                    const old = prev.progress as ReadingProgress | null | undefined;
+                    prev.progressById = old && old.bookId ? { [old.bookId]: old } : {};
+                    delete prev.progress;
+                }
+                return prev as unknown as AppState;
             },
         },
     ),

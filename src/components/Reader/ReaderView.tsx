@@ -44,13 +44,15 @@ export function ReaderView({
     }, [parsedText, rsvp.currentToken]);
 
     return (
-        <div className="w-full max-w-4xl space-y-8 flex flex-col items-center">
+        <div className="w-full h-full max-w-4xl flex flex-col items-center py-4 sm:py-8 px-2 sm:px-4">
 
             {/* Top Controls: Vis Mode */}
-            <VisualizationSelector mode={visMode} onChange={onChangeVisMode} />
+            <div className="shrink-0 w-full flex justify-center relative z-50">
+                <VisualizationSelector mode={visMode} onChange={onChangeVisMode} />
+            </div>
 
             {/* Reading Area - Height Constrained for Layout Stability */}
-            <div className="w-full flex-1 min-h-[50vh] flex flex-col items-center justify-center relative">
+            <div className="w-full flex-1 flex flex-col items-center justify-center relative min-h-0">
 
                 {/* RSVP Mode */}
                 {visMode === 'rsvp' && (
@@ -111,20 +113,22 @@ export function ReaderView({
             </div>
 
             {/* Controls */}
-            <Controls
-                isPlaying={rsvp.isPlaying}
-                wpm={wpm}
-                progress={rsvp.progress}
-                currentIndex={rsvp.currentIndex}
-                totalWords={parsedText?.tokens.length || 0}
-                chapters={parsedText?.chapters ?? []}
-                paragraphs={parsedText?.paragraphs ?? []}
-                onToggle={rsvp.toggle}
-                onPause={rsvp.pause}
-                onSkipSentence={rsvp.skipToSentence}
-                onSeek={rsvp.seek}
-                onWpmChange={onWpmChange}
-            />
+            <div className="shrink-0 w-full mt-auto">
+                <Controls
+                    isPlaying={rsvp.isPlaying}
+                    wpm={wpm}
+                    progress={rsvp.progress}
+                    currentIndex={rsvp.currentIndex}
+                    totalWords={parsedText?.tokens.length || 0}
+                    chapters={parsedText?.chapters ?? []}
+                    paragraphs={parsedText?.paragraphs ?? []}
+                    onToggle={rsvp.toggle}
+                    onPause={rsvp.pause}
+                    onSkipSentence={rsvp.skipToSentence}
+                    onSeek={rsvp.seek}
+                    onWpmChange={onWpmChange}
+                />
+            </div>
         </div>
     );
 }

@@ -140,7 +140,7 @@ export function Controls({
     const handleFrac = totalWords > 1 ? (currentIndex / lastWord) * 100 : 0;
 
     return (
-        <div className="w-full max-w-2xl mx-auto space-y-6">
+        <div className="w-full max-w-2xl mx-auto space-y-4 sm:space-y-6 pb-2 sm:pb-0 px-2 sm:px-0">
             {scrubbing ? (
                 <>
                     {/* Live peek of the destination */}
@@ -250,7 +250,7 @@ export function Controls({
                     </div>
 
                     {/* Main Controls */}
-                    <div className="flex items-center justify-center gap-4">
+                    <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                         <button
                             type="button"
                             onClick={openScrubber}
@@ -292,7 +292,7 @@ export function Controls({
                         </button>
 
                         {/* WPM Control */}
-                        <div className="flex items-center gap-2 ml-4 bg-espresso/[0.06] border border-espresso/[0.1] rounded-full px-3 py-2">
+                        <div className="flex items-center gap-2 ml-0 sm:ml-4 bg-espresso/[0.06] border border-espresso/[0.1] rounded-full px-3 py-2">
                             <button
                                 type="button"
                                 onClick={decreaseWpm}

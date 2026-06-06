@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ArrowLeft, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { ReaderView } from './components/Reader/ReaderView';
+import { InnerPageHeader } from './components/InnerPageHeader';
 import { type VisualizationMode } from './components/Reader/VisualizationSelector';
 import { StoreFront } from './components/Input/StoreFront';
-import { TextInput } from './components/Input/TextInput';
 import { BookOpenTransition } from './components/Reader/BookOpenTransition';
 import { useStore } from './store/useStore';
 import { useRSVP } from './hooks/useRSVP';
@@ -86,7 +86,9 @@ function App() {
     const [parsedText, setParsedText] = useState<ParsedText | null>(null);
     const [bookTitle, setBookTitle] = useState<string>('Focus Reader');
     const [activeBook, setActiveBook] = useState<BookMetadata | null>(null);
-    const [fontSize, setFontSize] = useState(DEFAULT_FONT_SIZE);
+    // Reader font size is fixed for now — the in-header "Aa" slider was removed
+    // pending a reader-controls rework. ReaderView still honours the value.
+    const [fontSize] = useState(DEFAULT_FONT_SIZE);
 
     // ── Book-open transition state ─────────────────────────────────────
     const [pending, setPending] = useState<PendingOpen | null>(null);
@@ -126,15 +128,6 @@ function App() {
         setWpm: setWpmUpdater,
         onEscape: () => { rsvp.pause(); setViewMode('INPUT'); },
     });
-
-    const handleTextSubmit = (text: string) => {
-        const parsed = parseText(text);
-        setParsedText(parsed);
-        setBookTitle('Your Text');
-        setActiveBook(null); // Pasted text isn't a library book — don't track progress for it.
-        rsvp.reset();
-        setViewMode('READING');
-    };
 
     /** StoreFront fires this on touch-down; the transition takes over the gesture. */
     const handleOpenBook = useCallback((book: BookMetadata, originRect: DOMRect | null, opts: { slotId: string; startIndex?: number; targetRect?: DOMRect | null }) => {
@@ -209,10 +202,6 @@ function App() {
             rsvp.seek(target);
         }
     }, [parsedText, rsvp]);
-
-    const handlePlay = () => {
-        setViewMode('TEXT_INPUT');
-    };
 
     const handleBack = () => {
         rsvp.pause();
@@ -297,46 +286,14 @@ function App() {
                 <StoreFront
                     onOpenBook={handleOpenBook}
                     onOpenBookInstant={handleOpenBookInstant}
-                    onManualInput={handlePlay}
                     openingSlotId={pending?.slotId ?? null}
                 />
-            )}
-
-            {/* ═══ TEXT INPUT VIEW ═══ */}
-            {viewMode === 'TEXT_INPUT' && (
-                <div className="reading-view">
-                    <header className="reading-header">
-                        <button type="button" onClick={() => setViewMode('INPUT')} className="icon-btn">
-                            <ArrowLeft size={20} />
-                        </button>
-                        <span className="reading-title">Paste or Pick Text</span>
-                    </header>
-                    <main className="reading-main" style={{ padding: '2rem 1rem' }}>
-                        <TextInput onTextSubmit={handleTextSubmit} />
-                    </main>
-                </div>
             )}
 
             {/* ═══ READING VIEW ═══ */}
             {viewMode === 'READING' && (
                 <div className="reading-view">
-                    <header className="reading-header">
-                        <button type="button" onClick={handleBack} className="icon-btn">
-                            <ArrowLeft size={20} />
-                        </button>
-                        <span className="reading-title">{bookTitle}</span>
-                        <div className="reading-controls">
-                            <span className="control-label">Aa</span>
-                            <input
-                                type="range"
-                                min="32"
-                                max="96"
-                                value={fontSize}
-                                onChange={(e) => setFontSize(Number(e.target.value))}
-                                className="size-slider"
-                            />
-                        </div>
-                    </header>
+                    <InnerPageHeader title={bookTitle} backLabel="Back" onBack={handleBack} collapsed={rsvp.isPlaying} />
                     <main className="reading-main" {...readerGestures} style={{ touchAction: 'pan-y' }}>
                         <ReaderView
                             parsedText={parsedText}
@@ -382,6 +339,38 @@ function App() {
                     </button>
                 </div>
             )}
+
+            {import.meta.env.DEV && <GestureHud />}
+        </div>
+    );
+}
+
+/** Dev-only on-screen readout of the last few gesture-trace events (emitted by
+ *  startPressGesture). Lets a real press-drag on a phone be diagnosed without a
+ *  console attached. Remove once the touch gesture is dialed in. */
+function GestureHud() {
+    const [lines, setLines] = useState<string[]>([]);
+    useEffect(() => {
+        const onTrace = (e: Event) => {
+            const msg = (e as CustomEvent<string>).detail;
+            const stamp = new Date().toISOString().slice(17, 23); // ss.mmm
+            setLines((prev) => [...prev.slice(-6), `${stamp}  ${msg}`]);
+        };
+        window.addEventListener('gesturetrace', onTrace);
+        return () => window.removeEventListener('gesturetrace', onTrace);
+    }, []);
+    if (lines.length === 0) return null;
+    return (
+        <div
+            style={{
+                position: 'fixed', left: 6, bottom: 6, zIndex: 99999,
+                font: '11px/1.45 ui-monospace, monospace', whiteSpace: 'pre',
+                background: 'rgba(20,12,6,0.85)', color: '#7CFC9B',
+                padding: '6px 9px', borderRadius: 7, pointerEvents: 'none',
+                maxWidth: '80vw', boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
+            }}
+        >
+            {lines.map((l, i) => <div key={i}>{l}</div>)}
         </div>
     );
 }

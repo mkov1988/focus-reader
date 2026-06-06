@@ -2,8 +2,9 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import type { LucideIcon } from 'lucide-react';
 import { BookCard } from './BookCard';
 import { BookCover, type CoverVariant } from './BookCover';
+import { InnerPageHeader } from '../InnerPageHeader';
 import { usePress } from '../../hooks/usePress';
-import { useStore, type TabKey } from '../../store/useStore';
+import { useStore, type TabKey, type ReadingProgress } from '../../store/useStore';
 import { webLibraryService as library } from '../../services/library';
 import type { BookMetadata } from '../../services/types';
 import { THEMES } from '../../theme';
@@ -11,7 +12,7 @@ import { startPressGesture } from '../../utils/pressGesture';
 import { haptics } from '../../utils/haptics';
 import {
     Coffee, Search, BookOpen, Library, Bookmark, Notebook,
-    ChevronRight, ArrowRight, ArrowLeft, Moon, Clock, Leaf, Feather, Loader2, X,
+    ChevronRight, ArrowRight, Moon, Clock, Leaf, Feather, Loader2, X,
     Menu, Settings, Info, BarChart3, Check, Sun,
 } from 'lucide-react';
 
@@ -32,6 +33,13 @@ const DOORS = [
     { icon: Leaf, title: 'Garden & Hearth', sub: 'pastorals & quiet rooms', topic: 'nature' },
     { icon: Feather, title: 'Essays by Lamplight', sub: 'slow thinking, slow weather', topic: 'essays' },
 ];
+
+// Staff-picks shelf scrolls horizontally, so its cards need a longer touch
+// hold than the default before a press commits to a pickup — otherwise a
+// deliberate sideways swipe (which often begins with the finger briefly still)
+// gets grabbed as a book-lift and the swipe never scrolls the shelf. A quick
+// tap still opens; a genuine long-press still lifts.
+const SHELF_HOLD_MS = 400;
 
 const TABS: { key: TabKey; icon: LucideIcon; label: string }[] = [
     { key: 'today', icon: BookOpen, label: 'Today' },
@@ -74,7 +82,7 @@ function Door({ icon: Icon, title, sub, onClick }: { icon: LucideIcon; title: st
     );
 }
 
-function EmptyTab({ icon: Icon, title, body }: { icon: LucideIcon; title: string; body: string }) {
+function EmptyTab({ icon: Icon, title, body, footnote = 'Coming soon' }: { icon: LucideIcon; title: string; body: string; footnote?: string | null }) {
     return (
         <div className="rounded-3xl bg-cream/60 ring-1 ring-espresso/10 px-6 py-10 text-center">
             <span className="inline-flex w-12 h-12 rounded-2xl bg-cream ring-1 ring-espresso/10 items-center justify-center text-coral-accent">
@@ -82,8 +90,43 @@ function EmptyTab({ icon: Icon, title, body }: { icon: LucideIcon; title: string
             </span>
             <h3 className="font-serif text-[20px] font-semibold text-espresso mt-4">{title}</h3>
             <p className="font-serif italic text-[13px] text-mocha leading-relaxed mt-2 max-w-xs mx-auto">{body}</p>
-            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/60 uppercase mt-5">Coming soon</p>
+            {footnote && <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/60 uppercase mt-5">{footnote}</p>}
         </div>
+    );
+}
+
+// One row in the Recents list (Library tab). Tap to reopen the book at the
+// exact word it was left on — the open animation lifts from this row's cover.
+function RecentRow({ r, onOpen }: { r: ReadingProgress; onOpen: (book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => void }) {
+    const coverRef = useRef<HTMLDivElement>(null);
+    const pct = r.totalTokens > 0 ? Math.min(100, Math.round((r.currentIndex / r.totalTokens) * 100)) : 0;
+    const open = () => {
+        const book: BookMetadata = { id: r.bookId, title: r.title, author: r.author, coverUrl: r.coverUrl, textUrl: r.textUrl };
+        onOpen(book, coverRef.current?.getBoundingClientRect() ?? null, r.currentIndex);
+    };
+    return (
+        <button
+            type="button"
+            onClick={open}
+            aria-label={`Resume ${r.title} by ${r.author}, ${pct}% complete`}
+            className="w-full flex items-center gap-3.5 rounded-2xl px-3.5 py-3 ring-1 ring-espresso/10 bg-cream/70 text-left select-none active:scale-[0.99] active:ring-coral-accent/40 transition-[transform,border-color] duration-150"
+            style={{ touchAction: 'manipulation' }}
+        >
+            <div ref={coverRef} className="shrink-0 w-12">
+                <BookCover title={r.title} author={r.author} coverUrl={r.coverUrl} variant="framed" size="sm" />
+            </div>
+            <div className="flex-1 min-w-0">
+                <h3 className="font-serif text-[15px] font-medium text-espresso leading-snug line-clamp-1">{r.title}</h3>
+                <p className="text-[11px] text-mocha italic line-clamp-1 mt-0.5">{r.author}</p>
+                <div className="flex items-center gap-2 mt-2">
+                    <div className="flex-1 h-1 rounded-full bg-espresso/10 overflow-hidden">
+                        <div className="h-full rounded-full bg-coral-accent" style={{ width: `${pct}%` }} />
+                    </div>
+                    <span className="text-[10px] font-semibold tracking-[0.1em] text-mocha tabular-nums shrink-0">{pct}%</span>
+                </div>
+            </div>
+            <ChevronRight size={18} className="text-espresso/25 shrink-0" />
+        </button>
     );
 }
 
@@ -97,7 +140,6 @@ interface StoreFrontProps {
     /** Keyboard / screen-reader path: open a book without the press-and-hold
      *  gesture. The animation still plays, but commit is automatic. */
     onOpenBookInstant: (book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => void;
-    onManualInput?: () => void;
     /** Slot identifier of the *specific physical instance* currently being
      *  lifted (e.g. "hero" vs "shelf:84"). The matching slot hides itself so
      *  the floating cover doesn't visually double — other slots for the same
@@ -105,12 +147,11 @@ interface StoreFrontProps {
     openingSlotId?: string | null;
 }
 
-export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openingSlotId }: StoreFrontProps) {
-    /** Cover-rect source for the lift visual (where the cover starts from). */
+export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: StoreFrontProps) {
+    /** Cover-rect source for the lift visual (where the cover starts from).
+     *  Also the gesture commit zone: release the lifted book over the cover's
+     *  footprint to open, drag it away (e.g. right, off the cover) to cancel. */
     const heroCoverRef = useRef<HTMLDivElement>(null);
-    /** Full hero-card rect — used as the gesture target so taps on Resume /
-     *  Restart / Start Reading buttons still count as "inside target". */
-    const heroCardRef = useRef<HTMLDivElement>(null);
 
     const themeIndex = useStore((s) => s.themeIndex);
     const setThemeIndex = useStore((s) => s.setThemeIndex);
@@ -118,10 +159,19 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
     const toggleMode = useStore((s) => s.toggleMode);
     const activeTab = useStore((s) => s.activeTab);
     const setActiveTab = useStore((s) => s.setActiveTab);
-    const progress = useStore((s) => s.progress);
+    const progressById = useStore((s) => s.progressById);
     const stats = useStore((s) => s.stats);
     // Note: applying the accent + mode to the document root happens in the App
     // shell (always mounted), so the reader stays themed too.
+
+    // Recently-read books, newest first. The hero "pick up where you left off"
+    // points at the most recent; the Library tab lists them all. Each carries
+    // its own currentIndex so any book resumes exactly where it was left.
+    const recents = useMemo(
+        () => Object.values(progressById).sort((a, b) => b.lastReadAt - a.lastReadAt),
+        [progressById],
+    );
+    const progress = recents[0] ?? null;
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -255,10 +305,103 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
         [onOpenBook],
     );
 
-    /** Convenience: grab the hero cover's rect (lift origin). */
+    /** Convenience: grab the hero cover's rect (lift origin + commit zone). */
     const heroOrigin = () => heroCoverRef.current?.getBoundingClientRect() ?? null;
-    /** Convenience: grab the hero card's rect (gesture target = full card). */
-    const heroTarget = () => heroCardRef.current?.getBoundingClientRect() ?? null;
+
+    /** Ref callback for the horizontal staff-picks shelf. A mouse can neither
+     *  drag-scroll an overflow container nor (with the scrollbar hidden) reach
+     *  one, so we add two desktop affordances. Touch panning is the native one
+     *  and is left untouched.
+     *
+     *  1. Wheel → horizontal: translate vertical wheel into horizontal scroll,
+     *     but only while the shelf can still scroll that way; at either end we
+     *     let the event through so the page scrolls. Native horizontal wheel
+     *     (trackpad) passes through too.
+     *
+     *  2. Grab-and-drag: a sideways mouse drag anywhere on the shelf pans it.
+     *     The shelf's cards yield horizontal mouse drags (`scrollsHorizontally`)
+     *     so the same drag that scrolls here never also lifts a book; a vertical
+     *     pull, a hold, or a tap still lifts/opens. We engage only past the same
+     *     threshold the card uses to abort (10px), so a near-still click stays a
+     *     tap. Capturing on pointerdown keeps moves coming if the cursor leaves
+     *     the shelf; if a card claims the pointer for a vertical lift it steals
+     *     capture and we get `lostpointercapture`, which resets us.
+     *
+     *  Non-passive wheel listener is required to call preventDefault. */
+    const shelfCleanup = useRef<(() => void) | null>(null);
+    const shelfRef = useCallback((node: HTMLDivElement | null) => {
+        shelfCleanup.current?.();
+        shelfCleanup.current = null;
+        if (!node) return;
+
+        const onWheel = (e: WheelEvent) => {
+            // Let native horizontal wheel / trackpad gestures pass through.
+            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+            const atStart = node.scrollLeft <= 0;
+            const atEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 1;
+            if ((e.deltaY > 0 && atEnd) || (e.deltaY < 0 && atStart)) return;
+            node.scrollLeft += e.deltaY;
+            e.preventDefault();
+        };
+
+        const PAN_SLOP = 10; // matches the card's mouse pickup threshold
+        let panId: number | null = null;
+        let startX = 0;
+        let startY = 0;
+        let startLeft = 0;
+        let panning = false;
+
+        const onPointerDown = (e: PointerEvent) => {
+            if (e.pointerType !== 'mouse') return; // touch/pen pan natively
+            panId = e.pointerId;
+            startX = e.clientX;
+            startY = e.clientY;
+            startLeft = node.scrollLeft;
+            panning = false;
+            try { node.setPointerCapture(panId); } catch { /* not capturable */ }
+        };
+        const onPointerMove = (e: PointerEvent) => {
+            if (panId === null || e.pointerId !== panId) return;
+            const dx = e.clientX - startX;
+            if (!panning) {
+                // Engage only on a clearly horizontal drag past the slop; a
+                // vertical-leaning drag is left for the card's lift.
+                if (Math.abs(dx) <= PAN_SLOP || Math.abs(dx) <= Math.abs(e.clientY - startY)) return;
+                panning = true;
+                startX = e.clientX;          // re-anchor so the pan doesn't jump
+                startLeft = node.scrollLeft;
+                node.style.cursor = 'grabbing';
+            }
+            node.scrollLeft = startLeft - (e.clientX - startX);
+            e.preventDefault();
+        };
+        const endPan = (e: PointerEvent) => {
+            if (panId === null || e.pointerId !== panId) return;
+            // Null out before releasing: releasePointerCapture synchronously
+            // dispatches lostpointercapture (which re-enters here), and a card
+            // stealing capture for a vertical lift lands here too.
+            const id = panId;
+            panId = null;
+            panning = false;
+            node.style.cursor = '';
+            try { node.releasePointerCapture(id); } catch { /* already released */ }
+        };
+
+        node.addEventListener('wheel', onWheel, { passive: false });
+        node.addEventListener('pointerdown', onPointerDown);
+        node.addEventListener('pointermove', onPointerMove);
+        node.addEventListener('pointerup', endPan);
+        node.addEventListener('pointercancel', endPan);
+        node.addEventListener('lostpointercapture', endPan);
+        shelfCleanup.current = () => {
+            node.removeEventListener('wheel', onWheel);
+            node.removeEventListener('pointerdown', onPointerDown);
+            node.removeEventListener('pointermove', onPointerMove);
+            node.removeEventListener('pointerup', endPan);
+            node.removeEventListener('pointercancel', endPan);
+            node.removeEventListener('lostpointercapture', endPan);
+        };
+    }, []);
 
     const runQuery = useCallback(async (label: string, fn: () => Promise<BookMetadata[]>) => {
         setMode('results');
@@ -287,6 +430,39 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
         setResults([]);
     };
 
+    /** Jump to the dedicated Recents list (Library tab). Clears any active
+     *  search first so the tab content actually shows. */
+    const goToRecents = () => {
+        haptics.tick();
+        clearResults();
+        setActiveTab('library');
+    };
+
+    /** Back out of any inner page (Recents / Shelves / Notebook) to the Today
+     *  home page. Inner pages are entered from the drawer or a button and always
+     *  climb back here. (See feedback-navigation-model.) */
+    const goHome = () => {
+        haptics.tick();
+        clearResults();
+        setActiveTab('today');
+    };
+
+    // The inner-page header lives in the top bar (the shared InnerPageHeader,
+    // also worn by the reader): a back control + title where the
+    // search/menu sits on home. Non-null = we're on an inner page; null = the
+    // Today home page, which keeps the [search][menu] bar and never gets a back
+    // control or title. (See feedback-navigation-model.)
+    const innerHeader: { title: string; eyebrow?: string; backLabel: string; onBack: () => void } | null =
+        mode === 'results'
+            ? { title: resultsLabel, eyebrow: 'Reading room results', backLabel: 'Back', onBack: () => { haptics.tick(); clearResults(); } }
+            : activeTab === 'library'
+            ? { title: 'Library', backLabel: 'Back to home', onBack: goHome }
+            : activeTab === 'shelves'
+            ? { title: 'Shelves', backLabel: 'Back to home', onBack: goHome }
+            : activeTab === 'notebook'
+            ? { title: 'Notebook', backLabel: 'Back to home', onBack: goHome }
+            : null;
+
     const shelf = curated ?? [];
 
     // ─── Hero card content: real progress vs. today's pick ────────────────
@@ -295,9 +471,10 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
         ? Math.min(100, Math.round((progress.currentIndex / progress.totalTokens) * 100))
         : 0;
 
-    /** Press-down on any "Resume / Restart / cover" surface in the hero card. */
+    /** Press-and-hold on the hero cover — lifts the book with the cover as the
+     *  commit zone (release over it to open, drag away to cancel). */
     const pressHero = useCallback((book: BookMetadata, startIndex?: number) => {
-        press(book, heroOrigin(), { slotId: 'hero', startIndex, targetRect: heroTarget() });
+        press(book, heroOrigin(), { slotId: 'hero', startIndex });
     }, [press]);
 
     /** Keyboard activation (Enter/Space) on hero surface — no gesture available,
@@ -322,41 +499,56 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                     'radial-gradient(120% 80% at 50% -10%, rgba(212,154,63,0.10), transparent 55%), radial-gradient(90% 60% at 100% 0%, rgba(194,103,75,0.07), transparent 50%)',
             }}
         >
-            {/* ── Sticky search header ── */}
-            <header className="sticky top-0 z-30 bg-warm-beige border-b border-espresso/[0.08]">
-                <div
-                    className="max-w-md mx-auto px-5 py-3.5 flex items-center gap-2.5"
-                    style={{ paddingTop: 'max(0.875rem, env(safe-area-inset-top))' }}
-                >
-                    <form onSubmit={submitSearch} className="flex-1">
-                        <div className="bg-cream rounded-full px-5 py-3.5 flex items-center gap-3 ring-1 ring-espresso/10 shadow-[inset_0_1px_3px_rgba(58,42,30,0.08)] focus-within:ring-coral-accent/40 transition-shadow">
-                            <Search size={18} className="text-mocha/70 shrink-0" />
-                            <input
-                                value={query}
-                                onChange={(e) => setQuery(e.target.value)}
-                                placeholder="Search Focus Reader"
-                                aria-label="Search Focus Reader"
-                                className="bg-transparent border-none outline-none w-full text-espresso placeholder-mocha/60 font-medium"
-                            />
-                            {query && (
-                                <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="text-mocha/60 hover:text-espresso shrink-0">
-                                    <X size={16} />
-                                </button>
-                            )}
-                        </div>
-                    </form>
-                    <button
-                        type="button"
-                        aria-label="Menu"
-                        onClick={() => { haptics.tick(); setMenuOpen(true); }}
-                        className="w-12 h-12 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-espresso shrink-0 shadow-sm active:scale-90 transition-transform"
+            {/* ── Sticky top bar. The Today home page keeps [search][menu]; every
+                 inner page (and the reader) instead render the shared
+                 reader-style [back][title] bar — no search/menu, back out to home to
+                 reach those — so they all wear one header. (See InnerPageHeader.) ── */}
+            {innerHeader ? (
+                <InnerPageHeader
+                    title={innerHeader.title}
+                    eyebrow={innerHeader.eyebrow}
+                    backLabel={innerHeader.backLabel}
+                    onBack={innerHeader.onBack}
+                />
+            ) : (
+                <header className="sticky top-0 z-30 bg-warm-beige border-b border-espresso/[0.08]">
+                    <div
+                        className="max-w-md mx-auto px-5 py-3.5 flex items-center gap-3 min-h-[68px]"
+                        style={{ paddingTop: 'max(0.875rem, env(safe-area-inset-top))' }}
                     >
-                        <Menu size={20} />
-                    </button>
-                </div>
-            </header>
+                        <form onSubmit={submitSearch} className="flex-1">
+                            <div className="bg-cream rounded-full px-5 py-3.5 flex items-center gap-3 ring-1 ring-espresso/10 shadow-[inset_0_1px_3px_rgba(58,42,30,0.08)] focus-within:ring-coral-accent/40 transition-shadow">
+                                <Search size={18} className="text-mocha/70 shrink-0" />
+                                <input
+                                    value={query}
+                                    onChange={(e) => setQuery(e.target.value)}
+                                    placeholder="Search Focus Reader"
+                                    aria-label="Search Focus Reader"
+                                    className="bg-transparent border-none outline-none w-full text-espresso placeholder-mocha/60 font-medium"
+                                />
+                                {query && (
+                                    <button type="button" onClick={() => setQuery('')} aria-label="Clear search" className="text-mocha/60 hover:text-espresso shrink-0">
+                                        <X size={16} />
+                                    </button>
+                                )}
+                            </div>
+                        </form>
+                        <button
+                            type="button"
+                            aria-label="Menu"
+                            onClick={() => { haptics.tick(); setMenuOpen(true); }}
+                            className="w-12 h-12 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-espresso shrink-0 shadow-sm active:scale-90 transition-transform"
+                        >
+                            <Menu size={20} />
+                        </button>
+                    </div>
+                </header>
+            )}
 
-            <main className="max-w-md mx-auto px-5 pt-5 pb-28">
+            <main
+                className="max-w-md mx-auto px-5 pt-5"
+                style={{ paddingBottom: 'max(3rem, env(safe-area-inset-bottom))' }}
+            >
                 {error && (
                     <div className="mb-5 flex items-start gap-2 rounded-2xl bg-coral-accent/10 ring-1 ring-coral-accent/30 px-4 py-3 text-[13px] text-espresso">
                         <span className="flex-1">{error}</span>
@@ -365,18 +557,9 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                 )}
 
                 {mode === 'results' ? (
-                    /* ── Search / topic results ── */
+                    /* ── Search / topic results: an inner page. Back returns to
+                       wherever the search was launched from (home or Recents). ── */
                     <section className="mb-7">
-                        <div className="flex items-center gap-3 mb-4">
-                            <button type="button" onClick={clearResults} className="w-9 h-9 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha hover:text-coral-accent select-none active:scale-90 transition-[transform,color] duration-150 shrink-0">
-                                <ArrowLeft size={18} />
-                            </button>
-                            <div className="min-w-0">
-                                <p className="text-[11px] font-semibold tracking-[0.16em] text-mocha/70 uppercase">Reading room results</p>
-                                <h2 className="font-serif text-[20px] font-semibold text-espresso leading-tight truncate">{resultsLabel}</h2>
-                            </div>
-                        </div>
-
                         {searching ? (
                             <div className="grid grid-cols-2 gap-y-6 justify-items-center">
                                 {Array.from({ length: 6 }).map((_, i) => <CoverSkeleton key={i} />)}
@@ -394,8 +577,8 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                             author={book.author}
                                             coverUrl={book.coverUrl}
                                             hidden={openingSlotId === slotId}
-                                            onPress={(rect) => press(book, rect, { slotId })}
-                                            onActivate={(rect) => onOpenBookInstant(book, rect)}
+                                            onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
+                                            onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
                                         />
                                     );
                                 })}
@@ -403,14 +586,15 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                         )}
                     </section>
                 ) : activeTab === 'today' ? (
-                    /* ── Today feed (each bottom-tab is its own screen) ── */
+                    /* ── Today: the home page. Everything else (Recents, Shelves,
+                       Notebook, the reader, search results) is an inner page you
+                       descend into and back out of — home alone has no back control. */
                     <div>
                         {/* Hero card: real progress if available, else today's pick.
-                            Whole card is the press-target — pressing the cover, the title,
-                            Resume, or Restart all start the same gesture. */}
+                            Pressing the cover, the title, or Resume starts the open
+                            gesture; Recents is a plain link to the Library tab. */}
                         <section>
                             <div
-                                ref={heroCardRef}
                                 className="rounded-3xl bg-cream ring-1 ring-espresso/10 shadow-[0_4px_18px_rgba(58,42,30,0.07)] p-5"
                                 style={{ touchAction: 'manipulation' }}
                             >
@@ -461,7 +645,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                             <button
                                                 type="button"
                                                 onPointerDown={(e) => startPressGesture(e, {
-                                                    onPress: () => { const b = progressBook(); if (b) pressHero(b, progress.currentIndex); },
+                                                    onPress: () => { const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); },
                                                     onActivate: () => { const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); },
                                                 })}
                                                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const b = progressBook(); if (b) keyboardOpenHero(b, progress.currentIndex); } }}
@@ -472,15 +656,12 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                             </button>
                                             <button
                                                 type="button"
-                                                onPointerDown={(e) => startPressGesture(e, {
-                                                    onPress: () => { const b = progressBook(); if (b) pressHero(b, 0); },
-                                                    onActivate: () => { const b = progressBook(); if (b) keyboardOpenHero(b, 0); },
-                                                })}
-                                                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); const b = progressBook(); if (b) keyboardOpenHero(b, 0); } }}
-                                                className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
+                                                onClick={goToRecents}
+                                                aria-label="Recently read"
+                                                className="flex items-center gap-1.5 px-5 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] active:scale-[0.98] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                                                 style={{ touchAction: 'manipulation' }}
                                             >
-                                                Restart
+                                                <Clock size={16} /> Recents
                                             </button>
                                         </div>
                                     </>
@@ -525,7 +706,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                             <button
                                                 type="button"
                                                 onPointerDown={(e) => startPressGesture(e, {
-                                                    onPress: () => pressHero(todaysPick),
+                                                    onPress: () => keyboardOpenHero(todaysPick),
                                                     onActivate: () => keyboardOpenHero(todaysPick),
                                                 })}
                                                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); keyboardOpenHero(todaysPick); } }}
@@ -534,11 +715,6 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                             >
                                                 <BookOpen size={18} /> Start Reading
                                             </button>
-                                            {onManualInput && (
-                                                <button type="button" onClick={onManualInput} className="px-6 rounded-full bg-cream ring-1 ring-espresso/15 text-espresso font-semibold text-[15px] active:scale-[0.98] transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent focus-visible:ring-offset-2 focus-visible:ring-offset-cream">
-                                                    Paste
-                                                </button>
-                                            )}
                                         </div>
                                     </>
                                 ) : (
@@ -561,7 +737,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                     see all <ArrowRight size={14} className="ml-1 transition-transform duration-150 group-active:translate-x-1" />
                                 </button>
                             </div>
-                            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div ref={shelfRef} className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                 {curated === null
                                     ? Array.from({ length: 4 }).map((_, i) => <div key={i} className="snap-start flex-shrink-0 w-44"><CoverSkeleton /></div>)
                                     : shelf.map((book) => {
@@ -576,9 +752,11 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                                     variant={fb.variant}
                                                     tint={fb.tint}
                                                     widthClass="w-44"
+                                                    holdMs={SHELF_HOLD_MS}
+                                                    scrollsHorizontally
                                                     hidden={openingSlotId === slotId}
-                                                    onPress={(rect) => press(book, rect, { slotId })}
-                                                    onActivate={(rect) => onOpenBookInstant(book, rect)}
+                                                    onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
+                                                    onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
                                                 />
                                             </div>
                                         );
@@ -644,20 +822,31 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                                     &ldquo;Some books are to be tasted, others to be swallowed.&rdquo;
                                 </p>
                                 <p className="text-[10px] font-semibold tracking-[0.18em] text-mustard/70 uppercase mt-3">&mdash; Francis Bacon</p>
-                                {onManualInput && (
-                                    <button type="button" onClick={onManualInput} className="group mt-4 text-[12px] font-semibold text-mustard hover:text-mustard/80 transition-colors inline-flex items-center gap-1 select-none">
-                                        or paste your own text <ArrowRight size={13} className="transition-transform duration-150 group-active:translate-x-1" />
-                                    </button>
-                                )}
                             </div>
                         </section>
                     </div>
                 ) : activeTab === 'library' ? (
-                    <EmptyTab
-                        icon={Library}
-                        title="Your library is empty"
-                        body="Books you’ve started or finished will live here, with the page you left them on."
-                    />
+                    <>
+                        {recents.length > 0 && (
+                            <p className="font-serif italic text-[14px] text-mocha leading-relaxed border-l-2 border-coral-accent/50 pl-3.5 mb-6">
+                                Pick up any book exactly where you left it.
+                            </p>
+                        )}
+                        {recents.length === 0 ? (
+                            <EmptyTab
+                                icon={Clock}
+                                title="Nothing read yet"
+                                body="Books you open will gather here, each remembering the exact word you stopped on."
+                                footnote={null}
+                            />
+                        ) : (
+                            <div className="flex flex-col gap-2.5">
+                                {recents.map((r) => (
+                                    <RecentRow key={r.bookId} r={r} onOpen={onOpenBookInstant} />
+                                ))}
+                            </div>
+                        )}
+                    </>
                 ) : activeTab === 'shelves' ? (
                     <EmptyTab
                         icon={Bookmark}
@@ -672,32 +861,6 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                     />
                 )}
             </main>
-
-            {/* ── Fixed bottom tab bar ── */}
-            <nav
-                className="fixed bottom-0 inset-x-0 z-30 bg-warm-beige border-t border-espresso/10"
-                style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
-            >
-                <div className="max-w-md mx-auto flex">
-                    {TABS.map((t) => {
-                        const Icon = t.icon;
-                        const selected = mode !== 'results' && activeTab === t.key;
-                        return (
-                            <button
-                                type="button"
-                                key={t.key}
-                                onClick={() => { if (activeTab !== t.key || mode === 'results') haptics.tick(); setActiveTab(t.key); clearResults(); }}
-                                aria-pressed={selected}
-                                aria-label={t.label}
-                                className={`flex-1 flex flex-col items-center justify-center gap-1 min-h-[56px] py-2 select-none active:scale-95 transition-[transform,color] duration-150 ${selected ? 'text-coral-accent' : 'text-mocha'}`}
-                            >
-                                <Icon size={21} strokeWidth={selected ? 2.4 : 2} />
-                                <span className="text-[10px] font-semibold tracking-wide">{t.label}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-            </nav>
 
             {/* ═══ MENU DRAWER ═══
                 Slides in from the right on open; swipe-right (or tap scrim,
@@ -739,6 +902,29 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, onManualInput, openi
                         </div>
 
                         <div className="px-5 pb-6 flex-1 overflow-y-auto">
+                            {/* Primary navigation — the drawer is the single nav hub
+                                (no bottom tab bar). The Library item opens the Recents list. */}
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Browse</p>
+                            <div className="flex flex-col gap-1.5 mb-7">
+                                {TABS.map((t) => {
+                                    const Icon = t.icon;
+                                    const active = mode !== 'results' && activeTab === t.key;
+                                    return (
+                                        <button
+                                            key={t.key}
+                                            type="button"
+                                            onClick={() => { haptics.tick(); clearResults(); setActiveTab(t.key); closeMenu(); }}
+                                            aria-current={active ? 'page' : undefined}
+                                            className={`w-full flex items-center gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 text-left ${active ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
+                                        >
+                                            <Icon size={18} strokeWidth={active ? 2.4 : 2} className={`shrink-0 ${active ? 'text-coral-accent' : 'text-mocha'}`} />
+                                            <span className="flex-1 font-serif text-[15px] text-espresso">{t.label}</span>
+                                            {active && <Check size={16} className="text-coral-accent shrink-0" />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
                             {/* Appearance: light / dark */}
                             <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Appearance</p>
                             <div className="flex gap-1.5 bg-espresso/[0.06] ring-1 ring-espresso/10 rounded-full p-1 mb-6">
