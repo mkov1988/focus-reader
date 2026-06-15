@@ -67,6 +67,18 @@ Project overview, quick start guide, and installation instructions.
 
 ---
 
+### [book_access_strategy.md](planning/book_access_strategy.md) - Book & Cover Access
+**Purpose**: How we reach Project Gutenberg content and cover images without building runtime web infrastructure
+
+**Key Points**:
+- Native first "download once, read offline" model; the Vite proxy only simulates it locally
+- Cover images are mirrored to a static host (`npm run mirror:covers` + `VITE_COVER_BASE`), not hotlinked at paint time
+- Layered resilience: hosted covers, local cache, generated cover fallback in `BookCover`
+
+**Use when**: Working on book downloads, cover images, offline storage, or the native port
+
+---
+
 ## 🔬 Research & Insights
 
 ### [research-report.md](research/research-report.md) - The Cognitive Science of Reading

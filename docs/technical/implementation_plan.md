@@ -122,7 +122,7 @@ We will build a "Hybrid" scene where the environment is 3D, but content is optim
 *   **Bridge**: The 3D canvas pushes events to the Zustand store, which updates the 2D overlay (e.g., showing a detailed tooltip or the Search bar).
 
 ### C. Performance (The "Slug")
-*   **Lazy Loading**: Gutenberg covers are fetched only when the shelf comes into view (Intersection Observer for the Canvas or `useInView` for 3D objects).
+*   **Cover Images**: Served from our own static host (`VITE_COVER_BASE`), not hotlinked from gutenberg, and loaded eagerly with a generated cover fallback in `BookCover`. See `docs/planning/book_access_strategy.md` §5. Covers are small WebP thumbnails, so eager loading is cheap; lazy loading conflicted with the fallback deadline (off-screen covers got downgraded before they could load).
 *   **Texture Recycling**: Reuse geometry and materials (`useMemo`). All books share the same geometry, just different textures/uniforms.
 
 ### D. The Reading "Portal"

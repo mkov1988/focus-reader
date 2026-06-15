@@ -60,8 +60,8 @@ export function ParagraphDisplay({
         <div
             ref={containerRef}
             className={`
-                w-full max-w-2xl mx-auto h-[60vh] overflow-y-auto
-                leading-relaxed px-8 py-[30vh] rounded-xl bg-espresso/[0.04]
+                w-full max-w-2xl mx-auto h-full overflow-y-auto
+                leading-relaxed px-4 sm:px-8 py-32 rounded-xl bg-espresso/[0.04]
                 ${className}
             `}
             style={{ fontSize: `${displaySize}px` }}

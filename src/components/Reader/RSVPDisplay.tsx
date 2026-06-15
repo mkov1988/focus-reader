@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import { splitWord } from '../../utils/textProcessing';
+import { splitWord, effectiveBaseFontSize } from '../../utils/textProcessing';
+import { useFitFontSize } from '../../hooks/useFitFontSize';
+import { useStore } from '../../store/useStore';
 
 interface RSVPDisplayProps {
     word: string;
@@ -17,16 +19,24 @@ interface RSVPDisplayProps {
  * - Focal letter CENTER aligned to vertical guide
  */
 export function RSVPDisplay({ word, fontSize = 48, className = '' }: RSVPDisplayProps) {
+    const rootRef = useRef<HTMLDivElement>(null);
     const focalRef = useRef<HTMLSpanElement>(null);
     const [focalWidth, setFocalWidth] = useState(0);
 
-    const { before, focal, after } = splitWord(word);
+    // Reader fit mode (which letter is coloured + whether long words shrink).
+    const fitMode = useStore((s) => s.fitMode);
+
+    const { before, focal, after } = splitWord(word, fitMode);
+
+    // 'compact' reads at one slightly smaller base; every mode then shrinks a word
+    // that would still overflow so nothing clips. Focal letter stays dead centre.
+    const renderFontSize = useFitFontSize(word, effectiveBaseFontSize(fontSize, fitMode), rootRef, focalRef, fitMode);
 
     useLayoutEffect(() => {
         if (focalRef.current && focal) {
             setFocalWidth(focalRef.current.getBoundingClientRect().width);
         }
-    }, [focal, fontSize]);
+    }, [focal, renderFontSize]);
 
     const halfFocal = focalWidth / 2;
     // Theme-aware guides: derived from the ink colour so they read correctly
@@ -50,10 +60,13 @@ export function RSVPDisplay({ word, fontSize = 48, className = '' }: RSVPDisplay
 
     return (
         <div
+            ref={rootRef}
             className={`relative w-full ${className}`}
             style={{
+                // Height stays tied to the base size so the reading area never
+                // shifts; only the glyphs scale when a long word has to shrink.
                 height: `${fontSize * 4}px`,
-                fontSize: `${fontSize}px`,
+                fontSize: `${renderFontSize}px`,
             }}
         >
             <GuideFrame barColor={barColor} lineColor={lineColor} />

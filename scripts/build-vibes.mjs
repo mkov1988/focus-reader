@@ -1,0 +1,202 @@
+/**
+ * Build the bundled Vibe-out dataset (src/data/vibes.json).
+ *
+ * For each vibe it crawls Gutendex by topic to fill a set of nuanced shelves,
+ * then derives a "deeper cuts" hero: the vibe's most-downloaded books that are
+ * NOT already in the curated front-page catalog, so the hero is discovery, not a
+ * repeat. Only books with a readable plain-text edition are kept. Hero books
+ * keep their cover URL (mirrored later by mirror-covers.mjs); shelf books drop
+ * the cover so the app draws its generated cover instead.
+ *
+ * Offline + instant at runtime, same pattern as curated.json. Re-run to refresh.
+ *
+ *   node scripts/build-vibes.mjs
+ *   node scripts/build-vibes.mjs --per=20   books kept per shelf (default 20)
+ *   node scripts/build-vibes.mjs --hero=14  hero size per vibe (default 14)
+ */
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const CURATED_PATH = path.join(ROOT, 'src', 'data', 'curated.json');
+const OUT_PATH = path.join(ROOT, 'src', 'data', 'vibes.json');
+const API = 'https://gutendex.com/books';
+
+const arg = (name, def) => {
+    const a = process.argv.find((x) => x.startsWith(`--${name}=`));
+    return a ? Number(a.split('=')[1]) : def;
+};
+const PER_SHELF = arg('per', 20);
+const HERO_SIZE = arg('hero', 14);
+const MIN_PER_VIBE = 100;
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// ── Taxonomy: each shelf maps to one Gutendex topic (matches subjects +
+//    bookshelves). Topics were validated by scripts/crawl-vibes.mjs. ──────────
+const VIBES = [
+    { key: 'cozy', title: 'Cozy Corners', shelves: [
+        { title: 'Hearth and home', topic: 'domestic fiction' },
+        { title: 'Quiet country days', topic: 'country life' },
+        { title: 'Tea and laughter', topic: 'humorous' },
+        { title: 'Once upon a time', topic: 'fairy tales' },
+        { title: 'Christmas firesides', topic: 'Christmas' },
+        { title: "Children's classics", topic: "children's literature" },
+    ] },
+    { key: 'tangled', title: 'Tangled Sheets', shelves: [
+        { title: 'Slow burn courtship', topic: 'courtship' },
+        { title: 'Marriage plots', topic: 'marriage' },
+        { title: 'Love triangles', topic: 'triangles' },
+        { title: 'Sweeping love stories', topic: 'love stories' },
+        { title: 'Passionate classics', topic: 'romance' },
+    ] },
+    { key: 'bigfirsts', title: 'Big Firsts', shelves: [
+        { title: 'Boyhood adventures', topic: 'boys' },
+        { title: 'Becoming a woman', topic: 'young women' },
+        { title: 'Orphans making their way', topic: 'orphans' },
+        { title: 'Growing up stories', topic: 'bildungsromans' },
+        { title: 'School days', topic: 'school stories' },
+    ] },
+    { key: 'uglycries', title: 'Ugly Cries', shelves: [
+        { title: "War's heartbreak", topic: 'war stories' },
+        { title: 'Loss and mourning', topic: 'death' },
+        { title: 'Doomed love', topic: 'unrequited love' },
+        { title: 'Hard lives', topic: 'poverty' },
+        { title: 'Orphans and hardship', topic: 'orphans' },
+    ] },
+    { key: 'newrealms', title: 'New Realms', shelves: [
+        { title: 'Far futures and space', topic: 'science fiction' },
+        { title: 'Magic and fantasy', topic: 'fantasy' },
+        { title: 'Epic voyages', topic: 'adventure stories' },
+        { title: 'Myths and legends', topic: 'mythology' },
+        { title: 'Lost worlds and utopias', topic: 'utopias' },
+        { title: 'Precursors of sci fi', topic: 'precursors of science fiction' },
+    ] },
+    { key: 'upallnight', title: 'Up All Night', shelves: [
+        { title: 'Detectives on the case', topic: 'detective' },
+        { title: 'Sherlock and friends', topic: 'holmes, sherlock' },
+        { title: 'Crime and the underworld', topic: 'crime' },
+        { title: 'Mysteries to solve', topic: 'mystery fiction' },
+        { title: 'High seas and danger', topic: 'sea stories' },
+    ] },
+    { key: 'mindbreakers', title: 'Mind Breakers', shelves: [
+        { title: 'Gothic dread', topic: 'gothic fiction' },
+        { title: 'Ghost stories', topic: 'ghost stories' },
+        { title: 'Horror tales', topic: 'horror' },
+        { title: 'Psychological unease', topic: 'psychological fiction' },
+        { title: 'Weird and supernatural', topic: 'supernatural' },
+        { title: 'Mind and meaning', topic: 'philosophy' },
+    ] },
+];
+
+function formatAuthor(name) {
+    if (!name) return 'Unknown';
+    const parts = name.split(',').map((s) => s.trim());
+    if (parts.length === 2 && parts[1]) return `${parts[1]} ${parts[0]}`.trim();
+    return name;
+}
+
+function pickTextUrl(formats) {
+    const preferred = ['text/plain; charset=utf-8', 'text/plain; charset=us-ascii', 'text/plain'];
+    for (const key of preferred) {
+        const url = formats[key];
+        if (url && !url.endsWith('.zip')) return url;
+    }
+    const fb = Object.keys(formats).find((k) => k.startsWith('text/plain') && !formats[k].endsWith('.zip'));
+    return fb ? formats[fb] : undefined;
+}
+
+function mapRaw(b) {
+    return {
+        id: String(b.id),
+        title: b.title,
+        author: formatAuthor(b.authors?.[0]?.name),
+        coverUrl: b.formats?.['image/jpeg'],
+        textUrl: pickTextUrl(b.formats ?? {}),
+        downloadCount: b.download_count ?? 0,
+    };
+}
+
+async function getJson(url, tries = 3) {
+    let lastErr;
+    for (let i = 0; i < tries; i++) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            return await res.json();
+        } catch (e) {
+            lastErr = e;
+            await sleep(800 * (i + 1));
+        }
+    }
+    throw lastErr;
+}
+
+/** Fetch readable books for a topic, most-downloaded first, across `pages`. */
+async function fetchTopic(topic, pages = 2) {
+    const out = [];
+    let url = `${API}?topic=${encodeURIComponent(topic)}&languages=en&sort=popular&mime_type=text%2Fplain`;
+    for (let p = 0; p < pages && url; p++) {
+        const data = await getJson(url);
+        for (const b of data.results) {
+            const m = mapRaw(b);
+            if (m.textUrl) out.push(m);
+        }
+        url = data.next;
+        await sleep(250);
+    }
+    return out;
+}
+
+async function main() {
+    const curated = JSON.parse(await readFile(CURATED_PATH, 'utf8'));
+    const curatedIds = new Set(curated.map((b) => b.id));
+
+    const result = [];
+    for (const vibe of VIBES) {
+        process.stdout.write(`\n${vibe.title}\n`);
+        const shelfBooks = [];
+        const allForVibe = new Map();
+        for (const shelf of vibe.shelves) {
+            const books = await fetchTopic(shelf.topic, 2);
+            for (const b of books) if (!allForVibe.has(b.id)) allForVibe.set(b.id, b);
+            shelfBooks.push({ title: shelf.title, books });
+            process.stdout.write(`  ${String(books.length).padStart(3)}  ${shelf.title} (topic: ${shelf.topic})\n`);
+        }
+
+        // Hero = the vibe's most-downloaded books NOT on the front page (curated),
+        // with a cover. These are the "deeper cuts".
+        const hero = [...allForVibe.values()]
+            .filter((b) => !curatedIds.has(b.id) && b.coverUrl)
+            .sort((a, b) => b.downloadCount - a.downloadCount)
+            .slice(0, HERO_SIZE);
+        const heroIds = new Set(hero.map((b) => b.id));
+
+        // Shelves: dedupe across shelves and against the hero, drop covers (the
+        // app draws generated covers for these), cap each shelf.
+        const usedInShelf = new Set(heroIds);
+        const shelves = shelfBooks.map(({ title, books }) => {
+            const picked = [];
+            for (const b of books) {
+                if (usedInShelf.has(b.id)) continue;
+                usedInShelf.add(b.id);
+                picked.push({ id: b.id, title: b.title, author: b.author, textUrl: b.textUrl, downloadCount: b.downloadCount });
+                if (picked.length >= PER_SHELF) break;
+            }
+            return { title, books: picked };
+        }).filter((s) => s.books.length > 0);
+
+        const total = hero.length + shelves.reduce((n, s) => n + s.books.length, 0);
+        process.stdout.write(`  => hero ${hero.length}, ${shelves.length} shelves, ${total} books total${total < MIN_PER_VIBE ? '  ⚠ under 100' : ''}\n`);
+
+        result.push({ key: vibe.key, title: vibe.title, hero, shelves });
+    }
+
+    await writeFile(OUT_PATH, JSON.stringify(result));
+    const grand = result.reduce((n, v) => n + v.hero.length + v.shelves.reduce((m, s) => m + s.books.length, 0), 0);
+    console.log(`\nWrote ${OUT_PATH}  (${result.length} vibes, ${grand} books)`);
+    console.log('Next: run mirror-covers.mjs to mirror the hero covers, then set VITE_COVER_BASE.');
+}
+
+main().catch((e) => { console.error(e); process.exit(1); });

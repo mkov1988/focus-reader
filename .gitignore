@@ -31,5 +31,9 @@ docs/assets/references/
 *.tgz
 /package/
 
+# Mirrored book covers — a build/staging output of `npm run mirror:covers`.
+# Uploaded to the static cover host (VITE_COVER_BASE), not shipped in the app.
+/covers/
+
 # Lint run artifact
 lint_output.txt

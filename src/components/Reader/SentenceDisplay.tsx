@@ -151,7 +151,7 @@ export function SentenceDisplay({
         <div
             ref={containerRef}
             className={`
-                w-full max-w-3xl mx-auto h-[50vh] overflow-hidden relative
+                w-full max-w-3xl mx-auto h-full overflow-hidden relative
                 p-8 text-center leading-normal no-scrollbar
                 ${className}
             `}

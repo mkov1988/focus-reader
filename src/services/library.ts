@@ -7,11 +7,65 @@
  * the live Gutendex API for misses. Book *content* is still streamed from
  * Project Gutenberg at read-time, via the Vite dev proxy (CORS workaround).
  */
-import type { BookMetadata, LibraryService } from './types';
+import type { BookMetadata, LibraryService, VibePage } from './types';
 import { gutendex } from './gutendex';
 import curatedJson from '../data/curated.json';
+import vibesJson from '../data/vibes.json';
 
-const CURATED: BookMetadata[] = curatedJson as BookMetadata[];
+/**
+ * Resolve a curated book's cover to our own static host when one is configured.
+ *
+ * Covers were originally hotlinked straight from gutenberg.org, which throttles
+ * and drops hotlink connections, so shelves intermittently painted blank. The
+ * durable fix is to mirror the curated covers once (`npm run mirror:covers`)
+ * to a static host and point the app there. Set `VITE_COVER_BASE` to the URL of
+ * the folder that directly holds the `<id>.webp` files (e.g. a jsDelivr or R2
+ * URL); the mirror keys each file by the book `id`, so the cover for book 84 is
+ * `${VITE_COVER_BASE}/84.webp`.
+ *
+ * Unset (plain local dev) keeps the original gutenberg URL. Either way, a cover
+ * that still fails degrades to a generated cover in BookCover, never a blank.
+ * Only the curated catalog is mirrored; live Gutendex search results keep their
+ * gutenberg URLs.
+ */
+function hostedCoverUrl(book: BookMetadata): string | undefined {
+    const base = import.meta.env.VITE_COVER_BASE?.replace(/\/+$/, '');
+    if (base && book.coverUrl) return `${base}/${book.id}.webp`;
+    return book.coverUrl;
+}
+
+const CURATED: BookMetadata[] = (curatedJson as BookMetadata[]).map((b) => ({
+    ...b,
+    coverUrl: hostedCoverUrl(b),
+}));
+
+/**
+ * Vibe-out pages, built offline into vibes.json (see scripts/build-vibes.mjs).
+ * Hero books ("deeper cuts") carry a cover URL we resolve to our mirror; shelf
+ * books carry none, so the app draws its generated cover for them.
+ */
+/** Drop duplicate editions (same title) within a vibe — Gutenberg often carries
+ *  several editions of a popular book, and showing "Pride and Prejudice" twice in
+ *  one shelf reads as broken. Hero entries win over shelf entries. */
+function dedupeVibe(v: VibePage): VibePage {
+    const seen = new Set<string>();
+    const fresh = (b: BookMetadata) => {
+        const key = b.title.trim().toLowerCase().replace(/\s+/g, ' ');
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    };
+    const hero = v.hero.filter(fresh);
+    const shelves = v.shelves
+        .map((s) => ({ ...s, books: s.books.filter(fresh) }))
+        .filter((s) => s.books.length > 0);
+    return { ...v, hero, shelves };
+}
+
+const VIBES: VibePage[] = (vibesJson as VibePage[]).map((v) =>
+    dedupeVibe({ ...v, hero: v.hero.map((b) => ({ ...b, coverUrl: hostedCoverUrl(b) })) }),
+);
+const VIBE_BY_KEY = new Map(VIBES.map((v) => [v.key, v]));
 
 /** Rewrite a Gutenberg origin to the dev proxy path to dodge browser CORS. */
 function toProxyUrl(url: string): string {
@@ -75,6 +129,10 @@ export const webLibraryService: LibraryService = {
     },
 
     getByTopic: (t) => gutendex.topic(t),
+
+    async getVibePage(key) {
+        return VIBE_BY_KEY.get(key) ?? null;
+    },
 
     async fetchContent(book: BookMetadata): Promise<string> {
         if (!book.textUrl) {

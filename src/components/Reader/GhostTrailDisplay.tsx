@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef, useState, useMemo } from 'react';
-import { splitWord, type TextToken } from '../../utils/textProcessing';
+import { splitWord, effectiveBaseFontSize, type TextToken } from '../../utils/textProcessing';
+import { useFitFontSize } from '../../hooks/useFitFontSize';
+import { useStore } from '../../store/useStore';
 
 interface GhostTrailDisplayProps {
     tokens: TextToken[];
@@ -24,6 +26,7 @@ export function GhostTrailDisplay({
     fontSize = 48,
     className = '',
 }: GhostTrailDisplayProps) {
+    const rootRef = useRef<HTMLDivElement>(null);
     const focalRef = useRef<HTMLSpanElement>(null);
     const beforeRef = useRef<HTMLSpanElement>(null);
     const afterRef = useRef<HTMLSpanElement>(null);
@@ -32,14 +35,19 @@ export function GhostTrailDisplay({
     const [beforeWidth, setBeforeWidth] = useState(0);
     const [afterWidth, setAfterWidth] = useState(0);
 
+    const fitMode = useStore((s) => s.fitMode);
     const currentWord = tokens[currentIndex]?.word || '';
-    const { before, focal, after } = splitWord(currentWord);
+    const { before, focal, after } = splitWord(currentWord, fitMode);
+
+    // 'compact' reads at one slightly smaller base; every mode then shrinks a word
+    // that would still overflow so nothing clips. Focal stays centred.
+    const renderFontSize = useFitFontSize(currentWord, effectiveBaseFontSize(fontSize, fitMode), rootRef, focalRef, fitMode);
 
     useLayoutEffect(() => {
         if (focalRef.current) setFocalWidth(focalRef.current.getBoundingClientRect().width);
         if (beforeRef.current) setBeforeWidth(beforeRef.current.getBoundingClientRect().width);
         if (afterRef.current) setAfterWidth(afterRef.current.getBoundingClientRect().width);
-    }, [before, focal, after, fontSize]);
+    }, [before, focal, after, renderFontSize]);
 
     const halfFocal = focalWidth / 2;
     const barColor = 'rgb(var(--text) / 0.14)';
@@ -66,7 +74,9 @@ export function GhostTrailDisplay({
         return { leftGhosts: left, rightGhosts: right };
     }, [tokens, currentIndex]);
 
-    const ghostFontSize = fontSize * 0.82;
+    // Ghosts track the current word's size so the trail stays in proportion when
+    // a long focal word shrinks (the focused word always reads larger than them).
+    const ghostFontSize = renderFontSize * 0.82;
     const ghostColor = 'rgb(var(--text-muted))';
 
     if (!currentWord) {
@@ -85,8 +95,9 @@ export function GhostTrailDisplay({
 
     return (
         <div
+            ref={rootRef}
             className={`relative w-full overflow-hidden ${className}`}
-            style={{ height: `${fontSize * 4}px`, fontSize: `${fontSize}px` }}
+            style={{ height: `${fontSize * 4}px`, fontSize: `${renderFontSize}px` }}
         >
             <GuideFrame barColor={barColor} lineColor={lineColor} />
 

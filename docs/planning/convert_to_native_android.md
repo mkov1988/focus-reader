@@ -132,3 +132,13 @@ Four critical web paradigms exist in our codebase that physically cannot transpa
 4. **App Lifecycle Management (`AppState`)**:
    - **Critical Bug Prevention**: On the web, users "pause" by switching tabs, and the browser gracefully throttles `rAF`. On Android, if the user receives a phone call or locks the screen, the OS suspends the app. 
    - **Android Conversion**: You must hook into React Native's `AppState` listener. Specifically, when `appState.match(/inactive|background/)` triggers, you must force the `rsvp.pause()` method so the book doesn't silently keep reading itself while the phone is locked.
+
+## 9. Asset Strategy: Cover Images
+
+The web prototype originally hotlinked book covers from gutenberg.org at paint time, which throttles and drops connections and left shelves blank. The web app now mirrors curated covers to a static host (see `docs/planning/book_access_strategy.md` §5) and points at it via `VITE_COVER_BASE`, with a generated cover fallback in `BookCover` for any miss.
+
+For the native port, keep that model and lean on the platform:
+- **Point at the static cover host**, a CDN URL, not gutenberg. The same `<id>.webp` files the web app uses.
+- **Use a caching image component.** React Native `<Image>` already caches to disk; `expo-image` or `react-native-fast-image` give finer control. Each cover is then fetched once and afterwards served from the device cache, offline and instant.
+- **Cache a book's cover alongside its downloaded content**, so books in "My Library" always render their covers with no network.
+- **Keep the generated cover as the fallback** for any cover not cached yet, mirroring the web `BookCover` behavior.

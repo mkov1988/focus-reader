@@ -52,7 +52,7 @@ export function ReaderView({
             </div>
 
             {/* Reading Area - Height Constrained for Layout Stability */}
-            <div className="w-full flex-1 flex flex-col items-center justify-center relative min-h-0">
+            <div className="w-full flex-1 flex flex-col items-center justify-center relative min-h-0 overflow-hidden">
 
                 {/* RSVP Mode */}
                 {visMode === 'rsvp' && (
@@ -94,18 +94,20 @@ export function ReaderView({
 
                 {/* Hybrid Mode: RSVP + Faded Paragraph */}
                 {visMode === 'hybrid' && (
-                    <div className="flex flex-col items-center gap-8 w-full">
-                        <RSVPDisplay
-                            word={rsvp.currentToken?.word || ''}
-                            fontSize={fontSize}
-                        />
-                        <div className="opacity-40 hover:opacity-100 transition-opacity">
+                    <div className="flex flex-col items-center w-full h-full pb-2">
+                        <div className="flex-1 flex items-center justify-center min-h-0 w-full">
+                            <RSVPDisplay
+                                word={rsvp.currentToken?.word || ''}
+                                fontSize={fontSize}
+                            />
+                        </div>
+                        <div className="w-full shrink-0 h-[45%] min-h-0 opacity-40 hover:opacity-100 transition-opacity">
                             <ParagraphDisplay
                                 paragraphTokens={currentParagraph}
                                 currentIndex={rsvp.currentIndex}
                                 fontSize={fontSize * 0.5} // Smaller context
                                 onWordClick={rsvp.seek}
-                                className="h-[25vh]" // Shorter height for context
+                                className="h-full"
                             />
                         </div>
                     </div>

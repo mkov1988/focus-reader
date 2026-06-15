@@ -6,13 +6,13 @@ import { InnerPageHeader } from '../InnerPageHeader';
 import { usePress } from '../../hooks/usePress';
 import { useStore, type TabKey, type ReadingProgress } from '../../store/useStore';
 import { webLibraryService as library } from '../../services/library';
-import type { BookMetadata } from '../../services/types';
+import type { BookMetadata, VibePage } from '../../services/types';
 import { THEMES } from '../../theme';
 import { startPressGesture } from '../../utils/pressGesture';
 import { haptics } from '../../utils/haptics';
 import {
     Coffee, Search, BookOpen, Library, Bookmark, Notebook,
-    ChevronRight, ArrowRight, Moon, Clock, Leaf, Feather, Loader2, X,
+    ChevronRight, ArrowRight, Moon, Clock, Loader2, X,
     Menu, Settings, Info, BarChart3, Check, Sun,
 } from 'lucide-react';
 
@@ -26,12 +26,19 @@ const FALLBACK_BOOKS: (BookMetadata & { variant?: CoverVariant; tint?: string })
     { id: 'f-alice', title: "Alice's Adventures in Wonderland", author: 'Lewis Carroll', variant: 'solid', tint: 'bg-sage' },
 ];
 
-const DOORS = [
-    { icon: Moon, title: 'Bedtime Read', sub: 'soft endings, no cliffhangers', topic: 'fairy tales' },
-    { icon: Coffee, title: 'Sunday Morning', sub: 'savor with a second cup', topic: 'poetry' },
-    { icon: Clock, title: 'Under 30 Minutes', sub: 'a story between trains', topic: 'short stories' },
-    { icon: Leaf, title: 'Garden & Hearth', sub: 'pastorals & quiet rooms', topic: 'nature' },
-    { icon: Feather, title: 'Essays by Lamplight', sub: 'slow thinking, slow weather', topic: 'essays' },
+// "Vibe out" — pick a feeling, not a genre. The BookTok-style genres these
+// vibes evoke (contemporary/sports romance, YA, techno-thrillers) don't exist
+// in the pre-1928 public-domain catalog, so each `key` maps to a hand-curated
+// shelf of the closest classics (see VIBE_SHELVES in services/library.ts).
+// These drill down into the bundled catalog: instant, offline, no live query.
+const VIBES = [
+    { emoji: '☕', title: 'Cozy Corners', sub: 'a warm hug in book form', key: 'cozy', desc: 'A warm hug in book form. Found families, gentle banter, and a safe world where everything turns out okay.' },
+    { emoji: '🦋', title: 'Tangled Sheets', sub: 'butterflies and slow tension', key: 'tangled', desc: 'Butterflies and high stakes. Romantic tension you feel in your chest, two people you cannot help rooting for.' },
+    { emoji: '❤️‍🔥', title: 'Big Firsts', sub: 'figuring it out, against the odds', key: 'bigfirsts', desc: 'Big emotions and bigger firsts. Growing up and figuring out who you are, against the odds.' },
+    { emoji: '😭', title: 'Ugly Cries', sub: 'a beautiful, cathartic heartbreak', key: 'uglycries', desc: 'Emotionally destroyed, in the best way. Cathartic heartbreak that leaves an ache long after the last page.' },
+    { emoji: '🌌', title: 'New Realms', sub: 'escape into another universe', key: 'newrealms', desc: 'Leave the real world behind. New universes, new rules, magic and epic scale.' },
+    { emoji: '😰', title: 'Up All Night', sub: 'too tense to put down', key: 'upallnight', desc: 'Heart rate up, lights still on. Tension so high you have to know what happens next.' },
+    { emoji: '👁️', title: 'Mind Breakers', sub: 'creeped out, reality bent', key: 'mindbreakers', desc: 'Creeped out and quietly unnerved. Reality bent, with an eerie feeling that lingers after the last page.' },
 ];
 
 // Staff-picks shelf scrolls horizontally, so its cards need a longer touch
@@ -60,8 +67,8 @@ const CoverSkeleton = () => (
     </div>
 );
 
-// A "small door" row. Press-down nudges the icon + chevron; release runs onClick.
-function Door({ icon: Icon, title, sub, onClick }: { icon: LucideIcon; title: string; sub: string; onClick: () => void }) {
+// One "Vibe out" row. Press-down nudges the emoji + chevron; release runs onClick.
+function Vibe({ emoji, title, sub, onClick }: { emoji: string; title: string; sub: string; onClick: () => void }) {
     const { pressed, pressProps } = usePress();
     return (
         <button
@@ -70,8 +77,8 @@ function Door({ icon: Icon, title, sub, onClick }: { icon: LucideIcon; title: st
             {...pressProps}
             className={`w-full min-h-[64px] flex items-center gap-3.5 rounded-2xl px-4 py-3 ring-1 text-left select-none bg-cream/70 transition-[transform,box-shadow,border-color] duration-150 ${pressed ? 'ring-coral-accent/40 scale-[0.99] shadow-[inset_0_1px_4px_rgba(58,42,30,0.08)]' : 'ring-espresso/10'}`}
         >
-            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/10 flex items-center justify-center text-coral-accent shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
-                <Icon size={18} />
+            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/10 flex items-center justify-center text-[20px] leading-none shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
+                <span aria-hidden="true">{emoji}</span>
             </span>
             <span className="flex-1 min-w-0">
                 <span className="block font-serif text-[16px] font-medium text-espresso leading-tight">{title}</span>
@@ -130,6 +137,32 @@ function RecentRow({ r, onOpen }: { r: ReadingProgress; onOpen: (book: BookMetad
     );
 }
 
+// A catalog book as a Recents-style list row, used for the vibe subcategory
+// shelves. Tap opens the book instantly, lifting from this row's cover. No
+// progress bar (these are unstarted), and covers are the app's generated covers
+// (shelf books carry no cover URL) so the rows stay light and never hotlink.
+function BookRow({ book, onOpen }: { book: BookMetadata; onOpen: (book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => void }) {
+    const coverRef = useRef<HTMLDivElement>(null);
+    return (
+        <button
+            type="button"
+            onClick={() => onOpen(book, coverRef.current?.getBoundingClientRect() ?? null)}
+            aria-label={`Open ${book.title} by ${book.author}`}
+            className="w-full flex items-center gap-3.5 rounded-2xl px-3.5 py-2.5 ring-1 ring-espresso/10 bg-cream/70 text-left select-none active:scale-[0.99] active:ring-coral-accent/40 transition-[transform,border-color] duration-150"
+            style={{ touchAction: 'manipulation' }}
+        >
+            <div ref={coverRef} className="shrink-0 w-11">
+                <BookCover title={book.title} author={book.author} coverUrl={book.coverUrl} variant="framed" size="sm" />
+            </div>
+            <div className="flex-1 min-w-0">
+                <h3 className="font-serif text-[15px] font-medium text-espresso leading-snug line-clamp-1">{book.title}</h3>
+                <p className="text-[11px] text-mocha italic line-clamp-1 mt-0.5">{book.author}</p>
+            </div>
+            <ChevronRight size={18} className="text-espresso/25 shrink-0" />
+        </button>
+    );
+}
+
 interface StoreFrontProps {
     /**
      * Fire-and-forget: kick the App-level "open this book" flow on touch-down.
@@ -161,6 +194,8 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     const setActiveTab = useStore((s) => s.setActiveTab);
     const progressById = useStore((s) => s.progressById);
     const stats = useStore((s) => s.stats);
+    const fitMode = useStore((s) => s.fitMode);
+    const setFitMode = useStore((s) => s.setFitMode);
     // Note: applying the accent + mode to the document root happens in the App
     // shell (always mounted), so the reader stays themed too.
 
@@ -273,9 +308,22 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         window.addEventListener('pointercancel', onCancel);
     };
 
-    const [mode, setMode] = useState<'home' | 'results'>('home');
+    const [mode, setMode] = useState<'home' | 'results' | 'vibe'>('home');
+    // The open "Vibe out" page (hero + subcategory shelves) and its label/emoji.
+    const [vibe, setVibe] = useState<VibePage | null>(null);
+    const [vibeMeta, setVibeMeta] = useState<{ title: string; emoji: string; desc: string } | null>(null);
+
+    // Descending into an inner page (a vibe, search results, or a non-Today tab)
+    // should open it at its own top, not inherit the page's current scroll offset.
+    // Reset scroll on every page change so position is never carried across.
+    useLayoutEffect(() => {
+        window.scrollTo(0, 0);
+    }, [mode, activeTab]);
     const [results, setResults] = useState<BookMetadata[]>([]);
     const [resultsLabel, setResultsLabel] = useState('');
+    // Optional title intro for a results page. Set for "Vibe out" drill-downs so
+    // each shows its own emoji + blurb above the grid; null for plain search.
+    const [resultsIntro, setResultsIntro] = useState<{ emoji?: string; desc: string } | null>(null);
     const [searching, setSearching] = useState(false);
 
     const [error, setError] = useState<string | null>(null);
@@ -403,9 +451,14 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         };
     }, []);
 
-    const runQuery = useCallback(async (label: string, fn: () => Promise<BookMetadata[]>) => {
+    const runQuery = useCallback(async (
+        label: string,
+        fn: () => Promise<BookMetadata[]>,
+        intro: { emoji?: string; desc: string } | null = null,
+    ) => {
         setMode('results');
         setResultsLabel(label);
+        setResultsIntro(intro);
         setSearching(true);
         setResults([]);
         setError(null);
@@ -415,6 +468,21 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
             setError('Search failed. Please check your connection and try again.');
         } finally {
             setSearching(false);
+        }
+    }, []);
+
+    /** Open a full vibe page (deeper-cuts hero + subcategory shelves). Loads the
+     *  bundled vibe data, so it is instant and works offline. */
+    const openVibe = useCallback(async (v: { key: string; title: string; emoji: string; desc: string }) => {
+        haptics.tick();
+        setMode('vibe');
+        setVibe(null);
+        setVibeMeta({ title: v.title, emoji: v.emoji, desc: v.desc });
+        setError(null);
+        try {
+            setVibe(await library.getVibePage(v.key));
+        } catch {
+            setError('Could not open that shelf. Please try again.');
         }
     }, []);
 
@@ -428,6 +496,9 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         setMode('home');
         setQuery('');
         setResults([]);
+        setResultsIntro(null);
+        setVibe(null);
+        setVibeMeta(null);
     };
 
     /** Jump to the dedicated Recents list (Library tab). Clears any active
@@ -453,8 +524,10 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     // Today home page, which keeps the [search][menu] bar and never gets a back
     // control or title. (See feedback-navigation-model.)
     const innerHeader: { title: string; eyebrow?: string; backLabel: string; onBack: () => void } | null =
-        mode === 'results'
-            ? { title: resultsLabel, eyebrow: 'Reading room results', backLabel: 'Back', onBack: () => { haptics.tick(); clearResults(); } }
+        mode === 'vibe'
+            ? { title: vibeMeta?.title ?? 'Vibe', eyebrow: 'Vibe out', backLabel: 'Back', onBack: () => { haptics.tick(); clearResults(); } }
+            : mode === 'results'
+            ? { title: resultsLabel, eyebrow: resultsIntro ? 'Vibe out' : 'Reading room results', backLabel: 'Back', onBack: () => { haptics.tick(); clearResults(); } }
             : activeTab === 'library'
             ? { title: 'Library', backLabel: 'Back to home', onBack: goHome }
             : activeTab === 'shelves'
@@ -556,10 +629,73 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                     </div>
                 )}
 
-                {mode === 'results' ? (
+                {mode === 'vibe' ? (
+                    /* ── Vibe page: a deeper-cuts hero that slides like Staff
+                       picks, then nuanced subcategory shelves as Recents-style
+                       rows. All one page — no drill-down into a subcategory. ── */
+                    <section className="mb-7">
+                        {vibeMeta && (
+                            <p className="text-[13px] text-mocha italic mb-6 leading-relaxed">{vibeMeta.desc}</p>
+                        )}
+                        {vibe === null ? (
+                            <div className="flex gap-5 overflow-hidden -mx-5 px-5">
+                                {Array.from({ length: 3 }).map((_, i) => (
+                                    <div key={i} className="flex-shrink-0 w-44"><CoverSkeleton /></div>
+                                ))}
+                            </div>
+                        ) : (
+                            <>
+                                {vibe.hero.length > 0 && (
+                                    <>
+                                        <Eyebrow>&middot; Beyond the usual shelf &middot;</Eyebrow>
+                                        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5 mt-3" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                            {vibe.hero.map((book) => {
+                                                const slotId = `vibe:${book.id}`;
+                                                return (
+                                                    <div key={book.id} className="snap-start flex-shrink-0">
+                                                        <BookCard
+                                                            title={book.title}
+                                                            author={book.author}
+                                                            coverUrl={book.coverUrl}
+                                                            widthClass="w-44"
+                                                            holdMs={SHELF_HOLD_MS}
+                                                            scrollsHorizontally
+                                                            hidden={openingSlotId === slotId}
+                                                            onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
+                                                            onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
+                                                        />
+                                                    </div>
+                                                );
+                                            })}
+                                            <div className="w-1 shrink-0" />
+                                        </div>
+                                    </>
+                                )}
+                                {vibe.shelves.map((shelf) => (
+                                    <div key={shelf.title} className="mt-9">
+                                        <h3 className="font-serif text-[18px] font-semibold text-espresso tracking-tight mb-3">{shelf.title}</h3>
+                                        <div className="flex flex-col gap-2">
+                                            {shelf.books.map((book) => (
+                                                <BookRow key={book.id} book={book} onOpen={onOpenBookInstant} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </>
+                        )}
+                    </section>
+                ) : mode === 'results' ? (
                     /* ── Search / topic results: an inner page. Back returns to
                        wherever the search was launched from (home or Recents). ── */
                     <section className="mb-7">
+                        {resultsIntro && (
+                            <div className="mb-6">
+                                <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-tight">
+                                    {resultsIntro.emoji && <span aria-hidden="true" className="mr-2">{resultsIntro.emoji}</span>}{resultsLabel}
+                                </h2>
+                                <p className="text-[13px] text-mocha italic mt-2 leading-relaxed">{resultsIntro.desc}</p>
+                            </div>
+                        )}
                         {searching ? (
                             <div className="grid grid-cols-2 gap-y-6 justify-items-center">
                                 {Array.from({ length: 6 }).map((_, i) => <CoverSkeleton key={i} />)}
@@ -765,18 +901,18 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                             </div>
                         </section>
 
-                        {/* Mood doors — 44px+ touch targets, consistent iconography */}
+                        {/* "Vibe out" — pick a feeling, not a genre. 44px+ touch targets. */}
                         <section className="mt-14">
                             <div className="flex items-start justify-between mb-4">
                                 <div>
-                                    <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">A few small doors</h2>
-                                    <p className="text-[12px] text-mocha italic mt-1">Curated collections for specific moods.</p>
+                                    <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-none">Vibe out</h2>
+                                    <p className="text-[12px] text-mocha italic mt-1">Pick a feeling, not a genre.</p>
                                 </div>
                                 <Coffee size={18} className="text-mocha/50 mt-1" />
                             </div>
                             <div className="flex flex-col gap-2.5">
-                                {DOORS.map((d) => (
-                                    <Door key={d.title} icon={d.icon} title={d.title} sub={d.sub} onClick={() => runQuery(d.title, () => library.getByTopic(d.topic))} />
+                                {VIBES.map((v) => (
+                                    <Vibe key={v.title} emoji={v.emoji} title={v.title} sub={v.sub} onClick={() => openVibe(v)} />
                                 ))}
                             </div>
                         </section>
@@ -968,6 +1104,35 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                             </span>
                                             <span className="flex-1 text-left font-serif text-[15px] text-espresso">{t.label}</span>
                                             {selected && <Check size={16} className="text-coral-accent shrink-0" />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Reading: how the focal letter is placed and how
+                                words too wide for the screen are handled. */}
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mt-7 mb-3">Reading</p>
+                            <div className="flex flex-col gap-1.5">
+                                {([
+                                    { key: 'centerAll', label: 'Classic', desc: 'Every word colours a middle letter so it fits.' },
+                                    { key: 'centerBig', label: 'Center long words', desc: 'Long words colour a middle letter so they fit.' },
+                                    { key: 'shrink', label: 'Shrink long words', desc: 'Long words shrink a little so they fit.' },
+                                    { key: 'compact', label: 'Compact', desc: 'Everything a touch smaller, so nothing clips.' },
+                                ] as const).map(({ key, label, desc }) => {
+                                    const selected = fitMode === key;
+                                    return (
+                                        <button
+                                            key={key}
+                                            type="button"
+                                            onClick={() => { if (fitMode !== key) { setFitMode(key); haptics.tick(); } }}
+                                            aria-pressed={selected}
+                                            className={`flex items-start gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 text-left ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
+                                        >
+                                            <span className="flex-1">
+                                                <span className="block font-serif text-[15px] text-espresso">{label}</span>
+                                                <span className="block text-[12px] text-mocha/80 leading-snug mt-0.5">{desc}</span>
+                                            </span>
+                                            {selected && <Check size={16} className="text-coral-accent shrink-0 mt-1" />}
                                         </button>
                                     );
                                 })}

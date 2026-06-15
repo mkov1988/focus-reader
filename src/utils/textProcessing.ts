@@ -6,13 +6,33 @@
  */
 import { detectChapters, type Chapter, type ChapterConfidence } from './chapterDetection';
 
-/**
- * Determines the optimal focal point index for a word.
- * Research suggests the optimal fixation point is around 25-35% into the word.
- * This creates the "Optimal Recognition Point" (ORP) for faster reading.
- */
 // --- Configuration Constants ---
-const ORP_PERCENTAGE = 0.3; // Optimal Recognition Point percentage
+
+/**
+ * How the reader places the coloured letter and handles words too wide for the
+ * screen. User-selectable in the menu (persisted as `fitMode`). Nothing ever
+ * clips in any mode — a per-word shrink is the backstop everywhere.
+ *  - 'centerAll' : every word colours a middle letter so it balances and fits.
+ *                  Shown as "Classic"; the default.
+ *  - 'centerBig' : long words colour a middle letter; normal words stay a third
+ *                  in. Shown as "Center long words".
+ *  - 'shrink'    : colour a third in; shrink each long word that would overflow,
+ *                  so long words read smaller than short ones. "Shrink long words".
+ *  - 'compact'   : colour a third in, but render every word at one slightly
+ *                  smaller size so nothing clips. Shown as "Compact".
+ */
+export type FitMode = 'centerAll' | 'centerBig' | 'shrink' | 'compact';
+
+// Colour position inside a word, as a fraction of its length.
+const ORP_FRACTION = 0.3;       // "a third in" — near where the eye naturally lands
+const MIDDLE_FRACTION = 0.5;    // the middle — balances the word around the centre
+const BIG_WORD_MIN_LENGTH = 11; // a word this long or longer counts as "big"
+
+// 'compact' renders every word at this fraction of the base size — one uniform,
+// slightly smaller size so even long words fit at the third-in placement without
+// clipping. Tunable: lower fits longer words but reads smaller. The per-word
+// shrink backstop still catches the rare word too long even at this size.
+export const COMPACT_SCALE = 0.8;
 
 // Delays
 const DELAY_PARAGRAPH = 5.0;
@@ -27,19 +47,41 @@ const REGEX_MINOR_PUNCTUATION = /[,]$/;
 const REGEX_SENTENCE_END = /[.!?]$/;
 const REGEX_SUB_CLAUSE = /[;:]$/;
 
-/**
- * Determines the optimal focal point index for a word.
- * Research suggests the optimal fixation point is around 25-35% into the word.
- * This creates the "Optimal Recognition Point" (ORP) for faster reading.
- */
-export function getFocalIndex(word: string): number {
-    const len = word.length;
+// "A third in" — the original placement (fixed steps for short words so the
+// colour never sits on the very first or last letter).
+function orpFocalIndex(len: number): number {
     if (len <= 1) return 0;
-    if (len <= 3) return 1;
     if (len <= 5) return 1;
     if (len <= 9) return 2;
     if (len <= 13) return 3;
-    return Math.floor(len * ORP_PERCENTAGE);
+    return Math.floor(len * ORP_FRACTION);
+}
+
+// The middle of the word, so it balances around the coloured letter.
+function middleFocalIndex(len: number): number {
+    return len <= 1 ? 0 : Math.floor(len * MIDDLE_FRACTION);
+}
+
+/**
+ * Index of the letter to colour (the focal letter) within a word, for the given
+ * fit mode. The coloured letter is always centred on screen; this only decides
+ * which letter it is. See {@link FitMode}.
+ */
+export function getFocalIndex(word: string, mode: FitMode = 'centerAll'): number {
+    const len = word.length;
+    if (len <= 1) return 0;
+    if (mode === 'centerAll') return middleFocalIndex(len);
+    if (mode === 'centerBig' && len >= BIG_WORD_MIN_LENGTH) return middleFocalIndex(len);
+    return orpFocalIndex(len); // 'shrink', 'compact', and normal words in 'centerBig'
+}
+
+/**
+ * Base font size to render at for a mode, before the per-word shrink backstop.
+ * Only 'compact' changes it (one uniform, slightly smaller size); every other
+ * mode reads at the full base size.
+ */
+export function effectiveBaseFontSize(fontSize: number, mode: FitMode): number {
+    return mode === 'compact' ? fontSize * COMPACT_SCALE : fontSize;
 }
 
 /**
@@ -51,11 +93,11 @@ export interface WordParts {
     after: string;
 }
 
-export function splitWord(word: string): WordParts {
+export function splitWord(word: string, mode: FitMode = 'centerAll'): WordParts {
     const cleanWord = word.trim();
     if (!cleanWord) return { before: '', focal: '', after: '' };
 
-    const focalIdx = getFocalIndex(cleanWord);
+    const focalIdx = getFocalIndex(cleanWord, mode);
     return {
         before: cleanWord.slice(0, focalIdx),
         focal: cleanWord[focalIdx] || '',
