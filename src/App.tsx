@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Bookmark } from 'lucide-react';
 import { ReaderView } from './components/Reader/ReaderView';
 import { InnerPageHeader } from './components/InnerPageHeader';
 import { type VisualizationMode } from './components/Reader/VisualizationSelector';
@@ -340,37 +340,34 @@ function App() {
                 </div>
             )}
 
-            {import.meta.env.DEV && <GestureHud />}
+            {/* ═══ CONFIRMATION TOAST (e.g. "Saved for later") ═══ */}
+            <Toast />
         </div>
     );
 }
 
-/** Dev-only on-screen readout of the last few gesture-trace events (emitted by
- *  startPressGesture). Lets a real press-drag on a phone be diagnosed without a
- *  console attached. Remove once the touch gesture is dialed in. */
-function GestureHud() {
-    const [lines, setLines] = useState<string[]>([]);
-    useEffect(() => {
-        const onTrace = (e: Event) => {
-            const msg = (e as CustomEvent<string>).detail;
-            const stamp = new Date().toISOString().slice(17, 23); // ss.mmm
-            setLines((prev) => [...prev.slice(-6), `${stamp}  ${msg}`]);
-        };
-        window.addEventListener('gesturetrace', onTrace);
-        return () => window.removeEventListener('gesturetrace', onTrace);
-    }, []);
-    if (lines.length === 0) return null;
+/** Transient confirmation bubble driven by the store's `toast`. Each new toast
+ *  carries a fresh id; keying the node on it remounts a fresh one-shot CSS
+ *  animation (slide up + fade in, hold, fade out) — no timers or effect state.
+ *  The bubble is non-interactive, so it stays `pointer-events-none` throughout
+ *  and never blocks taps beneath it. Used to confirm a save-for-later. */
+function Toast() {
+    const toast = useStore((s) => s.toast);
+    if (!toast) return null;
     return (
         <div
-            style={{
-                position: 'fixed', left: 6, bottom: 6, zIndex: 99999,
-                font: '11px/1.45 ui-monospace, monospace', whiteSpace: 'pre',
-                background: 'rgba(20,12,6,0.85)', color: '#7CFC9B',
-                padding: '6px 9px', borderRadius: 7, pointerEvents: 'none',
-                maxWidth: '80vw', boxShadow: '0 2px 10px rgba(0,0,0,0.4)',
-            }}
+            key={toast.id}
+            role="status"
+            aria-live="polite"
+            className="pointer-events-none fixed left-1/2 z-[95] animate-toast"
+            style={{ bottom: 'max(1.75rem, calc(env(safe-area-inset-bottom) + 1rem))' }}
         >
-            {lines.map((l, i) => <div key={i}>{l}</div>)}
+            <div className="flex items-center gap-2.5 rounded-full bg-cream pl-2.5 pr-4 py-2 ring-1 ring-espresso/10 shadow-[0_8px_24px_rgba(58,42,30,0.20)]">
+                <span className="flex items-center justify-center w-7 h-7 rounded-full bg-coral-accent text-[rgb(var(--coral-accent-text))]">
+                    <Bookmark size={14} fill="currentColor" />
+                </span>
+                <span className="text-[13px] font-semibold text-espresso whitespace-nowrap">{toast.message}</span>
+            </div>
         </div>
     );
 }

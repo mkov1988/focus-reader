@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import type { ComponentType } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import { BookCard } from './BookCard';
 import { BookCover, type CoverVariant } from './BookCover';
+import { SaveButton } from './SaveButton';
 import { InnerPageHeader } from '../InnerPageHeader';
 import { usePress } from '../../hooks/usePress';
 import { useStore, type TabKey, type ReadingProgress } from '../../store/useStore';
@@ -11,10 +13,16 @@ import { THEMES } from '../../theme';
 import { startPressGesture } from '../../utils/pressGesture';
 import { haptics } from '../../utils/haptics';
 import {
-    Coffee, Search, BookOpen, Library, Bookmark, Notebook,
+    Coffee, Search, BookOpen, Library, Notebook,
     ChevronRight, ArrowRight, Moon, Clock, Loader2, X,
     Menu, Settings, Info, BarChart3, Check, Sun,
+    Heart, Flame, Rocket, Eye,
 } from 'lucide-react';
+
+// Vibe icons can be a Lucide icon OR a small custom SVG component (e.g. the
+// "Ugly Cries" squiggly face), so they share this looser type rather than
+// LucideIcon. Both accept `size`/`className` and inherit `currentColor`.
+type VibeIcon = ComponentType<{ size?: number | string; className?: string }>;
 
 // Shown only if Gutendex can't be reached, so the shelf is never empty.
 const FALLBACK_BOOKS: (BookMetadata & { variant?: CoverVariant; tint?: string })[] = [
@@ -30,15 +38,34 @@ const FALLBACK_BOOKS: (BookMetadata & { variant?: CoverVariant; tint?: string })
 // vibes evoke (contemporary/sports romance, YA, techno-thrillers) don't exist
 // in the pre-1928 public-domain catalog, so each `key` maps to a hand-curated
 // shelf of the closest classics (see VIBE_SHELVES in services/library.ts).
-// These drill down into the bundled catalog: instant, offline, no live query.
+const SquigglyFaceIcon = ({ size = 24, className = "" }: { size?: number | string, className?: string }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+    >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M7 9l2 2-2 2" />
+        <path d="M17 9l-2 2 2 2" />
+        <path d="M8 15c1-1.5 2.5-1.5 4 0s3 1.5 4 0" />
+    </svg>
+);
+
 const VIBES = [
-    { emoji: '☕', title: 'Cozy Corners', sub: 'a warm hug in book form', key: 'cozy', desc: 'A warm hug in book form. Found families, gentle banter, and a safe world where everything turns out okay.' },
-    { emoji: '🦋', title: 'Tangled Sheets', sub: 'butterflies and slow tension', key: 'tangled', desc: 'Butterflies and high stakes. Romantic tension you feel in your chest, two people you cannot help rooting for.' },
-    { emoji: '❤️‍🔥', title: 'Big Firsts', sub: 'figuring it out, against the odds', key: 'bigfirsts', desc: 'Big emotions and bigger firsts. Growing up and figuring out who you are, against the odds.' },
-    { emoji: '😭', title: 'Ugly Cries', sub: 'a beautiful, cathartic heartbreak', key: 'uglycries', desc: 'Emotionally destroyed, in the best way. Cathartic heartbreak that leaves an ache long after the last page.' },
-    { emoji: '🌌', title: 'New Realms', sub: 'escape into another universe', key: 'newrealms', desc: 'Leave the real world behind. New universes, new rules, magic and epic scale.' },
-    { emoji: '😰', title: 'Up All Night', sub: 'too tense to put down', key: 'upallnight', desc: 'Heart rate up, lights still on. Tension so high you have to know what happens next.' },
-    { emoji: '👁️', title: 'Mind Breakers', sub: 'creeped out, reality bent', key: 'mindbreakers', desc: 'Creeped out and quietly unnerved. Reality bent, with an eerie feeling that lingers after the last page.' },
+    { icon: Coffee, title: 'Cozy Corners', sub: 'a warm hug in book form', key: 'cozy', desc: 'A warm hug in book form. Found families, gentle banter, and a safe world where everything turns out okay.' },
+    { icon: Heart, title: 'Tangled Sheets', sub: 'butterflies and slow tension', key: 'tangled', desc: 'Butterflies and high stakes. Romantic tension you feel in your chest, two people you cannot help rooting for.' },
+    { icon: Flame, title: 'Big Firsts', sub: 'figuring it out, against the odds', key: 'bigfirsts', desc: 'Big emotions and bigger firsts. Growing up and figuring out who you are, against the odds.' },
+    { icon: SquigglyFaceIcon, title: 'Ugly Cries', sub: 'a beautiful, cathartic heartbreak', key: 'uglycries', desc: 'Emotionally destroyed, in the best way. Cathartic heartbreak that leaves an ache long after the last page.' },
+    { icon: Rocket, title: 'New Realms', sub: 'escape into another universe', key: 'newrealms', desc: 'Leave the real world behind. New universes, new rules, magic and epic scale.' },
+    { icon: Moon, title: 'Up All Night', sub: 'too tense to put down', key: 'upallnight', desc: 'Heart rate up, lights still on. Tension so high you have to know what happens next.' },
+    { icon: Eye, title: 'Mind Breakers', sub: 'creeped out, reality bent', key: 'mindbreakers', desc: 'Creeped out and quietly unnerved. Reality bent, with an eerie feeling that lingers after the last page.' },
 ];
 
 // Staff-picks shelf scrolls horizontally, so its cards need a longer touch
@@ -51,7 +78,6 @@ const SHELF_HOLD_MS = 400;
 const TABS: { key: TabKey; icon: LucideIcon; label: string }[] = [
     { key: 'today', icon: BookOpen, label: 'Today' },
     { key: 'library', icon: Library, label: 'Library' },
-    { key: 'shelves', icon: Bookmark, label: 'Shelves' },
     { key: 'notebook', icon: Notebook, label: 'Notebook' },
 ];
 
@@ -67,8 +93,8 @@ const CoverSkeleton = () => (
     </div>
 );
 
-// One "Vibe out" row. Press-down nudges the emoji + chevron; release runs onClick.
-function Vibe({ emoji, title, sub, onClick }: { emoji: string; title: string; sub: string; onClick: () => void }) {
+// One "Vibe out" row. Press-down nudges the icon + chevron; release runs onClick.
+function Vibe({ icon: Icon, title, sub, onClick }: { icon: VibeIcon; title: string; sub: string; onClick: () => void }) {
     const { pressed, pressProps } = usePress();
     return (
         <button
@@ -77,8 +103,8 @@ function Vibe({ emoji, title, sub, onClick }: { emoji: string; title: string; su
             {...pressProps}
             className={`w-full min-h-[64px] flex items-center gap-3.5 rounded-2xl px-4 py-3 ring-1 text-left select-none bg-cream/70 transition-[transform,box-shadow,border-color] duration-150 ${pressed ? 'ring-coral-accent/40 scale-[0.99] shadow-[inset_0_1px_4px_rgba(58,42,30,0.08)]' : 'ring-espresso/10'}`}
         >
-            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/10 flex items-center justify-center text-[20px] leading-none shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
-                <span aria-hidden="true">{emoji}</span>
+            <span className={`w-10 h-10 rounded-xl bg-cream/80 ring-1 ring-espresso/10 flex items-center justify-center text-espresso shrink-0 transition-transform duration-150 ${pressed ? 'scale-110 -rotate-6' : ''}`}>
+                <Icon size={20} />
             </span>
             <span className="flex-1 min-w-0">
                 <span className="block font-serif text-[16px] font-medium text-espresso leading-tight">{title}</span>
@@ -99,6 +125,63 @@ function EmptyTab({ icon: Icon, title, body, footnote = 'Coming soon' }: { icon:
             <p className="font-serif italic text-[13px] text-mocha leading-relaxed mt-2 max-w-xs mx-auto">{body}</p>
             {footnote && <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/60 uppercase mt-5">{footnote}</p>}
         </div>
+    );
+}
+
+/** Estimated read time from a word count and the reader's words-per-minute. */
+function formatReadTime(words: number | undefined, wpm: number): string | null {
+    if (!words || words < 1) return null;
+    const m = Math.round(words / Math.max(1, wpm));
+    if (m < 1) return '< 1 min';
+    if (m < 60) return `${m} min`;
+    const h = Math.floor(m / 60);
+    const rem = m % 60;
+    return rem >= 5 ? `${h} hr ${rem} min` : `${h} hr`;
+}
+
+/** Small pill showing a book's estimated read time (bedtime-friendly heuristic). */
+function ReadChip({ words, wpm, className = '' }: { words?: number; wpm: number; className?: string }) {
+    const t = formatReadTime(words, wpm);
+    if (!t) return null;
+    return (
+        <span className={`inline-flex items-center gap-1 rounded-full bg-espresso/[0.06] px-2 py-0.5 text-[10px] font-semibold tracking-[0.02em] text-mocha ${className}`}>
+            <Clock size={10} className="shrink-0" /> {t}
+        </span>
+    );
+}
+
+/** A pill in the vibe filter row — the primary navigation anchors. */
+function FilterChip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-pressed={active}
+            className={`shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-semibold select-none ring-1 transition-[transform,background-color,color,border-color] duration-150 active:scale-[0.97] ${active ? 'bg-coral-accent text-[rgb(var(--coral-accent-text))] ring-coral-accent' : 'bg-cream/70 text-espresso ring-espresso/12'}`}
+        >
+            {children}
+        </button>
+    );
+}
+
+/** A horizontal carousel section: header + optional "see all" + scroller. The
+ *  pt-7 -mt-4 leaves headroom for the cover bookmarks poking above each card. */
+function Swimlane({ title, onSeeAll, children }: { title: string; onSeeAll?: () => void; children: React.ReactNode }) {
+    return (
+        <section className="mt-10">
+            <div className="flex items-end justify-between mb-3">
+                <h3 className="font-serif text-[18px] font-semibold text-espresso tracking-tight leading-none">{title}</h3>
+                {onSeeAll && (
+                    <button type="button" onClick={onSeeAll} className="group flex items-center text-[13px] font-semibold text-coral-accent shrink-0 pb-0.5 select-none active:text-coral-accent/70">
+                        see all <ArrowRight size={14} className="ml-1 transition-transform duration-150 group-active:translate-x-1" />
+                    </button>
+                )}
+            </div>
+            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5 pt-7 -mt-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                {children}
+                <div className="w-1 shrink-0" />
+            </div>
+        </section>
     );
 }
 
@@ -143,23 +226,28 @@ function RecentRow({ r, onOpen }: { r: ReadingProgress; onOpen: (book: BookMetad
 // (shelf books carry no cover URL) so the rows stay light and never hotlink.
 function BookRow({ book, onOpen }: { book: BookMetadata; onOpen: (book: BookMetadata, originRect: DOMRect | null, startIndex?: number) => void }) {
     const coverRef = useRef<HTMLDivElement>(null);
+    // A relative wrapper, not a single <button>: the open area is a button and
+    // the save toggle is a sibling laid over its right edge, so we never nest a
+    // button inside a button (invalid) while both stay tappable.
     return (
-        <button
-            type="button"
-            onClick={() => onOpen(book, coverRef.current?.getBoundingClientRect() ?? null)}
-            aria-label={`Open ${book.title} by ${book.author}`}
-            className="w-full flex items-center gap-3.5 rounded-2xl px-3.5 py-2.5 ring-1 ring-espresso/10 bg-cream/70 text-left select-none active:scale-[0.99] active:ring-coral-accent/40 transition-[transform,border-color] duration-150"
-            style={{ touchAction: 'manipulation' }}
-        >
-            <div ref={coverRef} className="shrink-0 w-11">
-                <BookCover title={book.title} author={book.author} coverUrl={book.coverUrl} variant="framed" size="sm" />
-            </div>
-            <div className="flex-1 min-w-0">
-                <h3 className="font-serif text-[15px] font-medium text-espresso leading-snug line-clamp-1">{book.title}</h3>
-                <p className="text-[11px] text-mocha italic line-clamp-1 mt-0.5">{book.author}</p>
-            </div>
-            <ChevronRight size={18} className="text-espresso/25 shrink-0" />
-        </button>
+        <div className="relative">
+            <button
+                type="button"
+                onClick={() => onOpen(book, coverRef.current?.getBoundingClientRect() ?? null)}
+                aria-label={`Open ${book.title} by ${book.author}`}
+                className="w-full flex items-center gap-3.5 rounded-2xl px-3.5 py-2.5 pr-14 ring-1 ring-espresso/10 bg-cream/70 text-left select-none active:scale-[0.99] active:ring-coral-accent/40 transition-[transform,border-color] duration-150"
+                style={{ touchAction: 'manipulation' }}
+            >
+                <div ref={coverRef} className="shrink-0 w-11">
+                    <BookCover title={book.title} author={book.author} coverUrl={book.coverUrl} variant="framed" size="sm" />
+                </div>
+                <div className="flex-1 min-w-0">
+                    <h3 className="font-serif text-[15px] font-medium text-espresso leading-snug line-clamp-1">{book.title}</h3>
+                    <p className="text-[11px] text-mocha italic line-clamp-1 mt-0.5">{book.author}</p>
+                </div>
+            </button>
+            <SaveButton book={book} tone="plain" className="absolute right-2.5 top-1/2 -translate-y-1/2" />
+        </div>
     );
 }
 
@@ -193,6 +281,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     const activeTab = useStore((s) => s.activeTab);
     const setActiveTab = useStore((s) => s.setActiveTab);
     const progressById = useStore((s) => s.progressById);
+    const savedById = useStore((s) => s.savedById);
     const stats = useStore((s) => s.stats);
     const fitMode = useStore((s) => s.fitMode);
     const setFitMode = useStore((s) => s.setFitMode);
@@ -207,6 +296,12 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         [progressById],
     );
     const progress = recents[0] ?? null;
+
+    // Saved-for-later pile, newest first. Shown below Reading in the Library tab.
+    const saved = useMemo(
+        () => Object.values(savedById).sort((a, b) => b.savedAt - a.savedAt),
+        [savedById],
+    );
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -309,9 +404,13 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     };
 
     const [mode, setMode] = useState<'home' | 'results' | 'vibe'>('home');
-    // The open "Vibe out" page (hero + subcategory shelves) and its label/emoji.
+    // The open "Vibe out" page (hero + subcategory shelves) and its label/icon.
     const [vibe, setVibe] = useState<VibePage | null>(null);
-    const [vibeMeta, setVibeMeta] = useState<{ title: string; emoji: string; desc: string } | null>(null);
+    const [vibeMeta, setVibeMeta] = useState<{ title: string; icon: VibeIcon; desc: string } | null>(null);
+    // Active vibe filter chip: null = the curated overview; otherwise a subcategory
+    // title, 'short' (length filter), or 'continue' (in-progress books here).
+    const [vibeFilter, setVibeFilter] = useState<string | null>(null);
+    const wpm = useStore((s) => s.wpm);
 
     // Descending into an inner page (a vibe, search results, or a non-Today tab)
     // should open it at its own top, not inherit the page's current scroll offset.
@@ -322,8 +421,8 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     const [results, setResults] = useState<BookMetadata[]>([]);
     const [resultsLabel, setResultsLabel] = useState('');
     // Optional title intro for a results page. Set for "Vibe out" drill-downs so
-    // each shows its own emoji + blurb above the grid; null for plain search.
-    const [resultsIntro, setResultsIntro] = useState<{ emoji?: string; desc: string } | null>(null);
+    // each shows its own icon + blurb above the grid; null for plain search.
+    const [resultsIntro, setResultsIntro] = useState<{ icon?: VibeIcon; desc: string } | null>(null);
     const [searching, setSearching] = useState(false);
 
     const [error, setError] = useState<string | null>(null);
@@ -401,6 +500,9 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
 
         const onPointerDown = (e: PointerEvent) => {
             if (e.pointerType !== 'mouse') return; // touch/pen pan natively
+            // Let an on-cover control (e.g. the save bookmark) keep its click —
+            // don't start a shelf pan / capture the pointer out from under it.
+            if ((e.target as HTMLElement).closest('button')) return;
             panId = e.pointerId;
             startX = e.clientX;
             startY = e.clientY;
@@ -454,7 +556,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     const runQuery = useCallback(async (
         label: string,
         fn: () => Promise<BookMetadata[]>,
-        intro: { emoji?: string; desc: string } | null = null,
+        intro: { icon?: VibeIcon; desc: string } | null = null,
     ) => {
         setMode('results');
         setResultsLabel(label);
@@ -473,11 +575,12 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
 
     /** Open a full vibe page (deeper-cuts hero + subcategory shelves). Loads the
      *  bundled vibe data, so it is instant and works offline. */
-    const openVibe = useCallback(async (v: { key: string; title: string; emoji: string; desc: string }) => {
+    const openVibe = useCallback(async (v: { key: string; title: string; icon: VibeIcon; desc: string }) => {
         haptics.tick();
         setMode('vibe');
+        setVibeFilter(null);
         setVibe(null);
-        setVibeMeta({ title: v.title, emoji: v.emoji, desc: v.desc });
+        setVibeMeta({ title: v.title, icon: v.icon, desc: v.desc });
         setError(null);
         try {
             setVibe(await library.getVibePage(v.key));
@@ -499,6 +602,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         setResultsIntro(null);
         setVibe(null);
         setVibeMeta(null);
+        setVibeFilter(null);
     };
 
     /** Jump to the dedicated Recents list (Library tab). Clears any active
@@ -530,8 +634,6 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
             ? { title: resultsLabel, eyebrow: resultsIntro ? 'Vibe out' : 'Reading room results', backLabel: 'Back', onBack: () => { haptics.tick(); clearResults(); } }
             : activeTab === 'library'
             ? { title: 'Library', backLabel: 'Back to home', onBack: goHome }
-            : activeTab === 'shelves'
-            ? { title: 'Shelves', backLabel: 'Back to home', onBack: goHome }
             : activeTab === 'notebook'
             ? { title: 'Notebook', backLabel: 'Back to home', onBack: goHome }
             : null;
@@ -630,12 +732,13 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                 )}
 
                 {mode === 'vibe' ? (
-                    /* ── Vibe page: a deeper-cuts hero that slides like Staff
-                       picks, then nuanced subcategory shelves as Recents-style
-                       rows. All one page — no drill-down into a subcategory. ── */
+                    /* ── Vibe page (bedtime-style IA): a calm intro, filter chips as
+                       primary anchors, one opinionated "pick", then chunked swimlanes
+                       with read-time chips. Tapping a chip / "see all" focuses to a
+                       bounded set. (See design brief: minimize decision fatigue.) ── */
                     <section className="mb-7">
                         {vibeMeta && (
-                            <p className="text-[13px] text-mocha italic mb-6 leading-relaxed">{vibeMeta.desc}</p>
+                            <p className="font-serif italic text-[14px] text-mocha leading-relaxed border-l-2 border-coral-accent/50 pl-3.5 mb-5">{vibeMeta.desc}</p>
                         )}
                         {vibe === null ? (
                             <div className="flex gap-5 overflow-hidden -mx-5 px-5">
@@ -643,46 +746,141 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                     <div key={i} className="flex-shrink-0 w-44"><CoverSkeleton /></div>
                                 ))}
                             </div>
-                        ) : (
-                            <>
-                                {vibe.hero.length > 0 && (
-                                    <>
-                                        <Eyebrow>&middot; Beyond the usual shelf &middot;</Eyebrow>
-                                        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5 mt-3" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                                            {vibe.hero.map((book) => {
-                                                const slotId = `vibe:${book.id}`;
-                                                return (
-                                                    <div key={book.id} className="snap-start flex-shrink-0">
-                                                        <BookCard
-                                                            title={book.title}
-                                                            author={book.author}
-                                                            coverUrl={book.coverUrl}
-                                                            widthClass="w-44"
-                                                            holdMs={SHELF_HOLD_MS}
-                                                            scrollsHorizontally
-                                                            hidden={openingSlotId === slotId}
-                                                            onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
-                                                            onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
-                                                        />
-                                                    </div>
-                                                );
-                                            })}
-                                            <div className="w-1 shrink-0" />
-                                        </div>
-                                    </>
-                                )}
-                                {vibe.shelves.map((shelf) => (
-                                    <div key={shelf.title} className="mt-9">
-                                        <h3 className="font-serif text-[18px] font-semibold text-espresso tracking-tight mb-3">{shelf.title}</h3>
-                                        <div className="flex flex-col gap-2">
-                                            {shelf.books.map((book) => (
-                                                <BookRow key={book.id} book={book} onOpen={onOpenBookInstant} />
-                                            ))}
-                                        </div>
+                        ) : (() => {
+                            const shelves = vibe.shelves;
+                            const allBooks = [...vibe.hero, ...shelves.flatMap((s) => s.books)];
+                            const vibeIds = new Set(allBooks.map((b) => b.id));
+                            const inProgress = recents.filter((r) => vibeIds.has(r.bookId) && r.totalTokens > 0);
+                            const SHORT_MAX_MIN = 45;
+                            const shortBooks = allBooks
+                                .filter((b) => b.words && b.words / Math.max(1, wpm) <= SHORT_MAX_MIN)
+                                .sort((a, b) => (a.words ?? 0) - (b.words ?? 0));
+                            const heroPick = vibe.hero[0] ?? allBooks[0];
+                            const deeperCuts = vibe.hero.slice(1);
+
+                            const chips: { key: string | null; label: string }[] = [
+                                { key: null, label: 'All' },
+                                ...(shortBooks.length >= 3 ? [{ key: 'short', label: 'Short reads' }] : []),
+                                ...(inProgress.length ? [{ key: 'continue', label: 'Continue' }] : []),
+                                ...shelves.map((s) => ({ key: s.title as string | null, label: s.title })),
+                            ];
+
+                            // A swimlane card (carousel) with a read-time chip.
+                            const laneCard = (book: BookMetadata, slotPrefix: string, widthClass = 'w-36') => {
+                                const slotId = `${slotPrefix}:${book.id}`;
+                                return (
+                                    <div key={book.id} className="snap-start flex-shrink-0">
+                                        <BookCard
+                                            title={book.title} author={book.author} coverUrl={book.coverUrl} book={book}
+                                            badge={<ReadChip words={book.words} wpm={wpm} />}
+                                            widthClass={widthClass} holdMs={SHELF_HOLD_MS} scrollsHorizontally
+                                            hidden={openingSlotId === slotId}
+                                            onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
+                                            onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
+                                        />
                                     </div>
-                                ))}
-                            </>
-                        )}
+                                );
+                            };
+                            // A grid card (focused / filtered views).
+                            const gridCard = (book: BookMetadata) => {
+                                const slotId = `vibe-grid:${book.id}`;
+                                return (
+                                    <BookCard
+                                        key={book.id}
+                                        title={book.title} author={book.author} coverUrl={book.coverUrl} book={book}
+                                        badge={<ReadChip words={book.words} wpm={wpm} />}
+                                        hidden={openingSlotId === slotId}
+                                        onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
+                                        onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
+                                    />
+                                );
+                            };
+                            const pickFilter = (key: string | null) => { haptics.tick(); setVibeFilter(key); window.scrollTo(0, 0); };
+
+                            return (
+                                <>
+                                    {/* filter chips — the primary navigation anchors */}
+                                    <div className="flex gap-2 overflow-x-auto -mx-5 px-5 pb-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                                        {chips.map((c) => (
+                                            <FilterChip key={c.key ?? 'all'} active={vibeFilter === c.key} onClick={() => pickFilter(c.key)}>{c.label}</FilterChip>
+                                        ))}
+                                    </div>
+
+                                    {vibeFilter === null ? (
+                                        <div>
+                                            {/* one opinionated pick */}
+                                            {heroPick && (
+                                                <section className="mt-6 rounded-3xl bg-cream ring-1 ring-espresso/10 shadow-[0_4px_18px_rgba(58,42,30,0.07)] p-5">
+                                                    <Eyebrow>&middot; Our pick for you &middot;</Eyebrow>
+                                                    <div className="flex gap-4 mt-4">
+                                                        <div className="shrink-0 w-[84px] rotate-[-4deg] mt-1">
+                                                            <BookCover title={heroPick.title} author={heroPick.author} coverUrl={heroPick.coverUrl} variant="framed" size="sm" priority />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0 pt-1">
+                                                            <h3 className="font-serif text-[20px] font-semibold text-espresso leading-tight line-clamp-2">{heroPick.title}</h3>
+                                                            <p className="font-serif italic text-[12px] text-mocha mt-1">{heroPick.author}</p>
+                                                            <ReadChip words={heroPick.words} wpm={wpm} className="mt-2.5" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex gap-3 mt-5">
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => onOpenBookInstant(heroPick, null, progressById[heroPick.id]?.currentIndex)}
+                                                            className="flex-1 flex items-center justify-center gap-2 bg-coral-accent text-[rgb(var(--coral-accent-text))] rounded-full py-3.5 font-semibold text-[15px] shadow-md shadow-coral-accent/25"
+                                                            style={{ touchAction: 'manipulation' }}
+                                                        >
+                                                            <BookOpen size={18} /> Start reading
+                                                        </button>
+                                                        <SaveButton book={heroPick} tone="plain" className="self-center" />
+                                                    </div>
+                                                </section>
+                                            )}
+
+                                            {inProgress.length > 0 && (
+                                                <Swimlane title="Where you left off">
+                                                    {inProgress.map((r) => {
+                                                        const b: BookMetadata = { id: r.bookId, title: r.title, author: r.author, coverUrl: r.coverUrl, textUrl: r.textUrl };
+                                                        const pct = Math.min(100, Math.round((r.currentIndex / r.totalTokens) * 100));
+                                                        const slotId = `vibe-cont:${b.id}`;
+                                                        return (
+                                                            <div key={b.id} className="snap-start flex-shrink-0">
+                                                                <BookCard
+                                                                    title={b.title} author={b.author} coverUrl={b.coverUrl} book={b}
+                                                                    badge={<span className="inline-flex items-center rounded-full bg-coral-accent/15 px-2 py-0.5 text-[10px] font-semibold text-coral-accent">{pct}% read</span>}
+                                                                    holdMs={SHELF_HOLD_MS} scrollsHorizontally hidden={openingSlotId === slotId}
+                                                                    onPress={(rect) => press(b, rect, { slotId, startIndex: r.currentIndex })}
+                                                                    onActivate={(rect) => onOpenBookInstant(b, rect, r.currentIndex)}
+                                                                />
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </Swimlane>
+                                            )}
+
+                                            {shelves.map((shelf) => (
+                                                <Swimlane key={shelf.title} title={shelf.title} onSeeAll={() => pickFilter(shelf.title)}>
+                                                    {shelf.books.slice(0, 10).map((book) => laneCard(book, `vibe-${shelf.title}`))}
+                                                </Swimlane>
+                                            ))}
+
+                                            {deeperCuts.length > 0 && (
+                                                <Swimlane title="Deeper cuts">
+                                                    {deeperCuts.map((book) => laneCard(book, 'vibe-hero', 'w-44'))}
+                                                </Swimlane>
+                                            )}
+                                        </div>
+                                    ) : vibeFilter === 'continue' ? (
+                                        <div className="mt-6 flex flex-col gap-2.5">
+                                            {inProgress.map((r) => <RecentRow key={r.bookId} r={r} onOpen={onOpenBookInstant} />)}
+                                        </div>
+                                    ) : (
+                                        <div className="mt-6 grid grid-cols-2 gap-y-6 justify-items-center">
+                                            {(vibeFilter === 'short' ? shortBooks : (shelves.find((s) => s.title === vibeFilter)?.books ?? [])).map((book) => gridCard(book))}
+                                        </div>
+                                    )}
+                                </>
+                            );
+                        })()}
                     </section>
                 ) : mode === 'results' ? (
                     /* ── Search / topic results: an inner page. Back returns to
@@ -690,8 +888,8 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                     <section className="mb-7">
                         {resultsIntro && (
                             <div className="mb-6">
-                                <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-tight">
-                                    {resultsIntro.emoji && <span aria-hidden="true" className="mr-2">{resultsIntro.emoji}</span>}{resultsLabel}
+                                <h2 className="font-serif text-[22px] font-semibold text-espresso tracking-tight leading-tight flex items-center">
+                                    {resultsIntro.icon && <span aria-hidden="true" className="mr-2"><resultsIntro.icon size={24} /></span>}{resultsLabel}
                                 </h2>
                                 <p className="text-[13px] text-mocha italic mt-2 leading-relaxed">{resultsIntro.desc}</p>
                             </div>
@@ -712,6 +910,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                             title={book.title}
                                             author={book.author}
                                             coverUrl={book.coverUrl}
+                                            book={book}
                                             hidden={openingSlotId === slotId}
                                             onPress={(rect) => press(book, rect, { slotId, startIndex: progressById[book.id]?.currentIndex })}
                                             onActivate={(rect) => onOpenBookInstant(book, rect, progressById[book.id]?.currentIndex)}
@@ -757,7 +956,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                                 ) : (
                                                     <>
                                                         <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
-                                                        <BookCover title={progress.title} author={progress.author} coverUrl={progress.coverUrl} variant="framed" size="sm" />
+                                                        <BookCover title={progress.title} author={progress.author} coverUrl={progress.coverUrl} variant="framed" size="sm" priority />
                                                     </>
                                                 )}
                                             </div>
@@ -824,7 +1023,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                                 ) : (
                                                     <>
                                                         <span className="absolute -top-1.5 right-3 z-10 w-3 h-6 bg-coral-accent rounded-b-sm shadow-sm before:content-[''] before:absolute before:bottom-0 before:left-0 before:border-x-[6px] before:border-x-transparent before:border-b-[5px] before:border-b-warm-beige" />
-                                                        <BookCover title={todaysPick.title} author={todaysPick.author} coverUrl={todaysPick.coverUrl} variant="framed" size="sm" />
+                                                        <BookCover title={todaysPick.title} author={todaysPick.author} coverUrl={todaysPick.coverUrl} variant="framed" size="sm" priority />
                                                     </>
                                                 )}
                                             </div>
@@ -873,7 +1072,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                     see all <ArrowRight size={14} className="ml-1 transition-transform duration-150 group-active:translate-x-1" />
                                 </button>
                             </div>
-                            <div ref={shelfRef} className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                            <div ref={shelfRef} className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-pl-5 -mx-5 px-5 pt-7 -mt-4" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                                 {curated === null
                                     ? Array.from({ length: 4 }).map((_, i) => <div key={i} className="snap-start flex-shrink-0 w-44"><CoverSkeleton /></div>)
                                     : shelf.map((book) => {
@@ -885,6 +1084,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                                     title={book.title}
                                                     author={book.author}
                                                     coverUrl={book.coverUrl}
+                                                    book={book}
                                                     variant={fb.variant}
                                                     tint={fb.tint}
                                                     widthClass="w-44"
@@ -912,7 +1112,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                             </div>
                             <div className="flex flex-col gap-2.5">
                                 {VIBES.map((v) => (
-                                    <Vibe key={v.title} emoji={v.emoji} title={v.title} sub={v.sub} onClick={() => openVibe(v)} />
+                                    <Vibe key={v.title} icon={v.icon} title={v.title} sub={v.sub} onClick={() => openVibe(v)} />
                                 ))}
                             </div>
                         </section>
@@ -962,33 +1162,52 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                         </section>
                     </div>
                 ) : activeTab === 'library' ? (
-                    <>
-                        {recents.length > 0 && (
-                            <p className="font-serif italic text-[14px] text-mocha leading-relaxed border-l-2 border-coral-accent/50 pl-3.5 mb-6">
-                                Pick up any book exactly where you left it.
-                            </p>
-                        )}
-                        {recents.length === 0 ? (
-                            <EmptyTab
-                                icon={Clock}
-                                title="Nothing read yet"
-                                body="Books you open will gather here, each remembering the exact word you stopped on."
-                                footnote={null}
-                            />
-                        ) : (
-                            <div className="flex flex-col gap-2.5">
-                                {recents.map((r) => (
-                                    <RecentRow key={r.bookId} r={r} onOpen={onOpenBookInstant} />
-                                ))}
-                            </div>
-                        )}
-                    </>
-                ) : activeTab === 'shelves' ? (
-                    <EmptyTab
-                        icon={Bookmark}
-                        title="No shelves yet"
-                        body="Save books into shelves like ‘Lazy Sundays’ or ‘Train Rides’ to keep a private collection."
-                    />
+                    recents.length === 0 && saved.length === 0 ? (
+                        <EmptyTab
+                            icon={Library}
+                            title="Your library is empty"
+                            body="Open a book to pick up where you left off, or tap the bookmark on any book to save it for later."
+                            footnote={null}
+                        />
+                    ) : (
+                        <div className="flex flex-col gap-12">
+                            {/* Reading — books in progress, each remembering its spot. */}
+                            {recents.length > 0 && (
+                                <section>
+                                    <Eyebrow>&middot; Reading &middot;</Eyebrow>
+                                    <p className="font-serif italic text-[13px] text-mocha leading-relaxed text-center mt-1.5 mb-4">
+                                        Pick up any book exactly where you left it.
+                                    </p>
+                                    <div className="flex flex-col gap-2.5">
+                                        {recents.map((r) => (
+                                            <RecentRow key={r.bookId} r={r} onOpen={onOpenBookInstant} />
+                                        ))}
+                                    </div>
+                                </section>
+                            )}
+
+                            {/* Saved for later — the want-to-read pile. Grouping these
+                                into named shelves (playlist-style) comes later. */}
+                            <section>
+                                <Eyebrow>&middot; Saved for later &middot;</Eyebrow>
+                                {saved.length === 0 ? (
+                                    <p className="font-serif italic text-[13px] text-mocha leading-relaxed text-center mt-1.5">
+                                        Tap the bookmark on any book to keep it here for later.
+                                    </p>
+                                ) : (
+                                    <div className="flex flex-col gap-2.5 mt-4">
+                                        {saved.map((b) => (
+                                            <BookRow
+                                                key={b.bookId}
+                                                book={{ id: b.bookId, title: b.title, author: b.author, coverUrl: b.coverUrl, textUrl: b.textUrl }}
+                                                onOpen={onOpenBookInstant}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </section>
+                        </div>
+                    )
                 ) : (
                     <EmptyTab
                         icon={Notebook}

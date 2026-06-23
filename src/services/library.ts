@@ -17,21 +17,19 @@ import vibesJson from '../data/vibes.json';
  *
  * Covers were originally hotlinked straight from gutenberg.org, which throttles
  * and drops hotlink connections, so shelves intermittently painted blank. The
- * durable fix is to mirror the curated covers once (`npm run mirror:covers`)
- * to a static host and point the app there. Set `VITE_COVER_BASE` to the URL of
- * the folder that directly holds the `<id>.webp` files (e.g. a jsDelivr or R2
- * URL); the mirror keys each file by the book `id`, so the cover for book 84 is
- * `${VITE_COVER_BASE}/84.webp`.
+ * durable fix is to mirror covers once (`npm run mirror:covers`) into
+ * `public/covers/<id>.webp`, served same-origin at `/covers` (the default base
+ * here). To host on a CDN instead, set `VITE_COVER_BASE` to the URL of the
+ * folder that directly holds the `<id>.webp` files (e.g. a jsDelivr or R2 URL).
  *
- * Unset (plain local dev) keeps the original gutenberg URL. Either way, a cover
- * that still fails degrades to a generated cover in BookCover, never a blank.
- * Only the curated catalog is mirrored; live Gutendex search results keep their
- * gutenberg URLs.
+ * Resolution only applies to books that have a publisher cover (`coverUrl`);
+ * vibe shelf books carry none and keep using the app's generated cover. A mapped
+ * cover that 404s (not mirrored, e.g. a live Gutendex search hit) degrades to a
+ * generated cover in BookCover, never a blank.
  */
+const COVER_BASE = (import.meta.env.VITE_COVER_BASE?.replace(/\/+$/, '')) || '/covers';
 function hostedCoverUrl(book: BookMetadata): string | undefined {
-    const base = import.meta.env.VITE_COVER_BASE?.replace(/\/+$/, '');
-    if (base && book.coverUrl) return `${base}/${book.id}.webp`;
-    return book.coverUrl;
+    return book.coverUrl ? `${COVER_BASE}/${book.id}.webp` : undefined;
 }
 
 const CURATED: BookMetadata[] = (curatedJson as BookMetadata[]).map((b) => ({

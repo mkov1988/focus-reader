@@ -3,10 +3,11 @@
  *
  * Why: covers were hotlinked straight from gutenberg.org, which throttles and
  * drops hotlink connections, so shelves intermittently painted blank pages.
- * This script downloads each curated cover once, optimizes it to a small WebP,
- * and writes `covers/<id>.webp`. Upload that folder's contents to any static
- * host (jsDelivr off a GitHub repo, Cloudflare R2, etc.) and point the app at
- * it with VITE_COVER_BASE. gutenberg then leaves the user's path entirely.
+ * This script downloads each curated + vibe-hero cover once, optimizes it to a
+ * small WebP, and writes `public/covers/<id>.webp`. By default the app serves
+ * these same-origin from /covers (and bundles them into the build), so gutenberg
+ * leaves the user's path entirely. To host on a CDN instead, upload the folder
+ * and set VITE_COVER_BASE to its URL.
  *
  * This runs on your machine, never in production. It is safe to re-run: it
  * skips covers already mirrored, so you can stop and resume, and a second pass
@@ -28,10 +29,14 @@ import sharp from 'sharp';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CURATED_PATH = path.join(ROOT, 'src', 'data', 'curated.json');
 const VIBES_PATH = path.join(ROOT, 'src', 'data', 'vibes.json');
-const OUT_DIR = path.join(ROOT, 'covers');
+// Output into public/ so the covers are served same-origin at /covers/<id>.webp
+// (the app's default cover base) and bundle into the build. Gitignored.
+const OUT_DIR = path.join(ROOT, 'public', 'covers');
 
-const WIDTH = Number(process.env.COVER_WIDTH) || 220;
-const QUALITY = Number(process.env.COVER_QUALITY) || 80;
+// 330px keeps the largest card (w-44 ≈ 176px CSS) crisp at ~2x DPR while staying
+// a small WebP (~10-18KB). Bump COVER_WIDTH if you want sharper.
+const WIDTH = Number(process.env.COVER_WIDTH) || 330;
+const QUALITY = Number(process.env.COVER_QUALITY) || 78;
 const CONCURRENCY = Number(process.env.COVER_CONCURRENCY) || 6;
 const RETRIES = 3;
 const TIMEOUT_MS = 25_000;
@@ -127,7 +132,7 @@ async function run() {
     if (failures.length) {
         console.log(`Failed ids saved to covers/_failed.json. Re-run the script to retry them.`);
     }
-    console.log(`\nNext: upload the covers/ contents to your host, then set VITE_COVER_BASE to that folder's URL.`);
+    console.log(`\nDone — covers are in public/covers/ and served same-origin at /covers/. (Set VITE_COVER_BASE only if you'd rather host them on a CDN.)`);
 }
 
 run().catch((err) => {

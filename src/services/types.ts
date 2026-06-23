@@ -18,6 +18,10 @@ export interface BookMetadata {
     /** Plain-text source URL (raw Gutenberg origin; proxied at fetch time). */
     textUrl?: string;
     downloadCount?: number;
+    /** Total word count of the readable text, precomputed offline for vibe books
+     *  (see scripts/add-vibe-wordcounts.mjs). Drives the estimated read-time
+     *  chips and the length filter. Absent for books we haven't measured. */
+    words?: number;
 }
 
 /** One nuanced subcategory row within a vibe (e.g. "Gothic dread"). */

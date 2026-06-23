@@ -39,6 +39,10 @@ export default {
       animation: {
         'fade-in': 'fadeIn 0.2s ease-out',
         'slide-in-right': 'slideInRight 0.28s cubic-bezier(.2,.8,.25,1)',
+        // One-shot confirmation bubble: slide up + fade in, hold, fade back out.
+        'toast': 'toastPop 2.4s ease-out forwards',
+        // One-shot "I'm here, tap me" nudge for the cover bookmark on load.
+        'bookmark-wiggle': 'bookmarkWiggle 1.1s ease-in-out 0.7s 1',
       },
       keyframes: {
         fadeIn: {
@@ -48,6 +52,18 @@ export default {
         slideInRight: {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0)' },
+        },
+        toastPop: {
+          '0%': { opacity: '0', transform: 'translateX(-50%) translateY(16px)' },
+          '12%': { opacity: '1', transform: 'translateX(-50%) translateY(0)' },
+          '85%': { opacity: '1', transform: 'translateX(-50%) translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateX(-50%) translateY(8px)' },
+        },
+        bookmarkWiggle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '25%': { transform: 'translateY(-4px)' },
+          '50%': { transform: 'translateY(0)' },
+          '75%': { transform: 'translateY(-2px)' },
         },
       }
     },

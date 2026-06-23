@@ -31,9 +31,14 @@ docs/assets/references/
 *.tgz
 /package/
 
-# Mirrored book covers — a build/staging output of `npm run mirror:covers`.
-# Uploaded to the static cover host (VITE_COVER_BASE), not shipped in the app.
+# Mirrored book covers — a local build artifact from `npm run mirror:covers`.
+# Served same-origin from /covers and bundled into the build (or uploaded to a
+# CDN via VITE_COVER_BASE). Regenerated, so not committed.
+/public/covers/
 /covers/
+
+# Resumable cache for the word-count crawler (scripts/add-vibe-wordcounts.mjs).
+scripts/.vibe-wordcounts.json
 
 # Lint run artifact
 lint_output.txt

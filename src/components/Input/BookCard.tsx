@@ -1,6 +1,8 @@
 import { useRef } from 'react';
 import { BookCover, type CoverVariant } from './BookCover';
+import { SaveButton } from './SaveButton';
 import { startPressGesture } from '../../utils/pressGesture';
+import type { BookMetadata } from '../../services/types';
 
 interface BookCardProps {
     title: string;
@@ -8,6 +10,10 @@ interface BookCardProps {
     coverUrl?: string;
     variant?: CoverVariant;
     tint?: string;
+    /** When provided, a save-for-later bookmark toggle is shown on the cover. */
+    book?: BookMetadata;
+    /** Optional small node under the author line (e.g. a read-time chip). */
+    badge?: React.ReactNode;
     /** Tailwind width class for the card (and thus cover) — default w-36.
      *  Staff picks use a larger value (w-44) for bigger, tappable covers. */
     widthClass?: string;
@@ -35,7 +41,7 @@ interface BookCardProps {
     scrollsHorizontally?: boolean;
 }
 
-export function BookCard({ title, author, coverUrl, variant, tint, widthClass = 'w-36', hidden, onPress, onActivate, holdMs, scrollsHorizontally }: BookCardProps) {
+export function BookCard({ title, author, coverUrl, variant, tint, book, badge, widthClass = 'w-36', hidden, onPress, onActivate, holdMs, scrollsHorizontally }: BookCardProps) {
     const coverRef = useRef<HTMLDivElement>(null);
 
     const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -104,9 +110,13 @@ export function BookCard({ title, author, coverUrl, variant, tint, widthClass = 
                         className="absolute inset-0 rounded-l-[3px] rounded-r-xl bg-espresso/[0.13] ring-1 ring-espresso/10 shadow-[inset_0_3px_10px_rgba(58,42,30,0.22)] animate-fade-in"
                     />
                 )}
+                {book && !hidden && (
+                    <SaveButton book={book} tone="ribbon" />
+                )}
             </div>
             <h3 className={`font-serif text-[14px] font-medium leading-snug line-clamp-1 text-espresso transition-opacity ${hidden ? 'opacity-40' : ''}`}>{title}</h3>
             <p className={`text-[11px] text-mocha mt-0.5 italic line-clamp-1 transition-opacity ${hidden ? 'opacity-40' : ''}`}>{author}</p>
+            {badge && <div className={`mt-1.5 transition-opacity ${hidden ? 'opacity-40' : ''}`}>{badge}</div>}
         </div>
     );
 }

@@ -4,9 +4,12 @@
  * For each vibe it crawls Gutendex by topic to fill a set of nuanced shelves,
  * then derives a "deeper cuts" hero: the vibe's most-downloaded books that are
  * NOT already in the curated front-page catalog, so the hero is discovery, not a
- * repeat. Only books with a readable plain-text edition are kept. Hero books
- * keep their cover URL (mirrored later by mirror-covers.mjs); shelf books drop
- * the cover so the app draws its generated cover instead.
+ * repeat. Every kept book is verified to have readable plain text via a HEAD
+ * request to its canonical text URL (dead/textless editions are dropped — they
+ * are unreadable in the app), and gets a `words` count estimated from the file
+ * size for the read-time chips. Hero books keep their cover URL (mirrored later
+ * by mirror-covers.mjs); shelf books drop the cover so the app draws its
+ * generated cover instead.
  *
  * Offline + instant at runtime, same pattern as curated.json. Re-run to refresh.
  *
@@ -88,6 +91,12 @@ const VIBES = [
         { title: 'Weird and supernatural', topic: 'supernatural' },
         { title: 'Mind and meaning', topic: 'philosophy' },
     ] },
+    { key: 'levelheads', title: 'Level Heads', shelves: [
+        { title: 'The Words of Epictetus', search: 'epictetus' },
+        { title: 'The Writings of Seneca', search: 'seneca' },
+        { title: 'The Mind of Marcus Aurelius', search: 'marcus aurelius' },
+        { title: 'History, Analysis & Context', search: 'stoicism' },
+    ] },
 ];
 
 function formatAuthor(name) {
@@ -133,10 +142,39 @@ async function getJson(url, tries = 3) {
     throw lastErr;
 }
 
-/** Fetch readable books for a topic, most-downloaded first, across `pages`. */
-async function fetchTopic(topic, pages = 2) {
+const BYTES_PER_WORD = 6.1;
+const MIN_BYTES = 8000; // smaller than this at the canonical URL ⇒ no real text
+
+/**
+ * Verify a book actually has readable plain text and estimate its word count from
+ * the file size (Content-Length / 6.1, accurate to ~1-2%). HEADs the CANONICAL
+ * cache/epub URL directly — the Gutendex `.txt.utf-8` alias is flaky (it
+ * intermittently 404s or returns a stub). Returns { words, url } (a stable text
+ * URL) or null if the edition is dead/textless (so it gets dropped, since those
+ * are unreadable in the app too).
+ */
+async function verifyText(book) {
+    const urls = [
+        `https://www.gutenberg.org/cache/epub/${book.id}/pg${book.id}.txt`,
+        `https://www.gutenberg.org/files/${book.id}/${book.id}-0.txt`,
+    ];
+    for (const url of urls) {
+        try {
+            const r = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+            if (r.ok) {
+                const cl = Number(r.headers.get('content-length'));
+                if (cl > MIN_BYTES) return { words: Math.round(cl / BYTES_PER_WORD), url };
+            }
+        } catch { /* try next */ }
+    }
+    return null;
+}
+
+/** Fetch readable books for a shelf, most-downloaded first, across `pages`. */
+async function fetchShelf(shelf, pages = 2) {
     const out = [];
-    let url = `${API}?topic=${encodeURIComponent(topic)}&languages=en&sort=popular&mime_type=text%2Fplain`;
+    const query = shelf.topic ? `topic=${encodeURIComponent(shelf.topic)}` : `search=${encodeURIComponent(shelf.search)}`;
+    let url = `${API}?${query}&languages=en&sort=popular&mime_type=text%2Fplain`;
     for (let p = 0; p < pages && url; p++) {
         const data = await getJson(url);
         for (const b of data.results) {
@@ -159,33 +197,42 @@ async function main() {
         const shelfBooks = [];
         const allForVibe = new Map();
         for (const shelf of vibe.shelves) {
-            const books = await fetchTopic(shelf.topic, 2);
+            const books = await fetchShelf(shelf, 2);
             for (const b of books) if (!allForVibe.has(b.id)) allForVibe.set(b.id, b);
             shelfBooks.push({ title: shelf.title, books });
-            process.stdout.write(`  ${String(books.length).padStart(3)}  ${shelf.title} (topic: ${shelf.topic})\n`);
+            process.stdout.write(`  ${String(books.length).padStart(3)}  ${shelf.title} (${shelf.topic ? `topic: ${shelf.topic}` : `search: ${shelf.search}`})\n`);
         }
 
         // Hero = the vibe's most-downloaded books NOT on the front page (curated),
-        // with a cover. These are the "deeper cuts".
-        const hero = [...allForVibe.values()]
+        // with a cover, that actually have readable text. These are the "deeper cuts".
+        const heroCandidates = [...allForVibe.values()]
             .filter((b) => !curatedIds.has(b.id) && b.coverUrl)
-            .sort((a, b) => b.downloadCount - a.downloadCount)
-            .slice(0, HERO_SIZE);
+            .sort((a, b) => b.downloadCount - a.downloadCount);
+        const hero = [];
+        for (const b of heroCandidates) {
+            if (hero.length >= HERO_SIZE) break;
+            const v = await verifyText(b);
+            if (!v) continue; // dead/unreadable edition — skip
+            hero.push({ ...b, textUrl: v.url, words: v.words });
+        }
         const heroIds = new Set(hero.map((b) => b.id));
 
-        // Shelves: dedupe across shelves and against the hero, drop covers (the
-        // app draws generated covers for these), cap each shelf.
+        // Shelves: dedupe across shelves and against the hero, verify readability +
+        // word count, drop covers (the app draws generated covers), cap each shelf.
         const usedInShelf = new Set(heroIds);
-        const shelves = shelfBooks.map(({ title, books }) => {
+        const shelves = [];
+        for (const { title, books } of shelfBooks) {
             const picked = [];
             for (const b of books) {
-                if (usedInShelf.has(b.id)) continue;
-                usedInShelf.add(b.id);
-                picked.push({ id: b.id, title: b.title, author: b.author, textUrl: b.textUrl, downloadCount: b.downloadCount });
                 if (picked.length >= PER_SHELF) break;
+                if (usedInShelf.has(b.id)) continue;
+                const v = await verifyText(b);
+                if (!v) continue; // dead/unreadable edition — skip
+                usedInShelf.add(b.id);
+                picked.push({ id: b.id, title: b.title, author: b.author, textUrl: v.url, downloadCount: b.downloadCount, words: v.words });
             }
-            return { title, books: picked };
-        }).filter((s) => s.books.length > 0);
+            if (picked.length > 0) shelves.push({ title, books: picked });
+        }
 
         const total = hero.length + shelves.reduce((n, s) => n + s.books.length, 0);
         process.stdout.write(`  => hero ${hero.length}, ${shelves.length} shelves, ${total} books total${total < MIN_PER_VIBE ? '  ⚠ under 100' : ''}\n`);

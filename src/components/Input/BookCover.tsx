@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { Leaf } from 'lucide-react';
 
 export type CoverVariant = 'framed' | 'label' | 'solid';
@@ -43,35 +43,27 @@ interface BookCoverProps {
     /** Override the CSS transition on the cover face — `'none'` lets an
      *  external animator take over without fighting the built-in tween. */
     coverFaceTransition?: string;
+    /** Above-the-fold covers (e.g. the hero pick) load eagerly at high priority;
+     *  everything else lazy-loads so offscreen lanes don't fetch up front. */
+    priority?: boolean;
     className?: string;
 }
 
-export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pageContent, coverFaceRef, coverFaceTransition, className = '' }: BookCoverProps) {
+export function BookCover({ title, author, coverUrl, variant, tint, size = 'md', pageContent, coverFaceRef, coverFaceTransition, priority = false, className = '' }: BookCoverProps) {
     const seed = hash(title + author);
     const v: CoverVariant = variant ?? (['framed', 'label', 'solid'] as const)[seed % 3];
     const solidTint = tint ?? SOLID_TINTS[seed % SOLID_TINTS.length];
     const sm = size === 'sm';
 
-    // Remote covers (Project Gutenberg) are hotlinked and gutenberg.org
-    // frequently drops the connection, leaving a cover that never loads. When
-    // one fails — or just hangs past a short deadline — we fall back to the
-    // generated cover so the card never shows a blank page underlay. Tracking
-    // the failed URL (rather than a bool) auto-resets if the prop changes.
+    // Covers are served same-origin from /covers (or a CDN) and are small +
+    // reliable, so a failed/missing one just `onError`s to the generated cover —
+    // a card is never blank. (No load-deadline timer: that was a workaround for
+    // hanging gutenberg hotlinks and it would prematurely fall back lazy-loaded
+    // off-screen covers before they ever fetch.) Tracking the failed URL (not a
+    // bool) auto-resets if the prop changes.
     const [failedUrl, setFailedUrl] = useState<string | null>(null);
     const imgRef = useRef<HTMLImageElement>(null);
     const showImage = !!coverUrl && failedUrl !== coverUrl;
-
-    useEffect(() => {
-        if (!showImage) return;
-        // A hanging hotlink would otherwise sit blank until the browser's ~20s
-        // connection timeout. Give it a few seconds, then if it still hasn't
-        // decoded a real image, fall back to the generated cover.
-        const t = window.setTimeout(() => {
-            const img = imgRef.current;
-            if (!img || !(img.complete && img.naturalWidth > 0)) setFailedUrl(coverUrl!);
-        }, 6000);
-        return () => window.clearTimeout(t);
-    }, [showImage, coverUrl]);
 
     const pad = sm ? 'px-2.5 py-3.5' : 'px-3.5 py-5';
     const titleSize = sm ? 'text-[11px]' : 'text-[15px]';
@@ -94,6 +86,8 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
                     alt={title}
                     draggable={false}
                     decoding="async"
+                    loading={priority ? 'eager' : 'lazy'}
+                    fetchPriority={priority ? 'high' : 'auto'}
                     onError={() => setFailedUrl(coverUrl!)}
                     className="w-full h-full object-cover select-none [-webkit-touch-callout:none]"
                 />
