@@ -8,7 +8,7 @@
  * Project Gutenberg at read-time, via the Vite dev proxy (CORS workaround).
  */
 import type { BookMetadata, LibraryService, VibePage } from './types';
-import { gutendex } from './gutendex';
+import { gutendex, cleanTitle } from './gutendex';
 import curatedJson from '../data/curated.json';
 import vibesJson from '../data/vibes.json';
 
@@ -28,19 +28,24 @@ import vibesJson from '../data/vibes.json';
  * generated cover in BookCover, never a blank.
  */
 const COVER_BASE = (import.meta.env.VITE_COVER_BASE?.replace(/\/+$/, '')) || '/covers';
+// Covers are keyed by book id, so we resolve every book to `${base}/<id>.webp`
+// regardless of whether the bundled data carried a cover URL (vibe shelf books
+// don't). If a given cover wasn't mirrored, the <img> 404s and BookCover falls
+// back to its generated cover — never a blank.
 function hostedCoverUrl(book: BookMetadata): string | undefined {
-    return book.coverUrl ? `${COVER_BASE}/${book.id}.webp` : undefined;
+    return book.id ? `${COVER_BASE}/${book.id}.webp` : undefined;
 }
 
 const CURATED: BookMetadata[] = (curatedJson as BookMetadata[]).map((b) => ({
     ...b,
+    title: cleanTitle(b.title),
     coverUrl: hostedCoverUrl(b),
 }));
 
 /**
  * Vibe-out pages, built offline into vibes.json (see scripts/build-vibes.mjs).
- * Hero books ("deeper cuts") carry a cover URL we resolve to our mirror; shelf
- * books carry none, so the app draws its generated cover for them.
+ * Both hero and shelf books resolve their cover by id to our mirror; any cover
+ * that wasn't mirrored degrades to a generated cover.
  */
 /** Drop duplicate editions (same title) within a vibe — Gutenberg often carries
  *  several editions of a popular book, and showing "Pride and Prejudice" twice in
@@ -61,7 +66,11 @@ function dedupeVibe(v: VibePage): VibePage {
 }
 
 const VIBES: VibePage[] = (vibesJson as VibePage[]).map((v) =>
-    dedupeVibe({ ...v, hero: v.hero.map((b) => ({ ...b, coverUrl: hostedCoverUrl(b) })) }),
+    dedupeVibe({
+        ...v,
+        hero: v.hero.map((b) => ({ ...b, title: cleanTitle(b.title), coverUrl: hostedCoverUrl(b) })),
+        shelves: v.shelves.map((s) => ({ ...s, books: s.books.map((b) => ({ ...b, title: cleanTitle(b.title), coverUrl: hostedCoverUrl(b) })) })),
+    }),
 );
 const VIBE_BY_KEY = new Map(VIBES.map((v) => [v.key, v]));
 

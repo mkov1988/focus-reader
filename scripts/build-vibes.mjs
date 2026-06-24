@@ -33,6 +33,9 @@ const arg = (name, def) => {
 const PER_SHELF = arg('per', 20);
 const HERO_SIZE = arg('hero', 14);
 const MIN_PER_VIBE = 100;
+// `--only=<key>` rebuilds a single vibe and merges it into the existing
+// vibes.json, leaving the other vibes untouched (no full re-crawl).
+const ONLY = (process.argv.find((x) => x.startsWith('--only=')) || '').split('=')[1] || null;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -91,12 +94,20 @@ const VIBES = [
         { title: 'Weird and supernatural', topic: 'supernatural' },
         { title: 'Mind and meaning', topic: 'philosophy' },
     ] },
-    { key: 'levelheads', title: 'Level Heads', shelves: [
-        { title: 'The Words of Epictetus', search: 'epictetus' },
-        { title: 'The Writings of Seneca', search: 'seneca' },
-        { title: 'The Mind of Marcus Aurelius', search: 'marcus aurelius' },
-        { title: 'History, Analysis & Context', search: 'stoicism' },
-    ] },
+    // Stoicism is a small, well-defined public-domain canon, so this vibe is
+    // hand-curated by Gutenberg id. A broad `search` is far too noisy here:
+    // `search=seneca` drags in the Seneca *tribe* (myths, "The Trail of the
+    // Seneca", a camp cookbook by an author nicknamed Seneca), `search=stoicism`
+    // pulled in railway stories, and every query surfaced Gutenberg "Index of the
+    // Works of…" pages, which are catalog listings, not readable books.
+    { key: 'levelheads', title: 'Level Heads',
+        heroIds: [2680, 871, 56075, 64488],
+        shelves: [
+            { title: 'The Mind of Marcus Aurelius', ids: [55317, 6920, 15877] },
+            { title: 'The Words of Epictetus', ids: [45109, 10661, 39855] },
+            { title: 'The Writings of Seneca', ids: [64576, 3794, 76392] },
+            { title: 'History, Analysis & Context', ids: [7514, 34122, 78320] },
+        ] },
 ];
 
 function formatAuthor(name) {
@@ -170,9 +181,20 @@ async function verifyText(book) {
     return null;
 }
 
-/** Fetch readable books for a shelf, most-downloaded first, across `pages`. */
+/** Fetch readable books for a shelf, most-downloaded first, across `pages`.
+ *  A shelf may be defined by `topic`, `search`, or an explicit `ids` list (for
+ *  curated sections like Stoicism); ids preserve their hand-picked order. */
 async function fetchShelf(shelf, pages = 2) {
     const out = [];
+    if (shelf.ids) {
+        const data = await getJson(`${API}?ids=${shelf.ids.join(',')}`);
+        const byId = new Map(data.results.map((b) => [String(b.id), mapRaw(b)]));
+        for (const id of shelf.ids.map(String)) {
+            const m = byId.get(id);
+            if (m && m.textUrl) out.push(m);
+        }
+        return out;
+    }
     const query = shelf.topic ? `topic=${encodeURIComponent(shelf.topic)}` : `search=${encodeURIComponent(shelf.search)}`;
     let url = `${API}?${query}&languages=en&sort=popular&mime_type=text%2Fplain`;
     for (let p = 0; p < pages && url; p++) {
@@ -192,7 +214,7 @@ async function main() {
     const curatedIds = new Set(curated.map((b) => b.id));
 
     const result = [];
-    for (const vibe of VIBES) {
+    for (const vibe of VIBES.filter((v) => !ONLY || v.key === ONLY)) {
         process.stdout.write(`\n${vibe.title}\n`);
         const shelfBooks = [];
         const allForVibe = new Map();
@@ -200,20 +222,36 @@ async function main() {
             const books = await fetchShelf(shelf, 2);
             for (const b of books) if (!allForVibe.has(b.id)) allForVibe.set(b.id, b);
             shelfBooks.push({ title: shelf.title, books });
-            process.stdout.write(`  ${String(books.length).padStart(3)}  ${shelf.title} (${shelf.topic ? `topic: ${shelf.topic}` : `search: ${shelf.search}`})\n`);
+            const src = shelf.ids ? `ids: ${shelf.ids.length}` : shelf.topic ? `topic: ${shelf.topic}` : `search: ${shelf.search}`;
+            process.stdout.write(`  ${String(books.length).padStart(3)}  ${shelf.title} (${src})\n`);
         }
 
-        // Hero = the vibe's most-downloaded books NOT on the front page (curated),
-        // with a cover, that actually have readable text. These are the "deeper cuts".
-        const heroCandidates = [...allForVibe.values()]
-            .filter((b) => !curatedIds.has(b.id) && b.coverUrl)
-            .sort((a, b) => b.downloadCount - a.downloadCount);
+        // Hero = "our pick" (hero[0]) + a "deeper cuts" lane. Curated vibes pin the
+        // hero with hand-picked `heroIds` (in order); the rest derive it as the
+        // vibe's most-downloaded books NOT on the front page (curated), with a
+        // cover. Either way every kept book is verified to have readable text.
         const hero = [];
-        for (const b of heroCandidates) {
-            if (hero.length >= HERO_SIZE) break;
-            const v = await verifyText(b);
-            if (!v) continue; // dead/unreadable edition — skip
-            hero.push({ ...b, textUrl: v.url, words: v.words });
+        if (vibe.heroIds) {
+            const pool = await fetchShelf({ ids: vibe.heroIds });
+            const byId = new Map(pool.map((b) => [b.id, b]));
+            for (const id of vibe.heroIds.map(String)) {
+                if (hero.length >= HERO_SIZE) break;
+                const b = byId.get(id);
+                if (!b) continue;
+                const v = await verifyText(b);
+                if (!v) continue; // dead/unreadable edition — skip
+                hero.push({ ...b, textUrl: v.url, words: v.words });
+            }
+        } else {
+            const heroCandidates = [...allForVibe.values()]
+                .filter((b) => !curatedIds.has(b.id) && b.coverUrl)
+                .sort((a, b) => b.downloadCount - a.downloadCount);
+            for (const b of heroCandidates) {
+                if (hero.length >= HERO_SIZE) break;
+                const v = await verifyText(b);
+                if (!v) continue; // dead/unreadable edition — skip
+                hero.push({ ...b, textUrl: v.url, words: v.words });
+            }
         }
         const heroIds = new Set(hero.map((b) => b.id));
 
@@ -240,10 +278,17 @@ async function main() {
         result.push({ key: vibe.key, title: vibe.title, hero, shelves });
     }
 
-    await writeFile(OUT_PATH, JSON.stringify(result));
-    const grand = result.reduce((n, v) => n + v.hero.length + v.shelves.reduce((m, s) => m + s.books.length, 0), 0);
-    console.log(`\nWrote ${OUT_PATH}  (${result.length} vibes, ${grand} books)`);
-    console.log('Next: run mirror-covers.mjs to mirror the hero covers, then set VITE_COVER_BASE.');
+    let out = result;
+    if (ONLY) {
+        // Merge the rebuilt vibe(s) into the existing file, preserving the others.
+        const existing = JSON.parse(await readFile(OUT_PATH, 'utf8'));
+        out = existing.map((v) => result.find((r) => r.key === v.key) ?? v);
+        for (const r of result) if (!out.some((v) => v.key === r.key)) out.push(r);
+    }
+    await writeFile(OUT_PATH, JSON.stringify(out));
+    const grand = out.reduce((n, v) => n + v.hero.length + v.shelves.reduce((m, s) => m + s.books.length, 0), 0);
+    console.log(`\nWrote ${OUT_PATH}  (${out.length} vibes, ${grand} books${ONLY ? `; rebuilt only "${ONLY}"` : ''})`);
+    console.log('Next: run mirror-covers.mjs to mirror the covers, then set VITE_COVER_BASE.');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

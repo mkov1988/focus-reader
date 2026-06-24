@@ -28,6 +28,20 @@ interface GutendexResponse {
     results: GutendexBook[];
 }
 
+/**
+ * Strip MARC catalog subfield markers Gutenberg leaves in some titles, e.g.
+ * "Physical science in the time of Nero : $b being a translation…" becomes
+ * "Physical science in the time of Nero: being a translation…". These `$b`/`$c`
+ * markers are space-delimited library-record artifacts, never real title text.
+ */
+export function cleanTitle(title: string): string {
+    return title
+        .replace(/\s*:\s*\$[a-z]\b\s*/gi, ': ')
+        .replace(/\s+\$[a-z]\b\s*/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
 /** "Austen, Jane" -> "Jane Austen"; passes through other shapes unchanged. */
 function formatAuthor(name?: string): string {
     if (!name) return 'Unknown';
@@ -56,7 +70,7 @@ function pickTextUrl(formats: Record<string, string>): string | undefined {
 function mapBook(b: GutendexBook): BookMetadata {
     return {
         id: String(b.id),
-        title: b.title,
+        title: cleanTitle(b.title),
         author: formatAuthor(b.authors[0]?.name),
         coverUrl: b.formats['image/jpeg'],
         textUrl: pickTextUrl(b.formats),

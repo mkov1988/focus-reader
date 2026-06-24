@@ -16,7 +16,7 @@ import {
     Coffee, Search, BookOpen, Library, Notebook,
     ChevronRight, ArrowRight, Moon, Clock, Loader2, X,
     Menu, Settings, Info, BarChart3, Check, Sun,
-    Heart, Flame, Rocket, Eye,
+    Heart, Flame, Rocket, Eye, Anchor,
 } from 'lucide-react';
 
 // Vibe icons can be a Lucide icon OR a small custom SVG component (e.g. the
@@ -66,6 +66,7 @@ const VIBES = [
     { icon: Rocket, title: 'New Realms', sub: 'escape into another universe', key: 'newrealms', desc: 'Leave the real world behind. New universes, new rules, magic and epic scale.' },
     { icon: Moon, title: 'Up All Night', sub: 'too tense to put down', key: 'upallnight', desc: 'Heart rate up, lights still on. Tension so high you have to know what happens next.' },
     { icon: Eye, title: 'Mind Breakers', sub: 'creeped out, reality bent', key: 'mindbreakers', desc: 'Creeped out and quietly unnerved. Reality bent, with an eerie feeling that lingers after the last page.' },
+    { icon: Anchor, title: 'Level Heads', sub: 'ancient wisdom for real life', key: 'levelheads', desc: 'Ancient wisdom for real life. Building resilience, mastering your emotions, and finding tranquility amidst chaos.' },
 ];
 
 // Staff-picks shelf scrolls horizontally, so its cards need a longer touch

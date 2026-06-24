@@ -72,18 +72,23 @@ async function run() {
     const all = JSON.parse(await readFile(CURATED_PATH, 'utf8'));
     // Also mirror the vibe-page hero covers ("deeper cuts"). Shelf books use the
     // app's generated covers (they carry no cover URL), so they need no mirror.
-    let heroBooks = [];
+    // Mirror covers for every vibe book — hero AND shelf books — so the vibe
+    // pages show real art, not generated covers. Shelf books carry no cover URL
+    // in vibes.json, so derive Gutenberg's standard cover path from the id.
+    let vibeBooks = [];
     try {
         const vibes = JSON.parse(await readFile(VIBES_PATH, 'utf8'));
-        heroBooks = vibes.flatMap((v) => v.hero ?? []);
+        vibeBooks = vibes.flatMap((v) => [...(v.hero ?? []), ...(v.shelves ?? []).flatMap((s) => s.books ?? [])]);
     } catch {
         // vibes.json not built yet — mirror curated covers only.
     }
     await mkdir(OUT_DIR, { recursive: true });
 
     const byId = new Map();
-    for (const b of [...all, ...heroBooks]) {
-        if (b.coverUrl && b.id && !byId.has(b.id)) byId.set(b.id, b);
+    for (const b of [...all, ...vibeBooks]) {
+        if (!b.id || byId.has(b.id)) continue;
+        const coverUrl = b.coverUrl || `https://www.gutenberg.org/cache/epub/${b.id}/pg${b.id}.cover.medium.jpg`;
+        byId.set(b.id, { ...b, coverUrl });
     }
     let targets = [...byId.values()];
     if (Number.isFinite(LIMIT)) targets = targets.slice(0, LIMIT);
