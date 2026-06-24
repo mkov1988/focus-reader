@@ -306,6 +306,10 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
+    // Reading Stats inner page (opened from the menu, backed out of like the
+    // other inner pages). A full-screen layer rather than a tab, since it hangs
+    // off the menu's "More" group, not the primary Browse nav.
+    const [statsOpen, setStatsOpen] = useState(false);
     const [query, setQuery] = useState('');
 
     // ── Menu drawer: slide-in / swipe-to-dismiss / animated close ─────────
@@ -665,6 +669,39 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
         author: progress.author,
         coverUrl: progress.coverUrl,
         textUrl: progress.textUrl,
+    };
+
+    // ─── Reading Stats figures ────────────────────────────────────────────
+    // Derived from cumulative session totals (stats) plus per-book progress.
+    // There is no daily series yet (we store lifetime totals + each book's
+    // last-read time, not timestamped sessions), so no streak or weekly chart.
+    const statMinutes = Math.round(stats.msRead / 60000);
+    const statPages = Math.floor(stats.wordsRead / 250); // ~250 words/page (publishing std)
+    const avgWpm = stats.msRead > 0 ? Math.round(stats.wordsRead / (stats.msRead / 60000)) : null;
+    const isFinished = (r: ReadingProgress) => r.totalTokens > 0 && r.currentIndex / r.totalTokens >= 0.99;
+    const finishedCount = recents.filter(isFinished).length;
+    const readingNow = recents.filter((r) => !isFinished(r));
+    const BASELINE_WPM = 250; // a typical adult silent-reading pace
+    const minutesSaved = avgWpm && avgWpm > BASELINE_WPM
+        ? Math.round(stats.wordsRead / BASELINE_WPM - stats.wordsRead / avgWpm)
+        : 0;
+    // Benchmark against an "average reader" (the 250 wpm baseline): two pace bars
+    // scaled to whichever is faster, plus a faster/slower takeaway.
+    const avgReaderMinutes = Math.round(stats.wordsRead / BASELINE_WPM);
+    const benchMax = Math.max(avgWpm ?? 0, BASELINE_WPM);
+    const youBarW = avgWpm ? Math.round((avgWpm / benchMax) * 100) : 0;
+    const avgBarW = Math.round((BASELINE_WPM / benchMax) * 100);
+    const paceRatio = avgWpm ? avgWpm / BASELINE_WPM : null;
+    const pacePct = paceRatio ? Math.round(Math.abs(paceRatio - 1) * 100) : 0;
+    const paceFaster = paceRatio !== null && paceRatio > 1.03;
+    const paceSlower = paceRatio !== null && paceRatio < 0.97;
+    const hasAnyStats = stats.wordsRead > 0 || recents.length > 0;
+    const fmtDuration = (min: number) => {
+        if (min < 1) return '< 1m';
+        if (min < 60) return `${min}m`;
+        const h = Math.floor(min / 60);
+        const m = min % 60;
+        return m > 0 ? `${h}h ${m}m` : `${h}h`;
     };
 
     return (
@@ -1358,11 +1395,21 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                 })}
                             </div>
 
-                            {/* Placeholders */}
+                            {/* More */}
                             <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mt-7 mb-2">More</p>
                             <div className="flex flex-col">
+                                {/* Reading Stats — a real inner page. */}
+                                <button
+                                    type="button"
+                                    onClick={() => { haptics.tick(); closeMenu(); setStatsOpen(true); }}
+                                    className="flex items-center gap-3 rounded-2xl px-3.5 py-3 select-none active:scale-[0.99] active:bg-cream/60 transition-[transform,background-color] duration-150 text-left"
+                                >
+                                    <BarChart3 size={18} className="text-mocha shrink-0" />
+                                    <span className="flex-1 font-serif text-[15px] text-espresso">Reading Stats</span>
+                                    <ChevronRight size={18} className="text-espresso/25 shrink-0" />
+                                </button>
+                                {/* Still to come. */}
                                 {[
-                                    { icon: BarChart3, label: 'Reading Stats' },
                                     { icon: Settings, label: 'Settings' },
                                     { icon: Info, label: 'About' },
                                 ].map(({ icon: Icon, label }) => (
@@ -1375,6 +1422,129 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                             </div>
                         </div>
                     </div>
+                </div>
+            )}
+
+            {/* ── Reading Stats inner page ──────────────────────────────────
+                 A full-screen layer wearing the shared inner-page header, opened
+                 from the menu's "More" group and backed out of. Figures are the
+                 derived `stat*` values above. ─────────────────────────────── */}
+            {statsOpen && (
+                <div
+                    className="fixed inset-0 z-[60] bg-warm-beige overflow-y-auto overscroll-contain animate-fade-in"
+                    role="dialog"
+                    aria-label="Reading Stats"
+                    aria-modal="true"
+                    style={{ backgroundImage: 'radial-gradient(120% 80% at 50% -10%, rgba(212,154,63,0.10), transparent 55%)' }}
+                >
+                    <InnerPageHeader
+                        title="Reading Stats"
+                        eyebrow="Your reading life"
+                        backLabel="Back to home"
+                        onBack={() => { haptics.tick(); setStatsOpen(false); }}
+                    />
+                    <main
+                        className="max-w-md mx-auto px-5 pt-5"
+                        style={{ paddingBottom: 'max(3rem, env(safe-area-inset-bottom))' }}
+                    >
+                        {!hasAnyStats ? (
+                            <EmptyTab
+                                icon={BarChart3}
+                                title="No reading yet"
+                                body="Open a book and start reading. Your time, words, and pace will gather here."
+                                footnote={null}
+                            />
+                        ) : (
+                            <>
+                                {/* Hero: total time in the reading room */}
+                                <section className="relative rounded-2xl bg-espresso text-cream px-5 py-6 overflow-hidden">
+                                    <BarChart3 size={96} className="absolute -right-4 -bottom-5 text-cream/[0.06]" />
+                                    <p className="text-[10px] font-semibold tracking-[0.22em] text-mustard/80 uppercase">&middot; Time in the reading room &middot;</p>
+                                    <p className="font-serif text-[44px] font-semibold leading-none mt-3 tabular-nums">{fmtDuration(statMinutes)}</p>
+                                    <p className="font-serif italic text-[14px] text-cream/80 mt-2">
+                                        {avgWpm ? `at about ${avgWpm.toLocaleString()} words a minute` : 'so far'}
+                                    </p>
+                                </section>
+
+                                {/* Headline figures */}
+                                <section className="grid grid-cols-2 gap-3 mt-4">
+                                    {[
+                                        { n: stats.wordsRead.toLocaleString(), l: 'Words read' },
+                                        { n: statPages.toLocaleString(), l: 'Pages' },
+                                        { n: avgWpm ? avgWpm.toLocaleString() : '—', l: 'Avg WPM' },
+                                        { n: finishedCount.toLocaleString(), l: finishedCount === 1 ? 'Book finished' : 'Books finished' },
+                                    ].map((c) => (
+                                        <div key={c.l} className="rounded-2xl bg-cream/70 ring-1 ring-espresso/10 px-4 py-4 text-center">
+                                            <p className="font-serif text-[30px] font-semibold text-espresso leading-none tabular-nums">{c.n}</p>
+                                            <p className="text-[10px] font-semibold tracking-[0.14em] text-mocha uppercase mt-2">{c.l}</p>
+                                        </div>
+                                    ))}
+                                </section>
+
+                                {/* Benchmark: your pace head-to-head with an average reader */}
+                                {avgWpm && (
+                                    <section className="mt-3 rounded-2xl bg-cream/70 ring-1 ring-espresso/10 px-5 py-5">
+                                        <p className="text-[10px] font-semibold tracking-[0.18em] text-mocha/80 uppercase">&middot; Against the average reader &middot;</p>
+                                        <div className="mt-4 flex flex-col gap-3">
+                                            {[
+                                                { label: 'You', wpm: avgWpm, w: youBarW, accent: true },
+                                                { label: 'Average reader', wpm: BASELINE_WPM, w: avgBarW, accent: false },
+                                            ].map((b) => (
+                                                <div key={b.label}>
+                                                    <div className="flex items-baseline justify-between mb-1">
+                                                        <span className="text-[12px] font-semibold text-espresso">{b.label}</span>
+                                                        <span className="text-[12px] text-mocha tabular-nums">{b.wpm.toLocaleString()} wpm</span>
+                                                    </div>
+                                                    <div className="h-2.5 rounded-full bg-espresso/10 overflow-hidden">
+                                                        <div
+                                                            className={`h-full rounded-full ${b.accent ? 'bg-coral-accent' : 'bg-mocha/40'}`}
+                                                            style={{ width: `${b.w}%` }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <p className="text-[13px] text-espresso leading-snug mt-4">
+                                            {paceFaster ? (
+                                                <><span className="font-semibold">About {pacePct}% faster</span> than a typical reader{minutesSaved > 0 ? `, saving roughly ${fmtDuration(minutesSaved)} so far.` : '.'}</>
+                                            ) : paceSlower ? (
+                                                <>About <span className="font-semibold">{pacePct}% slower</span> than a typical reader, which is a perfectly good pace.</>
+                                            ) : (
+                                                <>Right around <span className="font-semibold">the average reader's pace</span>.</>
+                                            )}
+                                        </p>
+                                        <p className="text-[11px] text-mocha/80 italic mt-2">
+                                            The same {statPages.toLocaleString()} pages would take an average reader about {fmtDuration(avgReaderMinutes)}.
+                                        </p>
+                                        <p className="text-[10px] text-mocha/60 mt-3">Average adult silent reading is about {BASELINE_WPM} words a minute.</p>
+                                    </section>
+                                )}
+
+                                {/* Reading now — tap to pick a book back up */}
+                                {readingNow.length > 0 && (
+                                    <section className="mt-9">
+                                        <h3 className="font-serif text-[18px] font-semibold text-espresso tracking-tight leading-none mb-3">Reading now</h3>
+                                        <div className="flex flex-col gap-2.5">
+                                            {readingNow.slice(0, 6).map((r) => (
+                                                <RecentRow
+                                                    key={r.bookId}
+                                                    r={r}
+                                                    onOpen={(book, rect, idx) => { setStatsOpen(false); onOpenBookInstant(book, rect, idx); }}
+                                                />
+                                            ))}
+                                        </div>
+                                    </section>
+                                )}
+
+                                {/* Saved-for-later context */}
+                                {saved.length > 0 && (
+                                    <p className="text-center text-[12px] text-mocha italic mt-9">
+                                        {saved.length} {saved.length === 1 ? 'book' : 'books'} saved for later in your Library.
+                                    </p>
+                                )}
+                            </>
+                        )}
+                    </main>
                 </div>
             )}
         </div>
