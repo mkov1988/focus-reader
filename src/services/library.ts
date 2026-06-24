@@ -9,6 +9,7 @@
  */
 import type { BookMetadata, LibraryService, VibePage } from './types';
 import { gutendex, cleanTitle } from './gutendex';
+import { getCachedBook, putCachedBook } from './bookCache';
 import curatedJson from '../data/curated.json';
 import vibesJson from '../data/vibes.json';
 
@@ -28,6 +29,11 @@ import vibesJson from '../data/vibes.json';
  * generated cover in BookCover, never a blank.
  */
 const COVER_BASE = (import.meta.env.VITE_COVER_BASE?.replace(/\/+$/, '')) || '/covers';
+// Book text is mirrored the same way covers are: served same-origin from /books
+// by default (public/books/<id>.txt, a gitignored build artifact), or from a CDN
+// when VITE_BOOK_BASE is set. Pre-stripped and immutable, so a mirrored book
+// opens without ever touching gutenberg at read time. See book_access_strategy.md.
+const BOOK_BASE = (import.meta.env.VITE_BOOK_BASE?.replace(/\/+$/, '')) || '/books';
 // Covers are keyed by book id, so we resolve every book to `${base}/<id>.webp`
 // regardless of whether the bundled data carried a cover URL (vibe shelf books
 // don't). If a given cover wasn't mirrored, the <img> 404s and BookCover falls
@@ -82,31 +88,51 @@ function toProxyUrl(url: string): string {
     return url;
 }
 
-/** Strip Project Gutenberg legal headers/footers to jump to the actual text. */
+/**
+ * Strip Project Gutenberg legal headers, footers, and transcriber credits to
+ * leave just the book. Handles both the modern `*** START/END OF ... ***` markers
+ * and the older "small print" header plus "End of Project Gutenberg's <title>"
+ * footer, drops the credit block that opens most files, and as a final safeguard
+ * removes any line carrying the "Project Gutenberg" trademark (these public-domain
+ * texts never use the phrase themselves). Keeping the trademark out is what frees
+ * the text from the Project Gutenberg license, so this is legally load bearing,
+ * not just cosmetic. See docs/planning/book_access_strategy.md §6.
+ *
+ * NOTE: scripts/mirror-books.mjs carries an identical copy — keep the two in sync.
+ */
 export function stripGutenbergBoilerplate(raw: string): string {
     let text = raw.replace(/\r\n/g, '\n');
 
+    // Header: jump past the modern START marker, or the old "small print" block.
     const start = text.match(/\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    const startFound = start !== null && start.index !== undefined;
-    if (startFound && start) {
-        text = text.slice(start.index! + start[0].length);
+    if (start?.index !== undefined) {
+        text = text.slice(start.index + start[0].length);
+    } else {
+        const smallPrint = text.match(/\*\s*END[^\n]*SMALL PRINT[^\n]*/i);
+        if (smallPrint?.index !== undefined) text = text.slice(smallPrint.index + smallPrint[0].length);
     }
 
+    // Footer: stop at the modern END marker, or the old "End of ... Gutenberg" line.
     const end = text.match(/\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    const endFound = end !== null && end.index !== undefined;
-    if (endFound && end) {
-        text = text.slice(0, end.index!);
+    if (end?.index !== undefined) {
+        text = text.slice(0, end.index);
+    } else {
+        const oldEnd = text.match(/\n\s*End of (?:the |this )?Project Gutenberg[^\n]*/i);
+        if (oldEnd?.index !== undefined) text = text.slice(0, oldEnd.index);
     }
 
-    // Drop a leading transcriber/credits line if one survived.
-    text = text.replace(/^\s*Produced by[^\n]*\n/i, '');
+    // Drop the leading transcriber/credit/admin block (very common right after the
+    // header) so the reader opens on the actual book, not "E-text prepared by…".
+    // Also consume the bare URL and "or" lines those notes wrap across.
+    const creditRe = /(produced by|prepared by|transcrib|proofread|distributed proofreading|pgdp\.net|gutenberg\.org|project gutenberg|updated editions|this e-?(?:text|book) was|html version|original illustrations|see \S+-h\.(?:htm|zip))/i;
+    const skip = (l: string) => l.trim() === '' || creditRe.test(l) || /^\s*\(?https?:\/\//i.test(l) || /^\s*(?:or|and)\s*$/i.test(l);
+    const lines = text.split('\n');
+    let i = 0;
+    while (i < lines.length && skip(lines[i])) i++;
+    text = lines.slice(i).join('\n');
 
-    // Defensive: if neither marker matched, Gutenberg may have changed their
-    // wrapper format — surface a warning so we notice instead of silently
-    // serving legal boilerplate to the reader.
-    if (!startFound && !endFound && /project gutenberg/i.test(text.slice(0, 1500))) {
-        console.warn('[library] Gutenberg boilerplate markers not found; reader may show legal header.');
-    }
+    // Final safeguard: never keep a line carrying the Project Gutenberg trademark.
+    text = text.split('\n').filter((l) => !/project gutenberg/i.test(l)).join('\n');
 
     return text.trim();
 }
@@ -142,6 +168,30 @@ export const webLibraryService: LibraryService = {
     },
 
     async fetchContent(book: BookMetadata): Promise<string> {
+        // Tier 1 — the device. A previously read book is already on hand, so it
+        // opens in a few milliseconds and works with no connection.
+        if (book.id) {
+            const cached = await getCachedBook(book.id);
+            if (cached) return cached;
+        }
+
+        // Tier 2 — our own mirror (same-origin /books, or a CDN via
+        // VITE_BOOK_BASE). Pre-stripped and immutable, so this is fast and never
+        // touches gutenberg. Save it on the device for next time.
+        if (book.id) {
+            const hosted = await fetchHostedBook(book.id);
+            if (hosted) {
+                const clean = stripGutenbergBoilerplate(hosted);
+                if (clean) {
+                    void putCachedBook(book.id, clean);
+                    return clean;
+                }
+            }
+        }
+
+        // Tier 3 — last resort: stream from Project Gutenberg (dev proxy). Slow
+        // and flaky, so we strip it once and persist it on the device so the next
+        // open is instant and offline.
         if (!book.textUrl) {
             throw new Error('No readable plain-text edition is available for this title.');
         }
@@ -150,6 +200,22 @@ export const webLibraryService: LibraryService = {
         const raw = await res.text();
         const clean = stripGutenbergBoilerplate(raw);
         if (!clean) throw new Error('The downloaded file appears to be empty.');
+        if (book.id) void putCachedBook(book.id, clean);
         return clean;
     },
 };
+
+/** Fetch a mirrored book from our static host, or undefined if it isn't mirrored.
+ *  A static host with SPA fallback may answer a missing file with index.html, so
+ *  we reject anything that looks like an HTML document rather than a book. */
+async function fetchHostedBook(id: string): Promise<string | undefined> {
+    try {
+        const res = await fetch(`${BOOK_BASE}/${id}.txt`);
+        if (!res.ok) return undefined;
+        const text = await res.text();
+        if (!text || /^\s*<(?:!doctype|html)/i.test(text)) return undefined;
+        return text;
+    } catch {
+        return undefined;
+    }
+}

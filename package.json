@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "mirror:covers": "node scripts/mirror-covers.mjs",
+    "mirror:books": "node scripts/mirror-books.mjs",
     "build:vibes": "node scripts/build-vibes.mjs"
   },
   "dependencies": {

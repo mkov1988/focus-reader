@@ -84,7 +84,61 @@ Only the curated catalog is mirrored. Live Gutendex search results keep their gu
 ### Native mapping
 This is the same "download once, store on device" model that section 2 defines for book content. In the native app, a cover downloads to the device cache alongside its book (React Native `<Image>` / file cache, or the WebView cache), so owned books always carry their covers offline. Only a browse cover for a book not yet opened can miss, and that degrades to a generated cover.
 
-## 6. Next Steps
+## 6. Book Content: Mirror, Cache, Serve
+
+### The problem
+Book text was streamed from gutenberg.org at the moment the user opened a book, through the dev proxy. We measured this at 7 to 13 seconds per book, regardless of file size (a 99KB book still took 7 seconds), because gutenberg's origin is simply slow and throttling. Nothing was saved after reading, so every first open paid the full wait and nothing worked offline. Front page books only felt fast because they were already sitting in the browser's own cache from earlier opens.
+
+### The insight
+The catalog is finite, known ahead of time, and immutable: a public domain text by Gutenberg id never changes. That is exactly the shape of content you prepare once and serve from a fast path, the same decision we already made for covers in §5. So book text follows the cover pattern.
+
+### Pipeline
+1. **Mirror** — `npm run mirror:books` (`scripts/mirror-books.mjs`) reads the unique ids across `curated.json` and `vibes.json`, downloads each book once, strips the Gutenberg header, footer, and transcriber credits, and writes `public/books/<id>.txt`. It is resumable (skips books already saved), supports `--vibe=<key>`, `--curated`, `--ids=`, and `--limit=` for partial runs, and writes failures to `_failed.json` to retry. `public/books/` is gitignored, like covers. About 1436 books, roughly 614MB raw.
+   *   **Be polite about the source.** gutenberg.org discourages bulk crawling and will block the IP. For a full catalog run, point `BOOK_SOURCE` at an official mirror and keep `BOOK_CONCURRENCY` low. Partial, resumable runs against the main site are fine for small sets.
+   *   **Stripping is legally load bearing**, not just a size win. Removing the Project Gutenberg name is what takes the text out of the Gutenberg trademark license (see §7). The same strip lives in `library.ts` as a runtime safety net for live fetches; the two copies are kept in sync by hand.
+2. **Serve** — same origin from `/books/<id>.txt` by default (bundled into the build), or from a CDN when `VITE_BOOK_BASE` is set. Immutable content, so it should carry a long cache header.
+3. **Point the app at it** — `library.ts` `fetchContent` is now a three tier ladder:
+   *   **Tier 1, the device.** `bookCache.ts` keeps every read book in IndexedDB, keyed by id. A reopened book loads in a few milliseconds and works with no connection.
+   *   **Tier 2, our mirror.** `${VITE_BOOK_BASE || '/books'}/<id>.txt`, pre stripped and fast (measured at about 9ms same origin). A static host with SPA fallback can answer a missing file with index.html, so the fetch rejects anything that looks like HTML and falls through. Every hit is saved to tier 1.
+   *   **Tier 3, gutenberg.** The original proxied stream, only when a book is neither cached nor mirrored. It is stripped once and saved to tier 1 so the next open is instant.
+4. **Service worker** — `vite.config.ts` runtime caches `/books` text CacheFirst (the `book-text` cache), the build only secondary layer beneath the IndexedDB cache, so even an unread mirrored book is cached on first view.
+
+### Result
+First open of a mirrored book drops from about 8 seconds to well under a second, repeat opens and offline reading are instant, and gutenberg is only ever touched by the build machine or as a last resort.
+
+### Tiering for native (Android)
+614MB is trivial on a CDN but too much to ship inside an app. Bundle the hot set on the device (the curated front table plus saved and in progress books, roughly 15 to 30MB) so the home experience is instant and offline on install; pull the long tail from the CDN on first tap and persist it on the device. IndexedDB here maps to the native file system later, behind the same `bookCache` interface.
+
+## 7. Business & Legal Considerations (Charging for Public Domain Books)
+
+We plan to charge for the app, so the content strategy has to hold up commercially. The short version: this is legal and sellable, with conditions. None of the below is legal advice. Have an intellectual property lawyer review the final title list before turning on payments, especially if we sell outside the US.
+
+### The text itself is free to sell
+Public domain works have no copyright owner. Anyone may copy, host, modify, and sell them, and we owe no royalty on the content. Selling a reading app built on public domain books is a long established, legitimate model (Serial Reader and many classics apps run on the same texts).
+
+### The Gutenberg trademark is the catch, and stripping it is the escape hatch
+"Project Gutenberg" is a registered trademark. The Project Gutenberg License travels with any file that carries their name or header, and that license is restrictive: keep the branding and charge for the book, and you owe the foundation a 20 percent royalty and must ship their full license text. Their own license states that once every reference to Project Gutenberg is removed, what remains is a plain public domain work their license no longer governs.
+
+Consequence for our pipeline: **stripping the Gutenberg boilerplate (header, footer, "Produced by", license block) is legally load bearing, not just a size optimization.** It is what takes us out from under the trademark license and its royalty. Two rules follow:
+- Always strip the boilerplate at build time, before serving or bundling a book.
+- Never show the words "Project Gutenberg" on the books or in the reading view. Reattaching the name can pull the license back in.
+
+### Real risks to manage
+1. **International copyright is the big one.** "Public domain in the US" is not "public domain everywhere." The US line in 2026 is works published in 1930 or earlier, and it advances one year every January. Most other countries use life of the author plus seventy years instead. A title free in the US can still be under copyright in the UK, EU, Canada, or Australia. Selling worldwide through app stores could mean distributing something still protected somewhere, which is the most likely cause of a takedown. Mitigate by curating to authors who died more than seventy years ago (clears most jurisdictions at once), or by restricting availability by region.
+2. **Editions, translations, and introductions carry their own copyright.** The original words of a classic are free, but a specific modern translation, introduction, footnotes, or new compilation can be independently copyrighted. Old works and old translations are safe; a recent translation is not. Watch this when hand picking titles.
+3. **Server access policy.** Gutenberg discourages bulk automated downloading against the main site and will block the IP. Build the mirror from an official Gutenberg mirror site or the offline bulk collection, at a gentle request rate. This is operational rather than copyright, but it gates the build step.
+
+### Business reality to price around
+We cannot get exclusivity on public domain text, so a competitor can legally clone the catalog. The product, not the content, is the moat: the focus reader, the curation and vibes, offline, sync, taste. Price the paid tier as the app and its features, never as access to a specific book.
+
+### Options worth considering
+- **Standard Ebooks** as a source or a premium tier: carefully produced, verified public domain editions released under a true no rights reserved dedication (CC0), with no trademark license attached at all. Cleaner provenance for a paid product than raw Gutenberg, though a smaller catalog (around a thousand titles). Can be blended in.
+- **Goodwill toward Gutenberg:** not required once stripped, and we keep their name off the product surface, but a donation to their foundation is reasonable given we build on their work.
+
+### Net
+Keep the stripping (it frees us from the trademark license), source the mirror politely from a mirror site, curate to titles clearly public domain in the markets we sell to, and sell the experience rather than the catalog. Have an IP lawyer review the final title list before enabling payments; the international piece depends on which countries we ship to.
+
+## 8. Next Steps
 1.  **Configure Local Proxy**: Enable `gutenberg.org` access in `vite`. *(done — see `vite.config.ts`)*
 2.  **Build "Library" Component**: A simple grid of covers. *(done — `StoreFront`)*
 3.  **Mirror & host covers**: Run `npm run mirror:covers`, upload `covers/`, set `VITE_COVER_BASE`.

@@ -37,6 +37,11 @@ docs/assets/references/
 /public/covers/
 /covers/
 
+# Mirrored book text — a local build artifact from `npm run mirror:books`.
+# Served same-origin from /books (or a CDN via VITE_BOOK_BASE). Large and
+# regenerated, so not committed.
+/public/books/
+
 # Resumable cache for the word-count crawler (scripts/add-vibe-wordcounts.mjs).
 scripts/.vibe-wordcounts.json
 

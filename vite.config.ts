@@ -28,6 +28,18 @@ export default defineConfig({
               cacheableResponse: { statuses: [0, 200] },
             },
           },
+          {
+            // Mirrored book text (/books/<id>.txt). Immutable, so CacheFirst. The
+            // app also caches read books in IndexedDB; this is the secondary,
+            // build-only layer so even unread mirrored books are cached on view.
+            urlPattern: ({ url }) => url.pathname.includes('/books/'),
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'book-text',
+              expiration: { maxEntries: 400, maxAgeSeconds: 60 * 60 * 24 * 180 },
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
         ],
       },
       manifest: {
