@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
+/* Fonts are self-hosted via @fontsource (imported in main.tsx), not a CDN, so
+   the app works offline and on first launch. Families: 'Inter Variable' (sans)
+   and 'Fraunces Variable' (serif), referenced in tailwind.config.js. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,10 +34,13 @@ body,
 #root {
   min-height: 100%;
   width: 100%;
+  /* Stop a downward overscroll from pulling-to-refresh / reloading the SPA in a
+     mobile WebView (which would throw away the reader). */
+  overscroll-behavior: none;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(var(--bg));

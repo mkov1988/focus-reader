@@ -32,8 +32,12 @@ export default {
         sage: '#7E8F6E',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Merriweather', 'Georgia', 'serif'],
+        // 'Inter Variable' / 'Fraunces Variable' are the self-hosted @fontsource
+        // family names (see main.tsx). Plain names + system fonts stay as
+        // fallbacks. Merriweather is no longer bundled (it only ever sat behind
+        // Fraunces in the stack); Georgia covers the serif fallback.
+        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Fraunces Variable', 'Fraunces', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {

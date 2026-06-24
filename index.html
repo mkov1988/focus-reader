@@ -3,8 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>temp_app</title>
+    <!-- viewport-fit=cover lets the app draw under the status bar / cutouts so the
+         env(safe-area-inset-*) padding used throughout actually takes effect. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#3a2a1e" />
+    <title>Focus Reader</title>
   </head>
   <body>
     <div id="root"></div>

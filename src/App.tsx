@@ -208,6 +208,18 @@ function App() {
         setViewMode('INPUT');
     };
 
+    // Pause when the app goes to the background (screen lock, app switch, incoming
+    // call). Otherwise the RSVP loop and the session timer keep running while the
+    // phone is away, drifting the reading position and inflating reading stats.
+    // A ref keeps the listener stable without re-subscribing each render.
+    const rsvpRef = useRef(rsvp);
+    useEffect(() => { rsvpRef.current = rsvp; }, [rsvp]);
+    useEffect(() => {
+        const onHidden = () => { if (document.visibilityState === 'hidden') rsvpRef.current.pause(); };
+        document.addEventListener('visibilitychange', onHidden);
+        return () => document.removeEventListener('visibilitychange', onHidden);
+    }, []);
+
     // Touch gestures for the reading view: tap to pause/play, swipe L/R to
     // skip sentence, swipe down to exit. Haptic confirmation on tap.
     const readerGestures = useReaderGestures({
