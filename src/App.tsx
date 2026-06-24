@@ -12,6 +12,7 @@ import { useReaderGestures } from './hooks/useReaderGestures';
 import { parseText, type ParsedText } from './utils/textProcessing';
 import { haptics } from './utils/haptics';
 import { webLibraryService as library } from './services/library';
+import { getScenes } from './services/scenes';
 import type { BookMetadata } from './services/types';
 import { THEMES } from './theme';
 import './index.css';
@@ -164,7 +165,17 @@ function App() {
         library.fetchContent(pending.book)
             .then((text) => {
                 if (!alive) return;
-                setPendingParsed(parseText(text));
+                const parsed = parseText(text);
+                // Prefer an authored scene map over heuristically detected chapters,
+                // so the reader's scrubber shows scene names ("A Mad Tea-Party") that
+                // match the home hero's "previously" recap. Falls back to detected
+                // chapters for books without a map. (services/scenes.ts)
+                const scenes = getScenes(pending.book.id);
+                if (scenes.length > 0) {
+                    parsed.chapters = scenes.map((s) => ({ title: s.label, wordIndex: s.startIndex, lineIndex: 0 }));
+                    parsed.chapterConfidence = 'high';
+                }
+                setPendingParsed(parsed);
             })
             .catch((e: unknown) => {
                 if (!alive) return;
