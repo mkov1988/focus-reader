@@ -1,0 +1,29 @@
+{
+  "_comment": "Hand-authored scene maps. anchor = a distinctive prose phrase at the scene start (matched case/punctuation-insensitively against the mirrored book text by scripts/build-scenes.mjs, which resolves it to a token index). label = spoiler-safe scene name. recap = one calm sentence summarizing that scene, shown as a 'previously' line when resuming, so it must not spoil anything past that scene. Add a book by id; run `npm run build:scenes`.",
+  "11": [
+    { "anchor": "Alice was beginning to get very tired of sitting", "label": "Down the Rabbit-Hole", "recap": "Bored by the riverbank, Alice follows a waistcoated White Rabbit down a hole and lands in a hall of locked doors." },
+    { "anchor": "Curiouser and curiouser cried Alice", "label": "The Pool of Tears", "recap": "After shooting up tall and shrinking small, Alice weeps a whole pool of tears and swims off through it." },
+    { "anchor": "They were indeed a queer-looking party that assembled on the bank", "label": "A Caucus-Race and a Long Tale", "recap": "A soggy crowd of birds and animals dries off with a muddled Caucus-Race, then drifts away one by one." },
+    { "anchor": "It was the White Rabbit, trotting slowly back again", "label": "The Rabbit Sends in a Little Bill", "recap": "Mistaken for the Rabbit's maid, Alice grows enormous inside his house before nibbling her way back out and fleeing." },
+    { "anchor": "The Caterpillar and Alice looked at each other for some time", "label": "Advice from a Caterpillar", "recap": "A hookah-smoking Caterpillar quizzes Alice on who she is, then leaves her a mushroom that changes her size." },
+    { "anchor": "For a minute or two she stood looking at the house", "label": "Pig and Pepper", "recap": "In a pepper-filled kitchen Alice meets the Duchess, finds the grinning Cheshire Cat, and rescues a baby that turns into a pig." },
+    { "anchor": "There was a table set out under a tree in front of the house", "label": "A Mad Tea-Party", "recap": "The Hatter, the March Hare, and a drowsy Dormouse pull Alice into a riddling, never-ending tea-party." },
+    { "anchor": "A large rose-tree stood near the entrance of the garden", "label": "The Queen's Croquet-Ground", "recap": "Gardeners frantically paint white roses red as the fierce Queen of Hearts sweeps Alice into a chaotic croquet match." },
+    { "anchor": "You can't think how glad I am to see you again", "label": "The Mock Turtle's Story", "recap": "The Duchess waxes on about morals, then a wistful Mock Turtle and a Gryphon recount their odd schooling by the sea." },
+    { "anchor": "The Mock Turtle sighed deeply, and drew the back of one flapper", "label": "The Lobster Quadrille", "recap": "The Mock Turtle and Gryphon dance the Lobster Quadrille and coax Alice through some thoroughly muddled recitations." },
+    { "anchor": "The King and Queen of Hearts were seated on their throne", "label": "Who Stole the Tarts?", "recap": "At the trial of the Knave of Hearts, witnesses give nonsense testimony while Alice quietly begins to grow again." },
+    { "anchor": "Here! cried Alice, quite forgetting in the flurry of the moment", "label": "Alice's Evidence", "recap": "Alice towers over the court, scatters the Queen's nonsense, and wakes on the riverbank to find it was all a dream." }
+  ],
+  "43": [
+    { "anchor": "Mr. Utterson the lawyer was a man of a rugged countenance", "label": "Story of the Door", "recap": "Lawyer Utterson hears how a cold, brutal man named Hyde trampled a child and paid the family off with a cheque signed by the respected Dr Jekyll." },
+    { "anchor": "That evening Mr. Utterson came home to his bachelor house in sombre", "label": "Search for Mr. Hyde", "recap": "Troubled by Jekyll's will leaving everything to Hyde, Utterson haunts the door until he finally meets the chilling man face to face." },
+    { "anchor": "A fortnight later, by excellent good fortune, the doctor gave one of", "label": "Dr. Jekyll Was Quite at Ease", "recap": "Over dinner Jekyll airily waves off Utterson's worries, asking only that, whatever should happen, Hyde be looked after." },
+    { "anchor": "Nearly a year later, in the month of October", "label": "The Carew Murder Case", "recap": "Hyde beats a kindly old gentleman to death in the street, and all London turns out in a manhunt for him." },
+    { "anchor": "It was late in the afternoon, when Mr. Utterson found his way to Dr", "label": "Incident of the Letter", "recap": "Hyde has vanished. A pale, shaken Jekyll shows Utterson a farewell letter from Hyde, but its handwriting plants a fresh doubt." },
+    { "anchor": "Time ran on; thousands of pounds were offered in reward", "label": "Incident of Dr. Lanyon", "recap": "With Hyde gone Jekyll grows sociable again, then suddenly shuts himself away, while old Dr Lanyon sickens under some secret dread and dies." },
+    { "anchor": "It chanced on Sunday, when Mr. Utterson was on his usual walk", "label": "Incident at the Window", "recap": "Chatting up at his window, Jekyll's face twists into such horror that Utterson and Enfield flee the courtyard in silence." },
+    { "anchor": "Mr. Utterson was sitting by his fireside one evening after dinner", "label": "The Last Night", "recap": "Jekyll's butler Poole comes in terror: a stranger's voice is locked in the cabinet, and the two men resolve to break down the door." },
+    { "anchor": "On the ninth of January, now four days ago, I received by the evening", "label": "Dr. Lanyon's Narrative", "recap": "Lanyon's sealed letter reveals what he saw that night: a potion drunk, and a transformation so impossible it shattered him." },
+    { "anchor": "I was born in the year 18 to a large fortune, endowed besides", "label": "Henry Jekyll's Full Statement", "recap": "In his own hand, Jekyll confesses the whole truth of his double life, and how it finally consumed him." }
+  ]
+}

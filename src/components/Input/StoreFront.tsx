@@ -5,6 +5,7 @@ import { BookCard } from './BookCard';
 import { BookCover, type CoverVariant } from './BookCover';
 import { SaveButton } from './SaveButton';
 import { InnerPageHeader } from '../InnerPageHeader';
+import { sceneAt } from '../../services/scenes';
 import { usePress } from '../../hooks/usePress';
 import { useStore, type TabKey, type ReadingProgress } from '../../store/useStore';
 import { webLibraryService as library } from '../../services/library';
@@ -675,6 +676,9 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     const progressPct = hasProgress
         ? Math.min(100, Math.round((progress.currentIndex / progress.totalTokens) * 100))
         : 0;
+    // The scene the reader left off in (books with an authored scene map only),
+    // for the calm "previously…" recap on the resume hero.
+    const heroScene = progress ? sceneAt(progress.bookId, progress.currentIndex) : null;
 
     /** Press-and-hold on the hero cover — lifts the book with the cover as the
      *  commit zone (release over it to open, drag away to cancel). */
@@ -1039,6 +1043,12 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                                 <div className="h-full rounded-full bg-coral-accent transition-[width] duration-300" style={{ width: `${progressPct}%` }} />
                                             </div>
                                         </div>
+                                        {heroScene && (
+                                            <div className="mt-4 rounded-xl bg-espresso/[0.04] ring-1 ring-espresso/[0.06] px-3.5 py-2.5">
+                                                <p className="text-[9px] font-semibold tracking-[0.18em] text-mocha/70 uppercase">Previously &middot; {heroScene.label}</p>
+                                                <p className="font-serif italic text-[12.5px] text-mocha leading-snug mt-1">{heroScene.recap}</p>
+                                            </div>
+                                        )}
                                         <div className="flex gap-3 mt-5">
                                             <button
                                                 type="button"
