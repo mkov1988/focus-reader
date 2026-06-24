@@ -129,6 +129,28 @@ function EmptyTab({ icon: Icon, title, body, footnote = 'Coming soon' }: { icon:
     );
 }
 
+/**
+ * Full-screen inner page (Reading Stats / Settings / About) opened from the
+ * menu's "More" group: the shared back+title header over a scrollable column,
+ * matching the warm-beige page shell, backed out of via the header.
+ */
+function OverlayPage({ title, eyebrow, onBack, children }: { title: string; eyebrow?: string; onBack: () => void; children: React.ReactNode }) {
+    return (
+        <div
+            className="fixed inset-0 z-[60] bg-warm-beige overflow-y-auto overscroll-contain animate-fade-in"
+            role="dialog"
+            aria-label={title}
+            aria-modal="true"
+            style={{ backgroundImage: 'radial-gradient(120% 80% at 50% -10%, rgba(212,154,63,0.10), transparent 55%)' }}
+        >
+            <InnerPageHeader title={title} eyebrow={eyebrow} backLabel="Back to home" onBack={onBack} />
+            <main className="max-w-md mx-auto px-5 pt-5" style={{ paddingBottom: 'max(3rem, env(safe-area-inset-bottom))' }}>
+                {children}
+            </main>
+        </div>
+    );
+}
+
 /** Estimated read time from a word count and the reader's words-per-minute. */
 function formatReadTime(words: number | undefined, wpm: number): string | null {
     if (!words || words < 1) return null;
@@ -306,10 +328,12 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
     const [menuOpen, setMenuOpen] = useState(false);
-    // Reading Stats inner page (opened from the menu, backed out of like the
-    // other inner pages). A full-screen layer rather than a tab, since it hangs
-    // off the menu's "More" group, not the primary Browse nav.
+    // Inner pages opened from the menu's "More" group, backed out of like the
+    // other inner pages. Full-screen layers rather than tabs (they're not part of
+    // the primary Browse nav).
     const [statsOpen, setStatsOpen] = useState(false);
+    const [settingsOpen, setSettingsOpen] = useState(false);
+    const [aboutOpen, setAboutOpen] = useState(false);
     const [query, setQuery] = useState('');
 
     // ── Menu drawer: slide-in / swipe-to-dismiss / animated close ─────────
@@ -416,6 +440,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     // title, 'short' (length filter), or 'continue' (in-progress books here).
     const [vibeFilter, setVibeFilter] = useState<string | null>(null);
     const wpm = useStore((s) => s.wpm);
+    const setWpm = useStore((s) => s.setWpm);
 
     // Descending into an inner page (a vibe, search results, or a non-Today tab)
     // should open it at its own top, not inherit the page's current scroll offset.
@@ -1318,106 +1343,26 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                 })}
                             </div>
 
-                            {/* Appearance: light / dark */}
-                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Appearance</p>
-                            <div className="flex gap-1.5 bg-espresso/[0.06] ring-1 ring-espresso/10 rounded-full p-1 mb-6">
-                                {([
-                                    { key: 'light', icon: Sun, label: 'Light' },
-                                    { key: 'dark', icon: Moon, label: 'Dark' },
-                                ] as const).map(({ key, icon: Icon, label }) => {
-                                    const active = themeMode === key;
-                                    return (
-                                        <button
-                                            key={key}
-                                            type="button"
-                                            onClick={() => { if (themeMode !== key) { toggleMode(); haptics.tick(); } }}
-                                            aria-pressed={active}
-                                            className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-[13px] font-semibold select-none active:scale-[0.98] transition-all duration-150 ${active ? 'bg-cream text-espresso shadow-sm ring-1 ring-espresso/10' : 'text-mocha'}`}
-                                        >
-                                            <Icon size={15} /> {label}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Theme */}
-                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Accent</p>
-                            <div className="flex flex-col gap-2">
-                                {THEMES.map((t, i) => {
-                                    const selected = i === themeIndex;
-                                    return (
-                                        <button
-                                            key={t.label}
-                                            type="button"
-                                            onClick={() => { if (i !== themeIndex) { setThemeIndex(i); haptics.tick(); } }}
-                                            aria-label={`Theme: ${t.label}`}
-                                            aria-pressed={selected}
-                                            className={`flex items-center gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
-                                        >
-                                            <span className="flex items-center gap-1 shrink-0">
-                                                {t.pills.map((color, j) => (
-                                                    <span key={j} className="w-1.5 h-5 rounded-[2px] ring-1 ring-espresso/5" style={{ backgroundColor: color }} />
-                                                ))}
-                                            </span>
-                                            <span className="flex-1 text-left font-serif text-[15px] text-espresso">{t.label}</span>
-                                            {selected && <Check size={16} className="text-coral-accent shrink-0" />}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-
-                            {/* Reading: how the focal letter is placed and how
-                                words too wide for the screen are handled. */}
-                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mt-7 mb-3">Reading</p>
-                            <div className="flex flex-col gap-1.5">
-                                {([
-                                    { key: 'centerAll', label: 'Classic', desc: 'Every word colours a middle letter so it fits.' },
-                                    { key: 'centerBig', label: 'Center long words', desc: 'Long words colour a middle letter so they fit.' },
-                                    { key: 'shrink', label: 'Shrink long words', desc: 'Long words shrink a little so they fit.' },
-                                    { key: 'compact', label: 'Compact', desc: 'Everything a touch smaller, so nothing clips.' },
-                                ] as const).map(({ key, label, desc }) => {
-                                    const selected = fitMode === key;
-                                    return (
-                                        <button
-                                            key={key}
-                                            type="button"
-                                            onClick={() => { if (fitMode !== key) { setFitMode(key); haptics.tick(); } }}
-                                            aria-pressed={selected}
-                                            className={`flex items-start gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 text-left ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
-                                        >
-                                            <span className="flex-1">
-                                                <span className="block font-serif text-[15px] text-espresso">{label}</span>
-                                                <span className="block text-[12px] text-mocha/80 leading-snug mt-0.5">{desc}</span>
-                                            </span>
-                                            {selected && <Check size={16} className="text-coral-accent shrink-0 mt-1" />}
-                                        </button>
-                                    );
-                                })}
-                            </div>
-
-                            {/* More */}
+                            {/* More — Appearance, Accent, and Reading display now
+                                live on the Settings page (this drawer stays a thin
+                                navigation hub). */}
                             <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mt-7 mb-2">More</p>
                             <div className="flex flex-col">
-                                {/* Reading Stats — a real inner page. */}
-                                <button
-                                    type="button"
-                                    onClick={() => { haptics.tick(); closeMenu(); setStatsOpen(true); }}
-                                    className="flex items-center gap-3 rounded-2xl px-3.5 py-3 select-none active:scale-[0.99] active:bg-cream/60 transition-[transform,background-color] duration-150 text-left"
-                                >
-                                    <BarChart3 size={18} className="text-mocha shrink-0" />
-                                    <span className="flex-1 font-serif text-[15px] text-espresso">Reading Stats</span>
-                                    <ChevronRight size={18} className="text-espresso/25 shrink-0" />
-                                </button>
-                                {/* Still to come. */}
-                                {[
-                                    { icon: Settings, label: 'Settings' },
-                                    { icon: Info, label: 'About' },
-                                ].map(({ icon: Icon, label }) => (
-                                    <div key={label} className="flex items-center gap-3 rounded-2xl px-3.5 py-3 opacity-45 select-none cursor-default">
+                                {([
+                                    { icon: BarChart3, label: 'Reading Stats', open: () => setStatsOpen(true) },
+                                    { icon: Settings, label: 'Settings', open: () => setSettingsOpen(true) },
+                                    { icon: Info, label: 'About', open: () => setAboutOpen(true) },
+                                ] as const).map(({ icon: Icon, label, open }) => (
+                                    <button
+                                        key={label}
+                                        type="button"
+                                        onClick={() => { haptics.tick(); closeMenu(); open(); }}
+                                        className="flex items-center gap-3 rounded-2xl px-3.5 py-3 select-none active:scale-[0.99] active:bg-cream/60 transition-[transform,background-color] duration-150 text-left"
+                                    >
                                         <Icon size={18} className="text-mocha shrink-0" />
                                         <span className="flex-1 font-serif text-[15px] text-espresso">{label}</span>
-                                        <span className="text-[9px] font-semibold tracking-[0.16em] text-mocha/70 uppercase">Soon</span>
-                                    </div>
+                                        <ChevronRight size={18} className="text-espresso/25 shrink-0" />
+                                    </button>
                                 ))}
                             </div>
                         </div>
@@ -1546,6 +1491,147 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                         )}
                     </main>
                 </div>
+            )}
+
+            {/* ── Settings inner page ───────────────────────────────────────
+                 The app's preferences, consolidated here (they used to sit in the
+                 menu drawer): appearance, accent, reading speed, reading display. */}
+            {settingsOpen && (
+                <OverlayPage title="Settings" eyebrow="Make it yours" onBack={() => { haptics.tick(); setSettingsOpen(false); }}>
+                    <div className="flex flex-col gap-8">
+                        {/* Appearance: light / dark */}
+                        <div>
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Appearance</p>
+                            <div className="flex gap-1.5 bg-espresso/[0.06] ring-1 ring-espresso/10 rounded-full p-1">
+                                {([
+                                    { key: 'light', icon: Sun, label: 'Light' },
+                                    { key: 'dark', icon: Moon, label: 'Dark' },
+                                ] as const).map(({ key, icon: Icon, label }) => {
+                                    const active = themeMode === key;
+                                    return (
+                                        <button
+                                            key={key}
+                                            type="button"
+                                            onClick={() => { if (themeMode !== key) { toggleMode(); haptics.tick(); } }}
+                                            aria-pressed={active}
+                                            className={`flex-1 flex items-center justify-center gap-2 rounded-full py-2.5 text-[13px] font-semibold select-none active:scale-[0.98] transition-all duration-150 ${active ? 'bg-cream text-espresso shadow-sm ring-1 ring-espresso/10' : 'text-mocha'}`}
+                                        >
+                                            <Icon size={15} /> {label}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Accent theme */}
+                        <div>
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Accent</p>
+                            <div className="flex flex-col gap-2">
+                                {THEMES.map((t, i) => {
+                                    const selected = i === themeIndex;
+                                    return (
+                                        <button
+                                            key={t.label}
+                                            type="button"
+                                            onClick={() => { if (i !== themeIndex) { setThemeIndex(i); haptics.tick(); } }}
+                                            aria-label={`Theme: ${t.label}`}
+                                            aria-pressed={selected}
+                                            className={`flex items-center gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
+                                        >
+                                            <span className="flex items-center gap-1 shrink-0">
+                                                {t.pills.map((color, j) => (
+                                                    <span key={j} className="w-1.5 h-5 rounded-[2px] ring-1 ring-espresso/5" style={{ backgroundColor: color }} />
+                                                ))}
+                                            </span>
+                                            <span className="flex-1 text-left font-serif text-[15px] text-espresso">{t.label}</span>
+                                            {selected && <Check size={16} className="text-coral-accent shrink-0" />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        {/* Reading speed (the default words-per-minute) */}
+                        <div>
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-1">Reading speed</p>
+                            <p className="text-[12px] text-mocha/80 italic mb-3">Used when you open a book. You can still change it while reading.</p>
+                            <div className="flex flex-wrap gap-2">
+                                {[200, 250, 300, 400, 500, 600].map((v) => (
+                                    <FilterChip key={v} active={wpm === v} onClick={() => { if (wpm !== v) { setWpm(v); haptics.tick(); } }}>{v} wpm</FilterChip>
+                                ))}
+                            </div>
+                            <p className="text-[12px] text-mocha mt-3">Currently <span className="font-semibold text-espresso tabular-nums">{wpm.toLocaleString()}</span> words a minute.</p>
+                        </div>
+
+                        {/* Reading display: focal-letter placement / long-word handling */}
+                        <div>
+                            <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Reading display</p>
+                            <div className="flex flex-col gap-1.5">
+                                {([
+                                    { key: 'centerAll', label: 'Classic', desc: 'Every word colours a middle letter so it fits.' },
+                                    { key: 'centerBig', label: 'Center long words', desc: 'Long words colour a middle letter so they fit.' },
+                                    { key: 'shrink', label: 'Shrink long words', desc: 'Long words shrink a little so they fit.' },
+                                    { key: 'compact', label: 'Compact', desc: 'Everything a touch smaller, so nothing clips.' },
+                                ] as const).map(({ key, label, desc }) => {
+                                    const selected = fitMode === key;
+                                    return (
+                                        <button
+                                            key={key}
+                                            type="button"
+                                            onClick={() => { if (fitMode !== key) { setFitMode(key); haptics.tick(); } }}
+                                            aria-pressed={selected}
+                                            className={`flex items-start gap-3 rounded-2xl px-3.5 py-3 ring-1 select-none active:scale-[0.99] transition-[transform,box-shadow,border-color] duration-150 text-left ${selected ? 'bg-cream ring-coral-accent/50 shadow-sm' : 'bg-cream/60 ring-espresso/10'}`}
+                                        >
+                                            <span className="flex-1">
+                                                <span className="block font-serif text-[15px] text-espresso">{label}</span>
+                                                <span className="block text-[12px] text-mocha/80 leading-snug mt-0.5">{desc}</span>
+                                            </span>
+                                            {selected && <Check size={16} className="text-coral-accent shrink-0 mt-1" />}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </div>
+                </OverlayPage>
+            )}
+
+            {/* ── About inner page ──────────────────────────────────────────── */}
+            {aboutOpen && (
+                <OverlayPage title="About" eyebrow="Focus Reader" onBack={() => { haptics.tick(); setAboutOpen(false); }}>
+                    {/* Hero */}
+                    <section className="relative rounded-2xl bg-espresso text-cream px-5 py-7 overflow-hidden text-center">
+                        <Coffee size={96} className="absolute -right-5 -bottom-6 text-cream/[0.06]" />
+                        <span className="inline-flex w-12 h-12 rounded-2xl bg-cream/10 ring-1 ring-cream/15 items-center justify-center text-mustard">
+                            <Coffee size={22} />
+                        </span>
+                        <h2 className="font-serif text-[26px] font-semibold mt-3">Focus Reader</h2>
+                        <p className="font-serif italic text-[14px] text-cream/80 mt-1">A calm place to read the classics.</p>
+                    </section>
+
+                    {/* What it is */}
+                    <section className="mt-5 rounded-2xl bg-cream/70 ring-1 ring-espresso/10 px-5 py-5">
+                        <p className="text-[14px] text-espresso leading-relaxed">Focus Reader shows a book one word at a time, gently paced, so you can give it your full attention. No feed and no clutter. Just the words and you.</p>
+                        <p className="text-[14px] text-espresso leading-relaxed mt-3">Every book here belongs to everyone. These are works in the public domain, the timeless ones, free to read.</p>
+                    </section>
+
+                    {/* Getting around */}
+                    <section className="mt-5">
+                        <p className="text-[10px] font-semibold tracking-[0.22em] text-mocha/70 uppercase mb-3">Getting around</p>
+                        <div className="rounded-2xl bg-cream/70 ring-1 ring-espresso/10 divide-y divide-espresso/[0.07]">
+                            {[
+                                'Tap the page to play or pause.',
+                                'Swipe left or right to step a sentence.',
+                                'Swipe down to leave a book.',
+                                'Set your pace and look in Settings.',
+                            ].map((t) => (
+                                <p key={t} className="px-5 py-3 text-[13px] text-espresso">{t}</p>
+                            ))}
+                        </div>
+                    </section>
+
+                    <p className="text-center font-serif italic text-[13px] text-mocha mt-7">Made with care, over many cups of coffee.</p>
+                </OverlayPage>
             )}
         </div>
     );
