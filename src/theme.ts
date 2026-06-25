@@ -59,7 +59,7 @@ export const THEMES: ThemeDef[] = [
         }
     },
     {
-        label: 'Sage',
+        label: 'Matcha',
         pills: ['#FBF5EA', '#7E8F6E', '#3A2A1E', '#6B5544'],
         light: {
             bg: '235 236 228',
