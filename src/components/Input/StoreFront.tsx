@@ -1007,7 +1007,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                                                 <div className="h-full rounded-full bg-coral-accent transition-[width] duration-300" style={{ width: `${progressPct}%` }} />
                                             </div>
                                         </div>
-                                        {heroScene && (
+                                        {heroScene && heroScene.recap && (
                                             <div className="mt-4 rounded-xl bg-espresso/[0.04] ring-1 ring-espresso/[0.06] px-3.5 py-2.5">
                                                 <p className="text-[9px] font-semibold tracking-[0.18em] text-mocha/70 uppercase">Previously &middot; {heroScene.label}</p>
                                                 <p className="font-serif italic text-[12.5px] text-mocha leading-snug mt-1">{heroScene.recap}</p>

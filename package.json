@@ -12,6 +12,7 @@
     "mirror:books": "node scripts/mirror-books.mjs",
     "build:vibes": "node scripts/build-vibes.mjs",
     "build:scenes": "node scripts/build-scenes.mjs",
+    "build:scenes:local": "node scripts/segment-books-local.mjs",
     "build:downloads": "node scripts/add-curated-downloads.mjs"
   },
   "dependencies": {
