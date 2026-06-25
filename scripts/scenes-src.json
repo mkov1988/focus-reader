@@ -25,5 +25,50 @@
     { "anchor": "Mr. Utterson was sitting by his fireside one evening after dinner", "label": "The Last Night", "recap": "Jekyll's butler Poole comes in terror: a stranger's voice is locked in the cabinet, and the two men resolve to break down the door." },
     { "anchor": "On the ninth of January, now four days ago, I received by the evening", "label": "Dr. Lanyon's Narrative", "recap": "Lanyon's sealed letter reveals what he saw that night: a potion drunk, and a transformation so impossible it shattered him." },
     { "anchor": "I was born in the year 18 to a large fortune, endowed besides", "label": "Henry Jekyll's Full Statement", "recap": "In his own hand, Jekyll confesses the whole truth of his double life, and how it finally consumed him." }
+  ],
+  "84": [
+    { "anchor": "You will rejoice to hear that no disaster has accompanied", "label": "Walton's Letters", "recap": "Explorer Robert Walton writes home from the edge of the Arctic, longing for a true friend as his ship pushes north." },
+    { "anchor": "So strange an accident has happened to us that I cannot forbear", "label": "A Stranger on the Ice", "recap": "Walton's crew rescues a wasted, haunted traveller from the ice, Victor Frankenstein, who begins to tell his tale." },
+    { "anchor": "I am by birth a Genevese, and my family is one of the most distinguished", "label": "Victor's Childhood", "recap": "Victor recalls a happy Geneva boyhood and his beloved adopted sister Elizabeth." },
+    { "anchor": "From this day natural philosophy, and particularly chemistry", "label": "The Spark of Life", "recap": "At university Victor masters natural philosophy and grows obsessed with discovering the secret of life itself." },
+    { "anchor": "It was on a dreary night of November that I beheld the accomplishment", "label": "The Creature Wakes", "recap": "On a dreary November night Victor gives his creation life, then flees in horror at the thing he has made." },
+    { "anchor": "On my return, I found the following letter from my father", "label": "News of a Death", "recap": "A letter from home brings terrible news: Victor's young brother William has been murdered." },
+    { "anchor": "We passed a few sad hours until eleven o'clock, when the trial", "label": "Justine's Trial", "recap": "The gentle servant Justine is tried and condemned for William's death, though Victor dreads who is truly to blame." },
+    { "anchor": "I spent the following day roaming through the valley", "label": "Meeting on the Glacier", "recap": "High on a mountain glacier the creature finds Victor and demands, at last, to be heard." },
+    { "anchor": "It is with considerable difficulty that I remember the original era of my being", "label": "The Creature's Tale", "recap": "The creature recounts its lonely awakening and how, unseen, it slowly learned to feel and to survive." },
+    { "anchor": "Such was the history of my beloved cottagers", "label": "Rejected by All", "recap": "After secretly learning tenderness from a poor family, the creature is driven off in terror the moment it is seen." },
+    { "anchor": "The being finished speaking and fixed his looks upon me", "label": "A Terrible Bargain", "recap": "The creature demands that Victor build him a mate, swearing to vanish from mankind forever in return." },
+    { "anchor": "I sat one evening in my laboratory; the sun had set", "label": "The Promise Broken", "recap": "Sickened by his task, Victor destroys the half-finished second creature, and his enemy vows a terrible revenge." },
+    { "anchor": "My present situation was one in which all voluntary thought was swallowed up", "label": "The Pursuit North", "recap": "All he loved now taken from him, Victor chases the creature across the frozen north, back to where Walton found him." }
+  ],
+  "1342": [
+    { "anchor": "It is a truth universally acknowledged, that a single man in possession of a good fortune", "label": "A Single Man of Fortune", "recap": "Mrs Bennet is delighted that wealthy Mr Bingley has taken nearby Netherfield, and at once schemes to match him with a daughter." },
+    { "anchor": "Not all that Mrs. Bennet, however, with the assistance of her five daughters", "label": "The Meryton Assembly", "recap": "At the local ball Bingley is taken with Jane, while his proud friend Mr Darcy slights Elizabeth, who overhears him." },
+    { "anchor": "At five o'clock the two ladies retired to dress", "label": "At Netherfield", "recap": "Nursing an ill Jane at Netherfield, Elizabeth trades sharp words with the scornful Miss Bingley and the watchful Mr Darcy." },
+    { "anchor": "Mr. Collins was not a sensible man, and the deficiency of nature", "label": "Mr. Collins Arrives", "recap": "The pompous clergyman Mr Collins, heir to Longbourn, arrives meaning to marry one of the Bennet girls." },
+    { "anchor": "Till Elizabeth entered the drawing-room at Netherfield", "label": "The Netherfield Ball", "recap": "At the Netherfield ball Elizabeth dances with Darcy amid mutual sparring, while her family embarrasses itself." },
+    { "anchor": "The next day opened a new scene at Longbourn. Mr. Collins made his", "label": "Collins Proposes", "recap": "Mr Collins proposes to Elizabeth, who refuses him flatly, to her mother's despair." },
+    { "anchor": "The Bennets were engaged to dine with the Lucases", "label": "Charlotte's Choice", "recap": "To Elizabeth's shock, her sensible friend Charlotte accepts Mr Collins for the comfort and security he offers." },
+    { "anchor": "When they were gone, Elizabeth, as if intending to exasperate herself", "label": "Darcy's Proposal", "recap": "Darcy stuns Elizabeth with a proud declaration of love; insulted, she refuses him and throws his faults in his face." },
+    { "anchor": "Elizabeth awoke the next morning to the same thoughts and meditations", "label": "The Letter", "recap": "Darcy's long letter explains his hand in parting Bingley from Jane and the real truth about Wickham, shaking Elizabeth's certainties." },
+    { "anchor": "Elizabeth, as they drove along, watched for the first appearance of Pemberley", "label": "Pemberley", "recap": "Touring Darcy's grand estate, Elizabeth hears him warmly praised and meets him again, unexpectedly gentle." },
+    { "anchor": "Elizabeth had been a good deal disappointed in not finding a letter", "label": "Lydia's Flight", "recap": "Word arrives that her reckless sister Lydia has run off with Wickham, threatening the whole family's name." },
+    { "anchor": "Instead of receiving any such letter of excuse from his friend", "label": "Darcy Speaks Again", "recap": "His feelings unchanged, Darcy proposes a second time, and now Elizabeth gladly accepts him." },
+    { "anchor": "Happy for all her maternal feelings was the day on which Mrs. Bennet", "label": "Two Weddings", "recap": "With Jane and Elizabeth both happily married, the Bennet household settles at last into contentment." }
+  ],
+  "2641": [
+    { "anchor": "The Signora had no business to do it", "label": "The Bertolini", "recap": "In a Florence pension Lucy and her fretful chaperon Charlotte are unhappy with their rooms, until the blunt Mr Emerson and his son offer to swap." },
+    { "anchor": "It was pleasant to wake up in Florence", "label": "In Santa Croce", "recap": "Exploring a church without her guidebook, Lucy falls in with the kindly, unconventional Mr Emerson and his quiet son George." },
+    { "anchor": "Mr. Beebe was right. Lucy never knew her desires", "label": "A Death in the Piazza", "recap": "A sudden killing in the square sends Lucy fainting into George's arms, an encounter that quietly unsettles her." },
+    { "anchor": "It was Phaethon who drove them to Fiesole that memorable day", "label": "Among the Violets", "recap": "On a country drive Lucy comes upon George on a hillside of violets, and he kisses her before Charlotte sweeps her away." },
+    { "anchor": "Some complicated game had been playing up and down the hillside", "label": "They Return", "recap": "Charlotte hurries Lucy out of Florence, and the two women bury the kiss in careful silence." },
+    { "anchor": "The drawing-room curtains at Windy Corner had been pulled", "label": "Back at Windy Corner", "recap": "Home in England, Lucy accepts a proposal from the polished, controlling Cecil Vyse." },
+    { "anchor": "The society out of which Cecil proposed to rescue Lucy", "label": "Cecil's Scheme", "recap": "Amused by his country neighbours, Cecil mischievously arranges for two strangers to take a nearby villa." },
+    { "anchor": "It was a Saturday afternoon, gay and brilliant after abundant rains", "label": "The Sacred Lake", "recap": "George, it turns out, is the new neighbour; he joins Freddy and Mr Beebe for a wild, laughing bathe in the woodland pond." },
+    { "anchor": "The Sunday after Miss Bartlett's arrival was a glorious day", "label": "The Disaster Within", "recap": "George kisses Lucy once more and declares his love; flustered, she orders him away as her engagement starts to feel wrong." },
+    { "anchor": "But Lucy had developed since the spring", "label": "Lying to George", "recap": "Lucy sends George off for good, refusing to admit, even to herself, what she truly feels." },
+    { "anchor": "He was bewildered. He had nothing to say. He was not even angry", "label": "Lying to Cecil", "recap": "Seeing Cecil clearly at last, Lucy breaks off the engagement." },
+    { "anchor": "The Miss Alans were found in their beloved temperance hotel", "label": "Lying to Mr. Emerson", "recap": "About to flee abroad to escape the muddle, Lucy meets old Mr Emerson, who gently makes her face the truth of her heart." },
+    { "anchor": "The Miss Alans did go to Greece, but they went by themselves", "label": "A Room with a View", "recap": "Lucy and George return to the Florence pension as newlyweds, the long muddle finally undone." }
   ]
 }
