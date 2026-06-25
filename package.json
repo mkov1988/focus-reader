@@ -11,7 +11,8 @@
     "mirror:covers": "node scripts/mirror-covers.mjs",
     "mirror:books": "node scripts/mirror-books.mjs",
     "build:vibes": "node scripts/build-vibes.mjs",
-    "build:scenes": "node scripts/build-scenes.mjs"
+    "build:scenes": "node scripts/build-scenes.mjs",
+    "build:downloads": "node scripts/add-curated-downloads.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.2.9",
