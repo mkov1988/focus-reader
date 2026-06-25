@@ -70,5 +70,48 @@
     { "anchor": "He was bewildered. He had nothing to say. He was not even angry", "label": "Lying to Cecil", "recap": "Seeing Cecil clearly at last, Lucy breaks off the engagement." },
     { "anchor": "The Miss Alans were found in their beloved temperance hotel", "label": "Lying to Mr. Emerson", "recap": "About to flee abroad to escape the muddle, Lucy meets old Mr Emerson, who gently makes her face the truth of her heart." },
     { "anchor": "The Miss Alans did go to Greece, but they went by themselves", "label": "A Room with a View", "recap": "Lucy and George return to the Florence pension as newlyweds, the long muddle finally undone." }
+  ],
+  "2701": [
+    { "anchor": "Call me Ishmael. Some years ago", "label": "Loomings", "recap": "Restless and gloomy on land, Ishmael decides the cure is to go to sea, this time on a whaling voyage." },
+    { "anchor": "Entering that gable-ended Spouter-Inn, you found yourself in a wide, low", "label": "The Spouter-Inn", "recap": "At a crowded New Bedford inn Ishmael must share a bed with a fearsome, tattooed harpooneer, Queequeg." },
+    { "anchor": "Returning to the Spouter-Inn from the Chapel, I found Queequeg there quite alone", "label": "Bosom Friends", "recap": "Ishmael and the noble cannibal Queequeg become fast friends and resolve to ship out together." },
+    { "anchor": "In bed we concocted our plans for the morrow", "label": "The Pequod", "recap": "In Nantucket the two sign aboard the Pequod, a weathered whaler whose captain, Ahab, stays strangely unseen." },
+    { "anchor": "Shipmates, have ye shipped in that ship", "label": "The Prophet", "recap": "A ragged stranger, Elijah, darkly hints at the doom awaiting any crew that sails under Captain Ahab." },
+    { "anchor": "For several days after leaving Nantucket, nothing above hatches was seen of Captain", "label": "Ahab", "recap": "Days out to sea, Ahab at last appears on deck: grim, scarred, standing on a leg of carved whale ivory." },
+    { "anchor": "It was not a great while after the affair of the pipe", "label": "The Quarter-Deck", "recap": "Ahab nails a gold doubloon to the mast and binds the crew by oath to hunt one creature: the white whale, Moby Dick." },
+    { "anchor": "I, Ishmael, was one of that crew; my shouts had gone up with the rest", "label": "The Whiteness of the Whale", "recap": "Ishmael tells the legend of Moby Dick, the vast white whale that took Ahab's leg and now owns his soul." },
+    { "anchor": "The phantoms, for so they then seemed, were flitting on the other side of the deck", "label": "The First Lowering", "recap": "At the first hunt Ahab unveils his own hidden boat-crew, and a squall nearly drowns Ishmael's whaleboat." },
+    { "anchor": "It was but some few days after encountering the Frenchman, that a most significant", "label": "The Castaway", "recap": "The little cabin-boy Pip is left adrift in the sea; rescued at last, he is never the same, his wits set loose." },
+    { "anchor": "Besides her hoisted boats, an American whaler is outwardly distinguished", "label": "The Try-Works", "recap": "Rendering blubber by firelight at night, Ishmael is nearly hypnotized into steering the ship to ruin." },
+    { "anchor": "Upon searching, it was found that the casks last struck into the hold", "label": "Queequeg's Coffin", "recap": "Gravely ill, Queequeg has a coffin built, then recovers; the box is later sealed into a spare life-buoy." },
+    { "anchor": "That night, in the mid-watch, when the old man", "label": "The Chase, First Day", "recap": "Moby Dick is sighted at last, and on the first day of the chase the white whale shatters Ahab's boat." },
+    { "anchor": "At day-break, the three mast-heads were punctually manned afresh", "label": "The Chase, Second Day", "recap": "The hunt rages on; the whale wrecks more boats and Ahab's shadowy harpooneer Fedallah is dragged under." },
+    { "anchor": "The morning of the third day dawned fair and fresh", "label": "The Chase, Third Day", "recap": "On the third day Moby Dick staves in the Pequod itself; the ship goes down with all hands, Ahab among them." }
+  ],
+  "2554": [
+    { "anchor": "On an exceptionally hot evening early in July a young man came out", "label": "The Plan", "recap": "In stifling Petersburg the destitute ex-student Raskolnikov nurses a monstrous idea and slips out to rehearse it at a pawnbroker's." },
+    { "anchor": "His mother's letter had been a torture to him", "label": "The Family's Burden", "recap": "A letter reveals his sister Dounia means to marry a smug benefactor to save the family, sharpening Raskolnikov's torment." },
+    { "anchor": "The door was as before opened a tiny crack", "label": "The Murder", "recap": "Raskolnikov kills the old pawnbroker with an axe, and then her meek sister Lizaveta, who walks in on him." },
+    { "anchor": "So he lay a very long while. Now and then he seemed to wake up", "label": "Fever and Dread", "recap": "Wracked by fever, Raskolnikov hides the stolen goods and lurches between terror and reckless self-betrayal." },
+    { "anchor": "An elegant carriage stood in the middle of the road", "label": "Marmeladov's Death", "recap": "He sees the drunkard Marmeladov crushed by a carriage and helps the grieving family, meeting the gentle Sonia." },
+    { "anchor": "Raskolnikov was already entering the room. He came in looking as though", "label": "First Duel with Porfiry", "recap": "Raskolnikov fences warily with the sly investigator Porfiry, who seems to read his every nerve." },
+    { "anchor": "Raskolnikov went straight to the house on the canal bank where Sonia lived", "label": "Sonia and Lazarus", "recap": "Drawn to Sonia's faith and suffering, Raskolnikov has her read aloud the raising of Lazarus." },
+    { "anchor": "When next morning at eleven o'clock punctually Raskolnikov went into the", "label": "The Second Duel", "recap": "A second, crueler interview tightens Porfiry's psychological net around Raskolnikov." },
+    { "anchor": "Raskolnikov had been a vigorous and active champion of Sonia against Luzhin", "label": "Confession to Sonia", "recap": "Unable to bear it alone, Raskolnikov confesses the murders to Sonia, who begs him to give himself up." },
+    { "anchor": "Porfiry Petrovitch ejaculated at last", "label": "Porfiry's Visit", "recap": "Porfiry comes to Raskolnikov, quietly reveals he knows the truth, and urges him to confess for his own soul." },
+    { "anchor": "He spent that evening till ten o'clock going from one low haunt to another", "label": "Svidrigailov's End", "recap": "The corrupt Svidrigailov, his last schemes collapsed, drifts through a grim final night to its end." },
+    { "anchor": "When he went into Sonia's room, it was already getting dark", "label": "Giving Himself Up", "recap": "Taking Sonia's cross, Raskolnikov walks to the police and confesses to the murders." },
+    { "anchor": "On the banks of a broad solitary river stands a town", "label": "Siberia", "recap": "In a Siberian prison camp, with Sonia faithfully beside him, Raskolnikov begins at last to find his way toward renewal." }
+  ],
+  "1513": [
+    { "anchor": "Enter Sampson and Gregory armed with swords and bucklers", "label": "A Street Brawl", "recap": "The feuding Montagues and Capulets clash in Verona until the Prince warns that the next to break the peace will die; lovesick Romeo pines for another." },
+    { "anchor": "Musicians waiting. Enter Servants. FIRST SERVANT. Where's Potpan", "label": "The Capulet Feast", "recap": "At the Capulets' masked ball Romeo and Juliet meet and fall in love at once, only to learn they are children of sworn enemies." },
+    { "anchor": "Enter Romeo. ROMEO. He jests at scars that never felt a wound", "label": "The Balcony", "recap": "Beneath Juliet's window the two pledge their love and resolve to marry in secret." },
+    { "anchor": "Enter Friar Lawrence and Romeo. FRIAR LAWRENCE. So smile the heavens", "label": "Married in Secret", "recap": "Friar Lawrence weds Romeo and Juliet, hoping their union might heal the families' feud." },
+    { "anchor": "Enter Mercutio, Benvolio, Page and Servants. BENVOLIO. I pray thee, good", "label": "Mercutio and Tybalt", "recap": "Tybalt kills Mercutio; a grief-stricken Romeo kills Tybalt in turn, and the Prince banishes Romeo from Verona." },
+    { "anchor": "Enter Romeo and Juliet. JULIET. Wilt thou be gone? It is not yet near", "label": "Parting at Dawn", "recap": "Romeo flees to Mantua after their one night together, just as Juliet's father commands her to marry Paris." },
+    { "anchor": "Enter Friar Lawrence and Paris. FRIAR LAWRENCE. On Thursday, sir", "label": "The Friar's Plan", "recap": "Desperate, Juliet takes a potion from Friar Lawrence that will make her seem dead so she can slip away to Romeo." },
+    { "anchor": "Enter Juliet and Nurse. JULIET. Ay, those attires are best", "label": "The Potion", "recap": "Alone and afraid, Juliet drinks the potion and sinks into a deathlike sleep." },
+    { "anchor": "Enter Paris, and his Page bearing flowers and a torch", "label": "The Tomb", "recap": "Believing Juliet dead, Romeo drinks poison at her tomb; waking to find him gone, Juliet takes her own life, and the families at last make peace." }
   ]
 }
