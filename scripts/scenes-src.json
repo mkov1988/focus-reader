@@ -144,5 +144,57 @@
     { "anchor": "One morning, when Gregor Samsa woke from troubled dreams", "label": "The Transformation", "recap": "Gregor Samsa wakes transformed into a monstrous insect, and his family recoils as he fails to leave for work." },
     { "anchor": "It was not until it was getting dark that evening that Gregor awoke", "label": "A Prisoner at Home", "recap": "Shut in his room, Gregor adjusts to his strange body while his sister warily feeds him and the household strains." },
     { "anchor": "No-one dared to remove the apple lodged in Gregor's flesh", "label": "The End", "recap": "Wounded and unwanted, Gregor wastes away, and his relieved family turns hopefully toward the future." }
+  ],
+  "64317": [
+    { "anchor": "In my younger and more vulnerable years my father gave me some advice", "label": "West Egg", "recap": "Nick Carraway settles next to the mansion of the mysterious Gatsby and dines with his cousin Daisy and her brutish husband Tom." },
+    { "anchor": "About halfway between West Egg and New York the motor road", "label": "The Valley of Ashes", "recap": "Tom drags Nick to the flat he keeps with his mistress Myrtle, where a drunken little party turns ugly." },
+    { "anchor": "There was music from my neighbour's house through the summer", "label": "Gatsby's Party", "recap": "At one of Gatsby's lavish parties Nick finally meets his host, a courteous young man wrapped in rumour." },
+    { "anchor": "On Sunday morning while church bells rang in the villages", "label": "Gatsby's Past", "recap": "Gatsby takes Nick to lunch and, through Jordan, reveals he loved Daisy years ago and longs to win her back." },
+    { "anchor": "When I came home to West Egg that night I was afraid", "label": "Reunion", "recap": "Nick arranges tea, and Gatsby and Daisy meet again after five years, awkward at first and then radiant." },
+    { "anchor": "About this time an ambitious young reporter from New York", "label": "The Truth About Gatsby", "recap": "Gatsby's humble beginnings surface, Tom grows suspicious, and a party leaves Daisy cold." },
+    { "anchor": "It was when curiosity about Gatsby was at its highest", "label": "The Confrontation", "recap": "On a sweltering day the rivalry erupts in a hotel room, and the drive home ends in a fatal accident." },
+    { "anchor": "I couldn't sleep all night; a foghorn was groaning", "label": "The Vigil", "recap": "Gatsby keeps watch over Daisy through the night as the consequences of the accident close in around him." },
+    { "anchor": "After two years I remember the rest of that day", "label": "After", "recap": "Nick arranges Gatsby's near-empty funeral and, sickened by the careless people he leaves behind, returns west." }
+  ],
+  "174": [
+    { "anchor": "The studio was filled with the rich odour of roses", "label": "The Portrait", "recap": "Painter Basil completes a portrait of the beautiful young Dorian Gray while his friend Lord Henry preaches a creed of pleasure." },
+    { "anchor": "As they entered they saw Dorian Gray. He was seated at the", "label": "A Fatal Wish", "recap": "Intoxicated by Lord Henry's words, Dorian wishes the portrait would age in his place while he stays forever young." },
+    { "anchor": "One afternoon, a month later, Dorian Gray was reclining", "label": "Sibyl Vane", "recap": "Dorian falls headlong for a poor young actress, Sibyl Vane, dazzled by her talent on the stage." },
+    { "anchor": "Mother, Mother, I am so happy", "label": "Prince Charming", "recap": "Sibyl glows with love for the gentleman she calls her Prince Charming, as her brother James swears to protect her." },
+    { "anchor": "For some reason or other, the house was crowded that night", "label": "A Cruelty", "recap": "When Sibyl acts badly, a disgusted Dorian casts her off, and that night the painted face shows its first cruel change." },
+    { "anchor": "It was long past noon when he awoke. His valet", "label": "The Secret Hidden", "recap": "Learning Sibyl has died, Dorian hardens his heart and locks the changing portrait away out of sight." },
+    { "anchor": "As he was sitting at breakfast next morning, Basil Hallward", "label": "Basil's Worry", "recap": "Basil pleads to understand Dorian's new coldness, but Dorian guards his terrible secret." },
+    { "anchor": "For years, Dorian Gray could not free himself from the influence", "label": "Years of Excess", "recap": "Dorian sinks into years of secret vice while his face stays unmarked and the hidden portrait grows monstrous." },
+    { "anchor": "It was on the ninth of November, the eve of his own", "label": "Basil's Last Visit", "recap": "Basil corners Dorian about the rumours; Dorian shows him the corrupted portrait, and the night ends in murder." },
+    { "anchor": "A cold rain began to fall, and the blurred street-lamps", "label": "The Opium Den", "recap": "Haunted and craving escape, Dorian visits an opium den, where Sibyl's vengeful brother nearly catches him." },
+    { "anchor": "It was a lovely night, so warm that he threw his coat", "label": "The Portrait's Verdict", "recap": "Hoping to be good, Dorian turns a knife on the hideous portrait, and meets the fate it had borne for him." }
+  ],
+  "76": [
+    { "anchor": "You don't know about me without you have read a book", "label": "Civilizing Huck", "recap": "Adopted by the Widow Douglas and schooled by Miss Watson, restless Huck slips out for midnight adventures with Tom Sawyer." },
+    { "anchor": "I had shut the door to. Then I turned around and there he was", "label": "Pap Returns", "recap": "Huck's drunken father reappears to grab his money and shuts Huck away in a lonely riverside cabin." },
+    { "anchor": "Git up! What you 'bout?", "label": "The Escape", "recap": "Huck fakes his own murder to be free of Pap and slips away down the river to Jackson's Island." },
+    { "anchor": "The sun was up so high when I waked", "label": "Jim on the Island", "recap": "On the island Huck finds Jim, who has run off to escape being sold away from his family." },
+    { "anchor": "Come in, says the woman, and I did", "label": "Down the River", "recap": "Disguised as a girl, Huck learns men are hunting Jim, and the two push off down the Mississippi on a raft." },
+    { "anchor": "We judged that three nights more would fetch us to Cairo", "label": "Lost in the Fog", "recap": "A thick fog parts Huck and Jim on the water, and Huck's cruel trick afterward shames him into apologizing to his friend." },
+    { "anchor": "Col. Grangerford was a gentleman", "label": "The Feud", "recap": "Taken in by the genteel Grangerfords, Huck is swept into their bloody feud with the Shepherdsons." },
+    { "anchor": "Two or three days and nights went by", "label": "The Duke and the King", "recap": "Two con men styling themselves a duke and a king commandeer the raft and pull Huck and Jim into their swindles." },
+    { "anchor": "Next day, towards night, we laid up under a little willow", "label": "The Wilks Fraud", "recap": "The pair pose as the long-lost brothers of the dead Mr Wilks to rob his trusting orphaned daughters." },
+    { "anchor": "We dasn't stop again at any town for days and days", "label": "Huck's Choice", "recap": "After the con men sell Jim, Huck wrestles with his conscience and resolves to free his friend, whatever it costs his soul." },
+    { "anchor": "So I started for town in the wagon", "label": "At the Phelps Farm", "recap": "Mistaken for Tom Sawyer at the farm where Jim is held, Huck is joined by the real Tom and a wild rescue scheme." },
+    { "anchor": "The old man was uptown again before breakfast", "label": "Setting Jim Free", "recap": "Tom's needlessly elaborate escape goes wrong and he is shot, but the truth that Jim is already free finally comes out." }
+  ],
+  "768": [
+    { "anchor": "1801—I have just returned from a visit to my landlord", "label": "Lockwood's Visit", "recap": "The new tenant Lockwood calls on his sullen landlord Heathcliff at the bleak, windswept Wuthering Heights." },
+    { "anchor": "While leading the way upstairs, she recommended", "label": "A Ghost at the Window", "recap": "Snowbound overnight, Lockwood is terrified by a dream of a ghost child at the window begging to be let in." },
+    { "anchor": "In the course of time Mr. Earnshaw began to fail", "label": "The Foundling", "recap": "Housekeeper Nelly tells how old Earnshaw's adopted foundling Heathcliff and his daughter Catherine grew inseparable, to Hindley's jealousy." },
+    { "anchor": "Cathy stayed at Thrushcross Grange five weeks", "label": "Catherine and the Lintons", "recap": "Catherine returns from the refined Lintons changed, torn between wild Heathcliff and gentle Edgar Linton." },
+    { "anchor": "He entered, vociferating oaths dreadful to hear", "label": "Heathcliff Vanishes", "recap": "Overhearing Catherine say it would degrade her to marry him, Heathcliff disappears into the storm." },
+    { "anchor": "A charming introduction to a hermit's life", "label": "His Return", "recap": "Years later, with Catherine now married to Edgar, a hardened and wealthy Heathcliff suddenly returns." },
+    { "anchor": "While Miss Linton moped about the park", "label": "Catherine's Decline", "recap": "Caught between the two men, Catherine sinks into a feverish decline as Heathcliff schemes against the Lintons." },
+    { "anchor": "About twelve o'clock that night was born the Catherine", "label": "Catherine's Death", "recap": "Catherine dies giving birth to a daughter, leaving Heathcliff wild with grief and a desperate vow." },
+    { "anchor": "Summer drew to an end, and early autumn", "label": "The Next Generation", "recap": "Years on, Catherine's daughter Cathy is drawn toward the Heights and Heathcliff's sickly son Linton." },
+    { "anchor": "Seven days glided away, every one marking", "label": "Trapped at the Heights", "recap": "Heathcliff imprisons young Cathy and forces her to marry Linton so he can seize both family estates." },
+    { "anchor": "1802.—This September I was invited to devastate the moors", "label": "Lockwood Returns", "recap": "A year later Lockwood comes back to find young Cathy and the rough Hareton quietly drawn together." },
+    { "anchor": "For some days after that evening, Mr. Heathcliff shunned", "label": "Heathcliff's End", "recap": "Worn out by his obsession, Heathcliff stops eating and dies, longing only to rejoin his Catherine at last." }
   ]
 }
