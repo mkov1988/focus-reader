@@ -113,5 +113,36 @@
     { "anchor": "Enter Friar Lawrence and Paris. FRIAR LAWRENCE. On Thursday, sir", "label": "The Friar's Plan", "recap": "Desperate, Juliet takes a potion from Friar Lawrence that will make her seem dead so she can slip away to Romeo." },
     { "anchor": "Enter Juliet and Nurse. JULIET. Ay, those attires are best", "label": "The Potion", "recap": "Alone and afraid, Juliet drinks the potion and sinks into a deathlike sleep." },
     { "anchor": "Enter Paris, and his Page bearing flowers and a torch", "label": "The Tomb", "recap": "Believing Juliet dead, Romeo drinks poison at her tomb; waking to find him gone, Juliet takes her own life, and the families at last make peace." }
+  ],
+  "46": [
+    { "anchor": "Marley was dead, to begin with", "label": "Marley's Ghost", "recap": "On Christmas Eve the miser Scrooge sneers at the season, until his dead partner Marley's chained ghost warns that three spirits will visit him." },
+    { "anchor": "WHEN Scrooge awoke, it was so dark", "label": "The First of the Spirits", "recap": "The Ghost of Christmas Past carries Scrooge through his lonely boyhood, a kind old employer, and the sweetheart he lost to greed." },
+    { "anchor": "AWAKING in the middle of a prodigiously tough snore", "label": "The Second of the Spirits", "recap": "The Ghost of Christmas Present reveals the warm, poor Cratchit home and frail Tiny Tim, and the world's mingled joy and want." },
+    { "anchor": "THE Phantom slowly, gravely, silently, approached", "label": "The Last of the Spirits", "recap": "A silent, hooded phantom shows Scrooge a death no one mourns, and lets him read his own name upon a neglected grave." },
+    { "anchor": "YES! and the bedpost was his own", "label": "The End of It", "recap": "Scrooge wakes on Christmas morning overjoyed and made new, and keeps Christmas generously for the rest of his days." }
+  ],
+  "35": [
+    { "anchor": "The thing the Time Traveller held in his hand was a glittering", "label": "The Machine", "recap": "At his dinner party the Time Traveller shows a small glittering machine and sends it vanishing into time before his startled guests." },
+    { "anchor": "I told some of you last Thursday of the principles of the Time Machine", "label": "Time Travelling", "recap": "Returning dishevelled a week later, the Traveller tells how he first hurtled forward through the centuries." },
+    { "anchor": "In another moment we were standing face to face, I and this fragile thing", "label": "In the Golden Age", "recap": "He arrives in the year 802,701 among the gentle, childlike Eloi in a soft and crumbling paradise." },
+    { "anchor": "A queer thing I soon discovered about my little hosts", "label": "The Sunset of Mankind", "recap": "Puzzling over the frail Eloi, the Traveller discovers his time machine has been dragged away and hidden." },
+    { "anchor": "It may seem odd to you, but it was two days before I could follow up", "label": "The Morlocks", "recap": "He uncovers the pale, underground Morlocks and the grim truth of how the two races of the future now live." },
+    { "anchor": "I found the Palace of Green Porcelain", "label": "The Palace of Green Porcelain", "recap": "Hunting for a weapon, the Traveller and his Eloi friend Weena explore a vast ruined museum of the past." },
+    { "anchor": "About eight or nine in the morning I came to the same seat of yellow metal", "label": "The Trap of the White Sphinx", "recap": "Fighting the Morlocks in the dark to reach his machine, the Traveller loses Weena in the chaos." },
+    { "anchor": "I have already told you of the sickness and confusion that comes with time travelling", "label": "The Further Vision", "recap": "Escaping forward in time, he travels on to a dying earth beneath a vast, cold, red sun." },
+    { "anchor": "So I came back. For a long time I must have been insensible", "label": "The Traveller's Return", "recap": "He races home to his laboratory and his waiting guests, exhausted and forever changed by what he has seen." }
+  ],
+  "215": [
+    { "anchor": "Buck did not read the newspapers", "label": "Into the Primitive", "recap": "Buck, a pampered ranch dog, is stolen and sold north into the brutal world of sled dogs in the Klondike gold rush." },
+    { "anchor": "Buck's first day on the Dyea beach was like a nightmare", "label": "The Law of Club and Fang", "recap": "Buck learns the harsh law of club and fang and the savagery needed to survive among the sled teams." },
+    { "anchor": "The dominant primordial beast was strong in Buck", "label": "The Dominant Primordial Beast", "recap": "The wild grows strong in Buck as he battles the cruel lead dog Spitz for mastery of the team." },
+    { "anchor": "Thirty days from the time it left Dawson, the Salt Water Mail", "label": "The Toil of Trace and Trail", "recap": "Sold to greenhorns who cannot manage the trail, Buck and the worn team are driven to the edge of death." },
+    { "anchor": "When John Thornton froze his feet in the previous December", "label": "For the Love of a Man", "recap": "Rescued by the kind John Thornton, Buck loves him fiercely and performs astonishing feats for his sake." },
+    { "anchor": "When Buck earned sixteen hundred dollars in five minutes for John Thornton", "label": "The Sounding of the Call", "recap": "With Thornton gone, nothing binds Buck to men any longer, and he answers the wild at last to run with the wolves." }
+  ],
+  "5200": [
+    { "anchor": "One morning, when Gregor Samsa woke from troubled dreams", "label": "The Transformation", "recap": "Gregor Samsa wakes transformed into a monstrous insect, and his family recoils as he fails to leave for work." },
+    { "anchor": "It was not until it was getting dark that evening that Gregor awoke", "label": "A Prisoner at Home", "recap": "Shut in his room, Gregor adjusts to his strange body while his sister warily feeds him and the household strains." },
+    { "anchor": "No-one dared to remove the apple lodged in Gregor's flesh", "label": "The End", "recap": "Wounded and unwanted, Gregor wastes away, and his relieved family turns hopefully toward the future." }
   ]
 }
