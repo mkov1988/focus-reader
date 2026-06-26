@@ -224,5 +224,47 @@
     { "anchor": "Now to return to Tom and Becky's share in the picnic", "label": "Lost in the Cave", "recap": "Tom and Becky lose their way deep in McDougal's Cave, where Injun Joe is also hiding." },
     { "anchor": "Within a few minutes the news had spread", "label": "Injun Joe's End", "recap": "After Tom and Becky's rescue the cave is sealed, and Injun Joe is found dead inside it." },
     { "anchor": "The reader may rest satisfied that Tom's and Huck's", "label": "Rich and Respectable", "recap": "Tom and Huck recover the hidden gold, become the town's heroes, and the Widow Douglas takes Huck in." }
+  ],
+  "1260": [
+    { "anchor": "There was no possibility of taking a walk that day", "label": "Gateshead", "recap": "Orphaned Jane suffers under her cruel aunt and cousins at Gateshead, and is locked in terror inside the red-room." },
+    { "anchor": "Five o'clock had hardly struck on the morning of the 19th", "label": "Lowood School", "recap": "Jane is sent to grim, hungry Lowood charity school, where she befriends the gentle, saintly Helen Burns." },
+    { "anchor": "But the privations, or rather the hardships, of Lowood", "label": "Loss at Lowood", "recap": "A fever sweeps Lowood, and Jane loses her beloved friend Helen to illness in the night." },
+    { "anchor": "A new chapter in a novel is something like a new scene", "label": "Thornfield", "recap": "Grown and trained, Jane takes a post as governess at Thornfield Hall for the ward of its absent master." },
+    { "anchor": "Mr. Rochester did, on a future occasion, explain it", "label": "Mr. Rochester", "recap": "Jane and the brooding Mr Rochester grow close, and she saves him from a mysterious fire set in his bed at night." },
+    { "anchor": "Merry days were these at Thornfield Hall", "label": "The House Party", "recap": "A glittering party fills the hall, and Jane quietly aches as Rochester seems to court the beautiful Blanche Ingram." },
+    { "anchor": "A splendid Midsummer shone over England", "label": "The Proposal", "recap": "In the moonlit garden Rochester declares he loves Jane, not Blanche, and asks her to be his wife." },
+    { "anchor": "Sophie came at seven to dress me", "label": "The Wedding Halted", "recap": "At the altar the wedding is stopped: Rochester already has a living wife, the madwoman hidden in the attic." },
+    { "anchor": "Some time in the afternoon I raised my head", "label": "Jane Flees", "recap": "Refusing to live as his mistress, Jane tears herself from Rochester and flees Thornfield into the dark." },
+    { "anchor": "Two days are passed. It is a summer evening", "label": "Moor House", "recap": "Starving and penniless on the moors, Jane is taken in by the kind Rivers siblings at Moor House." },
+    { "anchor": "When Mr. St. John went, it was beginning to snow", "label": "An Inheritance", "recap": "Jane discovers she has inherited a fortune and that the Rivers are her own cousins, whom she gladly shares it with." },
+    { "anchor": "He did not leave for Cambridge the next day", "label": "St. John's Demand", "recap": "The cold, devout St John presses Jane to marry him for his mission, until she hears Rochester's voice call across the night." },
+    { "anchor": "The manor-house of Ferndean was a building", "label": "Reader, I Married Him", "recap": "Jane returns to find Thornfield burned and Rochester blinded but free, and the two are reunited at last." }
+  ],
+  "2852": [
+    { "anchor": "Mr. Sherlock Holmes, who was usually very late in the mornings", "label": "Mr. Sherlock Holmes", "recap": "Holmes and Watson examine a walking-stick left by Dr Mortimer and deduce a great deal before the visitor returns." },
+    { "anchor": "I have in my pocket a manuscript", "label": "The Curse of the Baskervilles", "recap": "Mortimer reads the old legend of a demonic hound said to haunt and hunt the Baskerville family." },
+    { "anchor": "I confess at these words a shudder passed through me", "label": "The Problem", "recap": "Mortimer recounts Sir Charles Baskerville's mysterious death, with the footprints of a gigantic hound found nearby." },
+    { "anchor": "Our breakfast table was cleared early", "label": "Sir Henry Baskerville", "recap": "The young heir Sir Henry arrives in London, already being shadowed and sent an anonymous warning to stay away." },
+    { "anchor": "Sir Henry Baskerville and Dr. Mortimer were ready", "label": "Baskerville Hall", "recap": "Watson escorts Sir Henry to the gloomy hall on the moor, where an escaped convict is also at large." },
+    { "anchor": "The fresh beauty of the following morning", "label": "The Stapletons", "recap": "Watson meets the naturalist Stapleton and his striking sister, who strangely begs Sir Henry to leave the moor." },
+    { "anchor": "From this point onward I will follow the course of events", "label": "Watson's Watch", "recap": "Settled at the hall, Watson tracks odd happenings: a sobbing in the night and the butler signalling across the dark." },
+    { "anchor": "The extract from my private diary", "label": "The Man on the Tor", "recap": "Trailing a stranger to a stone hut on the moor, Watson discovers it is Holmes himself, secretly at work." },
+    { "anchor": "For a moment or two I sat breathless", "label": "Death on the Moor", "recap": "A body is found on the rocks; to their relief it is the convict, and Holmes prepares to spring his trap." },
+    { "anchor": "One of Sherlock Holmes's defects", "label": "The Hound", "recap": "Out of the fog the monstrous glowing hound attacks Sir Henry, and Holmes shoots it down and exposes the killer." },
+    { "anchor": "It was the end of November, and Holmes", "label": "A Retrospection", "recap": "In London Holmes explains how Stapleton, a hidden Baskerville heir, used a painted hound to murder for the estate." }
+  ],
+  "1400": [
+    { "anchor": "My father's family name being Pirrip", "label": "The Convict", "recap": "In the marsh churchyard the orphan boy Pip is seized by an escaped convict and frightened into bringing him food and a file." },
+    { "anchor": "Mr. Pumblechook's premises in the High Street", "label": "Miss Havisham", "recap": "Pip is summoned to the decaying Satis House to play for the strange Miss Havisham and her cold, lovely ward Estella." },
+    { "anchor": "It was a trial to my feelings, on the next day but one", "label": "Apprenticed", "recap": "Bound apprentice to the kind blacksmith Joe, Pip grows ashamed of his humble home and pines for Estella." },
+    { "anchor": "It was in the fourth year of my apprenticeship to Joe", "label": "Great Expectations", "recap": "A lawyer brings astonishing news: Pip has a secret benefactor and great expectations, and must leave for London to become a gentleman." },
+    { "anchor": "The journey from our town to the metropolis", "label": "London", "recap": "In London Pip meets the formidable lawyer Jaggers and lodges with his cheerful friend Herbert Pocket." },
+    { "anchor": "Betimes in the morning I was up and out", "label": "Estella Returns", "recap": "Sure that Miss Havisham means Estella for him, Pip falls deeper in love despite her warning that she has no heart." },
+    { "anchor": "I was three-and-twenty years of age", "label": "The Benefactor", "recap": "On a stormy night Pip's true benefactor appears: not Miss Havisham, but the convict he once helped, Magwitch." },
+    { "anchor": "Dear boy and Pip's comrade. I am not a-going", "label": "Magwitch's Story", "recap": "Magwitch tells his life, revealing a link to the man who once jilted Miss Havisham, as danger closes around him." },
+    { "anchor": "Putting Miss Havisham's note in my pocket", "label": "Satis House Burns", "recap": "Pip forgives a remorseful, broken Miss Havisham just before her decaying house goes up in flames." },
+    { "anchor": "It was a dark night, though the full moon rose", "label": "The Trap on the Marsh", "recap": "Lured back to the marshes, Pip is nearly murdered by the vengeful Orlick before help arrives." },
+    { "anchor": "It was one of those March days when the sun shines hot", "label": "The Escape Fails", "recap": "The plan to smuggle Magwitch out of England collapses; he is captured and badly hurt in the struggle." },
+    { "anchor": "For eleven years, I had not seen Joe nor Biddy", "label": "Reunion", "recap": "Years later, humbled and changed, Pip comes home and meets Estella once more among the ruins of Satis House." }
   ]
 }
