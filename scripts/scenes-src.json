@@ -266,5 +266,19 @@
     { "anchor": "It was a dark night, though the full moon rose", "label": "The Trap on the Marsh", "recap": "Lured back to the marshes, Pip is nearly murdered by the vengeful Orlick before help arrives." },
     { "anchor": "It was one of those March days when the sun shines hot", "label": "The Escape Fails", "recap": "The plan to smuggle Magwitch out of England collapses; he is captured and badly hurt in the struggle." },
     { "anchor": "For eleven years, I had not seen Joe nor Biddy", "label": "Reunion", "recap": "Years later, humbled and changed, Pip comes home and meets Estella once more among the ruins of Satis House." }
+  ],
+  "244": [
+    { "anchor": "In the year 1878 I took my degree of Doctor of Medicine", "label": "Watson Meets Holmes", "recap": "Invalided home from war, Dr Watson is introduced to the eccentric Sherlock Holmes and they take rooms together at Baker Street." },
+    { "anchor": "We met next day as he had arranged", "label": "The Science of Deduction", "recap": "Watson puzzles over his strange flatmate until Holmes reveals he is the world's first consulting detective." },
+    { "anchor": "I confess that I was considerably startled", "label": "The Lauriston Gardens Mystery", "recap": "Holmes is called to an empty house where a man lies dead without a wound, the word RACHE scrawled in blood on the wall." },
+    { "anchor": "It was one o'clock when we left No. 3", "label": "What John Rance Had to Tell", "recap": "Holmes questions the constable who found the body and astonishes the police with deductions about the killer." },
+    { "anchor": "Our morning's exertions had been too much", "label": "An Unexpected Visitor", "recap": "A newspaper advertisement lures someone to Baker Street, but the wily suspect slips through Holmes's fingers." },
+    { "anchor": "The intelligence with which Lestrade", "label": "Light in the Darkness", "recap": "A second murder shakes the baffled police, and Holmes calmly announces he already has the culprit in hand." },
+    { "anchor": "In the central portion of the great North American Continent", "label": "The Great Alkali Plain", "recap": "The story leaps to the American West, where a man and a little girl, lone survivors in the desert, are rescued by Mormon pioneers." },
+    { "anchor": "This is not the place to commemorate", "label": "The Flower of Utah", "recap": "Years on, the girl Lucy grows up and falls in love with a young hunter, against the elders' rigid wishes." },
+    { "anchor": "Three weeks had passed since", "label": "Ferrier and the Prophet", "recap": "The Mormon leader demands Lucy marry within the faith, and her adoptive father quietly defies him." },
+    { "anchor": "On the morning which followed his interview", "label": "A Flight for Life", "recap": "Lucy, her father, and her lover flee across the mountains, hunted by the vengeful Avenging Angels." },
+    { "anchor": "All night their course lay through intricate defiles", "label": "The Avenging Angels", "recap": "Tragedy overtakes the fugitives, setting the sole survivor on a lifelong road of revenge." },
+    { "anchor": "We had all been warned to appear before the magistrate", "label": "The Conclusion", "recap": "Back in London the captured killer tells how the western tragedy drove his hunt, and Holmes lays out the full solution." }
   ]
 }
