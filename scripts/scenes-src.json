@@ -635,5 +635,22 @@
     { "anchor": "The rose is fairest when 't is budding new", "label": "Canto IV: The Prophecy", "recap": "A seer's grim prophecy hangs over the gathering, while Ellen's heart turns to the gallant stranger Fitz-James." },
     { "anchor": "Fair as the earliest beam of eastern light", "label": "Canto V: The Combat", "recap": "Fitz-James and Roderick Dhu meet as foes, and a fierce single combat decides much." },
     { "anchor": "The sun, awakening, through the smoky air", "label": "Canto VI: The Guard-Room", "recap": "All paths lead at last to the king's court, where the true identity of Fitz-James is revealed." }
+  ],
+  "3268": [
+    { "anchor": "On the pleasant banks of the Garonne, in the province of Gascony", "label": "La Vallée", "recap": "In a peaceful corner of Gascony, the gentle Emily St. Aubert grows up devoted to her parents and to nature." },
+    { "anchor": "Madame St. Aubert was interred in the neighbouring village church", "label": "A Mother Lost", "recap": "Emily's mother dies, and her grieving father takes her travelling through the mountains for his failing health." },
+    { "anchor": "In the morning, Valancourt breakfasted with St. Aubert and Emily", "label": "Valancourt", "recap": "On the journey a tender attachment grows between Emily and the spirited young Valancourt." },
+    { "anchor": "Emily, called, as she had requested, at an early hour, awoke", "label": "Alone in the World", "recap": "Far from home, Emily's beloved father dies, leaving her an orphan." },
+    { "anchor": "Madame Cheron's house stood at a little distance from the city", "label": "Madame Cheron", "recap": "Emily is taken in by her cold and vain aunt, Madame Cheron." },
+    { "anchor": "The carriages were at the gates at an early hour; the bustle of the", "label": "Montoni", "recap": "Madame Cheron marries the sinister Italian Montoni, and the household is carried off toward Venice." },
+    { "anchor": "Daylight dispelled from Emily's mind the glooms of superstition", "label": "The Castle of Udolpho", "recap": "Montoni shuts them up in his brooding, half-ruined castle deep in the Apennines." },
+    { "anchor": "Annette came almost breathless to Emily's apartment in the morning", "label": "Whispers in the Castle", "recap": "Servants' tales of ghosts and a dreadful secret behind a black veil prey on Emily's mind." },
+    { "anchor": "Emily was somewhat surprised, on the following day, to find that", "label": "Under Siege", "recap": "Montoni fills the castle with rough soldiers as his schemes turn openly violent." },
+    { "anchor": "When Montoni was informed of the death of his wife", "label": "Montoni's Tyranny", "recap": "Standing alone, Emily resists Montoni's threats and his demands that she sign away her estates." },
+    { "anchor": "We now return to Languedoc and to the mention of Count De Villefort", "label": "Château-le-Blanc", "recap": "The scene shifts to a haunted château in Languedoc and its kindly new owner, the Count De Villefort." },
+    { "anchor": "In the evening, when Emily was at length informed, that Count De", "label": "A New Refuge", "recap": "Having escaped Udolpho, Emily finds shelter at the château among new friends." },
+    { "anchor": "We now return to the mention of Montoni, whose rage and disappointment", "label": "Montoni's Fate", "recap": "Word arrives of the reckoning that has at last overtaken the tyrant Montoni." },
+    { "anchor": "The Count gave orders for the north apartments to be opened", "label": "The North Apartments", "recap": "Strange happenings in the château's shut-up north rooms revive old fears and buried secrets." },
+    { "anchor": "The marriages of the Lady Blanche and Emily St. Aubert were celebrated", "label": "All Explained", "recap": "Every lingering mystery is unravelled at last, and Emily finds her long-delayed happiness." }
   ]
 }
