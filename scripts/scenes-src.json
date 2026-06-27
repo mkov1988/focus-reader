@@ -612,5 +612,28 @@
     { "anchor": "We must now convey the reader to Mr Western's lodgings", "label": "Sophia Confined", "recap": "Sophia's father and a scheming lord press her toward a marriage she does not want." },
     { "anchor": "Mr Allworthy and Mrs Miller were just sat down to breakfast", "label": "The Lowest Ebb", "recap": "With Tom flung into prison and seemingly ruined, his few true friends despair of saving him." },
     { "anchor": "While Jones was employed in those unpleasant meditations", "label": "All Revealed", "recap": "At the darkest hour the secret of Tom's birth comes to light, Blifil's villainy is exposed, and fortune turns at last." }
+  ],
+  "16328": [
+    { "anchor": "Lo! the Spear-Danes' glory through splendid achievements", "label": "Prologue: The Spear-Danes", "recap": "The poem opens with the glory of the Danish kings, from the founder Scyld Scefing onward." },
+    { "anchor": "When the sun was sunken, he set out to visit", "label": "Grendel", "recap": "Night after night the monster Grendel raids King Hrothgar's hall, devouring his warriors for twelve long years." },
+    { "anchor": "So Healfdene's kinsman constantly mused on", "label": "Beowulf Sails", "recap": "The mighty Geat Beowulf hears of the Danes' suffering and sails across the sea to help." },
+    { "anchor": "The highway glistened with many-hued pebble", "label": "At Heorot", "recap": "Beowulf comes before King Hrothgar and vows to face Grendel with his bare hands." },
+    { "anchor": "Unferth spoke up, Ecglaf his son", "label": "Unferth's Taunt", "recap": "The jealous Unferth mocks Beowulf, who answers by recounting a great swimming feat of his youth." },
+    { "anchor": "'Neath the cloudy cliffs came from the moor then", "label": "The Fight with Grendel", "recap": "That night Grendel bursts into the hall and is seized in Beowulf's terrible grip." },
+    { "anchor": "In the mist of the morning many a warrior", "label": "Victory", "recap": "Grendel flees mortally wounded, and the Danes rejoice and heap honours on Beowulf." },
+    { "anchor": "They sank then to slumber. With sorrow one paid for", "label": "Grendel's Mother", "recap": "In vengeance Grendel's monstrous mother strikes the hall in the dead of night." },
+    { "anchor": "Recall now, oh, famous kinsman of Healfdene", "label": "The Fight in the Mere", "recap": "Beowulf dives into the haunted lake to battle Grendel's mother in her hall beneath the water." },
+    { "anchor": "He sought of himself who sorely did harm him", "label": "The Dragon", "recap": "Fifty years on, a thief robs an ancient hoard and wakes a dragon that burns the land." },
+    { "anchor": "He planned requital for the folk-leader's ruin", "label": "Beowulf and the Dragon", "recap": "Now an old king, Beowulf arms himself once more and goes out to face the fire-drake." },
+    { "anchor": "Then I heard that at need of the king of the people", "label": "Wiglaf's Loyalty", "recap": "As the old king falters against the dragon, only the young Wiglaf stays true and springs to his side." },
+    { "anchor": "The folk of the Geatmen got him then ready", "label": "The Funeral Pyre", "recap": "The Geats mourn their fallen king and raise a great barrow above his ashes." }
+  ],
+  "3011": [
+    { "anchor": "The stag at eve had drunk his fill", "label": "Canto I: The Chase", "recap": "A royal stag-hunt in the Highlands leads a lost huntsman to a lovely maiden, Ellen, beside a lonely lake." },
+    { "anchor": "At morn the black-cock trims his jetty wing", "label": "Canto II: The Island", "recap": "On Ellen's island we meet her father, the outlawed Douglas, and the fierce chieftain Roderick Dhu who loves her." },
+    { "anchor": "Time rolls his ceaseless course. The race of yore", "label": "Canto III: The Gathering", "recap": "Roderick Dhu raises the clans for war, sending the Fiery Cross flaming across the glens." },
+    { "anchor": "The rose is fairest when 't is budding new", "label": "Canto IV: The Prophecy", "recap": "A seer's grim prophecy hangs over the gathering, while Ellen's heart turns to the gallant stranger Fitz-James." },
+    { "anchor": "Fair as the earliest beam of eastern light", "label": "Canto V: The Combat", "recap": "Fitz-James and Roderick Dhu meet as foes, and a fierce single combat decides much." },
+    { "anchor": "The sun, awakening, through the smoky air", "label": "Canto VI: The Guard-Room", "recap": "All paths lead at last to the king's court, where the true identity of Fitz-James is revealed." }
   ]
 }
