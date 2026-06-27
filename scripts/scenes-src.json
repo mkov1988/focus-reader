@@ -397,5 +397,30 @@
     { "anchor": "And so the second week began, and all was harmony", "label": "An Unexpected Guest", "recap": "Mr Wilkins arrives, and an awkward misunderstanding turns surprisingly sweet." },
     { "anchor": "On the first day of the third week Rose wrote to Frederick", "label": "Sending for Frederick", "recap": "Warmed and softened, Mrs Arbuthnot writes at last to summon her own estranged husband." },
     { "anchor": "That evening was the evening of the full moon", "label": "Full Bloom", "recap": "Under a full moon the garden works its final magic on every heart gathered there." }
+  ],
+  "345": [
+    { "anchor": "Left Munich at 8:35 P. M., on 1st May", "label": "The Journey East", "recap": "Solicitor Jonathan Harker travels deep into the Carpathians to help a mysterious Count with a London property purchase." },
+    { "anchor": "When I found that I was a prisoner a sort of wild feeling came over me", "label": "A Prisoner in the Castle", "recap": "Harker realises the castle is a prison and begins to grasp the monstrous nature of his host." },
+    { "anchor": "Forgive my long delay in writing, but I", "label": "Mina and Lucy", "recap": "Back in England, Mina exchanges letters with her dear friend Lucy, who is giddy over three marriage proposals." },
+    { "anchor": "Lucy met me at the station, looking sweeter and lovelier than ever", "label": "Whitby", "recap": "Mina joins Lucy at the seaside town of Whitby, fretting over Jonathan's long silence." },
+    { "anchor": "One of the greatest and suddenest storms on record", "label": "The Derelict Ship", "recap": "A fierce storm drives a derelict ship ashore at Whitby, its dead captain lashed to the helm and no living soul aboard." },
+    { "anchor": "Oh, but I am tired! If it were not that I had made my diary a duty", "label": "Sleepwalking", "recap": "Mina rescues the sleepwalking Lucy from the cliff at night and notices two small marks at her throat." },
+    { "anchor": "My news to-day is not so good. Lucy this morning", "label": "A Wasting Illness", "recap": "Lucy grows pale and weak from an illness no one can explain, and Dr Seward sends for his old teacher Van Helsing." },
+    { "anchor": "I drove at once to Hillingham and arrived early", "label": "A Turn for the Worse", "recap": "Despite the doctors' desperate efforts, Lucy's strange decline takes a frightening turn." },
+    { "anchor": "For a while sheer anger mastered me", "label": "Van Helsing's Warning", "recap": "Van Helsing struggles to make the sceptical Seward believe the dreadful truth about what now stalks the night." },
+    { "anchor": "It was just a quarter before twelve o'clock when we got into the churchyard", "label": "The Churchyard", "recap": "At midnight the men keep a grim vigil at the tomb to face the horror Van Helsing has foretold." },
+    { "anchor": "I got home at five o'clock, and found that Godalming and Morris", "label": "The Hunters Unite", "recap": "The friends band together under Van Helsing and resolve to hunt their enemy to the end." },
+    { "anchor": "Let me put down with exactness all that happened", "label": "In the Asylum", "recap": "Seward's strange patient Renfield reveals what he has seen as the danger reaches into the asylum itself." },
+    { "anchor": "All day long we have travelled, and at a good speed", "label": "The Last Pursuit", "recap": "The hunters race across the frozen Carpathians for a final reckoning before the sun goes down." }
+  ],
+  "844": [
+    { "anchor": "Morning-room in Algernon's flat in Half-Moon Street", "label": "Act I: Bunburying", "recap": "In his London flat Algernon needles his friend Jack about a double life, just as a marriage proposal sets a comic deception spinning." },
+    { "anchor": "Garden at the Manor House. A flight of grey stone steps", "label": "Act II: The Country", "recap": "At the country manor two young women each believe themselves engaged to the same imaginary man named Ernest." },
+    { "anchor": "Gwendolen and Cecily are at the window, looking out into the garden", "label": "Act III: Earnest at Last", "recap": "The tangle of names and false identities is untangled, revealing the truth behind the name Ernest." }
+  ],
+  "2542": [
+    { "anchor": "A room furnished comfortably and tastefully, but not extravagantly", "label": "Act I: Christmas Eve", "recap": "On Christmas Eve, Nora Helmer hides the secret debt she once took on to save her husband's life." },
+    { "anchor": "The Christmas Tree is in the corner by the piano, stripped of its ornaments", "label": "Act II: The Tarantella", "recap": "As blackmail closes in, Nora desperately tries to keep her husband away from the letterbox." },
+    { "anchor": "The table has been placed in the middle of the stage, with chairs around it", "label": "Act III: The Reckoning", "recap": "The truth comes out at last, forcing Nora to confront what her marriage has really been." }
   ]
 }
