@@ -280,5 +280,33 @@
     { "anchor": "On the morning which followed his interview", "label": "A Flight for Life", "recap": "Lucy, her father, and her lover flee across the mountains, hunted by the vengeful Avenging Angels." },
     { "anchor": "All night their course lay through intricate defiles", "label": "The Avenging Angels", "recap": "Tragedy overtakes the fugitives, setting the sole survivor on a lifelong road of revenge." },
     { "anchor": "We had all been warned to appear before the magistrate", "label": "The Conclusion", "recap": "Back in London the captured killer tells how the western tragedy drove his hunt, and Holmes lays out the full solution." }
+  ],
+  "161": [
+    { "anchor": "The family of Dashwood had long been settled in Sussex", "label": "The Dashwoods", "recap": "When Mr Dashwood dies, his selfish son and daughter-in-law leave the widow and her three daughters poor and unwelcome at Norland." },
+    { "anchor": "What a pity it is, Elinor, said Marianne", "label": "Elinor and Edward", "recap": "Sensible Elinor grows quietly attached to the shy Edward Ferrars, even as the family must give up their home." },
+    { "anchor": "The first part of their journey was performed", "label": "Barton Cottage", "recap": "The Dashwoods settle into a modest cottage under the hearty Sir John Middleton's wing." },
+    { "anchor": "The Dashwoods were now settled at Barton with tolerable", "label": "Willoughby", "recap": "Romantic Marianne is carried home from the rain by the dashing young Willoughby and falls headlong in love." },
+    { "anchor": "Mrs. Dashwood's visit to Lady Middleton took place", "label": "Willoughby Leaves", "recap": "Willoughby abruptly leaves for London, giving the heartbroken Marianne no explanation at all." },
+    { "anchor": "Marianne, who had never much toleration", "label": "Lucy's Secret", "recap": "The sly Lucy Steele confides to Elinor that she is secretly engaged to Edward, a blow Elinor must bear in silence." },
+    { "anchor": "Elinor could not find herself in the carriage", "label": "London", "recap": "In London Marianne anxiously seeks Willoughby, only to be coldly cut by him at a party." },
+    { "anchor": "Before the housemaid had lit their fire", "label": "Willoughby's Betrayal", "recap": "Willoughby returns Marianne's letters and reveals his engagement to a rich heiress, leaving her devastated." },
+    { "anchor": "Mrs. Palmer was so well at the end of a fortnight", "label": "Edward Exposed", "recap": "Edward's secret engagement to Lucy comes to light, and his furious mother disinherits him." },
+    { "anchor": "Elinor, starting back with a look of horror", "label": "Willoughby's Confession", "recap": "During Marianne's grave illness a repentant Willoughby appears to pour out his excuses to Elinor." },
+    { "anchor": "Mrs. Dashwood did not hear unmoved", "label": "Marianne Recovers", "recap": "Marianne recovers and resolves to live more wisely, while word comes that Lucy has married a Ferrars." },
+    { "anchor": "Unaccountable, however, as the circumstances", "label": "Edward Free", "recap": "It was Edward's brother whom Lucy wed; freed of his promise, Edward hurries to Elinor and proposes." },
+    { "anchor": "After a proper resistance on the part of Mrs. Ferrars", "label": "Two Marriages", "recap": "Elinor marries Edward, and in time Marianne gives her heart to the steadfast Colonel Brandon." }
+  ],
+  "1695": [
+    { "anchor": "The suburb of Saffron Park lay on the sunset side of London", "label": "The Two Poets", "recap": "In a London suburb the poet of order, Gabriel Syme, clashes with the red-haired anarchist poet Lucian Gregory." },
+    { "anchor": "The cab pulled up before a particularly dreary", "label": "The Secret of Gabriel Syme", "recap": "Gregory secretly leads Syme to an underground anarchist meeting, never guessing Syme is an undercover detective." },
+    { "anchor": "Before one of the fresh faces could appear", "label": "Elected Thursday", "recap": "Syme boldly gets himself elected to the anarchist Central Council under the code name Thursday." },
+    { "anchor": "Gabriel Syme was not merely a detective", "label": "The Tale of a Detective", "recap": "Syme recalls how a man in a pitch-dark room recruited him into a secret philosophical police force." },
+    { "anchor": "At first the large stone stair seemed", "label": "The Feast of Fear", "recap": "Syme sits in dread at the Council's table beneath its vast, terrifying leader, the man called Sunday." },
+    { "anchor": "Such were the six men who had sworn", "label": "The Exposure", "recap": "Syme and the sinister Professor de Worms watch one another warily, each fearing the other has seen through him." },
+    { "anchor": "When Gabriel Syme found himself", "label": "The Professor Explains", "recap": "The Professor reveals he too is an undercover detective, and the council's terror starts to come apart." },
+    { "anchor": "Syme sat down at a café table", "label": "The Duel", "recap": "Syme fights a strange, almost unkillable duel with a council member who turns out to be yet another ally." },
+    { "anchor": "Urging the horses to a gallop", "label": "The Earth in Anarchy", "recap": "One by one the anarchists are unmasked as fellow detectives, all fleeing a mob that seems to be the whole world." },
+    { "anchor": "Next morning five bewildered but hilarious", "label": "The Pursuit of Sunday", "recap": "The detectives give chase to the elusive, godlike Sunday across the country in an ever wilder pursuit." },
+    { "anchor": "As Syme strode along the corridor", "label": "The Accuser", "recap": "In a dreamlike finale Sunday reveals himself, and Syme faces the strange meaning behind the whole ordeal." }
   ]
 }
