@@ -422,5 +422,21 @@
     { "anchor": "A room furnished comfortably and tastefully, but not extravagantly", "label": "Act I: Christmas Eve", "recap": "On Christmas Eve, Nora Helmer hides the secret debt she once took on to save her husband's life." },
     { "anchor": "The Christmas Tree is in the corner by the piano, stripped of its ornaments", "label": "Act II: The Tarantella", "recap": "As blackmail closes in, Nora desperately tries to keep her husband away from the letterbox." },
     { "anchor": "The table has been placed in the middle of the stage, with chairs around it", "label": "Act III: The Reckoning", "recap": "The truth comes out at last, forcing Nora to confront what her marriage has really been." }
+  ],
+  "28054": [
+    { "anchor": "Alexey Fyodorovitch Karamazov was the third son of Fyodor Pavlovitch", "label": "The Karamazov Family", "recap": "We meet the dissolute landowner Fyodor Pavlovitch Karamazov and his three very different sons." },
+    { "anchor": "It was a warm, bright day at the end of August. The interview with the", "label": "At the Monastery", "recap": "The quarrelling family gathers at the monastery for the saintly elder Zossima to settle a dispute over money." },
+    { "anchor": "Dmitri Fyodorovitch, a young man of eight and twenty, of medium height", "label": "Father and Son", "recap": "Hot-tempered Dmitri arrives late, and his bitter feud with his father erupts before the elder." },
+    { "anchor": "The Karamazovs' house was far from being in the center of the town", "label": "The Servants", "recap": "Attention turns to the Karamazov household and its sly, resentful servant, the foundling Smerdyakov." },
+    { "anchor": "Alyosha was roused early, before daybreak. Father Zossima woke up", "label": "Sent into the World", "recap": "The dying elder blesses Alyosha and sends him out of the monastery to live among ordinary men." },
+    { "anchor": "I must make you one confession, Ivan began. I could never understand", "label": "Rebellion", "recap": "Ivan pours out his heart to Alyosha, rebelling against a God who allows the suffering of innocent children." },
+    { "anchor": "Even this must have a preface—that is, a literary preface", "label": "The Grand Inquisitor", "recap": "Ivan recites his poem in which Christ returns to earth and is confronted by the Grand Inquisitor." },
+    { "anchor": "The body of Father Zossima was prepared for burial according to the", "label": "An Odour of Corruption", "recap": "After the elder's death the monastery is shaken when his body decays, sorely testing Alyosha's faith." },
+    { "anchor": "But Dmitri, to whom Grushenka, flying away to a new life, had left her", "label": "Mitya's Torment", "recap": "Frantic for money and wild with jealousy over Grushenka, Dmitri rushes desperately about the town." },
+    { "anchor": "What followed was almost an orgy, a feast to which all were welcome", "label": "At Mokroe", "recap": "Dmitri chases Grushenka to a wild night of feasting at the village of Mokroe." },
+    { "anchor": "Our police captain, Mihail Makarovitch Makarov", "label": "The Investigation", "recap": "A sudden crime brings the authorities down on Dmitri, and a long night of questioning begins." },
+    { "anchor": "It was the beginning of November. There had been a hard frost, eleven", "label": "The Boys", "recap": "The story pauses to follow a band of schoolboys and the proud, sickly little Ilusha." },
+    { "anchor": "By that time Smerdyakov had been discharged from the hospital", "label": "Ivan and Smerdyakov", "recap": "Tormented by doubt, Ivan returns again and again to Smerdyakov, circling a terrible suspicion." },
+    { "anchor": "At ten o'clock in the morning of the day following the events", "label": "The Trial", "recap": "The whole district crowds into the courthouse for Dmitri's long-awaited trial." }
   ]
 }
