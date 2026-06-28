@@ -784,5 +784,22 @@
     { "anchor": "All was silence and gloom at D'Haberville Manor; the very servants went about their work with a spiritless air", "label": "Farewell at the Manor", "recap": "A shadow falls over the manor as young Jules prepares to sail away to France." },
     { "anchor": "Vae victis! says the wisdom of the nations. Woe to the conquered", "label": "The Plains of Abraham", "recap": "The fateful battle on the Plains of Abraham brings the fall of New France." },
     { "anchor": "Many a calamity had swept over the land since the day when the", "label": "The Family Hearth", "recap": "After war, fire and famine have ravaged the land, the scattered family gathers once more at the hearth." }
+  ],
+  "53416": [
+    { "anchor": "It is a warm evening in early Summer; the sun is setting behind a long range of fir and yew-clad hills", "label": "The Thames Valley", "recap": "In a peaceful Thames-valley evening, the artist's niece Stella Etheridge first appears." },
+    { "anchor": "Stella put hers into it, but reluctantly, and tried to spring, but her dress caught", "label": "A First Embrace", "recap": "A chance moment in Lord Leycester's arms kindles a sudden love between them." },
+    { "anchor": "What shall I do? exclaimed Mr. Etheridge", "label": "Bad News", "recap": "Stella's uncle is thrown into anguish by sudden bad news, drawing her into worry." },
+    { "anchor": "Five minutes! said Stella, warningly; and she turned her face from him", "label": "Jasper's History", "recap": "The scheming Jasper Adelstone presses Stella with a story whose hidden meaning binds her to him." },
+    { "anchor": "Time--which Lord Leycester had been so recklessly wasting in", "label": "An Unwanted Engagement", "recap": "Parted from Leycester, Stella finds herself engaged to the persistent Jasper." },
+    { "anchor": "After all, there is nothing like English scenery; this is very beautiful", "label": "Far from Home", "recap": "Talk of English scenery stirs longing as the lovers' fortunes hang in the balance." }
+  ],
+  "27475": [
+    { "anchor": "That girl the murderer of a man--of Lee Holly? That pretty little girl? Bosh! I don't believe it", "label": "A Suspicion", "recap": "Gossip swirls through the new West about a pretty girl suspected in the death of a renegade." },
+    { "anchor": "Mr. Max Lyster was not given to the study of deep problems; his habits of", "label": "Dan's Ward", "recap": "The easygoing Max Lyster grows curious about the mysterious young ward of Dan Overton." },
+    { "anchor": "That one festive night decided the immediate future of 'Tana. All her joy", "label": "The Stranger's Warning", "recap": "It is decided that the wild girl 'Tana should be sent away to school." },
+    { "anchor": "Their camp was about a mile from the Kootenai River, and close to a stream", "label": "The Track in the Forest", "recap": "The party camps in the wilderness by the Kootenai, where a strange spring hides a secret." },
+    { "anchor": "So it was a gold mine that dragged you people up into this wilderness?", "label": "Gold", "recap": "A rich gold strike turns the little party's fortunes upside down." },
+    { "anchor": "And she wants a thousand dollars in money or free gold", "label": "'Tana's Engagement", "recap": "Changed since her fever, 'Tana makes a puzzling demand and a surprising engagement." },
+    { "anchor": "What do you intend to make of your life, Montana, since you avoid all", "label": "On Manhattan Island", "recap": "A winter on in New York, 'Tana resists the polished society her new fortune has lifted her into." }
   ]
 }
