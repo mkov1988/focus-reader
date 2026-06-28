@@ -861,5 +861,13 @@
     { "anchor": "swam out a few strokes, when hearing a noise, I turned about and saw Clinker, already up to his neck", "label": "Scarborough", "recap": "At Scarborough, Bramble's sea-bathing turns to farce when Clinker, thinking him drowning, hauls him from the surf." },
     { "anchor": "I should be very ungrateful, dear Lewis, if I did not find myself", "label": "Edinburgh", "recap": "The party reaches Edinburgh and samples the bustle and learning of the Scottish capital." },
     { "anchor": "Loyd of Glamorganshire, who was student of Jesus", "label": "An Old Friend", "recap": "On the journey home an old friend's recognition unravels the secret of Humphry's true parentage." }
+  ],
+  "20203": [
+    { "anchor": "My elder brothers were all put apprentices to different trades. I was put to the grammar-school", "label": "A Boston Boyhood", "recap": "Franklin recalls his Boston childhood and his apprenticeship in his brother's printing house." },
+    { "anchor": "three great puffy rolls. I was surpris'd at the quantity", "label": "Arrival in Philadelphia", "recap": "Hungry and shabby, the runaway Franklin walks into Philadelphia munching a great puffy roll." },
+    { "anchor": "About this time there was a cry among the people for more paper money", "label": "Business and Public Service", "recap": "His printing business thriving, Franklin takes his first steps into Philadelphia's public life." },
+    { "anchor": "It was about this time I conceived the bold and arduous project of arriving at moral perfection", "label": "Thirteen Virtues", "recap": "Franklin embarks on his famous project of moral perfection, charting his progress against thirteen virtues." },
+    { "anchor": "I had, on the whole, abundant reason to be satisfied with my being established in Pennsylvania", "label": "Civic Projects", "recap": "Settled and prosperous, Franklin throws himself into civic projects: an academy, a hospital, the defense of the province." },
+    { "anchor": "While the several companies in the city and country were forming, and learning their exercise, the governor prevail'd with me", "label": "The Frontier", "recap": "At the governor's request Franklin takes charge of the frontier, raising troops and building forts against attack." }
   ]
 }
