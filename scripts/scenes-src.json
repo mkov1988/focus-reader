@@ -668,5 +668,32 @@
     { "anchor": "In a measured voice, Poirot began his exposition", "label": "Poirot on the Case", "recap": "His grey cells triumphant, Poirot lays out the reasoning that unlocks the puzzle." },
     { "anchor": "We were present the following morning at the examination of Ja", "label": "An Unexpected Dénouement", "recap": "The courtroom proceedings take a sudden and dramatic turn." },
     { "anchor": "I have confused memories of the further events of that night", "label": "Journey's End", "recap": "The last truths come out, and Hastings finds his own heart finally settled." }
+  ],
+  "1259": [
+    { "anchor": "D'Artagnan, as he crossed the Pont Neuf, congratulated himself on having found Planchet", "label": "A Half-Pistole's Effects", "recap": "Scraping by under the new minister Mazarin, d'Artagnan is glad to have his shrewd old servant Planchet back as Paris simmers toward revolt." },
+    { "anchor": "rode had been refreshed in the well supplied stables of the Lord of Bracieux", "label": "Two Angelic Faces", "recap": "Having won the good-natured Porthos back to adventure, d'Artagnan rides on toward his next old comrade." },
+    { "anchor": "There was once in the Rue des Tournelles a house known by all the sedan", "label": "The Abbé Scarron", "recap": "At the celebrated salon of the crippled wit Scarron, all fashionable Paris gathers amid the swirl of intrigue and discontent." },
+    { "anchor": "We hope that the reader has not quite forgotten the young traveler whom", "label": "The Ferry across the Oise", "recap": "The young Raoul, Athos's ward, sets out for the wars, hiding the grief of leaving his beloved guardian behind." },
+    { "anchor": "The reader must now cross the Seine with us and follow us to the door of the Carmelite Convent", "label": "A Letter from Charles the First", "recap": "At a Paris convent the exiled English queen prays for her husband Charles I, and a desperate appeal for help is set in motion." },
+    { "anchor": "Athos had not failed to send early to Aramis and had given his letter", "label": "Another Queen in Want of Help", "recap": "Athos quietly gathers his friends as yet another threatened sovereign turns to them for rescue." },
+    { "anchor": "It had been D'Artagnan's practice, ever since the riots, to sleep in", "label": "The Interview", "recap": "Lodged together through the city's riots, d'Artagnan and Porthos are drawn deeper into Mazarin's dangerous games." },
+    { "anchor": "They all four entered the tent; they had no plan ready", "label": "The Avenger", "recap": "In England the reunited friends stand by the betrayed King Charles as the net of treachery tightens around him." },
+    { "anchor": "As soon as the noise of the hoofs was lost in the distance D'Artagnan", "label": "London", "recap": "With their plans in ruins, the four comrades ride hard toward London, fearing the worst." },
+    { "anchor": "Though Mordaunt had been so completely taken by surprise and had", "label": "A Cornered Foe", "recap": "The vengeful Mordaunt, cornered by the four friends, coolly watches for any chance to slip free." },
+    { "anchor": "The two friends rode rapidly down the declivity of the Faubourg, but", "label": "The Ambassadors", "recap": "Back in a rain-flooded Paris, the friends pick their way through the perils of the Fronde." },
+    { "anchor": "Now let us pass the orangery to the hunting lodge", "label": "Strength and Sagacity", "recap": "Held captive, d'Artagnan and Porthos set their wits and their strength to engineering an escape." }
+  ],
+  "2868": [
+    { "anchor": "I am very angry, pouted the maid", "label": "The Lovers", "recap": "The young lovers Lucy and Archie spar over a thousand-pound bargain tangled up with their hopes of marriage." },
+    { "anchor": "For the next two or three days, Archie felt decidedly worried over his projected marriage", "label": "The Unexpected", "recap": "Archie frets that Professor Braddock's consent to the match was bought, uneasy at the old man's hunger for money." },
+    { "anchor": "Like a geographical Lord Byron, the isolated village of Gartley awoke one morning to find itself famous", "label": "The Inquest", "recap": "The sleepy village of Gartley wakes to sudden fame as police and reporters descend to inquire into a shocking crime." },
+    { "anchor": "Some weeks had now elapsed since the death and burial of Sidney Bolton", "label": "Mrs. Jasher's Luck", "recap": "Weeks pass and interest in the unsolved murder of Braddock's assistant cools to idle village gossip." },
+    { "anchor": "It was certainly strange how constantly the subject of the missing mummy came uppermost", "label": "The Manuscript", "recap": "Talk keeps returning to the vanished green mummy that the dead man had brought to England." },
+    { "anchor": "In spite of newspapers and letters and tape-machines and telegrams", "label": "The Unexpected Happens", "recap": "Fresh rumours race through the village, and an unexpected development reopens the case." },
+    { "anchor": "Random was so taken aback by the fierce accusation of the Professor", "label": "Circumstantial Evidence", "recap": "Professor Braddock flings a fierce accusation at the young soldier Random, who is baffled by the charge." },
+    { "anchor": "For a few moments there was silence. Lucy and Archie sat still", "label": "Nearer the Truth", "recap": "A startling recognition of one of the men present brings the tangled mystery a step nearer its solution." },
+    { "anchor": "Of all the surprises in connection with the tragedy of the green mummy, this was surely the greatest", "label": "Just in Time", "recap": "One of the missing emeralds is returned anonymously, the strangest twist yet in the affair of the green mummy." },
+    { "anchor": "Jane was still being held by Sir Frank at the floor", "label": "A Confession", "recap": "A night-time alarm and a terrified servant give way at last to a long-withheld confession." },
+    { "anchor": "As the hunt for the fugitives had continued all day", "label": "By the River", "recap": "After a long day's manhunt the pursuers gather for a secret meeting down by the river." }
   ]
 }
