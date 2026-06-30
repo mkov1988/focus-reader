@@ -5,12 +5,167 @@ Welcome to the Focus Reader changelog! This document tells the story of how this
 ---
 
 ## 📖 Table of Contents
-- [Latest (v0.1.4)](#v014---2026-02-21)
-- [Previous (v0.1.3)](#v013---2026-02-18)
+- [Latest (v0.1.6)](#v016---2026-06-29)
+- [Previous (v0.1.5)](#v015---2026-06-29)
+- [Previous (v0.1.4)](#v014---2026-02-21)
+- [Older (v0.1.3)](#v013---2026-02-18)
 - [MVP Version (v0.1.0)](#v010---2026-02-07)
 - [What's Coming Next (v0.2.0)](#unreleased---v020)
 - [Design Evolution Story](#design-evolution-story)
 - [Technical Deep-Dives](#technical-deep-dives)
+
+---
+
+## [v0.1.6] - 2026-06-29
+### 📚 The "Skip Non-Book Text" Update
+
+#### 🎯 User Requests & Technical Intentions
+1. **Automated Stream Positioning (AC1, AC2)**: Position stream playback at the beginning of authored prose (Forewords, Prefaces, Introductions, Prologues, or Chapter 1) on fresh book opens, automatically skipping publisher boilerplate (title page, copyright notices, table of contents).
+2. **Stream Termination & Clamping (AC3)**: Clamp word advancement ceiling directly to `readableEndWord` so playback halts at the end of authored prose (Epilogue, Afterword) without reading into indexes, glossaries, or back-matter advertisements.
+3. **Readable Progress Metrics (AC4)**: Map progress percentages (0% to 100%) and word counts exclusively over the readable bounds (`[readableStartWord, readableEndWord]`) so 100% coincides with finishing the book.
+4. **Symmetric Confidence & Fail-Safe Inclusion (AC5)**: Implement a symmetric confidence model (*when in doubt, include*). Unrecognized or ambiguous books (`none` confidence or `< 3` chapters) fail-safe to `[0, tokens.length - 1]` to ensure zero authored prose is omitted.
+5. **Resume Priority Retention (AC8)**: Ensure existing saved reading progress positions from the library take priority over auto-skipping.
+
+---
+
+#### 🛠️ Detailed File Breakdown & Code Changes
+
+##### 1. [src/utils/textProcessing.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/utils/textProcessing.ts) *(Lines 169–246)*
+- **Intention**: Extend `ParsedText` interface and implement `calculateReadableBounds` to classify structural section headings using prefix-flexible regex patterns and symmetric confidence logic.
+- **Code Highlights**:
+  ```typescript
+  export interface ParsedText {
+      tokens: TextToken[];
+      sentences: TextToken[][];
+      paragraphs: TextToken[][];
+      chapters: Chapter[];
+      chapterConfidence: ChapterConfidence;
+      readableStartWord: number;
+      readableEndWord: number;
+  }
+
+  // Classification regexes with word-boundary prefix matching
+  const SKIPPABLE_FRONT_RE = /^(table of contents|contents|list of (illustrations|figures|tables)|illustrations|figures|title page|copyright|publisher'?s note)\b/i;
+  const SKIPPABLE_BACK_RE = /^(index|glossary|advertisements?|ads|colophon|bibliography|further reading|appendix)\b/i;
+
+  export function calculateReadableBounds(totalTokensCount: number, chapters: Chapter[], confidence: ChapterConfidence) {
+      // Fail safe for 'none' confidence or < 3 chapters -> return full range [0, totalTokensCount - 1]
+      if (confidence === 'none' || !chapters || chapters.length < 3) {
+          return { readableStartWord: 0, readableEndWord: Math.max(0, totalTokensCount - 1) };
+      }
+      // Identifies first readable section and last readable section
+  }
+  ```
+
+##### 2. [src/hooks/useRSVP.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/hooks/useRSVP.ts) *(Lines 8–12, 46–58, 106–120)*
+- **Intention**: Update the RSVP playback hook to clamp advancement ceiling to `readableEndWord` for stream termination (AC3) and calculate 0%–100% progress metrics over the readable range (AC4).
+- **Code Highlights**:
+  ```typescript
+  const effectiveEnd = readableEndWord ?? (tokens.length > 0 ? tokens.length - 1 : 0);
+  const effectiveStart = readableStartWord ?? 0;
+  const span = Math.max(1, effectiveEnd - effectiveStart);
+  const progress = tokens.length > 0 ? Math.min(100, Math.max(0, ((currentIndex - effectiveStart) / span) * 100)) : 0;
+
+  // Inside RAF tick loop:
+  const maxCeiling = optionsRef.current.effectiveEnd;
+  if (indexRef.current < maxCeiling) {
+      const nextIndex = indexRef.current + 1;
+      indexRef.current = nextIndex;
+      setCurrentIndex(nextIndex);
+  } else {
+      setIsPlaying(false);
+      onComplete?.();
+  }
+  ```
+
+##### 3. [src/App.tsx](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/App.tsx) *(Lines 113–114, 201–203)*
+- **Intention**: Pass readable bounds to `useRSVP` and update book opening lifecycle (`completePendingOpen`) to seek to `readableStartWord` on fresh opens while respecting saved positions for AC8.
+- **Code Highlights**:
+  ```typescript
+  if (pending.startIndex && pending.startIndex > 0) {
+      pendingSeekRef.current = pending.startIndex;
+  } else if (pendingParsed.readableStartWord > 0) {
+      pendingSeekRef.current = pendingParsed.readableStartWord;
+  }
+  ```
+
+##### 4. [scripts/test-bounds.mjs](file:///c:/Users/Michael/Desktop/Focus%20Reader/scripts/test-bounds.mjs) *(NEW)*
+- **Intention**: Test runner for the readable bounds. It bundles and runs the real `parseText` pipeline so the assertions reflect what an actual book does, rather than hand fed chapter arrays.
+- **Test Results**:
+  ```text
+  🧪 Running readable-bounds integration tests (real parseText)...
+    ✓ Fixture A passed (front matter skipped, starts at Foreword)
+    ✓ Fixture C passed (Epilogue kept, Index clamped out)
+    ✓ Fixture D passed (ambiguous book fails safe to full range)
+    ✓ Fixture E passed (resume priority AC8)
+  ✅ All readable-bounds integration tests passed.
+  ```
+
+##### 5. [package.json](file:///c:/Users/Michael/Desktop/Focus%20Reader/package.json) *(Line 8)*
+- **Intention**: Added `"test": "node scripts/test-bounds.mjs"` to scripts.
+
+---
+
+#### 🔧 Post-delivery QA fixes
+
+A QA pass caught two defects in the work above and corrected them:
+
+1. **Back matter was never actually skipped (AC3).** The readable end clamp only fired when a *detected chapter* was titled "index", "glossary", and so on, but the chapter detector never produces those titles, so the clamp was dead code and the index, advertisements, and colophon streamed to the very end. The earlier unit test reported green only because it hand fed `calculateReadableBounds` a fake chapter called "Index of Whaling Terms". Fixed by adding `detectBackMatterStart` in [chapterDetection.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/utils/chapterDetection.ts), which scans for a standalone back matter heading in the tail of the file, and clamping `readableEndWord` to it. The test was rewritten to run the real parser (see above).
+
+2. **The new draggable progress bar fought the swipe gesture.** The bar is a `role="slider"`, but the reader swipe handler did not treat sliders as controls, so dragging the bar also fired a sentence skip on release. Fixed by adding `[role="slider"]` to the bail out list in [useReaderGestures.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/hooks/useReaderGestures.ts).
+
+---
+
+## [v0.1.5] - 2026-06-29
+### 👁️ The "Immersive Reading & Scrubber" Update
+
+#### 🎯 User Requests & Technical Intentions
+1. **Remove Helper Hints**: The user requested removing the static keyboard shortcuts helper text (`Space Play/Pause • ←/→ Prev / Next sentence`) at the bottom of the reader screen while keeping everything else intact for a cleaner reading aesthetic.
+2. **Chapter-Based & Scrubbable Progress Bar**: The user requested updating the reader progress bar to track progress relative to the **current chapter** (rather than the whole book) and make the bar directly interactive and scrubbable. They specifically requested displaying the chapter prefix before the word count (e.g., `Chapter 1: word 151 of 3161`).
+3. **Immersive Auto-Hide Reading Mode**: Implemented full product requirements for an auto-hiding UI chrome built on a media-player mental model. Starting playback gently fades away surrounding chrome, leaving only the focal word and reticle. Tapping anywhere reveals controls ("peek") without pausing or interrupting the word stream, automatically re-immersing after a 3-second idle window.
+
+---
+
+#### 🛠️ Detailed File Breakdown & Code Changes
+
+##### 1. [src/hooks/useImmersiveMode.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/hooks/useImmersiveMode.ts) *(NEW - Lines 1–65)*
+- **Intention**: Encapsulate chrome visibility state (`chromeVisible`), auto-hide timers, background peek taps, and control activity resets in a reusable custom hook.
+- **Code Highlights**:
+  ```typescript
+  // Synchronizes visibility with play/pause state and manages 3000ms idle timer
+  export function useImmersiveMode({ isPlaying, idleTimeoutMs = 3000 }: UseImmersiveModeOptions) {
+      const [chromeVisible, setChromeVisible] = useState(!isPlaying);
+      const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+      // Clears timers on pause; schedules 100ms initial fade-out on play
+      // Provides handlePeek() and resetIdleTimer() callbacks
+  }
+  ```
+
+##### 2. [src/components/Reader/Controls.tsx](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/components/Reader/Controls.tsx)
+- **Lines 17–31**: Extended `ControlsProps` interface to accept optional `onActivity?: () => void`.
+- **Lines 59–73**: Destructured `onActivity` and renamed unused `progress: _progress`. Declared `mainTrackRef` and `mainDraggingRef`.
+- **Lines 80–81**: Wired `onActivity?.()` into speed control handlers (`decreaseWpm`, `increaseWpm`) so speed adjustments keep controls visible.
+- **Lines 90–125**: Added `chapterInfo` memoized calculation computing chapter start/end word boundaries, current word in chapter (`currentInChap`), total words in chapter (`totalInChap`), percentage (`progress`), and title prefix (`title`).
+- **Lines 127–136**: Added `seekMainFromClientX()` pointer drag handler for real-time progress bar scrubbing with paragraph snapping.
+- **Lines 290–331**: Replaced static progress bar with interactive slider track (`role="slider"`), scrubber thumb (`group-hover:scale-125`), and chapter label (`<span>{chapterInfo.title ? `${chapterInfo.title}: word` : 'Word'} {chapterInfo.currentInChap} of {chapterInfo.totalInChap}</span>`). Completely removed legacy static keyboard hint pills.
+
+##### 3. [src/components/Reader/ReaderView.tsx](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/components/Reader/ReaderView.tsx)
+- **Lines 11–35**: Added `chromeVisible?: boolean` (default `true`) and `onActivity?: () => void` to `ReaderViewProps` and component signature.
+- **Lines 54–58**: Wrapped top `VisualizationSelector` in a container with `transition-opacity duration-300 ease-out ${chromeVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}` and attached `onActivity` to mode changes.
+- **Lines 124–142**: Wrapped bottom `Controls` in an identical transition container enforcing `pointer-events-none` when hidden to prevent accidental touches on hidden buttons.
+
+##### 4. [src/App.tsx](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/App.tsx)
+- **Line 10 & Lines 116–118**: Imported `useImmersiveMode` and initialized `const { chromeVisible, handlePeek, resetIdleTimer } = useImmersiveMode({ isPlaying: rsvp.isPlaying });`.
+- **Lines 131–137**: Passed `onActivity: resetIdleTimer` to `useKeyboardShortcuts`.
+- **Lines 242–247**: Updated `readerGestures` `onTap` handler to call `handlePeek()` instead of `rsvp.toggle()`. This fixed the issue where tapping the screen paused playback, allowing tap-to-peek to reveal controls **without interrupting the stream**.
+- **Lines 325–337**: Passed `collapsed={!chromeVisible}` to `InnerPageHeader`, and passed `chromeVisible` and `onActivity={resetIdleTimer}` to `ReaderView`.
+
+##### 5. [src/hooks/useKeyboardShortcuts.ts](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/hooks/useKeyboardShortcuts.ts)
+- **Lines 4–16**: Added optional `onActivity?: () => void` to `UseKeyboardShortcutsOptions`.
+- **Lines 31–44**: Called `onActivity?.()` inside `ArrowLeft`, `ArrowRight`, `ArrowUp`, and `ArrowDown` key handlers so keyboard navigation reveals controls and resets the idle timer.
+
+##### 6. [src/index.css](file:///c:/Users/Michael/Desktop/Focus%20Reader/src/index.css)
+- **Lines 131–143**: Appended `@media (prefers-reduced-motion: reduce)` rules forcing `animation-duration: 0.01ms !important` and `transition-duration: 0.01ms !important` to support instant UI toggles for accessibility.
 
 ---
 

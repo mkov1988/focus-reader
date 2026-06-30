@@ -8,6 +8,8 @@ export interface UseRSVPOptions {
     sentenceStartOffset?: number; // Extra fixed delay in ms
     lineStartMultiplier?: number;
     lineStartIndices?: Set<number>;
+    readableStartWord?: number;
+    readableEndWord?: number;
     onComplete?: () => void;
 }
 
@@ -34,6 +36,8 @@ export function useRSVP({
     sentenceStartOffset = 0,
     lineStartMultiplier = 1,
     lineStartIndices = new Set(),
+    readableStartWord = 0,
+    readableEndWord,
     onComplete
 }: UseRSVPOptions): UseRSVPReturn {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,11 +49,14 @@ export function useRSVP({
     const rafIdRef = useRef<number | null>(null);
     const indexRef = useRef<number>(0);
 
+    const effectiveEnd = readableEndWord ?? (tokens.length > 0 ? tokens.length - 1 : 0);
+    const effectiveStart = readableStartWord ?? 0;
+
     // Refs for options to avoid restarting the loop when they change
-    const optionsRef = useRef({ sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices });
+    const optionsRef = useRef({ sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices, effectiveEnd });
     useEffect(() => {
-        optionsRef.current = { sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices };
-    }, [sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices]);
+        optionsRef.current = { sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices, effectiveEnd };
+    }, [sentenceStartMultiplier, sentenceStartOffset, lineStartMultiplier, lineStartIndices, effectiveEnd]);
 
     // Keep indexRef in sync
     useEffect(() => {
@@ -57,7 +64,8 @@ export function useRSVP({
     }, [currentIndex]);
 
     const currentToken = tokens[currentIndex] || null;
-    const progress = tokens.length > 0 ? (currentIndex / (tokens.length - 1)) * 100 : 0;
+    const span = Math.max(1, effectiveEnd - effectiveStart);
+    const progress = tokens.length > 0 ? Math.min(100, Math.max(0, ((currentIndex - effectiveStart) / span) * 100)) : 0;
 
     // Helper to calculate delay for a token based on current options
     const calculateWordDelay = (token: TextToken, baseDelay: number) => {
@@ -82,9 +90,6 @@ export function useRSVP({
     };
 
     // Animation loop using RAF for butter-smooth updates.
-    // Self-recursion goes through `tickRef` (set below) instead of referencing
-    // `tick` from inside its own definition — keeps `react-hooks/immutability`
-    // happy without changing the runtime behaviour.
     const tickRef = useRef<((t: number) => void) | null>(null);
     const tick = useCallback((timestamp: number) => {
         if (!lastTimeRef.current) {
@@ -108,7 +113,8 @@ export function useRSVP({
         if (accumulatedTimeRef.current >= wordDelay) {
             accumulatedTimeRef.current = 0; // Reset accumulator
 
-            if (indexRef.current < tokens.length - 1) {
+            const maxCeiling = optionsRef.current.effectiveEnd;
+            if (indexRef.current < maxCeiling) {
                 const nextIndex = indexRef.current + 1;
                 indexRef.current = nextIndex;
                 setCurrentIndex(nextIndex);

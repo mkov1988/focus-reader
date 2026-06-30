@@ -4,7 +4,7 @@
  * These utilities handle word splitting, focal point calculation,
  * and intelligent text chunking for the speed reading engine.
  */
-import { detectChapters, type Chapter, type ChapterConfidence } from './chapterDetection';
+import { detectChapters, detectBackMatterStart, type Chapter, type ChapterConfidence } from './chapterDetection';
 
 // --- Configuration Constants ---
 
@@ -166,6 +166,97 @@ export interface ParsedText {
     paragraphs: TextToken[][]; // Array of paragraphs (arrays of tokens)
     chapters: Chapter[]; // Detected structural landmarks (empty if none found)
     chapterConfidence: ChapterConfidence; // 'none' => fall back to paragraphs
+    readableStartWord: number;
+    readableEndWord: number;
+}
+
+// Classification regexes for content bounds calculation (prefix-flexible matching with word boundaries)
+const SKIPPABLE_FRONT_RE = /^(table of contents|contents|list of (illustrations|figures|tables)|illustrations|figures|title page|copyright|publisher'?s note)\b/i;
+const SKIPPABLE_BACK_RE = /^(index|glossary|advertisements?|ads|colophon|bibliography|further reading|appendix)\b/i;
+
+export function calculateReadableBounds(
+    totalTokensCount: number,
+    chapters: Chapter[],
+    confidence: ChapterConfidence,
+    /** Token index where back matter (index/glossary/colophon/…) begins, from
+     *  `detectBackMatterStart`. The chapter detector never surfaces these as
+     *  chapters, so the end clamp can't rely on chapter titles alone. */
+    backMatterStart?: number | null
+): { readableStartWord: number; readableEndWord: number } {
+    if (totalTokensCount === 0) {
+        return { readableStartWord: 0, readableEndWord: 0 };
+    }
+
+    const defaultEnd = Math.max(0, totalTokensCount - 1);
+
+    // Fail safe: 'none' confidence or fewer than 3 chapters -> return full range [0, totalTokensCount - 1]
+    if (confidence === 'none' || !chapters || chapters.length < 3) {
+        return { readableStartWord: 0, readableEndWord: defaultEnd };
+    }
+
+    let startWord = 0;
+    let endWord = defaultEnd;
+
+    const cleanTitle = (t: string) => t.trim().toLowerCase().replace(/[.:;\-\s]+$/, '');
+
+    // Identify Start Word
+    if (confidence === 'high') {
+        const firstReadable = chapters.find((c) => !SKIPPABLE_FRONT_RE.test(cleanTitle(c.title)));
+        if (firstReadable) {
+            startWord = firstReadable.wordIndex;
+        }
+    } else if (confidence === 'medium') {
+        const hasSkippableFront = SKIPPABLE_FRONT_RE.test(cleanTitle(chapters[0].title));
+        if (hasSkippableFront && chapters.length > 1) {
+            const firstReadable = chapters.find((c) => !SKIPPABLE_FRONT_RE.test(cleanTitle(c.title)));
+            if (firstReadable) {
+                startWord = firstReadable.wordIndex;
+            }
+        }
+    }
+
+    // Identify End Word
+    if (confidence === 'high') {
+        let lastReadableIdx = -1;
+        for (let i = chapters.length - 1; i >= 0; i--) {
+            if (!SKIPPABLE_BACK_RE.test(cleanTitle(chapters[i].title))) {
+                lastReadableIdx = i;
+                break;
+            }
+        }
+        if (lastReadableIdx !== -1 && lastReadableIdx < chapters.length - 1) {
+            const nextChapter = chapters[lastReadableIdx + 1];
+            endWord = Math.max(startWord, nextChapter.wordIndex - 1);
+        }
+    } else if (confidence === 'medium') {
+        const lastChapter = chapters[chapters.length - 1];
+        if (SKIPPABLE_BACK_RE.test(cleanTitle(lastChapter.title))) {
+            let lastReadableIdx = -1;
+            for (let i = chapters.length - 1; i >= 0; i--) {
+                if (!SKIPPABLE_BACK_RE.test(cleanTitle(chapters[i].title))) {
+                    lastReadableIdx = i;
+                    break;
+                }
+            }
+            if (lastReadableIdx !== -1 && lastReadableIdx < chapters.length - 1) {
+                const nextChapter = chapters[lastReadableIdx + 1];
+                endWord = Math.max(startWord, nextChapter.wordIndex - 1);
+            }
+        }
+    }
+
+    // A recognized back-matter heading (index, glossary, advertisements, …)
+    // is a stronger, more reliable end signal than chapter titles — which the
+    // detector never tags as skippable — so clamp the readable end to just
+    // before it whenever one was found past the midpoint of a structured book.
+    if (backMatterStart != null && backMatterStart > startWord) {
+        endWord = Math.max(startWord, Math.min(endWord, backMatterStart - 1));
+    }
+
+    return {
+        readableStartWord: Math.min(startWord, defaultEnd),
+        readableEndWord: Math.min(endWord, defaultEnd),
+    };
 }
 
 /**
@@ -173,13 +264,6 @@ export interface ParsedText {
  * This supports Sentence View, Paragraph View, and Hybrid View.
  */
 export function parseText(text: string): ParsedText {
-    // Source blank lines are paragraph boundaries. Convert them to explicit [P]
-    // markers before tokenizing — otherwise `split(/\s+/)` collapses every
-    // newline and the whole book becomes a single paragraph, breaking
-    // paragraph-aware features (Paragraph view, scrubber paragraph-snapping).
-    // [P] markers are skipped during tokenization (they never become tokens), so
-    // real-word token ids are unchanged and stay aligned with chapterDetection's
-    // offsets, which run on the original `text` below.
     const marked = text.replace(/\r\n?/g, '\n').replace(/\n[ \t]*\n+/g, ' [P] ');
     const rawTokens = marked.trim().split(/\s+/);
     const tokens: TextToken[] = [];
@@ -192,7 +276,6 @@ export function parseText(text: string): ParsedText {
     const currentSentence: TextToken[] = [];
     const currentParagraph: TextToken[] = [];
 
-    // Helper to finalize a structural unit (sentence or paragraph)
     const finalizeUnit = (
         buffer: TextToken[],
         collection: TextToken[][],
@@ -208,12 +291,11 @@ export function parseText(text: string): ParsedText {
                 currentParagraphIndex++;
             }
             collection.push([...buffer]);
-            buffer.length = 0; // Clear the buffer
+            buffer.length = 0;
         }
     };
 
     rawTokens.forEach((rawWord) => {
-        // Handle explicit paragraph markers from previous tokenize logic or double newlines
         const isExplicitBreak = rawWord === '[P]';
 
         if (isExplicitBreak) {
@@ -234,27 +316,25 @@ export function parseText(text: string): ParsedText {
             paragraphIndex: currentParagraphIndex,
             delayMultiplier: delay,
             isSentenceStart: currentSentence.length === 0,
-            isSentenceEnd, // Will be confirmed when the sentence is finalized or by punctuation
-            isParagraphEnd: false, // Will be set when paragraph is finalized
+            isSentenceEnd,
+            isParagraphEnd: false,
         };
 
         tokens.push(token);
         currentSentence.push(token);
         currentParagraph.push(token);
 
-        // If sentence ended based on punctuation, finalize it
         if (isSentenceEnd) {
             finalizeUnit(currentSentence, sentences, true);
         }
     });
 
-    // Cleanup lingering buffers at the end of text
     finalizeUnit(currentSentence, sentences, true);
     finalizeUnit(currentParagraph, paragraphs, false);
 
-    // Recover spatial structure (chapters) from the original line-broken text —
-    // word offsets align with token ids since both tokenize on /\s+/.
     const { chapters, confidence } = detectChapters(text);
+    const backMatterStart = detectBackMatterStart(text, tokens.length);
+    const { readableStartWord, readableEndWord } = calculateReadableBounds(tokens.length, chapters, confidence, backMatterStart);
 
     if (import.meta.env.DEV) {
         console.info(
@@ -263,5 +343,5 @@ export function parseText(text: string): ParsedText {
         );
     }
 
-    return { tokens, sentences, paragraphs, chapters, chapterConfidence: confidence };
+    return { tokens, sentences, paragraphs, chapters, chapterConfidence: confidence, readableStartWord, readableEndWord };
 }

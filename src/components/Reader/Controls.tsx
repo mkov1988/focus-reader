@@ -27,6 +27,7 @@ interface ControlsProps {
     onSkipSentence: (direction: -1 | 1) => void;
     onSeek: (index: number) => void;
     onWpmChange: (wpm: number) => void;
+    onActivity?: () => void;
 }
 
 /** Index of the paragraph that contains (or most recently started before) `word`. */
@@ -58,7 +59,7 @@ function paragraphIndexForWord(word: number, starts: number[]): number {
 export function Controls({
     isPlaying,
     wpm,
-    progress,
+    progress: _progress,
     currentIndex,
     totalWords,
     chapters,
@@ -68,13 +69,16 @@ export function Controls({
     onSkipSentence,
     onSeek,
     onWpmChange,
+    onActivity,
 }: ControlsProps) {
     const [scrubbing, setScrubbing] = useState(false);
     const trackRef = useRef<HTMLDivElement>(null);
+    const mainTrackRef = useRef<HTMLDivElement>(null);
     const draggingRef = useRef(false);
+    const mainDraggingRef = useRef(false);
 
-    const decreaseWpm = () => onWpmChange(Math.max(100, wpm - 50));
-    const increaseWpm = () => onWpmChange(Math.min(1000, wpm + 50));
+    const decreaseWpm = () => { onActivity?.(); onWpmChange(Math.max(100, wpm - 50)); };
+    const increaseWpm = () => { onActivity?.(); onWpmChange(Math.min(1000, wpm + 50)); };
 
     const paraStarts = useMemo(
         () => paragraphs.map((p) => p[0]?.id ?? 0),
@@ -82,6 +86,54 @@ export function Controls({
     );
     const hasChapters = chapters.length > 0;
     const lastWord = Math.max(1, totalWords - 1);
+
+    const chapterInfo = useMemo(() => {
+        if (!chapters || chapters.length === 0) {
+            const startWord = 0;
+            const endWord = Math.max(0, totalWords - 1);
+            const totalInChap = Math.max(1, totalWords);
+            const currentInChap = Math.min(totalInChap, Math.max(1, currentIndex + 1));
+            const prog = totalWords > 1 ? (currentIndex / (totalWords - 1)) * 100 : 0;
+            return { title: undefined, startWord, endWord, totalInChap, currentInChap, progress: Math.min(100, Math.max(0, prog)) };
+        }
+
+        if (currentIndex < chapters[0].wordIndex) {
+            const startWord = 0;
+            const endWord = Math.max(0, chapters[0].wordIndex - 1);
+            const totalInChap = Math.max(1, endWord - startWord + 1);
+            const currentInChap = Math.min(totalInChap, Math.max(1, currentIndex - startWord + 1));
+            const prog = endWord > startWord ? ((currentIndex - startWord) / (endWord - startWord)) * 100 : 0;
+            return { title: 'Frontmatter', startWord, endWord, totalInChap, currentInChap, progress: Math.min(100, Math.max(0, prog)) };
+        }
+
+        let chapIdx = 0;
+        for (let i = 0; i < chapters.length; i++) {
+            if (chapters[i].wordIndex <= currentIndex) {
+                chapIdx = i;
+            } else {
+                break;
+            }
+        }
+
+        const startWord = chapters[chapIdx].wordIndex;
+        const endWord = chapIdx < chapters.length - 1 ? chapters[chapIdx + 1].wordIndex - 1 : Math.max(startWord, totalWords - 1);
+        const totalInChap = Math.max(1, endWord - startWord + 1);
+        const currentInChap = Math.min(totalInChap, Math.max(1, currentIndex - startWord + 1));
+        const prog = endWord > startWord ? ((currentIndex - startWord) / (endWord - startWord)) * 100 : 0;
+
+        return { title: chapters[chapIdx].title, startWord, endWord, totalInChap, currentInChap, progress: Math.min(100, Math.max(0, prog)) };
+    }, [currentIndex, chapters, totalWords]);
+
+    const seekMainFromClientX = (clientX: number) => {
+        const el = mainTrackRef.current;
+        if (!el) return;
+        onActivity?.();
+        const rect = el.getBoundingClientRect();
+        const frac = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+        const targetWord = Math.round(chapterInfo.startWord + frac * (chapterInfo.endWord - chapterInfo.startWord));
+        const pIdx = paragraphIndexForWord(targetWord, paraStarts);
+        onSeek(paraStarts[pIdx] ?? targetWord);
+    };
 
     // Live peek: which paragraph we're parked on, its opening words, and the
     // chapter it belongs to (if any).
@@ -235,17 +287,46 @@ export function Controls({
                 </>
             ) : (
                 <>
-                    {/* Progress Bar */}
-                    <div className="space-y-2">
-                        <div className="h-2 bg-espresso/[0.1] rounded-full overflow-hidden">
+                    {/* Progress Bar (Interactive & Chapter-Based) */}
+                    <div className="space-y-2 select-none">
+                        <div
+                            ref={mainTrackRef}
+                            className="relative h-6 flex items-center cursor-pointer touch-none group"
+                            role="slider"
+                            aria-label="Chapter Progress"
+                            aria-valuenow={chapterInfo.currentInChap}
+                            aria-valuemin={1}
+                            aria-valuemax={chapterInfo.totalInChap}
+                            tabIndex={0}
+                            onPointerDown={(e) => {
+                                e.currentTarget.setPointerCapture(e.pointerId);
+                                mainDraggingRef.current = true;
+                                onPause();
+                                seekMainFromClientX(e.clientX);
+                            }}
+                            onPointerMove={(e) => {
+                                if (mainDraggingRef.current) seekMainFromClientX(e.clientX);
+                            }}
+                            onPointerUp={() => {
+                                mainDraggingRef.current = false;
+                            }}
+                        >
+                            {/* Rail */}
+                            <div className="absolute inset-x-0 h-2 bg-espresso/[0.1] rounded-full overflow-hidden">
+                                <div
+                                    className="h-full bg-coral-accent rounded-full transition-all duration-75"
+                                    style={{ width: `${chapterInfo.progress}%` }}
+                                />
+                            </div>
+                            {/* Scrubber Knob / Thumb */}
                             <div
-                                className="h-full bg-coral-accent rounded-full transition-all duration-75"
-                                style={{ width: `${progress}%` }}
+                                className="absolute w-4 h-4 -translate-x-1/2 rounded-full bg-coral-accent shadow-md shadow-coral-accent/40 ring-2 ring-cream transition-transform group-hover:scale-125"
+                                style={{ left: `${chapterInfo.progress}%` }}
                             />
                         </div>
                         <div className="flex justify-between text-sm text-mocha">
-                            <span>Word {currentIndex + 1} of {totalWords}</span>
-                            <span>{Math.round(progress)}%</span>
+                            <span>{chapterInfo.title ? `${chapterInfo.title}: word` : 'Word'} {chapterInfo.currentInChap} of {chapterInfo.totalInChap}</span>
+                            <span>{Math.round(chapterInfo.progress)}%</span>
                         </div>
                     </div>
 
@@ -313,15 +394,6 @@ export function Controls({
                                 <Plus className="w-4 h-4" />
                             </button>
                         </div>
-                    </div>
-
-                    {/* Keyboard hints */}
-                    <div className="text-center text-xs text-mocha/80">
-                        <span className="px-2 py-1 bg-espresso/[0.06] border border-espresso/[0.1] rounded text-mocha">Space</span>
-                        <span className="mx-1 text-mocha/70">Play/Pause</span>
-                        <span className="mx-3 text-mocha/40">•</span>
-                        <span className="px-2 py-1 bg-espresso/[0.06] border border-espresso/[0.1] rounded text-mocha">←/→</span>
-                        <span className="mx-1 text-mocha/70">Prev / Next sentence</span>
                     </div>
                 </>
             )}

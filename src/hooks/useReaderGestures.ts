@@ -40,7 +40,12 @@ export function useReaderGestures(opts: UseReaderGesturesOpts) {
     return {
         onPointerDown: (e: ReactPointerEvent) => {
             const target = e.target as HTMLElement;
-            if (target.closest('button, input, [role="button"], a, label, select, textarea')) return;
+            // Bail out if the gesture started on an interactive control. The
+            // progress bar and paragraph scrubber are `role="slider"` elements
+            // that own their own drag handling — without this, a horizontal
+            // scrub drag would also bubble up here and fire a sentence-skip,
+            // fighting the seek the user just made.
+            if (target.closest('button, input, [role="button"], [role="slider"], a, label, select, textarea')) return;
 
             const startX = e.clientX;
             const startY = e.clientY;

@@ -236,6 +236,43 @@ function detectDialect(
     return null;
 }
 
+/**
+ * Standalone back-matter headings whose arrival marks the end of authored
+ * prose. Deliberately conservative: we omit `appendix`, `footnotes`, and
+ * `endnotes` because those frequently carry authored content the reader would
+ * rather hear than have silently dropped (skip-non-book "fail safe to
+ * inclusion"). The chapter detector never emits these as chapters, so the
+ * readable-end clamp has to find them itself.
+ */
+const BACK_MATTER_RE =
+    /^(index|glossary|bibliography|colophon|advertisements?|ads|further reading|list of (illustrations|figures|tables)|transcriber'?s note)\b/i;
+
+/**
+ * Find where back matter begins, expressed as a TextToken index, or `null` when
+ * there's no recognizable back matter. Only a *standalone* heading line in the
+ * back portion of the document qualifies, so a stray "index of refraction" in
+ * mid-prose can't truncate the book. Returns the earliest qualifying heading so
+ * everything from the first index/glossary/colophon onward is excluded.
+ */
+export function detectBackMatterStart(text: string, totalTokensCount: number): number | null {
+    if (totalTokensCount <= 0) return null;
+    const lines = text.replace(/\r\n?/g, '\n').split('\n');
+    const offsets = buildLineOffsets(lines);
+    // Back matter lives at the tail; requiring the heading past the midpoint
+    // keeps a front-matter "List of Illustrations" or an early stray match from
+    // clamping away the whole book.
+    const threshold = totalTokensCount * 0.55;
+    for (let i = 0; i < lines.length; i++) {
+        const trimmed = lines[i].trim();
+        // Heading-shaped: short and alone on its line (not a prose sentence).
+        if (!trimmed || trimmed.length > 40) continue;
+        if (BACK_MATTER_RE.test(trimmed) && offsets[i] >= threshold) {
+            return offsets[i];
+        }
+    }
+    return null;
+}
+
 export function detectChapters(text: string): ChapterDetection {
     const lines = text.replace(/\r\n?/g, '\n').split('\n');
     const offsets = buildLineOffsets(lines);

@@ -17,6 +17,8 @@ interface ReaderViewProps {
     wpm: number;
     onWpmChange: (wpm: number) => void;
     onLineBreaksChange: (indices: Set<number>) => void;
+    chromeVisible?: boolean;
+    onActivity?: () => void;
 }
 
 export function ReaderView({
@@ -28,6 +30,8 @@ export function ReaderView({
     wpm,
     onWpmChange,
     onLineBreaksChange,
+    chromeVisible = true,
+    onActivity,
 }: ReaderViewProps) {
 
     // Calculate context tokens based on current index
@@ -47,8 +51,10 @@ export function ReaderView({
         <div className="w-full h-full max-w-4xl flex flex-col items-center py-4 sm:py-8 px-2 sm:px-4">
 
             {/* Top Controls: Vis Mode */}
-            <div className="shrink-0 w-full flex justify-center relative z-50">
-                <VisualizationSelector mode={visMode} onChange={onChangeVisMode} />
+            <div className={`shrink-0 w-full flex justify-center relative z-50 transition-opacity duration-300 ease-out ${
+                chromeVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}>
+                <VisualizationSelector mode={visMode} onChange={(mode) => { onActivity?.(); onChangeVisMode(mode); }} />
             </div>
 
             {/* Reading Area - Height Constrained for Layout Stability */}
@@ -115,7 +121,9 @@ export function ReaderView({
             </div>
 
             {/* Controls */}
-            <div className="shrink-0 w-full mt-auto">
+            <div className={`shrink-0 w-full mt-auto transition-opacity duration-300 ease-out ${
+                chromeVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}>
                 <Controls
                     isPlaying={rsvp.isPlaying}
                     wpm={wpm}
@@ -129,6 +137,7 @@ export function ReaderView({
                     onSkipSentence={rsvp.skipToSentence}
                     onSeek={rsvp.seek}
                     onWpmChange={onWpmChange}
+                    onActivity={onActivity}
                 />
             </div>
         </div>

@@ -7,6 +7,7 @@ import { StoreFront } from './components/Input/StoreFront';
 import { BookOpenTransition } from './components/Reader/BookOpenTransition';
 import { useStore } from './store/useStore';
 import { useRSVP } from './hooks/useRSVP';
+import { useImmersiveMode } from './hooks/useImmersiveMode';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { useReaderGestures } from './hooks/useReaderGestures';
 import { parseText, type ParsedText } from './utils/textProcessing';
@@ -109,7 +110,13 @@ function App() {
         sentenceStartOffset: visMode === 'sentence' ? SENTENCE_START_OFFSET : 0,
         lineStartMultiplier: visMode === 'sentence' ? LINE_START_MULTIPLIER : 1,
         lineStartIndices,
+        readableStartWord: parsedText?.readableStartWord ?? 0,
+        readableEndWord: parsedText?.readableEndWord,
         onComplete: handleComplete,
+    });
+
+    const { chromeVisible, handlePeek, resetIdleTimer } = useImmersiveMode({
+        isPlaying: rsvp.isPlaying,
     });
 
     const handleVisModeChange = (mode: VisualizationMode) => {
@@ -128,6 +135,7 @@ function App() {
         rsvp,
         setWpm: setWpmUpdater,
         onEscape: () => { rsvp.pause(); setViewMode('INPUT'); },
+        onActivity: resetIdleTimer,
     });
 
     /** StoreFront fires this on touch-down; the transition takes over the gesture. */
@@ -193,6 +201,8 @@ function App() {
         rsvp.reset();
         if (pending.startIndex && pending.startIndex > 0) {
             pendingSeekRef.current = pending.startIndex;
+        } else if (pendingParsed.readableStartWord > 0) {
+            pendingSeekRef.current = pendingParsed.readableStartWord;
         }
         setViewMode('READING');
         setPending(null);
@@ -231,12 +241,12 @@ function App() {
         return () => document.removeEventListener('visibilitychange', onHidden);
     }, []);
 
-    // Touch gestures for the reading view: tap to pause/play, swipe L/R to
-    // skip sentence, swipe down to exit. Haptic confirmation on tap.
+    // Touch gestures for the reading view: tap to peek controls without pausing,
+    // swipe L/R to skip sentence, swipe down to exit. Haptic confirmation on tap.
     const readerGestures = useReaderGestures({
-        onTap: () => { haptics.tick(); rsvp.toggle(); },
-        onSwipeLeft: () => rsvp.skipToSentence(1),
-        onSwipeRight: () => rsvp.skipToSentence(-1),
+        onTap: () => { haptics.tick(); handlePeek(); },
+        onSwipeLeft: () => { resetIdleTimer(); rsvp.skipToSentence(1); },
+        onSwipeRight: () => { resetIdleTimer(); rsvp.skipToSentence(-1); },
         onSwipeDown: handleBack,
     });
 
@@ -316,7 +326,7 @@ function App() {
             {/* ═══ READING VIEW ═══ */}
             {viewMode === 'READING' && (
                 <div className="reading-view">
-                    <InnerPageHeader title={bookTitle} backLabel="Back" onBack={handleBack} collapsed={rsvp.isPlaying} />
+                    <InnerPageHeader title={bookTitle} backLabel="Back" onBack={handleBack} collapsed={!chromeVisible} />
                     <main className="reading-main" {...readerGestures} style={{ touchAction: 'pan-y' }}>
                         <ReaderView
                             parsedText={parsedText}
@@ -327,6 +337,8 @@ function App() {
                             wpm={wpm}
                             onWpmChange={setWpm}
                             onLineBreaksChange={setLineStartIndices}
+                            chromeVisible={chromeVisible}
+                            onActivity={resetIdleTimer}
                         />
                     </main>
                 </div>
