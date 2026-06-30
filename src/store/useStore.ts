@@ -92,7 +92,7 @@ export const useStore = create<AppState>()(
         (set) => ({
             viewMode: 'INPUT',
             themeIndex: 0,
-            mode: 'light',
+            mode: 'dark',
             activeTab: 'today',
             progressById: {},
             savedById: {},
