@@ -47,3 +47,6 @@ scripts/.vibe-wordcounts.json
 
 # Lint run artifact
 lint_output.txt
+
+# Demo password file (never commit credentials)
+.demo-pass.txt
