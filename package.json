@@ -11,6 +11,8 @@
     "preview": "vite preview",
     "mirror:covers": "node scripts/mirror-covers.mjs",
     "mirror:books": "node scripts/mirror-books.mjs",
+    "crawl:catalog": "node scripts/crawl-catalog.mjs",
+    "mirror:all": "node scripts/mirror-all.mjs",
     "build:vibes": "node scripts/build-vibes.mjs",
     "build:scenes": "node scripts/build-scenes.mjs",
     "build:scenes:local": "node scripts/segment-books-local.mjs",

@@ -42,6 +42,10 @@ docs/assets/references/
 # regenerated, so not committed.
 /public/books/
 
+# Full-catalog bulk mirror (scripts/crawl-catalog.mjs + scripts/mirror-all.mjs).
+# ~43GB destined for bucket storage (R2), never for the repo or the Pages build.
+/mirror/
+
 # Resumable cache for the word-count crawler (scripts/add-vibe-wordcounts.mjs).
 scripts/.vibe-wordcounts.json
 
