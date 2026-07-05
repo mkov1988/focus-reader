@@ -1,188 +1,199 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { TextToken } from '../../utils/textProcessing';
+import { useKineticScrub } from '../../hooks/useKineticScrub';
 
 interface SentenceDisplayProps {
+    /** Full token stream — the reel shows a moving window of it. */
     tokens: TextToken[];
     currentIndex: number;
     fontSize: number;
     className?: string;
     onWordClick?: (index: number) => void;
+    /** Commit a new reading position (drives rsvp.seek). */
+    onSeek?: (index: number) => void;
+    /** Fired when the user starts dragging (pauses playback). */
+    onScrubStart?: () => void;
+    // Accepted for API compatibility with the old wrapped layout; unused here.
     onLineBreaksChange?: (indices: Set<number>) => void;
+    totalTokens?: number;
 }
 
-// Constants
-const TRANSITION_DURATION = 150;
-const LINE_HEIGHT_THRESHOLD_RATIO = 0.5;
+// Words rendered each side of centre — enough overlap that even a fast flick
+// keeps the bracketing words on screen.
+const WINDOW = 9;
 
+// One reusable canvas for measuring word widths off the render path, so layout
+// is analytic and the animation never reads the DOM (no layout thrash).
+let _measureCtx: CanvasRenderingContext2D | null = null;
+function measureCtx(): CanvasRenderingContext2D | null {
+    if (_measureCtx) return _measureCtx;
+    if (typeof document === 'undefined') return null;
+    _measureCtx = document.createElement('canvas').getContext('2d');
+    return _measureCtx;
+}
+
+/**
+ * SentenceDisplay — a horizontal reading reel. Words flow left/right in a single
+ * line; the centred word is the reading position, and a finger flick sends them
+ * streaming past with the shared kinetic momentum, easing smoothly onto a word
+ * when it lands (see useKineticScrub).
+ *
+ * Smoothness comes from decoupling motion from React: the strip's translate is
+ * written **imperatively** every frame (from a fractional-position ref), so the
+ * flick never waits on a render. React only re-renders per *word* — to move the
+ * highlight and shift the rendered window. Word widths are measured once with a
+ * canvas and cached, so positions are pure arithmetic with no DOM reads.
+ */
 export function SentenceDisplay({
     tokens,
     currentIndex,
     fontSize,
     className = '',
     onWordClick,
-    onLineBreaksChange
+    onSeek,
+    onScrubStart,
 }: SentenceDisplayProps) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const activeRef = useRef<HTMLSpanElement>(null);
-    const wordRefs = useRef<Map<number, HTMLSpanElement>>(new Map());
+    const stripRef = useRef<HTMLDivElement>(null);
 
-    // State for managing transitions
-    const [visibleTokens, setVisibleTokens] = useState<TextToken[]>(tokens);
-    const [isTransitioning, setIsTransitioning] = useState(false);
-    const [opacity, setOpacity] = useState(1);
-
-    // Check if we have a new sentence
-    const currentFirstId = tokens.length > 0 ? tokens[0].id : -1;
-    const visibleFirstId = visibleTokens.length > 0 ? visibleTokens[0].id : -1;
-
-    // Detect line breaks when tokens or size changes
-    useLayoutEffect(() => {
-        if (!onLineBreaksChange || visibleTokens.length === 0) return;
-
-        const measure = () => {
-            const lineStartIndices = new Set<number>();
-            let lastTop = -1;
-            let refCount = 0;
-
-            visibleTokens.forEach((token) => {
-                const el = wordRefs.current.get(token.id);
-                if (el) {
-                    refCount++;
-                    const rect = el.getBoundingClientRect();
-
-                    if (lastTop === -1) {
-                        lastTop = rect.top;
-                        lineStartIndices.add(token.id);
-                    } else if (rect.top > lastTop + (fontSize * LINE_HEIGHT_THRESHOLD_RATIO)) {
-                        lineStartIndices.add(token.id);
-                        lastTop = rect.top;
-                    }
-                }
-            });
-
-            if (refCount > 0) {
-                onLineBreaksChange(lineStartIndices);
-            }
-        };
-
-        // Measure immediately
-        measure();
-
-        // And retry after a frame just in case of layout thrashing
-        const raf = requestAnimationFrame(measure);
-
-        return () => cancelAnimationFrame(raf);
-    }, [visibleTokens, fontSize, onLineBreaksChange]);
-
-    // Detect new sentence -> Trigger Fade Out.
-    // setState in effect is intentional here: this is the sentence-change
-    // transition state machine, kicked by an externally-changing input
-    // (currentFirstId). Deriving during render wouldn't let us schedule the
-    // fade-then-swap timing dance.
-    useEffect(() => {
-        if (currentFirstId !== visibleFirstId) {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
-            setOpacity(0);
-            setIsTransitioning(true);
-
-            // Wait for fade out (matches CSS duration), then swap data
-            const timeout = setTimeout(() => {
-                setVisibleTokens(tokens);
-                // We do NOT fade in here. We wait for layout effect to handle the scroll reset first.
-            }, TRANSITION_DURATION);
-
-            return () => clearTimeout(timeout);
-        }
-    }, [currentFirstId, visibleFirstId, tokens]);
-
-    // Handle Scroll Reset (Instant) when new tokens appear
-    useLayoutEffect(() => {
-        if (isTransitioning && containerRef.current && activeRef.current) {
-            // We are hidden and just swapped tokens.
-            // INSTANTLY jump to center.
-            const container = containerRef.current;
-            const element = activeRef.current;
-
-            const containerRect = container.getBoundingClientRect();
-            const elementRect = element.getBoundingClientRect();
-            const containerCenter = containerRect.top + (containerRect.height / 2);
-            const elementCenter = elementRect.top + (elementRect.height / 2);
-            const diff = elementCenter - containerCenter;
-
-            container.scrollBy({
-                top: diff,
-                behavior: 'auto' // INSTANT
-            });
-
-            // Now that we are positioned, fade back in
-            requestAnimationFrame(() => {
-                setOpacity(1);
-                setIsTransitioning(false);
-            });
-        }
-    }, [visibleTokens, isTransitioning]);
-
-    // Handle Active Word Tracking (Smooth) within the same sentence
-    useEffect(() => {
-        // Only run if we are NOT transitioning (i.e. normal reading)
-        if (activeRef.current && containerRef.current && !isTransitioning && opacity === 1) {
-            const container = containerRef.current;
-            const element = activeRef.current;
-
-            const containerRect = container.getBoundingClientRect();
-            const elementRect = element.getBoundingClientRect();
-            const containerCenter = containerRect.top + (containerRect.height / 2);
-            const elementCenter = elementRect.top + (elementRect.height / 2);
-            const diff = elementCenter - containerCenter;
-
-            // Only scroll if significantly off-center
-            if (Math.abs(diff) > 5) {
-                container.scrollBy({
-                    top: diff,
-                    behavior: 'smooth' // SMOOTH tracking
-                });
-            }
-        }
-    }, [currentIndex, fontSize, isTransitioning, opacity]);
-
+    const len = tokens.length;
     const displaySize = Math.max(32, Math.min(fontSize * 0.8, 64));
+    const gap = displaySize * 0.4;
+    // Roughly one average word-width of drag per word so the strip tracks the
+    // finger. Variable widths make this an estimate, not exact 1:1.
+    const pxPerStep = Math.round(displaySize * 2.6);
+
+    // Imperative animation state (no React renders in the hot path).
+    const fracRef = useRef(currentIndex);      // continuous reading position
+    const midsRef = useRef<Map<number, number>>(new Map()); // index → centre-x in strip
+    const contWRef = useRef(0);                 // container width
+    const scrubbing = useRef(false);
+
+    // Font measurement (off the animation path).
+    const fontRef = useRef('');
+    const widthCache = useRef<Map<string, number>>(new Map());
+    const [, bump] = useState(0); // one re-render once real font widths are ready
+
+    const measure = useCallback((word: string) => {
+        const cx = measureCtx();
+        if (!cx || !fontRef.current) return word.length * displaySize * 0.5; // pre-font fallback
+        const cache = widthCache.current;
+        const hit = cache.get(word);
+        if (hit != null) return hit;
+        cx.font = fontRef.current;
+        const w = cx.measureText(word).width;
+        cache.set(word, w);
+        return w;
+    }, [displaySize]);
+
+    // Write the strip transform straight to the DOM from the current fractional
+    // position. Called on every drag / inertia frame — must stay cheap.
+    const applyTransform = useCallback(() => {
+        const strip = stripRef.current;
+        if (!strip) return;
+        const mids = midsRef.current;
+        const f = fracRef.current;
+        const i0 = Math.floor(f);
+        const m0 = mids.get(i0);
+        const m1 = mids.get(i0 + 1);
+        const at = m0 != null && m1 != null ? m0 + (m1 - m0) * (f - i0) : (m0 ?? m1 ?? 0);
+        strip.style.transform = `translate3d(${contWRef.current / 2 - at}px, 0, 0)`;
+    }, []);
+
+    // Measure font + width when the size changes; force one re-render so the row
+    // lays out with real (not fallback) widths.
+    useLayoutEffect(() => {
+        const strip = stripRef.current;
+        const cont = containerRef.current;
+        if (!strip || !cont) return;
+        const cs = getComputedStyle(strip);
+        fontRef.current = `${cs.fontStyle} ${cs.fontWeight} ${displaySize}px ${cs.fontFamily}`;
+        widthCache.current.clear();
+        contWRef.current = cont.clientWidth;
+        bump((n) => n + 1);
+    }, [displaySize]);
+
+    useEffect(() => {
+        const cont = containerRef.current;
+        if (!cont || typeof ResizeObserver === 'undefined') return;
+        const ro = new ResizeObserver(() => { contWRef.current = cont.clientWidth; applyTransform(); });
+        ro.observe(cont);
+        return () => ro.disconnect();
+    }, [applyTransform]);
+
+    const scrub = useKineticScrub({
+        axis: 'x',
+        getIndex: () => currentIndex,
+        min: 0,
+        max: Math.max(0, len - 1),
+        pxPerStep,
+        disabled: !onSeek || len === 0,
+        onStart: () => { scrubbing.current = true; onScrubStart?.(); },
+        onFrame: (f) => { fracRef.current = f; applyTransform(); },
+        onCommit: (i) => onSeek?.(i),
+        onSettle: () => { scrubbing.current = false; },
+    });
+
+    // Rendered window is built from the COMMITTED index — so this re-renders once
+    // per word, not once per frame.
+    const center = Math.max(0, Math.min(Math.max(0, len - 1), currentIndex));
+    const indices: number[] = [];
+    for (let i = center - WINDOW; i <= center + WINDOW; i++) {
+        if (i >= 0 && i < len) indices.push(i);
+    }
+
+    // Cumulative left edges + centres (analytic; cached widths).
+    let x = 0;
+    const geo = indices.map((i) => {
+        const w = measure(tokens[i].word);
+        const g = { i, left: x, mid: x + w / 2 };
+        x += w + gap;
+        return g;
+    });
+    // Cache centres for the imperative transform.
+    const mids = new Map<number, number>();
+    for (const g of geo) mids.set(g.i, g.mid);
+    midsRef.current = mids;
+
+    // Re-sync the transform after each render (window shift / external seek).
+    useLayoutEffect(() => {
+        if (!scrubbing.current) fracRef.current = currentIndex;
+        applyTransform();
+    });
+
+    if (len === 0) {
+        return <div className={`w-full h-full ${className}`} />;
+    }
 
     return (
         <div
             ref={containerRef}
-            className={`
-                w-full max-w-3xl mx-auto h-full overflow-hidden relative
-                p-8 text-center leading-normal no-scrollbar
-                ${className}
-            `}
-            style={{ fontSize: `${displaySize}px` }}
+            onPointerDown={scrub.onPointerDown}
+            className={`w-full h-full relative overflow-hidden select-none cursor-grab active:cursor-grabbing ${className}`}
+            style={{
+                touchAction: 'pan-y',
+                fontSize: `${displaySize}px`,
+                // Soft-fade the words at the left/right edges.
+                WebkitMaskImage: 'linear-gradient(to right, transparent, #000 15%, #000 85%, transparent)',
+                maskImage: 'linear-gradient(to right, transparent, #000 15%, #000 85%, transparent)',
+            }}
         >
             <div
-                className="flex flex-wrap justify-center gap-x-[0.3em] min-h-full items-center py-[25vh] transition-opacity duration-150 ease-in-out"
-                style={{ opacity }}
+                ref={stripRef}
+                className="absolute inset-y-0 left-0 will-change-transform font-serif"
+                style={{ transform: 'translate3d(0,0,0)' }}
             >
-                {visibleTokens.map((token) => {
-                    const isActive = token.id === currentIndex;
-                    const isPassed = token.id < currentIndex;
-
+                {geo.map((g) => {
+                    const token = tokens[g.i];
+                    const dist = Math.abs(g.i - center);
+                    const isCurrent = g.i === center;
+                    const opacity = Math.max(0.2, 1 - dist * 0.16);
                     return (
                         <span
                             key={token.id}
-                            ref={(el) => {
-                                if (isActive) activeRef.current = el;
-                                if (el) wordRefs.current.set(token.id, el);
-                                else wordRefs.current.delete(token.id);
-                            }}
                             onClick={() => onWordClick?.(token.id)}
-                            className={`
-                                cursor-pointer transition-all duration-150 rounded px-1 -mx-1 inline-block
-                                ${isActive
-                                    ? 'bg-focal/10 text-focal scale-110 shadow-sm'
-                                    : isPassed
-                                        ? 'text-mocha/50 opacity-60'
-                                        : 'text-espresso opacity-100'
-                                }
-                            `}
+                            className={`absolute top-1/2 whitespace-nowrap cursor-pointer ${isCurrent ? 'text-focal' : 'text-current'}`}
+                            style={{ left: `${g.left}px`, transform: 'translateY(-50%)', opacity }}
                         >
                             {token.word}
                         </span>

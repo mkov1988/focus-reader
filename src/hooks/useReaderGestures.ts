@@ -21,6 +21,25 @@ const SWIPE_PX = 70;
 const SWIPE_DOWN_PX = 110;
 
 /**
+ * Walk up from the pointer target looking for a vertically-scrollable text
+ * surface (the paragraph / hybrid reading area, `overflow-y: auto`). If the
+ * gesture started inside one, a vertical drag is the user scrolling the text —
+ * NOT a swipe-down-to-exit. Without this, dragging to scroll ejects you out of
+ * the reader. We match the scroll region by its declared overflow, not by
+ * whether the current paragraph happens to overflow right now — a short
+ * paragraph that fits shouldn't suddenly make the drag dismiss the reader.
+ */
+function startedInVerticalScroller(el: HTMLElement | null): boolean {
+    let node: HTMLElement | null = el;
+    while (node) {
+        const overflowY = getComputedStyle(node).overflowY;
+        if (overflowY === 'auto' || overflowY === 'scroll') return true;
+        node = node.parentElement;
+    }
+    return false;
+}
+
+/**
  * Touch gestures for the reading view. The returned `onPointerDown` is meant
  * to be attached to the wrapper around the visualization. Buttons / inputs /
  * sliders inside the wrapper still work normally — we bail out if the
@@ -46,6 +65,11 @@ export function useReaderGestures(opts: UseReaderGesturesOpts) {
             // scrub drag would also bubble up here and fire a sentence-skip,
             // fighting the seek the user just made.
             if (target.closest('button, input, [role="button"], [role="slider"], a, label, select, textarea')) return;
+
+            // If the drag begins inside a scrollable text area, vertical
+            // movement is scrolling — suppress the swipe-down-to-exit so the
+            // reader doesn't get dismissed when you scroll up through the text.
+            const inScroller = startedInVerticalScroller(target);
 
             const startX = e.clientX;
             const startY = e.clientY;
@@ -78,7 +102,7 @@ export function useReaderGestures(opts: UseReaderGesturesOpts) {
                     else opts.onSwipeRight();
                     return;
                 }
-                if (dy > absX && dy > SWIPE_DOWN_PX) {
+                if (!inScroller && dy > absX && dy > SWIPE_DOWN_PX) {
                     opts.onSwipeDown();
                     return;
                 }

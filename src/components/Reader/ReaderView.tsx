@@ -19,6 +19,8 @@ interface ReaderViewProps {
     onLineBreaksChange: (indices: Set<number>) => void;
     chromeVisible?: boolean;
     onActivity?: () => void;
+    /** Tap on the reading surface — peeks the reader chrome. */
+    onTap?: () => void;
 }
 
 export function ReaderView({
@@ -32,20 +34,43 @@ export function ReaderView({
     onLineBreaksChange,
     chromeVisible = true,
     onActivity,
+    onTap,
 }: ReaderViewProps) {
 
-    // Calculate context tokens based on current index
-    const { currentParagraph, currentSentence } = useMemo(() => {
+    // Current paragraph for the paragraph views.
+    const { currentParagraph } = useMemo(() => {
         if (!parsedText || !rsvp.currentToken) {
-            return { currentParagraph: [], currentSentence: [] };
+            return { currentParagraph: [] };
         }
         const pIndex = rsvp.currentToken.paragraphIndex;
-        const sIndex = rsvp.currentToken.sentenceIndex;
         return {
             currentParagraph: parsedText.paragraphs[pIndex] || [],
-            currentSentence: parsedText.sentences[sIndex] || [],
         };
     }, [parsedText, rsvp.currentToken]);
+
+    // Scrolling / scrubbing the text by hand pauses playback so the auto-recenter
+    // stops fighting the user for position. Also counts as activity so the reader
+    // chrome behaves as if the user is engaged.
+    const handleManualScroll = () => {
+        onActivity?.();
+        if (rsvp.isPlaying) rsvp.pause();
+    };
+
+    // Over-scrolling a paragraph edge moves to an adjacent paragraph. `count` is
+    // how many to jump — 1 for a normal push, more for a strong flick.
+    const handleAdvanceParagraph = (dir: -1 | 1, count: number) => {
+        if (!parsedText || !rsvp.currentToken) return;
+        const paras = parsedText.paragraphs;
+        const from = rsvp.currentToken.paragraphIndex;
+        const targetIndex = Math.max(0, Math.min(paras.length - 1, from + dir * count));
+        const target = paras[targetIndex];
+        if (target && target.length > 0 && targetIndex !== from) {
+            handleManualScroll();
+            rsvp.seek(target[0].id);
+        }
+    };
+
+    const tokens = parsedText?.tokens ?? [];
 
     return (
         <div className="w-full h-full max-w-4xl flex flex-col items-center py-4 sm:py-8 px-2 sm:px-4">
@@ -63,8 +88,13 @@ export function ReaderView({
                 {/* RSVP Mode */}
                 {visMode === 'rsvp' && (
                     <RSVPDisplay
-                        word={rsvp.currentToken?.word || ''}
+                        tokens={tokens}
+                        currentIndex={rsvp.currentIndex}
                         fontSize={fontSize}
+                        isPlaying={rsvp.isPlaying}
+                        onSeek={rsvp.seek}
+                        onScrubStart={handleManualScroll}
+                        onTap={onTap}
                     />
                 )}
 
@@ -74,6 +104,9 @@ export function ReaderView({
                         tokens={parsedText.tokens}
                         currentIndex={rsvp.currentIndex}
                         fontSize={fontSize}
+                        onSeek={rsvp.seek}
+                        onScrubStart={handleManualScroll}
+                        onTap={onTap}
                     />
                 )}
 
@@ -84,17 +117,21 @@ export function ReaderView({
                         currentIndex={rsvp.currentIndex}
                         fontSize={fontSize}
                         onWordClick={rsvp.seek}
+                        onManualScroll={handleManualScroll}
+                        onAdvanceParagraph={handleAdvanceParagraph}
                     />
                 )}
 
                 {/* Sentence Mode */}
                 {visMode === 'sentence' && (
                     <SentenceDisplay
-                        tokens={currentSentence}
+                        tokens={tokens}
                         currentIndex={rsvp.currentIndex}
                         fontSize={fontSize}
                         onWordClick={rsvp.seek}
                         onLineBreaksChange={onLineBreaksChange}
+                        onSeek={rsvp.seek}
+                        onScrubStart={handleManualScroll}
                     />
                 )}
 
@@ -103,8 +140,13 @@ export function ReaderView({
                     <div className="flex flex-col items-center w-full h-full pb-2">
                         <div className="flex-1 flex items-center justify-center min-h-0 w-full">
                             <RSVPDisplay
-                                word={rsvp.currentToken?.word || ''}
+                                tokens={tokens}
+                                currentIndex={rsvp.currentIndex}
                                 fontSize={fontSize}
+                                isPlaying={rsvp.isPlaying}
+                                onSeek={rsvp.seek}
+                                onScrubStart={handleManualScroll}
+                                onTap={onTap}
                             />
                         </div>
                         <div className="w-full shrink-0 h-[45%] min-h-0 opacity-40 hover:opacity-100 transition-opacity">
@@ -113,6 +155,8 @@ export function ReaderView({
                                 currentIndex={rsvp.currentIndex}
                                 fontSize={fontSize * 0.5} // Smaller context
                                 onWordClick={rsvp.seek}
+                                onManualScroll={handleManualScroll}
+                                onAdvanceParagraph={handleAdvanceParagraph}
                                 className="h-full"
                             />
                         </div>

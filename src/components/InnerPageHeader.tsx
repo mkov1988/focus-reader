@@ -1,4 +1,4 @@
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Menu } from 'lucide-react';
 
 interface InnerPageHeaderProps {
     title: string;
@@ -11,6 +11,9 @@ interface InnerPageHeaderProps {
     /** Reader-only: collapse the whole bar away (height → 0, fade out) while
      *  RSVP is playing, so the word stream owns the screen. */
     collapsed?: boolean;
+    /** When provided, a hamburger button appears on the right that opens the app
+     *  menu — so the menu is reachable from every inner page, not just Today. */
+    onMenu?: () => void;
 }
 
 /**
@@ -28,7 +31,7 @@ interface InnerPageHeaderProps {
  * content height with no magic numbers, then to zero — reclaiming the space for
  * `reading-main` while RSVP plays.
  */
-export function InnerPageHeader({ title, eyebrow, backLabel, onBack, collapsed = false }: InnerPageHeaderProps) {
+export function InnerPageHeader({ title, eyebrow, backLabel, onBack, collapsed = false, onMenu }: InnerPageHeaderProps) {
     return (
         <header
             className={`sticky top-0 z-30 grid bg-warm-beige transition-[grid-template-rows,opacity] duration-300 ease-out ${
@@ -54,6 +57,16 @@ export function InnerPageHeader({ title, eyebrow, backLabel, onBack, collapsed =
                         )}
                         <h1 className="font-serif text-[18px] font-semibold text-espresso leading-tight truncate">{title}</h1>
                     </div>
+                    {onMenu && (
+                        <button
+                            type="button"
+                            onClick={onMenu}
+                            aria-label="Menu"
+                            className="w-10 h-10 rounded-full bg-cream ring-1 ring-espresso/10 flex items-center justify-center text-mocha hover:text-coral-accent select-none active:scale-90 transition-[transform,color] duration-150 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-accent"
+                        >
+                            <Menu size={20} />
+                        </button>
+                    )}
                 </div>
             </div>
         </header>

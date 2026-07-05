@@ -330,7 +330,8 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
     );
 
     const [curated, setCurated] = useState<BookMetadata[] | null>(null);
-    const [menuOpen, setMenuOpen] = useState(false);
+    const menuOpen = useStore((s) => s.menuOpen);
+    const setMenuOpen = useStore((s) => s.setMenuOpen);
     // Inner pages opened from the menu's "More" group, backed out of like the
     // other inner pages. Full-screen layers rather than tabs (they're not part of
     // the primary Browse nav).
@@ -696,6 +697,7 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                     eyebrow={innerHeader.eyebrow}
                     backLabel={innerHeader.backLabel}
                     onBack={innerHeader.onBack}
+                    onMenu={() => { haptics.tick(); setMenuOpen(true); }}
                 />
             ) : (
                 <header className="sticky top-0 z-30 bg-warm-beige border-b border-espresso/[0.08]">
@@ -1188,15 +1190,18 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
 
                         {/* A note from the room */}
                         <section className="mt-14">
-                            <div className="relative rounded-2xl bg-espresso text-cream px-5 py-5 overflow-hidden">
-                                <Coffee size={86} className="absolute -right-4 -bottom-5 text-cream/5" />
-                                <p className="text-[10px] font-semibold tracking-[0.22em] text-mustard/80 uppercase">&middot; A note from the room &middot;</p>
-                                <p className="font-serif italic text-[16px] leading-relaxed mt-3 text-cream/95">
+                            <div className="relative rounded-2xl bg-cream/70 ring-1 ring-espresso/10 text-espresso px-5 py-5 overflow-hidden">
+                                <Coffee size={86} className="absolute -right-4 -bottom-5 text-espresso/5" />
+                                <p className="text-[10px] font-semibold tracking-[0.22em] text-coral-accent/80 uppercase">&middot; A note from the room &middot;</p>
+                                <p className="font-serif italic text-[16px] leading-relaxed mt-3 text-espresso/95">
                                     &ldquo;Some books are to be tasted, others to be swallowed.&rdquo;
                                 </p>
-                                <p className="text-[10px] font-semibold tracking-[0.18em] text-mustard/70 uppercase mt-3">&mdash; Francis Bacon</p>
+                                <p className="text-[10px] font-semibold tracking-[0.18em] text-coral-accent/70 uppercase mt-3">&mdash; Francis Bacon</p>
                             </div>
                         </section>
+
+                        {/* Version — bumped on every deploy (version.json + deploy-pages.mjs). */}
+                        <p className="text-center text-[11px] text-mocha/50 mt-10">v{__APP_VERSION__}</p>
                     </div>
                 ) : activeTab === 'library' ? (
                     recents.length === 0 && saved.length === 0 ? (
@@ -1376,11 +1381,11 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
                         ) : (
                             <>
                                 {/* Hero: total time in the reading room */}
-                                <section className="relative rounded-2xl bg-espresso text-cream px-5 py-6 overflow-hidden">
-                                    <BarChart3 size={96} className="absolute -right-4 -bottom-5 text-cream/[0.06]" />
-                                    <p className="text-[10px] font-semibold tracking-[0.22em] text-mustard/80 uppercase">&middot; Time in the reading room &middot;</p>
-                                    <p className="font-serif text-[44px] font-semibold leading-none mt-3 tabular-nums">{fmtDuration(statMinutes)}</p>
-                                    <p className="font-serif italic text-[14px] text-cream/80 mt-2">
+                                <section className="relative rounded-2xl bg-cream/70 ring-1 ring-espresso/10 text-espresso px-5 py-6 overflow-hidden">
+                                    <BarChart3 size={96} className="absolute -right-4 -bottom-5 text-espresso/[0.06]" />
+                                    <p className="text-[10px] font-semibold tracking-[0.22em] text-coral-accent/80 uppercase">&middot; Time in the reading room &middot;</p>
+                                    <p className="font-serif text-[44px] font-semibold leading-none mt-3 tabular-nums text-espresso">{fmtDuration(statMinutes)}</p>
+                                    <p className="font-serif italic text-[14px] text-mocha mt-2">
                                         {avgWpm ? `at about ${avgWpm.toLocaleString()} words a minute` : 'so far'}
                                     </p>
                                 </section>
@@ -1574,13 +1579,13 @@ export function StoreFront({ onOpenBook, onOpenBookInstant, openingSlotId }: Sto
             {aboutOpen && (
                 <OverlayPage title="About" eyebrow="Focus Reader" onBack={() => { haptics.tick(); setAboutOpen(false); }}>
                     {/* Hero */}
-                    <section className="relative rounded-2xl bg-espresso text-cream px-5 py-7 overflow-hidden text-center">
-                        <Coffee size={96} className="absolute -right-5 -bottom-6 text-cream/[0.06]" />
-                        <span className="inline-flex w-12 h-12 rounded-2xl bg-cream/10 ring-1 ring-cream/15 items-center justify-center text-mustard">
+                    <section className="relative rounded-2xl bg-cream/70 ring-1 ring-espresso/10 text-espresso px-5 py-7 overflow-hidden text-center">
+                        <Coffee size={96} className="absolute -right-5 -bottom-6 text-espresso/[0.06]" />
+                        <span className="inline-flex w-12 h-12 rounded-2xl bg-cream ring-1 ring-espresso/10 items-center justify-center text-coral-accent">
                             <Coffee size={22} />
                         </span>
-                        <h2 className="font-serif text-[26px] font-semibold mt-3">Focus Reader</h2>
-                        <p className="font-serif italic text-[14px] text-cream/80 mt-1">A calm place to read the classics.</p>
+                        <h2 className="font-serif text-[26px] font-semibold mt-3 text-espresso">Focus Reader</h2>
+                        <p className="font-serif italic text-[14px] text-mocha mt-1">A calm place to read the classics.</p>
                     </section>
 
                     {/* What it is */}

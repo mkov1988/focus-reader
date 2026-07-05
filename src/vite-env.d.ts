@@ -1,4 +1,9 @@
 /// <reference types="vite/client" />
+/// <reference types="vite-plugin-pwa/client" />
+
+// App version injected by Vite's `define` (see vite.config.ts), shown at the
+// bottom of the landing page. Bumped on every deploy.
+declare const __APP_VERSION__: string;
 
 interface ImportMetaEnv {
     /**

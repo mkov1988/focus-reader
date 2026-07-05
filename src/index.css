@@ -91,6 +91,20 @@ body {
   overflow: hidden;
 }
 
+/* Paragraph view: each new paragraph slides + fades in. Forward reading pulls
+   the next one up from below; going back drops the previous one in from above.
+   (Disabled automatically by the prefers-reduced-motion block below.) */
+@keyframes para-enter-up {
+  from { opacity: 0; transform: translateY(var(--enter-dist, 28px)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes para-enter-down {
+  from { opacity: 0; transform: translateY(calc(-1 * var(--enter-dist, 28px))); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.para-enter-up  { animation: para-enter-up 0.3s ease-out both; }
+.para-enter-down { animation: para-enter-down 0.3s ease-out both; }
+
 /* ═══════════════════════════════════════════
    UTILITIES
    ═══════════════════════════════════════════ */

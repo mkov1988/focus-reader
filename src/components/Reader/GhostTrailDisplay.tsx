@@ -2,12 +2,19 @@ import { useLayoutEffect, useRef, useState, useMemo } from 'react';
 import { splitWord, effectiveBaseFontSize, type TextToken } from '../../utils/textProcessing';
 import { useFitFontSize } from '../../hooks/useFitFontSize';
 import { useStore } from '../../store/useStore';
+import { useKineticScrub } from '../../hooks/useKineticScrub';
 
 interface GhostTrailDisplayProps {
     tokens: TextToken[];
     currentIndex: number;
     fontSize?: number;
     className?: string;
+    /** Commit a new reading position (drives rsvp.seek). */
+    onSeek: (index: number) => void;
+    /** Fired when the user starts dragging (pauses playback). */
+    onScrubStart: () => void;
+    /** Tap on the ribbon — peeks the reader chrome. */
+    onTap?: () => void;
 }
 
 /**
@@ -25,8 +32,26 @@ export function GhostTrailDisplay({
     currentIndex,
     fontSize = 48,
     className = '',
+    onSeek,
+    onScrubStart,
+    onTap,
 }: GhostTrailDisplayProps) {
     const rootRef = useRef<HTMLDivElement>(null);
+
+    // Horizontal flick scrubs along the ribbon: drag left to advance. The trail
+    // steps word by word as the position moves, so a flick sends words streaming
+    // past before the momentum decays.
+    const scrub = useKineticScrub({
+        axis: 'x',
+        getIndex: () => currentIndex,
+        min: 0,
+        max: Math.max(0, tokens.length - 1),
+        pxPerStep: Math.round(fontSize * 2.5),
+        disabled: tokens.length === 0,
+        onStart: onScrubStart,
+        onCommit: onSeek,
+        onTap,
+    });
     const focalRef = useRef<HTMLSpanElement>(null);
     const beforeRef = useRef<HTMLSpanElement>(null);
     const afterRef = useRef<HTMLSpanElement>(null);
@@ -96,8 +121,9 @@ export function GhostTrailDisplay({
     return (
         <div
             ref={rootRef}
-            className={`relative w-full overflow-hidden ${className}`}
-            style={{ height: `${fontSize * 4}px`, fontSize: `${renderFontSize}px` }}
+            onPointerDown={scrub.onPointerDown}
+            className={`relative w-full overflow-hidden select-none cursor-grab active:cursor-grabbing ${className}`}
+            style={{ height: `${fontSize * 4}px`, fontSize: `${renderFontSize}px`, touchAction: 'none' }}
         >
             <GuideFrame barColor={barColor} lineColor={lineColor} />
 

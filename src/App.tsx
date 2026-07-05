@@ -53,6 +53,7 @@ interface PendingOpen {
 function App() {
     const viewMode = useStore((s) => s.viewMode);
     const setViewMode = useStore((s) => s.setViewMode);
+    const setMenuOpen = useStore((s) => s.setMenuOpen);
     const updateProgress = useStore((s) => s.updateProgress);
     const addSession = useStore((s) => s.addSession);
     const themeIndex = useStore((s) => s.themeIndex);
@@ -326,7 +327,13 @@ function App() {
             {/* ═══ READING VIEW ═══ */}
             {viewMode === 'READING' && (
                 <div className="reading-view">
-                    <InnerPageHeader title={bookTitle} backLabel="Back" onBack={handleBack} collapsed={!chromeVisible} />
+                    <InnerPageHeader
+                        title={bookTitle}
+                        backLabel="Back"
+                        onBack={handleBack}
+                        collapsed={!chromeVisible}
+                        onMenu={() => { haptics.tick(); handleBack(); setMenuOpen(true); }}
+                    />
                     <main className="reading-main" {...readerGestures} style={{ touchAction: 'pan-y' }}>
                         <ReaderView
                             parsedText={parsedText}
@@ -339,6 +346,7 @@ function App() {
                             onLineBreaksChange={setLineStartIndices}
                             chromeVisible={chromeVisible}
                             onActivity={resetIdleTimer}
+                            onTap={() => { haptics.tick(); handlePeek(); }}
                         />
                     </main>
                 </div>

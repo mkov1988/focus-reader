@@ -1,9 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { readFileSync } from 'node:fs'
+
+// App version shown at the bottom of the landing page. Single source of truth is
+// version.json, bumped on every deploy by scripts/deploy-pages.mjs
+// (0.1.1 -> 0.1.2 -> ... -> 0.1.9 -> 0.2.0, each part rolling over at 9).
+const APP_VERSION = JSON.parse(
+  readFileSync(new URL('./version.json', import.meta.url), 'utf8'),
+).version
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    __APP_VERSION__: JSON.stringify(APP_VERSION),
+  },
   plugins: [
     react(),
     // Service worker: precache the app shell, and runtime-cache book covers

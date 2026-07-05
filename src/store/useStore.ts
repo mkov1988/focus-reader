@@ -50,6 +50,11 @@ interface AppState {
     themeIndex: number;
     mode: ThemeMode;
     activeTab: TabKey;
+    /** Whether the slide-in app menu drawer is open. Kept in the store (not
+     *  StoreFront-local) so the reader can open it too: tapping the reader's
+     *  menu returns to the storefront with the drawer already open. Transient —
+     *  never persisted. */
+    menuOpen: boolean;
     /** Per-book reading position, keyed by bookId. Every book keeps its own
      *  spot, so starting/switching books never clobbers another book's place.
      *  Also the data source for the Recents list (sort by lastReadAt). */
@@ -72,6 +77,7 @@ interface AppState {
     setThemeIndex: (i: number) => void;
     toggleMode: () => void;
     setActiveTab: (tab: TabKey) => void;
+    setMenuOpen: (open: boolean) => void;
     /** Record/refresh reading progress for the book currently in the reader. */
     updateProgress: (p: Omit<ReadingProgress, 'lastReadAt'>) => void;
     /** Add a book to (or remove it from) the saved-for-later list. */
@@ -94,6 +100,7 @@ export const useStore = create<AppState>()(
             themeIndex: 0,
             mode: 'dark',
             activeTab: 'today',
+            menuOpen: false,
             progressById: {},
             savedById: {},
             toast: null,
@@ -106,6 +113,7 @@ export const useStore = create<AppState>()(
             setThemeIndex: (i) => set({ themeIndex: i }),
             toggleMode: () => set((s) => ({ mode: s.mode === 'light' ? 'dark' : 'light' })),
             setActiveTab: (tab) => set({ activeTab: tab }),
+            setMenuOpen: (menuOpen) => set({ menuOpen }),
             updateProgress: (p) => set((s) => ({
                 progressById: {
                     ...s.progressById,
