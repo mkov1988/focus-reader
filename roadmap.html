@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Reader - Interactive Roadmap</title>
+  <!-- Google Fonts: Fraunces (elegant serif) & Inter (clean sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================
+       CSS Variables & Themes
+       ========================================== */
+    :root {
+      /* Theme 1: Warm Sepia (Default Cozy) */
+      --bg-app: #FAF6F0;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #FDFBFAF5;
+      --text-main: #2E251E;
+      --text-muted: #6E6259;
+      --text-light: #A3968C;
+      --border: #E8DFD5;
+      --accent: #C87D55;
+      --accent-rgb: 200, 125, 85;
+      --accent-hover: #B06740;
+      --success: #608C74;
+      --success-bg: #EAF2EE;
+      --warning: #D9A05B;
+      --warning-bg: #FCF5EC;
+      --shadow-sm: 0 2px 8px rgba(46, 37, 30, 0.04);
+      --shadow-md: 0 8px 24px rgba(46, 37, 30, 0.08);
+      --font-serif: "Fraunces", Georgia, serif;
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+      --stitch-color: #D2C4B7;
+    }
+
+    [data-theme="dark"] {
+      /* Theme 2: Cozy Dark (Midnight Library) */
+      --bg-app: #121517;
+      --bg-card: #1C2125;
+      --bg-card-hover: #22292E;
+      --text-main: #E5DDD3;
+      --text-muted: #9E9388;
+      --text-light: #6E6359;
+      --border: #2D343A;
+      --accent: #ECA374;
+      --accent-rgb: 236, 163, 116;
+      --accent-hover: #F2BA96;
+      --success: #81A892;
+      --success-bg: #1D2A24;
+      --warning: #E8B478;
+      --warning-bg: #2B231A;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+      --stitch-color: #3E464E;
+    }
+
+    [data-theme="emerald"] {
+      /* Theme 3: Emerald Forest */
+      --bg-app: #0B110E;
+      --bg-card: #121A16;
+      --bg-card-hover: #17221D;
+      --text-main: #D1E5DB;
+      --text-muted: #8AA497;
+      --text-light: #5E7569;
+      --border: #1E2B25;
+      --accent: #4ADE80;
+      --accent-rgb: 74, 222, 128;
+      --accent-hover: #6EE7B7;
+      --success: #34D399;
+      --success-bg: #0F291E;
+      --warning: #FBBF24;
+      --warning-bg: #2D230A;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --stitch-color: #24352D;
+    }
+
+    /* ==========================================
+       Global & Reset Styles
+       ========================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+    }
+
+    body {
+      background-color: var(--bg-app);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 2rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================
+       Typography
+       ========================================== */
+    h1, h2, h3, h4 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-muted);
+    }
+
+    /* ==========================================
+       Header Styles
+       ========================================== */
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-area h1 {
+      font-size: 2.75rem;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-area h1 span {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .logo-area p {
+      font-size: 1.05rem;
+      margin-top: 0.25rem;
+    }
+
+    /* Theme Switcher */
+    .theme-picker {
+      display: flex;
+      background: var(--border);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 4px;
+    }
+
+    .theme-btn {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-btn.active {
+      background: var(--bg-card);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ==========================================
+       Dashboard Grid & Stats
+       ========================================== */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .stat-card.progress-stat::after {
+      background: var(--success);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+      font-family: var(--font-serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+    }
+
+    .stat-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Interactive Progress Ring */
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .progress-ring-wrapper {
+      position: relative;
+      width: 72px;
+      height: 72px;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-circle-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 6;
+    }
+
+    .progress-ring-circle {
+      fill: none;
+      stroke: var(--success);
+      stroke-width: 6;
+      stroke-dasharray: 201; /* 2 * PI * r (r=32) approx 201 */
+      stroke-dashoffset: 201;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+
+    .progress-ring-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      color: var(--text-main);
+    }
+
+    /* ==========================================
+       Visual Pipeline / Funnel
+       ========================================== */
+    .pipeline-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pipeline-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .pipeline-step {
+      flex: 1;
+      min-width: 180px;
+      background: var(--bg-app);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pipeline-step.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.15);
+    }
+
+    .pipeline-step.active::before {
+      content: 'Current Focus';
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .step-number {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+
+    .step-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .step-time {
+      font-size: 0.8rem;
+      padding: 2px 8px;
+      background: var(--border);
+      border-radius: 20px;
+      align-self: flex-start;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .step-money {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ==========================================
+       Interactive Decisions / Playground
+       ========================================== */
+    .decisions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .decision-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .decision-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .decision-badge {
+      align-self: flex-start;
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid rgba(217, 160, 91, 0.2);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 10px;
+      border-radius: 30px;
+      letter-spacing: 0.05em;
+    }
+
+    .decision-header h3 {
+      font-size: 1.4rem;
+      color: var(--text-main);
+    }
+
+    .decision-options {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .option-btn {
+      background: var(--bg-app);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .option-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-light);
+    }
+
+    .option-btn.selected {
+      border-color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.04);
+      box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.05);
+    }
+
+    .option-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .option-title {
+      font-weight: 600;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .option-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .option-btn.selected .option-radio {
+      border-color: var(--accent);
+    }
+
+    .option-btn.selected .option-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: block;
+    }
+
+    .option-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .option-impact {
+      font-size: 0.8rem;
+      color: var(--success);
+      font-weight: 500;
+      margin-top: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .option-impact.neg {
+      color: var(--accent);
+    }
+
+    /* Cover Variant Mockup Tool */
+    .cover-playground {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-app);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 190px;
+    }
+
+    /* Stitched book cover simulator */
+    .book-cover-mockup {
+      width: 110px;
+      height: 155px;
+      background: linear-gradient(135deg, #a73a3a, #7a2020);
+      border-radius: 4px 8px 8px 4px;
+      box-shadow: 4px 8px 16px rgba(0,0,0,0.25), inset -2px 0 5px rgba(0,0,0,0.2);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12px;
+      color: #fff;
+      overflow: hidden;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* The stitched line */
+    .book-cover-mockup::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      border-left: 1px dashed var(--stitch-color);
+      opacity: 0.6;
+      transition: all 0.3s;
+    }
+
+    /* Fold line shadow */
+    .book-cover-mockup::after {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0));
+    }
+
+    .mock-title {
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: 10px;
+      margin-left: 6px;
+      text-align: center;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      word-wrap: break-word;
+    }
+
+    .mock-author {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      text-align: center;
+      margin-bottom: 5px;
+      margin-left: 6px;
+    }
+
+    /* Fallback Cover Style Override */
+    .book-cover-mockup.fallback-cover {
+      background: #e2e8f0;
+      border: 1px solid #cbd5e1;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+      color: #334155;
+      border-radius: 4px;
+      border-left: 1px solid #cbd5e1;
+    }
+    .book-cover-mockup.fallback-cover::before {
+      display: none;
+    }
+    .book-cover-mockup.fallback-cover::after {
+      display: none;
+    }
+    .book-cover-mockup.fallback-cover .mock-title {
+      color: #334155;
+      text-shadow: none;
+    }
+    .book-cover-mockup.fallback-cover .mock-author {
+      color: #64748b;
+    }
+
+    /* ==========================================
+       Task list / Roadmap Columns Layout
+       ========================================== */
+    .road-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Search Input */
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 400px;
+      min-width: 250px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 42px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-light);
+      fill: none;
+    }
+
+    /* Filter Toggles */
+    .filter-group {
+      display: flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 4px;
+      border-radius: 30px;
+      gap: 2px;
+    }
+
+    .filter-btn {
+      border: none;
+      background: transparent;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* Grid layout for categories */
+    .roadmap-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .column-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .column-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .column-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .column-title {
+      font-size: 1.35rem;
+      color: var(--text-main);
+    }
+
+    .column-money-meter {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .column-progress-badge {
+      background: var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    .column-progress-badge.done {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    /* Task Item Styles */
+    .task-card {
+      background: var(--bg-app);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .task-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-light);
+    }
+
+    .task-checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: 3px;
+    }
+
+    .task-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .task-card.checked .task-checkbox {
+      border-color: var(--success);
+      background: var(--success);
+    }
+
+    .task-checkbox svg {
+      width: 12px;
+      height: 12px;
+      stroke: #fff;
+      stroke-width: 3px;
+      fill: none;
+      display: none;
+    }
+
+    .task-card.checked .task-checkbox svg {
+      display: block;
+    }
+
+    .task-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+
+    .task-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .task-card.checked .task-title {
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .task-details {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .task-card.checked .task-details {
+      color: var(--text-light);
+    }
+
+    .task-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .task-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .task-tag.effort-low {
+      background: rgba(96, 140, 116, 0.1);
+      color: var(--success);
+    }
+
+    .task-tag.effort-medium {
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent);
+    }
+
+    .task-tag.effort-high {
+      background: rgba(217, 160, 91, 0.1);
+      color: var(--warning);
+    }
+
+    .task-tag.priority {
+      background: rgba(217, 160, 91, 0.15);
+      color: var(--warning);
+      border: 1px solid rgba(217, 160, 91, 0.3);
+    }
+
+    .task-tag.parked {
+      background: var(--border);
+      color: var(--text-muted);
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* ==========================================
+       Scratchpad & Notes
+       ========================================== */
+    .notes-section {
+      margin-top: 3rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .notes-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .notes-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .notes-area h3 {
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .notes-textarea {
+      width: 100%;
+      height: 150px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: var(--font-sans);
+      background: var(--bg-app);
+      color: var(--text-main);
+      resize: vertical;
+      font-size: 0.95rem;
+    }
+
+    .notes-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+    }
+
+    .notes-info {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .timeline-summary-card {
+      background: var(--bg-app);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .timeline-summary-card h4 {
+      font-size: 1.1rem;
+      font-family: var(--font-serif);
+      color: var(--text-main);
+    }
+
+    .summary-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .critical-path-badge {
+      align-self: flex-start;
+      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+    }
+
+    /* Confetti Particle Styles */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      opacity: 0.9;
+      pointer-events: none;
+      border-radius: 50%;
+      animation: confetti-fall 2.5s ease-out forwards;
+      z-index: 1000;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <div class="logo-area">
+          <h1>Focus <span>Reader</span></h1>
+          <p>Product Delivery Map &bull; High-Proximity to Value Flow</p>
+        </div>
+        
+        <!-- Theme Selector -->
+        <div class="theme-picker">
+          <button class="theme-btn active" data-theme-val="sepia" onclick="setTheme('sepia')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg>
+            Sepia
+          </button>
+          <button class="theme-btn" data-theme-val="dark" onclick="setTheme('dark')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            Midnight
+          </button>
+          <button class="theme-btn" data-theme-val="emerald" onclick="setTheme('emerald')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m16.2 7.8-6.4 6.4-1.6-1.6"/></svg>
+            Emerald
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Summary Stats -->
+      <div class="stats-bar">
+        <!-- Interactive Progress Ring -->
+        <div class="stat-card progress-stat">
+          <div class="progress-container">
+            <div class="progress-ring-wrapper">
+              <svg class="progress-ring" width="72" height="72">
+                <circle class="progress-ring-circle-bg" cx="36" cy="36" r="32" />
+                <circle id="global-progress-circle" class="progress-ring-circle" cx="36" cy="36" r="32" />
+              </svg>
+              <div id="global-progress-text" class="progress-ring-text">0%</div>
+            </div>
+            <div>
+              <div class="stat-label">Overall Completion</div>
+              <div id="global-tasks-ratio" style="font-weight: 600; font-size: 1.1rem; color: var(--text-main);">0 of 0 Completed</div>
+              <div class="stat-meta">Based on interactive logs</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Next Release Milestone</div>
+          <div class="stat-value" style="font-size: 1.75rem;">Device Pass</div>
+          <div class="stat-meta" style="color: var(--success); font-weight: 500;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Ready to test overnight build
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-label">Critical Decision Path</div>
+          <div class="stat-value" style="font-size: 1.75rem;">Deep Catalog</div>
+          <div class="stat-meta" style="color: var(--warning); font-weight: 500;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Awaiting Browse design
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Pipeline Funnel -->
+    <div class="pipeline-section">
+      <h2>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+        The Value Stream Pipeline
+      </h2>
+      <div class="pipeline-flow">
+        <div class="pipeline-step active" id="pipe-step-1">
+          <span class="step-number">Phase 1</span>
+          <span class="step-name">Verification & Tune</span>
+          <span class="step-time">1 - 2 Days</span>
+          <span class="step-money">💵 Immediate Money</span>
+        </div>
+        <div class="pipeline-step" id="pipe-step-2">
+          <span class="step-number">Phase 2</span>
+          <span class="step-name">Books Infrastructure</span>
+          <span class="step-time">~1 Session</span>
+          <span class="step-money">💵 💵 Scalability Gate</span>
+        </div>
+        <div class="pipeline-step" id="pipe-step-3">
+          <span class="step-number">Phase 3</span>
+          <span class="step-name">Android Completeness</span>
+          <span class="step-time">Few Weeks</span>
+          <span class="step-money">💵 💵 💵 Premium Look</span>
+        </div>
+        <div class="pipeline-step" id="pipe-step-4">
+          <span class="step-number">Phase 4</span>
+          <span class="step-name">Google Play Setup</span>
+          <span class="step-time">~1 Week</span>
+          <span class="step-money">💵 💵 💵 💵 The Money</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decisions Playground -->
+    <div class="decisions-grid">
+      <!-- Decision 1: Deep Catalog Browse -->
+      <div class="decision-card">
+        <div class="decision-header">
+          <span class="decision-badge">Critical Decision</span>
+          <h3>Deep Catalog Browse</h3>
+          <p>How should users wander the 56,000 uncurated books?</p>
+        </div>
+        <div class="decision-options">
+          <button class="option-btn selected" id="opt-browse-web" onclick="selectBrowse('web')">
+            <div class="option-header">
+              <span class="option-title">Settle on Web Version First</span>
+              <span class="option-radio"></span>
+            </div>
+            <div class="option-desc">Port subject shelves, author pages, and browse architecture from the web app once it's finalized.</div>
+            <div class="option-impact"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Ensures feature parity & validated UX</div>
+          </button>
+          <button class="option-btn" id="opt-browse-simple" onclick="selectBrowse('simple')">
+            <div class="option-header">
+              <span class="option-title">Search-Only (Simplified Catalog)</span>
+              <span class="option-radio"></span>
+            </div>
+            <div class="option-desc">Keep deep catalog accessible strictly via search; keep main UI clean with curated highlights only.</div>
+            <div class="option-impact neg"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Blocks natural discovery; lighter build</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Decision 2: Long Tail Covers -->
+      <div class="decision-card">
+        <div class="decision-header">
+          <span class="decision-badge">Cover Art Decision</span>
+          <h3>Long Tail Covers</h3>
+          <p>Should we mirror 56k book covers or use the generated fallback?</p>
+        </div>
+        <div class="decision-options">
+          <button class="option-btn selected" id="opt-cover-mirror" onclick="selectCovers('mirror')">
+            <div class="option-header">
+              <span class="option-title">Mirror All Covers (~600MB)</span>
+              <span class="option-radio"></span>
+            </div>
+            <div class="option-desc">Write scripting to download and cache covers. Provides premium visual feedback for deep catalog.</div>
+            <div class="option-impact"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> High-fidelity visuals (+ script work)</div>
+          </button>
+          <button class="option-btn" id="opt-cover-fallback" onclick="selectCovers('fallback')">
+            <div class="option-header">
+              <span class="option-title">Generated Fallback Only</span>
+              <span class="option-radio"></span>
+            </div>
+            <div class="option-desc">Use the CSS stitched-cover procedural fallback. Saves 600MB storage and R2 egress costs.</div>
+            <div class="option-impact"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Zero asset overhead; immediate ship</div>
+          </button>
+        </div>
+        
+        <!-- Book Cover Simulator -->
+        <div class="cover-playground">
+          <div id="mock-book" class="book-cover-mockup">
+            <div class="mock-title">The Deep Catalog</div>
+            <div class="mock-author">Focus Classics</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task List Controls -->
+    <div class="road-controls">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="task-search" class="search-input" placeholder="Search roadmap tasks..." oninput="filterTasks()">
+      </div>
+      
+      <div class="filter-group">
+        <button class="filter-btn active" id="flt-all" onclick="setFilter('all')">All</button>
+        <button class="filter-btn" id="flt-pending" onclick="setFilter('pending')">Pending</button>
+        <button class="filter-btn" id="flt-completed" onclick="setFilter('completed')">Completed</button>
+        <button class="filter-btn" id="flt-parked" onclick="setFilter('parked')">Parked</button>
+      </div>
+    </div>
+
+    <!-- Roadmap Columns -->
+    <div class="roadmap-columns" id="columns-container">
+      <!-- Dynamic Columns will be rendered here by Javascript -->
+    </div>
+
+    <!-- Notes & Critical Summary -->
+    <div class="notes-section">
+      <div class="notes-area">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          Developer Scratchpad
+        </h3>
+        <textarea id="dev-scratchpad" class="notes-textarea" placeholder="Jot down notes, session ideas, or specific task lists here. Tunnels & state are stored locally..." oninput="saveNotes()"></textarea>
+        <div class="notes-info">Notes auto-save instantly to localStorage.</div>
+      </div>
+      <div class="timeline-summary-card">
+        <div>
+          <h4>Milestone Estimation</h4>
+          <div class="critical-path-badge">Release Path</div>
+        </div>
+        <p class="summary-text">
+          <strong>Right Now</strong> tasks and <strong>R2 bucket config</strong> represent immediate days.
+          The remaining app features represent a few weeks of single-session work, with <strong>vibe pages</strong> and <strong>visual parity</strong> representing the largest chunks.
+          Store submission takes about a week around Google's review.
+        </p>
+        <div style="font-size: 0.85rem; color: var(--text-light); border-top: 1px solid var(--border); padding-top: 0.75rem;">
+          Highlight: downstream tasks build directly on the <strong>Browse Design</strong> decision.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Target Area -->
+  <div id="confetti-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999;"></div>
+
+  <!-- ==========================================
+       Javascript Logic & State Management
+       ========================================== -->
+  <script>
+    // Initial default task list structure
+    const defaultTasks = [
+      // 1. Right now
+      {
+        id: "rn-device-pass",
+        category: "right-now",
+        title: "Device pass of everything built overnight",
+        details: "Ensure correctness of five reading modes, search, opening a non curated book, offline reopen, save bookmarks, palettes, and stats accumulating.",
+        effort: "medium",
+        isPriority: true,
+        completed: false
+      },
+      {
+        id: "rn-feel-tuning",
+        category: "right-now",
+        title: "Feel tuning from device pass",
+        details: "Scrub sensitivity per axis, swipe thresholds, and anything that feels off compared to the web app.",
+        effort: "low",
+        isPriority: true,
+        completed: false
+      },
+      {
+        id: "rn-mirror-completion",
+        category: "right-now",
+        title: "Mirror completion & final logs",
+        details: "Clear culled entries from audit log, rerun once for the retuned gate, and record final numbers.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+
+      // 2. Books Pipeline
+      {
+        id: "bp-upload-r2",
+        category: "books-pipeline",
+        title: "Upload ~39GB collection to R2",
+        details: "Flip two constants in the app (and later web app) to serve books from own bucket instead of demo site.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "bp-long-tail-covers",
+        category: "books-pipeline",
+        title: "Long tail covers resolution",
+        details: "Decide whether to mirror uncurated book covers (~600MB script work) or ship with generated fallback covers.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "bp-browse-design",
+        category: "books-pipeline",
+        title: "Browse design for the deep catalog",
+        details: "Structure discovery for 56,000 books: subject shelves, author pages, browse structure. Web first.",
+        effort: "high",
+        isPriority: true,
+        completed: false
+      },
+
+      // 3. Android build phases
+      {
+        id: "an-reader-detection",
+        category: "android-app",
+        title: "Reader completeness: bounds logic",
+        details: "Port chapter detection so books don't open at TOC / title. Establish chapter bounds logic.",
+        effort: "high",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-seek-markers",
+        category: "android-app",
+        title: "Reader completeness: seek markers",
+        details: "Render chapter markers directly on the seek bar.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-wrap-pacing",
+        category: "android-app",
+        title: "Reader completeness: line wrap pacing",
+        details: "Pacing adjustments in sentence mode, paragraph edge advance, and swipe down to exit.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-word-fitting",
+        category: "android-app",
+        title: "Reader completeness: pixel word fitting",
+        details: "Implement true pixel-based word fitting in sentence mode.",
+        effort: "high",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-rendering-upgrade",
+        category: "android-app",
+        title: "High speed rendering upgrade",
+        details: "Draw word directly without JS involvement if device pass shows stutter at 800+ WPM.",
+        effort: "high",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-vibes-pages",
+        category: "android-app",
+        title: "Vibe pages & scene recaps",
+        details: "All eight vibe pages ported from the same web data file, and scene recaps on the resume card.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-notebook",
+        category: "android-app",
+        title: "Notebook",
+        details: "Port reader notebooks and user-saved collections, annotations.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-look-parity",
+        category: "android-app",
+        title: "Look and feel parity",
+        details: "Real fonts (Fraunces & Inter), stitched book variants, simplified book open animation, hide Android status/nav bars.",
+        effort: "medium",
+        isPriority: true,
+        completed: false
+      },
+      {
+        id: "an-downloads-mgmt",
+        category: "android-app",
+        title: "Downloads management",
+        details: "Visible 'get this book' flow with download progress, and storage clearance utility.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "an-haptics",
+        category: "android-app",
+        title: "Haptics pass",
+        details: "Integrate fine-grained native haptic responses for controls, pagination, and feedback.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+
+      // 4. Getting on Play Store
+      {
+        id: "st-expo-grad",
+        category: "play-store",
+        title: "Graduate from Expo Go",
+        details: "Shift to development and production builds. Unlocks fast storage engine, system bar control.",
+        effort: "medium",
+        isPriority: true,
+        completed: false
+      },
+      {
+        id: "st-identity",
+        category: "play-store",
+        title: "App identity",
+        details: "Splash screen design, app icon asset building, and choosing the final app brand name.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "st-mechanics",
+        category: "play-store",
+        title: "Store mechanics setup",
+        details: "Developer account ($25), app signing, listing with description + screenshots, privacy policy, content rating.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "st-device-pass",
+        category: "play-store",
+        title: "Performance & accessibility pass",
+        details: "Thorough performance audit on a cheap device prior to production build submit.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "st-billing",
+        category: "play-store",
+        title: "Play billing integration",
+        details: "Establish in-app billing logic if deciding a premium tier or paid download model.",
+        effort: "high",
+        isPriority: false,
+        completed: false
+      },
+
+      // 5. Parked Tasks
+      {
+        id: "pk-web-gestures",
+        category: "parked",
+        title: "Mobile web gesture polish",
+        details: "Superseded by native gestures implementation. Parked.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "pk-qa-rig",
+        category: "parked",
+        title: "Web browser QA rig for Android app",
+        details: "Simulating specific Android environments on web browser. Parked.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "pk-streaks",
+        category: "parked",
+        title: "Reading streaks (per day)",
+        details: "Deferred until store session history logic is fully designed. Parked.",
+        effort: "medium",
+        isPriority: false,
+        completed: false
+      },
+      {
+        id: "pk-standard-ebooks",
+        category: "parked",
+        title: "Standard Ebooks premium source",
+        details: "Integrating Standard Ebooks as premium content. Strategy untouched. Parked.",
+        effort: "low",
+        isPriority: false,
+        completed: false
+      }
+    ];
+
+    const categoryMeta = {
+      "right-now": {
+        title: "Right Now",
+        subtitle: "Verification & tuning",
+        money: "💵💵💵💵💵 Immediate Value",
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+      },
+      "books-pipeline": {
+        title: "Books Pipeline",
+        subtitle: "Machine time & catalog prep",
+        money: "💵💵💵💵 Scaling Setup",
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg>`
+      },
+      "android-app": {
+        title: "Android App",
+        subtitle: "Polishing & Parity",
+        money: "💵💵💵 Product Quality",
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`
+      },
+      "play-store": {
+        title: "Getting on Store",
+        subtitle: "The last mile hurdles",
+        money: "💵💵 Launch & Billing",
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`
+      },
+      "parked": {
+        title: "Explicitly Parked",
+        subtitle: "Future improvements",
+        money: "💤 De-prioritized",
+        icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M5 17V7a3 3 0 0 1 6 0v10M9 10h10a3 3 0 0 1 3 3v4"/></svg>`
+      }
+    };
+
+    // State object
+    let state = {
+      tasks: [],
+      currentFilter: 'all',
+      searchQuery: '',
+      browseDecision: 'web',
+      coverDecision: 'mirror',
+      theme: 'sepia'
+    };
+
+    // Load from localStorage or default
+    function init() {
+      const savedTasks = localStorage.getItem('focus_reader_tasks');
+      const savedBrowse = localStorage.getItem('focus_reader_browse');
+      const savedCover = localStorage.getItem('focus_reader_cover');
+      const savedTheme = localStorage.getItem('focus_reader_theme');
+      const savedNotes = localStorage.getItem('focus_reader_notes');
+
+      if (savedTasks) {
+        state.tasks = JSON.parse(savedTasks);
+      } else {
+        state.tasks = defaultTasks;
+      }
+
+      if (savedBrowse) state.browseDecision = savedBrowse;
+      if (savedCover) state.coverDecision = savedCover;
+      if (savedTheme) {
+        state.theme = savedTheme;
+      }
+      if (savedNotes) {
+        document.getElementById('dev-scratchpad').value = savedNotes;
+      }
+
+      // Apply initial UI states
+      setTheme(state.theme);
+      selectBrowse(state.browseDecision, false);
+      selectCovers(state.coverDecision, false);
+      updateGlobalProgress();
+      renderRoadmap();
+    }
+
+    // Save tasks to local storage
+    function saveTasks() {
+      localStorage.setItem('focus_reader_tasks', JSON.stringify(state.tasks));
+      updateGlobalProgress();
+    }
+
+    // Save developer notes
+    function saveNotes() {
+      const val = document.getElementById('dev-scratchpad').value;
+      localStorage.setItem('focus_reader_notes', val);
+    }
+
+    // Set active CSS theme
+    function setTheme(theme) {
+      state.theme = theme;
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('focus_reader_theme', theme);
+
+      // Toggle active states on theme buttons
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        if (btn.getAttribute('data-theme-val') === theme) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    // Interactive Decision 1: Browse Style
+    function selectBrowse(choice, doSave = true) {
+      state.browseDecision = choice;
+      if (doSave) localStorage.setItem('focus_reader_browse', choice);
+
+      document.getElementById('opt-browse-web').classList.toggle('selected', choice === 'web');
+      document.getElementById('opt-browse-simple').classList.toggle('selected', choice === 'simple');
+
+      // Update downstream task details depending on decision
+      const browseTask = state.tasks.find(t => t.id === 'bp-browse-design');
+      if (browseTask) {
+        if (choice === 'web') {
+          browseTask.details = "Structure discovery for 56,000 books: subject shelves, author pages, browse structure. Replicate web app styles.";
+          browseTask.effort = "high";
+        } else {
+          browseTask.details = "Minimalist search index. Direct search only, removing browse/subject design. Streamlined catalog.";
+          browseTask.effort = "low";
+        }
+        if (doSave) saveTasks();
+        renderRoadmap();
+      }
+    }
+
+    // Interactive Decision 2: Cover Styles
+    function selectCovers(choice, doSave = true) {
+      state.coverDecision = choice;
+      if (doSave) localStorage.setItem('focus_reader_cover', choice);
+
+      document.getElementById('opt-cover-mirror').classList.toggle('selected', choice === 'mirror');
+      document.getElementById('opt-cover-fallback').classList.toggle('selected', choice === 'fallback');
+
+      // Update mock book cover styling
+      const mockBook = document.getElementById('mock-book');
+      if (choice === 'mirror') {
+        mockBook.className = 'book-cover-mockup';
+        mockBook.innerHTML = `<div class="mock-title">The Deep Catalog</div><div class="mock-author">Focus Classics</div>`;
+      } else {
+        mockBook.className = 'book-cover-mockup fallback-cover';
+        mockBook.innerHTML = `<div class="mock-title">Deep Catalog Book</div><div class="mock-author">Fallback Cover</div>`;
+      }
+
+      // Update downstream task details depending on decision
+      const coverTask = state.tasks.find(t => t.id === 'bp-long-tail-covers');
+      if (coverTask) {
+        if (choice === 'mirror') {
+          coverTask.details = "Resolve: Mirroring all covers (~600MB) via scripting. Adds high fidelity visual depth to uncurated shelf.";
+          coverTask.completed = false;
+        } else {
+          coverTask.details = "Resolved: Fallback procedural CSS/canvas covers. Completed immediately, skipping mirroring script work.";
+          coverTask.completed = true;
+        }
+        if (doSave) saveTasks();
+        renderRoadmap();
+      }
+    }
+
+    // Filter controls
+    function setFilter(filterVal) {
+      state.currentFilter = filterVal;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.id === `flt-${filterVal}`);
+      });
+      renderRoadmap();
+    }
+
+    function filterTasks() {
+      state.searchQuery = document.getElementById('task-search').value.toLowerCase();
+      renderRoadmap();
+    }
+
+    // Update global progress rings & stats
+    function updateGlobalProgress() {
+      const activeTasks = state.tasks.filter(t => t.category !== 'parked');
+      const completedTasks = activeTasks.filter(t => t.completed).length;
+      const totalCount = activeTasks.length;
+      
+      const percentage = totalCount > 0 ? Math.round((completedTasks / totalCount) * 100) : 0;
+      
+      // Update text
+      document.getElementById('global-progress-text').innerText = `${percentage}%`;
+      document.getElementById('global-tasks-ratio').innerText = `${completedTasks} of ${totalCount} Completed`;
+      
+      // Update progress ring offset
+      const circle = document.getElementById('global-progress-circle');
+      // Circumference = 201
+      const offset = 201 - (percentage / 100) * 201;
+      circle.style.strokeDashoffset = offset;
+
+      // Update pipeline stage highlighting based on completion ratios
+      updatePipelineHighlight();
+    }
+
+    function updatePipelineHighlight() {
+      const getCompletionRate = (cat) => {
+        const catTasks = state.tasks.filter(t => t.category === cat);
+        const completed = catTasks.filter(t => t.completed).length;
+        return catTasks.length > 0 ? completed / catTasks.length : 0;
+      };
+
+      const rnRate = getCompletionRate('right-now');
+      const bpRate = getCompletionRate('books-pipeline');
+      const anRate = getCompletionRate('android-app');
+
+      // Reset active states
+      document.querySelectorAll('.pipeline-step').forEach(el => el.classList.remove('active'));
+
+      // Dynamically highlight current phase of development
+      if (rnRate < 1) {
+        document.getElementById('pipe-step-1').classList.add('active');
+      } else if (bpRate < 1) {
+        document.getElementById('pipe-step-2').classList.add('active');
+      } else if (anRate < 1) {
+        document.getElementById('pipe-step-3').classList.add('active');
+      } else {
+        document.getElementById('pipe-step-4').classList.add('active');
+      }
+    }
+
+    // Toggle single task status
+    function toggleTask(taskId) {
+      const task = state.tasks.find(t => t.id === taskId);
+      if (task) {
+        task.completed = !task.completed;
+        saveTasks();
+        renderRoadmap();
+
+        // Check if category is now 100% completed
+        checkCategoryCompletion(task.category);
+      }
+    }
+
+    // Trigger celebration when category is 100% finished
+    function checkCategoryCompletion(category) {
+      const catTasks = state.tasks.filter(t => t.category === category);
+      const completedAll = catTasks.every(t => t.completed);
+      
+      if (completedAll && catTasks.length > 0) {
+        triggerConfetti();
+      }
+    }
+
+    function triggerConfetti() {
+      const container = document.getElementById('confetti-container');
+      const colors = ['#C87D55', '#608C74', '#D9A05B', '#4ADE80', '#F59E0B'];
+      
+      for (let i = 0; i < 60; i++) {
+        const p = document.createElement('div');
+        p.classList.add('confetti');
+        p.style.left = `${Math.random() * 100}vw`;
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        p.style.width = `${Math.random() * 8 + 6}px`;
+        p.style.height = `${Math.random() * 15 + 8}px`;
+        p.style.animationDuration = `${Math.random() * 1.5 + 1.5}s`;
+        p.style.transform = `rotate(${Math.random() * 360}deg)`;
+        
+        container.appendChild(p);
+        
+        // Remove element after animation
+        setTimeout(() => p.remove(), 3000);
+      }
+    }
+
+    // Render columns in DOM
+    function renderRoadmap() {
+      const container = document.getElementById('columns-container');
+      container.innerHTML = '';
+
+      Object.keys(categoryMeta).forEach(categoryKey => {
+        const meta = categoryMeta[categoryKey];
+        const catTasks = state.tasks.filter(t => t.category === categoryKey);
+        
+        // Filter tasks based on search & toggles
+        const filteredTasks = catTasks.filter(t => {
+          const matchesSearch = t.title.toLowerCase().includes(state.searchQuery) || 
+                                t.details.toLowerCase().includes(state.searchQuery);
+          
+          if (!matchesSearch) return false;
+
+          if (state.currentFilter === 'pending') return !t.completed;
+          if (state.currentFilter === 'completed') return t.completed;
+          if (state.currentFilter === 'parked') return t.category === 'parked';
+
+          return true;
+        });
+
+        // Hide columns if we are explicitly looking at parked tasks and column is not parked (or vice versa)
+        if (state.currentFilter === 'parked' && categoryKey !== 'parked') return;
+        if (state.currentFilter !== 'parked' && categoryKey === 'parked') return;
+
+        // Calculate progress percentage of this column
+        const completedCount = catTasks.filter(t => t.completed).length;
+        const totalCount = catTasks.length;
+        const percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+        
+        // Generate column card
+        const colCard = document.createElement('div');
+        colCard.className = 'column-card';
+        
+        const colHeader = `
+          <div class="column-header">
+            <div class="column-title-area">
+              <h3 class="column-title" style="display:flex; align-items:center; gap:8px;">
+                ${meta.icon}
+                ${meta.title}
+              </h3>
+              <span class="column-money-meter">${meta.money}</span>
+            </div>
+            <span class="column-progress-badge ${percent === 100 ? 'done' : ''}">${percent}% Done</span>
+          </div>
+        `;
+        colCard.innerHTML = colHeader;
+
+        const taskListDiv = document.createElement('div');
+        taskListDiv.className = 'task-list';
+
+        if (filteredTasks.length === 0) {
+          taskListDiv.innerHTML = `<div class="empty-state">No matching tasks found.</div>`;
+        } else {
+          filteredTasks.forEach(task => {
+            const taskCard = document.createElement('div');
+            taskCard.className = `task-card ${task.completed ? 'checked' : ''}`;
+            taskCard.onclick = () => toggleTask(task.id);
+
+            // Tags
+            let tagsHtml = `<span class="task-tag effort-${task.effort}">${task.effort} effort</span>`;
+            if (task.isPriority) {
+              tagsHtml += `<span class="task-tag priority">Priority</span>`;
+            }
+            if (task.category === 'parked') {
+              tagsHtml = `<span class="task-tag parked">Parked</span>`;
+            }
+
+            taskCard.innerHTML = `
+              <div class="task-checkbox-wrapper">
+                <div class="task-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+              </div>
+              <div class="task-content">
+                <div class="task-title">${task.title}</div>
+                <div class="task-details">${task.details}</div>
+                <div class="task-meta">${tagsHtml}</div>
+              </div>
+            `;
+            taskListDiv.appendChild(taskCard);
+          });
+        }
+
+        colCard.appendChild(taskListDiv);
+        container.appendChild(colCard);
+      });
+    }
+
+    // Initialize the app on load
+    window.onload = init;
+  </script>
+</body>
+</html>
