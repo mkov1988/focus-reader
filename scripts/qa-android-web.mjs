@@ -9,5 +9,8 @@ const child = spawn('npx', ['expo', 'start', '--web', '--port', '8090'], {
     cwd: 'C:/Users/Michael/Desktop/Focus Reader Android',
     stdio: 'inherit',
     shell: true,
+    // Don't pop a tab in the user's real browser — the preview tooling
+    // attaches to localhost:8090 itself.
+    env: { ...process.env, BROWSER: 'none', EXPO_NO_BROWSER: '1' },
 });
 child.on('exit', (code) => process.exit(code ?? 0));
