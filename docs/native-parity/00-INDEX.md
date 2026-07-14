@@ -1,6 +1,6 @@
-# Native Parity Prompt Pack
+# Native Parity Tracker
 
-A full audit of the native Android app against the web app ran on 2026-07-13. Thirteen auditors combed both codebases surface by surface, a second pass re-verified every claim against the code, and the confirmed differences were grouped into 16 session sized work packages, one prompt file each.
+A full audit of the native Android app against the web app ran on 2026-07-13. Thirteen auditors combed both codebases surface by surface, a second pass re-verified every claim against the code, and the confirmed differences were grouped into 16 work packages. Every one is now built and committed, so each page below is a record of what shipped, followed by a short checklist of what to confirm on your phone.
 
 **Status: COMPLETE, plus a reader feel dial-in and a QA pass on top.** All 16 packages were implemented the same day, in two sequential background runs, one commit per package on `feat/native-ui-web-parity` in the native repo. Every package passed an adversarial review on the first try, with zero fix rounds. Since then, a dedicated reader dial-in added six more commits and an independent QA pass verified the whole thing. The app version is now 0.7.11, and everything is committed and pushed to both GitHub repos. See [Beyond the 16 packages](#beyond-the-16-packages) below.
 
@@ -27,7 +27,7 @@ A full audit of the native Android app against the web app ran on 2026-07-13. Th
 | 15 | [15-reader-chrome-polish.md](15-reader-chrome-polish.md) | Play glyphs, pill animation, fill easing, chrome typography | 6 | `8a14767` |
 | 16 | [16-accessibility-parity.md](16-accessibility-parity.md) | TalkBack roles, labels, selected states, live region toast | 4 | `d82603b` |
 
-Each prompt file carries a status banner under its title with its commit hash and any package specific notes.
+Each page opens with its done status and commit hash, records what changed issue by issue, and ends with a short on-device checklist you can tick off as you test on your phone. Your checkmarks are saved in this browser.
 
 ## Beyond the 16 packages
 

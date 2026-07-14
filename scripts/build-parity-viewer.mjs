@@ -214,8 +214,8 @@ try {
         <!-- Progress Info Panel -->
         <div id="progress-panel" class="mb-6 p-4 rounded-xl border border-brand-200 bg-brand-100 dark:border-brand-800 dark:bg-brand-900/20 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
           <div>
-            <h3 class="text-sm font-semibold text-brand-900 dark:text-brand-100">Package Progress</h3>
-            <p id="progress-text" class="text-xs text-brand-700 dark:text-brand-200">0 of 0 tasks completed (0%)</p>
+            <h3 class="text-sm font-semibold text-brand-900 dark:text-brand-100">Built and committed. On-device check:</h3>
+            <p id="progress-text" class="text-xs text-brand-700 dark:text-brand-200">0 of 0 confirmed on your phone</p>
           </div>
           <div class="w-full sm:w-48 bg-brand-200 dark:bg-brand-800 h-2 rounded-full overflow-hidden">
             <div id="progress-bar" class="bg-brand-600 dark:bg-brand-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
@@ -323,18 +323,28 @@ try {
 
         btn.appendChild(textWrapper);
 
-        // Progress text (no callout pill)
+        // Right side: a green check meaning "built and committed" (true for
+        // every package), plus the on-device check fraction Michael fills in.
         if (hasChecklist) {
-          const pill = document.createElement('span');
-          pill.className = \`text-xs font-semibold ml-2 flex-shrink-0 \${
-            isSelected
-              ? 'text-brand-100'
-              : progressPercentage === 100
-                ? 'text-green-600 dark:text-green-400'
-                : 'text-brand-500 dark:text-brand-400'
+          const wrap = document.createElement('div');
+          wrap.className = 'flex items-center gap-1.5 ml-2 flex-shrink-0';
+
+          const built = document.createElement('span');
+          built.title = 'Built and committed';
+          built.className = isSelected ? 'text-brand-100' : 'text-green-600 dark:text-green-400';
+          built.innerText = '\\u2713';
+
+          const frac = document.createElement('span');
+          frac.title = 'Confirmed on your phone';
+          const allChecked = progressPercentage === 100;
+          frac.className = \`text-xs font-semibold \${
+            isSelected ? 'text-brand-100' : allChecked ? 'text-green-600 dark:text-green-400' : 'text-brand-400 dark:text-brand-500'
           }\`;
-          pill.innerText = \`\${stats.completed}/\${stats.total}\`;
-          btn.appendChild(pill);
+          frac.innerText = \`\${stats.completed}/\${stats.total}\`;
+
+          wrap.appendChild(built);
+          wrap.appendChild(frac);
+          btn.appendChild(wrap);
         }
 
         nav.appendChild(btn);
@@ -430,6 +440,7 @@ try {
       const stats = getDocChecklistStats(docId, mdContent);
       const panel = document.getElementById('progress-panel');
       const text = document.getElementById('progress-text');
+      // (progress bar still uses percentage; the label reads as device checks)
       const bar = document.getElementById('progress-bar');
 
       if (stats.total === 0) {
@@ -437,7 +448,7 @@ try {
       } else {
         panel.classList.remove('hidden');
         const percentage = Math.round((stats.completed / stats.total) * 100);
-        text.innerText = \`\${stats.completed} of \${stats.total} tasks completed (\${percentage}%)\`;
+        text.innerText = \`\${stats.completed} of \${stats.total} confirmed on your phone\`;
         bar.style.width = \`\${percentage}%\`;
       }
     }
