@@ -12,18 +12,23 @@ function hash(s: string) {
     return h;
 }
 
-function Stitch({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+// 'light' and 'ink' are pinned, not theme inks: they sit on fixed-colour faces
+// (cover art, the solid tints, the near-white label card), so theme inks would
+// invert against them in dark mode — label text went near-white-on-white.
+// Matches the native app's deliberate pinning. 'dark' stays theme-derived for
+// the framed variant, whose cream face flips along with it.
+function Stitch({ tone = 'ink' }: { tone?: 'ink' | 'light' }) {
     return (
         <div
-            className={`pointer-events-none absolute inset-[6px] rounded-l-[2px] rounded-r-lg border border-dashed ${tone === 'light' ? 'border-cream/40' : 'border-espresso/20'}`}
+            className={`pointer-events-none absolute inset-[6px] rounded-l-[2px] rounded-r-lg border border-dashed ${tone === 'light' ? 'border-[rgba(251,245,234,0.4)]' : 'border-[rgba(58,42,30,0.2)]'}`}
         />
     );
 }
 
-function Spine({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+function Spine({ tone = 'dark' }: { tone?: 'dark' | 'light' | 'ink' }) {
     return (
         <div
-            className={`pointer-events-none absolute left-[6px] top-3 bottom-3 w-px ${tone === 'light' ? 'bg-cream/25' : 'bg-espresso/15'}`}
+            className={`pointer-events-none absolute left-[6px] top-3 bottom-3 w-px ${tone === 'light' ? 'bg-[rgba(251,245,234,0.25)]' : tone === 'ink' ? 'bg-[rgba(58,42,30,0.15)]' : 'bg-espresso/15'}`}
         />
     );
 }
@@ -114,12 +119,12 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
         inner = (
             <>
                 <div className={`absolute inset-0 flex flex-col items-center justify-between text-center ${pad}`}>
-                    <p className={`font-serif italic text-mocha line-clamp-1 ${authorSize}`}>{author}</p>
-                    <h3 className={`font-serif font-semibold text-espresso leading-tight line-clamp-4 ${titleSize}`}>{title}</h3>
+                    <p className={`font-serif italic text-[#6B5544] line-clamp-1 ${authorSize}`}>{author}</p>
+                    <h3 className={`font-serif font-semibold text-[#3A2A1E] leading-tight line-clamp-4 ${titleSize}`}>{title}</h3>
                     <p className={`font-semibold tracking-[0.18em] text-coral-accent uppercase ${eyebrowSize}`}>· Focus Reader ·</p>
                 </div>
                 <Stitch />
-                <Spine />
+                <Spine tone="ink" />
             </>
         );
     } else {
@@ -150,9 +155,11 @@ export function BookCover({ title, author, coverUrl, variant, tint, size = 'md',
                         style={{ backgroundImage: 'repeating-linear-gradient(to bottom, rgba(107,85,68,0.30) 0 1px, transparent 1px 6px)' }}
                     />
                 )}
-                <span className="absolute right-0 inset-y-0 w-[3px] bg-espresso/10" />
+                {/* Pinned inks (not theme): the page paper is fixed light, so the
+                    edge and gutter must stay warm-dark in both modes. */}
+                <span className="absolute right-0 inset-y-0 w-[3px] bg-[rgba(58,42,30,0.1)]" />
                 {/* gutter shadow near the spine */}
-                <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-espresso/15 to-transparent" />
+                <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[rgba(58,42,30,0.15)] to-transparent" />
             </div>
 
             {/* The cover face (hinged at the spine) */}
