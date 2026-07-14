@@ -2,7 +2,7 @@
 
 A full audit of the native Android app against the web app ran on 2026-07-13. Thirteen auditors combed both codebases surface by surface, a second pass re-verified every claim against the code, and the confirmed differences were grouped into 16 session sized work packages, one prompt file each.
 
-**Status: COMPLETE.** All 16 packages were implemented the same day, in two sequential background runs, one commit per package on `feat/native-ui-web-parity` in the native repo. Every package passed an adversarial review on the first try, with zero fix rounds. `expo.version` ended at 0.7.10.
+**Status: COMPLETE, plus a reader feel dial-in and a QA pass on top.** All 16 packages were implemented the same day, in two sequential background runs, one commit per package on `feat/native-ui-web-parity` in the native repo. Every package passed an adversarial review on the first try, with zero fix rounds. Since then, a dedicated reader dial-in added six more commits and an independent QA pass verified the whole thing. The app version is now 0.7.11, and everything is committed and pushed to both GitHub repos. See [Beyond the 16 packages](#beyond-the-16-packages) below.
 
 **The audit numbers:** 188 differences confirmed, 68 were duplicate reports of the same underlying issue, leaving 120 unique fixes. All 120 are implemented except two drawer swipe details in pack 05 that the prompt itself marked optional.
 
@@ -28,6 +28,16 @@ A full audit of the native Android app against the web app ran on 2026-07-13. Th
 | 16 | [16-accessibility-parity.md](16-accessibility-parity.md) | TalkBack roles, labels, selected states, live region toast | 4 | `d82603b` |
 
 Each prompt file carries a status banner under its title with its commit hash and any package specific notes.
+
+## Beyond the 16 packages
+
+After the packages landed, three more workstreams followed, all committed and pushed. They are in the sidebar too.
+
+- **[Reader dial-in](17-reader-dial-in.md)** — six more commits tuning the reading screen feel against the mined playbook: crisp flick stops, catch tap accuracy, paragraph centering, chrome peek zones, and more. It carries a checklist of what to feel for on the phone. This is what took the version to 0.7.11.
+- **[QA and verification](18-qa-and-verification.md)** — an independent pass that re-checked every claim against the code. Verdict: safe to ship. It grep verified every constant in the playbook against live code and found the shipping code clean; the handful of findings were documentation corrections, now made.
+- **[Reader feel playbook](reader-feel-playbook.md)** — the settled record of how the reader must feel, mined from fifteen device tuning sessions plus git history. This is the reference spec for any future reader work, and it is the "Reference" entry at the bottom of the sidebar.
+
+The next step is a real installable APK, so the feel can be judged on a phone instead of through Expo Go's development overhead.
 
 ## Deliberate divergences from the web
 

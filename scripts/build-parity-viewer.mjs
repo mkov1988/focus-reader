@@ -19,6 +19,9 @@ try {
 
   const documents = [];
 
+  // Sidebar kickers for docs that are not one of the numbered packages.
+  const KICKERS = { '00': 'Index', '17': 'Dial-in', '18': 'Verification' };
+
   for (const file of files) {
     const filePath = path.join(docsDir, file);
     const content = fs.readFileSync(filePath, 'utf8');
@@ -40,8 +43,21 @@ try {
       id,
       filename: file,
       title,
-      content
+      content,
+      kicker: KICKERS[id] || `Package ${id}`
     });
+  }
+
+  // Append the reader feel playbook as a reference document so the viewer
+  // holds everything in one place. It lives one level up from native-parity.
+  const playbookPath = path.join(projectRoot, 'docs', 'reader-feel-playbook.md');
+  if (fs.existsSync(playbookPath)) {
+    const pbContent = fs.readFileSync(playbookPath, 'utf8');
+    let pbTitle = 'Reader feel playbook';
+    for (const line of pbContent.split('\n')) {
+      if (line.trim().startsWith('#')) { pbTitle = line.replace(/#/g, '').trim(); break; }
+    }
+    documents.push({ id: '99', filename: 'reader-feel-playbook.md', title: pbTitle, content: pbContent, kicker: 'Reference' });
   }
 
   console.log(`Found ${documents.length} markdown documents.`);
@@ -296,7 +312,7 @@ try {
         
         const label = document.createElement('div');
         label.className = \`text-xs font-semibold uppercase tracking-wider \${isSelected ? 'text-brand-100' : 'text-brand-500 dark:text-brand-400'}\`;
-        label.innerText = doc.id === '00' ? 'Index' : \`Package \${doc.id}\`;
+        label.innerText = doc.kicker || (doc.id === '00' ? 'Index' : \`Package \${doc.id}\`);
         
         const title = document.createElement('div');
         title.className = 'text-sm font-medium truncate';
