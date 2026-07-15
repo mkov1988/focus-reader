@@ -13,7 +13,7 @@ import { useReaderGestures } from './hooks/useReaderGestures';
 import { parseText, type ParsedText } from './utils/textProcessing';
 import { haptics } from './utils/haptics';
 import { webLibraryService as library } from './services/library';
-import { getScenes } from './services/scenes';
+import { getScenes, getStoryStart } from './services/scenes';
 import type { BookMetadata } from './services/types';
 import { THEMES } from './theme';
 import './index.css';
@@ -201,9 +201,18 @@ function App() {
         setActiveBook(pending.book);
         rsvp.reset();
         if (pending.startIndex && pending.startIndex > 0) {
+            // Resuming a book — honour the saved position.
             pendingSeekRef.current = pending.startIndex;
-        } else if (pendingParsed.readableStartWord > 0) {
-            pendingSeekRef.current = pendingParsed.readableStartWord;
+        } else {
+            // Fresh open: seek to where the story actually starts (past the title
+            // page / dedication / contents). Prefer the authored per-book start,
+            // then the reader's heuristic bound. (services/scenes.ts)
+            const authored = getStoryStart(pending.book.id);
+            if (authored != null && authored < pendingParsed.tokens.length) {
+                pendingSeekRef.current = authored;
+            } else if (pendingParsed.readableStartWord > 0) {
+                pendingSeekRef.current = pendingParsed.readableStartWord;
+            }
         }
         setViewMode('READING');
         setPending(null);

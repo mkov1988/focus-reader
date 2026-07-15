@@ -17,6 +17,8 @@
     "build:vibes": "node scripts/build-vibes.mjs",
     "build:scenes": "node scripts/build-scenes.mjs",
     "build:scenes:local": "node scripts/segment-books-local.mjs",
+    "build:starts": "node scripts/build-story-starts.mjs",
+    "merge:starts": "node scripts/merge-story-start-overrides.mjs",
     "build:downloads": "node scripts/add-curated-downloads.mjs"
   },
   "dependencies": {

@@ -7,6 +7,7 @@
  * map simply have no scenes and the recap is skipped.
  */
 import scenesJson from '../data/scenes.json';
+import storyStartsJson from '../data/story-starts.json';
 
 export interface Scene {
     /** Token index where the scene starts (aligns with rsvp.currentIndex). */
@@ -18,6 +19,19 @@ export interface Scene {
 }
 
 const SCENES = scenesJson as Record<string, Scene[]>;
+const STORY_STARTS = storyStartsJson as Record<string, number>;
+
+/**
+ * Token index where the book's story actually begins — past the title page,
+ * dedication, and table of contents (see scripts/build-story-starts.mjs). Used to
+ * seek a freshly-opened book onto its first real narrative words instead of the
+ * front matter. Null when we have no authored start (fall back to the reader's
+ * heuristic readableStartWord).
+ */
+export function getStoryStart(bookId: string): number | null {
+    const v = STORY_STARTS[bookId];
+    return typeof v === 'number' && v > 0 ? v : null;
+}
 
 /** All authored scenes for a book (ascending by startIndex), or [] if none. */
 export function getScenes(bookId: string): Scene[] {
