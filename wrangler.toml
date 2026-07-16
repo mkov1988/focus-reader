@@ -1,0 +1,13 @@
+# Cloudflare Pages config. Read by `wrangler pages deploy` (scripts/deploy-pages.mjs):
+# it uploads dist/, compiles the functions/ directory, and applies the bindings
+# below to the deployment.
+name = "focus-reader"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-07-01"
+
+# The full-catalog book mirror (55,863 stripped .txt files under books/<id>.txt),
+# read by functions/books/[id].js when a requested book isn't a bundled static
+# asset. See docs/planning/book_access_strategy.md §6.
+[[r2_buckets]]
+binding = "BOOKS"
+bucket_name = "focus-reader-books"
