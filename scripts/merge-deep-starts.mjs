@@ -34,13 +34,26 @@ async function main() {
     const verified = await loadJson(path.join(DIR, 'verified.json'), {});
     const nonNarrative = new Set(await loadJson(path.join(DIR, 'non-narrative.json'), []));
     const done = new Set(await loadJson(path.join(DIR, 'done.json'), []));
+    // Details-page metadata gleaned in the same read: hook / voice / era / tags.
+    // Books in done.json but absent here were processed under the thin schema —
+    // deep-starts-night --meta-backfill targets exactly that set.
+    const meta = await loadJson(path.join(DIR, 'meta.json'), {});
 
-    const stats = { seen: 0, anchored: 0, fellBack: 0, nonNarrative: 0 };
+    const stats = { seen: 0, anchored: 0, fellBack: 0, nonNarrative: 0, meta: 0 };
     for (const b of books) {
         const id = String(b.id);
         stats.seen++;
         done.add(id);
         if (b.narrative === false) { nonNarrative.add(id); stats.nonNarrative++; }
+        if (b.hook) {
+            meta[id] = {
+                hook: b.hook,
+                voice: b.voice || null,
+                era: b.era || null,
+                tags: Array.isArray(b.tags) ? b.tags.slice(0, 4) : [],
+            };
+            stats.meta++;
+        }
 
         const anchor = (b.anchor || '').replace(/&amp;/gi, '&').trim();
         const file = path.join(MIRROR, `${id}.txt`);
@@ -58,8 +71,9 @@ async function main() {
     await writeFile(path.join(DIR, 'verified.json'), JSON.stringify(verified));
     await writeFile(path.join(DIR, 'non-narrative.json'), JSON.stringify([...nonNarrative]));
     await writeFile(path.join(DIR, 'done.json'), JSON.stringify([...done]));
-    console.log(`Merged ${stats.seen}: ${stats.anchored} anchor-verified, ${stats.fellBack} detector-fallback, ${stats.nonNarrative} non-narrative.`);
-    console.log(`Totals: verified=${Object.keys(verified).length} done=${done.size}`);
+    await writeFile(path.join(DIR, 'meta.json'), JSON.stringify(meta));
+    console.log(`Merged ${stats.seen}: ${stats.anchored} anchor-verified, ${stats.fellBack} detector-fallback, ${stats.nonNarrative} non-narrative, ${stats.meta} with details meta.`);
+    console.log(`Totals: verified=${Object.keys(verified).length} done=${done.size} meta=${Object.keys(meta).length}`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

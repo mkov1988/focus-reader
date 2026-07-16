@@ -21,14 +21,22 @@ const PER_AGENT = 12;
 
 const args = process.argv.slice(2);
 const COUNT = args.includes('--count') ? parseInt(args[args.indexOf('--count') + 1], 10) : 5000;
+// --meta-backfill: instead of unprocessed books, target books that were verified
+// under the thin schema (in done.json but with no details meta) so they get
+// hook/voice/era/tags too. Run this once the main queue is empty.
+const BACKFILL = args.includes('--meta-backfill');
 
 async function main() {
     const queue = JSON.parse(await readFile(path.join(DIR, 'queue.json'), 'utf8'));
     const donePath = path.join(DIR, 'done.json');
     const done = new Set(existsSync(donePath) ? JSON.parse(await readFile(donePath, 'utf8')) : []);
+    const metaPath = path.join(DIR, 'meta.json');
+    const meta = existsSync(metaPath) ? JSON.parse(await readFile(metaPath, 'utf8')) : {};
 
-    const tonight = queue.filter((q) => !done.has(q.id)).slice(0, COUNT);
-    if (tonight.length === 0) { console.log('QUEUE EMPTY — all books verified.'); return; }
+    const tonight = BACKFILL
+        ? queue.filter((q) => done.has(q.id) && !meta[q.id]).slice(0, COUNT)
+        : queue.filter((q) => !done.has(q.id)).slice(0, COUNT);
+    if (tonight.length === 0) { console.log(BACKFILL ? 'QUEUE EMPTY — every done book has meta.' : 'QUEUE EMPTY — all books verified.'); return; }
 
     await rm(BATCH_DIR, { recursive: true, force: true });
     await mkdir(BATCH_DIR, { recursive: true });
