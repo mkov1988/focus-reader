@@ -54,3 +54,4 @@ lint_output.txt
 
 # Demo password file (never commit credentials)
 .demo-pass.txt
+/scripts/deep-starts/
