@@ -17,10 +17,13 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'scripts', 'deep-starts');
 const BATCH_DIR = path.join(DIR, 'batches');
-const PER_AGENT = 12;
 
 const args = process.argv.slice(2);
 const COUNT = args.includes('--count') ? parseInt(args[args.indexOf('--count') + 1], 10) : 5000;
+// Books per agent. 40 amortizes each agent's fixed overhead (system prompt,
+// schemas, thinking) across ~3x more reading than the original 12 — the reading
+// itself costs the same, the overhead is what burned the token budget.
+const PER_AGENT = args.includes('--per-agent') ? parseInt(args[args.indexOf('--per-agent') + 1], 10) : 40;
 // --meta-backfill: instead of unprocessed books, target books that were verified
 // under the thin schema (in done.json but with no details meta) so they get
 // hook/voice/era/tags too. Run this once the main queue is empty.
