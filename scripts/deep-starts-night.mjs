@@ -28,10 +28,15 @@ const PER_AGENT = args.includes('--per-agent') ? parseInt(args[args.indexOf('--p
 // under the thin schema (in done.json but with no details meta) so they get
 // hook/voice/era/tags too. Run this once the main queue is empty.
 const BACKFILL = args.includes('--meta-backfill');
+// --snippets: run against the snippet-extraction queue instead (its own ledger:
+// snippets-queue.json / snippets-done.json, merged by merge-snippets.mjs).
+const SNIPPETS = args.includes('--snippets');
 
 async function main() {
-    const queue = JSON.parse(await readFile(path.join(DIR, 'queue.json'), 'utf8'));
-    const donePath = path.join(DIR, 'done.json');
+    const queueFile = SNIPPETS ? 'snippets-queue.json' : 'queue.json';
+    const doneFile = SNIPPETS ? 'snippets-done.json' : 'done.json';
+    const queue = JSON.parse(await readFile(path.join(DIR, queueFile), 'utf8'));
+    const donePath = path.join(DIR, doneFile);
     const done = new Set(existsSync(donePath) ? JSON.parse(await readFile(donePath, 'utf8')) : []);
     const metaPath = path.join(DIR, 'meta.json');
     const meta = existsSync(metaPath) ? JSON.parse(await readFile(metaPath, 'utf8')) : {};
