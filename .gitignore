@@ -55,3 +55,7 @@ lint_output.txt
 # Demo password file (never commit credentials)
 .demo-pass.txt
 /scripts/deep-starts/
+
+# Generated triage/scratch artifacts from the story-start + recap pipelines.
+scripts/.story-starts-report.json
+scripts/.recap-batch-*.json
