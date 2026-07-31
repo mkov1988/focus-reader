@@ -51,7 +51,15 @@ New script `scripts/build-starts-bundle.mjs`:
   one constant in the app — never mutate v1 in place (immutable caching depends on this).
 - Print count + byte size as a sanity check (~54,525 starts, ~630KB raw).
 
-## Step 3 — App wiring (web repo)
+## Step 3 — App wiring (web repo) — SKIP BY DEFAULT
+
+**Directional decision (2026-07-23): the web app is no longer being developed as a
+product.** It was the concept prototype; the end builds are native Android (now) and
+native iOS (later). The web deployment's remaining jobs are: serving infrastructure for
+the native apps (book text, covers, starts-v1.json from the pages.dev origin) and an
+archived living spec. So skip this step's UI wiring unless told otherwise — the file
+just needs to be IN the deploy (Step 2 puts it in public/, Step 4 deploys it).
+Kept for reference if web wiring is ever wanted:
 
 New tiny service `src/services/deepStarts.ts`:
 
@@ -86,18 +94,13 @@ Service worker (`vite.config.ts`, vite-plugin-pwa):
   (e.g. `story-starts`), NOT the existing book-text cache (that one is entry-capped and
   protects expensive book downloads; don't let this churn it).
 
-## Step 4 — Verify (must be against production, not just local)
+## Step 4 — Deploy the file + verify serving
 
 1. `npx tsc -b` clean, `npm run build` clean.
 2. Deploy (`node scripts/deploy-pages.mjs`).
-3. `curl` the deployed `/starts-v1.json` — JSON served, correct size.
-4. On the live site (mobile viewport), open a long-tail book that is NOT in
-  `public/books` (pick an id from verified.json; reach it via search). Confirm the reader
-  opens at the verified start (compare visible first words against the node script's
-  output from Step 1), not at the title page.
-5. Confirm a bundled book (e.g. Alice, id 11) still opens exactly as before.
-6. Confirm graceful degradation: with the file blocked (devtools offline or before load),
-  a long-tail open still works via the heuristic.
+3. `curl` the deployed `/starts-v1.json` — JSON served, correct size, correct count.
+   (If Step 3 was skipped, that's all the web verification needed — the real
+   user-facing verification happens on native in Step 6.)
 
 ## Step 5 — Commit
 
