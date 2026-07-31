@@ -106,9 +106,35 @@ Commit the script, the service, App.tsx, vite.config.ts changes, and `public/sta
 Message should note: starts land for 54,525 long-tail books, bulk-file design, hooks/meta
 deferred. Do NOT push.
 
+## Step 6 — Native counterpart (C:\Users\Michael\Desktop\Focus Reader Android)
+
+The APK is the product actually in Michael's pocket; it currently uses NEITHER the bundled
+1,401 starts nor the new 54k — a fresh open falls to `parsed.readableStartWord`
+(`src/screens/ReaderScreen.tsx`, the `initialIndex` memo around line 133). Bring it to
+parity in the same pass, AFTER the web deploy is verified (native fetches from the web
+deployment, so web ships first).
+
+1. **Bundle the shipped set:** copy the web repo's `src/data/story-starts.json` (16KB,
+   1,401 books) into native `src/data/` and add a `getStoryStart(id)` lookup in native
+   `src/services/scenes.ts`, mirroring the web service.
+2. **Deep starts:** fetch `https://focus-reader-48z.pages.dev/starts-v1.json` once in the
+   background at app start (native has no CORS constraints). Keep it in memory and persist
+   it with the same storage the native book cache uses, hydrate-from-disk first on later
+   launches. Silent failure = feature off, heuristic covers it. Never fetch on the open path.
+3. **Precedence in `initialIndex`:** explicit `startIndex` from the opener (resume) →
+   bundled `getStoryStart(book.id)` → deep-starts lookup → `parsed.readableStartWord`.
+   The existing `Math.min(…, tokens.length - 1)` clamp already provides the bounds guard —
+   keep it wrapping the whole expression. Synchronous lookups only; never delay open.
+4. **Version bump:** bump `expo.version` in the native `app.json` (Michael verifies builds
+   by the version stamp on Today).
+5. **Verify:** native typecheck clean; then the Android web QA harness (port 8090, layout/
+   data checks work there) — open a long-tail book and confirm it starts at the verified
+   first sentence, and a bundled book (e.g. 84) starts at its authored start. Pacing/feel
+   checks are device-only and are NOT needed for this change.
+6. Commit the native repo separately (its own message, do not push).
+
 ## Explicitly deferred (do not do in this pass)
 
 - Hooks/voice/era/tags sidecars (waits for a UI surface).
-- Native Android adoption (same file can be fetched from the pages.dev origin later).
 - Any use of the `nn` list beyond shipping it in the file.
 - The top-800 deep pass (recaps + snippets) — separate track entirely.
