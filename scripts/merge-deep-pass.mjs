@@ -74,20 +74,29 @@ async function main() {
             }
         }
 
-        // Snippets: resolve both tiers against mirror text.
+        // Snippets: resolve both tiers against mirror text. The span is defined by
+        // TWO anchors (start + end) so the boundaries are provably the text the
+        // finder agent actually read; a word count is only a fallback sanity rail.
         const file = path.join(MIRROR, `${id}.txt`);
         if (existsSync(file) && (b.snipShort || b.snipStory)) {
             const tokens = tokenize(await readFile(file, 'utf8'));
-            const resolveSnip = (s, lo, hi, dflt) => {
+            const resolveSnip = (s, lo, hi) => {
                 const anchor = clean(s && s.anchor);
                 if (anchor.split(/\s+/).length < 4) return null;
                 const idx = resolveAnchor(tokens, anchor);
-                if (idx < 0 || idx > tokens.length * 0.75) return null;
-                const words = Math.max(lo, Math.min(hi, Number(s.words) || dflt));
+                if (idx < 0 || idx > tokens.length * 0.8) return null;
+                let words = null;
+                const endAnchor = clean(s && s.endAnchor);
+                if (endAnchor.split(/\s+/).length >= 4) {
+                    const rel = resolveAnchor(tokens.slice(idx + 1), endAnchor);
+                    if (rel >= 0) words = rel + 1 + endAnchor.split(/\s+/).length;
+                }
+                if (words == null && Number(s.words)) words = Number(s.words);
+                if (words == null || words < lo || words > hi) return null; // outside tier bounds = reject, don't guess
                 return { start: idx, words: Math.min(words, tokens.length - idx), teaser: clean(s.teaser).slice(0, 60) };
             };
-            const sh = resolveSnip(b.snipShort, 200, 340, 280);
-            const st = resolveSnip(b.snipStory, 700, 1500, 1100);
+            const sh = resolveSnip(b.snipShort, 150, 420);
+            const st = resolveSnip(b.snipStory, 600, 1700);
             if (sh || st) {
                 snippets[id] = { ...(snippets[id] || {}), ...(sh ? { short: sh } : {}), ...(st ? { story: st } : {}) };
                 if (sh) stats.short++;
