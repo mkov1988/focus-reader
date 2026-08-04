@@ -2,832 +2,832 @@
 
 Auto-updated by every merge. Do not edit by hand; the ledgers are the truth.
 
-**0 / 800 done (0.0%)**
+**800 / 800 done (100.0%)**
 
-`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+`██████████████████████████████`
 
 Marks: **S** scenes · **1m** quick-hit snippet · **3-5m** story snippet · **D** details · **M** hook/meta
 
 ## Books 1–100
 
-- [ ] #2701 **Moby Dick; Or, The Whale** — Herman Melville
-- [ ] #1342 **Pride and Prejudice** — Jane Austen
-- [ ] #1513 **Romeo and Juliet** — William Shakespeare
-- [ ] #2641 **A Room with a View** — E. M. (Edward Morgan) Forster
-- [ ] #2554 **Crime and Punishment** — Fyodor Dostoyevsky
-- [ ] #11 **Alice's Adventures in Wonderland** — Lewis Carroll
-- [ ] #1184 **The Count of Monte Cristo** — Alexandre Dumas
-- [ ] #145 **Middlemarch** — George Eliot
-- [ ] #84 **Frankenstein; or, the modern prometheus** — Mary Wollstonecraft Shelley
-- [ ] #67979 **The Blue Castle: a novel** — L. M. (Lucy Maud) Montgomery
-- [ ] #1661 **The Adventures of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #1260 **Jane Eyre: An Autobiography** — Charlotte Brontë
-- [ ] #3268 **The Mysteries of Udolpho** — Ann Ward Radcliffe
-- [ ] #345 **Dracula** — Bram Stoker
-- [ ] #37106 **Little Women; Or, Meg, Jo, Beth, and Amy** — Louisa May Alcott
-- [ ] #2465 **Carmen** — Prosper Mérimée
-- [ ] #43 **The strange case of Dr. Jekyll and Mr. Hyde** — Robert Louis Stevenson
-- [ ] #1112 **Romeo and Juliet** — William Shakespeare
-- [ ] #1259 **Twenty years after** — Alexandre Dumas
-- [ ] #2868 **The Green Mummy** — Fergus Hume
-- [ ] #65238 **The Secret of Chimneys** — Agatha Christie
-- [ ] #8492 **The King in Yellow** — Robert W. (Robert William) Chambers
-- [ ] #6133 **The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar** — Maurice Leblanc
-- [ ] #3011 **The Lady of the Lake** — Walter Scott
-- [ ] #1695 **The Man Who Was Thursday: A Nightmare** — G. K. (Gilbert Keith) Chesterton
-- [ ] #28054 **The Brothers Karamazov** — Fyodor Dostoyevsky
-- [ ] #16389 **The Enchanted April** — Elizabeth Von Arnim
-- [ ] #831 **Four Arthurian Romances** — Chrétien, de Troyes, active 12th century
-- [ ] #601 **The Monk: A Romance** — M. G. (Matthew Gregory) Lewis
-- [ ] #74 **The Adventures of Tom Sawyer, Complete** — Mark Twain
-- [ ] #72 **Thuvia, maid of Mars** — Edgar Rice Burroughs
-- [ ] #64317 **The Great Gatsby** — F. Scott (Francis Scott) Fitzgerald
-- [ ] #394 **Cranford** — Elizabeth Cleghorn Gaskell
-- [ ] #6761 **The Adventures of Ferdinand Count Fathom — Complete** — T. (Tobias) Smollett
-- [ ] #2160 **The Expedition of Humphry Clinker** — T. (Tobias) Smollett
-- [ ] #59828 **The String of Pearls; Or, The Barber of Fleet Street. A Domestic Romance.** — Thomas Peckett Prest
-- [ ] #468 **Manon Lescaut** — abbé Prévost
-- [ ] #6593 **History of Tom Jones, a Foundling** — Henry Fielding
-- [ ] #4085 **The Adventures of Roderick Random** — T. (Tobias) Smollett
-- [ ] #75201 **A farewell to arms** — Ernest Hemingway
-- [ ] #245 **Life on the Mississippi** — Mark Twain
-- [ ] #564 **The Mystery of Edwin Drood** — Charles Dickens
-- [ ] #244 **A Study in Scarlet** — Arthur Conan Doyle
-- [ ] #161 **Sense and Sensibility** — Jane Austen
-- [ ] #42 **The strange case of Dr. Jekyll and Mr. Hyde** — Robert Louis Stevenson
-- [ ] #2852 **The Hound of the Baskervilles** — Arthur Conan Doyle
-- [ ] #76639 **Eloisa : $b or, A series of original letters** — Jean-Jacques Rousseau
-- [ ] #768 **Wuthering Heights** — Emily Brontë
-- [ ] #2148 **The Works of Edgar Allan Poe — Volume 2** — Edgar Allan Poe
-- [ ] #23 **Narrative of the Life of Frederick Douglass, an American Slave** — Frederick Douglass
-- [ ] #2527 **The Sorrows of Young Werther** — Johann Wolfgang von Goethe
-- [ ] #1727 **The Odyssey: Rendered into English prose for the use of those who cannot read the original** — Homer
-- [ ] #6400 **The Lives of the Twelve Caesars, Complete** — Suetonius
-- [ ] #76 **Adventures of Huckleberry Finn** — Mark Twain
-- [ ] #103 **Around the World in Eighty Days** — Jules Verne
-- [ ] #23784 **The History of Sir Richard Calmady: A Romance** — Lucas Malet
-- [ ] #393 **The Blue Lagoon: A Romance** — H. De Vere (Henry De Vere) Stacpoole
-- [ ] #76178 **I am a woman** — Ann Bannon
-- [ ] #209 **The Turn of the Screw** — Henry James
-- [ ] #589 **Catriona** — Robert Louis Stevenson
-- [ ] #55 **The Wonderful Wizard of Oz** — L. Frank (Lyman Frank) Baum
-- [ ] #2002 **Sonnets from the Portuguese** — Elizabeth Barrett Browning
-- [ ] #120 **Treasure Island** — Robert Louis Stevenson
-- [ ] #2620 **The Home Book of Verse — Volume 2** — Burton Egbert Stevenson
-- [ ] #2097 **The Sign of the Four** — Arthur Conan Doyle
-- [ ] #1514 **A Midsummer Night's Dream** — William Shakespeare
-- [ ] #1523 **As You Like It** — William Shakespeare
-- [ ] #3922 **The Red Lily — Complete** — Anatole France
-- [ ] #70854 **The Countess of Pembroke's Arcadia** — Philip Sidney
-- [ ] #4712 **The Landloper: The Romance of a Man on Foot** — Holman Day
-- [ ] #2147 **The Works of Edgar Allan Poe — Volume 1** — Edgar Allan Poe
-- [ ] #4499 **Complete Short Works of George Meredith** — George Meredith
-- [ ] #1608 **Camille (La Dame aux Camilias)** — Alexandre Dumas
-- [ ] #2825 **Undine** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de
-- [ ] #4200 **The Diary of Samuel Pepys — Complete** — Samuel Pepys
-- [ ] #6635 **A Romance of Billy-Goat Hill** — Alice Caldwell Hegan Rice
-- [ ] #921 **De Profundis** — Oscar Wilde
-- [ ] #69087 **The murder of Roger Ackroyd** — Agatha Christie
-- [ ] #1212 **Love and Freindship [sic]** — Jane Austen
-- [ ] #583 **The Woman in White** — Wilkie Collins
-- [ ] #863 **The Mysterious Affair at Styles** — Agatha Christie
-- [ ] #224 **A pair of blue eyes** — Thomas Hardy
-- [ ] #6081 **Biographia Literaria** — Samuel Taylor Coleridge
-- [ ] #834 **The Memoirs of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #108 **The Return of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #98 **A Tale of Two Cities** — Charles Dickens
-- [ ] #175 **The Phantom of the Opera** — Gaston Leroux
-- [ ] #16 **Peter Pan : $b [Peter and Wendy]** — J. M. (James Matthew) Barrie
-- [ ] #2162 **Anarchism and Other Essays** — Emma Goldman
-- [ ] #19771 **Henrietta Temple: A Love Story** — Disraeli, Benjamin, Earl of Beaconsfield
-- [ ] #2600 **War and Peace** — Tolstoy, Leo, graf
-- [ ] #174 **The Picture of Dorian Gray** — Oscar Wilde
-- [ ] #3289 **The Valley of Fear** — Arthur Conan Doyle
-- [ ] #204 **The innocence of Father Brown** — G. K. (Gilbert Keith) Chesterton
-- [ ] #155 **The Moonstone** — Wilkie Collins
-- [ ] #2087 **Life and Letters of Charles Darwin — Volume 1** — Charles Darwin
-- [ ] #2350 **His last bow : $b Some later reminiscences of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #2760 **Celebrated Crimes (Complete)** — Alexandre Dumas
-- [ ] #1155 **The Secret Adversary** — Agatha Christie
-- [ ] #2739 **More Letters of Charles Darwin — Volume 1: A Record of His Work in a Series of Hitherto Unpublished Letters** — Charles Darwin
+- [x] #2701 **Moby Dick; Or, The Whale** — Herman Melville  `S 1m D M`
+- [x] #1342 **Pride and Prejudice** — Jane Austen  `S 3-5m D M`
+- [x] #1513 **Romeo and Juliet** — William Shakespeare  `S 1m 3-5m D M`
+- [x] #2641 **A Room with a View** — E. M. (Edward Morgan) Forster  `S 3-5m D M`
+- [x] #2554 **Crime and Punishment** — Fyodor Dostoyevsky  `S D M`
+- [x] #11 **Alice's Adventures in Wonderland** — Lewis Carroll  `S 1m 3-5m D M`
+- [x] #1184 **The Count of Monte Cristo** — Alexandre Dumas  `S 1m D M`
+- [x] #145 **Middlemarch** — George Eliot  `S 3-5m D M`
+- [x] #84 **Frankenstein; or, the modern prometheus** — Mary Wollstonecraft Shelley  `S 1m 3-5m D M`
+- [x] #67979 **The Blue Castle: a novel** — L. M. (Lucy Maud) Montgomery  `S 1m 3-5m D M`
+- [x] #1661 **The Adventures of Sherlock Holmes** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #1260 **Jane Eyre: An Autobiography** — Charlotte Brontë  `S 1m D M`
+- [x] #3268 **The Mysteries of Udolpho** — Ann Ward Radcliffe  `S D M`
+- [x] #345 **Dracula** — Bram Stoker  `S 1m 3-5m D M`
+- [x] #37106 **Little Women; Or, Meg, Jo, Beth, and Amy** — Louisa May Alcott  `S 1m 3-5m D M`
+- [x] #2465 **Carmen** — Prosper Mérimée  `S 3-5m D M`
+- [x] #43 **The strange case of Dr. Jekyll and Mr. Hyde** — Robert Louis Stevenson  `S 1m 3-5m D M`
+- [x] #1112 **Romeo and Juliet** — William Shakespeare  `S D M`
+- [x] #1259 **Twenty years after** — Alexandre Dumas  `S 3-5m D M`
+- [x] #2868 **The Green Mummy** — Fergus Hume  `S 3-5m D M`
+- [x] #65238 **The Secret of Chimneys** — Agatha Christie  `S 3-5m D M`
+- [x] #8492 **The King in Yellow** — Robert W. (Robert William) Chambers  `S 1m D M`
+- [x] #6133 **The Extraordinary Adventures of Arsène Lupin, Gentleman-Burglar** — Maurice Leblanc  `S 1m 3-5m D M`
+- [x] #3011 **The Lady of the Lake** — Walter Scott  `S 1m D M`
+- [x] #1695 **The Man Who Was Thursday: A Nightmare** — G. K. (Gilbert Keith) Chesterton  `S 1m 3-5m D M`
+- [x] #28054 **The Brothers Karamazov** — Fyodor Dostoyevsky  `S 1m D M`
+- [x] #16389 **The Enchanted April** — Elizabeth Von Arnim  `S 1m 3-5m D M`
+- [x] #831 **Four Arthurian Romances** — Chrétien, de Troyes, active 12th century  `S D M`
+- [x] #601 **The Monk: A Romance** — M. G. (Matthew Gregory) Lewis  `S 3-5m D M`
+- [x] #74 **The Adventures of Tom Sawyer, Complete** — Mark Twain  `S 1m 3-5m D M`
+- [x] #72 **Thuvia, maid of Mars** — Edgar Rice Burroughs  `S 1m 3-5m D M`
+- [x] #64317 **The Great Gatsby** — F. Scott (Francis Scott) Fitzgerald  `S 1m 3-5m D M`
+- [x] #394 **Cranford** — Elizabeth Cleghorn Gaskell  `S 3-5m D M`
+- [x] #6761 **The Adventures of Ferdinand Count Fathom — Complete** — T. (Tobias) Smollett  `S D M`
+- [x] #2160 **The Expedition of Humphry Clinker** — T. (Tobias) Smollett  `S D M`
+- [x] #59828 **The String of Pearls; Or, The Barber of Fleet Street. A Domestic Romance.** — Thomas Peckett Prest  `S 3-5m D M`
+- [x] #468 **Manon Lescaut** — abbé Prévost  `S 3-5m D M`
+- [x] #6593 **History of Tom Jones, a Foundling** — Henry Fielding  `S 1m D M`
+- [x] #4085 **The Adventures of Roderick Random** — T. (Tobias) Smollett  `S 3-5m D M`
+- [x] #75201 **A farewell to arms** — Ernest Hemingway  `S 1m 3-5m D M`
+- [x] #245 **Life on the Mississippi** — Mark Twain  `S 3-5m D M`
+- [x] #564 **The Mystery of Edwin Drood** — Charles Dickens  `S D M`
+- [x] #244 **A Study in Scarlet** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #161 **Sense and Sensibility** — Jane Austen  `S 1m D M`
+- [x] #42 **The strange case of Dr. Jekyll and Mr. Hyde** — Robert Louis Stevenson  `S 3-5m D M`
+- [x] #2852 **The Hound of the Baskervilles** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #76639 **Eloisa : $b or, A series of original letters** — Jean-Jacques Rousseau  `S D M`
+- [x] #768 **Wuthering Heights** — Emily Brontë  `S 1m 3-5m D M`
+- [x] #2148 **The Works of Edgar Allan Poe — Volume 2** — Edgar Allan Poe  `S 1m 3-5m D M`
+- [x] #23 **Narrative of the Life of Frederick Douglass, an American Slave** — Frederick Douglass  `S 1m 3-5m D M`
+- [x] #2527 **The Sorrows of Young Werther** — Johann Wolfgang von Goethe  `S 3-5m D M`
+- [x] #1727 **The Odyssey: Rendered into English prose for the use of those who cannot read the original** — Homer  `S 3-5m D M`
+- [x] #6400 **The Lives of the Twelve Caesars, Complete** — Suetonius  `S D M`
+- [x] #76 **Adventures of Huckleberry Finn** — Mark Twain  `S 1m 3-5m D M`
+- [x] #103 **Around the World in Eighty Days** — Jules Verne  `S 1m D M`
+- [x] #23784 **The History of Sir Richard Calmady: A Romance** — Lucas Malet  `S D M`
+- [x] #393 **The Blue Lagoon: A Romance** — H. De Vere (Henry De Vere) Stacpoole  `S D M`
+- [x] #76178 **I am a woman** — Ann Bannon  `S 1m D M`
+- [x] #209 **The Turn of the Screw** — Henry James  `S 1m D M`
+- [x] #589 **Catriona** — Robert Louis Stevenson  `S 3-5m D M`
+- [x] #55 **The Wonderful Wizard of Oz** — L. Frank (Lyman Frank) Baum  `S 1m 3-5m D M`
+- [x] #2002 **Sonnets from the Portuguese** — Elizabeth Barrett Browning  `(non-narrative)`
+- [x] #120 **Treasure Island** — Robert Louis Stevenson  `S 1m 3-5m D M`
+- [x] #2620 **The Home Book of Verse — Volume 2** — Burton Egbert Stevenson  `(non-narrative)`
+- [x] #2097 **The Sign of the Four** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #1514 **A Midsummer Night's Dream** — William Shakespeare  `S 3-5m D M`
+- [x] #1523 **As You Like It** — William Shakespeare  `S 1m 3-5m D M`
+- [x] #3922 **The Red Lily — Complete** — Anatole France  `S D M`
+- [x] #70854 **The Countess of Pembroke's Arcadia** — Philip Sidney  `S D M`
+- [x] #4712 **The Landloper: The Romance of a Man on Foot** — Holman Day  `S 3-5m D M`
+- [x] #2147 **The Works of Edgar Allan Poe — Volume 1** — Edgar Allan Poe  `S 3-5m D M`
+- [x] #4499 **Complete Short Works of George Meredith** — George Meredith  `S 1m D M`
+- [x] #1608 **Camille (La Dame aux Camilias)** — Alexandre Dumas  `S 3-5m D M`
+- [x] #2825 **Undine** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de  `S 1m 3-5m D M`
+- [x] #4200 **The Diary of Samuel Pepys — Complete** — Samuel Pepys  `S 3-5m D M`
+- [x] #6635 **A Romance of Billy-Goat Hill** — Alice Caldwell Hegan Rice  `S 1m 3-5m D M`
+- [x] #921 **De Profundis** — Oscar Wilde  `(non-narrative)`
+- [x] #69087 **The murder of Roger Ackroyd** — Agatha Christie  `S 1m D M`
+- [x] #1212 **Love and Freindship [sic]** — Jane Austen  `S 1m D M`
+- [x] #583 **The Woman in White** — Wilkie Collins  `S 1m 3-5m D M`
+- [x] #863 **The Mysterious Affair at Styles** — Agatha Christie  `S 3-5m D M`
+- [x] #224 **A pair of blue eyes** — Thomas Hardy  `S 3-5m D M`
+- [x] #6081 **Biographia Literaria** — Samuel Taylor Coleridge  `(non-narrative)`
+- [x] #834 **The Memoirs of Sherlock Holmes** — Arthur Conan Doyle  `S 1m D M`
+- [x] #108 **The Return of Sherlock Holmes** — Arthur Conan Doyle  `S 1m D M`
+- [x] #98 **A Tale of Two Cities** — Charles Dickens  `S 3-5m D M`
+- [x] #175 **The Phantom of the Opera** — Gaston Leroux  `S 3-5m D M`
+- [x] #16 **Peter Pan : $b [Peter and Wendy]** — J. M. (James Matthew) Barrie  `S 1m 3-5m D M`
+- [x] #2162 **Anarchism and Other Essays** — Emma Goldman  `(non-narrative)`
+- [x] #19771 **Henrietta Temple: A Love Story** — Disraeli, Benjamin, Earl of Beaconsfield  `S D M`
+- [x] #2600 **War and Peace** — Tolstoy, Leo, graf  `S D M`
+- [x] #174 **The Picture of Dorian Gray** — Oscar Wilde  `S 1m 3-5m D M`
+- [x] #3289 **The Valley of Fear** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #204 **The innocence of Father Brown** — G. K. (Gilbert Keith) Chesterton  `S 1m D M`
+- [x] #155 **The Moonstone** — Wilkie Collins  `S 1m 3-5m D M`
+- [x] #2087 **Life and Letters of Charles Darwin — Volume 1** — Charles Darwin  `S 1m D M`
+- [x] #2350 **His last bow : $b Some later reminiscences of Sherlock Holmes** — Arthur Conan Doyle  `S 1m D M`
+- [x] #2760 **Celebrated Crimes (Complete)** — Alexandre Dumas  `S D M`
+- [x] #1155 **The Secret Adversary** — Agatha Christie  `S 3-5m D M`
+- [x] #2739 **More Letters of Charles Darwin — Volume 1: A Record of His Work in a Series of Hitherto Unpublished Letters** — Charles Darwin  `(non-narrative)`
 
 ## Books 101–200
 
-- [ ] #1063 **The Cask of Amontillado** — Edgar Allan Poe
-- [ ] #68283 **The call of Cthulhu** — H. P. (Howard Phillips) Lovecraft
-- [ ] #851 **Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson** — Mary White Rowlandson
-- [ ] #974 **The Secret Agent: A Simple Tale** — Joseph Conrad
-- [ ] #1685 **The Mystery of the Yellow Room** — Gaston Leroux
-- [ ] #1872 **The Red House Mystery** — A. A. (Alan Alexander) Milne
-- [ ] #2360 **The Riddle of the Sands** — Erskine Childers
-- [ ] #223 **The wisdom of Father Brown** — G. K. (Gilbert Keith) Chesterton
-- [ ] #2038 **The Lock and Key Library: Classic Mystery and Detective Stories: Modern English** — Unknown
-- [ ] #22541 **The Misplaced Battleship** — Harry Harrison
-- [ ] #53874 **Under the Red Dragon: A Novel** — James Grant
-- [ ] #558 **The Thirty-Nine Steps** — John Buchan
-- [ ] #524 **Ann Veronica: A Modern Love Story** — H. G. (Herbert George) Wells
-- [ ] #3070 **The Hound of the Baskervilles** — Arthur Conan Doyle
-- [ ] #2806 **The Phantom 'Rickshaw, and Other Ghost Stories** — Rudyard Kipling
-- [ ] #2813 **The Grand Babylon Hôtel** — Arnold Bennett
-- [ ] #3530 **Love-at-arms : $b being a narrative excerpted from the chronicles of Urbino, during the dominion of the high and mighty Messer Guidobaldo da Montefeltro** — Rafael Sabatini
-- [ ] #1686 **The Secret of the Night** — Gaston Leroux
-- [ ] #389 **The Great God Pan** — Arthur Machen
-- [ ] #1849 **The Yellow Crayon** — E. Phillips (Edward Phillips) Oppenheim
-- [ ] #829 **Gulliver's Travels into Several Remote Nations of the World** — Jonathan Swift
-- [ ] #221 **The Return of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #537 **Tales of Terror and Mystery** — Arthur Conan Doyle
-- [ ] #40284 **The Sex Life of the Gods** — M. E. (Michael E.) Knerr
-- [ ] #27475 **That Girl Montana** — Marah Ellis Ryan
-- [ ] #3321 **Children of the Whirlwind** — Leroy Scott
-- [ ] #1510 **Love's Labour's Lost** — William Shakespeare
-- [ ] #61262 **Poirot Investigates** — Agatha Christie
-- [ ] #76668 **Trial by water** — Sewell Peaslee Wright
-- [ ] #60979 **Reminiscences of a Stock Operator** — Edwin Lefevre
-- [ ] #27997 **Robert Orange: Being a Continuation of the History of Robert Orange** — John Oliver Hobbes
-- [ ] #4300 **Ulysses** — James Joyce
-- [ ] #51428 **That Which Hath Wings: A Novel of the Day** — Richard Dehan
-- [ ] #1931 **The Zeppelin's Passenger** — E. Phillips (Edward Phillips) Oppenheim
-- [ ] #20203 **Autobiography of Benjamin Franklin** — Benjamin Franklin
-- [ ] #560 **Mr. Standfast** — John Buchan
-- [ ] #173 **The Insidious Dr. Fu Manchu** — Sax Rohmer
-- [ ] #19476 **A Honeymoon in Space** — George Chetwynd Griffith
-- [ ] #70652 **At the mountains of madness** — H. P. (Howard Phillips) Lovecraft
-- [ ] #16328 **Beowulf: An Anglo-Saxon Epic Poem** — Unknown
-- [ ] #70114 **The Big Four** — Agatha Christie
-- [ ] #61168 **The Man in the Brown Suit** — Agatha Christie
-- [ ] #7326 **The Yeoman Adventurer** — George W. Gough
-- [ ] #69700 **The case-book of Sherlock Holmes** — Arthur Conan Doyle
-- [ ] #53416 **Only a girl's love** — Charles Garvice
-- [ ] #53154 **Cameron of Lochiel** — Philippe Aubert de Gaspé
-- [ ] #63469 **Washington Confidential** — Jack Lait
-- [ ] #58866 **The Murder on the Links** — Agatha Christie
-- [ ] #55179 **One of the Six Hundred: A Novel** — James Grant
-- [ ] #48296 **Linnet: A Romance** — Grant Allen
-- [ ] #164 **Twenty Thousand Leagues under the Sea** — Jules Verne
-- [ ] #70200 **Pen-portraits of literary women : $b by themselves and others, Volume 2 (of 2)** — Unknown
-- [ ] #6768 **The Man Upstairs and Other Stories** — P. G. (Pelham Grenville) Wodehouse
-- [ ] #75288 **The Seven Dials mystery** — Agatha Christie
-- [ ] #4367 **Personal Memoirs of U. S. Grant, Complete** — Ulysses S. (Ulysses Simpson) Grant
-- [ ] #49987 **Forest Days: A Romance of Old Times** — G. P. R. (George Payne Rainsford) James
-- [ ] #57641 **One Woman: Being the Second Part of a Romance of Sussex** — Alfred Ollivant
-- [ ] #70175 **The secret of Father Brown** — G. K. (Gilbert Keith) Chesterton
-- [ ] #36462 **King Arthur and the Knights of the Round Table** — Malory, Thomas, Sir
-- [ ] #70008 **Unnatural death** — Dorothy L. (Dorothy Leigh) Sayers
-- [ ] #1656 **Apology** — Plato
-- [ ] #15399 **The Interesting Narrative of the Life of Olaudah Equiano, Or Gustavus Vassa, The African: Written By Himself** — Olaudah Equiano
-- [ ] #4693 **Famous Affinities of History: The Romance of Devotion. Vol 1-4, Complete** — Lyndon Orr
-- [ ] #46276 **The Treasure of Pearls: A Romance of Adventures in California** — Gustave Aimard
-- [ ] #7184 **A Heart-Song of To-day (Disturbed by Fire from the 'Unruly Member'): A Novel** — Annie G. (Annie Gregg) Savigny
-- [ ] #72824 **The mystery of the Blue Train** — Agatha Christie
-- [ ] #4488 **The Amazing Marriage — Complete** — George Meredith
-- [ ] #25789 **Emily Brontë** — A. Mary F. (Agnes Mary Frances) Robinson
-- [ ] #48320 **Adventures of Sherlock Holmes: Illustrated** — Arthur Conan Doyle
-- [ ] #3044 **Desperate Remedies** — Thomas Hardy
-- [ ] #6130 **The Iliad** — Homer
-- [ ] #3146 **Two on a Tower** — Thomas Hardy
-- [ ] #67173 **The Missing Will** — Agatha Christie
-- [ ] #67160 **The Hunter's Lodge Case** — Agatha Christie
-- [ ] #236 **The Jungle Book** — Rudyard Kipling
-- [ ] #66446 **The Plymouth Express Affair** — Agatha Christie
-- [ ] #53419 **Twenty-Five Ghost Stories** — Unknown
-- [ ] #42389 **The Pirate: Andrew Lang Edition** — Walter Scott
-- [ ] #58820 **Whose Body? A Lord Peter Wimsey Novel** — Dorothy L. (Dorothy Leigh) Sayers
-- [ ] #421 **Kidnapped** — Robert Louis Stevenson
-- [ ] #32155 **The Love Letters of Henry VIII to Anne Boleyn; With Notes** — King of England Henry VIII
-- [ ] #24793 **Blow The Man Down: A Romance Of The Coast** — Holman Day
-- [ ] #8800 **The divine comedy** — Dante Alighieri
-- [ ] #766 **David Copperfield** — Charles Dickens
-- [ ] #26563 **The Crack of Doom** — Robert Cromie
-- [ ] #1257 **The three musketeers** — Alexandre Dumas
-- [ ] #22163 **The Rover Boys on the Farm; or, Last Days at Putnam Hall** — Edward Stratemeyer
-- [ ] #42681 **The Hero of the People: A Historical Romance of Love, Liberty and Loyalty** — Alexandre Dumas
-- [ ] #521 **The Life and Adventures of Robinson Crusoe** — Daniel Defoe
-- [ ] #26492 **Studies of American Fungi. Mushrooms, Edible, Poisonous, etc.** — George Francis Atkinson
-- [ ] #215 **The call of the wild** — Jack London
-- [ ] #32474 **The Memoirs of the Conquistador Bernal Diaz del Castillo, Vol 1 (of 2): Written by Himself Containing a True and Full Account of the Discovery and Conquest of Mexico and New Spain.** — Bernal Díaz del Castillo
-- [ ] #50133 **The Dunwich horror** — H. P. (Howard Phillips) Lovecraft
-- [ ] #18857 **A Journey to the Centre of the Earth** — Jules Verne
-- [ ] #59892 **Changeling, and Other Stories** — Donn Byrne
-- [ ] #36034 **White nights, and other stories** — Fyodor Dostoyevsky
-- [ ] #57342 **The Lives and Opinions of Eminent Philosophers** — Diogenes Laertius
-- [ ] #844 **The Importance of Being Earnest: A Trivial Comedy for Serious People** — Oscar Wilde
-- [ ] #54219 **A Little English Gallery** — Louise Imogen Guiney
-- [ ] #37499 **Napoleon's Letters to Josephine, 1796-1812: For the First Time Collected and Translated, with Notes Social, Historical, and Chronological, from Contemporary Sources** — Emperor of the French Napoleon I
+- [x] #1063 **The Cask of Amontillado** — Edgar Allan Poe  `S 1m 3-5m D M`
+- [x] #68283 **The call of Cthulhu** — H. P. (Howard Phillips) Lovecraft  `S 3-5m D M`
+- [x] #851 **Narrative of the Captivity and Restoration of Mrs. Mary Rowlandson** — Mary White Rowlandson  `S 3-5m D M`
+- [x] #974 **The Secret Agent: A Simple Tale** — Joseph Conrad  `S 3-5m D M`
+- [x] #1685 **The Mystery of the Yellow Room** — Gaston Leroux  `S 1m 3-5m D M`
+- [x] #1872 **The Red House Mystery** — A. A. (Alan Alexander) Milne  `S 3-5m D M`
+- [x] #2360 **The Riddle of the Sands** — Erskine Childers  `S D M`
+- [x] #223 **The wisdom of Father Brown** — G. K. (Gilbert Keith) Chesterton  `S 3-5m D M`
+- [x] #2038 **The Lock and Key Library: Classic Mystery and Detective Stories: Modern English** — Unknown  `S 1m D M`
+- [x] #22541 **The Misplaced Battleship** — Harry Harrison  `S 3-5m D M`
+- [x] #53874 **Under the Red Dragon: A Novel** — James Grant  `S 3-5m D M`
+- [x] #558 **The Thirty-Nine Steps** — John Buchan  `S 3-5m D M`
+- [x] #524 **Ann Veronica: A Modern Love Story** — H. G. (Herbert George) Wells  `S 3-5m D M`
+- [x] #3070 **The Hound of the Baskervilles** — Arthur Conan Doyle  `S 1m 3-5m D M`
+- [x] #2806 **The Phantom 'Rickshaw, and Other Ghost Stories** — Rudyard Kipling  `S 3-5m D M`
+- [x] #2813 **The Grand Babylon Hôtel** — Arnold Bennett  `S 1m D M`
+- [x] #3530 **Love-at-arms : $b being a narrative excerpted from the chronicles of Urbino, during the dominion of the high and mighty Messer Guidobaldo da Montefeltro** — Rafael Sabatini  `S D M`
+- [x] #1686 **The Secret of the Night** — Gaston Leroux  `S 1m D M`
+- [x] #389 **The Great God Pan** — Arthur Machen  `S 1m D M`
+- [x] #1849 **The Yellow Crayon** — E. Phillips (Edward Phillips) Oppenheim  `S 1m D M`
+- [x] #829 **Gulliver's Travels into Several Remote Nations of the World** — Jonathan Swift  `S 1m D M`
+- [x] #221 **The Return of Sherlock Holmes** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #537 **Tales of Terror and Mystery** — Arthur Conan Doyle  `S 3-5m D M`
+- [x] #40284 **The Sex Life of the Gods** — M. E. (Michael E.) Knerr  `S 1m D M`
+- [x] #27475 **That Girl Montana** — Marah Ellis Ryan  `S 3-5m D M`
+- [x] #3321 **Children of the Whirlwind** — Leroy Scott  `S 3-5m D M`
+- [x] #1510 **Love's Labour's Lost** — William Shakespeare  `S 1m 3-5m D M`
+- [x] #61262 **Poirot Investigates** — Agatha Christie  `S 1m D M`
+- [x] #76668 **Trial by water** — Sewell Peaslee Wright  `S 1m 3-5m D M`
+- [x] #60979 **Reminiscences of a Stock Operator** — Edwin Lefevre  `S 3-5m D M`
+- [x] #27997 **Robert Orange: Being a Continuation of the History of Robert Orange** — John Oliver Hobbes  `S 1m D M`
+- [x] #4300 **Ulysses** — James Joyce  `S 1m 3-5m D M`
+- [x] #51428 **That Which Hath Wings: A Novel of the Day** — Richard Dehan  `S D M`
+- [x] #1931 **The Zeppelin's Passenger** — E. Phillips (Edward Phillips) Oppenheim  `S 1m 3-5m D M`
+- [x] #20203 **Autobiography of Benjamin Franklin** — Benjamin Franklin  `S 3-5m D M`
+- [x] #560 **Mr. Standfast** — John Buchan  `S 1m 3-5m D M`
+- [x] #173 **The Insidious Dr. Fu Manchu** — Sax Rohmer  `S 1m D M`
+- [x] #19476 **A Honeymoon in Space** — George Chetwynd Griffith  `S 3-5m D M`
+- [x] #70652 **At the mountains of madness** — H. P. (Howard Phillips) Lovecraft  `S 3-5m D M`
+- [x] #16328 **Beowulf: An Anglo-Saxon Epic Poem** — Unknown  `S D M`
+- [x] #70114 **The Big Four** — Agatha Christie  `S D M`
+- [x] #61168 **The Man in the Brown Suit** — Agatha Christie  `S 1m 3-5m D M`
+- [x] #7326 **The Yeoman Adventurer** — George W. Gough  `S 3-5m D M`
+- [x] #69700 **The case-book of Sherlock Holmes** — Arthur Conan Doyle  `S 1m 3-5m D M`
+- [x] #53416 **Only a girl's love** — Charles Garvice  `S D M`
+- [x] #53154 **Cameron of Lochiel** — Philippe Aubert de Gaspé  `S D M`
+- [x] #63469 **Washington Confidential** — Jack Lait  `(non-narrative)`
+- [x] #58866 **The Murder on the Links** — Agatha Christie  `S 1m 3-5m D M`
+- [x] #55179 **One of the Six Hundred: A Novel** — James Grant  `S 1m D M`
+- [x] #48296 **Linnet: A Romance** — Grant Allen  `S 1m D M`
+- [x] #164 **Twenty Thousand Leagues under the Sea** — Jules Verne  `S 3-5m D M`
+- [x] #70200 **Pen-portraits of literary women : $b by themselves and others, Volume 2 (of 2)** — Unknown  `(non-narrative)`
+- [x] #6768 **The Man Upstairs and Other Stories** — P. G. (Pelham Grenville) Wodehouse  `S 1m 3-5m D M`
+- [x] #75288 **The Seven Dials mystery** — Agatha Christie  `S 1m 3-5m D M`
+- [x] #4367 **Personal Memoirs of U. S. Grant, Complete** — Ulysses S. (Ulysses Simpson) Grant  `S 1m 3-5m D M`
+- [x] #49987 **Forest Days: A Romance of Old Times** — G. P. R. (George Payne Rainsford) James  `S 3-5m D M`
+- [x] #57641 **One Woman: Being the Second Part of a Romance of Sussex** — Alfred Ollivant  `S D M`
+- [x] #70175 **The secret of Father Brown** — G. K. (Gilbert Keith) Chesterton  `S 1m 3-5m D M`
+- [x] #36462 **King Arthur and the Knights of the Round Table** — Malory, Thomas, Sir  `S 3-5m D M`
+- [x] #70008 **Unnatural death** — Dorothy L. (Dorothy Leigh) Sayers  `S 1m D M`
+- [x] #1656 **Apology** — Plato  `S D M`
+- [x] #15399 **The Interesting Narrative of the Life of Olaudah Equiano, Or Gustavus Vassa, The African: Written By Himself** — Olaudah Equiano  `S 1m 3-5m D M`
+- [x] #4693 **Famous Affinities of History: The Romance of Devotion. Vol 1-4, Complete** — Lyndon Orr  `S D M`
+- [x] #46276 **The Treasure of Pearls: A Romance of Adventures in California** — Gustave Aimard  `S D M`
+- [x] #7184 **A Heart-Song of To-day (Disturbed by Fire from the 'Unruly Member'): A Novel** — Annie G. (Annie Gregg) Savigny  `S D M`
+- [x] #72824 **The mystery of the Blue Train** — Agatha Christie  `S 1m D M`
+- [x] #4488 **The Amazing Marriage — Complete** — George Meredith  `S D M`
+- [x] #25789 **Emily Brontë** — A. Mary F. (Agnes Mary Frances) Robinson  `S D M`
+- [x] #48320 **Adventures of Sherlock Holmes: Illustrated** — Arthur Conan Doyle  `S 1m 3-5m D M`
+- [x] #3044 **Desperate Remedies** — Thomas Hardy  `S 1m D M`
+- [x] #6130 **The Iliad** — Homer  `S 3-5m D M`
+- [x] #3146 **Two on a Tower** — Thomas Hardy  `S 1m 3-5m D M`
+- [x] #67173 **The Missing Will** — Agatha Christie  `S 3-5m D M`
+- [x] #67160 **The Hunter's Lodge Case** — Agatha Christie  `S D M`
+- [x] #236 **The Jungle Book** — Rudyard Kipling  `S 1m 3-5m D M`
+- [x] #66446 **The Plymouth Express Affair** — Agatha Christie  `S 1m D M`
+- [x] #53419 **Twenty-Five Ghost Stories** — Unknown  `S 1m 3-5m D M`
+- [x] #42389 **The Pirate: Andrew Lang Edition** — Walter Scott  `S 1m D M`
+- [x] #58820 **Whose Body? A Lord Peter Wimsey Novel** — Dorothy L. (Dorothy Leigh) Sayers  `S D M`
+- [x] #421 **Kidnapped** — Robert Louis Stevenson  `S 1m 3-5m D M`
+- [x] #32155 **The Love Letters of Henry VIII to Anne Boleyn; With Notes** — King of England Henry VIII  `(non-narrative)`
+- [x] #24793 **Blow The Man Down: A Romance Of The Coast** — Holman Day  `S 1m 3-5m D M`
+- [x] #8800 **The divine comedy** — Dante Alighieri  `S 1m 3-5m D M`
+- [x] #766 **David Copperfield** — Charles Dickens  `S 3-5m D M`
+- [x] #26563 **The Crack of Doom** — Robert Cromie  `S 1m 3-5m D M`
+- [x] #1257 **The three musketeers** — Alexandre Dumas  `S 1m 3-5m D M`
+- [x] #22163 **The Rover Boys on the Farm; or, Last Days at Putnam Hall** — Edward Stratemeyer  `S D M`
+- [x] #42681 **The Hero of the People: A Historical Romance of Love, Liberty and Loyalty** — Alexandre Dumas  `S D M`
+- [x] #521 **The Life and Adventures of Robinson Crusoe** — Daniel Defoe  `S 1m 3-5m D M`
+- [x] #26492 **Studies of American Fungi. Mushrooms, Edible, Poisonous, etc.** — George Francis Atkinson  `(non-narrative)`
+- [x] #215 **The call of the wild** — Jack London  `S 3-5m D M`
+- [x] #32474 **The Memoirs of the Conquistador Bernal Diaz del Castillo, Vol 1 (of 2): Written by Himself Containing a True and Full Account of the Discovery and Conquest of Mexico and New Spain.** — Bernal Díaz del Castillo  `S D M`
+- [x] #50133 **The Dunwich horror** — H. P. (Howard Phillips) Lovecraft  `S 1m 3-5m D M`
+- [x] #18857 **A Journey to the Centre of the Earth** — Jules Verne  `S 1m 3-5m D M`
+- [x] #59892 **Changeling, and Other Stories** — Donn Byrne  `S 1m D M`
+- [x] #36034 **White nights, and other stories** — Fyodor Dostoyevsky  `S 3-5m D M`
+- [x] #57342 **The Lives and Opinions of Eminent Philosophers** — Diogenes Laertius  `(non-narrative)`
+- [x] #844 **The Importance of Being Earnest: A Trivial Comedy for Serious People** — Oscar Wilde  `S 1m 3-5m D M`
+- [x] #54219 **A Little English Gallery** — Louise Imogen Guiney  `(non-narrative)`
+- [x] #37499 **Napoleon's Letters to Josephine, 1796-1812: For the First Time Collected and Translated, with Notes Social, Historical, and Chronological, from Contemporary Sources** — Emperor of the French Napoleon I  `S 1m D M`
 
 ## Books 201–300
 
-- [ ] #43098 **Selected Works of Voltairine de Cleyre** — Voltairine De Cleyre
-- [ ] #38311 **What Will People Say? A Novel** — Rupert Hughes
-- [ ] #1837 **The Prince and the Pauper** — Mark Twain
-- [ ] #1658 **Phaedo** — Plato
-- [ ] #28428 **Manual of Surgery Volume Second: Extremities—Head—Neck. Sixth Edition.** — Alexis Thomson
-- [ ] #77092 **She who sleeps : $b A romance of New York and the Nile** — Sax Rohmer
-- [ ] #86 **A Connecticut Yankee in King Arthur's Court** — Mark Twain
-- [ ] #50603 **Minute Mysteries [Detectograms]** — H. A. (Harold Austin) Ripley
-- [ ] #31472 **Cynthia's Chauffeur** — Louis Tracy
-- [ ] #50290 **Space Station 1** — Frank Belknap Long
-- [ ] #31635 **The Silent Barrier** — Louis Tracy
-- [ ] #27673 **Oedipus King of Thebes: Translated into English Rhyming Verse with Explanatory Notes** — Sophocles
-- [ ] #28203 **Moods** — Louisa May Alcott
-- [ ] #33823 **The Gay Adventure: A Romance** — Richard Bird
-- [ ] #31257 **Dainty's Cruel Rivals; Or, The Fatal Birthday** — Miller, Alex. McVeigh, Mrs.
-- [ ] #51649 **The Mysteries of London, v. 4/4** — George W. M. (George William MacArthur) Reynolds
-- [ ] #38177 **The Passionate Elopement** — Compton MacKenzie
-- [ ] #57669 **The problem of Cell 13** — Jacques Futrelle
-- [ ] #135 **Les Misérables** — Victor Hugo
-- [ ] #23184 **Monte-Cristo's Daughter** — Edmund Flagg
-- [ ] #910 **White Fang** — Jack London
-- [ ] #36223 **The Boy with Wings** — Berta Ruck
-- [ ] #23639 **Plutarch's Morals** — Plutarch
-- [ ] #40058 **The Life of Florence Nightingale, vol. 2 of 2** — Cook, Edward Tyas, Sir
-- [ ] #23500 **The Car of Destiny** — C. N. (Charles Norris) Williamson
-- [ ] #1874 **The Railway Children** — E. (Edith) Nesbit
-- [ ] #7452 **Autobiography of a Yogi** — Paramahansa Yogananda
-- [ ] #37734 **Some Jewish Witnesses For Christ** — Aaron Bernstein
-- [ ] #36725 **On the Cross: A Romance of the Passion Play at Oberammergau** — Wilhelmine von Hillern
-- [ ] #35548 **Doctor Cupid: A Novel** — Rhoda Broughton
-- [ ] #14244 **The Romance of Tristan and Iseult** — Joseph Bédier
-- [ ] #11030 **Incidents in the Life of a Slave Girl, Written by Herself** — Harriet A. (Harriet Ann) Jacobs
-- [ ] #7524 **The Germany and the Agricola of Tacitus** — Cornelius Tacitus
-- [ ] #41 **The Legend of Sleepy Hollow** — Washington Irving
-- [ ] #27279 **Southern Literature From 1579-1895: A comprehensive review, with copious extracts and criticisms; for the use of schools and the general reader** — Louise Manly
-- [ ] #45 **Anne of Green Gables** — L. M. (Lucy Maud) Montgomery
-- [ ] #7889 **Erotica Romana** — Johann Wolfgang von Goethe
-- [ ] #21765 **The Metamorphoses of Ovid, Books I-VII** — Ovid
-- [ ] #43063 **A Case in Camera** — Oliver Onions
-- [ ] #113 **The Secret Garden** — Frances Hodgson Burnett
-- [ ] #1600 **Symposium** — Plato
-- [ ] #18459 **Hypnerotomachia: The Strife of Loue in a Dreame** — Francesco Colonna
-- [ ] #15381 **Victorian Short Stories: Stories of Courtship** — Unknown
-- [ ] #60316 **The Bakhtyār Nāma: A Persian Romance** — Unknown
-- [ ] #10148 **The Merry Adventures of Robin Hood** — Howard Pyle
-- [ ] #4363 **Beyond Good and Evil** — Friedrich Wilhelm Nietzsche
-- [ ] #6235 **The Battle of the Strong: A Romance of Two Kingdoms — Volume 6** — Gilbert Parker
-- [ ] #40361 **The Air Pirate** — Guy Thorne
-- [ ] #59827 **My Life and Loves, Vol. 1 (of 4)** — Frank Harris
-- [ ] #62 **A princess of Mars** — Edgar Rice Burroughs
-- [ ] #1952 **The Yellow Wallpaper** — Charlotte Perkins Gilman
-- [ ] #1400 **Great Expectations** — Charles Dickens
-- [ ] #1268 **The Mysterious Island** — Jules Verne
-- [ ] #21190 **Expositions of Holy Scripture: Second Corinthians, Galatians, and Philippians Chapters; I to End. Colossians, Thessalonians, and First Timothy.** — Alexander Maclaren
-- [ ] #26315 **Shakespeare's family** — C. C. (Charlotte Carmichael) Stopes
-- [ ] #1170 **Anabasis** — Xenophon
-- [ ] #5921 **The History of Don Quixote, Volume 1, Complete** — Miguel de Cervantes Saavedra
-- [ ] #17460 **Lorna Doone: A Romance of Exmoor** — R. D. (Richard Doddridge) Blackmore
-- [ ] #22210 **In the forbidden land : $b an account of a journey into Tibet, capture by the Tibetan lamas and soldiers, imprisonment, torture and ultimate release** — Arnold Henry Savage Landor
-- [ ] #21700 **Don Juan** — Byron, George Gordon Byron, Baron
-- [ ] #25359 **Boys and Girls Bookshelf; a Practical Plan of Character Building, Volume I (of 17): Fun and Thought for Little Folk** — Various
-- [ ] #1251 **Le Morte d'Arthur: Volume 1** — Malory, Thomas, Sir
-- [ ] #52404 **The Girl Philippa** — Robert W. (Robert William) Chambers
-- [ ] #21092 **On the Trail of the Space Pirates** — Carey Rockwell
-- [ ] #10441 **The Green Mouse** — Robert W. (Robert William) Chambers
-- [ ] #205 **Walden, and On The Duty Of Civil Disobedience** — Henry David Thoreau
-- [ ] #48893 **Mademoiselle de Maupin, Volume 1 (of 2)** — Théophile Gautier
-- [ ] #3207 **Leviathan** — Thomas Hobbes
-- [ ] #8197 **India's Love Lyrics** — Laurence Hope
-- [ ] #42486 **The Two Magics: The Turn of the Screw, Covering End** — Henry James
-- [ ] #30340 **The Passionate Friends** — H. G. (Herbert George) Wells
-- [ ] #31469 **The Shunned House** — H. P. (Howard Phillips) Lovecraft
-- [ ] #30849 **The Works of Robert Louis Stevenson - Swanston Edition, Vol. 20** — Robert Louis Stevenson
-- [ ] #139 **The Lost World** — Arthur Conan Doyle
-- [ ] #12758 **Library of the World's Best Mystery and Detective Stories** — Unknown
-- [ ] #78118 **Barry Locke, half-back** — Ralph Henry Barbour
-- [ ] #76728 **Helen Vardon's confession** — R. Austin (Richard Austin) Freeman
-- [ ] #45109 **The Enchiridion** — Epictetus
-- [ ] #38983 **The Camp Fire Girls Solve a Mystery; Or, The Christmas Adventure at Carver House** — Hildegard G. Frey
-- [ ] #47221 **Quintus Claudius: A Romance of Imperial Rome. Volume 1** — Ernst Eckstein
-- [ ] #18875 **The Prairie Wife** — Arthur Stringer
-- [ ] #16921 **Plague Ship** — Andre Norton
-- [ ] #1636 **Phaedrus** — Plato
-- [ ] #28780 **Peter the Brazen: A Mystery Story of Modern China** — George F. (George Frank) Worts
-- [ ] #30434 **Occasion ... for Disaster** — Randall Garrett
-- [ ] #44833 **Chaucer's Works, Volume 2 — Boethius and Troilus** — Geoffrey Chaucer
-- [ ] #17157 **Gulliver's Travels into Several Remote Regions of the World** — Jonathan Swift
-- [ ] #23609 **Searchlights on Health: Light on Dark Corners: A Complete Sexual Science and a Guide to Purity and Physical Manhood, Advice To Maiden, Wife, And Mother, Love, Courtship, And Marriage** — B. G. (Benjamin Grant) Jefferis
-- [ ] #36965 **Harriet Martineau** — Florence Fenwick Miller
-- [ ] #5131 **Childe Harold's Pilgrimage** — Byron, George Gordon Byron, Baron
-- [ ] #2542 **A Doll's House : a play** — Henrik Ibsen
-- [ ] #940 **The Last of the Mohicans; A narrative of 1757** — James Fenimore Cooper
-- [ ] #1934 **Songs of Innocence and of Experience** — William Blake
-- [ ] #203 **Uncle Tom's Cabin** — Harriet Beecher Stowe
-- [ ] #2199 **The Iliad** — Homer
-- [ ] #10002 **The House on the Borderland** — William Hope Hodgson
-- [ ] #8954 **Lady Audley's Secret** — M. E. (Mary Elizabeth) Braddon
-- [ ] #24869 **The Rámáyan of Válmíki, translated into English verse** — Valmiki
-- [ ] #674 **Plutarch: Lives of the noble Grecians and Romans** — Plutarch
-- [ ] #121 **Northanger Abbey** — Jane Austen
+- [x] #43098 **Selected Works of Voltairine de Cleyre** — Voltairine De Cleyre  `(non-narrative)`
+- [x] #38311 **What Will People Say? A Novel** — Rupert Hughes  `S 3-5m D M`
+- [x] #1837 **The Prince and the Pauper** — Mark Twain  `S 1m 3-5m D M`
+- [x] #1658 **Phaedo** — Plato  `S D M`
+- [x] #28428 **Manual of Surgery Volume Second: Extremities—Head—Neck. Sixth Edition.** — Alexis Thomson  `(non-narrative)`
+- [x] #77092 **She who sleeps : $b A romance of New York and the Nile** — Sax Rohmer  `S 3-5m D M`
+- [x] #86 **A Connecticut Yankee in King Arthur's Court** — Mark Twain  `S 3-5m D M`
+- [x] #50603 **Minute Mysteries [Detectograms]** — H. A. (Harold Austin) Ripley  `(non-narrative)`
+- [x] #31472 **Cynthia's Chauffeur** — Louis Tracy  `S D M`
+- [x] #50290 **Space Station 1** — Frank Belknap Long  `S 1m D M`
+- [x] #31635 **The Silent Barrier** — Louis Tracy  `S 3-5m D M`
+- [x] #27673 **Oedipus King of Thebes: Translated into English Rhyming Verse with Explanatory Notes** — Sophocles  `S 1m D M`
+- [x] #28203 **Moods** — Louisa May Alcott  `S 1m 3-5m D M`
+- [x] #33823 **The Gay Adventure: A Romance** — Richard Bird  `S D M`
+- [x] #31257 **Dainty's Cruel Rivals; Or, The Fatal Birthday** — Miller, Alex. McVeigh, Mrs.  `S 1m 3-5m D M`
+- [x] #51649 **The Mysteries of London, v. 4/4** — George W. M. (George William MacArthur) Reynolds  `S 3-5m D M`
+- [x] #38177 **The Passionate Elopement** — Compton MacKenzie  `S 1m D M`
+- [x] #57669 **The problem of Cell 13** — Jacques Futrelle  `S 3-5m D M`
+- [x] #135 **Les Misérables** — Victor Hugo  `S 1m 3-5m D M`
+- [x] #23184 **Monte-Cristo's Daughter** — Edmund Flagg  `S 3-5m D M`
+- [x] #910 **White Fang** — Jack London  `S 1m 3-5m D M`
+- [x] #36223 **The Boy with Wings** — Berta Ruck  `S D M`
+- [x] #23639 **Plutarch's Morals** — Plutarch  `(non-narrative)`
+- [x] #40058 **The Life of Florence Nightingale, vol. 2 of 2** — Cook, Edward Tyas, Sir  `S D M`
+- [x] #23500 **The Car of Destiny** — C. N. (Charles Norris) Williamson  `S 1m D M`
+- [x] #1874 **The Railway Children** — E. (Edith) Nesbit  `S 3-5m D M`
+- [x] #7452 **Autobiography of a Yogi** — Paramahansa Yogananda  `S 3-5m D M`
+- [x] #37734 **Some Jewish Witnesses For Christ** — Aaron Bernstein  `(non-narrative)`
+- [x] #36725 **On the Cross: A Romance of the Passion Play at Oberammergau** — Wilhelmine von Hillern  `S 3-5m D M`
+- [x] #35548 **Doctor Cupid: A Novel** — Rhoda Broughton  `S D M`
+- [x] #14244 **The Romance of Tristan and Iseult** — Joseph Bédier  `S 3-5m D M`
+- [x] #11030 **Incidents in the Life of a Slave Girl, Written by Herself** — Harriet A. (Harriet Ann) Jacobs  `S 1m 3-5m D M`
+- [x] #7524 **The Germany and the Agricola of Tacitus** — Cornelius Tacitus  `S D M`
+- [x] #41 **The Legend of Sleepy Hollow** — Washington Irving  `S D M`
+- [x] #27279 **Southern Literature From 1579-1895: A comprehensive review, with copious extracts and criticisms; for the use of schools and the general reader** — Louise Manly  `(non-narrative)`
+- [x] #45 **Anne of Green Gables** — L. M. (Lucy Maud) Montgomery  `S 1m 3-5m D M`
+- [x] #7889 **Erotica Romana** — Johann Wolfgang von Goethe  `(non-narrative)`
+- [x] #21765 **The Metamorphoses of Ovid, Books I-VII** — Ovid  `S D M`
+- [x] #43063 **A Case in Camera** — Oliver Onions  `S 3-5m D M`
+- [x] #113 **The Secret Garden** — Frances Hodgson Burnett  `S 1m D M`
+- [x] #1600 **Symposium** — Plato  `S D M`
+- [x] #18459 **Hypnerotomachia: The Strife of Loue in a Dreame** — Francesco Colonna  `S D M`
+- [x] #15381 **Victorian Short Stories: Stories of Courtship** — Unknown  `S 1m D M`
+- [x] #60316 **The Bakhtyār Nāma: A Persian Romance** — Unknown  `S 3-5m D M`
+- [x] #10148 **The Merry Adventures of Robin Hood** — Howard Pyle  `S 3-5m D M`
+- [x] #4363 **Beyond Good and Evil** — Friedrich Wilhelm Nietzsche  `(non-narrative)`
+- [x] #6235 **The Battle of the Strong: A Romance of Two Kingdoms — Volume 6** — Gilbert Parker  `S 3-5m D M`
+- [x] #40361 **The Air Pirate** — Guy Thorne  `S 3-5m D M`
+- [x] #59827 **My Life and Loves, Vol. 1 (of 4)** — Frank Harris  `S 1m 3-5m D M`
+- [x] #62 **A princess of Mars** — Edgar Rice Burroughs  `S 1m D M`
+- [x] #1952 **The Yellow Wallpaper** — Charlotte Perkins Gilman  `S 1m 3-5m D M`
+- [x] #1400 **Great Expectations** — Charles Dickens  `S 3-5m D M`
+- [x] #1268 **The Mysterious Island** — Jules Verne  `S 1m D M`
+- [x] #21190 **Expositions of Holy Scripture: Second Corinthians, Galatians, and Philippians Chapters; I to End. Colossians, Thessalonians, and First Timothy.** — Alexander Maclaren  `(non-narrative)`
+- [x] #26315 **Shakespeare's family** — C. C. (Charlotte Carmichael) Stopes  `(non-narrative)`
+- [x] #1170 **Anabasis** — Xenophon  `S D M`
+- [x] #5921 **The History of Don Quixote, Volume 1, Complete** — Miguel de Cervantes Saavedra  `S 3-5m D M`
+- [x] #17460 **Lorna Doone: A Romance of Exmoor** — R. D. (Richard Doddridge) Blackmore  `S D M`
+- [x] #22210 **In the forbidden land : $b an account of a journey into Tibet, capture by the Tibetan lamas and soldiers, imprisonment, torture and ultimate release** — Arnold Henry Savage Landor  `S 1m D M`
+- [x] #21700 **Don Juan** — Byron, George Gordon Byron, Baron  `S 3-5m D M`
+- [x] #25359 **Boys and Girls Bookshelf; a Practical Plan of Character Building, Volume I (of 17): Fun and Thought for Little Folk** — Various  `(non-narrative)`
+- [x] #1251 **Le Morte d'Arthur: Volume 1** — Malory, Thomas, Sir  `S 1m 3-5m D M`
+- [x] #52404 **The Girl Philippa** — Robert W. (Robert William) Chambers  `S 1m D M`
+- [x] #21092 **On the Trail of the Space Pirates** — Carey Rockwell  `S 3-5m D M`
+- [x] #10441 **The Green Mouse** — Robert W. (Robert William) Chambers  `S 1m 3-5m D M`
+- [x] #205 **Walden, and On The Duty Of Civil Disobedience** — Henry David Thoreau  `S 1m 3-5m D M`
+- [x] #48893 **Mademoiselle de Maupin, Volume 1 (of 2)** — Théophile Gautier  `S 1m D M`
+- [x] #3207 **Leviathan** — Thomas Hobbes  `(non-narrative)`
+- [x] #8197 **India's Love Lyrics** — Laurence Hope  `(non-narrative)`
+- [x] #42486 **The Two Magics: The Turn of the Screw, Covering End** — Henry James  `S 1m D M`
+- [x] #30340 **The Passionate Friends** — H. G. (Herbert George) Wells  `S 3-5m D M`
+- [x] #31469 **The Shunned House** — H. P. (Howard Phillips) Lovecraft  `S 3-5m D M`
+- [x] #30849 **The Works of Robert Louis Stevenson - Swanston Edition, Vol. 20** — Robert Louis Stevenson  `S 3-5m D M`
+- [x] #139 **The Lost World** — Arthur Conan Doyle  `S 1m 3-5m D M`
+- [x] #12758 **Library of the World's Best Mystery and Detective Stories** — Unknown  `S 1m 3-5m D M`
+- [x] #78118 **Barry Locke, half-back** — Ralph Henry Barbour  `S 3-5m D M`
+- [x] #76728 **Helen Vardon's confession** — R. Austin (Richard Austin) Freeman  `S 3-5m D M`
+- [x] #45109 **The Enchiridion** — Epictetus  `(non-narrative)`
+- [x] #38983 **The Camp Fire Girls Solve a Mystery; Or, The Christmas Adventure at Carver House** — Hildegard G. Frey  `S 3-5m D M`
+- [x] #47221 **Quintus Claudius: A Romance of Imperial Rome. Volume 1** — Ernst Eckstein  `S 1m 3-5m D M`
+- [x] #18875 **The Prairie Wife** — Arthur Stringer  `S 3-5m D M`
+- [x] #16921 **Plague Ship** — Andre Norton  `S D M`
+- [x] #1636 **Phaedrus** — Plato  `(non-narrative)`
+- [x] #28780 **Peter the Brazen: A Mystery Story of Modern China** — George F. (George Frank) Worts  `S D M`
+- [x] #30434 **Occasion ... for Disaster** — Randall Garrett  `S 3-5m D M`
+- [x] #44833 **Chaucer's Works, Volume 2 — Boethius and Troilus** — Geoffrey Chaucer  `S D M`
+- [x] #17157 **Gulliver's Travels into Several Remote Regions of the World** — Jonathan Swift  `S 3-5m D M`
+- [x] #23609 **Searchlights on Health: Light on Dark Corners: A Complete Sexual Science and a Guide to Purity and Physical Manhood, Advice To Maiden, Wife, And Mother, Love, Courtship, And Marriage** — B. G. (Benjamin Grant) Jefferis  `(non-narrative)`
+- [x] #36965 **Harriet Martineau** — Florence Fenwick Miller  `S D M`
+- [x] #5131 **Childe Harold's Pilgrimage** — Byron, George Gordon Byron, Baron  `S 1m D M`
+- [x] #2542 **A Doll's House : a play** — Henrik Ibsen  `S 1m 3-5m D M`
+- [x] #940 **The Last of the Mohicans; A narrative of 1757** — James Fenimore Cooper  `S 3-5m D M`
+- [x] #1934 **Songs of Innocence and of Experience** — William Blake  `(non-narrative)`
+- [x] #203 **Uncle Tom's Cabin** — Harriet Beecher Stowe  `S 3-5m D M`
+- [x] #2199 **The Iliad** — Homer  `S 1m D M`
+- [x] #10002 **The House on the Borderland** — William Hope Hodgson  `S 1m 3-5m D M`
+- [x] #8954 **Lady Audley's Secret** — M. E. (Mary Elizabeth) Braddon  `S 1m D M`
+- [x] #24869 **The Rámáyan of Válmíki, translated into English verse** — Valmiki  `S 1m D M`
+- [x] #674 **Plutarch: Lives of the noble Grecians and Romans** — Plutarch  `S D M`
+- [x] #121 **Northanger Abbey** — Jane Austen  `S 1m 3-5m D M`
 
 ## Books 301–400
 
-- [ ] #11982 **Eighty Years and More; Reminiscences 1815-1897** — Elizabeth Cady Stanton
-- [ ] #5000 **The Notebooks of Leonardo Da Vinci — Complete** — da Vinci Leonardo
-- [ ] #23172 **The Damned Thing: 1898, From "In the Midst of Life"** — Ambrose Bierce
-- [ ] #2610 **Notre-Dame de Paris** — Victor Hugo
-- [ ] #22815 **The Philippine Islands: A Political, Geographical, Ethnographical, Social and Commercial History of the Philippine Archipelago, Embracing the Whole Period of Spanish Rule** — Foreman, John, F.R.G.S.
-- [ ] #21638 **Tarrano the Conqueror** — Ray Cummings
-- [ ] #72679 **The lesser Key of Solomon, Goetia, the book of evil spirits : $b contains two hundred diagrams and seals for invocation and convocation of spirits, necromancy, witchcraft and black art** — Unknown
-- [ ] #23319 **Mechanical Drawing Self-Taught: Comprising instructions in the selection and preparation of drawing instruments, elementary instruction in practical mechanical drawing; together with examples in simple geometry and elementary mechanism, including screw threads, gear wheels, mechanical motions, engines and boilers** — Joshua Rose
-- [ ] #14471 **The Empty House and Other Ghost Stories** — Algernon Blackwood
-- [ ] #25344 **The Scarlet Letter** — Nathaniel Hawthorne
-- [ ] #20 **Paradise Lost** — John Milton
-- [ ] #26716 **The Crown of Wild Olive: also Munera Pulveris; Pre-Raphaelitism; Aratra Pentelici; The Ethics of the Dust; Fiction, Fair and Foul; The Elements of Drawing** — John Ruskin
-- [ ] #69566 **The Egyptian Book of the dead** — Unknown
-- [ ] #12345 **Friday, the Thirteenth: A Novel** — Thomas William Lawson
-- [ ] #18575 **One Hundred Merrie And Delightsome Stories: Right Pleasaunte To Relate In All Goodly Companie By Way Of Joyance And Jollity** — Unknown
-- [ ] #20546 **The Hand in the Dark** — Arthur J. (Arthur John) Rees
-- [ ] #7735 **Paul Clifford — Complete** — Lytton, Edward Bulwer Lytton, Baron
-- [ ] #24950 **Bradford's History of 'Plimoth Plantation': From the Original Manuscript. With a Report of the Proceedings Incident to the Return of the Manuscript to Massachusetts** — William Bradford
-- [ ] #25132 **The Candidate: A Political Romance** — Joseph A. (Joseph Alexander) Altsheler
-- [ ] #11987 **By Advice of Counsel** — Arthur Cheney Train
-- [ ] #16433 **The Gay Cockade** — Temple Bailey
-- [ ] #64 **The gods of Mars** — Edgar Rice Burroughs
-- [ ] #8486 **Ghost Stories of an Antiquary** — M. R. (Montague Rhodes) James
-- [ ] #24149 **The Ambulance Made Two Trips** — Murray Leinster
-- [ ] #23599 **The Big Fix** — George O. (George Oliver) Smith
-- [ ] #76576 **The Belle of Bowling Green** — Amelia E. Barr
-- [ ] #27274 **Manures and the principles of manuring** — Charles Morton Aikman
-- [ ] #15384 **The Real Adventure** — Henry Kitchell Webster
-- [ ] #1353 **Off on a Comet! a Journey through Planetary Space** — Jules Verne
-- [ ] #14818 **The Daughter of Anderson Crow** — George Barr McCutcheon
-- [ ] #1719 **The Ballad of the White Horse** — G. K. (Gilbert Keith) Chesterton
-- [ ] #3748 **A Journey into the Interior of the Earth** — Jules Verne
-- [ ] #25326 **Lives of the Most Eminent Painters Sculptors and Architects, Vol. 01 (of 10): Cimabue to Agnolo Gaddi** — Giorgio Vasari
-- [ ] #68 **The warlord of Mars** — Edgar Rice Burroughs
-- [ ] #1399 **Anna Karenina** — Tolstoy, Leo, graf
-- [ ] #3177 **Roughing It** — Mark Twain
-- [ ] #160 **The Awakening, and Selected Short Stories** — Kate Chopin
-- [ ] #10636 **The Travels of Marco Polo — Volume 1** — Marco Polo
-- [ ] #1079 **The life and opinions of Tristram Shandy, gentleman** — Laurence Sterne
-- [ ] #20628 **Torchy and Vee** — Sewell Ford
-- [ ] #1153 **The Chessmen of Mars** — Edgar Rice Burroughs
-- [ ] #228 **The Aeneid** — Virgil
-- [ ] #20121 **Lone Star Planet** — H. Beam Piper
-- [ ] #25545 **Children's Literature: A Textbook of Sources for Teachers and Teacher-Training Classes** — Charles Madison Curry
-- [ ] #271 **Black Beauty : $b The autobiography of a horse** — Anna Sewell
-- [ ] #21500 **Memoirs of the Court of Queen Elizabeth** — Lucy Aikin
-- [ ] #1497 **The Republic** — Plato
-- [ ] #21 **Three hundred Aesop’s fables: Translated by George Fyler Townsend** — Aesop
-- [ ] #1200 **Gargantua and Pantagruel** — François Rabelais
-- [ ] #10102 **The Czar's Spy: The Mystery of a Silent Love** — William Le Queux
-- [ ] #20990 **London and the Kingdom - Volume 2: A History Derived Mainly from the Archives at Guildhall in the Custody of the Corporation of the City of London.** — Reginald R. (Reginald Robinson) Sharpe
-- [ ] #2383 **The Canterbury Tales, and Other Poems** — Geoffrey Chaucer
-- [ ] #33118 **Just Around the Corner: Romance en casserole** — Fannie Hurst
-- [ ] #29391 **Blue-grass and Broadway** — Maria Thompson Daviess
-- [ ] #551 **The Land That Time Forgot** — Edgar Rice Burroughs
-- [ ] #26706 **Manual of Military Training: Second, Revised Edition** — James A. (James Alfred) Moss
-- [ ] #45451 **The Man Who Did the Right Thing: A Romance** — Harry Johnston
-- [ ] #149 **The Lost Continent** — Edgar Rice Burroughs
-- [ ] #20439 **Susan B. Anthony: Rebel, Crusader, Humanitarian** — Alma Lutz
-- [ ] #580 **The Pickwick Papers** — Charles Dickens
-- [ ] #51356 **The Birth of Tragedy; or, Hellenism and Pessimism** — Friedrich Wilhelm Nietzsche
-- [ ] #21006 **The Governments of Europe** — Frederic Austin Ogg
-- [ ] #27713 **The Elements of Bacteriological Technique: A Laboratory Guide for Medical, Dental, and Technical Students. Second Edition Rewritten and Enlarged.** — J. W. H. (John William Henry) Eyre
-- [ ] #18151 **Time Crime** — H. Beam Piper
-- [ ] #25087 **Twenty Years of Hus'ling** — J. P. (James Perry) Johnston
-- [ ] #1597 **Andersen's Fairy Tales** — H. C. (Hans Christian) Andersen
-- [ ] #10 **The King James Version of the Bible** — Unknown
-- [ ] #967 **Nicholas Nickleby** — Charles Dickens
-- [ ] #26593 **The Place of Honeymoons** — Harold MacGrath
-- [ ] #1747 **The Red Seal** — Natalie Sumner Lincoln
-- [ ] #2376 **Up from Slavery: An Autobiography** — Booker T. Washington
-- [ ] #22088 **Apologia pro vita sua : $b being a history of his religious opinions** — John Henry Newman
-- [ ] #25695 **The Diamond Coterie** — Lawrence L. Lynch
-- [ ] #67025 **Lives of Fair and Gallant Ladies. Vol 1** — Pierre de Bourdeille Brantôme
-- [ ] #2833 **The Portrait of a Lady — Volume 1** — Henry James
-- [ ] #23745 **Aladdin & Co.: A Romance of Yankee Magic** — Herbert Quick
-- [ ] #500 **The Adventures of Pinocchio** — Carlo Collodi
-- [ ] #553 **Out of Time's Abyss** — Edgar Rice Burroughs
-- [ ] #1001 **Divine Comedy, Longfellow's Translation, Hell** — Dante Alighieri
-- [ ] #3913 **The Confessions of Jean Jacques Rousseau — Complete** — Jean-Jacques Rousseau
-- [ ] #57426 **Baron Trump's Marvellous Underground Journey** — Ingersoll Lockwood
-- [ ] #21811 **The Works of Lord Byron. Vol. 3** — Byron, George Gordon Byron, Baron
-- [ ] #25112 **The Life of King Edward VII: with a sketch of the career of King George V** — J. Castell (John Castell) Hopkins
-- [ ] #43936 **The Wonderful Wizard of Oz** — L. Frank (Lyman Frank) Baum
-- [ ] #9911 **The Torrents of Spring** — Ivan Sergeevich Turgenev
-- [ ] #26901 **A History of the Nineteenth Century, Year by Year. Volume 2 (of 3)** — Edwin Emerson
-- [ ] #5225 **The Satyricon — Complete** — Petronius Arbiter
-- [ ] #785 **On the Nature of Things** — Titus Lucretius Carus
-- [ ] #2397 **The Story of My Life: With her letters (1887-1901) and a supplementary account of her education, including passages from the reports and letters of her teacher, Anne Mansfield Sullivan, by John Albert Macy** — Helen Keller
-- [ ] #3567 **Memoirs of Napoleon Bonaparte — Complete** — Louis Antoine Fauvelet de Bourrienne
-- [ ] #28621 **The Metamorphoses of Publius Ovidus Naso in English blank verse Vols. I & II** — Ovid
-- [ ] #22749 **From Edinburgh to India & Burmah** — W. G. (William Gordon) Burn Murdoch
-- [ ] #599 **Vanity Fair** — William Makepeace Thackeray
-- [ ] #71865 **Mrs. Dalloway** — Virginia Woolf
-- [ ] #30254 **The Romance of Lust: A classic Victorian erotic novel** — Anonymous
-- [ ] #27739 **Poetical Works of Matthew Arnold** — Matthew Arnold
-- [ ] #73 **The Red Badge of Courage: An Episode of the American Civil War** — Stephen Crane
-- [ ] #26704 **A Woman at Bay; Or, A Fiend in Skirts** — Nicholas (House name) Carter
-- [ ] #1041 **Shakespeare's Sonnets** — William Shakespeare
-- [ ] #5307 **The Letters of Wolfgang Amadeus Mozart — Volume 01** — Wolfgang Amadeus Mozart
+- [x] #11982 **Eighty Years and More; Reminiscences 1815-1897** — Elizabeth Cady Stanton  `S 1m 3-5m D M`
+- [x] #5000 **The Notebooks of Leonardo Da Vinci — Complete** — da Vinci Leonardo  `(non-narrative)`
+- [x] #23172 **The Damned Thing: 1898, From "In the Midst of Life"** — Ambrose Bierce  `S 1m 3-5m D M`
+- [x] #2610 **Notre-Dame de Paris** — Victor Hugo  `S 3-5m D M`
+- [x] #22815 **The Philippine Islands: A Political, Geographical, Ethnographical, Social and Commercial History of the Philippine Archipelago, Embracing the Whole Period of Spanish Rule** — Foreman, John, F.R.G.S.  `(non-narrative)`
+- [x] #21638 **Tarrano the Conqueror** — Ray Cummings  `S 1m 3-5m D M`
+- [x] #72679 **The lesser Key of Solomon, Goetia, the book of evil spirits : $b contains two hundred diagrams and seals for invocation and convocation of spirits, necromancy, witchcraft and black art** — Unknown  `(non-narrative)`
+- [x] #23319 **Mechanical Drawing Self-Taught: Comprising instructions in the selection and preparation of drawing instruments, elementary instruction in practical mechanical drawing; together with examples in simple geometry and elementary mechanism, including screw threads, gear wheels, mechanical motions, engines and boilers** — Joshua Rose  `(non-narrative)`
+- [x] #14471 **The Empty House and Other Ghost Stories** — Algernon Blackwood  `S 1m 3-5m D M`
+- [x] #25344 **The Scarlet Letter** — Nathaniel Hawthorne  `S D M`
+- [x] #20 **Paradise Lost** — John Milton  `S 1m D M`
+- [x] #26716 **The Crown of Wild Olive: also Munera Pulveris; Pre-Raphaelitism; Aratra Pentelici; The Ethics of the Dust; Fiction, Fair and Foul; The Elements of Drawing** — John Ruskin  `(non-narrative)`
+- [x] #69566 **The Egyptian Book of the dead** — Unknown  `(non-narrative)`
+- [x] #12345 **Friday, the Thirteenth: A Novel** — Thomas William Lawson  `S 3-5m D M`
+- [x] #18575 **One Hundred Merrie And Delightsome Stories: Right Pleasaunte To Relate In All Goodly Companie By Way Of Joyance And Jollity** — Unknown  `S 1m 3-5m D M`
+- [x] #20546 **The Hand in the Dark** — Arthur J. (Arthur John) Rees  `S D M`
+- [x] #7735 **Paul Clifford — Complete** — Lytton, Edward Bulwer Lytton, Baron  `S 3-5m D M`
+- [x] #24950 **Bradford's History of 'Plimoth Plantation': From the Original Manuscript. With a Report of the Proceedings Incident to the Return of the Manuscript to Massachusetts** — William Bradford  `S D M`
+- [x] #25132 **The Candidate: A Political Romance** — Joseph A. (Joseph Alexander) Altsheler  `S D M`
+- [x] #11987 **By Advice of Counsel** — Arthur Cheney Train  `S 3-5m D M`
+- [x] #16433 **The Gay Cockade** — Temple Bailey  `S 1m D M`
+- [x] #64 **The gods of Mars** — Edgar Rice Burroughs  `S 1m D M`
+- [x] #8486 **Ghost Stories of an Antiquary** — M. R. (Montague Rhodes) James  `S 1m D M`
+- [x] #24149 **The Ambulance Made Two Trips** — Murray Leinster  `S 1m 3-5m D M`
+- [x] #23599 **The Big Fix** — George O. (George Oliver) Smith  `S D M`
+- [x] #76576 **The Belle of Bowling Green** — Amelia E. Barr  `S D M`
+- [x] #27274 **Manures and the principles of manuring** — Charles Morton Aikman  `(non-narrative)`
+- [x] #15384 **The Real Adventure** — Henry Kitchell Webster  `S 3-5m D M`
+- [x] #1353 **Off on a Comet! a Journey through Planetary Space** — Jules Verne  `S 3-5m D M`
+- [x] #14818 **The Daughter of Anderson Crow** — George Barr McCutcheon  `S 3-5m D M`
+- [x] #1719 **The Ballad of the White Horse** — G. K. (Gilbert Keith) Chesterton  `S 3-5m D M`
+- [x] #3748 **A Journey into the Interior of the Earth** — Jules Verne  `S 1m D M`
+- [x] #25326 **Lives of the Most Eminent Painters Sculptors and Architects, Vol. 01 (of 10): Cimabue to Agnolo Gaddi** — Giorgio Vasari  `(non-narrative)`
+- [x] #68 **The warlord of Mars** — Edgar Rice Burroughs  `S 3-5m D M`
+- [x] #1399 **Anna Karenina** — Tolstoy, Leo, graf  `S 1m 3-5m D M`
+- [x] #3177 **Roughing It** — Mark Twain  `S 3-5m D M`
+- [x] #160 **The Awakening, and Selected Short Stories** — Kate Chopin  `S 1m 3-5m D M`
+- [x] #10636 **The Travels of Marco Polo — Volume 1** — Marco Polo  `S D M`
+- [x] #1079 **The life and opinions of Tristram Shandy, gentleman** — Laurence Sterne  `S 1m D M`
+- [x] #20628 **Torchy and Vee** — Sewell Ford  `S 3-5m D M`
+- [x] #1153 **The Chessmen of Mars** — Edgar Rice Burroughs  `S 1m D M`
+- [x] #228 **The Aeneid** — Virgil  `S 1m D M`
+- [x] #20121 **Lone Star Planet** — H. Beam Piper  `S 3-5m D M`
+- [x] #25545 **Children's Literature: A Textbook of Sources for Teachers and Teacher-Training Classes** — Charles Madison Curry  `(non-narrative)`
+- [x] #271 **Black Beauty : $b The autobiography of a horse** — Anna Sewell  `S 1m 3-5m D M`
+- [x] #21500 **Memoirs of the Court of Queen Elizabeth** — Lucy Aikin  `S D M`
+- [x] #1497 **The Republic** — Plato  `S D M`
+- [x] #21 **Three hundred Aesop’s fables: Translated by George Fyler Townsend** — Aesop  `S 1m D M`
+- [x] #1200 **Gargantua and Pantagruel** — François Rabelais  `S D M`
+- [x] #10102 **The Czar's Spy: The Mystery of a Silent Love** — William Le Queux  `S D M`
+- [x] #20990 **London and the Kingdom - Volume 2: A History Derived Mainly from the Archives at Guildhall in the Custody of the Corporation of the City of London.** — Reginald R. (Reginald Robinson) Sharpe  `(non-narrative)`
+- [x] #2383 **The Canterbury Tales, and Other Poems** — Geoffrey Chaucer  `S D M`
+- [x] #33118 **Just Around the Corner: Romance en casserole** — Fannie Hurst  `S 3-5m D M`
+- [x] #29391 **Blue-grass and Broadway** — Maria Thompson Daviess  `S D M`
+- [x] #551 **The Land That Time Forgot** — Edgar Rice Burroughs  `S 1m 3-5m D M`
+- [x] #26706 **Manual of Military Training: Second, Revised Edition** — James A. (James Alfred) Moss  `(non-narrative)`
+- [x] #45451 **The Man Who Did the Right Thing: A Romance** — Harry Johnston  `S D M`
+- [x] #149 **The Lost Continent** — Edgar Rice Burroughs  `S 1m D M`
+- [x] #20439 **Susan B. Anthony: Rebel, Crusader, Humanitarian** — Alma Lutz  `S 1m D M`
+- [x] #580 **The Pickwick Papers** — Charles Dickens  `S 3-5m D M`
+- [x] #51356 **The Birth of Tragedy; or, Hellenism and Pessimism** — Friedrich Wilhelm Nietzsche  `(non-narrative)`
+- [x] #21006 **The Governments of Europe** — Frederic Austin Ogg  `(non-narrative)`
+- [x] #27713 **The Elements of Bacteriological Technique: A Laboratory Guide for Medical, Dental, and Technical Students. Second Edition Rewritten and Enlarged.** — J. W. H. (John William Henry) Eyre  `(non-narrative)`
+- [x] #18151 **Time Crime** — H. Beam Piper  `S D M`
+- [x] #25087 **Twenty Years of Hus'ling** — J. P. (James Perry) Johnston  `S 3-5m D M`
+- [x] #1597 **Andersen's Fairy Tales** — H. C. (Hans Christian) Andersen  `S 3-5m D M`
+- [x] #10 **The King James Version of the Bible** — Unknown  `S 1m 3-5m D M`
+- [x] #967 **Nicholas Nickleby** — Charles Dickens  `S 1m 3-5m D M`
+- [x] #26593 **The Place of Honeymoons** — Harold MacGrath  `S D M`
+- [x] #1747 **The Red Seal** — Natalie Sumner Lincoln  `S 1m 3-5m D M`
+- [x] #2376 **Up from Slavery: An Autobiography** — Booker T. Washington  `S 1m 3-5m D M`
+- [x] #22088 **Apologia pro vita sua : $b being a history of his religious opinions** — John Henry Newman  `S D M`
+- [x] #25695 **The Diamond Coterie** — Lawrence L. Lynch  `S D M`
+- [x] #67025 **Lives of Fair and Gallant Ladies. Vol 1** — Pierre de Bourdeille Brantôme  `M`
+- [x] #2833 **The Portrait of a Lady — Volume 1** — Henry James  `S 3-5m D M`
+- [x] #23745 **Aladdin & Co.: A Romance of Yankee Magic** — Herbert Quick  `S D M`
+- [x] #500 **The Adventures of Pinocchio** — Carlo Collodi  `S 1m 3-5m D M`
+- [x] #553 **Out of Time's Abyss** — Edgar Rice Burroughs  `S 1m 3-5m D M`
+- [x] #1001 **Divine Comedy, Longfellow's Translation, Hell** — Dante Alighieri  `S 1m 3-5m D M`
+- [x] #3913 **The Confessions of Jean Jacques Rousseau — Complete** — Jean-Jacques Rousseau  `S 3-5m D M`
+- [x] #57426 **Baron Trump's Marvellous Underground Journey** — Ingersoll Lockwood  `S 1m D M`
+- [x] #21811 **The Works of Lord Byron. Vol. 3** — Byron, George Gordon Byron, Baron  `(non-narrative)`
+- [x] #25112 **The Life of King Edward VII: with a sketch of the career of King George V** — J. Castell (John Castell) Hopkins  `S D M`
+- [x] #43936 **The Wonderful Wizard of Oz** — L. Frank (Lyman Frank) Baum  `S 1m 3-5m D M`
+- [x] #9911 **The Torrents of Spring** — Ivan Sergeevich Turgenev  `S 1m 3-5m D M`
+- [x] #26901 **A History of the Nineteenth Century, Year by Year. Volume 2 (of 3)** — Edwin Emerson  `(non-narrative)`
+- [x] #5225 **The Satyricon — Complete** — Petronius Arbiter  `S 3-5m D M`
+- [x] #785 **On the Nature of Things** — Titus Lucretius Carus  `(non-narrative)`
+- [x] #2397 **The Story of My Life: With her letters (1887-1901) and a supplementary account of her education, including passages from the reports and letters of her teacher, Anne Mansfield Sullivan, by John Albert Macy** — Helen Keller  `S 1m 3-5m D M`
+- [x] #3567 **Memoirs of Napoleon Bonaparte — Complete** — Louis Antoine Fauvelet de Bourrienne  `S D M`
+- [x] #28621 **The Metamorphoses of Publius Ovidus Naso in English blank verse Vols. I & II** — Ovid  `S D M`
+- [x] #22749 **From Edinburgh to India & Burmah** — W. G. (William Gordon) Burn Murdoch  `S 3-5m D M`
+- [x] #599 **Vanity Fair** — William Makepeace Thackeray  `S 3-5m D M`
+- [x] #71865 **Mrs. Dalloway** — Virginia Woolf  `S D M`
+- [x] #30254 **The Romance of Lust: A classic Victorian erotic novel** — Anonymous  `S D M`
+- [x] #27739 **Poetical Works of Matthew Arnold** — Matthew Arnold  `(non-narrative)`
+- [x] #73 **The Red Badge of Courage: An Episode of the American Civil War** — Stephen Crane  `S 1m 3-5m D M`
+- [x] #26704 **A Woman at Bay; Or, A Fiend in Skirts** — Nicholas (House name) Carter  `S 3-5m D M`
+- [x] #1041 **Shakespeare's Sonnets** — William Shakespeare  `M`
+- [x] #5307 **The Letters of Wolfgang Amadeus Mozart — Volume 01** — Wolfgang Amadeus Mozart  `S 1m D M`
 
 ## Books 401–500
 
-- [ ] #27430 **The Critical Period of American History** — John Fiske
-- [ ] #8710 **The Doré Bible Gallery, Complete: Containing One Hundred Superb Illustrations, and a Page of Explanatory Letter-press Facing Each** — Unknown
-- [ ] #2130 **Utopia** — More, Thomas, Saint
-- [ ] #7370 **Second Treatise of Government** — John Locke
-- [ ] #696 **The Castle of Otranto** — Horace Walpole
-- [ ] #19742 **The Heather-Moon** — C. N. (Charles Norris) Williamson
-- [ ] #19146 **The Entailed Hat; Or, Patty Cannon's Times** — George Alfred Townsend
-- [ ] #27114 **Ancient States and Empires: For Colleges and Schools** — John Lord
-- [ ] #202 **My Bondage and My Freedom** — Frederick Douglass
-- [ ] #28046 **Critical and Historical Essays, Volume III (of 3)** — Macaulay, Thomas Babington Macaulay, Baron
-- [ ] #19412 **Set in Silver** — C. N. (Charles Norris) Williamson
-- [ ] #9473 **The Knights of the Cross, or, Krzyzacy: Historical Romance** — Henryk Sienkiewicz
-- [ ] #11339 **Aesop's Fables; a new translation** — Aesop
-- [ ] #21280 **Surgical Experiences in South Africa, 1899-1900: Being Mainly a Clinical Study of the Nature and Effects of Injuries Produced by Bullets of Small Calibre** — George Henry Makins
-- [ ] #26416 **The Naval History of the United States. Volume 2** — Willis J. (Willis John) Abbot
-- [ ] #22153 **Pagan and Christian Rome** — Rodolfo Amedeo Lanciani
-- [ ] #26318 **The Horsewoman: A Practical Guide to Side-Saddle Riding, 2nd. Ed.** — Alice M. Hayes
-- [ ] #78033 **The silent Baltic : $b or, Detained near Kiel** — Marcus Knox
-- [ ] #23789 **Cruel as the grave** — Emma Dorothy Eliza Nevitte Southworth
-- [ ] #2040 **Confessions of an English Opium-Eater** — Thomas De Quincey
-- [ ] #6867 **Lineage, Life and Labors of José Rizal, Philippine Patriot** — Austin Craig
-- [ ] #26009 **Adventures of a Young Naturalist** — Lucien Biart
-- [ ] #3891 **Memoirs of the Court of Marie Antoinette, Queen of France, Complete: Being the Historic Memoirs of Madam Campan, First Lady in Waiting to the Queen** — Mme. (Jeanne-Louise-Henriette) Campan
-- [ ] #3875 **Memoirs of Louis XIV and His Court and of the Regency — Complete** — Saint-Simon, Louis de Rouvroy, duc de
-- [ ] #348 **Hesiod, the Homeric Hymns, and Homerica** — Hesiod
-- [ ] #25049 **My Reminiscences of the Anglo-Boer War** — Ben J. (Ben Johannis) Viljoen
-- [ ] #23403 **Special Report on Diseases of the Horse** — United States. Bureau of Animal Industry
-- [ ] #28329 **The Land of Thor** — J. Ross (John Ross) Browne
-- [ ] #15474 **The Mahabharata of Krishna-Dwaipayana Vyasa, Volume 1: Books 1, 2 and 3** — Unknown
-- [ ] #1279 **Poems and Songs of Robert Burns** — Robert Burns
-- [ ] #78102 **The wheel of earth** — Helga Sandburg
-- [ ] #25977 **My Recollections of Lord Byron** — Guiccioli, Teresa, contessa di
-- [ ] #1564 **Boswell's Life of Johnson: Abridged and edited, with an introduction by Charles Grosvenor Osgood** — James Boswell
-- [ ] #15272 **Spenser's The Faerie Queene, Book I** — Edmund Spenser
-- [ ] #21990 **The Campaign of 1776 around New York and Brooklyn: Including a new and circumstantial account of the battle of Long island and the loss of New York, with a review of events to the close of the year** — Henry Phelps Johnston
-- [ ] #25810 **In Connection with the De Willoughby Claim** — Frances Hodgson Burnett
-- [ ] #27577 **The Works of Lord Byron, Vol. 7. Poetry** — Byron, George Gordon Byron, Baron
-- [ ] #22542 **Jesus the Christ: A Study of the Messiah and His Mission According to Holy; Scriptures Both Ancient and Modern** — James E. (James Edward) Talmage
-- [ ] #21012 **The loyalists of America and their times : $b from 1620 to 1816, Vol. 1 of 2** — Egerton Ryerson
-- [ ] #22136 **The Book-Hunter: A New Edition, with a Memoir of the Author** — John Hill Burton
-- [ ] #21262 **The Works of Christopher Marlowe, Vol. 3 (of 3)** — Christopher Marlowe
-- [ ] #27761 **Hamlet** — William Shakespeare
-- [ ] #23186 **The Handbook to English Heraldry** — Charles Boutell
-- [ ] #46 **A Christmas Carol in Prose; Being a Ghost Story of Christmas** — Charles Dickens
-- [ ] #27942 **A System of Logic, Ratiocinative and Inductive** — John Stuart Mill
-- [ ] #28072 **A history of art in Chaldæa & Assyria, Vol. 1 (of 2)** — Georges Perrot
-- [ ] #26184 **Simple Sabotage Field Manual** — United States. Office of Strategic Services
-- [ ] #22400 **Fox's Book of Martyrs: Or A History of the Lives, Sufferings, and Triumphant; Deaths of the Primitive Protestant Martyrs** — John Foxe
-- [ ] #27766 **Romance of Roman Villas (The Renaissance)** — Elizabeth W. (Elizabeth Williams) Champney
-- [ ] #25919 **Miss Mapp** — E. F. (Edward Frederic) Benson
-- [ ] #55317 **The Meditations of the Emperor Marcus Aurelius Antoninus: A new rendering based on the Foulis translation of 1742** — Emperor of Rome Marcus Aurelius
-- [ ] #21965 **Preventable Diseases** — Woods Hutchinson
-- [ ] #55201 **The Republic of Plato** — Plato
-- [ ] #55300 **Society as I Have Found It** — Ward McAllister
-- [ ] #18591 **The Life of George Washington, Vol. 1: Commander in Chief of the American Forces During the War; which Established the Independence of his Country and First; President of the United States** — John Marshall
-- [ ] #20848 **An Elementary Study of Chemistry** — William McPherson
-- [ ] #23637 **The Bishop of Cottontown: A Story of the Southern Cotton Mills** — John Trotwood Moore
-- [ ] #57821 **Scenes in the Life of Harriet Tubman** — Sarah H. (Sarah Hopkins) Bradford
-- [ ] #22903 **The Expedition to Borneo of H.M.S. Dido: For the Suppression of Piracy** — Keppel, Henry, Sir
-- [ ] #158 **Emma** — Jane Austen
-- [ ] #54879 **The Memoirs of François René Vicomte de Chateaubriand sometime Ambassador to England, Volume 4 (of 6): Mémoires d'outre-tombe volume 4** — Chateaubriand, François-René, vicomte de
-- [ ] #28226 **The War in the Air; Vol. 1: The Part played in the Great War by the Royal Air Force** — Raleigh, Walter Alexander, Sir
-- [ ] #25842 **Royal Palaces and Parks of France** — M. F. (Milburg Francisco) Mansfield
-- [ ] #25912 **Sea Power in its Relations to the War of 1812. Volume 2** — A. T. (Alfred Thayer) Mahan
-- [ ] #22066 **The Long Roll** — Mary Johnston
-- [ ] #23321 **The Choctaw Freedmen and the Story of Oak Hill Industrial Academy** — Robert Elliott Flickinger
-- [ ] #12 **Through the Looking-Glass** — Lewis Carroll
-- [ ] #34901 **On Liberty** — John Stuart Mill
-- [ ] #22764 **On the Origin of Species by Means of Natural Selection: or the Preservation of Favoured Races in the Struggle for Life. (2nd edition)** — Charles Darwin
-- [ ] #21027 **The Trial of Charles Random de Berenger, Sir Thomas Cochrane, commonly called Lord Cochrane, the Hon. Andrew Cochrane Johnstone, Richard Gathorne Butt, Ralph Sandom, Alexander M'Rae, John Peter Holloway, and Henry Lyte for A Conspiracy: In the Court of King's Bench, Guildhall, on Wednesday the 8th, and Thursday the 9th of June, 1814** — Unknown
-- [ ] #42243 **The Hour of the Dragon** — Robert E. (Robert Ervin) Howard
-- [ ] #22094 **Travels in the Great Desert of Sahara, in the Years of 1845 and 1846** — James Richardson
-- [ ] #14838 **The Tale of Peter Rabbit** — Beatrix Potter
-- [ ] #41537 **The Divine Comedy of Dante Alighieri: The Inferno** — Dante Alighieri
-- [ ] #514 **Little Women** — Louisa May Alcott
-- [ ] #4599 **The Small House at Allington** — Anthony Trollope
-- [ ] #27288 **The Life of Trust: Being a Narrative of the Lord's Dealings With George Müller** — George Müller
-- [ ] #25937 **Studies in Literature and History** — Lyall, Alfred C., Sir
-- [ ] #2489 **Moby Dick; Or, The Whale** — Herman Melville
-- [ ] #26572 **Chips from a German Workshop, Volume 3: Essays on Literature, Biography, and Antiquities** — F. Max (Friedrich Max) Müller
-- [ ] #23475 **The Works of Lord Byron. Vol. 5: Poetry** — Byron, George Gordon Byron, Baron
-- [ ] #23790 **The Ultimate Weapon** — Campbell, John W., Jr. (John Wood)
-- [ ] #25701 **Royal Edinburgh: Her Saints, Kings, Prophets and Poets** — Mrs. (Margaret) Oliphant
-- [ ] #3300 **An Inquiry into the Nature and Causes of the Wealth of Nations** — Adam Smith
-- [ ] #24780 **The letters of Queen Victoria, vol. 2, 1844-1853 : $b A selection from Her Majesty's correspondence between the years 1837 and 1861.** — Queen of Great Britain Victoria
-- [ ] #132 **The Art of War** — active 6th century B.C. Sunzi
-- [ ] #996 **Don Quixote** — Miguel de Cervantes Saavedra
-- [ ] #83 **From the Earth to the moon; and, round the moon** — Jules Verne
-- [ ] #25833 **The Great Controversy Between Christ and Satan** — Ellen Gould Harmon White
-- [ ] #26951 **'Firebrand' Trevison** — Charles Alden Seltzer
-- [ ] #28152 **Sword and Pen: Ventures and Adventures of Willard Glazier** — John Algernon Owens
-- [ ] #3526 **Five Weeks in a Balloon: Or, Journeys and Discoveries in Africa by Three Englishmen** — Jules Verne
-- [ ] #22397 **Shakespearean Playhouses: A History of English Theatres from the Beginnings to the Restoration** — Joseph Quincy Adams
-- [ ] #56463 **Bacon's Essays, and Wisdom of the Ancients** — Francis Bacon
-- [ ] #1228 **On the Origin of Species By Means of Natural Selection: Or, the Preservation of Favoured Races in the Struggle for Life** — Charles Darwin
-- [ ] #3823 **Thelma** — Marie Corelli
-- [ ] #4923 **King Midas: a Romance** — Upton Sinclair
-- [ ] #5700 **Love and Life: An Old Story in Eighteenth Century Costume** — Charlotte M. (Charlotte Mary) Yonge
-- [ ] #26659 **The Will to Believe, and Other Essays in Popular Philosophy** — William James
-- [ ] #4206 **The Letters of Franklin K. Lane, Personal and Political** — Franklin K. Lane
+- [x] #27430 **The Critical Period of American History** — John Fiske  `S 1m D M`
+- [x] #8710 **The Doré Bible Gallery, Complete: Containing One Hundred Superb Illustrations, and a Page of Explanatory Letter-press Facing Each** — Unknown  `(non-narrative)`
+- [x] #2130 **Utopia** — More, Thomas, Saint  `S D M`
+- [x] #7370 **Second Treatise of Government** — John Locke  `(non-narrative)`
+- [x] #696 **The Castle of Otranto** — Horace Walpole  `S D M`
+- [x] #19742 **The Heather-Moon** — C. N. (Charles Norris) Williamson  `S 3-5m D M`
+- [x] #19146 **The Entailed Hat; Or, Patty Cannon's Times** — George Alfred Townsend  `S 3-5m D M`
+- [x] #27114 **Ancient States and Empires: For Colleges and Schools** — John Lord  `(non-narrative)`
+- [x] #202 **My Bondage and My Freedom** — Frederick Douglass  `S 3-5m D M`
+- [x] #28046 **Critical and Historical Essays, Volume III (of 3)** — Macaulay, Thomas Babington Macaulay, Baron  `(non-narrative)`
+- [x] #19412 **Set in Silver** — C. N. (Charles Norris) Williamson  `S 3-5m D M`
+- [x] #9473 **The Knights of the Cross, or, Krzyzacy: Historical Romance** — Henryk Sienkiewicz  `S 1m D M`
+- [x] #11339 **Aesop's Fables; a new translation** — Aesop  `S 1m 3-5m D M`
+- [x] #21280 **Surgical Experiences in South Africa, 1899-1900: Being Mainly a Clinical Study of the Nature and Effects of Injuries Produced by Bullets of Small Calibre** — George Henry Makins  `(non-narrative)`
+- [x] #26416 **The Naval History of the United States. Volume 2** — Willis J. (Willis John) Abbot  `S D M`
+- [x] #22153 **Pagan and Christian Rome** — Rodolfo Amedeo Lanciani  `(non-narrative)`
+- [x] #26318 **The Horsewoman: A Practical Guide to Side-Saddle Riding, 2nd. Ed.** — Alice M. Hayes  `(non-narrative)`
+- [x] #78033 **The silent Baltic : $b or, Detained near Kiel** — Marcus Knox  `S 1m D M`
+- [x] #23789 **Cruel as the grave** — Emma Dorothy Eliza Nevitte Southworth  `S D M`
+- [x] #2040 **Confessions of an English Opium-Eater** — Thomas De Quincey  `S 1m 3-5m D M`
+- [x] #6867 **Lineage, Life and Labors of José Rizal, Philippine Patriot** — Austin Craig  `S D M`
+- [x] #26009 **Adventures of a Young Naturalist** — Lucien Biart  `S 1m D M`
+- [x] #3891 **Memoirs of the Court of Marie Antoinette, Queen of France, Complete: Being the Historic Memoirs of Madam Campan, First Lady in Waiting to the Queen** — Mme. (Jeanne-Louise-Henriette) Campan  `S 3-5m D M`
+- [x] #3875 **Memoirs of Louis XIV and His Court and of the Regency — Complete** — Saint-Simon, Louis de Rouvroy, duc de  `S 1m 3-5m D M`
+- [x] #348 **Hesiod, the Homeric Hymns, and Homerica** — Hesiod  `S D M`
+- [x] #25049 **My Reminiscences of the Anglo-Boer War** — Ben J. (Ben Johannis) Viljoen  `S 1m D M`
+- [x] #23403 **Special Report on Diseases of the Horse** — United States. Bureau of Animal Industry  `(non-narrative)`
+- [x] #28329 **The Land of Thor** — J. Ross (John Ross) Browne  `S 1m 3-5m D M`
+- [x] #15474 **The Mahabharata of Krishna-Dwaipayana Vyasa, Volume 1: Books 1, 2 and 3** — Unknown  `S D M`
+- [x] #1279 **Poems and Songs of Robert Burns** — Robert Burns  `(non-narrative)`
+- [x] #78102 **The wheel of earth** — Helga Sandburg  `S 3-5m D M`
+- [x] #25977 **My Recollections of Lord Byron** — Guiccioli, Teresa, contessa di  `(non-narrative)`
+- [x] #1564 **Boswell's Life of Johnson: Abridged and edited, with an introduction by Charles Grosvenor Osgood** — James Boswell  `S 1m 3-5m D M`
+- [x] #15272 **Spenser's The Faerie Queene, Book I** — Edmund Spenser  `S 3-5m D M`
+- [x] #21990 **The Campaign of 1776 around New York and Brooklyn: Including a new and circumstantial account of the battle of Long island and the loss of New York, with a review of events to the close of the year** — Henry Phelps Johnston  `S D M`
+- [x] #25810 **In Connection with the De Willoughby Claim** — Frances Hodgson Burnett  `S D M`
+- [x] #27577 **The Works of Lord Byron, Vol. 7. Poetry** — Byron, George Gordon Byron, Baron  `(non-narrative)`
+- [x] #22542 **Jesus the Christ: A Study of the Messiah and His Mission According to Holy; Scriptures Both Ancient and Modern** — James E. (James Edward) Talmage  `(non-narrative)`
+- [x] #21012 **The loyalists of America and their times : $b from 1620 to 1816, Vol. 1 of 2** — Egerton Ryerson  `(non-narrative)`
+- [x] #22136 **The Book-Hunter: A New Edition, with a Memoir of the Author** — John Hill Burton  `(non-narrative)`
+- [x] #21262 **The Works of Christopher Marlowe, Vol. 3 (of 3)** — Christopher Marlowe  `(non-narrative)`
+- [x] #27761 **Hamlet** — William Shakespeare  `S D M`
+- [x] #23186 **The Handbook to English Heraldry** — Charles Boutell  `(non-narrative)`
+- [x] #46 **A Christmas Carol in Prose; Being a Ghost Story of Christmas** — Charles Dickens  `S 1m 3-5m D M`
+- [x] #27942 **A System of Logic, Ratiocinative and Inductive** — John Stuart Mill  `(non-narrative)`
+- [x] #28072 **A history of art in Chaldæa & Assyria, Vol. 1 (of 2)** — Georges Perrot  `(non-narrative)`
+- [x] #26184 **Simple Sabotage Field Manual** — United States. Office of Strategic Services  `(non-narrative)`
+- [x] #22400 **Fox's Book of Martyrs: Or A History of the Lives, Sufferings, and Triumphant; Deaths of the Primitive Protestant Martyrs** — John Foxe  `S 1m D M`
+- [x] #27766 **Romance of Roman Villas (The Renaissance)** — Elizabeth W. (Elizabeth Williams) Champney  `S 1m D M`
+- [x] #25919 **Miss Mapp** — E. F. (Edward Frederic) Benson  `S 1m 3-5m D M`
+- [x] #55317 **The Meditations of the Emperor Marcus Aurelius Antoninus: A new rendering based on the Foulis translation of 1742** — Emperor of Rome Marcus Aurelius  `(non-narrative)`
+- [x] #21965 **Preventable Diseases** — Woods Hutchinson  `(non-narrative)`
+- [x] #55201 **The Republic of Plato** — Plato  `S D M`
+- [x] #55300 **Society as I Have Found It** — Ward McAllister  `S D M`
+- [x] #18591 **The Life of George Washington, Vol. 1: Commander in Chief of the American Forces During the War; which Established the Independence of his Country and First; President of the United States** — John Marshall  `S D M`
+- [x] #20848 **An Elementary Study of Chemistry** — William McPherson  `(non-narrative)`
+- [x] #23637 **The Bishop of Cottontown: A Story of the Southern Cotton Mills** — John Trotwood Moore  `S 1m 3-5m D M`
+- [x] #57821 **Scenes in the Life of Harriet Tubman** — Sarah H. (Sarah Hopkins) Bradford  `S 1m 3-5m D M`
+- [x] #22903 **The Expedition to Borneo of H.M.S. Dido: For the Suppression of Piracy** — Keppel, Henry, Sir  `S D M`
+- [x] #158 **Emma** — Jane Austen  `S 1m 3-5m D M`
+- [x] #54879 **The Memoirs of François René Vicomte de Chateaubriand sometime Ambassador to England, Volume 4 (of 6): Mémoires d'outre-tombe volume 4** — Chateaubriand, François-René, vicomte de  `S D M`
+- [x] #28226 **The War in the Air; Vol. 1: The Part played in the Great War by the Royal Air Force** — Raleigh, Walter Alexander, Sir  `(non-narrative)`
+- [x] #25842 **Royal Palaces and Parks of France** — M. F. (Milburg Francisco) Mansfield  `(non-narrative)`
+- [x] #25912 **Sea Power in its Relations to the War of 1812. Volume 2** — A. T. (Alfred Thayer) Mahan  `(non-narrative)`
+- [x] #22066 **The Long Roll** — Mary Johnston  `S 3-5m D M`
+- [x] #23321 **The Choctaw Freedmen and the Story of Oak Hill Industrial Academy** — Robert Elliott Flickinger  `(non-narrative)`
+- [x] #12 **Through the Looking-Glass** — Lewis Carroll  `S 1m 3-5m D M`
+- [x] #34901 **On Liberty** — John Stuart Mill  `(non-narrative)`
+- [x] #22764 **On the Origin of Species by Means of Natural Selection: or the Preservation of Favoured Races in the Struggle for Life. (2nd edition)** — Charles Darwin  `(non-narrative)`
+- [x] #21027 **The Trial of Charles Random de Berenger, Sir Thomas Cochrane, commonly called Lord Cochrane, the Hon. Andrew Cochrane Johnstone, Richard Gathorne Butt, Ralph Sandom, Alexander M'Rae, John Peter Holloway, and Henry Lyte for A Conspiracy: In the Court of King's Bench, Guildhall, on Wednesday the 8th, and Thursday the 9th of June, 1814** — Unknown  `S D M`
+- [x] #42243 **The Hour of the Dragon** — Robert E. (Robert Ervin) Howard  `S 3-5m D M`
+- [x] #22094 **Travels in the Great Desert of Sahara, in the Years of 1845 and 1846** — James Richardson  `S 3-5m D M`
+- [x] #14838 **The Tale of Peter Rabbit** — Beatrix Potter  `S D M`
+- [x] #41537 **The Divine Comedy of Dante Alighieri: The Inferno** — Dante Alighieri  `S D M`
+- [x] #514 **Little Women** — Louisa May Alcott  `S 1m 3-5m D M`
+- [x] #4599 **The Small House at Allington** — Anthony Trollope  `S 3-5m D M`
+- [x] #27288 **The Life of Trust: Being a Narrative of the Lord's Dealings With George Müller** — George Müller  `S D M`
+- [x] #25937 **Studies in Literature and History** — Lyall, Alfred C., Sir  `(non-narrative)`
+- [x] #2489 **Moby Dick; Or, The Whale** — Herman Melville  `S 1m D M`
+- [x] #26572 **Chips from a German Workshop, Volume 3: Essays on Literature, Biography, and Antiquities** — F. Max (Friedrich Max) Müller  `(non-narrative)`
+- [x] #23475 **The Works of Lord Byron. Vol. 5: Poetry** — Byron, George Gordon Byron, Baron  `(non-narrative)`
+- [x] #23790 **The Ultimate Weapon** — Campbell, John W., Jr. (John Wood)  `S 3-5m D M`
+- [x] #25701 **Royal Edinburgh: Her Saints, Kings, Prophets and Poets** — Mrs. (Margaret) Oliphant  `S D M`
+- [x] #3300 **An Inquiry into the Nature and Causes of the Wealth of Nations** — Adam Smith  `(non-narrative)`
+- [x] #24780 **The letters of Queen Victoria, vol. 2, 1844-1853 : $b A selection from Her Majesty's correspondence between the years 1837 and 1861.** — Queen of Great Britain Victoria  `(non-narrative)`
+- [x] #132 **The Art of War** — active 6th century B.C. Sunzi  `(non-narrative)`
+- [x] #996 **Don Quixote** — Miguel de Cervantes Saavedra  `S D M`
+- [x] #83 **From the Earth to the moon; and, round the moon** — Jules Verne  `S D M`
+- [x] #25833 **The Great Controversy Between Christ and Satan** — Ellen Gould Harmon White  `(non-narrative)`
+- [x] #26951 **'Firebrand' Trevison** — Charles Alden Seltzer  `S 3-5m D M`
+- [x] #28152 **Sword and Pen: Ventures and Adventures of Willard Glazier** — John Algernon Owens  `S 1m D M`
+- [x] #3526 **Five Weeks in a Balloon: Or, Journeys and Discoveries in Africa by Three Englishmen** — Jules Verne  `S 3-5m D M`
+- [x] #22397 **Shakespearean Playhouses: A History of English Theatres from the Beginnings to the Restoration** — Joseph Quincy Adams  `(non-narrative)`
+- [x] #56463 **Bacon's Essays, and Wisdom of the Ancients** — Francis Bacon  `(non-narrative)`
+- [x] #1228 **On the Origin of Species By Means of Natural Selection: Or, the Preservation of Favoured Races in the Struggle for Life** — Charles Darwin  `(non-narrative)`
+- [x] #3823 **Thelma** — Marie Corelli  `S 3-5m D M`
+- [x] #4923 **King Midas: a Romance** — Upton Sinclair  `S D M`
+- [x] #5700 **Love and Life: An Old Story in Eighteenth Century Costume** — Charlotte M. (Charlotte Mary) Yonge  `S 3-5m D M`
+- [x] #26659 **The Will to Believe, and Other Essays in Popular Philosophy** — William James  `(non-narrative)`
+- [x] #4206 **The Letters of Franklin K. Lane, Personal and Political** — Franklin K. Lane  `S 3-5m D M`
 
 ## Books 501–600
 
-- [ ] #7700 **Lysistrata** — Aristophanes
-- [ ] #25971 **The Creators: A Comedy** — May Sinclair
-- [ ] #1680 **At the Sign of the Cat and Racket** — Honoré de Balzac
-- [ ] #24923 **The Variation of Animals and Plants Under Domestication, Vol. I.** — Charles Darwin
-- [ ] #21002 **The Writings of Thomas Jefferson: Library Edition - Vol. 6 (of 20)** — Thomas Jefferson
-- [ ] #3600 **Essays of Michel de Montaigne — Complete** — Michel de Montaigne
-- [ ] #25001 **An Old Man's Love** — Anthony Trollope
-- [ ] #34206 **The Thousand and One Nights, Vol. I.: Commonly Called the Arabian Nights' Entertainments** — Unknown
-- [ ] #25502 **Hero-Myths & Legends of the British Race** — M. I. (Maud Isabel) Ebbutt
-- [ ] #27432 **The Fifth Queen Crowned** — Ford Madox Ford
-- [ ] #27794 **Fantômas** — Pierre Souvestre
-- [ ] #57763 **Daughters of Nijo: A Romance of Japan** — Onoto Watanna
-- [ ] #25551 **Six Girls: A Home Story** — Fannie Belle Irving
-- [ ] #32759 **Red Nails** — Robert E. (Robert Ervin) Howard
-- [ ] #70377 **Fifty years in Wall Street** — Henry Clews
-- [ ] #14328 **The Consolation of Philosophy** — Boethius
-- [ ] #21569 **Southern Arabia** — J. Theodore (James Theodore) Bent
-- [ ] #78084 **The mysterious Mr. Quin** — Agatha Christie
-- [ ] #78009 **A guide to the history of physical education** — Fred Eugene Leonard
-- [ ] #59131 **The Natural History of Pliny, Volume 3 (of 6)** — the Elder Pliny
-- [ ] #27127 **The Philippine Islands, 1493-1898,  Volume 26 of 55, 1636: Explorations by early navigators, descriptions of the islands and their peoples, their history and records of the Catholic missions, as related in contemporaneous books and manuscripts, showing the political, economic, commercial and religious conditions of those islands from their earliest relations with European nations to the close of the nineteenth century** — Unknown
-- [ ] #5610 **The Cardinal's snuff-box** — Henry Harland
-- [ ] #21328 **The Parables of Our Lord** — William Arnot
-- [ ] #45631 **Twelve Years a Slave: Narrative of Solomon Northup, a Citizen of New-York, Kidnapped in Washington City in 1841, and Rescued in 1853, from a Cotton Plantation near the Red River in Louisiana** — Solomon Northup
-- [ ] #21091 **The Life of William Ewart Gladstone, Vol. 1 (of 3): 1809-1859** — John Morley
-- [ ] #42259 **The People of the Black Circle** — Robert E. (Robert Ervin) Howard
-- [ ] #4918 **The Lilac Sunbonnet: A Love Story** — S. R. (Samuel Rutherford) Crockett
-- [ ] #26490 **Lord Milner's Work in South Africa: From its Commencement in 1897 to the Peace of Vereeniging in 1902** — W. Basil (William Basil) Worsfold
-- [ ] #26482 **Madeline Payne, the Detective's Daughter** — Lawrence L. Lynch
-- [ ] #42236 **Jewels of Gwahlur** — Robert E. (Robert Ervin) Howard
-- [ ] #18269 **Pascal's Pensées** — Blaise Pascal
-- [ ] #42188 **Shadows in the Moonlight** — Robert E. (Robert Ervin) Howard
-- [ ] #78047 **The dogaressas of Venice (the wives of the doges)** — Edgcumbe Staley
-- [ ] #22010 **The Tribes and Castes of the Central Provinces of India, Volume 2** — R. V. (Robert Vane) Russell
-- [ ] #40059 **Wanderfoot (The Dream Ship)** — Cynthia Stockley
-- [ ] #35 **The Time Machine** — H. G. (Herbert George) Wells
-- [ ] #78013 **Arrian on coursing : $b the Cynegeticus of the younger Xenophon, translated from the Greek, with classical and practical annotations, and a brief sketch of the life and writings of the author. To which is added an appendix, containing some account of the Canes Venatici of classical antiquity** — Arrian
-- [ ] #27600 **Zoonomia; Or, the Laws of Organic Life, Vol. II** — Erasmus Darwin
-- [ ] #67098 **Winnie-the-Pooh** — A. A. (Alan Alexander) Milne
-- [ ] #78016 **Herman Melville** — Lewis Mumford
-- [ ] #27743 **Through Finland in Carts** — Mrs. (Ethel) Alec-Tweedie
-- [ ] #42196 **Shadows in Zamboula** — Robert E. (Robert Ervin) Howard
-- [ ] #21840 **Woman: Her Sex and Love Life** — William J. (William Josephus) Robinson
-- [ ] #23241 **My Daily Meditation for the Circling Year** — John Henry Jowett
-- [ ] #22762 **History of the Rise of the Huguenots, Vol. 1** — Henry Martyn Baird
-- [ ] #23700 **The Decameron of Giovanni Boccaccio** — Giovanni Boccaccio
-- [ ] #5222 **The Satyricon — Volume 05: Crotona Affairs** — Petronius Arbiter
-- [ ] #21953 **Aurelian; or, Rome in the Third Century** — William Ware
-- [ ] #27365 **Tales of Space and Time** — H. G. (Herbert George) Wells
-- [ ] #21339 **The Works of Aphra Behn, Volume I** — Aphra Behn
-- [ ] #34856 **My own story** — Emmeline Pankhurst
-- [ ] #23405 **Journeys Through Bookland, Vol. 7** — Charles Herbert Sylvester
-- [ ] #78065 **The anatomy of revolution** — Crane Brinton
-- [ ] #78025 **Main currents in American thought : $b An interpretation of American literature from the beginnings to 1920** — Vernon Louis Parrington
-- [ ] #27151 **Memoirs and Correspondence of Admiral Lord de Saumarez. Vol II** — Ross, John, Sir
-- [ ] #78124 **1066 and all that : $b A memorable history of England, comprising all the parts you can remember, including 103 good things, 5 bad kings and 2 genuine dates** — Walter Carruthers Sellar
-- [ ] #21353 **Civics and Health** — William H. (WIlliam Harvey) Allen
-- [ ] #21986 **The Dash for Khartoum: A Tale of the Nile Expedition** — G. A. (George Alfred) Henty
-- [ ] #21615 **Curiosities of Literature, Vol. 1** — Isaac Disraeli
-- [ ] #27842 **The Economic Aspect of Geology** — C. K. (Charles Kenneth) Leith
-- [ ] #26838 **A History of the French Novel, Vol. 1: From the Beginning to 1800** — George Saintsbury
-- [ ] #63754 **All in the Day's Work: An Autobiography** — Ida M. (Ida Minerva) Tarbell
-- [ ] #78105 **Tales grotesque and curious** — Ryūnosuke Akutagawa
-- [ ] #31036 **The Lovers Assistant; Or, New Art of Love** — Henry Fielding
-- [ ] #2848 **Antiquities of the Jews** — Flavius Josephus
-- [ ] #78029 **The dangerous game** — William Le Queux
-- [ ] #78039 **Boston : $b a novel** — Upton Sinclair
-- [ ] #28074 **The Buccaneer: A Tale** — Hall, S. C., Mrs.
-- [ ] #78075 **The eclipse of Russia** — Emile Joseph Dillon
-- [ ] #25440 **An Undivided Union** — Oliver Optic
-- [ ] #33644 **The Secret of the Ninth Planet** — Donald A. Wollheim
-- [ ] #78028 **The loot of the Lazy A** — W. C. (Wilbur C.) Tuttle
-- [ ] #76871 **The magnificent possession** — Isaac Asimov
-- [ ] #78017 **The Swiss family Robinson** — Johann David Wyss
-- [ ] #78106 **Things near & far** — Arthur Machen
-- [ ] #77109 **A journey to the world under-ground** — Ludvig Holberg
-- [ ] #58984 **Audubon the Naturalist: A History of His Life and Time. Vol. 2 (of 2)** — Francis Hobart Herrick
-- [ ] #78122 **The history of the Norman conquest of England, its causes and its results, Volume 3 (of 6)** — Edward A. (Edward Augustus) Freeman
-- [ ] #50657 **The Satires of Juvenal, Persius, Sulpicia, and Lucilius: Literally translated into English prose, with notes, chronological tables, arguments, &c.** — Persius
-- [ ] #78014 **Khartoum, and the Blue and White Niles, Vol. 1 (of 2)** — George Melly
-- [ ] #78095 **Great rivers of the world : $b as seen and described by famous writers** — Unknown
-- [ ] #21430 **Mexico and Its Religion: With Incidents of Travel in That Country During Parts of the Years 1851-52-53-54, and Historical Notices of Events Connected With Places Visited** — Robert Anderson Wilson
-- [ ] #77097 **The magic ring, Vol. 1 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de
-- [ ] #78015 **Khartoum, and the Blue and White Niles, Vol. 2 (of 2)** — George Melly
-- [ ] #78126 **The weird of the wanderer : $b Being the papyrus records of some incidents in one of the previous lives of  Mr. Nicholas Crabbe** — Frederick Rolfe
-- [ ] #78114 **Miniatures of French history** — Hilaire Belloc
-- [ ] #76857 **I, Mars** — Ray Bradbury
-- [ ] #27384 **The regent's daughter** — Alexandre Dumas
-- [ ] #78119 **Humanism and America : $b Essays on the outlook of modern civilisation** — Unknown
-- [ ] #18592 **The Life of George Washington, Vol. 2: Commander in Chief of the American Forces During the War; which Established the Independence of his Country and First; President of the United States** — John Marshall
-- [ ] #32398 **Brood of the Dark Moon: (A Sequel to "Dark Moon")** — Charles Willard Diffin
-- [ ] #25911 **Sea Power in its Relations to the War of 1812. Volume 1** — A. T. (Alfred Thayer) Mahan
-- [ ] #78228 **Two happy years in Ceylon** — C. F. (Constance Frederica) Gordon Cumming
-- [ ] #78076 **Robert Frost : $b A study in sensibility and good sense** — Gorham Bert Munson
-- [ ] #219 **Heart of Darkness** — Joseph Conrad
-- [ ] #22304 **Nicanor - Teller of Tales : A Story of Roman Britain** — C. Bryson Taylor
-- [ ] #76737 **The sociable ghost : $b Being the adventures of a reporter who was invited by the sociable ghost to a grand banquet, ball, and convention under the ground of old Trinity churchyard. A true tale of the things he saw and did not see while he was not there.** — Olive Harper
-- [ ] #26774 **Alcohol: A Dangerous and Unnecessary Medicine, How and Why: What Medical Writers Say** — Martha Meir Allen
-- [ ] #23354 **Vegetable Teratology: An Account of the Principal Deviations from the Usual Construction of Plants** — Maxwell T. (Maxwell Tylden) Masters
-- [ ] #78120 **The marvellous land of Snergs** — E. A. (Edward Augustine) Wyke-Smith
+- [x] #7700 **Lysistrata** — Aristophanes  `S D M`
+- [x] #25971 **The Creators: A Comedy** — May Sinclair  `S 1m 3-5m D M`
+- [x] #1680 **At the Sign of the Cat and Racket** — Honoré de Balzac  `S D M`
+- [x] #24923 **The Variation of Animals and Plants Under Domestication, Vol. I.** — Charles Darwin  `(non-narrative)`
+- [x] #21002 **The Writings of Thomas Jefferson: Library Edition - Vol. 6 (of 20)** — Thomas Jefferson  `(non-narrative)`
+- [x] #3600 **Essays of Michel de Montaigne — Complete** — Michel de Montaigne  `(non-narrative)`
+- [x] #25001 **An Old Man's Love** — Anthony Trollope  `S 3-5m D M`
+- [x] #34206 **The Thousand and One Nights, Vol. I.: Commonly Called the Arabian Nights' Entertainments** — Unknown  `S 3-5m D M`
+- [x] #25502 **Hero-Myths & Legends of the British Race** — M. I. (Maud Isabel) Ebbutt  `S 3-5m D M`
+- [x] #27432 **The Fifth Queen Crowned** — Ford Madox Ford  `S D M`
+- [x] #27794 **Fantômas** — Pierre Souvestre  `S 1m D M`
+- [x] #57763 **Daughters of Nijo: A Romance of Japan** — Onoto Watanna  `S 3-5m D M`
+- [x] #25551 **Six Girls: A Home Story** — Fannie Belle Irving  `S 1m 3-5m D M`
+- [x] #32759 **Red Nails** — Robert E. (Robert Ervin) Howard  `S 3-5m D M`
+- [x] #70377 **Fifty years in Wall Street** — Henry Clews  `M`
+- [x] #14328 **The Consolation of Philosophy** — Boethius  `S D M`
+- [x] #21569 **Southern Arabia** — J. Theodore (James Theodore) Bent  `S D M`
+- [x] #78084 **The mysterious Mr. Quin** — Agatha Christie  `S 1m D M`
+- [x] #78009 **A guide to the history of physical education** — Fred Eugene Leonard  `M`
+- [x] #59131 **The Natural History of Pliny, Volume 3 (of 6)** — the Elder Pliny  `(non-narrative)`
+- [x] #27127 **The Philippine Islands, 1493-1898,  Volume 26 of 55, 1636: Explorations by early navigators, descriptions of the islands and their peoples, their history and records of the Catholic missions, as related in contemporaneous books and manuscripts, showing the political, economic, commercial and religious conditions of those islands from their earliest relations with European nations to the close of the nineteenth century** — Unknown  `(non-narrative)`
+- [x] #5610 **The Cardinal's snuff-box** — Henry Harland  `S 3-5m D M`
+- [x] #21328 **The Parables of Our Lord** — William Arnot  `(non-narrative)`
+- [x] #45631 **Twelve Years a Slave: Narrative of Solomon Northup, a Citizen of New-York, Kidnapped in Washington City in 1841, and Rescued in 1853, from a Cotton Plantation near the Red River in Louisiana** — Solomon Northup  `S 1m D M`
+- [x] #21091 **The Life of William Ewart Gladstone, Vol. 1 (of 3): 1809-1859** — John Morley  `S D M`
+- [x] #42259 **The People of the Black Circle** — Robert E. (Robert Ervin) Howard  `S 3-5m D M`
+- [x] #4918 **The Lilac Sunbonnet: A Love Story** — S. R. (Samuel Rutherford) Crockett  `S 3-5m D M`
+- [x] #26490 **Lord Milner's Work in South Africa: From its Commencement in 1897 to the Peace of Vereeniging in 1902** — W. Basil (William Basil) Worsfold  `(non-narrative)`
+- [x] #26482 **Madeline Payne, the Detective's Daughter** — Lawrence L. Lynch  `S 1m 3-5m D M`
+- [x] #42236 **Jewels of Gwahlur** — Robert E. (Robert Ervin) Howard  `S 1m D M`
+- [x] #18269 **Pascal's Pensées** — Blaise Pascal  `(non-narrative)`
+- [x] #42188 **Shadows in the Moonlight** — Robert E. (Robert Ervin) Howard  `S 1m D M`
+- [x] #78047 **The dogaressas of Venice (the wives of the doges)** — Edgcumbe Staley  `S 1m D M`
+- [x] #22010 **The Tribes and Castes of the Central Provinces of India, Volume 2** — R. V. (Robert Vane) Russell  `(non-narrative)`
+- [x] #40059 **Wanderfoot (The Dream Ship)** — Cynthia Stockley  `S D M`
+- [x] #35 **The Time Machine** — H. G. (Herbert George) Wells  `S 1m 3-5m D M`
+- [x] #78013 **Arrian on coursing : $b the Cynegeticus of the younger Xenophon, translated from the Greek, with classical and practical annotations, and a brief sketch of the life and writings of the author. To which is added an appendix, containing some account of the Canes Venatici of classical antiquity** — Arrian  `M`
+- [x] #27600 **Zoonomia; Or, the Laws of Organic Life, Vol. II** — Erasmus Darwin  `(non-narrative)`
+- [x] #67098 **Winnie-the-Pooh** — A. A. (Alan Alexander) Milne  `S 3-5m D M`
+- [x] #78016 **Herman Melville** — Lewis Mumford  `S D M`
+- [x] #27743 **Through Finland in Carts** — Mrs. (Ethel) Alec-Tweedie  `S 3-5m D M`
+- [x] #42196 **Shadows in Zamboula** — Robert E. (Robert Ervin) Howard  `S 1m D M`
+- [x] #21840 **Woman: Her Sex and Love Life** — William J. (William Josephus) Robinson  `(non-narrative)`
+- [x] #23241 **My Daily Meditation for the Circling Year** — John Henry Jowett  `M`
+- [x] #22762 **History of the Rise of the Huguenots, Vol. 1** — Henry Martyn Baird  `(non-narrative)`
+- [x] #23700 **The Decameron of Giovanni Boccaccio** — Giovanni Boccaccio  `S 3-5m D M`
+- [x] #5222 **The Satyricon — Volume 05: Crotona Affairs** — Petronius Arbiter  `S 3-5m D M`
+- [x] #21953 **Aurelian; or, Rome in the Third Century** — William Ware  `S D M`
+- [x] #27365 **Tales of Space and Time** — H. G. (Herbert George) Wells  `S 1m 3-5m D M`
+- [x] #21339 **The Works of Aphra Behn, Volume I** — Aphra Behn  `S D M`
+- [x] #34856 **My own story** — Emmeline Pankhurst  `S 3-5m D M`
+- [x] #23405 **Journeys Through Bookland, Vol. 7** — Charles Herbert Sylvester  `(non-narrative)`
+- [x] #78065 **The anatomy of revolution** — Crane Brinton  `M`
+- [x] #78025 **Main currents in American thought : $b An interpretation of American literature from the beginnings to 1920** — Vernon Louis Parrington  `M`
+- [x] #27151 **Memoirs and Correspondence of Admiral Lord de Saumarez. Vol II** — Ross, John, Sir  `S D M`
+- [x] #78124 **1066 and all that : $b A memorable history of England, comprising all the parts you can remember, including 103 good things, 5 bad kings and 2 genuine dates** — Walter Carruthers Sellar  `S 1m 3-5m D M`
+- [x] #21353 **Civics and Health** — William H. (WIlliam Harvey) Allen  `(non-narrative)`
+- [x] #21986 **The Dash for Khartoum: A Tale of the Nile Expedition** — G. A. (George Alfred) Henty  `S D M`
+- [x] #21615 **Curiosities of Literature, Vol. 1** — Isaac Disraeli  `(non-narrative)`
+- [x] #27842 **The Economic Aspect of Geology** — C. K. (Charles Kenneth) Leith  `(non-narrative)`
+- [x] #26838 **A History of the French Novel, Vol. 1: From the Beginning to 1800** — George Saintsbury  `(non-narrative)`
+- [x] #63754 **All in the Day's Work: An Autobiography** — Ida M. (Ida Minerva) Tarbell  `S 1m D M`
+- [x] #78105 **Tales grotesque and curious** — Ryūnosuke Akutagawa  `S 1m 3-5m D M`
+- [x] #31036 **The Lovers Assistant; Or, New Art of Love** — Henry Fielding  `(non-narrative)`
+- [x] #2848 **Antiquities of the Jews** — Flavius Josephus  `S 3-5m D M`
+- [x] #78029 **The dangerous game** — William Le Queux  `S D M`
+- [x] #78039 **Boston : $b a novel** — Upton Sinclair  `S 1m 3-5m D M`
+- [x] #28074 **The Buccaneer: A Tale** — Hall, S. C., Mrs.  `S 3-5m D M`
+- [x] #78075 **The eclipse of Russia** — Emile Joseph Dillon  `M`
+- [x] #25440 **An Undivided Union** — Oliver Optic  `S D M`
+- [x] #33644 **The Secret of the Ninth Planet** — Donald A. Wollheim  `S 3-5m D M`
+- [x] #78028 **The loot of the Lazy A** — W. C. (Wilbur C.) Tuttle  `S 3-5m D M`
+- [x] #76871 **The magnificent possession** — Isaac Asimov  `S 1m 3-5m D M`
+- [x] #78017 **The Swiss family Robinson** — Johann David Wyss  `S 3-5m D M`
+- [x] #78106 **Things near & far** — Arthur Machen  `S 1m D M`
+- [x] #77109 **A journey to the world under-ground** — Ludvig Holberg  `S 3-5m D M`
+- [x] #58984 **Audubon the Naturalist: A History of His Life and Time. Vol. 2 (of 2)** — Francis Hobart Herrick  `S 3-5m D M`
+- [x] #78122 **The history of the Norman conquest of England, its causes and its results, Volume 3 (of 6)** — Edward A. (Edward Augustus) Freeman  `S D M`
+- [x] #50657 **The Satires of Juvenal, Persius, Sulpicia, and Lucilius: Literally translated into English prose, with notes, chronological tables, arguments, &c.** — Persius  `(non-narrative)`
+- [x] #78014 **Khartoum, and the Blue and White Niles, Vol. 1 (of 2)** — George Melly  `S D M`
+- [x] #78095 **Great rivers of the world : $b as seen and described by famous writers** — Unknown  `M`
+- [x] #21430 **Mexico and Its Religion: With Incidents of Travel in That Country During Parts of the Years 1851-52-53-54, and Historical Notices of Events Connected With Places Visited** — Robert Anderson Wilson  `S 3-5m D M`
+- [x] #77097 **The magic ring, Vol. 1 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de  `S 3-5m D M`
+- [x] #78015 **Khartoum, and the Blue and White Niles, Vol. 2 (of 2)** — George Melly  `S D M`
+- [x] #78126 **The weird of the wanderer : $b Being the papyrus records of some incidents in one of the previous lives of  Mr. Nicholas Crabbe** — Frederick Rolfe  `S D M`
+- [x] #78114 **Miniatures of French history** — Hilaire Belloc  `S 3-5m D M`
+- [x] #76857 **I, Mars** — Ray Bradbury  `S 1m D M`
+- [x] #27384 **The regent's daughter** — Alexandre Dumas  `S 1m D M`
+- [x] #78119 **Humanism and America : $b Essays on the outlook of modern civilisation** — Unknown  `M`
+- [x] #18592 **The Life of George Washington, Vol. 2: Commander in Chief of the American Forces During the War; which Established the Independence of his Country and First; President of the United States** — John Marshall  `S D M`
+- [x] #32398 **Brood of the Dark Moon: (A Sequel to "Dark Moon")** — Charles Willard Diffin  `S 3-5m D M`
+- [x] #25911 **Sea Power in its Relations to the War of 1812. Volume 1** — A. T. (Alfred Thayer) Mahan  `S D M`
+- [x] #78228 **Two happy years in Ceylon** — C. F. (Constance Frederica) Gordon Cumming  `M`
+- [x] #78076 **Robert Frost : $b A study in sensibility and good sense** — Gorham Bert Munson  `M`
+- [x] #219 **Heart of Darkness** — Joseph Conrad  `S D M`
+- [x] #22304 **Nicanor - Teller of Tales : A Story of Roman Britain** — C. Bryson Taylor  `S 1m 3-5m D M`
+- [x] #76737 **The sociable ghost : $b Being the adventures of a reporter who was invited by the sociable ghost to a grand banquet, ball, and convention under the ground of old Trinity churchyard. A true tale of the things he saw and did not see while he was not there.** — Olive Harper  `S 1m D M`
+- [x] #26774 **Alcohol: A Dangerous and Unnecessary Medicine, How and Why: What Medical Writers Say** — Martha Meir Allen  `(non-narrative)`
+- [x] #23354 **Vegetable Teratology: An Account of the Principal Deviations from the Usual Construction of Plants** — Maxwell T. (Maxwell Tylden) Masters  `(non-narrative)`
+- [x] #78120 **The marvellous land of Snergs** — E. A. (Edward Augustine) Wyke-Smith  `S 3-5m D M`
 
 ## Books 601–700
 
-- [ ] #78023 **Ash-Wednesday** — T. S. (Thomas Stearns) Eliot
-- [ ] #27587 **A Victor of Salamis** — William Stearns Davis
-- [ ] #77056 **The dream detective** — Sax Rohmer
-- [ ] #78043 **Bushy : $b a romance founded on fact** — Cynthia May Westover Alden
-- [ ] #78103 **The trouble at Pinelands : $b A detective story** — Ernest M. Poate
-- [ ] #78104 **An historical account of all the voyages round the world, performed by English navigators, vol. 4 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown
-- [ ] #78012 **Success** — Una L. Silberrad
-- [ ] #76919 **The magic casket** — R. Austin (Richard Austin) Freeman
-- [ ] #77069 **Murder in the Gilded Cage** — Samuel Spewack
-- [ ] #78051 **Borrowed feathers** — Ruth Lamb
-- [ ] #76858 **The spirit-rapper; an autobiography** — Orestes Augustus Brownson
-- [ ] #78020 **The cruise of the Nona : $b The story of a cruise from Holyhead to the Wash, with reflections and judgments on life and letters, men and manners** — Hilaire Belloc
-- [ ] #26152 **Characteristics of Women: Moral, Poetical, and Historical** — Mrs. (Anna) Jameson
-- [ ] #23731 **A Martian Odyssey** — Stanley G. (Stanley Grauman) Weinbaum
-- [ ] #78085 **The Catholic Church and history** — Hilaire Belloc
-- [ ] #44802 **The Comic English Grammar: A New And Facetious Introduction To The English Tongue** — Percival Leigh
-- [ ] #25868 **The Young Railroaders: Tales of Adventure and Ingenuity** — Francis Lovell Coombs
-- [ ] #78073 **The winner and new...** — Ib Melchior
-- [ ] #78092 **Records of Captain Clapperton's last expedition to Africa, Vol. 2 (of 2)** — Richard Lander
-- [ ] #78110 **Verses** — Violet Jacob
-- [ ] #76950 **The ghost of Charlotte Cray, and other stories** — Florence Marryat
-- [ ] #50498 **The Raft** — Coningsby Dawson
-- [ ] #17450 **The Part Borne by the Dutch in the Discovery of Australia 1606-1765** — J. E. (Jan Ernst) Heeres
-- [ ] #78057 **The vidiot** — Ib Melchior
-- [ ] #78108 **The bitter tea of General Yen** — Grace Zaring Stone
-- [ ] #22049 **A Literary History of the English People, from the Origins to the Renaissance** — J. J. (Jean Jules) Jusserand
-- [ ] #76759 **The strange house : $b or, A moment's mistake** — Catharine Shaw
-- [ ] #76764 **Landscape with figures** — Ronald Fraser
-- [ ] #36 **The war of the worlds** — H. G. (Herbert George) Wells
-- [ ] #76927 **Only a clod** — M. E. (Mary Elizabeth) Braddon
-- [ ] #78046 **Joan and Co.** — Frederick Orin Bartlett
-- [ ] #78117 **Democracy—false or true? : $b A prologue and a dream** — Richmond, W. B. (William Blake), Sir
-- [ ] #78004 **An historical account of all the voyages round the world, performed by English navigators, vol. 2 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown
-- [ ] #78010 **The unknown seven : $b A detective story** — Herman Landon
-- [ ] #78045 **The happiness of Hazelbrook** — Charlotte Grace O'Brien
-- [ ] #78067 **Joe Strong and his wings of steel : $b or, A young acrobat in the clouds** — Vance Barnum
-- [ ] #78024 **The woman of Andros** — Thornton Wilder
-- [ ] #76995 **Law-star for an outlaw** — W. C. (Wilbur C.) Tuttle
-- [ ] #78077 **Cartels : $b challenge to a free world** — Wendell Berge
-- [ ] #78032 **Twelve years in the army : $b or, The incidents of a soldier's life** — John G. Gollan
-- [ ] #78031 **How they loved him, Vol. 1 (of 3) : $b A novel** — Florence Marryat
-- [ ] #78040 **Kate Mulhall : $b A romance of the Oregon Trail** — Ezra Meeker
-- [ ] #78115 **The story of Nelson** — Edmund Francis Sellar
-- [ ] #76929 **Maugis, ye sorcerer : $b from ye ancient French : a wonderful tale from ye writings of ye mad savant of ye Maison Maugis in ye olde citie of Mouzon, France** — Lord Gilhooley
-- [ ] #78109 **Grateful Peter's new year's gift** — Ruth Lamb
-- [ ] #78060 **A young man's story** — Sarah Doudney
-- [ ] #78088 **The hand of God** — Murray Leinster
-- [ ] #77099 **The magic ring, Vol. 3 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de
-- [ ] #78022 **Præraphaelite diaries and letters** — Dante Gabriel Rossetti
-- [ ] #78055 **The white rain came** — Merwin, Sam, Jr.
-- [ ] #25441 **The Reckoning** — Robert W. (Robert William) Chambers
-- [ ] #78011 **Three sevens : $b A detective story** — Perley Poore Sheehan
-- [ ] #78005 **The Green Dolphin** — Sara Ware Bassett
-- [ ] #78087 **The black pearl** — Marie Lion
-- [ ] #78111 **How they loved him, Vol. 2 (of 3) : $b A novel** — Florence Marryat
-- [ ] #67804 **The First of the English: A Novel** — Archibald Clavering Gunter
-- [ ] #78048 **Sandhills sketches** — Williams Haynes
-- [ ] #35382 **The Romance of Biography (Vol 1 of 2): or Memoirs of Women Loved and Celebrated by Poets, from the Days of the Troubadours to the Present Age. 3rd ed. 2 Vols.** — Mrs. (Anna) Jameson
-- [ ] #78044 **Claribel : $b or, Rest at last** — Lucy Ellen Guernsey
-- [ ] #78127 **The golden journey of Mr. Paradyne** — William John Locke
-- [ ] #76796 **A silent witness** — R. Austin (Richard Austin) Freeman
-- [ ] #28649 **The letters of Queen Victoria, vol. 3, 1854-1861 : $b A selection from Her Majesty's correspondence between the years 1837 and 1861.** — Queen of Great Britain Victoria
-- [ ] #78019 **An historical account of all the voyages round the world, performed by English navigators, vol. 3 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown
-- [ ] #78083 **Fawn in the wood** — Unknown
-- [ ] #78035 **The Old Lady flies** — Raoul Whitfield
-- [ ] #2638 **The Idiot** — Fyodor Dostoyevsky
-- [ ] #47960 **Romeo and Juliet** — William Shakespeare
-- [ ] #77098 **The magic ring, Vol. 2 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de
-- [ ] #76849 **This star shall be free** — Murray Leinster
-- [ ] #76983 **Skeeter Bill comes to town** — W. C. (Wilbur C.) Tuttle
-- [ ] #78078 **The adventures of an ensign** — Valentine Williams
-- [ ] #78094 **The haunting hand** — Walter Adolphe Roberts
-- [ ] #77031 **Just a bit too fast** — Hal Moore
-- [ ] #76804 **Wanted—?** — Eugene Cunningham
-- [ ] #78091 **Records of Captain Clapperton's last expedition to Africa, Vol. 1 (of 2)** — Richard Lander
-- [ ] #76981 **Saved from herself : $b or, On the edge of doom** — Adelaide Stirling
-- [ ] #78062 **The flower and the leaf** — Unknown
-- [ ] #27698 **Principles of Political Economy, Vol. 1** — Wilhelm Roscher
-- [ ] #77033 **The sinister mark** — Lee Thayer
-- [ ] #76903 **The Copper House : $b A detective story** — Julius Regis
-- [ ] #76998 **Jonah** — Robert Nathan
-- [ ] #77016 **The trail of deception** — W. C. (Wilbur C.) Tuttle
-- [ ] #78116 **The bar act** — Bud La Mar
-- [ ] #78072 **Preview** — Frank Belknap Long
-- [ ] #77022 **The porcelain mask : $b A detective story** — John Jay Chichester
-- [ ] #36375 **Fifty Years In The Northwest: With An Introduction And Appendix Containing Reminiscences, Incidents And Notes** — William H. C. (William Henry Carman) Folsom
-- [ ] #76960 **The corsair; or, the little fairy at the bottom of the sea : $b A new Christmas burlesque and pantomime, founded upon the ballet of "Le corsair"** — William Brough
-- [ ] #76899 **The man who saved New York** — Ray Cummings
-- [ ] #14988 **Cicero's Tusculan Disputations: Also, Treatises On The Nature Of The Gods, And On The Commonwealth** — Marcus Tullius Cicero
-- [ ] #76914 **The mystery of the missing eyebrows** — Stephen Rudd
-- [ ] #77001 **Moon of madness** — Sax Rohmer
-- [ ] #20004 **Tancred; Or, The New Crusade** — Disraeli, Benjamin, Earl of Beaconsfield
-- [ ] #76812 **Fighting for fortune : $b or, Making a place for himself** — Roy Franklin
-- [ ] #47262 **Old Times on the Upper Mississippi: The Recollections of a Steamboat Pilot from 1854 to 1863** — George Byron Merrick
-- [ ] #50508 **The Memoirs of Admiral Lord Beresford** — Beresford, Charles William De la Poer Beresford, Baron
-- [ ] #22372 **A Labrador Doctor: The Autobiography of Wilfred Thomason Grenfell** — Grenfell, Wilfred Thomason, Sir
-- [ ] #600 **Notes from the Underground** — Fyodor Dostoyevsky
-- [ ] #26151 **The Tapestry Book** — Helen Churchill Candee
-- [ ] #44608 **The Bābur-nāma in English (Memoirs of Bābur)** — Emperor of Hindustan Babur
-- [ ] #78086 **A municipal feud** — Ernest Haycox
+- [x] #78023 **Ash-Wednesday** — T. S. (Thomas Stearns) Eliot  `M`
+- [x] #27587 **A Victor of Salamis** — William Stearns Davis  `S 3-5m D M`
+- [x] #77056 **The dream detective** — Sax Rohmer  `S 1m D M`
+- [x] #78043 **Bushy : $b a romance founded on fact** — Cynthia May Westover Alden  `S D M`
+- [x] #78103 **The trouble at Pinelands : $b A detective story** — Ernest M. Poate  `S 1m D M`
+- [x] #78104 **An historical account of all the voyages round the world, performed by English navigators, vol. 4 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown  `S D M`
+- [x] #78012 **Success** — Una L. Silberrad  `S 1m D M`
+- [x] #76919 **The magic casket** — R. Austin (Richard Austin) Freeman  `S 1m 3-5m D M`
+- [x] #77069 **Murder in the Gilded Cage** — Samuel Spewack  `S D M`
+- [x] #78051 **Borrowed feathers** — Ruth Lamb  `S D M`
+- [x] #76858 **The spirit-rapper; an autobiography** — Orestes Augustus Brownson  `S 1m 3-5m D M`
+- [x] #78020 **The cruise of the Nona : $b The story of a cruise from Holyhead to the Wash, with reflections and judgments on life and letters, men and manners** — Hilaire Belloc  `S D M`
+- [x] #26152 **Characteristics of Women: Moral, Poetical, and Historical** — Mrs. (Anna) Jameson  `(non-narrative)`
+- [x] #23731 **A Martian Odyssey** — Stanley G. (Stanley Grauman) Weinbaum  `S 1m D M`
+- [x] #78085 **The Catholic Church and history** — Hilaire Belloc  `M`
+- [x] #44802 **The Comic English Grammar: A New And Facetious Introduction To The English Tongue** — Percival Leigh  `(non-narrative)`
+- [x] #25868 **The Young Railroaders: Tales of Adventure and Ingenuity** — Francis Lovell Coombs  `S 3-5m D M`
+- [x] #78073 **The winner and new...** — Ib Melchior  `S 3-5m D M`
+- [x] #78092 **Records of Captain Clapperton's last expedition to Africa, Vol. 2 (of 2)** — Richard Lander  `S 3-5m D M`
+- [x] #78110 **Verses** — Violet Jacob  `M`
+- [x] #76950 **The ghost of Charlotte Cray, and other stories** — Florence Marryat  `S 3-5m D M`
+- [x] #50498 **The Raft** — Coningsby Dawson  `S D M`
+- [x] #17450 **The Part Borne by the Dutch in the Discovery of Australia 1606-1765** — J. E. (Jan Ernst) Heeres  `(non-narrative)`
+- [x] #78057 **The vidiot** — Ib Melchior  `S D M`
+- [x] #78108 **The bitter tea of General Yen** — Grace Zaring Stone  `S 1m D M`
+- [x] #22049 **A Literary History of the English People, from the Origins to the Renaissance** — J. J. (Jean Jules) Jusserand  `(non-narrative)`
+- [x] #76759 **The strange house : $b or, A moment's mistake** — Catharine Shaw  `S 1m 3-5m D M`
+- [x] #76764 **Landscape with figures** — Ronald Fraser  `S D M`
+- [x] #36 **The war of the worlds** — H. G. (Herbert George) Wells  `S 1m 3-5m D M`
+- [x] #76927 **Only a clod** — M. E. (Mary Elizabeth) Braddon  `S 3-5m D M`
+- [x] #78046 **Joan and Co.** — Frederick Orin Bartlett  `S 1m 3-5m D M`
+- [x] #78117 **Democracy—false or true? : $b A prologue and a dream** — Richmond, W. B. (William Blake), Sir  `M`
+- [x] #78004 **An historical account of all the voyages round the world, performed by English navigators, vol. 2 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown  `S 1m 3-5m D M`
+- [x] #78010 **The unknown seven : $b A detective story** — Herman Landon  `S 3-5m D M`
+- [x] #78045 **The happiness of Hazelbrook** — Charlotte Grace O'Brien  `S 1m D M`
+- [x] #78067 **Joe Strong and his wings of steel : $b or, A young acrobat in the clouds** — Vance Barnum  `S 1m 3-5m D M`
+- [x] #78024 **The woman of Andros** — Thornton Wilder  `S 3-5m D M`
+- [x] #76995 **Law-star for an outlaw** — W. C. (Wilbur C.) Tuttle  `S 1m D M`
+- [x] #78077 **Cartels : $b challenge to a free world** — Wendell Berge  `M`
+- [x] #78032 **Twelve years in the army : $b or, The incidents of a soldier's life** — John G. Gollan  `S D M`
+- [x] #78031 **How they loved him, Vol. 1 (of 3) : $b A novel** — Florence Marryat  `S 3-5m D M`
+- [x] #78040 **Kate Mulhall : $b A romance of the Oregon Trail** — Ezra Meeker  `S 3-5m D M`
+- [x] #78115 **The story of Nelson** — Edmund Francis Sellar  `S 1m 3-5m D M`
+- [x] #76929 **Maugis, ye sorcerer : $b from ye ancient French : a wonderful tale from ye writings of ye mad savant of ye Maison Maugis in ye olde citie of Mouzon, France** — Lord Gilhooley  `S 1m 3-5m D M`
+- [x] #78109 **Grateful Peter's new year's gift** — Ruth Lamb  `S 1m D M`
+- [x] #78060 **A young man's story** — Sarah Doudney  `S 3-5m D M`
+- [x] #78088 **The hand of God** — Murray Leinster  `S 3-5m D M`
+- [x] #77099 **The magic ring, Vol. 3 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de  `S 3-5m D M`
+- [x] #78022 **Præraphaelite diaries and letters** — Dante Gabriel Rossetti  `M`
+- [x] #78055 **The white rain came** — Merwin, Sam, Jr.  `S 1m 3-5m D M`
+- [x] #25441 **The Reckoning** — Robert W. (Robert William) Chambers  `S D M`
+- [x] #78011 **Three sevens : $b A detective story** — Perley Poore Sheehan  `S 1m 3-5m D M`
+- [x] #78005 **The Green Dolphin** — Sara Ware Bassett  `S D M`
+- [x] #78087 **The black pearl** — Marie Lion  `S 1m 3-5m D M`
+- [x] #78111 **How they loved him, Vol. 2 (of 3) : $b A novel** — Florence Marryat  `S 1m D M`
+- [x] #67804 **The First of the English: A Novel** — Archibald Clavering Gunter  `S 3-5m D M`
+- [x] #78048 **Sandhills sketches** — Williams Haynes  `S 1m D M`
+- [x] #35382 **The Romance of Biography (Vol 1 of 2): or Memoirs of Women Loved and Celebrated by Poets, from the Days of the Troubadours to the Present Age. 3rd ed. 2 Vols.** — Mrs. (Anna) Jameson  `(non-narrative)`
+- [x] #78044 **Claribel : $b or, Rest at last** — Lucy Ellen Guernsey  `S 3-5m D M`
+- [x] #78127 **The golden journey of Mr. Paradyne** — William John Locke  `S 3-5m D M`
+- [x] #76796 **A silent witness** — R. Austin (Richard Austin) Freeman  `S 3-5m D M`
+- [x] #28649 **The letters of Queen Victoria, vol. 3, 1854-1861 : $b A selection from Her Majesty's correspondence between the years 1837 and 1861.** — Queen of Great Britain Victoria  `(non-narrative)`
+- [x] #78019 **An historical account of all the voyages round the world, performed by English navigators, vol. 3 of 4 : $b Including those lately undertaken by order of His present Majesty. The whole faithfully extracted from the journals of the voyagers** — Unknown  `S D M`
+- [x] #78083 **Fawn in the wood** — Unknown  `S 3-5m D M`
+- [x] #78035 **The Old Lady flies** — Raoul Whitfield  `S D M`
+- [x] #2638 **The Idiot** — Fyodor Dostoyevsky  `S 1m D M`
+- [x] #47960 **Romeo and Juliet** — William Shakespeare  `S 3-5m D M`
+- [x] #77098 **The magic ring, Vol. 2 (of 3)** — La Motte-Fouqué, Friedrich Heinrich Karl, Freiherr de  `S D M`
+- [x] #76849 **This star shall be free** — Murray Leinster  `S 1m 3-5m D M`
+- [x] #76983 **Skeeter Bill comes to town** — W. C. (Wilbur C.) Tuttle  `S 3-5m D M`
+- [x] #78078 **The adventures of an ensign** — Valentine Williams  `S D M`
+- [x] #78094 **The haunting hand** — Walter Adolphe Roberts  `S 1m D M`
+- [x] #77031 **Just a bit too fast** — Hal Moore  `S D M`
+- [x] #76804 **Wanted—?** — Eugene Cunningham  `S D M`
+- [x] #78091 **Records of Captain Clapperton's last expedition to Africa, Vol. 1 (of 2)** — Richard Lander  `S D M`
+- [x] #76981 **Saved from herself : $b or, On the edge of doom** — Adelaide Stirling  `S 1m D M`
+- [x] #78062 **The flower and the leaf** — Unknown  `S D M`
+- [x] #27698 **Principles of Political Economy, Vol. 1** — Wilhelm Roscher  `(non-narrative)`
+- [x] #77033 **The sinister mark** — Lee Thayer  `S 1m 3-5m D M`
+- [x] #76903 **The Copper House : $b A detective story** — Julius Regis  `S 1m D M`
+- [x] #76998 **Jonah** — Robert Nathan  `S 1m 3-5m D M`
+- [x] #77016 **The trail of deception** — W. C. (Wilbur C.) Tuttle  `S D M`
+- [x] #78116 **The bar act** — Bud La Mar  `S 3-5m D M`
+- [x] #78072 **Preview** — Frank Belknap Long  `S D M`
+- [x] #77022 **The porcelain mask : $b A detective story** — John Jay Chichester  `S 1m 3-5m D M`
+- [x] #36375 **Fifty Years In The Northwest: With An Introduction And Appendix Containing Reminiscences, Incidents And Notes** — William H. C. (William Henry Carman) Folsom  `(non-narrative)`
+- [x] #76960 **The corsair; or, the little fairy at the bottom of the sea : $b A new Christmas burlesque and pantomime, founded upon the ballet of "Le corsair"** — William Brough  `S D M`
+- [x] #76899 **The man who saved New York** — Ray Cummings  `S 3-5m D M`
+- [x] #14988 **Cicero's Tusculan Disputations: Also, Treatises On The Nature Of The Gods, And On The Commonwealth** — Marcus Tullius Cicero  `(non-narrative)`
+- [x] #76914 **The mystery of the missing eyebrows** — Stephen Rudd  `S 1m D M`
+- [x] #77001 **Moon of madness** — Sax Rohmer  `S 1m D M`
+- [x] #20004 **Tancred; Or, The New Crusade** — Disraeli, Benjamin, Earl of Beaconsfield  `S D M`
+- [x] #76812 **Fighting for fortune : $b or, Making a place for himself** — Roy Franklin  `S D M`
+- [x] #47262 **Old Times on the Upper Mississippi: The Recollections of a Steamboat Pilot from 1854 to 1863** — George Byron Merrick  `S 3-5m D M`
+- [x] #50508 **The Memoirs of Admiral Lord Beresford** — Beresford, Charles William De la Poer Beresford, Baron  `S D M`
+- [x] #22372 **A Labrador Doctor: The Autobiography of Wilfred Thomason Grenfell** — Grenfell, Wilfred Thomason, Sir  `S 1m D M`
+- [x] #600 **Notes from the Underground** — Fyodor Dostoyevsky  `S 1m D M`
+- [x] #26151 **The Tapestry Book** — Helen Churchill Candee  `(non-narrative)`
+- [x] #44608 **The Bābur-nāma in English (Memoirs of Bābur)** — Emperor of Hindustan Babur  `S 1m D M`
+- [x] #78086 **A municipal feud** — Ernest Haycox  `S 1m D M`
 
 ## Books 701–800
 
-- [ ] #78121 **The servant's behaviour book : $b or, Hints on manners and dress for maid servants in small households** — Emily A. (Emily Augusta) Patmore
-- [ ] #730 **Oliver Twist** — Charles Dickens
-- [ ] #27168 **The Faith Doctor: A Story of New York** — Edward Eggleston
-- [ ] #21536 **Paul the minstrel, and other stories** — Arthur Christopher Benson
-- [ ] #21851 **History of the Negro Race in America from 1619 to 1880. Vol. 2: Negroes as Slaves, as Soldiers, and as Citizens** — George Washington Williams
-- [ ] #76931 **False face** — Ernest Haycox
-- [ ] #22976 **Slave Narratives: A Folk History of Slavery in the United States from Interviews with Former Slaves, Volume XI, North Carolina Narratives, Part 1** — United States. Work Projects Administration
-- [ ] #30201 **In Praise of Folly: Illustrated with Many Curious Cuts** — Desiderius Erasmus
-- [ ] #27609 **The Undersea Tube** — L. Taylor (Lucile Taylor) Hansen
-- [ ] #71162 **The complete works of John Gower, volume 2 : $b The English works** — John Gower
-- [ ] #26240 **The Clansman: An Historical Romance of the Ku Klux Klan** — Dixon, Thomas, Jr.
-- [ ] #25110 **The Approach to Philosophy** — Ralph Barton Perry
-- [ ] #21829 **A Treatise on Domestic Economy; For the Use of Young Ladies at Home and at School** — Catharine Esther Beecher
-- [ ] #22536 **Jane Austen, Her Life and Letters: A Family Record** — William Austen-Leigh
-- [ ] #24800 **Darwin, and After Darwin, Volumes 1 and 3: An Exposition of the Darwinian Theory and a Discussion of Post-Darwinian Questions** — George John Romanes
-- [ ] #26524 **The Huguenots in France** — Samuel Smiles
-- [ ] #21053 **An anthology of German literature** — Calvin Thomas
-- [ ] #64836 **Jane Seton; or, The King's Advocate: A Scottish Historical Romance** — James Grant
-- [ ] #28384 **As I Remember: Recollections of American Society during the Nineteenth Century** — Marian Gouverneur
-- [ ] #21531 **Woodwork Joints: How They Are Set Out, How Made and Where Used.** — William Fairham
-- [ ] #23640 **Little Journeys to the Homes of the Great Philosophers, Volume 8** — Elbert Hubbard
-- [ ] #76339 **The Roman hat mystery : $b A problem in deduction** — Ellery Queen
-- [ ] #23155 **Western Characters; or, Types of Border Life in the Western States** — John Ludlum McConnel
-- [ ] #27742 **Popular Education: For the use of Parents and Teachers, and for Young Persons of Both Sexes** — Ira Mayhew
-- [ ] #76411 **The last dragon** — Dan Totheroh
-- [ ] #25656 **The Mystery of a Turkish Bath** — Rita
-- [ ] #76834 **The Arctic legions** — A. De Herries (Augustus De Herries) Smith
-- [ ] #27385 **The conspirators; or, The chevalier d'Harmental** — Alexandre Dumas
-- [ ] #22381 **Myths and Legends of Ancient Greece and Rome** — E. M. Berens
-- [ ] #32562 **"And That's How It Was, Officer"** — Ralph Sholto
-- [ ] #26495 **A System of Logic, Ratiocinative and Inductive (Vol. 1 of 2)** — John Stuart Mill
-- [ ] #22298 **Practical Mechanics for Boys** — James Slough Zerbe
-- [ ] #1023 **Bleak House** — Charles Dickens
-- [ ] #76391 **Fairy dreams : $b or, Wanderings in Elf-land** — Jane G. (Jane Goodwin) Austin
-- [ ] #26429 **Nights With Uncle Remus: Myths and Legends of the Old Plantation** — Joel Chandler Harris
-- [ ] #76261 **Tales of terror** — Dick Donovan
-- [ ] #55987 **Letters of Asa Gray; Vol. 2** — Asa Gray
-- [ ] #38477 **In Jeopardy** — Van Tassel Sutphen
-- [ ] #26992 **The Wind Before the Dawn** — Dell H. Munger
-- [ ] #75643 **The Black Abbot** — Edgar Wallace
-- [ ] #76352 **The world below** — S. Fowler (Sydney Fowler) Wright
-- [ ] #44646 **Memoirs of the Duchesse de Dino (Afterwards Duchesse de Talleyrand et de Sagan), 1836-1840** — Dino, Dorothée, duchesse de
-- [ ] #76553 **Three millions! : $b or, The way of the world** — Oliver Optic
-- [ ] #50439 **English Eccentrics and Eccentricities** — John Timbs
-- [ ] #76072 **The mystery of Angelina Frood** — R. Austin (Richard Austin) Freeman
-- [ ] #59931 **The Love-Story of Aliette Brunton** — Gilbert Frankau
-- [ ] #75967 **Dr. Mabuse, master of mystery : $b a novel** — Norbert Jacques
-- [ ] #24979 **A Source Book for Ancient Church History** — Joseph Cullen Ayer
-- [ ] #24375 **Wizard** — Laurence M. Janifer
-- [ ] #76462 **The adventures of Heine** — Edgar Wallace
-- [ ] #21532 **The University of Michigan** — Wilfred Byron Shaw
-- [ ] #22428 **Contributions to the Theory of Natural Selection: A Series of Essays** — Alfred Russel Wallace
-- [ ] #23761 **Little Journeys to the Homes of the Great, Volume 7: Little Journeys to the Homes of Eminent Orators** — Elbert Hubbard
-- [ ] #26960 **Famous Privateersmen and Adventurers of the Sea: Their rovings, cruises, escapades, and fierce battling upon the ocean for patriotism and for treasure** — Charles H. L. (Charles Haven Ladd) Johnston
-- [ ] #76059 **The thing in the woods** — Harper Williams
-- [ ] #76435 **The black kiss** — Robert Bloch
-- [ ] #75922 **The amazing adventures of Letitia Carberry** — Mary Roberts Rinehart
-- [ ] #23800 **Contemporary American Composers: Being a Study of the Music of This Country, Its Present; Conditions and Its Future, with Critical Estimates and; Biographies of the Principal Living Composers; and an; Abundance of Portraits, Fac-simile Musical Autographs, and; Compositions** — Rupert Hughes
-- [ ] #75808 **Four square Jane** — Edgar Wallace
-- [ ] #76131 **The mark of the monster** — Jack Williamson
-- [ ] #4280 **The Critique of Pure Reason** — Immanuel Kant
-- [ ] #28117 **India, Its Life and Thought** — John P. (John Peter) Jones
-- [ ] #26742 **The Chautauqua Girls At Home** — Pansy
-- [ ] #26 **Paradise Lost** — John Milton
-- [ ] #50461 **Herman Melville, Mariner and Mystic** — Raymond M. (Raymond Melbourne) Weaver
-- [ ] #76212 **Kate plus 10** — Edgar Wallace
-- [ ] #408 **The Souls of Black Folk** — W. E. B. (William Edward Burghardt) Du Bois
-- [ ] #14140 **Plutarch's Lives, Volume 3 (of 4)** — Plutarch
-- [ ] #23066 **The Prairie Traveler: A Hand-book for Overland Expeditions** — Randolph B. (Randolph Barnes) Marcy
-- [ ] #49402 **The Black Hawk War Including a Review of Black Hawk's Life** — Frank Everett Stevens
-- [ ] #76168 **Room 13** — Edgar Wallace
-- [ ] #76677 **The girl from Scotland Yard** — Edgar Wallace
-- [ ] #22342 **Supermind** — Randall Garrett
-- [ ] #21767 **Agatha's Husband: A Novel** — Dinah Maria Mulock Craik
-- [ ] #75998 **Daredevil** — Leslie Charteris
-- [ ] #75790 **Cursed be the treasure** — H. B. (Henry Burgess) Drake
-- [ ] #76200 **Only seven were hanged** — Stuart Martin
-- [ ] #76257 **The crimson circle** — Edgar Wallace
-- [ ] #21348 **Benjamin Franklin** — Morse, John T., Jr. (John Torrey)
-- [ ] #75949 **Terror keep** — Edgar Wallace
-- [ ] #50559 **The Works of William Shakespeare [Cambridge Edition] [Vol. 3 of 9]** — William Shakespeare
-- [ ] #76049 **Dancing Devil range** — W. C. (Wilbur C.) Tuttle
-- [ ] #25948 **Fifty-Two Stories For Girls** — Unknown
-- [ ] #23100 **A Budget of Paradoxes, Volume I** — Augustus De Morgan
-- [ ] #24907 **The Lady and the Pirate: Being the Plain Tale of a Diligent Pirate and a Fair Captive** — Emerson Hough
-- [ ] #22550 **Old Mackinaw; Or, The Fortress of the Lakes and its Surroundings** — W. P. (William Peter) Strickland
-- [ ] #75896 **Arsène Lupin intervenes** — Maurice Leblanc
-- [ ] #76592 **Murder mask** — Edgar Daniel Kramer
-- [ ] #76533 **Limanora : $b the island of progress** — Godfrey Sweven
-- [ ] #75840 **The trail of the serpent** — M. E. (Mary Elizabeth) Braddon
-- [ ] #22063 **The Trail of '98: A Northland Romance** — Robert W. (Robert William) Service
-- [ ] #76247 **How joy was found : $b a fantasy** — Isobel Wylie Hutchison
-- [ ] #23349 **The Religious Experience of the Roman People: From the Earliest Times to the Age of Augustus** — W. Warde (William Warde) Fowler
-- [ ] #26629 **Werwolves** — Elliott O'Donnell
-- [ ] #76442 **The dryad : $b a novel** — Justin H. (Justin Huntly) McCarthy
-- [ ] #76634 **Lillian's vow : $b or, The mystery of Raleigh House** — Collins, E. Burke, Mrs.
-- [ ] #76418 **The tomb of Ts'in** — Edgar Wallace
-- [ ] #76541 **Red aces : $b Being three cases of Mr. Reeder** — Edgar Wallace
-- [ ] #14568 **Sir Gawayne and the Green Knight: An Alliterative Romance-Poem (c. 1360 A.D.)** — Unknown
-- [ ] #76621 **Sergeant Dick of the Royal Mounted Police : $b A thrilling story of the Canadian woods** — John G. (John Gabriel) Rowe
+- [x] #78121 **The servant's behaviour book : $b or, Hints on manners and dress for maid servants in small households** — Emily A. (Emily Augusta) Patmore  `M`
+- [x] #730 **Oliver Twist** — Charles Dickens  `S 1m 3-5m D M`
+- [x] #27168 **The Faith Doctor: A Story of New York** — Edward Eggleston  `S 3-5m D M`
+- [x] #21536 **Paul the minstrel, and other stories** — Arthur Christopher Benson  `S 1m D M`
+- [x] #21851 **History of the Negro Race in America from 1619 to 1880. Vol. 2: Negroes as Slaves, as Soldiers, and as Citizens** — George Washington Williams  `(non-narrative)`
+- [x] #76931 **False face** — Ernest Haycox  `S 3-5m D M`
+- [x] #22976 **Slave Narratives: A Folk History of Slavery in the United States from Interviews with Former Slaves, Volume XI, North Carolina Narratives, Part 1** — United States. Work Projects Administration  `(non-narrative)`
+- [x] #30201 **In Praise of Folly: Illustrated with Many Curious Cuts** — Desiderius Erasmus  `(non-narrative)`
+- [x] #27609 **The Undersea Tube** — L. Taylor (Lucile Taylor) Hansen  `S D M`
+- [x] #71162 **The complete works of John Gower, volume 2 : $b The English works** — John Gower  `(non-narrative)`
+- [x] #26240 **The Clansman: An Historical Romance of the Ku Klux Klan** — Dixon, Thomas, Jr.  `S D M`
+- [x] #25110 **The Approach to Philosophy** — Ralph Barton Perry  `(non-narrative)`
+- [x] #21829 **A Treatise on Domestic Economy; For the Use of Young Ladies at Home and at School** — Catharine Esther Beecher  `(non-narrative)`
+- [x] #22536 **Jane Austen, Her Life and Letters: A Family Record** — William Austen-Leigh  `S 3-5m D M`
+- [x] #24800 **Darwin, and After Darwin, Volumes 1 and 3: An Exposition of the Darwinian Theory and a Discussion of Post-Darwinian Questions** — George John Romanes  `(non-narrative)`
+- [x] #26524 **The Huguenots in France** — Samuel Smiles  `S 1m D M`
+- [x] #21053 **An anthology of German literature** — Calvin Thomas  `M`
+- [x] #64836 **Jane Seton; or, The King's Advocate: A Scottish Historical Romance** — James Grant  `S D M`
+- [x] #28384 **As I Remember: Recollections of American Society during the Nineteenth Century** — Marian Gouverneur  `S D M`
+- [x] #21531 **Woodwork Joints: How They Are Set Out, How Made and Where Used.** — William Fairham  `(non-narrative)`
+- [x] #23640 **Little Journeys to the Homes of the Great Philosophers, Volume 8** — Elbert Hubbard  `(non-narrative)`
+- [x] #76339 **The Roman hat mystery : $b A problem in deduction** — Ellery Queen  `S 1m D M`
+- [x] #23155 **Western Characters; or, Types of Border Life in the Western States** — John Ludlum McConnel  `(non-narrative)`
+- [x] #27742 **Popular Education: For the use of Parents and Teachers, and for Young Persons of Both Sexes** — Ira Mayhew  `(non-narrative)`
+- [x] #76411 **The last dragon** — Dan Totheroh  `S 1m 3-5m D M`
+- [x] #25656 **The Mystery of a Turkish Bath** — Rita  `S D M`
+- [x] #76834 **The Arctic legions** — A. De Herries (Augustus De Herries) Smith  `S 3-5m D M`
+- [x] #27385 **The conspirators; or, The chevalier d'Harmental** — Alexandre Dumas  `S 1m 3-5m D M`
+- [x] #22381 **Myths and Legends of Ancient Greece and Rome** — E. M. Berens  `(non-narrative)`
+- [x] #32562 **"And That's How It Was, Officer"** — Ralph Sholto  `S D M`
+- [x] #26495 **A System of Logic, Ratiocinative and Inductive (Vol. 1 of 2)** — John Stuart Mill  `(non-narrative)`
+- [x] #22298 **Practical Mechanics for Boys** — James Slough Zerbe  `(non-narrative)`
+- [x] #1023 **Bleak House** — Charles Dickens  `S 1m D M`
+- [x] #76391 **Fairy dreams : $b or, Wanderings in Elf-land** — Jane G. (Jane Goodwin) Austin  `S D M`
+- [x] #26429 **Nights With Uncle Remus: Myths and Legends of the Old Plantation** — Joel Chandler Harris  `S D M`
+- [x] #76261 **Tales of terror** — Dick Donovan  `S 1m D M`
+- [x] #55987 **Letters of Asa Gray; Vol. 2** — Asa Gray  `(non-narrative)`
+- [x] #38477 **In Jeopardy** — Van Tassel Sutphen  `S 1m D M`
+- [x] #26992 **The Wind Before the Dawn** — Dell H. Munger  `S D M`
+- [x] #75643 **The Black Abbot** — Edgar Wallace  `S 3-5m D M`
+- [x] #76352 **The world below** — S. Fowler (Sydney Fowler) Wright  `S 3-5m D M`
+- [x] #44646 **Memoirs of the Duchesse de Dino (Afterwards Duchesse de Talleyrand et de Sagan), 1836-1840** — Dino, Dorothée, duchesse de  `S D M`
+- [x] #76553 **Three millions! : $b or, The way of the world** — Oliver Optic  `S 3-5m D M`
+- [x] #50439 **English Eccentrics and Eccentricities** — John Timbs  `(non-narrative)`
+- [x] #76072 **The mystery of Angelina Frood** — R. Austin (Richard Austin) Freeman  `S 3-5m D M`
+- [x] #59931 **The Love-Story of Aliette Brunton** — Gilbert Frankau  `S 3-5m D M`
+- [x] #75967 **Dr. Mabuse, master of mystery : $b a novel** — Norbert Jacques  `S 3-5m D M`
+- [x] #24979 **A Source Book for Ancient Church History** — Joseph Cullen Ayer  `(non-narrative)`
+- [x] #24375 **Wizard** — Laurence M. Janifer  `S 3-5m D M`
+- [x] #76462 **The adventures of Heine** — Edgar Wallace  `S 3-5m D M`
+- [x] #21532 **The University of Michigan** — Wilfred Byron Shaw  `(non-narrative)`
+- [x] #22428 **Contributions to the Theory of Natural Selection: A Series of Essays** — Alfred Russel Wallace  `(non-narrative)`
+- [x] #23761 **Little Journeys to the Homes of the Great, Volume 7: Little Journeys to the Homes of Eminent Orators** — Elbert Hubbard  `S 1m D M`
+- [x] #26960 **Famous Privateersmen and Adventurers of the Sea: Their rovings, cruises, escapades, and fierce battling upon the ocean for patriotism and for treasure** — Charles H. L. (Charles Haven Ladd) Johnston  `S 1m D M`
+- [x] #76059 **The thing in the woods** — Harper Williams  `S 1m D M`
+- [x] #76435 **The black kiss** — Robert Bloch  `S 1m 3-5m D M`
+- [x] #75922 **The amazing adventures of Letitia Carberry** — Mary Roberts Rinehart  `S 3-5m D M`
+- [x] #23800 **Contemporary American Composers: Being a Study of the Music of This Country, Its Present; Conditions and Its Future, with Critical Estimates and; Biographies of the Principal Living Composers; and an; Abundance of Portraits, Fac-simile Musical Autographs, and; Compositions** — Rupert Hughes  `(non-narrative)`
+- [x] #75808 **Four square Jane** — Edgar Wallace  `S 1m 3-5m D M`
+- [x] #76131 **The mark of the monster** — Jack Williamson  `S 1m D M`
+- [x] #4280 **The Critique of Pure Reason** — Immanuel Kant  `(non-narrative)`
+- [x] #28117 **India, Its Life and Thought** — John P. (John Peter) Jones  `(non-narrative)`
+- [x] #26742 **The Chautauqua Girls At Home** — Pansy  `S D M`
+- [x] #26 **Paradise Lost** — John Milton  `S 1m 3-5m D M`
+- [x] #50461 **Herman Melville, Mariner and Mystic** — Raymond M. (Raymond Melbourne) Weaver  `S D M`
+- [x] #76212 **Kate plus 10** — Edgar Wallace  `S 1m D M`
+- [x] #408 **The Souls of Black Folk** — W. E. B. (William Edward Burghardt) Du Bois  `S 1m 3-5m D M`
+- [x] #14140 **Plutarch's Lives, Volume 3 (of 4)** — Plutarch  `S D M`
+- [x] #23066 **The Prairie Traveler: A Hand-book for Overland Expeditions** — Randolph B. (Randolph Barnes) Marcy  `(non-narrative)`
+- [x] #49402 **The Black Hawk War Including a Review of Black Hawk's Life** — Frank Everett Stevens  `S D M`
+- [x] #76168 **Room 13** — Edgar Wallace  `S 3-5m D M`
+- [x] #76677 **The girl from Scotland Yard** — Edgar Wallace  `S 3-5m D M`
+- [x] #22342 **Supermind** — Randall Garrett  `S 1m D M`
+- [x] #21767 **Agatha's Husband: A Novel** — Dinah Maria Mulock Craik  `S 3-5m D M`
+- [x] #75998 **Daredevil** — Leslie Charteris  `S 3-5m D M`
+- [x] #75790 **Cursed be the treasure** — H. B. (Henry Burgess) Drake  `S 1m 3-5m D M`
+- [x] #76200 **Only seven were hanged** — Stuart Martin  `S 1m 3-5m D M`
+- [x] #76257 **The crimson circle** — Edgar Wallace  `S 1m D M`
+- [x] #21348 **Benjamin Franklin** — Morse, John T., Jr. (John Torrey)  `S D M`
+- [x] #75949 **Terror keep** — Edgar Wallace  `S 1m 3-5m D M`
+- [x] #50559 **The Works of William Shakespeare [Cambridge Edition] [Vol. 3 of 9]** — William Shakespeare  `S D M`
+- [x] #76049 **Dancing Devil range** — W. C. (Wilbur C.) Tuttle  `S D M`
+- [x] #25948 **Fifty-Two Stories For Girls** — Unknown  `S 1m 3-5m D M`
+- [x] #23100 **A Budget of Paradoxes, Volume I** — Augustus De Morgan  `(non-narrative)`
+- [x] #24907 **The Lady and the Pirate: Being the Plain Tale of a Diligent Pirate and a Fair Captive** — Emerson Hough  `S D M`
+- [x] #22550 **Old Mackinaw; Or, The Fortress of the Lakes and its Surroundings** — W. P. (William Peter) Strickland  `(non-narrative)`
+- [x] #75896 **Arsène Lupin intervenes** — Maurice Leblanc  `S 1m 3-5m D M`
+- [x] #76592 **Murder mask** — Edgar Daniel Kramer  `S 1m D M`
+- [x] #76533 **Limanora : $b the island of progress** — Godfrey Sweven  `S 1m D M`
+- [x] #75840 **The trail of the serpent** — M. E. (Mary Elizabeth) Braddon  `S 1m 3-5m D M`
+- [x] #22063 **The Trail of '98: A Northland Romance** — Robert W. (Robert William) Service  `S 3-5m D M`
+- [x] #76247 **How joy was found : $b a fantasy** — Isobel Wylie Hutchison  `S D M`
+- [x] #23349 **The Religious Experience of the Roman People: From the Earliest Times to the Age of Augustus** — W. Warde (William Warde) Fowler  `(non-narrative)`
+- [x] #26629 **Werwolves** — Elliott O'Donnell  `(non-narrative)`
+- [x] #76442 **The dryad : $b a novel** — Justin H. (Justin Huntly) McCarthy  `S 1m 3-5m D M`
+- [x] #76634 **Lillian's vow : $b or, The mystery of Raleigh House** — Collins, E. Burke, Mrs.  `S 3-5m D M`
+- [x] #76418 **The tomb of Ts'in** — Edgar Wallace  `S 1m D M`
+- [x] #76541 **Red aces : $b Being three cases of Mr. Reeder** — Edgar Wallace  `S 1m 3-5m D M`
+- [x] #14568 **Sir Gawayne and the Green Knight: An Alliterative Romance-Poem (c. 1360 A.D.)** — Unknown  `S D M`
+- [x] #76621 **Sergeant Dick of the Royal Mounted Police : $b A thrilling story of the Canadian woods** — John G. (John Gabriel) Rowe  `S D M`
