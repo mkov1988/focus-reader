@@ -29,6 +29,7 @@ import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tokenize, resolveAnchor } from './build-story-starts.mjs';
+import { buildChecklist } from './build-deep-pass-checklist.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'scripts', 'deep-starts');
@@ -113,7 +114,8 @@ async function main() {
 
     console.log(`Merged ${stats.seen}: scenes ${stats.scenesBundled} bundled / ${stats.scenesDeep} deep / ${stats.scenesSkippedExisting} hand-authored kept; snippets ${stats.short} short + ${stats.story} story (${stats.snipRejected} rejected); ${stats.detailed} details; ${stats.metaFilled} meta filled; ${stats.nonNarrative} non-narrative.`);
     if (problems.length) for (const p of problems.slice(0, 15)) console.log('  ' + p);
-    console.log(`Totals: deep-pass-done=${done.size}/800. Now run: npm run build:scenes (validates bundled scene anchors).`);
+    const board = await buildChecklist();
+    console.log(`Totals: deep-pass-done=${done.size}/800. Checklist updated: ${board.done}/${board.total} checked. Now run: npm run build:scenes (validates bundled scene anchors).`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
