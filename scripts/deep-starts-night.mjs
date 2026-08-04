@@ -31,10 +31,13 @@ const BACKFILL = args.includes('--meta-backfill');
 // --snippets: run against the snippet-extraction queue instead (its own ledger:
 // snippets-queue.json / snippets-done.json, merged by merge-snippets.mjs).
 const SNIPPETS = args.includes('--snippets');
+// --deep-pass: the combined top-800 full-read pass (recaps + two-tier snippets +
+// details + meta from ONE read per book), merged by merge-deep-pass.mjs.
+const DEEP = args.includes('--deep-pass');
 
 async function main() {
-    const queueFile = SNIPPETS ? 'snippets-queue.json' : 'queue.json';
-    const doneFile = SNIPPETS ? 'snippets-done.json' : 'done.json';
+    const queueFile = DEEP ? 'deep-pass-queue.json' : SNIPPETS ? 'snippets-queue.json' : 'queue.json';
+    const doneFile = DEEP ? 'deep-pass-done.json' : SNIPPETS ? 'snippets-done.json' : 'done.json';
     const queue = JSON.parse(await readFile(path.join(DIR, queueFile), 'utf8'));
     const donePath = path.join(DIR, doneFile);
     const done = new Set(existsSync(donePath) ? JSON.parse(await readFile(donePath, 'utf8')) : []);
