@@ -7,7 +7,7 @@
  * details = { cast: ["..."], excerpt, pacing, contentNotes: [], themes: [] } —
  * the spoiler-safe details-page material gleaned while sampling the whole book.
  *
- * Scenes append to scripts/scenes-src.json (existing hand-authored entries are
+ * Scenes append to data-src/scenes-src.json (existing hand-authored entries are
  * never overwritten). Details accumulate in scripts/deep-starts/details.json.
  * Every processed id lands in scripts/deep-starts/recaps-done.json. Anchor
  * validation stays with `npm run build:scenes` — run it after this and fix any
@@ -20,7 +20,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'scripts', 'deep-starts');
-const SRC = path.join(ROOT, 'scripts', 'scenes-src.json');
+const SRC = path.join(ROOT, 'data-src', 'scenes-src.json');
 
 const resultsPath = process.argv[2];
 if (!resultsPath) { console.error('usage: node scripts/merge-recap-night.mjs <results.json>'); process.exit(1); }

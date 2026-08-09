@@ -1,0 +1,15 @@
+# Immutable content: a Gutenberg id's text and cover never change, and
+# starts-v1.json is versioned by filename (a re-verification ships v2, never a
+# mutated v1). Long-lived caching is the designed contract; the R2 door in
+# functions/books/[id].js sets the same header for long-tail books.
+/books/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/covers/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/starts-v1.json
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *

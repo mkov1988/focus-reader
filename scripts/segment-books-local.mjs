@@ -7,7 +7,7 @@
  *
  * It covers the books hand-authored scenes don't reach (the vibe-page titles).
  * Hand-authored entries in scenes.json are never overwritten unless you pass
- * --force, so this complements scripts/scenes-src.json rather than replacing it.
+ * --force, so this complements data-src/scenes-src.json rather than replacing it.
  *
  * SETUP (one time, on your machine):
  *   1. Install Ollama:  https://ollama.com   (then it runs at localhost:11434)

@@ -19,7 +19,11 @@
     "build:scenes:local": "node scripts/segment-books-local.mjs",
     "build:starts": "node scripts/build-story-starts.mjs",
     "merge:starts": "node scripts/merge-story-start-overrides.mjs",
-    "build:downloads": "node scripts/add-curated-downloads.mjs"
+    "build:downloads": "node scripts/add-curated-downloads.mjs",
+    "export:native": "node scripts/export-native.mjs",
+    "check:strip": "node scripts/check-strip-sync.mjs",
+    "upload:r2": "node scripts/upload-r2.mjs",
+    "deploy": "node scripts/deploy-pages.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.2.9",
@@ -38,6 +42,7 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "esbuild": "^0.27.7",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",

@@ -24,7 +24,7 @@ export async function buildChecklist() {
     const done = new Set(await loadJson(path.join(DIR, 'deep-pass-done.json'), []));
     const snippets = await loadJson(path.join(DIR, 'snippets.json'), {});
     const details = await loadJson(path.join(DIR, 'details.json'), {});
-    const scenesSrc = await loadJson(path.join(ROOT, 'scripts', 'scenes-src.json'), {});
+    const scenesSrc = await loadJson(path.join(ROOT, 'data-src', 'scenes-src.json'), {});
     const deepScenes = await loadJson(path.join(DIR, 'deep-scenes.json'), {});
     const meta = await loadJson(path.join(DIR, 'meta.json'), {});
 

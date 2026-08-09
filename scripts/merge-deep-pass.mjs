@@ -14,7 +14,7 @@
  * }
  *
  * Routing:
- *  - scenes for books with public/books/<id>.txt → scripts/scenes-src.json (the
+ *  - scenes for books with public/books/<id>.txt → data-src/scenes-src.json (the
  *    bundled pipeline; existing hand-authored entries are never overwritten;
  *    run `npm run build:scenes` after to resolve + validate anchors).
  *  - scenes for long-tail books (no public text) → deep-scenes.json (held for a
@@ -35,7 +35,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIR = path.join(ROOT, 'scripts', 'deep-starts');
 const MIRROR = path.join(ROOT, 'mirror', 'books');
 const PUBLIC = path.join(ROOT, 'public', 'books');
-const SRC = path.join(ROOT, 'scripts', 'scenes-src.json');
+const SRC = path.join(ROOT, 'data-src', 'scenes-src.json');
 
 const resultsPath = process.argv[2];
 if (!resultsPath) { console.error('usage: node scripts/merge-deep-pass.mjs <results.json>'); process.exit(1); }

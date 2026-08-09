@@ -39,7 +39,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BOOKS_DIR = path.join(ROOT, 'public', 'books');
 const OUT_PATH = path.join(ROOT, 'src', 'data', 'story-starts.json');
 const SCENES_PATH = path.join(ROOT, 'src', 'data', 'scenes.json');
-const OVERRIDES_PATH = path.join(ROOT, 'scripts', 'story-starts-overrides.json');
+const OVERRIDES_PATH = path.join(ROOT, 'data-src', 'story-starts-overrides.json');
 const REPORT_PATH = path.join(ROOT, 'scripts', '.story-starts-report.json');
 
 const args = process.argv.slice(2);

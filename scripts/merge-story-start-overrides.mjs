@@ -1,6 +1,6 @@
 /**
  * Fold the agent verification verdicts (scripts/.verify-results.json) into
- * scripts/story-starts-overrides.json.
+ * data-src/story-starts-overrides.json.
  *
  * Each verdict is { id, verdict: 'ok'|'fix', anchor, narrative }, where `anchor`
  * is a verbatim phrase copied from the true first sentence of the work. We
@@ -21,7 +21,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BOOKS_DIR = path.join(ROOT, 'public', 'books');
 const RESULTS_PATH = path.join(ROOT, 'scripts', '.verify-results.json');
 const REPORT_PATH = path.join(ROOT, 'scripts', '.story-starts-report.json');
-const OVERRIDES_PATH = path.join(ROOT, 'scripts', 'story-starts-overrides.json');
+const OVERRIDES_PATH = path.join(ROOT, 'data-src', 'story-starts-overrides.json');
 
 const DRY = process.argv.includes('--dry');
 // How far the agent's start must sit from the detector's before we override.

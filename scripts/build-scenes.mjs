@@ -1,6 +1,6 @@
 /**
  * Build the bundled scene maps (src/data/scenes.json) from the hand-authored
- * anchors in scripts/scenes-src.json.
+ * anchors in data-src/scenes-src.json.
  *
  * Each authored scene gives a distinctive prose `anchor` from the start of the
  * scene; this resolves that anchor to a token index in the SAME id space the
@@ -20,7 +20,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SRC_PATH = path.join(ROOT, 'scripts', 'scenes-src.json');
+const SRC_PATH = path.join(ROOT, 'data-src', 'scenes-src.json');
 const BOOKS_DIR = path.join(ROOT, 'public', 'books');
 const OUT_PATH = path.join(ROOT, 'src', 'data', 'scenes.json');
 
