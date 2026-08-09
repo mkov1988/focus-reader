@@ -2,37 +2,48 @@
 
 Why this file exists: the story starts and scene anchors are token positions
 computed against the exact bytes of our mirrored texts. Gutenberg reissues
-texts, so a fresh crawl is NOT a restore. Losing the local mirror and the R2
-bucket would misalign every start and recap permanently. Keep two homes for
-everything below.
+texts, so a fresh crawl is NOT a restore. Losing every copy of the corpus
+would misalign every start and recap permanently.
 
-## What must be backed up, and where it lives
+## The backup: a second R2 bucket
 
-| Data | Only copies today | Backup |
-|---|---|---|
-| Deep pass stores (scripts/deep-starts) | git (committed Aug 2026) + this disk | pushed to GitHub |
-| Curated texts + covers (public/books, public/covers) | this disk + the live Pages deploy | regenerable FROM the mirror below, so back up the mirror |
-| Full 55,863 book mirror (mirror/books, ~19 GB) | this disk + the R2 bucket | **external drive, do this one by hand** |
-| Bucket keys (.r2.env at repo root) | this disk | password manager |
-| Android signing keystore | EAS cloud account only | see the Android repo's RELEASE.md |
+`npm run backup:r2` (scripts/backup-r2.mjs) maintains a full copy in the
+private `focus-reader-books-backup` bucket: the 55,863 book corpus (copied
+server side from the primary bucket, no local bandwidth), the crawl catalog
+and quality gate records, and the covers. It verifies object counts and
+bytes at the end and is safe to rerun any time; run it after any mirror run
+or resweep (after `upload:r2`, so the primary is fresh first).
 
-## The one manual step: copy the mirror to an external drive
+Cost: roughly thirty cents a month of R2 storage.
 
-Plug in a drive (say it mounts as E:) and run:
+## Where every copy lives
+
+| Data | Copies |
+|---|---|
+| Full 55,863 book corpus | this disk (mirror/books) + primary bucket + backup bucket |
+| Crawl catalog + gate records | this disk (mirror/) + backup bucket (mirror-meta/) |
+| Covers | this disk (public/covers) + live Pages deploy + backup bucket (covers/) |
+| Curated texts (public/books) | this disk + live Pages deploy; regenerable from the mirror |
+| Deep pass stores (scripts/deep-starts) | git, pushed to GitHub |
+| Bucket keys (.r2.env at repo root) | this disk; keep a copy in the password manager |
+| Android signing keystore | EAS cloud account; export per the Android repo's RELEASE.md |
+
+Honest limit: both buckets sit in the one Cloudflare account, so this disk
+is the only copy OUTSIDE that account. Three copies, two failure domains,
+which is sound. If you ever want a third domain, the old option still works:
 
 ```bash
 robocopy "C:\Users\Michael\Desktop\Focus Reader\mirror" "E:\focus-reader-backup\mirror" /E /Z /R:2 /W:2
 ```
 
-Rerun the same command any time after a new mirror run; it only copies what
-changed. Refresh the copy whenever `mirror-all` or a resweep touches the files.
-
 ## Restore
 
-1. Mirror lost, bucket alive: download the bucket back into `mirror/books`
-   with rclone (see docs/SERVING.md for the remote setup), then rerun
-   `npm run mirror:books` targets from it if public/ needs rebuilding.
-2. Bucket lost, mirror alive: re-upload with `node scripts/upload-r2.mjs`.
-3. Both lost: restore `mirror/` from the external drive, then re-upload.
+1. Mirror lost, buckets alive: download back into `mirror/books` with rclone
+   from either bucket (credentials in .r2.env, see scripts/backup-r2.mjs for
+   the flag set).
+2. Primary bucket lost: recreate it, then `npm run upload:r2 -- --all` from
+   the local mirror (or server side copy back from the backup bucket).
+3. Disk lost: pull `mirror/` back from the backup bucket before anything
+   else; the deep pass stores come back with `git clone`.
 4. Never regenerate by recrawling Gutenberg unless you accept rebuilding
    starts-v1 and all scene maps afterward against the new bytes.
