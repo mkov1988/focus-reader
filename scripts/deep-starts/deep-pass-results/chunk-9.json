@@ -1,0 +1,1108 @@
+{
+ "books": [
+  {
+   "id": "23349",
+   "nonNarrative": true,
+   "scenes": [],
+   "details": {
+    "cast": [
+     "W. Warde Fowler, the lecturer, an Oxford scholar who keeps saying plainly what he does and does not know",
+     "Mommsen, the great legal historian whose cold verdict on Roman religion Fowler spends the book answering",
+     "Franz Cumont, quoted at length for calling Roman religion the most prosaic ever practised",
+     "Virgil, held up late in the course as the poet who tried to fuse religion, legend and art",
+     "Augustus, the ruler who set about reviving rites that had already gone cold"
+    ],
+    "pacing": "Measured lecture-hall prose, dense with Latin terms and scholarly argument, quoting French and German authorities untranslated; it rewards patience rather than speed.",
+    "contentNotes": [
+     "Discussion of animal sacrifice and of whether human sacrifice was practised",
+     "Period anthropological language about \"savage\" peoples",
+     "Comparisons that treat Jewish ritual practice as a foil for Roman formalism"
+    ],
+    "themes": [
+     "ritual",
+     "decay",
+     "belief",
+     "empire"
+    ]
+   },
+   "hook": "How Rome's oldest religious instinct hardened into ritual, went numb, and stirred again in strange new forms.",
+   "voice": "first-person",
+   "era": "Ancient Rome, lectured in 1911",
+   "tags": [
+    "contemplative",
+    "philosophical"
+   ],
+   "snipShort": null,
+   "snipStory": null
+  },
+  {
+   "id": "26629",
+   "nonNarrative": true,
+   "scenes": [],
+   "details": {
+    "cast": [
+     "Elliott O'Donnell, the narrator, a collector of ghost stories who reports werewolf testimony with a straight face",
+     "Abbot Gilbert of the Arc Monastery, thrown from his horse in a lonely wood and rescued from wild cats",
+     "Andre Bonivon, a raiding sea captain wrecked in a thunderstorm on the Rhone and pulled from the water",
+     "Ivan and Olga Kloska, a storekeeper's children in the Transylvanian Alps who find a strange white flower in a pit"
+    ],
+    "pacing": "Brisk and chatty, breaking constantly from argument into short case stories, so it reads well in small doses.",
+    "contentNotes": [
+     "Graphic descriptions of people, including children and women, being killed and eaten",
+     "Animal cruelty in a described ritual (fat of a freshly killed cat)",
+     "Corpses and dismemberment described in detail",
+     "Period sexism in asides about women"
+    ],
+    "themes": [
+     "transformation",
+     "superstition",
+     "fear",
+     "folklore"
+    ]
+   },
+   "hook": "A collector of ghost stories maps werewolf country by country, with rituals, remedies, warning flowers, and case histories.",
+   "voice": "first-person",
+   "era": "Europe, folklore surveyed 1912",
+   "tags": [
+    "eerie",
+    "grim"
+   ],
+   "snipShort": null,
+   "snipStory": null
+  },
+  {
+   "id": "76442",
+   "nonNarrative": false,
+   "scenes": [
+    {
+     "anchor": "Simon of Rouen--Simon, the soldier of fortune--trampled the grass of the Eleusinian wood",
+     "label": "A hungry man's shortcut",
+     "recap": "Simon of Rouen, penniless and sour on the world, leaves the highway to cut through a wood the Athenians will not enter."
+    },
+    {
+     "anchor": "Simon sat up and rubbed his eyes while he stared back at the damsel",
+     "label": "The stranger in the glade",
+     "recap": "Waking from a nap, Simon finds a tall barefoot girl looking down at him who says she has lived among these trees beyond counting."
+    },
+    {
+     "anchor": "As he thus jogged and mused, trusting to his horse to find its way",
+     "label": "Ambush on the highway",
+     "recap": "Riding home lost in a daydream of the Romance of the Rose, the young prince is rushed in the dusk by men with drawn steel."
+    },
+    {
+     "anchor": "Simon rolled lazily on the grass and gave a self-satisfied snigger",
+     "label": "Storm in the wood",
+     "recap": "Hearing the clash of swords, the wood-girl hauls an unwilling Simon to the clearing and calls the forest itself down on the robbers."
+    },
+    {
+     "anchor": "Through the regal quiet of the night Simon could hear, no great way",
+     "label": "Torches on the road",
+     "recap": "A torchlit company halts beside the wood, and a beautiful, imperious lady looks out of her litter at Simon and the man he guards."
+    },
+    {
+     "anchor": "What the gazers saw was a tall, fair-haired youth with a shepherd's straw",
+     "label": "The shepherd at the gate",
+     "recap": "The gates of the Athenian court open on a slender shepherd who calmly claims royal blood and a place in the tournament."
+    },
+    {
+     "anchor": "Captain Fox and Captain Gander, Captain Bat and Captain Chanticleer, Captain Rat and",
+     "label": "Thieves work the crowd",
+     "recap": "Six cutpurses in borrowed trades pick pockets outside the lists while the heralds prepare the second day of jousting."
+    },
+    {
+     "anchor": "A tumult of applause went up as Rainouart entered the lists, riding a",
+     "label": "The general challenger",
+     "recap": "Rainouart rides out as challenger, fighting for a lady's name while a memory he cannot reach keeps troubling him."
+    },
+    {
+     "anchor": "She had scarcely finished the verse when the arras at the side of",
+     "label": "The promised gift",
+     "recap": "A visitor comes by the hidden turret stair into the duchess's room, where a man lies slumped across the table."
+    },
+    {
+     "anchor": "The dawn was as pink as a peach, and through the pellucid air",
+     "label": "Riding out to war",
+     "recap": "Duke Baldwin's knights leave Athens in full pageantry, cheerful and gaudy, to break the Catalan Grand Company."
+    },
+    {
+     "anchor": "In a waste and desolate place of the Eleusinian wood, aloof alike from",
+     "label": "The hermit's shrine",
+     "recap": "Far from any road an old anchorite keeps a silver image, a reputation for sanctity, and a past nobody has ever got out of him."
+    },
+    {
+     "anchor": "This was what Simon had to tell to Argathona and to Rainouart when",
+     "label": "Renunciation",
+     "recap": "Simon brings his news to the two in the forest, and they turn together toward the hermit's hut."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Simon of Rouen, a huge, hungry soldier of fortune with a cudgel, a rusty lantern and a grudge against the world",
+     "Rainouart, the Duke of Athens' bookish young heir, raised gentle by his mother and far stronger than he looks",
+     "Argathona, a tall barefoot girl of the Eleusinian wood who calls herself a dryad and counts her years by seasons",
+     "Duke Baldwin of the Rock, Rainouart's father, a loud freebooter who rules Athens by appetite",
+     "Esclaramonde, Duchess of Thebes, a dark, imperious beauty whispered to be skilled in love-philtres"
+    ],
+    "pacing": "Ornate and unhurried, thick with description, and it stops outright for chapters of Athenian history; the forest and tournament scenes move much faster.",
+    "contentNotes": [
+     "Sword violence, ambushes and battlefield deaths",
+     "An attempted murder and a stabbing",
+     "Drugging and enchantment used to control a man's affections",
+     "A body left hanging alive on a gibbet",
+     "Period attitudes toward women, with courtiers' mistresses described dismissively"
+    ],
+    "themes": [
+     "love",
+     "immortality",
+     "chivalry",
+     "loyalty"
+    ]
+   },
+   "hook": "A penniless soldier, a bookish prince and an immortal girl of the wood collide on one moonlit road to Athens.",
+   "voice": "third-person",
+   "era": "Frankish Athens, early 1300s",
+   "tags": [
+    "romantic",
+    "adventurous",
+    "whimsical"
+   ],
+   "snipShort": {
+    "anchor": "Simon eyed them composedly, plainly unperturbed. He felt that he was",
+    "endAnchor": "tickled at the thought of their possible plunder--the brace of onions in his bag",
+    "teaser": "A robbery that goes politely wrong"
+   },
+   "snipStory": {
+    "anchor": "Simon rolled lazily on the grass and gave a self-satisfied snigger",
+    "endAnchor": "Simon staggered to his feet and made an end of his paternosters",
+    "teaser": "A night fight and a storm"
+   }
+  },
+  {
+   "id": "76634",
+   "nonNarrative": false,
+   "scenes": [
+    {
+     "anchor": "A man--old and white-haired, frail and feeble--was struggling in the grasp of",
+     "label": "A cry in the street",
+     "recap": "On a cold city night an old accountant is seized for the memorandum-book he carries, and a passing journalist runs in swinging."
+    },
+    {
+     "anchor": "Rosamond Raleigh began to pace up and down the luxurious room, her",
+     "label": "Diamonds and jealousy",
+     "recap": "A merchant prince's daughter picks her gown for a reception and rages about the cousin whose social triumph she cannot forgive."
+    },
+    {
+     "anchor": "For just a moment Richard Raleigh quailed like a craven form before the",
+     "label": "A stolen photograph",
+     "recap": "Lillian demands to know how Richard Raleigh came by her picture, and the man she defends walks in on the quarrel."
+    },
+    {
+     "anchor": "Some one lighted the gas in a moment, and its yellow rays revealed a",
+     "label": "After the dark library",
+     "recap": "The gas comes up on a terrified group, a vanished fortune-teller, and one guest lying in a dead swoon."
+    },
+    {
+     "anchor": "For a moment, awful silence, while the two men stood glaring at each",
+     "label": "Jack strikes a blow",
+     "recap": "Two rivals trade insults in the grounds until a rough hand on a girl's arm settles the argument."
+    },
+    {
+     "anchor": "Full of blank, wordless horror, Rosamond stood staring into the startled face",
+     "label": "The figure at the window",
+     "recap": "Rosamond watches a shape bent over the unfinished painting in the round room and begins insisting how kind she always was."
+    },
+    {
+     "anchor": "Lillian had gone to the rendezvous at the last gate with perfect confidence",
+     "label": "A note about her father",
+     "recap": "Happy in Jack's love, Lillian keeps a moonlit appointment with a stranger who promised her word of her father's killer."
+    },
+    {
+     "anchor": "Slowly Lillian aroused herself, and in perfect ignorance of what had taken",
+     "label": "An accusation",
+     "recap": "Richard Raleigh presses Lillian for a promise and names the man he says took her father's life."
+    },
+    {
+     "anchor": "Lillian started up with a cry of dismay, and the lace-work with",
+     "label": "One hour to answer",
+     "recap": "The clock strikes nine and Lillian has one hour left before she must give Richard Raleigh his answer."
+    },
+    {
+     "anchor": "Nothing to break the strange, uncanny silence of the scene and the hour",
+     "label": "Watchers in the shrubbery",
+     "recap": "Three people crouch in a moonlit garden and watch Lenore met at last by the man they have been waiting for."
+    },
+    {
+     "anchor": "Richard Raleigh had sent a message by a servant to Lillian, requesting",
+     "label": "Summoned downstairs",
+     "recap": "Richard decides the marriage cannot wait and sends for Lillian, while his father paces the library listening for her step."
+    },
+    {
+     "anchor": "At the foot of the stairs Lillian’s strength suddenly gave way, and",
+     "label": "The last of the secrets",
+     "recap": "Lillian collapses on the stairs clutching a book, and upstairs a cornered man sits down at his desk to write."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Lillian Leigh, a young typist who does her work at home and cannot bear to be parted from her father",
+     "Jack Lyndon, a warm-hearted, penniless reporter for the \"Daily Thunderer\" who happens on the crime",
+     "Rosamond Raleigh, the merchant prince's daughter, beautiful, vain, and eaten up with envy of her cousin",
+     "Richard Raleigh, Rosamond's dark-eyed brother, insinuating and used to having his way",
+     "Lenore Van Alstyne, a senator's pale, proud wife with something in her past she will not discuss",
+     "Noisette Duval, an orphan girl taken from the asylum to serve as Rosamond's maid and unpaid painter"
+    ],
+    "pacing": "Fast, short chapters that end on a shock, heavy with exclamation and italics; thin on description, quick to jump between houses and plots.",
+    "contentNotes": [
+     "A murder by strangulation described closely",
+     "Suicide by gunshot",
+     "Blackmail used to force a marriage",
+     "Sustained cruelty toward a sick, dependent girl",
+     "Ghostly apparitions and a seance-like scene",
+     "Class contempt and snobbery treated as ordinary"
+    ],
+    "themes": [
+     "revenge",
+     "secrets",
+     "class",
+     "loyalty"
+    ]
+   },
+   "hook": "A murdered father, a stolen notebook, and a girl's cold promise that his killer will one day answer to her.",
+   "voice": "third-person",
+   "era": "1890s American city",
+   "tags": [
+    "thrilling",
+    "eerie",
+    "romantic"
+   ],
+   "snipShort": null,
+   "snipStory": {
+    "anchor": "A hoarse groan, a stifled cry, then silence settled down",
+    "endAnchor": "say that it was a presentiment of what was to come",
+    "teaser": "A midnight street and a witness"
+   }
+  },
+  {
+   "id": "76533",
+   "nonNarrative": false,
+   "voice": "first-person",
+   "era": "Edwardian-era invented Pacific island",
+   "hook": "A castaway wakes on a hidden island whose people have flown past disease, war and death, and must be remade to stay.",
+   "tags": [
+    "philosophical",
+    "contemplative",
+    "eerie"
+   ],
+   "scenes": [
+    {
+     "anchor": "I OPENED my eyes in a world no feature of which I",
+     "label": "Waking in the palace",
+     "recap": "A stranger wakes in a jewelled hall on an island he cannot place, and a silent guardian waves him back to sleep."
+    },
+    {
+     "anchor": "THE strain on my attention had been extreme as I tried to follow his",
+     "label": "Dreams of the old world",
+     "recap": "Worn out by his first lesson, he sinks into vivid dreams of the crowds and ceremonies of the world he left."
+    },
+    {
+     "anchor": "FLIGHT was one of their best methods too of achieving complete",
+     "label": "Solitude and flight",
+     "recap": "He learns how the islanders guard their privacy, each in a separate house with a flower signal on the roof."
+    },
+    {
+     "anchor": "ONE of the things this people feared most was enslavement to the past",
+     "label": "The valley of memories",
+     "recap": "After years of probation he is judged ready to enter the valley that serves the island as library and graveyard at once."
+    },
+    {
+     "anchor": "We felt the foundations of the building tremble and",
+     "label": "The baths give way",
+     "recap": "An earthquake splits the great crystal hall of baths while he and his young companion are still inside it."
+    },
+    {
+     "anchor": "It was my cabin-boy, Jock Drew, whom I had rescued from a life",
+     "label": "A familiar face",
+     "recap": "Watching the neighbouring islands through a distance-viewer, he recognises the new emperor of the archipelago."
+    },
+    {
+     "anchor": "I watched the great fleet put out from Broolyi with its",
+     "label": "The fleet sets out",
+     "recap": "An invasion fleet steams toward the island while the islanders go calmly about their ordinary day."
+    },
+    {
+     "anchor": "BUT so vast an expansion of science and the unveiling of so many",
+     "label": "No room for death",
+     "recap": "A burst of new discovery quickens the pace of island life until nobody has a spare thought to waste."
+    },
+    {
+     "anchor": "THE accident drew the two together, strengthening their affinities into",
+     "label": "An elder grows weary",
+     "recap": "An aged islander, briefly revived by the new age of invention, feels his old weariness with living return."
+    },
+    {
+     "anchor": "WHEN the island was absorbed in the productions of this new literary",
+     "label": "Another threat outside",
+     "recap": "The island's attention is jerked back from the far future to the defence of its own shoreline."
+    },
+    {
+     "anchor": "EVER and again there overshadowed the spirit of the race a cloud",
+     "label": "A shadow over the race",
+     "recap": "A recurring foreboding settles on the people, and the narrator traces it to the stirrings of their mountain."
+    },
+    {
+     "anchor": "At first she kept along the immemorial line of bird-travel from the",
+     "label": "Storm over the ocean",
+     "recap": "Far out over open water on a long flight, a tornado catches the narrator and his companion in the air."
+    }
+   ],
+   "details": {
+    "cast": [
+     "The narrator, a European yachtsman who wakes on an island he cannot place and is taken in as a pupil.",
+     "Thyriel, a young islander who becomes his companion and teaches him to fly.",
+     "His proparents, the guardians appointed to raise and educate a full-grown foreigner.",
+     "Jock Drew, his old cabin-boy from the yacht Daydream, a solitary reader of penny romances.",
+     "Amiralno, an aged islander who has watched centuries of his own science go by.",
+     "Godfrey Sweven, the gold prospector who shelters the stranger and writes his story down."
+    ],
+    "pacing": "Slow and very dense: long stretches of invented science and social theory, with bursts of real story every few chapters.",
+    "contentNotes": [
+     "eugenic ideas presented approvingly, including breeding out 'lower' strains",
+     "other peoples repeatedly described as apes or animals",
+     "warfare, conquest and mass death described from a distance",
+     "period colonial and racial attitudes throughout"
+    ],
+    "themes": [
+     "progress",
+     "eugenics",
+     "solitude",
+     "utopia"
+    ]
+   },
+   "snipShort": {
+    "anchor": "We felt the foundations of the building tremble and",
+    "endAnchor": "with the surf hissing and baying as it leapt over the",
+    "teaser": "An earthquake in the crystal baths"
+   },
+   "snipStory": null
+  },
+  {
+   "id": "75840",
+   "nonNarrative": false,
+   "voice": "third-person",
+   "era": "1850s industrial England and Paris",
+   "hook": "In a rain-soaked factory town the best-loved young man keeps midnight appointments, and only a detective who cannot speak suspects him.",
+   "tags": [
+    "thrilling",
+    "grim",
+    "eerie"
+   ],
+   "scenes": [
+    {
+     "anchor": "I DON’T suppose it rained harder in the good town of",
+     "label": "A bad November day",
+     "recap": "Rain drowns the town of Slopperton while a widely admired schoolmaster's assistant sits quietly at his desk."
+    },
+    {
+     "anchor": "THE November night is darkest, foggiest, wettest, and windiest out on",
+     "label": "The Black Mill",
+     "recap": "A widow and her wealthy brother sit talking of her long-vanished son while a footsore wanderer trudges the road outside."
+    },
+    {
+     "anchor": "The usher takes the coil of rope from his desk, and",
+     "label": "A rope from the window",
+     "recap": "The usher climbs out of a sickroom window at midnight and comes back three hours later in a fury."
+    },
+    {
+     "anchor": "DAREDEVIL DICK hears the alarum at five o’clock, and leaves his",
+     "label": "Leaving before dawn",
+     "recap": "Richard Marwood steals out at first light to catch a train, noticed by more people on the platform than he wants."
+    },
+    {
+     "anchor": "THERE had not been since the last general election, when George",
+     "label": "The town has its say",
+     "recap": "Slopperton throws itself into the excitement of a murder inquiry, and the newspapermen arrive."
+    },
+    {
+     "anchor": "THE 17th of February shone out bright and clear, and a frosty",
+     "label": "A crowded courtroom",
+     "recap": "Richard Marwood stands trial before a packed court on a cold bright winter morning."
+    },
+    {
+     "anchor": "THE favourite, “Gallows,” having lost in the race with Richard Marwood",
+     "label": "Slopperton forgets",
+     "recap": "The town's interest cools, the case is forgotten, and summer heat settles over the factory chimneys."
+    },
+    {
+     "anchor": "THE old woman stared aghast, first at one of the young men",
+     "label": "Two of a kind",
+     "recap": "In a squalid room an old woman is confronted by two young men who look uncannily alike."
+    },
+    {
+     "anchor": "PARIS!--City of fashion, pleasure, beauty, wealth, rank, talent, and",
+     "label": "An opera-glass in Paris",
+     "recap": "In a Paris opera house an elegant, friendless young man studies a rich heiress through his glass."
+    },
+    {
+     "anchor": "EIGHT years have passed since the trial of Richard Marwood. How have",
+     "label": "Eight years inside",
+     "recap": "Eight years of asylum routine are counted out in the shadows crossing a whitewashed wall."
+    },
+    {
+     "anchor": "THREE days have passed since the interview of Valerie with Laurent",
+     "label": "A wet day in Park Lane",
+     "recap": "Rain beats on the windows of a rich London study while its owner paces, uneasy, and does not go to the bank."
+    },
+    {
+     "anchor": "The next day a much larger party is assembled on board the",
+     "label": "Sailing from Liverpool",
+     "recap": "Friends gather on the deck of a ship bound for South America to say their goodbyes."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Jabez North, a workhouse foundling turned model usher, whose goodness is in every mouth in town.",
+     "Richard Marwood, called Daredevil Dick, a reckless prodigal coming home broke after seven years away.",
+     "Mrs Marwood, a proud widow who has waited seven years for a word from her son.",
+     "Montague Harding, her brother, newly home from India with a fortune and an untroubled face.",
+     "Mr Peters, a police detective who cannot speak and talks on his fingers.",
+     "Valerie de Cevennes, a proud Spanish heiress in Paris whose face gives nothing away."
+    ],
+    "pacing": "Fast and theatrical, driven by cliffhangers, coincidence and lively authorial asides, but it sprawls over six books and two countries.",
+    "contentNotes": [
+     "murder",
+     "the poisoning of a sick child",
+     "suicide",
+     "wrongful confinement in a lunatic asylum",
+     "period stereotyping of Jewish and mixed-race characters",
+     "domestic violence mentioned in passing"
+    ],
+    "themes": [
+     "deception",
+     "justice",
+     "ambition",
+     "identity"
+    ]
+   },
+   "snipShort": {
+    "anchor": "THE old woman stared aghast, first at one of the young men",
+    "endAnchor": "gold when it’s told, if it’s told at the right time, deary.",
+    "teaser": "A stranger wearing another man's face"
+   },
+   "snipStory": {
+    "anchor": "The usher takes the coil of rope from his desk, and",
+    "endAnchor": "he drinks it, and doesn’t make even one wry face at the",
+    "teaser": "A very strange way to make a swing"
+   }
+  },
+  {
+   "id": "22063",
+   "nonNarrative": false,
+   "voice": "first-person",
+   "era": "1898 Klondike gold rush",
+   "hook": "A dreamy Highland boy chases romance to the far north, where a hundred thousand strangers are racing each other to the gold.",
+   "tags": [
+    "adventurous",
+    "thrilling",
+    "tragic"
+   ],
+   "scenes": [
+    {
+     "anchor": "As far back as I can remember I have faithfully followed the",
+     "label": "A boy full of dreams",
+     "recap": "A shy Highland boy fills his childhood with imagined adventures and hero-worships his brilliant brother Garry."
+    },
+    {
+     "anchor": "So in serenity and sunshine the days of my youth went past",
+     "label": "Restless at home",
+     "recap": "Grown and idle on the family land, he reads travel books and aches for a wider world."
+    },
+    {
+     "anchor": "It was on a day of early Autumn when I stood knee-deep",
+     "label": "Landing in San Francisco",
+     "recap": "A month after leaving Scotland he stands alone on a Californian beach, drunk on the strangeness of the new country."
+    },
+    {
+     "anchor": "On either side of us were swift hills mottled with green and",
+     "label": "Up to the camp",
+     "recap": "He climbs a sunlit canyon with new companions toward a raw railway construction camp."
+    },
+    {
+     "anchor": "On this day I was drowsing on my bench when some one",
+     "label": "A stranger on the bench",
+     "recap": "Starving on a park bench in San Francisco, he is befriended by a weathered old miner."
+    },
+    {
+     "anchor": "And indeed there was matter enough, for had I not just received letters",
+     "label": "Letters from home",
+     "recap": "Letters from his mother and his brother reach him just as the northbound ship is preparing to sail."
+    },
+    {
+     "anchor": "Puget Sound was behind us and we had entered on that great",
+     "label": "North to the cold",
+     "recap": "The crowded, riotous ship pushes north through misty water and he feels for the first time the scale of the wild."
+    },
+    {
+     "anchor": "We were camping in Paradise Valley. Before us and behind us the",
+     "label": "The worst of the trail",
+     "recap": "On the packing trail the party reaches a stretch strewn with the bodies of broken and abandoned horses."
+    },
+    {
+     "anchor": "Our last load was safely landed in Bennett and the trail of",
+     "label": "The land trail ends",
+     "recap": "After a month of hauling four thousand pounds over the pass, the party reaches the lakes and starts building a boat."
+    },
+    {
+     "anchor": "I saw one of the women jump for the shore. Then at",
+     "label": "Into the canyon",
+     "recap": "A runaway scow is swept into the canyon just ahead of their boat, and he goes after it."
+    },
+    {
+     "anchor": "I will always remember my first day in the gold-camp. We were",
+     "label": "First day in Dawson",
+     "recap": "He walks the single packed street of the gold camp all through the light night, searching the crowd for one face."
+    },
+    {
+     "anchor": "There we waited, Garry and I, and between us Berna. We heard",
+     "label": "Footsteps on the stair",
+     "recap": "Three of them wait in a room while a heavy, uneven tread climbs slowly up the stairway toward them."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Athol Meldrum, a dreamy Highland lad who reads himself into wanting adventure and gets it.",
+     "Garry, his brother: handsome, practical, capable, and the idol of everyone in the parish.",
+     "The Prodigal, a fast-talking American full of schemes and irrepressible good humour.",
+     "Salvation Jim Hubbard, an old miner and reformed gambler who knows mining from Genesis to Revelation.",
+     "The Jam-wagon, a taciturn English derelict of the Seven Seas, tireless at work and always looking for a fight.",
+     "Berna, a pale, quiet girl travelling north with relatives she does not love."
+    ],
+    "pacing": "Fast and highly coloured, with lyrical set-pieces about the landscape between chapters of hard trail and camp detail.",
+    "contentNotes": [
+     "extensive animal suffering and death on the pack trail",
+     "starvation, frostbite and scurvy",
+     "suicide",
+     "prostitution and dance-hall exploitation",
+     "period antisemitic and racial caricature",
+     "assault and threatened sexual coercion"
+    ],
+    "themes": [
+     "greed",
+     "endurance",
+     "love",
+     "disillusion"
+    ]
+   },
+   "snipShort": null,
+   "snipStory": {
+    "anchor": "I saw one of the women jump for the shore. Then at",
+    "endAnchor": "we swept into the peaceful basin of the river below",
+    "teaser": "Running the canyon on a runaway scow"
+   }
+  },
+  {
+   "id": "76247",
+   "nonNarrative": false,
+   "voice": "play",
+   "era": "Timeless Highland Scotland",
+   "hook": "A hero from an island beyond the sunset asks one tired ordinary man to guard his children from what comes at midnight.",
+   "tags": [
+    "whimsical",
+    "contemplative",
+    "philosophical"
+   ],
+   "scenes": [
+    {
+     "anchor": "This Earthly Paradise lies across the western main before you come to",
+     "label": "The Green Isle",
+     "recap": "On a shining island beyond the western sea a young hero sits among flowers, and a girl's boat comes ashore."
+    },
+    {
+     "anchor": "The blended shadow falls across the face of the Big Young",
+     "label": "Shadows come asking",
+     "recap": "Shadows of strangers fall across the hero one by one, each announcing what it is good at and asking for work."
+    },
+    {
+     "anchor": "At the back of the wind, behind a great rock, Finn, a",
+     "label": "Finn on the mountain",
+     "recap": "On a Scottish hillside a weary man asleep under a heavy pack is woken by a visitor landing from the sea."
+    },
+    {
+     "anchor": "I come through night-watching and tempest of sea where I am, because",
+     "label": "An impossible errand",
+     "recap": "The hero asks Finn to keep his children for him and binds him with a charge he cannot refuse."
+    },
+    {
+     "anchor": "At this moment Finn enters, looking rather wretched and",
+     "label": "The girl in the tree",
+     "recap": "Trudging the shore with his heavy box, Finn is hailed by a cheerful girl singing up an alder-tree."
+    },
+    {
+     "anchor": "For purple’s my favourite colour, and you get",
+     "label": "How the violet did it",
+     "recap": "The girl explains how one favourite flower drew her back year after year into something much larger than a flower."
+    },
+    {
+     "anchor": "The kitchen of the Earth-Mother’s house. A big open fire in the",
+     "label": "The house of the Earth-Mother",
+     "recap": "The company sleeps around a fire in a thatched kitchen while one woman sits wide awake beside a cradle."
+    },
+    {
+     "anchor": "The Marksman groans again, and Finn begins to nod heavily",
+     "label": "Midnight at the roof-hole",
+     "recap": "As the clock strikes twelve something reaches in through the smoke-hole, and a tug-of-war begins in the dark."
+    },
+    {
+     "anchor": "A stormy dark sunset, late in the gloaming. The ship is seen",
+     "label": "The ship in the storm",
+     "recap": "The carpenter's ship is flung about on a night sea while its passengers panic and turn on each other."
+    },
+    {
+     "anchor": "In a dim twilight of stars a castle is seen upon a",
+     "label": "The giant's castle",
+     "recap": "A castle thatched with eel-skins stands on a rock, and the company creeps toward it whispering in the dark."
+    },
+    {
+     "anchor": "The same as Act I, but this time there is no rainbow",
+     "label": "Morning on the isle",
+     "recap": "The isle is seen again at dawn with a rainbow over it, a table spread under the trees, and a girl singing."
+    },
+    {
+     "anchor": "It was the Gate of Heaven that you carried.",
+     "label": "What the box held",
+     "recap": "The hero tells Finn what he has been carrying all this while and asks him to name his reward."
+    }
+   ],
+   "details": {
+    "cast": [
+     "The Big Young Hero, a radiant figure on an island beyond the sunset, who goes out at the beginning and comes in at the end.",
+     "Finn, a long-suffering middle-aged man bowed under a heavy pack that leaks rainbow light at the corners.",
+     "The Climber, an odd, happy girl of twenty-seven who is most herself up a tree.",
+     "The Thief, a watchful old woman who is always awake.",
+     "The Carpenter, a practical, scientific man who built a ship at his own expense and resents lending it.",
+     "The Marksman, a straightforward man with a bow who will only tell you things if you ask him."
+    ],
+    "pacing": "Short and quick, told almost entirely in rhymed dialogue with songs breaking in; the allegory is announced openly rather than hidden.",
+    "contentNotes": [
+     "a child is carried off by a giant",
+     "sustained explicitly Christian allegory and religious argument",
+     "broad Scots dialect that takes a little getting used to"
+    ],
+    "themes": [
+     "faith",
+     "hope",
+     "love",
+     "joy"
+    ]
+   },
+   "snipShort": null,
+   "snipStory": null
+  },
+  {
+   "id": "76418",
+   "nonNarrative": false,
+   "voice": "third-person",
+   "era": "1910s London and imperial China",
+   "hook": "A jade bangle two thousand years old sends a London detective and a penniless adventurer chasing an emperor's tomb.",
+   "tags": [
+    "adventurous",
+    "thrilling",
+    "eerie"
+   ],
+   "scenes": [
+    {
+     "anchor": "A man walked carelessly through Hyde Park with the air of one",
+     "label": "A meeting in the park",
+     "recap": "A shabby, talkative stranger crossing Hyde Park at dusk steps in when a frightened young woman is followed by three men."
+    },
+    {
+     "anchor": "His Excellency Prince Chu-Hsi-Han, Ambassador to the Court of St.",
+     "label": "Calling on the Ambassador",
+     "recap": "The detective Tillizinni visits the Chinese Ambassador to ask about an article he wrote on China's first Emperor."
+    },
+    {
+     "anchor": "It was a busy night for Captain Talham. The clocks were striking",
+     "label": "A visitor at three",
+     "recap": "A faultlessly dressed Chinese gentleman calls at Scotland Yard in the small hours to offer sympathy and take the detective's measure."
+    },
+    {
+     "anchor": "Mr. Raymond de Costa put down his paper, and looked thoughtfully at",
+     "label": "Breakfast in Kensington",
+     "recap": "A wealthy father questions his son across the breakfast table about the morning's news and about his own movements the night before."
+    },
+    {
+     "anchor": "Mr. de Costa, senior, sat in his study until late that night.",
+     "label": "A late caller in the study",
+     "recap": "De Costa receives a secret visitor after dark and takes the jade bangle out of a locked steel box."
+    },
+    {
+     "anchor": "Whoever the masked man was who was working so deliberately at the",
+     "label": "Two burglars, one house",
+     "recap": "A masked man works patiently through the locks of a Kensington house and finds somebody already standing at the safe."
+    },
+    {
+     "anchor": "Talham was seized with the idea of making an afternoon call, and",
+     "label": "An overcrowded party",
+     "recap": "Talham drags the reluctant detective to a cramped Bayswater at-home where the guest list proves more interesting than the tea."
+    },
+    {
+     "anchor": "Yvonne Yale had spent a tiring and a busy day shopping with her",
+     "label": "A hand in the dark",
+     "recap": "After a long day and a late night of letter writing, Yvonne wakes in the dark to find that she is not alone."
+    },
+    {
+     "anchor": "For a second only Soo stood. He saw the gleam of two",
+     "label": "The canal warehouse",
+     "recap": "Cornered at a derelict wharf beside the Surrey Canal, a hunted man makes a desperate choice as police lamps sweep the water."
+    },
+    {
+     "anchor": "Talham had proposed to Yvonne Yale. It had followed many meetings,",
+     "label": "A proposal at five o'clock",
+     "recap": "Talham knocks at the Yale house before dawn and makes his case with his usual grave eloquence."
+    },
+    {
+     "anchor": "The landscape which the travellers beheld was an especially",
+     "label": "Into the paddy country",
+     "recap": "Two travellers dressed in Chinese clothes ride down a muddy track toward a poor village, a long way from London and from help."
+    },
+    {
+     "anchor": "Left alone in the darkness of the tomb the two men stood",
+     "label": "Inside the sealed tomb",
+     "recap": "Shut in beneath the mountain with the air already going stale, the two men hunt the chamber for any way out."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Tillizinni: an Italian anthropologist turned detective, proud of his languages and hungry for a novel case.",
+     "Captain Ted Talham: a penniless, endlessly eloquent adventurer carrying Chinese honours and three coins he cannot change.",
+     "Yvonne Yale: a self-possessed young woman living on her stepmother's dwindling money.",
+     "Raymond de Costa: a rich, fat, watchful merchant with fever-bright eyes.",
+     "T'si Soo: an immaculate young Chinese gentleman with an English education and a gold-rimmed monocle."
+    ],
+    "pacing": "Short chapters and constant incident; brisk pulp storytelling with a chatty narrator who likes to stop and explain.",
+    "contentNotes": [
+     "murder",
+     "abduction of a woman and threats to kill her",
+     "gun violence",
+     "suicide",
+     "period racial stereotyping of Chinese characters, including pidgin dialogue",
+     "derogatory language about mixed ancestry"
+    ],
+    "themes": [
+     "greed",
+     "loyalty",
+     "obsession",
+     "empire"
+    ]
+   },
+   "snipShort": {
+    "anchor": "He switched on his pocket light, and turned it unhesitatingly",
+    "endAnchor": "The burglar was silenced momentarily, apparently annoyed too.",
+    "teaser": "Two men, one dark house"
+   },
+   "snipStory": null
+  },
+  {
+   "id": "76541",
+   "nonNarrative": false,
+   "voice": "third-person",
+   "era": "1920s London and Buckinghamshire",
+   "hook": "Three cases for the mildest-looking man in London, who apologises constantly and misses absolutely nothing.",
+   "tags": [
+    "thrilling",
+    "eerie",
+    "grim"
+   ],
+   "scenes": [
+    {
+     "anchor": "When a young man is very much in love with a most attractive girl",
+     "label": "Confiding at the club",
+     "recap": "A young bank clerk pours out his suspicions about the girl he loves to an older friend, then goes home to dinner with him."
+    },
+    {
+     "anchor": "There was a car coming from the direction of Beaconsfield.",
+     "label": "A body in the snow",
+     "recap": "A mounted policeman stops a car on a frozen lane to show two travellers what is lying in the road."
+    },
+    {
+     "anchor": "He glanced backward nervously and almost screamed.",
+     "label": "A stranger in the lane",
+     "recap": "While the lawyer waits beside the body, a mild man with an umbrella walks out of the falling snow."
+    },
+    {
+     "anchor": "He looked round the room. The thing that struck him anew was the",
+     "label": "The concrete cottage",
+     "recap": "Reeder searches a small house built like a fortress and counts the loaded weapons hung ready in every room."
+    },
+    {
+     "anchor": "There was some rather heavy play at Mr. Machfield’s private",
+     "label": "A night at the tables",
+     "recap": "The owner of a discreet gambling house makes ready for a police raid that may or may not come tonight."
+    },
+    {
+     "anchor": "The man who stood with such an air of ease in the dock",
+     "label": "A Russian in the dock",
+     "recap": "A bearded actor is fined for drunkenness after offering a constable a brooch he says is worth ten thousand pounds."
+    },
+    {
+     "anchor": "This street through which they were passing was very dark and made",
+     "label": "A shot in a dark street",
+     "recap": "Two drunken new friends walking arm in arm find a man standing squarely in their path."
+    },
+    {
+     "anchor": "The morning brought a surprise to Mr. Reeder. When he arrived at",
+     "label": "A battered clergyman",
+     "recap": "A country parson arrives early at Reeder's office with his face in plaster and a story about intruders at his lonely hall."
+    },
+    {
+     "anchor": "In the dusk of the evening the rower brought his skiff under",
+     "label": "The barge and the buoy",
+     "recap": "A waterman waits under a steamer's hull at dusk for something to be dropped quietly into the river."
+    },
+    {
+     "anchor": "On the following Saturday night, as Mr. Reeder was returning home,",
+     "label": "A fight in Brockley Road",
+     "recap": "Walking home at midnight, Reeder comes upon two men in evening dress fighting silently in a suburban street."
+    },
+    {
+     "anchor": "Mr. Reeder was conscious of a headache and that the light shining",
+     "label": "An awkward awakening",
+     "recap": "Reeder comes round bound and gagged in a ship's cabin, facing a masked man delighted with his own cleverness."
+    },
+    {
+     "anchor": "The hinges of the door were rusty: they squeaked when it was",
+     "label": "A rusty hinge",
+     "recap": "In an empty house miles from anywhere, a squeaking door interrupts a man in the middle of his plans."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Mr. J.G. Reeder: a stooping, apologetic detective in a flat-topped hat, far sharper than he looks.",
+     "Inspector Gaylor: the Scotland Yard man who works beside Reeder and never quite trusts his methods.",
+     "Kenneth McKay: a young bank clerk, badly in love and badly in debt.",
+     "Margot Lynn: a self-supporting young woman who will not explain where her money comes from.",
+     "Rufus Machfield: a genial, opinionated clubman with a Park Lane flat and no visible occupation."
+    ],
+    "pacing": "Three separate cases, each moving fast on short scenes and dry dialogue, with Reeder's fussy mildness slowing things pleasantly between shocks.",
+    "contentNotes": [
+     "murder, including a bludgeoning and shootings",
+     "corpses described in some detail",
+     "a woman held prisoner with an implied sexual threat",
+     "executions by hanging recorded flatly",
+     "gambling and confidence swindles"
+    ],
+    "themes": [
+     "deception",
+     "disguise",
+     "greed",
+     "patience"
+    ]
+   },
+   "snipShort": {
+    "anchor": "This street through which they were passing was very dark and made",
+    "endAnchor": "In the right hand pocket of his overcoat was found an automatic",
+    "teaser": "A dark street, a stranger"
+   },
+   "snipStory": {
+    "anchor": "There was a car coming from the direction of Beaconsfield.",
+    "endAnchor": "His melancholy face showed no evidence that he was sickened",
+    "teaser": "Snow, a lane, a body"
+   }
+  },
+  {
+   "id": "14568",
+   "nonNarrative": false,
+   "voice": "verse",
+   "era": "Arthurian Britain, one midwinter",
+   "hook": "A green stranger rides into Camelot carrying an axe and a game that nobody wants to play.",
+   "tags": [
+    "adventurous",
+    "eerie",
+    "contemplative"
+   ],
+   "scenes": [
+    {
+     "anchor": "With mony luflych lorde, lede3 of þe best,",
+     "label": "Christmas at Camelot",
+     "recap": "Arthur keeps his Christmas feast with the whole Round Table, fifteen days of dancing, tournaments and revel."
+    },
+    {
+     "anchor": "Bot Arthure wolde not ete til al were serued,",
+     "label": "The king waits for a marvel",
+     "recap": "Young and restless, Arthur refuses to eat until some wonder or adventure arrives to mark the New Year."
+    },
+    {
+     "anchor": "Þer hales in at þe halle dor an aghlich mayster,",
+     "label": "A green rider enters",
+     "recap": "An enormous stranger, green from head to foot and carrying a holly branch and a huge axe, rides straight into the hall."
+    },
+    {
+     "anchor": "Let hit doun ly3tly ly3t on þe naked,",
+     "label": "The stroke is struck",
+     "recap": "The bargain is kept and the axe falls, and the court discovers what kind of guest it has welcomed."
+    },
+    {
+     "anchor": "This hanselle hat3 Arthur of auenturus on fyrst,",
+     "label": "The year turns",
+     "recap": "The seasons roll from Christmas through Lent and summer to autumn, and the day of the promised meeting draws near."
+    },
+    {
+     "anchor": "Into a forest ful dep, þat ferly wat3 wylde,",
+     "label": "Alone in the winter woods",
+     "recap": "Riding through frozen wilderness on Christmas Eve, Gawayne prays for shelter and somewhere to hear mass."
+    },
+    {
+     "anchor": "Er he wat3 war in þe wod of a won in a mote,",
+     "label": "A castle in the trees",
+     "recap": "A shining moated castle appears among the oaks, and its lord welcomes the traveller with great warmth."
+    },
+    {
+     "anchor": "Ful erly bifore þe day þe folk vp-rysen,",
+     "label": "The first hunt",
+     "recap": "The host rides out at daybreak with horns and hounds while his guest is left to sleep late in comfort."
+    },
+    {
+     "anchor": "& þus he bourded a-3ayn with mony a blyþe la3ter.",
+     "label": "A visitor at the bedside",
+     "recap": "The lady of the castle finds Gawayne still in bed and keeps him there for a morning of dangerous courtesy."
+    },
+    {
+     "anchor": "Þen kest þe kny3t, & hit come to his hert,",
+     "label": "A green girdle offered",
+     "recap": "A gift is pressed on Gawayne with a remarkable promise attached, and he weighs what it might be worth to him."
+    },
+    {
+     "anchor": "With he3e helme on his hede, his launce in his honde,",
+     "label": "The place of the noise",
+     "recap": "At a grim, overgrown mound beside a brook, Gawayne hears a blade being whetted somewhere above him."
+    },
+    {
+     "anchor": "Wylde waye3 in þe worlde Wowen now ryde3,",
+     "label": "The long road home",
+     "recap": "Gawayne rides back through many adventures to Arthur's court, wearing a belt and carrying a story he is ashamed to tell."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Sir Gawayne: Arthur's young nephew, held to be the most courteous knight of the Round Table.",
+     "King Arthur: a restless young king who will not dine until some marvel arrives.",
+     "The Green Knight: an immense stranger, green in skin and dress, who comes offering a game.",
+     "The lord of the castle: a broad, bearded, hospitable host who loves hunting and bargains.",
+     "The lady of the castle: a beautiful hostess who visits her guest every morning."
+    ],
+    "pacing": "Slow and richly decorated: long set pieces on feasts, armour, weather and hunting sit between a handful of decisive moments, and the unmodernised Middle English spelling makes it demanding line by line.",
+    "contentNotes": [
+     "a beheading",
+     "detailed butchering of hunted deer, boar and fox",
+     "repeated attempted seduction of a guest"
+    ],
+    "themes": [
+     "courage",
+     "honesty",
+     "temptation",
+     "courtesy"
+    ]
+   },
+   "snipShort": null,
+   "snipStory": null
+  },
+  {
+   "id": "76621",
+   "nonNarrative": false,
+   "voice": "third-person",
+   "era": "1920s Canadian Rockies borderland",
+   "hook": "One Mountie, a gang in white hoods, and a fortress house standing on piles in the middle of a lake.",
+   "tags": [
+    "adventurous",
+    "thrilling"
+   ],
+   "scenes": [
+    {
+     "anchor": "Sergeant John Dick, of the Royal Canadian Mounted Police, was",
+     "label": "Ambush in the gorge",
+     "recap": "Leading a lame horse up a windy pass, a lone Mountie walks into a stage-coach robbery and is shot at from the cliffs."
+    },
+    {
+     "anchor": "With the rapidly approaching hoofs hardly sounding now in his ears",
+     "label": "Two girls in a buggy",
+     "recap": "A two-horse buggy comes racing up the pass with a rifle held ready in it, and the robbers suddenly want no more of the fight."
+    },
+    {
+     "anchor": "A minute later Sergeant John Dick saw a long, low craft",
+     "label": "The ark on the lake",
+     "recap": "A clumsy ark-like scow sails out from a house built on piles in the middle of a mountain lake."
+    },
+    {
+     "anchor": "As Sergeant John Dick followed the buggy aboard the ark",
+     "label": "Inside Water Castle",
+     "recap": "Dick meets the formidable mistress of the lake house and learns how the family built and fortified their strange home."
+    },
+    {
+     "anchor": "Seven puffs of smoke had spurted from the two leading canoes.",
+     "label": "Canoes on the water",
+     "recap": "Shots carry across the lake with a strange doubled echo as the family races home ahead of pursuing canoes."
+    },
+    {
+     "anchor": "As soon as he had unfastened the front door",
+     "label": "A flag of truce",
+     "recap": "Against everyone's advice, Dick steps onto the verandah with a tablecloth for a flag and calls out across the dark water."
+    },
+    {
+     "anchor": "The four turnip-like objects were the feather-crowned heads of four",
+     "label": "Heads at the verandah rail",
+     "recap": "Swimmers climb the piles under cover of darkness and reach the loopholes before anyone inside understands what they are seeing."
+    },
+    {
+     "anchor": "Old Alf Arnold gave vent to a roar of anger",
+     "label": "Out to save the scow",
+     "recap": "The old squatter throws the door open and leads a sortie onto the verandah to stop the ark being carried off."
+    },
+    {
+     "anchor": "He walked to the edge of the water-course",
+     "label": "Climbing the water-slide",
+     "recap": "Cut off by unclimbable cliffs, Dick studies a torrent running through a gorge and decides to go up it."
+    },
+    {
+     "anchor": "In another minute Sergeant John Dick was standing on the western",
+     "label": "A bonfire on the shore",
+     "recap": "Back at the lakeside, Dick is about to signal for a boat when a voice speaks close by and a great fire flares up."
+    },
+    {
+     "anchor": "The sky was overcast and there was no moon",
+     "label": "A night landing",
+     "recap": "Two canoes cross to the western shore and the party moves off in single file toward the foot of the waterslide."
+    },
+    {
+     "anchor": "As the words left her lips there came a loud",
+     "label": "Torches on the lake",
+     "recap": "Canoes and rafts crowded with settlers appear at the south end of the lake, and the last of the fighting begins."
+    }
+   ],
+   "details": {
+    "cast": [
+     "Sergeant John Dick: a young Mounted Policeman and crack shot, sent out alone on a job meant for a troop.",
+     "Muriel Arnold: a cool young woman with a pistol on her belt who drives into a gunfight without flinching.",
+     "Jenny Arnold: Muriel's cousin, quick with the reins and steady under fire.",
+     "Aunt Kate: a huge, gruff woman with a voice like a ship's siren and a rifle always to hand.",
+     "Old Alf Arnold: the squatter who built the lake fortress, loud, derisive and very sure of himself.",
+     "Howling Wolf: a young chief with a bad reputation and a talent for stratagem."
+    ],
+    "pacing": "Relentless boys'-adventure action, chapter after chapter of sieges, chases and gunfights, in plain workmanlike prose with almost no pause.",
+    "contentNotes": [
+     "frequent gun violence and killings, described casually",
+     "heavy period racism toward Indigenous people, including repeated slurs and descriptions of them as savage vermin",
+     "tomahawk and knife wounds, scalping talk",
+     "horses burned alive in a stable",
+     "the murder of a woman recounted"
+    ],
+    "themes": [
+     "duty",
+     "courage",
+     "deception",
+     "frontier"
+    ]
+   },
+   "snipShort": null,
+   "snipStory": null
+  }
+ ]
+}

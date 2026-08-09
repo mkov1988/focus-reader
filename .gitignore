@@ -43,7 +43,8 @@ docs/assets/references/
 /public/books/
 
 # Full-catalog bulk mirror (scripts/crawl-catalog.mjs + scripts/mirror-all.mjs).
-# ~43GB destined for bucket storage (R2), never for the repo or the Pages build.
+# ~19GB / 55,863 files (measured post quality gate) destined for bucket storage
+# (R2), never for the repo or the Pages build.
 /mirror/
 
 # Resumable cache for the word-count crawler (scripts/add-vibe-wordcounts.mjs).
@@ -54,7 +55,27 @@ lint_output.txt
 
 # Demo password file (never commit credentials)
 .demo-pass.txt
-/scripts/deep-starts/
+
+# R2 bucket credentials (never commit; see docs/SERVING.md for the upload flow)
+.r2.env
+
+# Deep-pass working area. Queues, raw agent results, and caches are regenerable
+# scratch and stay ignored. The FINISHED stores and the workflow scripts that
+# produced them ARE committed: they are the only copy of the 800-book deep read
+# and must survive a disk loss. Do not widen this ignore back to the whole dir.
+/scripts/deep-starts/*
+!/scripts/deep-starts/meta.json
+!/scripts/deep-starts/details.json
+!/scripts/deep-starts/snippets.json
+!/scripts/deep-starts/deep-scenes.json
+!/scripts/deep-starts/verified.json
+!/scripts/deep-starts/non-narrative.json
+!/scripts/deep-starts/done.json
+!/scripts/deep-starts/deep-pass-done.json
+!/scripts/deep-starts/redo-done.json
+!/scripts/deep-starts/deep-pass-results/
+!/scripts/deep-starts/*.mjs
+!/scripts/deep-starts/.verify-workflow.js
 
 # Generated triage/scratch artifacts from the story-start + recap pipelines.
 scripts/.story-starts-report.json
