@@ -34,6 +34,8 @@ import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// The canonical boilerplate strip (legally load bearing — see LEGAL.md).
+import { stripGutenbergBoilerplate as stripBoilerplate } from './lib/strip-gutenberg.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CURATED_PATH = path.join(ROOT, 'src', 'data', 'curated.json');
@@ -53,41 +55,8 @@ const VIBE = arg('vibe') || null;
 const IDS = (arg('ids') || '').split(',').map((s) => s.trim()).filter(Boolean);
 const LIMIT = arg('limit') ? Number(arg('limit')) : Infinity;
 
-/** Identical copy of src/services/library.ts stripGutenbergBoilerplate — keep the
- *  two in sync. Handles modern and old header/footer formats, drops the leading
- *  credit block, and removes every line carrying the Project Gutenberg trademark.
- *  That trademark removal is what frees the stored text from the Gutenberg
- *  license, so it is legally load bearing, not just cosmetic (book_access_strategy §6). */
-function stripBoilerplate(raw) {
-    let text = raw.replace(/\r\n/g, '\n');
-
-    const start = text.match(/\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (start?.index !== undefined) {
-        text = text.slice(start.index + start[0].length);
-    } else {
-        const smallPrint = text.match(/\*\s*END[^\n]*SMALL PRINT[^\n]*/i);
-        if (smallPrint?.index !== undefined) text = text.slice(smallPrint.index + smallPrint[0].length);
-    }
-
-    const end = text.match(/\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (end?.index !== undefined) {
-        text = text.slice(0, end.index);
-    } else {
-        const oldEnd = text.match(/\n\s*End of (?:the |this )?Project Gutenberg[^\n]*/i);
-        if (oldEnd?.index !== undefined) text = text.slice(0, oldEnd.index);
-    }
-
-    const creditRe = /(produced by|prepared by|transcrib|proofread|distributed proofreading|pgdp\.net|gutenberg\.org|project gutenberg|updated editions|this e-?(?:text|book) was|html version|original illustrations|see \S+-h\.(?:htm|zip))/i;
-    const skip = (l) => l.trim() === '' || creditRe.test(l) || /^\s*\(?https?:\/\//i.test(l) || /^\s*(?:or|and)\s*$/i.test(l);
-    const lines = text.split('\n');
-    let i = 0;
-    while (i < lines.length && skip(lines[i])) i++;
-    text = lines.slice(i).join('\n');
-
-    text = text.split('\n').filter((l) => !/project gutenberg/i.test(l)).join('\n');
-
-    return text.trim();
-}
+// stripBoilerplate is imported from scripts/lib/strip-gutenberg.mjs above —
+// there is exactly one strip implementation for everything we store.
 
 async function fetchText(url) {
     let lastErr;

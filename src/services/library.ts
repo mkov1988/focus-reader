@@ -98,7 +98,11 @@ function toProxyUrl(url: string): string {
  * the text from the Project Gutenberg license, so this is legally load bearing,
  * not just cosmetic. See docs/planning/book_access_strategy.md §6.
  *
- * NOTE: scripts/mirror-books.mjs carries an identical copy — keep the two in sync.
+ * NOTE: the canonical implementation lives in scripts/lib/strip-gutenberg.mjs
+ * (both mirror scripts import it). This copy and the Android app's copy
+ * (Focus Reader Android/src/services/gutenberg.ts) are runtime duplicates that
+ * MUST stay behaviorally identical to it. `node scripts/check-strip-sync.mjs`
+ * verifies all copies agree — run it after touching any of them.
  */
 export function stripGutenbergBoilerplate(raw: string): string {
     let text = raw.replace(/\r\n/g, '\n');
@@ -130,6 +134,11 @@ export function stripGutenbergBoilerplate(raw: string): string {
     let i = 0;
     while (i < lines.length && skip(lines[i])) i++;
     text = lines.slice(i).join('\n');
+
+    // The trademark phrase survives hard line wrapping ("Project\nGutenberg"),
+    // so join any wrapped occurrence first; the line filter below then drops
+    // the joined line the same way it drops a same-line occurrence.
+    text = text.replace(/project(?:\s*\n\s*)gutenberg/gi, 'Project Gutenberg');
 
     // Final safeguard: never keep a line carrying the Project Gutenberg trademark.
     text = text.split('\n').filter((l) => !/project gutenberg/i.test(l)).join('\n');

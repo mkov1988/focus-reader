@@ -44,6 +44,8 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// The canonical boilerplate strip (legally load bearing — see LEGAL.md).
+import { stripGutenbergBoilerplate as stripBoilerplate } from './lib/strip-gutenberg.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CATALOG_PATH = path.join(ROOT, 'mirror', 'catalog.json');
@@ -126,41 +128,9 @@ function contentReject(clean) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Boilerplate strip — identical copy of src/services/library.ts        */
-/* stripGutenbergBoilerplate (and scripts/mirror-books.mjs). Keep all   */
-/* three in sync. Removing the trademark is legally load bearing        */
-/* (book_access_strategy.md §6).                                        */
+/* Boilerplate strip — imported from scripts/lib/strip-gutenberg.mjs.   */
+/* One implementation for everything we store (see LEGAL.md).           */
 /* ------------------------------------------------------------------ */
-function stripBoilerplate(raw) {
-    let text = raw.replace(/\r\n/g, '\n');
-
-    const start = text.match(/\*\*\*\s*START OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (start?.index !== undefined) {
-        text = text.slice(start.index + start[0].length);
-    } else {
-        const smallPrint = text.match(/\*\s*END[^\n]*SMALL PRINT[^\n]*/i);
-        if (smallPrint?.index !== undefined) text = text.slice(smallPrint.index + smallPrint[0].length);
-    }
-
-    const end = text.match(/\*\*\*\s*END OF (?:THE|THIS) PROJECT GUTENBERG[^*]*\*\*\*/i);
-    if (end?.index !== undefined) {
-        text = text.slice(0, end.index);
-    } else {
-        const oldEnd = text.match(/\n\s*End of (?:the |this )?Project Gutenberg[^\n]*/i);
-        if (oldEnd?.index !== undefined) text = text.slice(0, oldEnd.index);
-    }
-
-    const creditRe = /(produced by|prepared by|transcrib|proofread|distributed proofreading|pgdp\.net|gutenberg\.org|project gutenberg|updated editions|this e-?(?:text|book) was|html version|original illustrations|see \S+-h\.(?:htm|zip))/i;
-    const skip = (l) => l.trim() === '' || creditRe.test(l) || /^\s*\(?https?:\/\//i.test(l) || /^\s*(?:or|and)\s*$/i.test(l);
-    const lines = text.split('\n');
-    let i = 0;
-    while (i < lines.length && skip(lines[i])) i++;
-    text = lines.slice(i).join('\n');
-
-    text = text.split('\n').filter((l) => !/project gutenberg/i.test(l)).join('\n');
-
-    return text.trim();
-}
 
 /* ------------------------------------------------------------------ */
 /* Fetching                                                            */
