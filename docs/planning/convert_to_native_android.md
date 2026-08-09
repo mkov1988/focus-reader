@@ -1,5 +1,10 @@
 # Focus Reader: Android Native Conversion Strategy (React Native)
 
+> **Status (2026-08-09): the migration this plan describes was executed.** The
+> native app lives at `../../../Focus Reader Android` (v0.7.x, all parity
+> packs complete per docs/native-parity/00-INDEX.md). This doc is now the
+> historical rationale for the choices made, not a forward looking plan.
+
 This guide defines the migration path from our React-DOM web prototype to a high-performance native Android application (APK/AAB) for the Google Play Store, using the Android Material Design playbook.
 
 > **Audited and refreshed 2026-07-05.** The original plan was written when the app was a storefront plus two reading views driven by keyboard keys. Since then the app gained: the kinetic finger-scrub engine (`useKineticScrub`), five visualization modes, the immersive auto-hide reading controls, a Today-home navigation model with inner pages, persisted state with versioned migrations, save-for-later, reading stats, scene recaps, vibe pages, and a three-tier book loading ladder backed by a full-catalog mirror (~56k books, headed to R2). Each section below is tagged **[still holds]**, **[updated]**, or **[new]**.

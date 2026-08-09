@@ -4,6 +4,17 @@ Welcome to the Focus Reader changelog! This document tells the story of how this
 
 ---
 
+## [Final entry] - 2026-08-09: the web line closes here
+
+Development moved to the native Android app at `../Focus Reader Android`
+(July 2026); versions continue there as `expo.version` (0.7.x at the time of
+this entry). This repo is now serving infrastructure, data pipelines, and
+archived spec; see README.md for the map. Everything below this entry is the
+story of the web prototype that became the living spec for the native port.
+The v0.2.0 plans that follow were web era plans and will not ship.
+
+---
+
 ## 📖 Table of Contents
 - [Latest (v0.1.6)](#v016---2026-06-29)
 - [Previous (v0.1.5)](#v015---2026-06-29)

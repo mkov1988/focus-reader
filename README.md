@@ -1,124 +1,50 @@
-# Focus Reader
+# Focus Reader (infrastructure repo)
 
-> **Read to understand, faster.** A cognitive efficiency tool that enables deep focus and high-speed comprehension.
+**The web app is retired as a product (July 2026). The product is the native
+Android app at `../Focus Reader Android`.** Do not build web features here.
+All UI and feature work happens in the Android repo; this repo has exactly
+three jobs:
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://github.com/mkov1988/focus-reader)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+1. **Serving infrastructure.** The Cloudflare Pages site
+   (focus-reader-48z.pages.dev) is the data plane every installed app reads:
+   curated book text and covers as static assets, the 55,863 book long tail
+   from R2 behind one Pages Function, and starts-v1.json. See
+   [docs/SERVING.md](docs/SERVING.md). Deploys are production pushes for
+   shipped apps; the deploy script has a content guard for that reason.
+2. **Data pipelines.** Everything under `scripts/` that mirrors books and
+   covers, crawls the catalog, and builds vibes, scenes, story starts, and
+   the deep pass stores. Map and run order: [scripts/README.md](scripts/README.md).
+   The last hop into the Android app is `npm run export:native`.
+3. **Archived spec.** The web app's code and docs are the reference the
+   native port was built from. [docs/reader-feel-playbook.md](docs/reader-feel-playbook.md)
+   and [docs/native-parity/00-INDEX.md](docs/native-parity/00-INDEX.md) are
+   the live spec documents; most of the rest of docs/ is history (see
+   [docs/INDEX.md](docs/INDEX.md)).
 
----
+Legal position for charging money: [LEGAL.md](LEGAL.md). Backups and
+restore: [docs/BACKUP.md](docs/BACKUP.md).
 
-## What is Focus Reader?
+## Map (what each top level item is)
 
-Focus Reader uses **RSVP (Rapid Serial Visual Presentation)** to display text one word at a time, with a **pixel-stable red focal letter** that never moves. This eliminates eye movement, reduces fatigue, and enables sustainable reading at 2-3x your normal speed.
+| Item | Role |
+|---|---|
+| `functions/`, `wrangler.toml`, `public/_headers` | infra, live serving |
+| `scripts/`, `version.json` | pipelines + deploy tooling |
+| `public/` | build input: books, covers, starts (books/covers are local artifacts, gitignored) |
+| `mirror/` | pipeline output staged for R2 (gitignored, ~19 GB, backed up per docs/BACKUP.md) |
+| `src/`, `index.html`, `vite.config.ts`, `tailwind.config.js` | **frozen web app, but deploy load bearing** |
+| `docs/`, `data-src/`, `CHANGELOG.md`, `DEEP-PASS-CHECKLIST.md` | spec, sources, history |
 
-**Why it's different:** Most speed-reading apps fail because they prioritize raw WPM over comprehension. Focus Reader is built around **cognitive science**—rhythm, pauses, and recovery—so your brain can actually process what you're reading.
+**The `src/` trap:** the web app is frozen, but the deployed Pages site is
+built from it, and `src/data/` feeds the export to the Android app. Deploy
+plumbing and data fixes there are legitimate; feature work is not. If a
+change in `src/` is not about serving or data, it does not belong here.
 
----
+## Working here
 
-## ✨ Features
-
-### Core Reading Engine
-- **Pixel-Perfect Focal Centering** — The red focal letter stays absolutely fixed. No jitter, even at 800+ WPM.
-- **Smart Pacing** — Automatic pauses at punctuation (3x for sentences, 2x for commas, 5x for paragraphs).
-- **Adjustable Speed** — 100 to 1,000 WPM with instant controls.
-
-### Controls & Recovery
-- **Keyboard Shortcuts** — `Space` play/pause, `←→` skip ±10 words, `↑↓` adjust speed, `Esc` exit.
-- **Progress Bar** — Click anywhere to jump to that point.
-- **Never Get Lost** — Strong recovery primitives so distraction doesn't break your flow.
-
-### Input
-- **Paste Text** — Just Ctrl+V and go.
-- **Drag & Drop** — Drop a `.txt` file to start reading instantly.
-- **PDF/EPUB** — Coming soon in v0.2.
-
-### Design
-- **Dark Mode by Default** — Reduces eye strain for long sessions.
-- **Distraction-Free** — Minimal UI during reading. Just you and the words.
-
----
-
-## 🚀 Quick Start
-
-```bash
-# Clone the repo
-git clone https://github.com/mkov1988/focus-reader.git
-cd focus-reader
-
-# Install dependencies
-npm install
-
-# Start the dev server
-npm run dev
-```
-
-Open **http://localhost:5173** and paste some text to try it out.
-
----
-
-## 🧠 The Science Behind It
-
-Focus Reader is grounded in cognitive research, not marketing hype.
-
-| Principle | What It Means | How We Apply It |
-|:---|:---|:---|
-| **Sensory Clearness** | Attention is finite. Competing stimuli reduce comprehension. | Pixel-stable focal point. No animations during reading. |
-| **Logical Memory** | Understanding requires time to encode meaning, not just see words. | Smart pauses at sentence/paragraph breaks. |
-| **The "No Exceptions" Rule** | Habits form through consistency, not intensity. | Low friction design. < 10 seconds to start reading. |
-
-> "One can have a good rote memory without understanding, but one cannot have a good logical memory without understanding." — Pyle (1921)
-
----
-
-## 📁 Project Structure
-
-```
-src/
-├── components/
-│   ├── Reader/
-│   │   ├── RSVPDisplay.tsx    # Core word display with focal centering
-│   │   └── Controls.tsx       # Playback controls
-│   └── Input/
-│       └── TextInput.tsx      # Paste and file upload
-├── hooks/
-│   └── useRSVP.ts             # Timing engine (requestAnimationFrame)
-├── utils/
-│   └── textProcessing.ts      # Focal point algorithm, tokenization
-└── App.tsx                    # Main orchestrator
-
-docs/
-├── research-report.md         # Full research synthesis (12 sections)
-├── PRD.md                     # Product requirements
-├── use-cases.md               # User journey mappings
-└── CHANGELOG.md               # Version history
-```
-
----
-
-## 🗺️ Roadmap
-
-| Version | Status | Features |
-|:---|:---|:---|
-| **v0.1.0** | ✅ Done | Core RSVP engine, focal centering, smart pacing, paste/txt input |
-| **v0.1.1** | ✅ Done | Research framework, paragraph pauses, cognitive efficiency positioning |
-| **v0.2.0** | 🔜 Next | PDF/EPUB support, session memory, settings modal |
-| **v0.3.0** | Planned | Browser extension, URL-to-article extraction |
-| **v1.0.0** | Planned | Book mode, email integration, library system |
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read the research report first to understand the design philosophy:
-- [Research Readout](docs/research-report.md) — Why we built it this way
-- [PRD](docs/PRD.md) — What we're building and why
-
----
-
-## 📜 License
-
-MIT © 2026 Michael Kovalev
-
----
-
-**Built with ❤️ and lots of iteration.**
+- `node scripts/deploy-pages.mjs` deploys (add `--preview` to test off
+  production). `npm run build` must stay green; it typechecks the frozen app.
+- The Gutenberg boilerplate strip is legally load bearing; read
+  [LEGAL.md](LEGAL.md) before touching anything named strip, mirror, or books.
+- Old web era agent instructions (RULES.md, .cursorrules, .agents personas)
+  are archived under `docs/archive/` and are not in force.

@@ -1,8 +1,13 @@
 # Strategy: Accessing 60k Free Books (Native-First Design)
 
+> **Status (2026-08-09):** the native Android app IS the product now and the
+> web app is retired; this doc's serving sections predate the R2 bucket (see
+> docs/SERVING.md for today's topology). §7 was extracted to the repo root as
+> LEGAL.md, which is the live legal reference; §7 here remains as history.
+
 ## Core Philosophy
-**The Web App is a High-Fidelity Prototype ("Living Spec") for the future Native App.**
-We will not build web-specific infrastructure (like serverless CORS proxies) for production. We will simply **simulate** the native behavior locally.
+**The Web App was a High-Fidelity Prototype ("Living Spec") for the Native App, which has since shipped.**
+We did not build web-specific infrastructure (like serverless CORS proxies) for production; native behavior was **simulated** locally.
 
 > **Static assets vs. web glue.** The "no web glue" rule targets *runtime* CORS proxies, meaning live compute that forwards arbitrary gutenberg requests per request. Mirroring a finite, curated set of files once into dumb static storage (a CDN bucket of cover images) is not that. It has no compute and no runtime forwarding, so it is allowed, and it is how we serve cover images. See §5.
 
