@@ -1,0 +1,470 @@
+{
+ "run": "modernity pilot (Hamlet, Pride and Prejudice, Meditations)",
+ "date": "2026-08-12",
+ "note": "Cold-reader verdicts from the pilot workflow. Hamlet re-sourced from cut #27761 to full #1524 after the verifier caught four beats retelling scenes the Kean stage edition cut.",
+ "verdicts": {
+  "hamlet": {
+   "verdicts": [
+    {
+     "title": "The Funeral Leftovers",
+     "keep": true
+    },
+    {
+     "title": "Something Rotten",
+     "keep": true,
+     "issue": "The famous 'something is rotten in the state of Denmark' line is cut from this Kean edition. The corruption idea is still in the text ('This bodes some strange eruption to our state', line 315) and the anchor (line 896, ghost beckoning) is alive and keeps stream order, but it lands on Horatio's beckoning warning, not a rot line. Acceptable, worth knowing."
+    },
+    {
+     "title": "The Ghost Reveal",
+     "keep": true
+    },
+    {
+     "title": "Haste Me to Know It",
+     "keep": true
+    },
+    {
+     "title": "O My Prophetic Soul",
+     "keep": true
+    },
+    {
+     "title": "The Antic Disposition",
+     "keep": true
+    },
+    {
+     "title": "The Honeypot",
+     "keep": true
+    },
+    {
+     "title": "The Soliloquy Reflection",
+     "keep": true
+    },
+    {
+     "title": "The Mousetrap",
+     "keep": true
+    },
+    {
+     "title": "To Be or Not to Be",
+     "keep": true
+    },
+    {
+     "title": "The Cowardice Reflection",
+     "keep": true
+    },
+    {
+     "title": "The Nunnery Breakup",
+     "keep": true
+    },
+    {
+     "title": "The Prayer Scene",
+     "keep": false,
+     "issue": "Scene not in this edition. The prayer scene ('Now might I do it pat') is cut from the Kean 1859 text; the word 'praying' appears nowhere in the file. The anchor 'Now could I drink hot blood' (line 3340) does hit, but that is a different speech (Hamlet heading to his mother's closet), so the beat describes an event this book never shows."
+    },
+    {
+     "title": "The Curtain Incident",
+     "keep": true
+    },
+    {
+     "title": "The Portrait Review",
+     "keep": true
+    },
+    {
+     "title": "How All Occasions",
+     "keep": false,
+     "issue": "Scene not in this edition. The Act IV.4 soliloquy and Fortinbras's army marching over the worthless ground are cut ('How all occasions' and 'patch of ground' get zero hits; Fortinbras is named once in the whole file, in gravedigger banter). The anchor (line 4364) is alive but sits in the England-departure exchange, unrelated to the beat's content."
+    },
+    {
+     "title": "Ophelia Unravels",
+     "keep": true
+    },
+    {
+     "title": "Laertes Kicks the Door",
+     "keep": true
+    },
+    {
+     "title": "The Willow",
+     "keep": true
+    },
+    {
+     "title": "The Skull Farmer",
+     "keep": true,
+     "issue": "Minor: the clown's actual line is 'Mine, sir' plus the 'you lie in it' wordplay; 'I'm standing in it' is a paraphrase presented inside quote marks. Fine for the voice, flagging for honesty."
+    },
+    {
+     "title": "The Letter Switcheroo",
+     "keep": false,
+     "issue": "Event not in this edition. Hamlet's V.2 account of forging the commission ('benetted', 'sea-gown', the new commission) is entirely cut; Rosencrantz and Guildenstern vanish from the text after being sent off at line 4348 and their deaths never occur. The anchor 'Ay, marry, why was he sent into England?' (line 5180) hits but is the gravedigger's joke about Hamlet's madness, unrelated to any letter."
+    },
+    {
+     "title": "Yorick",
+     "keep": true
+    },
+    {
+     "title": "The Wager",
+     "keep": true
+    },
+    {
+     "title": "The Cup",
+     "keep": true,
+     "issue": "Note: anchor correctly matches this edition's variant 'I have, my lord; I pray you, pardon me' (line 5678), which differs from the standard 'I will, my lord'. Good anchor discipline."
+    },
+    {
+     "title": "Fortinbras Ending",
+     "keep": false,
+     "issue": "Event not in this edition. The play ends at Hamlet's death ('The rest is silence', dead march, curtain, THE END); Fortinbras never enters and no one takes the crown. The anchor ('what a wounded name...', lines 5782-5783) is alive but the beat's entire content is absent from this text."
+    },
+    {
+     "title": "The Rest Is Silence",
+     "keep": true
+    }
+   ],
+   "overall": {
+    "voiceOk": true,
+    "accuracyOk": false,
+    "notes": "Voice holds throughout: roughly two thirds of the beats are Michael's golden originals verbatim, and the new beats (Ghost Reveal, Honeypot, Ophelia Unravels, Laertes, Willow, Skull Farmer, Wager, Portrait Review) match their energy, compression, and caps/lowercase contrast; Ophelia Unravels and The Willow correctly go jokes-off per rule 8. No beat is flat. Every quote and anchor greps verbatim against the file (modulo line wraps). The one systemic problem: public/books/27761.txt is Charles Kean's heavily cut 1859 stage edition, not the full play, and four beats retell scenes Kean cut: the prayer scene, the How All Occasions soliloquy, the letter switcheroo, and the Fortinbras ending. Their anchors all technically hit, which makes them dangerous: they would resolve to reader positions in unrelated scenes. Either drop those four (the remaining 22 still cover this edition's arc start to finish, within the 18-50 beat spec) or re-source the work against an unabridged Hamlet text, which the beats were clearly written for. Flags are sensible across the set: spice levels match profanity tiers, warnings fit, and there are 7 standalones, inside the 3-8 target. Feelings (funny, unhinged, tragic, petty) and intensity (gripping) fit."
+   }
+  },
+  "pride-and-prejudice": {
+   "verdicts": [
+    {
+     "title": "A Truth Universally Acknowledged",
+     "keep": true
+    },
+    {
+     "title": "Mom's Nerves",
+     "keep": true
+    },
+    {
+     "title": "The Tolerable Incident",
+     "keep": true
+    },
+    {
+     "title": "Jane Gets Two Dances",
+     "keep": true,
+     "issue": "closest to plot summary in the set, but 'narrated like a title match' and the Jane defense land it; verified 'danced with her twice; the only creature' in text"
+    },
+    {
+     "title": "Charlotte's Odds Take",
+     "keep": true,
+     "issue": "book Lizzy actually says Charlotte would never act on the take herself; the beat's 'she is not joking' is a dramatic-irony read the plot later validates. Also standalone:true is borderline since the closer ('it becomes extremely relevant') leans on the stream"
+    },
+    {
+     "title": "The Fine Eyes Leak",
+     "keep": true,
+     "issue": "POV liberty: the Darcy/Caroline fine-eyes exchange is private in the book; Elizabeth never learns of it, so 'got caught' is invented framing. The exchange itself is accurate and quote/anchor verify"
+    },
+    {
+     "title": "The Mud Run",
+     "keep": true
+    },
+    {
+     "title": "The Impossible Loadout",
+     "keep": true,
+     "issue": "quote is a mid-sentence fragment ending at 'to deserve the word' (verbatim, but reads truncated next to the original)"
+    },
+    {
+     "title": "The Resentment Patch Notes",
+     "keep": true
+    },
+    {
+     "title": "The Olive Branch Letter",
+     "keep": true
+    },
+    {
+     "title": "Wickham's Sob Story",
+     "keep": true
+    },
+    {
+     "title": "The Cringe Compilation",
+     "keep": true
+    },
+    {
+     "title": "The Three Reasons Proposal",
+     "keep": true
+    },
+    {
+     "title": "An Unhappy Alternative",
+     "keep": true
+    },
+    {
+     "title": "The Netherfield Rug Pull",
+     "keep": true
+    },
+    {
+     "title": "Charlotte Locks In",
+     "keep": true,
+     "issue": "'three days after' is approximate (proposal Wednesday, engagement before Collins left Saturday); within fair-reading range"
+    },
+    {
+     "title": "Dinner at Rosings",
+     "keep": true,
+     "issue": "merges two Rosings evenings (the age interrogation and the 'if I had ever learnt' line are separate visits); both facts real and verified"
+    },
+    {
+     "title": "The Fitzwilliam Leak",
+     "keep": true
+    },
+    {
+     "title": "The Proposal Disaster",
+     "keep": true
+    },
+    {
+     "title": "The Last Man Alive",
+     "keep": true
+    },
+    {
+     "title": "The Letter",
+     "keep": true
+    },
+    {
+     "title": "The Ratio",
+     "keep": true
+    },
+    {
+     "title": "The Pemberley Tour",
+     "keep": true
+    },
+    {
+     "title": "Twenty Yards",
+     "keep": true
+    },
+    {
+     "title": "Darcy 2.0",
+     "keep": true
+    },
+    {
+     "title": "The Lydia Emergency",
+     "keep": true,
+     "issue": "spice:1 but the text has no damn/hell-tier profanity, should be 0; also the gambling-debts detail surfaces a beat later in the book than the two letters (minor compression). Lydia 'sixteen' verified correct"
+    },
+    {
+     "title": "Telling Him",
+     "keep": true
+    },
+    {
+     "title": "Found and Invoiced",
+     "keep": true
+    },
+    {
+     "title": "The Worst Secret Keeper",
+     "keep": true
+    },
+    {
+     "title": "The Silent Fixer",
+     "keep": true
+    },
+    {
+     "title": "Jane Wins",
+     "keep": true
+    },
+    {
+     "title": "Lady Catherine Pulls Up",
+     "keep": true,
+     "issue": "spice:1 but no profanity in the text, should be 0; and the closing 'tell' is retrospective — in the book Elizabeth initially fears the visit will push Darcy away, it's Darcy who later says it taught him to hope. Plot-consistent liberty"
+    },
+    {
+     "title": "One Word",
+     "keep": true
+    },
+    {
+     "title": "Happier Than Jane",
+     "keep": true
+    }
+   ],
+   "overall": {
+    "voiceOk": true,
+    "accuracyOk": true,
+    "notes": "All 34 beats kept. Mechanical verification is clean: every one of the 27 quotes matches the mirrored 1342.txt verbatim as a fixed string (including the curly apostrophe in the 'Wickham's a fool' quote and the 'ancles' spelling), all 34 anchors hit at 9-14 words, and anchor positions ascend strictly through the file. Factual spot-checks passed: ten thousand a year, godfather, no-legal-recourse bequest, fishing tackle, Georgiana 'but fifteen', Lydia 'only sixteen last June', gaming debts, twenty yards, the housekeeper's best-landlord speech, elegant females, the unhappy alternative. Voice holds across the whole set and matches the Hamlet golden standard: present-tense stream, chat as jury, one or two gamer idioms per beat never forced, caps/lowercase contrast used exactly right, and the emotional beats (Telling Him, The Ratio, The Silent Fixer) are allowed to just hurt per rule 8. No beat is flat; the weakest (Jane Gets Two Dances) still lands its bit. Coverage is complete and in order: opening line to double engagement with the bookend callback, 34 beats within the 18-50 stream range, 6 standalones within the 3-8 target. Remaining nits, none blocking: two spice:1 flags (The Lydia Emergency, Lady Catherine Pulls Up) have no damn/hell-tier profanity and should be 0; The Fine Eyes Leak narrates a conversation book-Elizabeth never learns of (POV cheat, accurate content); Dinner at Rosings merges two evenings; consider whether the underage-elopement beats (The Letter, The Lydia Emergency) warrant a sexual-content warning, though the text keeps it non-explicit."
+   }
+  },
+  "meditations": {
+   "verdicts": [
+    {
+     "title": "The Morning Lineup",
+     "keep": true
+    },
+    {
+     "title": "The Warm Bed Debate",
+     "keep": true
+    },
+    {
+     "title": "Snooze Button Eternity",
+     "keep": true
+    },
+    {
+     "title": "Good Tomorrow",
+     "keep": true
+    },
+    {
+     "title": "Star Routine",
+     "keep": true
+    },
+    {
+     "title": "The Best Revenge",
+     "keep": true,
+     "issue": "'drives them insane' is invented (source says nothing about the offender's reaction); harmless riff, not a plot error"
+    },
+    {
+     "title": "Emerald Status",
+     "keep": true
+    },
+    {
+     "title": "Two Options Only",
+     "keep": true
+    },
+    {
+     "title": "The Report",
+     "keep": true
+    },
+    {
+     "title": "Let Him Look To That",
+     "keep": true
+    },
+    {
+     "title": "Quota Guy",
+     "keep": true
+    },
+    {
+     "title": "They Won't Change",
+     "keep": true,
+     "issue": "self-harm-joke warning correctly applied; keep it, the hanging line really is in the text"
+    },
+    {
+     "title": "The Breath Guy",
+     "keep": true,
+     "issue": "'endure it quietly' branch is a slight extension; source only offers admonish-him, but the be-not-angry frame is exact"
+    },
+    {
+     "title": "Calm Is the Meta",
+     "keep": true
+    },
+    {
+     "title": "Fig Tree Discourse",
+     "keep": true
+    },
+    {
+     "title": "Mirror Check",
+     "keep": true
+    },
+    {
+     "title": "Leave Right Now",
+     "keep": true
+    },
+    {
+     "title": "Death Hangs Over Thee",
+     "keep": true
+    },
+    {
+     "title": "Alexander and the Mule Guy",
+     "keep": true
+    },
+    {
+     "title": "Nobody Beats the Game",
+     "keep": true,
+     "issue": "'did not see it coming' is a joke embellishment; source only says the fates surprised the astrologers. Lice/Democritus and the disembark line are verbatim-faithful"
+    },
+    {
+     "title": "Leaves",
+     "keep": true,
+     "issue": "'love the tree' punchline is the beat's own addition, not in the source; acceptable riff"
+    },
+    {
+     "title": "Funeral Attendance",
+     "keep": true
+    },
+    {
+     "title": "Ashes or a Skeleton",
+     "keep": true
+    },
+    {
+     "title": "Three Acts",
+     "keep": true,
+     "issue": "weakest of the 8 standalones; the play metaphor mostly carries it cold, borderline flag"
+    },
+    {
+     "title": "Oblivion Speedrun",
+     "keep": true,
+     "issue": "could arguably carry a death warning (fame after life, oblivion); minor"
+    },
+    {
+     "title": "Remembered By Whom",
+     "keep": true
+    },
+    {
+     "title": "Trending, Then Obsolete",
+     "keep": true
+    },
+    {
+     "title": "The Pixel",
+     "keep": true,
+     "issue": "'not one person praises you consistently' slightly overstates 'how many, and what manner of men, will commend thee'; spice 1 for 'hell of a kingdom' is correctly flagged"
+    },
+    {
+     "title": "Applause Deconstructed",
+     "keep": true
+    },
+    {
+     "title": "Future Followers",
+     "keep": true
+    },
+    {
+     "title": "The Internal Retreat",
+     "keep": true
+    },
+    {
+     "title": "Delete the Opinion",
+     "keep": true
+    },
+    {
+     "title": "Bitter Cucumber Protocol",
+     "keep": true
+    },
+    {
+     "title": "Rock vs Waves",
+     "keep": true
+    },
+    {
+     "title": "Spring Water",
+     "keep": true
+    },
+    {
+     "title": "The Worse Plague",
+     "keep": true,
+     "issue": "'caught from standing too close to fools' is a riff; source contrasts plague-of-creatures vs plague-of-men, doesn't say mind corruption is contagious"
+    },
+    {
+     "title": "Standing Outside",
+     "keep": true
+    },
+    {
+     "title": "The Only Thing You Lose",
+     "keep": true
+    },
+    {
+     "title": "Change and Opinion",
+     "keep": true
+    },
+    {
+     "title": "No New Content",
+     "keep": true
+    },
+    {
+     "title": "The Vespasian Feed",
+     "keep": true
+    },
+    {
+     "title": "Spend It On Yourself",
+     "keep": true
+    },
+    {
+     "title": "Do Less, Better",
+     "keep": true
+    }
+   ],
+   "overall": {
+    "voiceOk": true,
+    "accuracyOk": true,
+    "notes": "Exceptionally clean set. All 61 grep checks hit verbatim: 18/18 quotes and 43/43 anchors match the mirrored Casaubon text exactly (whitespace-normalized fixed-string search). Passage accuracy spot-checked at ~25 contexts including every risky specific (teeth rows, sparrows/ants/spiders/bees, lice killed Democritus, Chaldean astrologers, Camillus/Caeso/Volesius name list, Vespasian activity list, funeral pedagogue, fountain-not-a-well, carpenter's shavings, three-acts dismissal, 'this world is mere change' really is nine words): everything traces. Voice holds throughout: first-person Marcus posting through it with total composure, present tense, caps/lowercase contrast, one to two gamer idioms per beat never forced, and every beat lands a punchline (best: 'memory is a relay race where every single runner is running into a grave', 'you are the author of the stress fanfic', 'a wound in a costume'). No beat is flat. Format follows the Stack template: 43 items (in 30-45 range), 7 groups (at the 4-7 cap), all beats 15-90 words, 8 standalones (top of the 3-8 range; Three Acts is the borderline one). Flags are sound: spice 1 only on The Pixel ('hell of a kingdom'), self-harm-joke correctly on They Won't Change, death/violence warnings sensibly placed. Coverage is strong across the book's real spine (mornings, other people, anger, death, fame, the inner citadel, the present); the only notable uncovered areas are Book I's gratitude catalog and the gods-or-atoms providence material, both defensible cuts for this format. Two taste-level nits, not blockers: 'cozy' in feelings is a stretch for a stack this death-heavy (though the reassuring tone half-earns it), and no beat addresses chat, which fits the 'Marcus posts' framing the bible itself prescribes for stacks."
+   }
+  }
+ }
+}
