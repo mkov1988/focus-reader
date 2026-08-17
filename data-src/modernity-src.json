@@ -30543,5 +30543,1492 @@
     "standalone": true
    }
   ]
+ },
+ "les-misrables": {
+  "primaryId": "135",
+  "ids": [
+   "135"
+  ],
+  "title": "Les Misérables",
+  "author": "Victor Hugo",
+  "format": "stream",
+  "register": "full-send",
+  "feelings": [
+   "tragic",
+   "epic",
+   "sad",
+   "hopeful"
+  ],
+  "intensity": "gripping",
+  "beats": [
+   {
+    "title": "Nobody Lets Me In",
+    "modern": "day one out of nineteen years inside. I walk into the nicest place in town, I have MONEY, I show my papers like a good boy. dude takes one look, writes a note, sends a kid running to the cops. chat I haven't done anything yet. the paperwork does the crime for me now.",
+    "anchor": "The man bent his steps towards this inn, which was the best",
+    "endAnchor": "the child set off on a run in the direction of the town-hall.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Bishop Sets Another Place",
+    "modern": "so I lead with it. name, sentence, all nineteen years, I am a convict, do NOT let me in. and this old priest doesn't even look up. set another place, he says. I say it AGAIN, louder, waving the yellow paper. he says put the good sheets on. chat I have been thrown out of a dog kennel this week. by the dog.",
+    "quote": "you will put white sheets on the bed in the alcove.",
+    "anchor": "See here. My name is Jean Valjean. I am a convict from the galleys.",
+    "endAnchor": "and your bed will be prepared while you are supping.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Nineteen Years For A Loaf",
+    "modern": "lore drop, since chat keeps asking what I did. my sister had seven kids. no work that winter, no bread, literally none. I punched through a bakery window and grabbed one loaf. dropped it running. never even ate it. five years. that was the opening offer.",
+    "anchor": "One Sunday evening, Maubert Isabeau, the baker on the Church Square at Faverolles",
+    "endAnchor": "Jean Valjean was condemned to five years in the galleys.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Escape Math",
+    "modern": "ran the numbers on my sentence, chat. five for the bread. tried to leave, plus three. tried again, plus five. again, plus three. last time I was out four HOURS and it cost me three years. five became nineteen and none of the extra was for the bread. the loaf was just the entry fee.",
+    "anchor": "Towards the end of this fourth year Jean Valjean’s turn to escape arrived.",
+    "endAnchor": "for having broken a pane of glass and taken a loaf of bread.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Gendarmes Bring Me Back",
+    "modern": "okay so I robbed him. the one man on earth who fed me. cops catch me with the silver in my bag and drag me back to his door for the confirm. easiest case ever made. and this man walks up smiling and goes oh good you're here, you forgot the rest of it. and tells the cops to let me go. chat. CHAT.",
+    "quote": "I gave you the candlesticks too, which are of silver like the rest",
+    "anchor": "In the meantime, Monseigneur Bienvenu had advanced as quickly as his great age permitted.",
+    "endAnchor": "And you have brought him back here? It is a mistake.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "I Buy Your Soul",
+    "modern": "he hands me the candlesticks. the actual silver. then he leans in quiet so the cops can't hear and says he's buying my soul off me and giving it to God, and that I promised to become an honest man. I promised NOTHING. he just wrote it into the save file and closed it. worst part is it worked.",
+    "quote": "It is your soul that I buy from you",
+    "anchor": "He stepped to the chimney-piece, took the two silver candlesticks",
+    "endAnchor": "from black thoughts and the spirit of perdition, and I give it to God.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Little Gervais",
+    "modern": "a kid walks by singing with his little coin. my boot comes down on it. he begs, I roar at him, he runs. then I look down and see silver shining and something in me just BREAKS. I ran that whole plain screaming his name into the dark. nobody answered. first time I cried in nineteen years and it wasn't for me.",
+    "quote": "I am a wretch!",
+    "anchor": "At that moment he caught sight of the forty-sou piece, which his foot",
+    "endAnchor": "It was the first time that he had wept in nineteen years.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "This Is The Surprise",
+    "modern": "story time, this part is before my POV. four rich students take four girls to dinner, promise them a big surprise, then leave the table and have a note delivered an hour later. our parents want us home, we're going to be respectable now, mourn quickly and replace us. p.s. dinner's paid for. three of the girls laughed it off. Fantine laughed too, then went home and remembered she had a baby.",
+    "quote": "The dinner is paid for.",
+    "anchor": "Favourite snatched the paper from the waiter’s hand. It was, in fact, a letter.",
+    "endAnchor": "as to a husband, and the poor girl had a child.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fifty-Seven Francs",
+    "modern": "she can't get hired anywhere with a kid, so she stops at an inn where two little girls are laughing on a swing and thinks: good mother, safe place. asks them to keep her daughter. wife says maybe. then the husband's voice comes out of the back room like a raid boss: not for less than seven a month, six months up front. she paid it. she thought she got lucky.",
+    "anchor": "This remark was probably the spark which the other mother had been waiting for.",
+    "endAnchor": "Not for less than seven francs. And six months paid in advance.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Father Madeleine, Local Legend",
+    "modern": "new save, new name, new town. I invented a cheaper way to make glass beads and the whole region got rich off it. schools, hospital beds, a free clinic. they offer me mayor, I say no. king offers me a medal, I say no. town's official verdict: he's probably some kind of adventurer. sure. whatever stops you checking my papers.",
+    "quote": "The two prime functionaries of the state are the nurse and the schoolmaster.",
+    "anchor": "The hospital was badly endowed; he founded six beds there.",
+    "endAnchor": "Well, so it was the cross that he wanted! Father Madeleine refused the cross.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Cart In The Mud",
+    "modern": "old man pinned under a wagon, mud swallowing it, nobody moves for twenty gold coins. then my inspector says, real slow, looking dead at me: only one man I ever knew could lift that. he was a convict. Toulon. chat he is FISHING. and the old man is screaming. so I got on my knees and lifted the cart in front of him.",
+    "quote": "He was a convict.",
+    "anchor": "I have never known but one man capable of doing what you ask.",
+    "endAnchor": "he fixed his tranquil eye on Javert, who was still staring at him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fired From My Own Factory",
+    "modern": "a woman on my floor had a kid she never mentioned. the town gossip took a paid trip to go LOOK at the child and came back to tell everyone. my supervisor hands her fifty francs and the door. in my name. I never heard a word about it. she didn't even come to me, chat. she decided the mayor gave her the money because he was kind and fired her because he was fair.",
+    "anchor": "Fantine had been at the factory for more than a year, when, one morning",
+    "endAnchor": "because he was good, and had dismissed her because he was just.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Hair, Then The Teeth",
+    "modern": "the innkeepers keep inventing bills. your kid is sick, they write. forty francs, they write. so she sells her hair. then a guy on a cart offers gold for her two front teeth and she runs from him screaming that he's a monster. that night she goes anyway. comes home smiling with blood in it and a black hole in her mouth. the kid was never sick. they made it up for the money.",
+    "quote": "The two teeth had been extracted.",
+    "anchor": "Fantine mingled in the group, and began to laugh with the rest",
+    "endAnchor": "it was a ruse of the Thénardiers to obtain money. Cosette was not ill.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Snow Down Her Back",
+    "modern": "some guy in a good hat spends his whole evening insulting a woman in the street for sport, gets bored that she won't react, sneaks up behind her and shoves a fistful of snow down her bare back. she turns and claws his face. guess which one of them gets arrested. he wandered off during the paperwork.",
+    "anchor": "Each time that the woman passed in front of him",
+    "endAnchor": "The dandy took advantage of the incident to make his escape.",
+    "spice": 2,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Highest Law Is Conscience",
+    "modern": "six months in jail, says my inspector. she has a daughter, she says. so I say one word: I. I let her go. he goes white. he says the law was insulted. I tell him conscience outranks the law and she will not serve a single day. chat I just used the mayor account to override the cop in front of his own station and he will never forgive it.",
+    "quote": "the highest law is conscience. I have heard this woman; I know what I am doing.",
+    "anchor": "The sound of the latch roused him. He raised his head with an expression",
+    "endAnchor": "Heed this well; she will not serve a single day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Reported Me To Himself",
+    "modern": "my inspector walks into my office and confesses. to me. he says he got angry after the cart thing and wrote to the Prefecture that the mayor is an escaped convict named Jean Valjean. he is telling me this to my face. chat, he reported me, and then came to tell me he reported me, because not telling me would have been dishonest.",
+    "quote": "Wrath impelled me; I denounced you at the Prefecture!",
+    "anchor": "He was a convict whom I was in the habit of seeing",
+    "endAnchor": "Wrath impelled me; I denounced you at the Prefecture!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "They Caught Jean Valjean",
+    "modern": "here's the twist. the reply came back and it says the real Jean Valjean is already in custody. some confused old man who stole apples. four witnesses positively ID'd him. trial tomorrow in Arras, galleys for life, done. my inspector explains all of this to me cheerfully while I pretend to read paperwork. so I'm free forever. all I have to do is nothing.",
+    "anchor": "If he is Jean Valjean, he has his previous conviction against him.",
+    "endAnchor": "The case has been taken to the Assizes at Arras.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fire Me, Sir",
+    "modern": "and then he asks to be fired. for it. he says if one of his own men had accused an honest mayor with no proof he'd have thrown him out of the service, so throw him out. I'm sitting there going please stop. this man's entire personality is a rulebook and he has just found himself in violation of it.",
+    "anchor": "So far as exaggeration is concerned, I am not exaggerating.",
+    "endAnchor": "I should have declared him unworthy of the service, and have expelled him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "It Is I",
+    "modern": "I sat in the back of that courtroom for one hour and my hair went white in it. then I stood up, said the three witnesses' names out loud, and told the judge to release the prisoner and arrest me instead. nobody in the room breathed. the prosecutor offered to call a doctor. I told him I'm not mad, you were simply about to make a very large mistake.",
+    "quote": "He is not the man whom you are in search of; it is I: I am Jean Valjean.",
+    "anchor": "Even before the President and the district-attorney could utter a word",
+    "endAnchor": "which seizes the masses when something grand has been done.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Fantine Finds Out",
+    "modern": "I made it back to her sickbed. I asked him for three days to go and get her daughter. three days. he laughs in my face and announces to the whole room that there is no mayor here, there's a convict called Jean Valjean and he's got him by the collar. she sits up. she looks at me. she reaches for something that isn't there. and that's the clip.",
+    "anchor": "Fantine raised herself in bed with a bound, supporting herself",
+    "endAnchor": "with gaping mouth and staring, sightless eyes. She was dead.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "I Advise You Not To Disturb Me",
+    "modern": "I tore an iron bar off the spare bed and looked at him. he backed to the door. I told him quietly not to disturb me right now. then I put her head on the pillow the way you'd do for a sleeping kid, tied her collar, smoothed her hair, closed her eyes, knelt and kissed her hand. then I turned round and told him I'm ready.",
+    "quote": "I advise you not to disturb me at this moment.",
+    "anchor": "Jean Valjean stepped up to this bed, in a twinkling wrenched off the head-piece",
+    "endAnchor": "“Now,” said he, “I am at your disposal.”",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Number 9,430",
+    "modern": "back in the galleys, new number. sailor's hanging off a yard over open water and nobody will go up. I ask permission, snap my ankle chain with one hammer blow and go get him. whole harbour screaming pardon that man. then on the way down I fall in the sea and never surface. paper next day: convict 9,430 drowned, body not recovered, name Jean Valjean. yeah. about that.",
+    "anchor": "a man was seen climbing into the rigging with the agility of a tiger-cat",
+    "endAnchor": "this man was committed under the number 9,430, and his name was Jean Valjean.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Bucket In The Woods",
+    "modern": "found her in the forest at night. eight years old, hauling a bucket bigger than she is, alone, in the dark. I take the handle without a word and we walk. I ask about her mother. she says other people have mothers, I have none, I don't think I ever had any. chat I promised a dead woman I'd find this kid and I found her carrying water in the woods at night.",
+    "quote": "Other people have mothers. I have none.",
+    "anchor": "Then he approached the child, and silently grasped the handle of the bucket.",
+    "endAnchor": "“I don’t think so. Other people have mothers. I have none.”",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Catherine",
+    "modern": "there's a doll in the shop window she's been staring at for weeks and is never allowed to touch. I bought it. put it in her hands. she asked permission three separate times, from the woman who beats her, before she'd believe it. whole tavern went dead silent. she named it Catherine. chat that kid held that doll like it might be taken back.",
+    "quote": "I shall call her Catherine",
+    "anchor": "“Well, Cosette,” said the Thénardier, in a voice that strove to be sweet",
+    "endAnchor": "Cosette’s rags met and clasped the ribbons and fresh pink muslins of the doll.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Wooden Shoe",
+    "modern": "christmas eve. the two daughters of the house set their pretty little shoes by the fire and mother fairy has already dropped a coin in each one. then way back in the dark corner of the hearth there's a third. a beat-up wooden clog covered in ash and dried mud. she put hers out too. hoping. it was empty. I put a gold piece in it and went to bed.",
+    "quote": "There was nothing in this wooden shoe.",
+    "anchor": "He looked at it, and recognized a wooden shoe, a frightful shoe",
+    "endAnchor": "bent over and placed a louis d’or in Cosette’s shoe.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Fifteen Hundred Francs",
+    "modern": "innkeeper opens with a speech about how a father can't just hand his beloved foster daughter to a stranger, he'd need to know where she's going, he'd need to see a passport. I tell him he gets none of that. he reads the room in half a second and drops the whole act: I need fifteen hundred francs. I put the bills on the table under my thumb. go and fetch Cosette.",
+    "anchor": "“Sir,” said he, “I am in need of fifteen hundred francs.”",
+    "endAnchor": "drew out three bank-bills, which he laid on the table.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Over The Wall",
+    "modern": "dead end alley, patrol closing, my inspector's voice bouncing off the walls telling them to search it. she whispers dad I'm scared, who's coming. I tell her it's the innkeeper's wife come to take her back. cruel. it worked, she went silent. rope round her under the arms, up the wall barefoot, her on my back along the top, down the roof, into a garden. she never made a sound.",
+    "quote": "Search the blind alley! The Rue Droit-Mur is guarded!",
+    "anchor": "“Father,” said she, in a very low voice, “I am afraid.",
+    "endAnchor": "reached the linden-tree, and leaped to the ground.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Buried Alive",
+    "modern": "to stay in the convent I had to leave it and come back in through the front door legally. the plan: get nailed into a coffin, ride out with a real funeral, get dug up by my guy before they fill it in. priest leaves. I'm alone. I'm fine. then thunder. it's dirt. it's dirt hitting the lid. second shovelful. third. one of my air holes is gone.",
+    "quote": "It was a shovelful of earth falling on the coffin.",
+    "anchor": "“There, they are going now,” thought he. “I am alone.”",
+    "endAnchor": "which are too strong for the strongest man. Jean Valjean lost consciousness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Note In The Colonel's Hand",
+    "modern": "different stream, but you need this one. a rich kid's father dies and leaves him one scrap of paper. it says: the Emperor made me a baron at Waterloo, take the title. and then: a sergeant named Thénardier saved my life there, he keeps a little inn near Paris, if you ever meet him do all the good you can for him. the kid is Marius. the innkeeper is THAT innkeeper. hold that thought for years.",
+    "quote": "At that same battle of Waterloo, a sergeant saved my life. The man’s name was Thénardier.",
+    "anchor": "The servant found a scrap of paper, which she handed to Marius.",
+    "endAnchor": "he will do all the good he can to Thénardier.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Red-Hot Chisel",
+    "modern": "walked into a charity call, it was a trap, and the man running it is the innkeeper wearing a new name. six of them. they want my signature on a ransom letter. I tell them my life isn't worth the trouble of defending, then I pick their own glowing chisel off the fire and lay it on my bare arm and hold it there. nobody in that room could look at me. I threw it out the window. do what you like.",
+    "quote": "have no more fear of me than I have for you!",
+    "anchor": "You are wretches, but my life is not worth the trouble of defending it.",
+    "endAnchor": "whirling as it flew, and fell far away on the snow.",
+    "spice": 1,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "A Dog Scanning A Thief",
+    "modern": "there's a boy orbiting our bench in the park. every day. she's started noticing him. and I have spent my whole life being hunted so I know exactly what I look like right now: a dog watching a thief. so I moved the bench. then he found the street. so I moved the house. chat I know how this ends and I did it anyway.",
+    "quote": "It was a dog scanning a thief.",
+    "anchor": "Then his eyes were filled with a sad and extraordinary gleam.",
+    "endAnchor": "A week later, Jean Valjean had taken his departure.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Adore You",
+    "modern": "the garden clip I never got to see. he tells her the truth: he's broke, his boots let water in, he can't follow her to England, he can't even pay for a passport. then he puts his forehead against a tree like a statue of despair for two hours while she cries behind him. then: do you love me. she says I adore you. and he gives her his word of honour that if she leaves he'll die. he meant it literally. that's the problem.",
+    "quote": "I adore you!",
+    "anchor": "He came to her, fell at her knees, and slowly prostrating himself",
+    "endAnchor": "my most sacred word of honor, that if you go away I shall die.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Move Away From Your House",
+    "modern": "someone scratched an address into my garden wall in the night. fresh, plaster dust still on the nettles. I don't tell her. then I'm sitting out on the slope and a paper folded in four drops onto my knees from behind me: MOVE AWAY FROM YOUR HOUSE. I'm up instantly, nobody there, just something too big to be a child and too small to be a man vaulting the parapet.",
+    "quote": "MOVE AWAY FROM YOUR HOUSE.",
+    "anchor": "he had suddenly perceived on the wall, the following line, engraved",
+    "endAnchor": "Jean Valjean returned home at once, in a very thoughtful mood.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Funeral That Became A War",
+    "modern": "they buried a general and the whole city turned out. rain, a red flag, someone yelling take him to the Pantheon. dragoons blocking the bridge. three shots from nobody knows where: one kills a squadron chief, one kills a deaf old woman closing her window. a voice screams they're starting too soon. and Paris just goes up. stones, muskets, paving torn out, barricades within the hour.",
+    "quote": "They are beginning too soon!",
+    "anchor": "The hearse passed the Bastille, traversed the small bridge, and reached the esplanade",
+    "endAnchor": "Wrath spreads abroad the riot as wind spreads a fire.",
+    "spice": 0,
+    "warnings": [
+     "violence",
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Éponine's Last Clip",
+    "modern": "the innkeeper's eldest daughter. she took a musket ball through the HAND stopping it hitting him, and it went on into her, and she dragged herself to the barricade to die at his feet. she'd been carrying the letter from the girl he loves in her pocket the whole time. hands it over. asks one thing: kiss my forehead when I'm dead, I'll feel it. then, last words, almost cheerful: by the way, I think I was a little bit in love with you.",
+    "quote": "And by the way, Monsieur Marius, I believe that I was a little bit in love with you.",
+    "anchor": "She was sitting almost upright, but her voice was very low",
+    "endAnchor": "She tried to smile once more and expired.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Blotter In The Mirror",
+    "modern": "I'm pacing the new place feeling GOOD, chat. quiet street, London in a week, she's safe, everything's fine. then I catch four lines in the mirror over the sideboard. it's her letter. she blotted it and left the book lying open and the mirror flipped it the right way round for me. my dearest, my father is making us leave. she has a him. I sat down in that chair and the light went out of the world.",
+    "quote": "The mirror reflected the writing.",
+    "anchor": "In the inclined mirror facing him which surmounted the sideboard",
+    "endAnchor": "taking from the lion the dog which he has in his cage!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "A Fifth Uniform Falls From Heaven",
+    "modern": "they had four spare uniforms and five men with families, and Marius was being made to choose which one stays and dies. every one of them shouting me, me, me. then a fifth uniform lands on the pile out of nowhere. fifth man saved. Marius looks up and it's me. I walked into a barricade to carry a boy home to my daughter, chat. that is the entire reason I'm here.",
+    "anchor": "a fifth uniform fell, as if from heaven, upon the other four.",
+    "endAnchor": "recognized M. Fauchelevent. Jean Valjean had just entered the barricade.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Gavroche Outside The Wall",
+    "modern": "we're out of cartridges, so the smallest kid on the barricade climbs OUT with a basket and starts looting the dead in the open street, in front of the line, singing at them. every volley misses. he ducks, pops up, thumbs his nose, keeps singing, keeps filling the basket. we're all screaming at him to come back. then one bullet finds him. he sits up with blood on his face and starts the next verse anyway. he didn't get to finish it.",
+    "anchor": "Gavroche, though shot at, was teasing the fusillade.",
+    "endAnchor": "This grand little soul had taken its flight.",
+    "spice": 0,
+    "warnings": [
+     "death",
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "You Are Free",
+    "modern": "they had my inspector tied up to be shot and I asked for the job. everyone assumed. I walk him out to the alley past Éponine's body, put the pistol under my arm and open a knife. he goes: a clasp-knife, yeah, that suits you better. take your revenge. so I cut the rope at his neck, his wrists, his feet. you are free. here's my address, by the way. he stood there like a broken statue, then shouted back down the lane: you annoy me, kill me instead.",
+    "quote": "You are free.",
+    "anchor": "Jean Valjean thrust the pistol under his arm and fixed on Javert a look",
+    "endAnchor": "Javert turned round and shouted to Jean Valjean: “You annoy me. Kill me, rather.”",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Shoot Me",
+    "modern": "upstairs, last room, Enjolras alone with a broken gun barrel and no cartridges. twelve rifles on him. he throws the stub away, folds his arms and says shoot me. one guardsman lowers his gun saying it feels like shooting a flower. and then the drunk wakes up. Grantaire, asleep through the entire war, opens his eyes, understands everything instantly, stands up and shouts long live the Republic, I'm one of them. walks over. do you permit it? they died together.",
+    "quote": "Long live the Republic! I’m one of them.",
+    "anchor": "Relegated, as he was, to one corner, and sheltered behind the billiard-table",
+    "endAnchor": "Grantaire fell at his feet, as though struck by a thunderbolt.",
+    "spice": 0,
+    "warnings": [
+     "death",
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Quagmire",
+    "modern": "carrying the boy out through the sewers. unconscious, bleeding, dead weight on my back. then the floor stops being floor. it's a sinkhole. slime to my calves, then my knees, then water at my chin with him held up above my head. one more step and it's over for both of us. and then my foot hits stone. there was a shelf down there. there was a shelf down there, chat.",
+    "anchor": "Jean Valjean felt the pavement vanishing beneath his feet. He entered this slime.",
+    "endAnchor": "Jean Valjean mounted this inclined plane and reached the other side of the quagmire.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "You Pay When You Go Out",
+    "modern": "there's a locked grating at the outlet and a man in the dark with the key. it's HIM. the innkeeper. he doesn't recognise me under the filth, he's decided I murdered the boy on my back, and he is thrilled about it. robs my pockets, takes everything down to the coppers, tells me I cut people's throats too cheap. then unlocks the gate like a turnstile. it's like the fair here, you pay on the way out.",
+    "quote": "Now, my friend, you must leave. It’s like the fair here, you pay when you go out.",
+    "anchor": "And, forgetting his motto: “half shares,” he took all.",
+    "endAnchor": "A moment later, that hideous providence had retreated into the invisibility.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Waiting Outside The Grating",
+    "modern": "step out of the sewer into clean air and he's standing right there. arms folded. of course he is. I say inspector, you have me, I've counted myself your prisoner since this morning, just grant me one favour. he doesn't answer. he kneels down instead and wipes the blood off the boy's face with his own handkerchief and takes his pulse. I say he's wounded. he says he's a dead man. I say: no. not yet.",
+    "anchor": "“Inspector Javert,” said he, “you have me in your power.",
+    "endAnchor": "“He is wounded,” said Jean Valjean. “He is a dead man,” said Javert.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Javert Derailed",
+    "modern": "he let me go. drove me home, waited at my door, and left. then he went to the station and wrote the most Javert document in history: a numbered list of prison reforms. prisoners standing barefoot on cold flagstones. the bars on the canteen. ten sous docked for a broken thread. signed, inspector first class. then he walked back to the parapet above the rapids, set his hat on the stone, and stepped off.",
+    "anchor": "Javert remained motionless for several minutes, gazing at this opening of shadow",
+    "endAnchor": "of that obscure form which had disappeared beneath the water.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "My Name Is Not Fauchelevent",
+    "modern": "day after the wedding I walk into her husband's house and hand him the whole thing. I'm not her father. I'm not related to her at all. I'm a peasant from Faverolles who pruned trees for a living. my name is not Fauchelevent, it's Jean Valjean. he asks who on earth could prove that. I say: me. since I'm telling you. nobody lies that calmly. he believed me.",
+    "quote": "My name is not Fauchelevent, but Jean Valjean.",
+    "anchor": "Monsieur le Baron Pontmercy, I am a peasant of Faverolles.",
+    "endAnchor": "The truth could be felt in that chill of the tomb.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Pendulum Winding Down",
+    "modern": "so I stop visiting. not all at once. every evening I walk towards her street and every evening I stop a little sooner. the corner. then the street before it. then the street before that. an old man going out at the same hour to not arrive. the neighbours decided I was simple. children followed me laughing. one thought the whole way home: what's the use.",
+    "quote": "One would have said that he was a pendulum which was no longer wound up",
+    "anchor": "Little by little, this old man ceased to go as far",
+    "endAnchor": "the quarter said: “He is an innocent.” The children followed him and laughed.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blackmailed Into The Truth",
+    "modern": "the innkeeper turns up to sell Marius dirt on me. proof that I'm a murderer, he says. produces his evidence: a scrap of cloth he tore off the killer in the sewer that night. Marius has the matching coat upstairs. chat this man walked in to blackmail him and accidentally PROVED I carried him home. Marius pays him off to get out, then runs for a carriage shouting it was him, he saved my life, he carried me through the sewer.",
+    "quote": "It was he who saved my life!",
+    "anchor": "As soon as Thénardier had left the house, Marius rushed to the garden",
+    "endAnchor": "He carried me on his back through that frightful sewer.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It Is Nothing To Die",
+    "modern": "they got there in time. both of them on their knees telling me I'm going to live. doctor takes my pulse and whispers two words to Marius: too late. and the only thing I can get out is that dying isn't the hard part. not living is. then I stood up, walked to the wall on my own legs, took down the little copper crucifix and set it on the table.",
+    "quote": "It is nothing to die; it is dreadful not to live.",
+    "anchor": "These barely articulate words were heard to issue from his mouth",
+    "endAnchor": "as he laid the crucifix on the table: “Behold the great martyr.”",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Candlesticks Go Back",
+    "modern": "leaving her the two candlesticks off the mantelpiece. they're only silver but to me they're gold, they're diamonds, they turn any candle you put in them into a wax taper. I hope the man who gave them to me is pleased with what I did with them. bury me under a plain stone, chat. no name on it.",
+    "quote": "They are of silver, but to me they are gold, they are diamonds",
+    "anchor": "I bequeath to her the two candlesticks which stand on the chimney-piece.",
+    "endAnchor": "under a stone to mark the spot. This is my wish.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Her Mother's Name",
+    "modern": "last thing. Cosette, it's time you knew your mother's name. she was called Fantine. kneel when you say it. she suffered as much as you have been happy, that's just how it got divided up. remember Montfermeil? the forest, the bucket, the first time I ever touched your hand and it was freezing. love each other always, there's nothing else in the world. come closer, both of you. let me put my hands on your heads. gg.",
+    "quote": "She was called Fantine. Remember that name—Fantine.",
+    "anchor": "Cosette, the moment has come to tell thee the name of thy mother.",
+    "endAnchor": "He was dead. The night was starless and extremely dark.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   }
+  ]
+ },
+ "a-journey-to-the-centre": {
+  "primaryId": "18857",
+  "ids": [
+   "18857"
+  ],
+  "title": "A Journey to the Centre of the Earth",
+  "author": "Jules Verne",
+  "format": "stream",
+  "register": "full-send",
+  "feelings": [
+   "funny",
+   "epic",
+   "tense",
+   "chaotic"
+  ],
+  "intensity": "gripping",
+  "beats": [
+   {
+    "title": "The Parchment Falls Out",
+    "modern": "uncle kicks the door in screaming my name because he bought an old book. not a GOOD book. an old one. twelfth century Icelandic, unreadable, he's tapping his forehead going wonderful, wonderful. then a scrap of paper falls out of the pages covered in runes and chat I watched a man's whole personality reroute in real time. that scrap ends me. I just don't know it yet.",
+    "anchor": "I was about to venture upon some misplaced joke on the subject",
+    "endAnchor": "series of adventures which ever fell to the lot of human beings.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Nobody Eats Until I Solve It",
+    "modern": "he's decided the scribble is a cipher and he WILL crack it. \"until I discover the meaning of this sentence I will neither eat nor sleep.\" cool. inspiring. love that for you. then: \"nor you neither.\" EXCUSE ME? he locked the front door and pocketed the key. me and the cook are hostages to a man's side quest.",
+    "quote": "Until I discover the meaning of this sentence I will neither eat nor sleep.",
+    "anchor": "Why--how should I know? Did not Galileo make a secret of his discoveries",
+    "endAnchor": "It was lucky I had taken double allowance that day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Read It Backwards",
+    "modern": "day two. eyes fried, letters dancing, brain on fire. I start fanning myself with the cursed paper to not pass out, catch the BACK of it, and the ink has bled through. chat. you read it backwards. that's it. that's the whole puzzle. he's been raw-dogging alphabet math for two days and I solved it by being overheated.",
+    "anchor": "I was, in fact, fighting against an insurmountable difficulty",
+    "endAnchor": "All you had to do to understand the document was to read it backwards.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Perish The Fearful Secret",
+    "modern": "so I read it. and then I decided nobody on earth is ever knowing this. because if HE reads it he goes, and if he goes he takes me, and we do not come back. book in one hand, parchment in the other, walking to the fire. burning it. burning it right now— he walked in. he walked in.",
+    "anchor": "\"Never!\" cried I, jumping up. \"Never shall my uncle be made aware",
+    "endAnchor": "when the door opened and my uncle entered.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Did It, Signed Arne",
+    "modern": "I caved for a bread roll. he reads it out: go down the crater at Sneffels that the shadow of Scartaris touches, before July, brave traveler, and you'll reach the centre of the earth. I DID IT. some sixteenth century alchemist left a dare in a book three hundred years ago and my uncle just accepted it on my behalf.",
+    "quote": "Descend into the crater of Yocul of Sneffels, which the shade of Scartaris caresses, before the kalends of July, audacious traveler, and you will reach the centre of the earth. I did it.",
+    "anchor": "\"Backwards!\" cried my uncle, in wild amazement. \"Oh most cunning Saknussemm",
+    "endAnchor": "and you will reach the centre of the earth. I did it.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Gretchen Is Not Helping",
+    "modern": "told my fiancée the plan, fully expecting backup. she said, out loud, with her whole chest: what a magnificent journey, if only I were a man. babe. BABE. you were my last save point. she is ENVIOUS. the household has voted and I am going into a volcano.",
+    "quote": "What a magnificent journey. If I were only a man! A journey worthy of the nephew of Professor Hardwigg.",
+    "anchor": "What a magnificent journey. If I were only a man!",
+    "endAnchor": "This was, as it were, conclusive. The final blow of all.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Vertigo Bootcamp",
+    "modern": "I mentioned I get dizzy on tall things. so he took me to a church steeple with an outside staircase and asked, in the pitiless voice, if I was a coward. I went up on my hands and knees like a snake with my eyes shut. came down folded in half like a rheumatic old man. he did this to me for five days. day five I strolled up. worst part: it worked.",
+    "anchor": "\"Are you, after all, a coward, sir?\" said my uncle in a pitiless tone",
+    "endAnchor": "without even winking, and with some degree of pleasure.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Seasick Conqueror",
+    "modern": "eleven days at sea and the man who intends to conquer the interior of the earth cannot conquer a boat. flat on his back the entire crossing, groaning, unable to interrogate the captain about mountains. I was completely fine. chat I need you to know that I did not pity him. not once.",
+    "anchor": "The voyage offered no incident worthy of record. I bore it very well",
+    "endAnchor": "termination of the voyage. I didn't pity him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Behold Mount Sneffels",
+    "modern": "we dock in Iceland and before he greets a single human being he hauls me to the quarterdeck, points north at a white two-peaked mountain, and whispers it like a password. then finger to the lips. scowl. we do NOT say the mountain's name out loud. we are being extremely normal about this.",
+    "quote": "Behold he whispered in an awe-stricken voice, behold--Mount Sneffels!",
+    "anchor": "he caught hold of my hand, led me to the quarterdeck of the schooner",
+    "endAnchor": "we stood upon the soil of mysterious Iceland!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Efter",
+    "modern": "hired a guide. Hans. duck-down hunter. moves approximately one muscle per hour, says one word per conversation. uncle tries to pay him up front and he says: after. then leaves. no questions. chat this man has agreed to walk into the centre of the earth for fourteen shillings a week and his only condition is that Saturday is payday.",
+    "quote": "Efter.",
+    "anchor": "My uncle wished to hand the eider-down hunter an advance, but he refused",
+    "endAnchor": "\"To the interior of the earth, yes,\" replied my uncle. \"Why not?\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Horse Says No",
+    "modern": "uncle tries to ride his pony across a sea inlet. pony sniffs the wave, says no. uncle whips it. pony spreads its legs, slides out from under him, and leaves him standing on two separate rocks like the Colossus of Rhodes. then Hans taps his shoulder and points at the FERRY. there was a ferry. there was always a ferry.",
+    "anchor": "But my uncle was in no humor to wait. He dug his heels",
+    "endAnchor": "\"Well,\" I cried, quite delighted with the information; \"so it is.\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Saknussemm Was Here",
+    "modern": "bottom of the crater. three holes, no way to pick. then uncle SCREAMS and I assume he's fallen in. no. he's frozen in front of a black slab tall enough to hold a statue, arms out, staring at a name carved into it three hundred years ago. still readable. \"now, unbeliever, do you begin to have faith?\" I could not produce one word.",
+    "quote": "\"Arne Saknussemm!\" cried my uncle, \"now, unbeliever, do you begin to have faith?\"",
+    "anchor": "Suddenly the Professor uttered a wild, unearthly cry.",
+    "endAnchor": "now, unbeliever, do you begin to have faith?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Shadow Hits The Pit",
+    "modern": "we needed direct sun to show us which of the three holes. six days of cloud and rain and I was quietly praying for one more so the whole thing gets postponed a year. Sunday the 28th the sky opens. noon exactly. the peak's shadow crawls across the floor and lands on the middle pit like a cursor. forward, he says. we went in at 1:13.",
+    "anchor": "Next day the sky was still overcast, but on Sunday, the 28th",
+    "endAnchor": "When we were quite ready, our watches indicated thirteen minutes past one!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Down The Rope",
+    "modern": "leaned over the shaft to look. hundred feet across, no bottom, nothing but throat. hair up, teeth chattering, I lose my centre of gravity and start to go over — and a hand catches me. Hans. doesn't speak, doesn't look at me, just puts me back. five days of steeple training and I nearly deleted myself on the tutorial.",
+    "anchor": "I leaned over a rock which stood on its edge, and looked down.",
+    "endAnchor": "in the art of looking down from lofty eminences without blinking!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Last Look At The Sky",
+    "modern": "lamps lit, packs up, he says forward. and right as I stepped into the tunnel I looked back up the shaft and there was a little circle of Iceland sky. and I knew. that's the one. that's the last one I get. I stood there thinking is that really it. then I walked in anyway.",
+    "anchor": "\"Forward!\" cried my uncle. Each took up his burden.",
+    "endAnchor": "Was it the last I should ever see of any sky?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Trilobite Receipt",
+    "modern": "picked a fossil shell out of the wall and held it up to him. \"trilobite. nothing more, I assure you.\" sir. SIR. a trilobite means we left the lava road. we are not on Saknussemm's route. and then he admits it — he's known for hours. he just kept walking with his eyes closed, because to him being wrong out loud costs more than dying of thirst.",
+    "anchor": "I stooped on a sudden and picked up an almost perfect shell",
+    "endAnchor": "unable to discover my error until I get to the end of this gallery.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "No Thoroughfare",
+    "modern": "six days down the wrong tunnel and then: wall. no left, no right, no over, no under. rock saying no in a language you can't argue with. and the water is gone. tomorrow there is not one drop between the three of us. he tells me my courage went with it. I'd have traded a diamond mine for a glass of water.",
+    "quote": "I would have bartered a diamond mine for a glass of pure spring water!",
+    "anchor": "Suddenly, at six o'clock, we stood in front of a wall.",
+    "endAnchor": "I would have bartered a diamond mine for a glass of pure spring water!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Last Mouthful",
+    "modern": "I'm on the floor at the crossroads, lips split, done, ready to be somebody's interesting fossil. he lifts me up and puts the flask to my mouth. one swallow. he'd been carrying that swallow for days. said he resisted it a hundred times because he knew I'd fall here. this man tortures me daily and then does that.",
+    "quote": "Twenty times, a hundred times, I have resisted the fearful desire to drink it. But--no--no, Harry, I saved it for you.",
+    "anchor": "I then saw him take the gourd which he wore at his side.",
+    "endAnchor": "resisted the fearful desire to drink it. But--no--no, Harry, I saved it for you.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "One More Day",
+    "modern": "I said we turn around. he said: go, take Hans, I'll go on alone. and then he pitched me. Columbus asked his crew for three days and got a continent. he's asking me for one. one day to find water and if he doesn't he swears he takes us up. what am I supposed to say to that. we went down.",
+    "quote": "Now I, the Christopher Columbus of this subterranean region, only ask of you one more day.",
+    "anchor": "Go, leave me, I am very far from desiring your death.",
+    "endAnchor": "I will give up my mighty enterprise and return to the earth's surface.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Hans Digs For Water",
+    "modern": "Hans vanishes into the dark with the lamp. I assume he's leaving us to die. he comes back and says two words: water, below. then he walks the granite with his ear on it until he finds the exact spot and starts swinging a crowbar. an hour of small patient hits. then it BLASTS through and slams the far wall. we drink. it's boiling. \"never mind, it'll cool.\"",
+    "quote": "\"Well, never mind,\" said my uncle, \"it will soon get cool.\"",
+    "anchor": "I saw him raise the heavy crowbar and commence an attack upon the rock",
+    "endAnchor": "\"Well, never mind,\" said my uncle, \"it will soon get cool.\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Old Ocean Overhead",
+    "modern": "ran the numbers on the map. fifty leagues southeast of the coast means we're past the island. chat we are not under Iceland anymore. we are under the ATLANTIC. I announce this like it's terrible news and he rubs his hands together like I told him dinner's ready. whales over our heads. he says don't worry, they can't get through.",
+    "anchor": "if your calculations are correct we are no longer under Iceland",
+    "endAnchor": "\"Yes,\" I cried, \"no doubt old Ocean flows over our heads!\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Chat I Am Alone Down Here",
+    "modern": "walking out front examining granite, fully locked in, not looking back once. turn around. nobody. walk back fifteen minutes. nobody. shout, and the shout comes back at me from every direction at once and none of them are him. I told myself out loud there is only one road so we have to meet. I did not believe me.",
+    "anchor": "Suddenly halting and turning round, I found that I was alone!",
+    "endAnchor": "Only the echoes of my own footsteps could be heard.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The River Is Gone",
+    "modern": "the stream was my thread. follow the water, find them, follow it all the way back to daylight if I have to. I knelt to splash my face and my hands hit dry shingle. it's not here. it was never in this tunnel. I took one wrong fork at the halt and walked away from the only thread I had. thirty leagues of rock on my shoulders like Atlas.",
+    "anchor": "I stopped to plunge my hands and forehead in the pleasant water",
+    "endAnchor": "weighed upon my shoulders like the globe on the shoulders of Atlas.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Lights Out",
+    "modern": "lamp's failing. I watched the last thread of light shrink in the coil and I would not blink in case blinking cost me the end of it. then it went. not night-dark. deleted-dark. no light anywhere for a hundred miles to leak in. so I ran. screaming, falling, bleeding, tasting my own blood, until my legs quit under me.",
+    "anchor": "At last, one final trembling flame remained in the lamp",
+    "endAnchor": "a heavy inert mass along the side of the tunnel, and lost consciousness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Whispering Gallery",
+    "modern": "half dead against the wall and I hear voices coming out of the rock. figured I'd started hallucinating. then I hear my NAME. the tunnel bends sound like a wire and my ear happens to be resting on the one spot in the whole wall where it lands. I say uncle. and out of the granite: Harry, my boy, is that you?",
+    "anchor": "Again I listened; and this time--yes, this time--I heard my name distinctly pronounced",
+    "endAnchor": "Keep your courage, Harry. We will do our best.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forty Seconds",
+    "modern": "we timed it. he says my name and marks the second, I repeat it back, he marks the second it lands. forty seconds round trip. twenty each way. that's a league and a half of solid rock between me and them. he said the number cheerfully, like it was progress. it landed on me like a death knell.",
+    "quote": "\"Forty seconds,\" said my uncle. \"There has elapsed forty seconds between the two words.",
+    "anchor": "Well, take it into your hand. Pronounce my name, noting exactly the second",
+    "endAnchor": "These words fell on my soul like a kind of death knell.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Sea, The Sea",
+    "modern": "I crawl toward them, the floor drops, I fall down a well and wake up bandaged in a grotto four days later. there's LIGHT. there's WIND. there are WAVES. I stagger outside and there is an ocean. horizon, clouds, storms, a granite sky burning like a permanent aurora. a hundred miles underground. he names it on the spot, obviously.",
+    "quote": "\"The sea--the sea,\" I cried.",
+    "anchor": "At first I saw absolutely nothing. My eyes, wholly unused to the effulgence",
+    "endAnchor": "and hence of acquiring a right of giving it a name.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forest Of Mushrooms",
+    "modern": "round a headland and there's a forest. straight trunks, tops like parasols, completely motionless in a stiff breeze. I'm already writing the discovery paper in my head. he glances at it for one second and says, in the flattest voice a human has produced, that it is a forest of mushrooms. forty feet tall. thousands of them. it is very dark under there.",
+    "quote": "\"It is only,\" he said, in his coolest manner, \"a forest of mushrooms.\"",
+    "anchor": "we suddenly turned a steep promontory, and found ourselves close to a lofty forest!",
+    "endAnchor": "beneath them reigned a gloomy and mystic darkness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blind Fish",
+    "modern": "Hans drops a line in the underground sea and pulls up a fish that's been extinct since the Devonian. living fossil. uncle nearly ascends. then he adds the detail: it has no eyes. not damaged, not blinded — never had them. nothing down here has ever needed them. we caught dozens over two hours. every single one. all of them.",
+    "quote": "\"Not only blind,\" continued the Professor, \"but absolutely without organs of sight.\"",
+    "anchor": "This fish, my dear boy, belongs to a family which has been extinct",
+    "endAnchor": "enabled us to renew our stock of provisions in a very satisfactory way.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Something Bit The Crowbar",
+    "modern": "raft gets lifted clean out of the water and thrown twenty fathoms. Hans points. two hundred yards out, a black mass moving. then a sea lizard. then crocodile jaws. then two columns of spray going up like artillery. the SMALLEST thing out there could take the raft and all three of us in one bite. I picked up a rifle. against armour plate. sure.",
+    "anchor": "Hans raised his hand and pointed to where, about two hundred yards off",
+    "endAnchor": "could with ease have crushed our raft and ourselves with a single bite.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Tva",
+    "modern": "they charge each other instead of us. I'm counting five monsters out there — lizard, whale, croc, turtle, serpent. Hans holds up two fingers. \"two.\" and he's right. it's ONE ichthyosaur with a porpoise snout and lizard head and croc teeth, and ONE plesiosaur wearing a turtle shell with thirty feet of swan neck. two animals in five costumes.",
+    "quote": "\"Tva,\" he said.",
+    "anchor": "The two hideous and ravenous monsters passed within fifty fathoms of the raft",
+    "endAnchor": "the terrible enemy of its fearful rival, the Plesiosaurus, or sea crocodile.",
+    "spice": 0,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Only One Comes Back Up",
+    "modern": "three hours of them tearing each other apart, mountains of water breaking over us, hissing loud enough to shake the roof of the world. then both go under and leave a whirlpool that nearly takes us with it. silence. then a head surfaces. just the plesiosaur, dying, thirty feet of neck whipping the sea like a cut worm until it stops. the other one never came back up.",
+    "anchor": "an enormous mass rises out of the waters--the head of the great Plesiosaurus",
+    "endAnchor": "an inert, dead mass on the surface of the now calm and placid waters.",
+    "spice": 0,
+    "warnings": [
+     "violence",
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Island Was A Geyser",
+    "modern": "black mountain lying on the sea, spouting water five hundred feet up. I said turn west. he said advance. I called him foolhardy and mad and threatened to cut the sail, the full meltdown, and he did not answer me once. then Hans points and says: island. it's an island. the spout is a geyser. uncle laughing his head off. then he named it after me.",
+    "quote": "\"Geyser,\" said Hans.",
+    "anchor": "I honestly confess that I was abjectly afraid. I declared that I would",
+    "endAnchor": "It was nothing, after all, but a natural phenomenon.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Ball Lightning On The Powder",
+    "modern": "three days of storm where we can't hear each other scream. then a ball of fire the size of a shell drops onto the raft. rolls the bulwark. hops the provisions. lands on the POWDER BARREL. does not go off. then it magnetises every piece of iron on board and my boot nails weld to the deck while the thing circles my feet. tore my foot free right as it burst.",
+    "anchor": "it clambered up one of the bulwarks of the raft",
+    "endAnchor": "Then all went out and darkness once more fell upon the deep!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Needle Points North",
+    "modern": "storm dumps us on a beach. uncle is delighted, we've crossed. he sets the compass down, reads it, closes his eyes, rubs them, reads it again, and then he can't speak. just points. the needle says the sea is north. we never crossed anything. the wind turned mid-tempest and put us back on the shore we left. every hour on that raft was nothing.",
+    "anchor": "As soon as we had reached the rock, my uncle took the compass",
+    "endAnchor": "back to the shores we had left, apparently forever, so many days before!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "This Is A Human Head",
+    "modern": "walked inland and hit a plain of bones. three square miles of every animal that ever lived, drifted into barrows going out to the horizon. he's standing in it with his arms raised at the granite sky, mouth open, having the best day of his life. then he snatches something out of the dust and his voice goes shaky: Harry, this is a human head.",
+    "quote": "Harry, my boy--Harry--this is a human head!",
+    "anchor": "a plain of bones, appeared suddenly before our eyes!",
+    "endAnchor": "\"A human head, Uncle!\" I said, no less amazed and stupefied than himself.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Giant Shepherd",
+    "modern": "living mastodons. a whole herd of them, pulling down trees with their trunks. already too much. then he drops his voice to a whisper and tells me to look. quarter mile out, leaning on a trunk: twelve feet tall, head like a buffalo, hair in a mane, holding a branch like a crook. he is HERDING them. we ran. I have spent years since telling myself we did not see that.",
+    "anchor": "I thought I saw--no, I really did see with my own eyes",
+    "endAnchor": "A quarter of an hour later we were far away from that terrible monster!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Rusty Dagger",
+    "modern": "found something shining in the sand. a dagger. Spanish, sixteenth century steel, blade chewed to bits from being dragged across stone. somebody stood on this beach. we walk the cliff face reading every crack and under an overhang there's a granite tablet, rubbed smooth, with two worn letters. A. S. he was here. and I'm holding the tool he wrote it with.",
+    "anchor": "And I handed to my startled relative a rusty dagger, of singular shape.",
+    "endAnchor": "You see, I was right. Arne Saknussemm, always Arne Saknussemm!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blow It Up",
+    "modern": "the tunnel behind the initials is plugged by one enormous block of granite. no gap above, below, either side. pickaxes are a joke against it. so I said gunpowder. Hans hollowed a chamber, we packed fifty pounds of guncotton in and ran a wick out, and then we went to bed. six hours lying next to it knowing what's in the wall.",
+    "anchor": "What else but gunpowder, a subterranean mine? Let us blow up the obstacle",
+    "endAnchor": "to consent to wait for the explosion for six weary hours!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "We Drained The Sea",
+    "modern": "I lit it and ran. he counted me down off his chronometer like a man launching a firework. the rock didn't break, chat — the whole cliff drew aside like a curtain and behind it was a bottomless pit. and then the sea went in. the entire underground ocean poured down the hole and took the raft with it. we blew a drain in the bottom of the world.",
+    "anchor": "Only two, one! Now, then, mountains of granite, crumble beneath the power of man!",
+    "endAnchor": "Only one idea filled my mind. We were utterly and completely lost!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Food Is Gone",
+    "modern": "took inventory while we were falling. instruments: gone except compass and chronometer. ladders, ropes, tools: gone. food: one piece of dried meat and some soaked mouldy biscuit. for three men, at a hundred miles an hour, going down. I sat there holding it and decided not to tell him yet, because his calm was the last supply we had and I didn't want to spend it.",
+    "anchor": "Of all our former collection of nautical and philosophical instruments, there remained only",
+    "endAnchor": "to hold my tongue, to gnaw at my entrails like the Spartan boy.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Ape Gigans",
+    "modern": "fourteen feet of black-haired ape with saw teeth walks into the cave sniffing for me. fights a shark-crocodile over who gets to eat me. WINS. comes at me gory, breathing on my neck — and I woke up on the raft. it was a dream. and chat, the genuinely upsetting part is that this trip has made that a completely reasonable thing to dream.",
+    "anchor": "Fourteen feet high, covered with coarse hair, of a blackish brown",
+    "endAnchor": "with a horrid jump--awoke from my nightmare sleep.",
+    "spice": 0,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "We Are Going Up",
+    "modern": "his voice in the pitch dark: don't you see what's happened, we're going up. I put my hand on the wall to check and pulled it back skinned to the meat. two fathoms a second. the sea we let loose hit the bottom of the gulf and now the whole shaft is a barrel and we are the shot.",
+    "anchor": "Well, don't you see what has happened? We are going upwards.",
+    "endAnchor": "we are being cast upon the summit of the waters.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "An Eruption Is Good News",
+    "modern": "water boiling under us. walls red hot to the touch. compass spinning pole to pole like it's possessed. I tell him it's an earthquake and we're finished. he says no, he's expecting something bigger. an eruption. and then he smiles at me from under his spectacles and calls it the most fortunate thing that could happen to us. and chat — he's right. a volcano is the only lift out.",
+    "quote": "An eruption, Harry.",
+    "anchor": "My nephew, I tell you that you are utterly mistaken,\" he continued.",
+    "endAnchor": "of ever escaping from the interior of the earth to the light of day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Stromboli",
+    "modern": "spat out of a crater half naked into HEAT. olives. figs. grapes. we are supposed to be in the arctic. we grab a local kid and my uncle interrogates him in German, English, French, Italian, and then another dialect of Italian. finally the boy gives up one word and bolts: Stromboli. we went in under Iceland and came out in Sicily. that cone on the horizon is Etna.",
+    "quote": "\"Stromboli,\" replied the rickety little shepherd",
+    "anchor": "My fine fellow, do you or do you not mean to speak?",
+    "endAnchor": "which rose on the southern horizon was Etna, the fierce and celebrated Etna!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Farval",
+    "modern": "back in Hamburg he's a legend, waxwork offers, the whole thing. and Hans just leaves. wouldn't take a reward, wouldn't let us pay the debt, got homesick for Reykjavik. said one word — farewell — and went. the man carried us out of the earth for fourteen shillings a week and clocked off like it was any other shift.",
+    "quote": "\"Farval,\" said he",
+    "anchor": "Hans, despite everything he could say to the contrary, quitted Hamburg",
+    "endAnchor": "I hope, at some not distant day, to see him again.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Compass Lied",
+    "modern": "six months later I'm tidying his minerals, pick up the old compass, and the needle points SOUTH. the poles are swapped. the ball of fire on the raft magnetised the whole thing backwards. we never sailed north. we went exactly where we thought we were going. the one thing that had been eating him for half a year, solved by me dusting a shelf.",
+    "quote": "During the storm, upon the Central Sea, the ball of fire which made a magnet of the iron in our raft, turned our compass topsy-turvy.",
+    "anchor": "Why its needle points to the south and not to the north.",
+    "endAnchor": "it was a trick of that inexplicable electricity.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Stream's Over",
+    "modern": "uncle: happiest learned man alive, arguing with every scientist in Europe. me: married Gretchen. we entered the earth by one volcano and left by another twelve hundred leagues away, and nobody at home believed a word of it until Hans stood there in the room. gg. stream's over.",
+    "anchor": "From that hour my uncle was the happiest of learned men",
+    "endAnchor": "in the double quality of niece and wife.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   }
+  ]
+ },
+ "white-nights": {
+  "primaryId": "36034",
+  "ids": [
+   "36034"
+  ],
+  "title": "White nights, and other stories",
+  "author": "Fyodor Dostoyevsky",
+  "format": "stream",
+  "register": "full-send",
+  "feelings": [
+   "sad",
+   "unhinged",
+   "romantic",
+   "funny"
+  ],
+  "intensity": "steady",
+  "beats": [
+   {
+    "title": "Everyone Left For The Summer",
+    "modern": "chat the entire city just packed up and went to their summer houses and nobody invited him. not one person. eight years in Petersburg and he has zero friends, but he's memorised every stranger on his walking route like a friends list. he's not sad about a breakup. he's sad the server emptied out.",
+    "anchor": "From early morning I had been oppressed by a strange despondency.",
+    "endAnchor": "accustomed to meet at the same time and place all the year.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "They Painted My Friend Yellow",
+    "modern": "he has parasocial relationships with BUILDINGS. there's a little pink house he greets every day, very proud of itself, looks down on the ugly houses next to it. he walks past last week and it's been painted yellow. he says: the villains. the barbarians. he has not been able to bring himself to visit since.",
+    "anchor": "But I shall never forget an incident with a very pretty little house",
+    "endAnchor": "my poor disfigured friend, painted the colour of the Celestial Empire.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Girl On The Canal",
+    "modern": "midnight, empty embankment, a girl crying on the railing. a drunk in evening dress spots her and takes off after her at a full sprint. our guy happens to be carrying a big knotted stick. he crosses the road, raises it, the drunk reads the room and leaves. first W of his entire life. she takes his arm.",
+    "anchor": "without a word to any one, the gentleman set off and flew full speed",
+    "endAnchor": "she was very charming and dark--I had guessed right.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Twenty Six And Never Once",
+    "modern": "forty seconds into the first conversation he's ever had with a woman, he volunteers this: I'm twenty-six, I've never spoken to anyone, I fall in love with people who don't exist, I run full romance arcs in my head about strangers. sir. SIR. she is a person you met on a bridge.",
+    "quote": "I don't know how to be silent when my heart is speaking.",
+    "anchor": "Here, I am twenty-six and I have never seen any one.",
+    "endAnchor": "I make up regular romances in my dreams.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The One Condition",
+    "modern": "she agrees to meet him again tomorrow. one rule: do not fall in love with me. that's impossible anyway, she says. he swears immediately. she goes hush, don't swear, I can already tell you go up like gunpowder. chat she called it on night one. check the VOD.",
+    "quote": "you won't fall in love with me.... That's impossible, I assure you.",
+    "anchor": "But mind you will come on the condition, in the first place",
+    "endAnchor": "I know you are ready to flare up like gunpowder.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Definition Of A Dreamer",
+    "modern": "she asks what he is and he answers like he's reading a species entry. a dreamer isn't a human being, it's an intermediate creature. lives in a grimy green corner. grows onto it like a snail. or, and these are his words, like the thing that's an animal and a house at the same time. bro classified himself as a tortoise.",
+    "anchor": "Let me tell you that in these corners live strange people",
+    "endAnchor": "is an animal and a house both at once, and is called a tortoise.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Where Did You Bury Your Best Days",
+    "modern": "and then the bit drops out from under him. he starts asking himself out loud where the years went. how fast they went. what he did with them. where he buried his best days, whether he lived at all. and the answer is nothing. none of it happened. it was all dreams. no punchline on this one, chat.",
+    "quote": "Where have you buried your best days? Have you lived or not?",
+    "anchor": "And one asks oneself where are one's dreams.",
+    "endAnchor": "all was nothing, stupid, simple nullity, there has been nothing but dreams!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "She Showed Up With A Bundle",
+    "modern": "her turn. a year ago the lodger upstairs said he was leaving for Moscow, so she packed every piece of clothing she owned into a bundle, climbed his stairs, and put it on his bed. he opened the door and thought she was a ghost. then he said the worst sentence available: I'm poor. how would we live.",
+    "anchor": "When I opened his door he cried out as he looked at me.",
+    "endAnchor": "How could we live, if I were to marry you?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Why Isn't He You",
+    "modern": "he's been the emotional support friend for three nights straight. she turns to him and says, kindly, sincerely: you're better than him. you're kinder than him. why isn't he you. and then, same breath, I love him more than you. chat she does not know she is committing a murder.",
+    "quote": "Why isn't he you? Why isn't he like you?",
+    "anchor": "so kind that I should be a stone if I did not feel it.",
+    "endAnchor": "I respect him too much, and doesn't that show that we are not equals?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It's Impossible, But I Love You",
+    "modern": "the man he's been consoling her about never shows. she breaks down. and he cracks and says it out loud: it's impossible, but I love you. she goes, oh. what of it. I've known that for ages, I just assumed you liked me a lot. she has known THE WHOLE TIME.",
+    "anchor": "It's impossible, but I love you, Nastenka! There it is! Now everything is told",
+    "endAnchor": "I always thought that you simply liked me very much.... Oh dear, oh dear!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Then I Love You Too",
+    "modern": "and then it flips. she says she'll get over him, she's getting over him now, he laughed at her, he never loved her — and you did, and you're nobler, and I love you. she says it out loud. she means it in that minute. she cries into his shoulder and he holds her. chat. chat we won.",
+    "anchor": "I love him; but I shall get over it, I must get over it",
+    "endAnchor": "she laid her head upon my shoulder, then upon my bosom, and wept bitterly.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It's Him",
+    "modern": "they spend the night picking rooms. he'll rent the top floor. granny comes too. they're arguing about which opera to see. then a young man walks past, stops, and looks at them. she goes rigid. it's him. she tears out of his arms, doubles back to kiss him once, and leads the other man away. he stands there until they're gone.",
+    "anchor": "At that moment a young man passed by us.",
+    "endAnchor": "At last the two vanished from my sight.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "A Whole Moment Of Happiness",
+    "modern": "the letter arrives in the morning. she's marrying him next week, please forgive her, please still be her brother, please like him. he looks around his room and sees it fifteen years ahead: same cobwebs, same servant, same him. and he doesn't curse her. he blesses her. then he asks the question the whole book was built for.",
+    "quote": "My God, a whole moment of happiness! Is that too little for the whole of a man's life?",
+    "anchor": "I don't know why I suddenly pictured my room grown old like Matrona.",
+    "endAnchor": "Is that too little for the whole of a man's life?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Am A Sick Man",
+    "modern": "new POV, chat, and this one is a different animal entirely. forty year old ex-clerk, quit the second he inherited money, lives in a corner of Petersburg. opens his diary with: I am sick, I am spiteful, I am unattractive. thinks his liver's rotting. refuses to see a doctor purely out of spite. knows the spite only hurts him. does it anyway.",
+    "quote": "I am a sick man.... I am a spiteful man. I am an unattractive man.",
+    "anchor": "I am a sick man.... I am a spiteful man.",
+    "endAnchor": "My liver is bad, well--let it get worse!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forty Is Extreme Old Age",
+    "modern": "he announces that living past forty is bad manners, vulgar and immoral, and that only fools and worthless men do it. he says this at exactly forty. then immediately adds that he personally intends to make sixty. seventy. eighty. and then asks for a second to catch his breath.",
+    "quote": "To live longer than forty years is bad manners, is vulgar, immoral.",
+    "anchor": "To live longer than forty years is bad manners, is vulgar, immoral.",
+    "endAnchor": "for I shall go on living to sixty myself.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Mouse In The Hole",
+    "modern": "he explains the two categories of man. normal man gets insulted, lowers his horns, charges. he gets insulted and turns into a mouse: doubts, side questions, a whole stinking brew of it, everyone laughing, and then he creeps back into the hole. and there he reruns the clip for forty years, adding worse details every time. chat he invented the 3am shame spiral and he's fucking proud of it.",
+    "anchor": "Now let us look at this mouse in action.",
+    "endAnchor": "in which it does not even itself believe, creep ignominiously into its mouse-hole.",
+    "spice": 2,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Twice Two Makes Four",
+    "modern": "they tell him: nature doesn't take requests, a wall is a wall, two times two is four, be reconciled to it. and he says I know I can't headbutt through a wall. I'm just never going to be at peace about it. the man is picking a fight with arithmetic. he'd rather lose than agree.",
+    "quote": "what do I care for the laws of nature and arithmetic, when, for some reason I dislike those laws and the fact that twice two makes four?",
+    "anchor": "Merciful Heavens! but what do I care for the laws of nature and arithmetic",
+    "endAnchor": "simply because it is a stone wall and I have not the strength.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Enjoyment In A Toothache",
+    "modern": "someone jokes he'll be finding pleasure in toothache next. he says correct, had one for a month, and here's how it works. by day three you're not moaning from pain. you're moaning AT the household. everyone knows you're performing. you know they know. that's the whole pleasure. this man weaponised a molar.",
+    "quote": "Even in toothache there is enjoyment",
+    "anchor": "Ha, ha, ha! You will be finding enjoyment in toothache next",
+    "endAnchor": "if he did not feel enjoyment in them he would not moan.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Crystal Palace",
+    "modern": "they promise him the perfect future. a crystal palace. everything solved forever, nothing left to want. and he says that's exactly what terrifies him, because you can't stick your tongue out at it. a henhouse keeps the rain off too, he says, and I'm still not calling it a palace out of gratitude.",
+    "quote": "But meanwhile I will not take a hen-house for a mansion.",
+    "anchor": "You believe in a palace of crystal that can never be destroyed",
+    "endAnchor": "But meanwhile I will not take a hen-house for a mansion.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Moved Like Furniture",
+    "modern": "he's standing near a billiard table, in the way. an officer takes him by the shoulders, physically relocates him to a different spot, and walks on without a word. doesn't insult him. doesn't even see him. and he says: I could have forgiven being hit. what I cannot forgive is being MOVED.",
+    "quote": "I could have forgiven blows, but I could not forgive his having moved me without noticing me.",
+    "anchor": "An officer put me in my place from the first moment.",
+    "endAnchor": "but I could not forgive his having moved me without noticing me.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Collision",
+    "modern": "two years of prep for this. he researched the man, wrote a whole novel unmasking him, drafted a duel letter, sold his coat collar, borrowed money for a decent hat, all so he could walk down the Nevsky and NOT step aside. finally does it. shoulders him. gets bounced off like a ball. declares total victory and goes home singing Italian opera. absolutely fucking unhinged.",
+    "anchor": "Suddenly, three paces from my enemy, I unexpectedly made up my mind",
+    "endAnchor": "I was delighted. I was triumphant and sang Italian arias.",
+    "spice": 2,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Invited Himself",
+    "modern": "old schoolmates are arranging a farewell dinner for a guy he has despised since school. he was not invited. he interrupts their maths so his share gets counted in. they say where would we even have found you. he insists anyway. and he still owes one of them fifteen roubles. what the hell is wrong with this man.",
+    "anchor": "to invite myself so suddenly and unexpectedly would be positively graceful",
+    "endAnchor": "If he wants to come so much, let him.",
+    "spice": 1,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "An Hour Early",
+    "modern": "they moved the dinner from five to six and nobody told him. so he's sitting alone in an empty private room from half past five, watching a waiter lay a table for other people, feeling worse with every fork. he's too embarrassed to keep asking the staff. they arrive an hour late and find it hilarious.",
+    "anchor": "But it was not a question of being the first to arrive.",
+    "endAnchor": "I felt even more humiliated when he was present.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Toast",
+    "modern": "drunk, ignored, spiralling, he stands up to make his own speech. announces that he hates phrasemongers, hates men in corsets, hates ribald talk, loves truth and honesty. then toasts the guest of honour with go seduce the Circassian girls. table goes silent. somebody says he wants a punch in the face. he challenges a man to a duel and the whole room falls over laughing.",
+    "quote": "Seduce the Circassian girls, shoot the enemies of the fatherland and ... and ... to your health, Monsieur Zverkov!",
+    "anchor": "let me tell you that I hate phrases, phrasemongers and men in corsets",
+    "endAnchor": "out of keeping with my appearance that everyone, including Ferfitchkin, was prostrate with laughter.",
+    "spice": 1,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Three Hours Of Pacing",
+    "modern": "they move to the sofa and stop acknowledging he exists. so he paces. table to stove, stove to table, thumping his heels on purpose so they have to hear it. eight o'clock to eleven. three hours. he sweats through his shirt three separate times. he knows he'll still be replaying this in forty years. he keeps pacing.",
+    "anchor": "I had the patience to walk up and down in front of them",
+    "endAnchor": "two minutes later they ceased to notice me again. It struck eleven.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Two Wide Open Eyes",
+    "modern": "he chases them to a brothel to slap someone and they've already scattered. hours later he wakes in the dark and there are two eyes on him, completely cold, completely detached. he hasn't said a single word to her all night. he asks her name just to make the looking stop. Liza. twenty. from Riga. two weeks in the house.",
+    "anchor": "Suddenly I saw beside me two wide open eyes scrutinizing me curiously and persistently.",
+    "endAnchor": "but somehow far from graciously, and she turned her eyes away.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Grave Speech",
+    "modern": "then he does the cruellest thing in the whole volume. he narrates her own death to her: consumption, a wet grave in Volkovo, gravediggers swearing about the rain, nobody to mourn her, her name gone off the earth like she was never born. he admits he's showing off. it's a performance. she bites the pillow until her hand bleeds.",
+    "quote": "your name will vanish from the face of the earth--as though you had never existed, never been born at all!",
+    "anchor": "No, Liza, it would be happy for you if you were to die soon",
+    "endAnchor": "let me out, kind people, to live in the world again.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Her One Treasure",
+    "modern": "he panics at what he's done, gives her his address, says come to me. she stops him at the door, runs off, comes back glowing and puts a piece of paper in his hand. it's a love letter. a student who danced with her at a party and knows nothing about her life. she kept it. she needed him to know that somebody once wrote to her respectfully.",
+    "anchor": "she held out a piece of paper to me.",
+    "endAnchor": "I said nothing, pressed her hand and went out.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Was Laughing At You",
+    "modern": "she actually comes. finds him in a torn dressing gown mid-screaming-match with his servant. so he burns her down. tells her the sermon was sport, that he'd been humiliated at a dinner and needed something smaller to humiliate, that he was never saving anyone. she goes down into the chair like she's been hit with an axe.",
+    "quote": "I had been humiliated, so I wanted to humiliate; I had been treated like a rag, so I wanted to show my power....",
+    "anchor": "Why have you come to me, tell me that, please?",
+    "endAnchor": "she sank on a chair as though she had been felled by an axe.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Five Rouble Note",
+    "modern": "she works out the thing he can't stand: that he's the one who's unhappy. she holds him while he sobs. and he can't forgive being seen, so on her way out he forces money into her hand, deliberately, from spite. she leaves. he turns round and the note is lying on the table where she threw it.",
+    "anchor": "I ran up to her, seized her hand, opened it, thrust something in it",
+    "endAnchor": "at the moment when I had dashed into the further corner.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Anti-Hero",
+    "modern": "he never saw her again. and he closes by admitting there's no hero in these notes, only an anti-hero, and then turns it on the reader: we're all cripples, we're all divorced from real life, we all secretly prefer books to living. untie us and we'd beg to be tied back up. then he just stops writing.",
+    "quote": "we are all divorced from life, we are all cripples, every one of us, more or less.",
+    "anchor": "a novel needs a hero, and all the traits for an anti-hero are",
+    "endAnchor": "Soon we shall contrive to be born somehow from an idea.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He's Getting Married",
+    "modern": "new story, two clerks sharing a flat. Vasya comes home in his best trousers, obviously bursting with news, and does the loud fake cough thing until his friend wakes up. Arkady pins him to the bed to get it out of him. news is: he's engaged. Arkady picks him up like a baby, carries him round the room pretending to rock him to sleep, then kisses his cheek.",
+    "anchor": "Arkady Ivanovitch took Vasya up in his arms like a baby",
+    "endAnchor": "and kissed him on the cheek in the most genuine and friendly way.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Death By Gratitude",
+    "modern": "Vasya's boss gave him copying work as a kindness. Vasya, drowning in gratitude for a job and a fiancée and a whole life he can't believe he's allowed, promises more than exists, doesn't finish, and convinces himself he'll be handed to the army for it. by morning he's standing in the director's office at attention. they ask what broke him. Arkady can only get one word out.",
+    "quote": "Gra--gra--gratitude!",
+    "anchor": "Vasya was standing, pale, with his head up, stiffly erect, like a recruit",
+    "endAnchor": "to every one that a man could go out of his mind from gratitude.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Not Fit For Military Service",
+    "modern": "the whole department is standing around him with no idea what to do. Vasya suddenly remembers what he came to report, steps forward, clicks his heel like a soldier and states that he has a physical defect, is small and weak, and is not fit for service, Your Excellency. the director starts crying. Vasya says present, wheels left, and marches out.",
+    "quote": "I have a physical defect and am small and weak, and I am not fit for military service, Your Excellency",
+    "anchor": "I have a physical defect and am small and weak",
+    "endAnchor": "he wheeled round to the left and marched out of the room.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Curl Of Hair",
+    "modern": "they hug goodbye at the door before the hospital carriage takes him. Vasya presses a folded paper into Arkady's hand and begs him to look after it, bring it later, keep it safe. they take him away. Arkady opens it. it's a lock of Liza's hair he had never once gone anywhere without.",
+    "anchor": "They flung themselves into each other's arms in a last bitter embrace.",
+    "endAnchor": "sobbed in the fullness of his childish heart.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Two Years Later, In Church",
+    "modern": "two years on, Arkady runs into Lizanka in a church. married. baby. nurse walking beside her. she says she's happy, thank God, not badly off, her husband is a kind man and she's fond of him. mid-sentence her voice gives out and she bows down to the floor so nobody can see her face.",
+    "anchor": "Two years later he met Lizanka in church.",
+    "endAnchor": "she turned away, and bowed down to the church pavement to hide her grief.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Compound Interest On A Child",
+    "modern": "children's party, New Year's Eve. the important guest everyone's fawning over steps into a side room and starts doing arithmetic on his fingers. three hundred thousand dowry. girl's eleven. five years at four percent, no, the father's sharper than that, call it eight, call it five hundred thousand. then he glances at the actual child and stops dead.",
+    "anchor": "Now he stood in hesitation and seemed to be reckoning something on his fingers.",
+    "endAnchor": "when he suddenly glanced at the little girl and stopped short.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Do You Know What Your Dolly Is Made Of",
+    "modern": "he goes over to her. kisses her head. asks what she's playing. tells her the doll is only rags. twice tries to send the poor red-haired boy out of the room. then, voice dropping softer and softer, asks whether she'll love him when he comes to see her papa and mamma. she's near tears. the boy takes her hand and starts crying with her.",
+    "quote": "And will you love me, dear little girl, when I come and see your papa and mamma?",
+    "anchor": "And do you know why they gave you that doll?",
+    "endAnchor": "clutched her hand and began whimpering from sympathy for her.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "A Good Stroke Of Business",
+    "modern": "five years pass. the narrator walks past a church, sees the carriages, pushes into the crowd. the bride comes through: pale, preoccupied, eyes red from crying, and people in the crowd are saying she's only just sixteen. then he looks at the groom, recognises him, and shoves his way back out into the street. good stroke of business, he thinks.",
+    "quote": "People were saying that she was only just sixteen.",
+    "anchor": "I passed lately by a certain church; I was struck by the crowd",
+    "endAnchor": "I thought as I made my way into the street.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The April Fool",
+    "modern": "a man who lets a whole tavern laugh at him for money tells them how he lost everything. he'd informed on his boss for a bribe, got caught, got tearfully forgiven, got engaged to the daughter. then on the first of April he decides it would be funny to hand over a formal letter of resignation as a prank. curls his hair, best coat, delivers it, then yells april fool like a kid shouting boo behind grandma's chair.",
+    "anchor": "As to-day was the first of April, I was pretending",
+    "endAnchor": "into her ear suddenly at the top of his voice, meaning to frighten her.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Starling",
+    "modern": "everyone laughs. wedding rings get ordered. weeks later the sack arrives. he runs to the boss going how, and the boss says calmly: you resigned. on the first of April. the letter was never taken back. then a page turns up with the birdcage he'd given the daughter and a note saying only, April 1st. he says he once meant to call that man a scoundrel to his face. he couldn't do it.",
+    "anchor": "Yes, you did--you sent in your papers on the first of--April.",
+    "endAnchor": "But somehow I couldn't bring myself to it, gentlemen.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Got On The Horse",
+    "modern": "eleven year old boy, house full of adults using him as entertainment, one of them needling him about a horse nobody dares ride. something snaps. he's down the steps in one jump and has a foot in the stirrup before the grooms can move. Tancred rears, rips loose and goes off like a hurricane with fifty people screaming behind him.",
+    "anchor": "at one bound, I was down the steps and beside Tancred.",
+    "endAnchor": "and dashed off like a hurricane, while every one cried out in horror.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Bee And The Letter",
+    "modern": "he's smuggled a letter into a bunch of flowers for the woman he's quietly, hopelessly in love with, and she takes the flowers without looking and sets them down. dead drop failed. then a bee turns up. she waves the flowers at it and the letter drops straight onto her open book. he shuts his eyes and fakes sleep while she reads it. her whole face changes.",
+    "anchor": "This was a big, golden bee, brought by a kindly breeze, luckily for me.",
+    "endAnchor": "there was happiness in the letter and all her misery was dispersed like smoke.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "My Childhood Was Over",
+    "modern": "someone calls her name through the trees. she gets up, bends right down over him to check he's really asleep, and a kiss and her tears land on his hand. then a second one on his mouth, and she's gone before he can open his eyes. he lies in the grass shaking. the line he uses for it: my childhood was over from that moment.",
+    "anchor": "Mme. M. did not answer, but she got up quickly from the seat",
+    "endAnchor": "the first vague glimpse of my nature. My childhood was over from that moment.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Lodgers Invent The News",
+    "modern": "last one. an elderly clerk lives behind a screen in the cheapest corner of a boarding house, five roubles a month, bothers nobody. the other lodgers work out he'll believe literally anything, so they start feeding him fake office news: married clerks get promoted faster, they're docking pay for compulsory dancing lessons, there's going to be an exam. he starts walking softly. starts listening at doors. starts asking his boss whether it's true.",
+    "anchor": "He would say, for instance, that some one had heard His Excellency that day",
+    "endAnchor": "thousands of similar very absurd rumours were discussed.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "They Cut Open The Mattress",
+    "modern": "he dies. they go through his things: two rags, socks, half a handkerchief, an old hat, some boot soles. then they shift the mattress and money hits the floor. there's a knife slit in it he cut himself. they send for scissors. coins keep coming, wrapped in paper, sorted by size, some of them a century old. final count: 2497 roubles and a half. he'd been living on nothing for twenty years.",
+    "anchor": "They attacked the mattress, they were about to lift it up",
+    "endAnchor": "there would perhaps have been just 2500 roubles.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "What If I'm Not Dead",
+    "modern": "the landlady wails that he cheated her, that he could have just handed it over and been looked after. and the book ends by putting words in a dead man's mouth. give over. stop whining. go to bed. it's nice lying here. though — look here — what if I get up.",
+    "quote": "what if I'm not dead, what if I get up, do you hear? What would happen then?",
+    "anchor": "What is it? Give over, do you hear, you stupid woman? Don't whine!",
+    "endAnchor": "what if I get up, do you hear? What would happen then?",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   }
+  ]
  }
 }

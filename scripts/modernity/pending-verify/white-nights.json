@@ -1,0 +1,479 @@
+{
+ "primaryId": "36034",
+ "title": "White nights, and other stories",
+ "author": "Fyodor Dostoyevsky",
+ "format": "stream",
+ "register": "full-send",
+ "slug": "white-nights",
+ "work": {
+  "slug": "white-nights",
+  "feelings": [
+   "sad",
+   "unhinged",
+   "romantic",
+   "funny"
+  ],
+  "intensity": "steady",
+  "beats": [
+   {
+    "title": "Everyone Left For The Summer",
+    "modern": "chat the entire city just packed up and went to their summer houses and nobody invited him. not one person. eight years in Petersburg and he has zero friends, but he's memorised every stranger on his walking route like a friends list. he's not sad about a breakup. he's sad the server emptied out.",
+    "anchor": "From early morning I had been oppressed by a strange despondency.",
+    "endAnchor": "accustomed to meet at the same time and place all the year.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "They Painted My Friend Yellow",
+    "modern": "he has parasocial relationships with BUILDINGS. there's a little pink house he greets every day, very proud of itself, looks down on the ugly houses next to it. he walks past last week and it's been painted yellow. he says: the villains. the barbarians. he has not been able to bring himself to visit since.",
+    "anchor": "But I shall never forget an incident with a very pretty little house",
+    "endAnchor": "my poor disfigured friend, painted the colour of the Celestial Empire.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Girl On The Canal",
+    "modern": "midnight, empty embankment, a girl crying on the railing. a drunk in evening dress spots her and takes off after her at a full sprint. our guy happens to be carrying a big knotted stick. he crosses the road, raises it, the drunk reads the room and leaves. first W of his entire life. she takes his arm.",
+    "anchor": "without a word to any one, the gentleman set off and flew full speed",
+    "endAnchor": "she was very charming and dark--I had guessed right.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Twenty Six And Never Once",
+    "modern": "forty seconds into the first conversation he's ever had with a woman, he volunteers this: I'm twenty-six, I've never spoken to anyone, I fall in love with people who don't exist, I run full romance arcs in my head about strangers. sir. SIR. she is a person you met on a bridge.",
+    "quote": "I don't know how to be silent when my heart is speaking.",
+    "anchor": "Here, I am twenty-six and I have never seen any one.",
+    "endAnchor": "I make up regular romances in my dreams.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The One Condition",
+    "modern": "she agrees to meet him again tomorrow. one rule: do not fall in love with me. that's impossible anyway, she says. he swears immediately. she goes hush, don't swear, I can already tell you go up like gunpowder. chat she called it on night one. check the VOD.",
+    "quote": "you won't fall in love with me.... That's impossible, I assure you.",
+    "anchor": "But mind you will come on the condition, in the first place",
+    "endAnchor": "I know you are ready to flare up like gunpowder.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Definition Of A Dreamer",
+    "modern": "she asks what he is and he answers like he's reading a species entry. a dreamer isn't a human being, it's an intermediate creature. lives in a grimy green corner. grows onto it like a snail. or, and these are his words, like the thing that's an animal and a house at the same time. bro classified himself as a tortoise.",
+    "anchor": "Let me tell you that in these corners live strange people",
+    "endAnchor": "is an animal and a house both at once, and is called a tortoise.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Where Did You Bury Your Best Days",
+    "modern": "and then the bit drops out from under him. he starts asking himself out loud where the years went. how fast they went. what he did with them. where he buried his best days, whether he lived at all. and the answer is nothing. none of it happened. it was all dreams. no punchline on this one, chat.",
+    "quote": "Where have you buried your best days? Have you lived or not?",
+    "anchor": "And one asks oneself where are one's dreams.",
+    "endAnchor": "all was nothing, stupid, simple nullity, there has been nothing but dreams!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "She Showed Up With A Bundle",
+    "modern": "her turn. a year ago the lodger upstairs said he was leaving for Moscow, so she packed every piece of clothing she owned into a bundle, climbed his stairs, and put it on his bed. he opened the door and thought she was a ghost. then he said the worst sentence available: I'm poor. how would we live.",
+    "anchor": "When I opened his door he cried out as he looked at me.",
+    "endAnchor": "How could we live, if I were to marry you?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Why Isn't He You",
+    "modern": "he's been the emotional support friend for three nights straight. she turns to him and says, kindly, sincerely: you're better than him. you're kinder than him. why isn't he you. and then, same breath, I love him more than you. chat she does not know she is committing a murder.",
+    "quote": "Why isn't he you? Why isn't he like you?",
+    "anchor": "so kind that I should be a stone if I did not feel it.",
+    "endAnchor": "I respect him too much, and doesn't that show that we are not equals?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It's Impossible, But I Love You",
+    "modern": "the man he's been consoling her about never shows. she breaks down. and he cracks and says it out loud: it's impossible, but I love you. she goes, oh. what of it. I've known that for ages, I just assumed you liked me a lot. she has known THE WHOLE TIME.",
+    "anchor": "It's impossible, but I love you, Nastenka! There it is! Now everything is told",
+    "endAnchor": "I always thought that you simply liked me very much.... Oh dear, oh dear!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Then I Love You Too",
+    "modern": "and then it flips. she says she'll get over him, she's getting over him now, he laughed at her, he never loved her — and you did, and you're nobler, and I love you. she says it out loud. she means it in that minute. she cries into his shoulder and he holds her. chat. chat we won.",
+    "anchor": "I love him; but I shall get over it, I must get over it",
+    "endAnchor": "she laid her head upon my shoulder, then upon my bosom, and wept bitterly.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It's Him",
+    "modern": "they spend the night picking rooms. he'll rent the top floor. granny comes too. they're arguing about which opera to see. then a young man walks past, stops, and looks at them. she goes rigid. it's him. she tears out of his arms, doubles back to kiss him once, and leads the other man away. he stands there until they're gone.",
+    "anchor": "At that moment a young man passed by us.",
+    "endAnchor": "At last the two vanished from my sight.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "A Whole Moment Of Happiness",
+    "modern": "the letter arrives in the morning. she's marrying him next week, please forgive her, please still be her brother, please like him. he looks around his room and sees it fifteen years ahead: same cobwebs, same servant, same him. and he doesn't curse her. he blesses her. then he asks the question the whole book was built for.",
+    "quote": "My God, a whole moment of happiness! Is that too little for the whole of a man's life?",
+    "anchor": "I don't know why I suddenly pictured my room grown old like Matrona.",
+    "endAnchor": "Is that too little for the whole of a man's life?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Am A Sick Man",
+    "modern": "new POV, chat, and this one is a different animal entirely. forty year old ex-clerk, quit the second he inherited money, lives in a corner of Petersburg. opens his diary with: I am sick, I am spiteful, I am unattractive. thinks his liver's rotting. refuses to see a doctor purely out of spite. knows the spite only hurts him. does it anyway.",
+    "quote": "I am a sick man.... I am a spiteful man. I am an unattractive man.",
+    "anchor": "I am a sick man.... I am a spiteful man.",
+    "endAnchor": "My liver is bad, well--let it get worse!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forty Is Extreme Old Age",
+    "modern": "he announces that living past forty is bad manners, vulgar and immoral, and that only fools and worthless men do it. he says this at exactly forty. then immediately adds that he personally intends to make sixty. seventy. eighty. and then asks for a second to catch his breath.",
+    "quote": "To live longer than forty years is bad manners, is vulgar, immoral.",
+    "anchor": "To live longer than forty years is bad manners, is vulgar, immoral.",
+    "endAnchor": "for I shall go on living to sixty myself.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Mouse In The Hole",
+    "modern": "he explains the two categories of man. normal man gets insulted, lowers his horns, charges. he gets insulted and turns into a mouse: doubts, side questions, a whole stinking brew of it, everyone laughing, and then he creeps back into the hole. and there he reruns the clip for forty years, adding worse details every time. chat he invented the 3am shame spiral and he's fucking proud of it.",
+    "anchor": "Now let us look at this mouse in action.",
+    "endAnchor": "in which it does not even itself believe, creep ignominiously into its mouse-hole.",
+    "spice": 2,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Twice Two Makes Four",
+    "modern": "they tell him: nature doesn't take requests, a wall is a wall, two times two is four, be reconciled to it. and he says I know I can't headbutt through a wall. I'm just never going to be at peace about it. the man is picking a fight with arithmetic. he'd rather lose than agree.",
+    "quote": "what do I care for the laws of nature and arithmetic, when, for some reason I dislike those laws and the fact that twice two makes four?",
+    "anchor": "Merciful Heavens! but what do I care for the laws of nature and arithmetic",
+    "endAnchor": "simply because it is a stone wall and I have not the strength.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Enjoyment In A Toothache",
+    "modern": "someone jokes he'll be finding pleasure in toothache next. he says correct, had one for a month, and here's how it works. by day three you're not moaning from pain. you're moaning AT the household. everyone knows you're performing. you know they know. that's the whole pleasure. this man weaponised a molar.",
+    "quote": "Even in toothache there is enjoyment",
+    "anchor": "Ha, ha, ha! You will be finding enjoyment in toothache next",
+    "endAnchor": "if he did not feel enjoyment in them he would not moan.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Crystal Palace",
+    "modern": "they promise him the perfect future. a crystal palace. everything solved forever, nothing left to want. and he says that's exactly what terrifies him, because you can't stick your tongue out at it. a henhouse keeps the rain off too, he says, and I'm still not calling it a palace out of gratitude.",
+    "quote": "But meanwhile I will not take a hen-house for a mansion.",
+    "anchor": "You believe in a palace of crystal that can never be destroyed",
+    "endAnchor": "But meanwhile I will not take a hen-house for a mansion.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Moved Like Furniture",
+    "modern": "he's standing near a billiard table, in the way. an officer takes him by the shoulders, physically relocates him to a different spot, and walks on without a word. doesn't insult him. doesn't even see him. and he says: I could have forgiven being hit. what I cannot forgive is being MOVED.",
+    "quote": "I could have forgiven blows, but I could not forgive his having moved me without noticing me.",
+    "anchor": "An officer put me in my place from the first moment.",
+    "endAnchor": "but I could not forgive his having moved me without noticing me.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Collision",
+    "modern": "two years of prep for this. he researched the man, wrote a whole novel unmasking him, drafted a duel letter, sold his coat collar, borrowed money for a decent hat, all so he could walk down the Nevsky and NOT step aside. finally does it. shoulders him. gets bounced off like a ball. declares total victory and goes home singing Italian opera. absolutely fucking unhinged.",
+    "anchor": "Suddenly, three paces from my enemy, I unexpectedly made up my mind",
+    "endAnchor": "I was delighted. I was triumphant and sang Italian arias.",
+    "spice": 2,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Invited Himself",
+    "modern": "old schoolmates are arranging a farewell dinner for a guy he has despised since school. he was not invited. he interrupts their maths so his share gets counted in. they say where would we even have found you. he insists anyway. and he still owes one of them fifteen roubles. what the hell is wrong with this man.",
+    "anchor": "to invite myself so suddenly and unexpectedly would be positively graceful",
+    "endAnchor": "If he wants to come so much, let him.",
+    "spice": 1,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "An Hour Early",
+    "modern": "they moved the dinner from five to six and nobody told him. so he's sitting alone in an empty private room from half past five, watching a waiter lay a table for other people, feeling worse with every fork. he's too embarrassed to keep asking the staff. they arrive an hour late and find it hilarious.",
+    "anchor": "But it was not a question of being the first to arrive.",
+    "endAnchor": "I felt even more humiliated when he was present.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Toast",
+    "modern": "drunk, ignored, spiralling, he stands up to make his own speech. announces that he hates phrasemongers, hates men in corsets, hates ribald talk, loves truth and honesty. then toasts the guest of honour with go seduce the Circassian girls. table goes silent. somebody says he wants a punch in the face. he challenges a man to a duel and the whole room falls over laughing.",
+    "quote": "Seduce the Circassian girls, shoot the enemies of the fatherland and ... and ... to your health, Monsieur Zverkov!",
+    "anchor": "let me tell you that I hate phrases, phrasemongers and men in corsets",
+    "endAnchor": "out of keeping with my appearance that everyone, including Ferfitchkin, was prostrate with laughter.",
+    "spice": 1,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Three Hours Of Pacing",
+    "modern": "they move to the sofa and stop acknowledging he exists. so he paces. table to stove, stove to table, thumping his heels on purpose so they have to hear it. eight o'clock to eleven. three hours. he sweats through his shirt three separate times. he knows he'll still be replaying this in forty years. he keeps pacing.",
+    "anchor": "I had the patience to walk up and down in front of them",
+    "endAnchor": "two minutes later they ceased to notice me again. It struck eleven.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Two Wide Open Eyes",
+    "modern": "he chases them to a brothel to slap someone and they've already scattered. hours later he wakes in the dark and there are two eyes on him, completely cold, completely detached. he hasn't said a single word to her all night. he asks her name just to make the looking stop. Liza. twenty. from Riga. two weeks in the house.",
+    "anchor": "Suddenly I saw beside me two wide open eyes scrutinizing me curiously and persistently.",
+    "endAnchor": "but somehow far from graciously, and she turned her eyes away.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Grave Speech",
+    "modern": "then he does the cruellest thing in the whole volume. he narrates her own death to her: consumption, a wet grave in Volkovo, gravediggers swearing about the rain, nobody to mourn her, her name gone off the earth like she was never born. he admits he's showing off. it's a performance. she bites the pillow until her hand bleeds.",
+    "quote": "your name will vanish from the face of the earth--as though you had never existed, never been born at all!",
+    "anchor": "No, Liza, it would be happy for you if you were to die soon",
+    "endAnchor": "let me out, kind people, to live in the world again.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Her One Treasure",
+    "modern": "he panics at what he's done, gives her his address, says come to me. she stops him at the door, runs off, comes back glowing and puts a piece of paper in his hand. it's a love letter. a student who danced with her at a party and knows nothing about her life. she kept it. she needed him to know that somebody once wrote to her respectfully.",
+    "anchor": "she held out a piece of paper to me.",
+    "endAnchor": "I said nothing, pressed her hand and went out.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Was Laughing At You",
+    "modern": "she actually comes. finds him in a torn dressing gown mid-screaming-match with his servant. so he burns her down. tells her the sermon was sport, that he'd been humiliated at a dinner and needed something smaller to humiliate, that he was never saving anyone. she goes down into the chair like she's been hit with an axe.",
+    "quote": "I had been humiliated, so I wanted to humiliate; I had been treated like a rag, so I wanted to show my power....",
+    "anchor": "Why have you come to me, tell me that, please?",
+    "endAnchor": "she sank on a chair as though she had been felled by an axe.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Five Rouble Note",
+    "modern": "she works out the thing he can't stand: that he's the one who's unhappy. she holds him while he sobs. and he can't forgive being seen, so on her way out he forces money into her hand, deliberately, from spite. she leaves. he turns round and the note is lying on the table where she threw it.",
+    "anchor": "I ran up to her, seized her hand, opened it, thrust something in it",
+    "endAnchor": "at the moment when I had dashed into the further corner.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Anti-Hero",
+    "modern": "he never saw her again. and he closes by admitting there's no hero in these notes, only an anti-hero, and then turns it on the reader: we're all cripples, we're all divorced from real life, we all secretly prefer books to living. untie us and we'd beg to be tied back up. then he just stops writing.",
+    "quote": "we are all divorced from life, we are all cripples, every one of us, more or less.",
+    "anchor": "a novel needs a hero, and all the traits for an anti-hero are",
+    "endAnchor": "Soon we shall contrive to be born somehow from an idea.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He's Getting Married",
+    "modern": "new story, two clerks sharing a flat. Vasya comes home in his best trousers, obviously bursting with news, and does the loud fake cough thing until his friend wakes up. Arkady pins him to the bed to get it out of him. news is: he's engaged. Arkady picks him up like a baby, carries him round the room pretending to rock him to sleep, then kisses his cheek.",
+    "anchor": "Arkady Ivanovitch took Vasya up in his arms like a baby",
+    "endAnchor": "and kissed him on the cheek in the most genuine and friendly way.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Death By Gratitude",
+    "modern": "Vasya's boss gave him copying work as a kindness. Vasya, drowning in gratitude for a job and a fiancée and a whole life he can't believe he's allowed, promises more than exists, doesn't finish, and convinces himself he'll be handed to the army for it. by morning he's standing in the director's office at attention. they ask what broke him. Arkady can only get one word out.",
+    "quote": "Gra--gra--gratitude!",
+    "anchor": "Vasya was standing, pale, with his head up, stiffly erect, like a recruit",
+    "endAnchor": "to every one that a man could go out of his mind from gratitude.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Not Fit For Military Service",
+    "modern": "the whole department is standing around him with no idea what to do. Vasya suddenly remembers what he came to report, steps forward, clicks his heel like a soldier and states that he has a physical defect, is small and weak, and is not fit for service, Your Excellency. the director starts crying. Vasya says present, wheels left, and marches out.",
+    "quote": "I have a physical defect and am small and weak, and I am not fit for military service, Your Excellency",
+    "anchor": "I have a physical defect and am small and weak",
+    "endAnchor": "he wheeled round to the left and marched out of the room.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Curl Of Hair",
+    "modern": "they hug goodbye at the door before the hospital carriage takes him. Vasya presses a folded paper into Arkady's hand and begs him to look after it, bring it later, keep it safe. they take him away. Arkady opens it. it's a lock of Liza's hair he had never once gone anywhere without.",
+    "anchor": "They flung themselves into each other's arms in a last bitter embrace.",
+    "endAnchor": "sobbed in the fullness of his childish heart.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Two Years Later, In Church",
+    "modern": "two years on, Arkady runs into Lizanka in a church. married. baby. nurse walking beside her. she says she's happy, thank God, not badly off, her husband is a kind man and she's fond of him. mid-sentence her voice gives out and she bows down to the floor so nobody can see her face.",
+    "anchor": "Two years later he met Lizanka in church.",
+    "endAnchor": "she turned away, and bowed down to the church pavement to hide her grief.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Compound Interest On A Child",
+    "modern": "children's party, New Year's Eve. the important guest everyone's fawning over steps into a side room and starts doing arithmetic on his fingers. three hundred thousand dowry. girl's eleven. five years at four percent, no, the father's sharper than that, call it eight, call it five hundred thousand. then he glances at the actual child and stops dead.",
+    "anchor": "Now he stood in hesitation and seemed to be reckoning something on his fingers.",
+    "endAnchor": "when he suddenly glanced at the little girl and stopped short.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Do You Know What Your Dolly Is Made Of",
+    "modern": "he goes over to her. kisses her head. asks what she's playing. tells her the doll is only rags. twice tries to send the poor red-haired boy out of the room. then, voice dropping softer and softer, asks whether she'll love him when he comes to see her papa and mamma. she's near tears. the boy takes her hand and starts crying with her.",
+    "quote": "And will you love me, dear little girl, when I come and see your papa and mamma?",
+    "anchor": "And do you know why they gave you that doll?",
+    "endAnchor": "clutched her hand and began whimpering from sympathy for her.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "A Good Stroke Of Business",
+    "modern": "five years pass. the narrator walks past a church, sees the carriages, pushes into the crowd. the bride comes through: pale, preoccupied, eyes red from crying, and people in the crowd are saying she's only just sixteen. then he looks at the groom, recognises him, and shoves his way back out into the street. good stroke of business, he thinks.",
+    "quote": "People were saying that she was only just sixteen.",
+    "anchor": "I passed lately by a certain church; I was struck by the crowd",
+    "endAnchor": "I thought as I made my way into the street.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The April Fool",
+    "modern": "a man who lets a whole tavern laugh at him for money tells them how he lost everything. he'd informed on his boss for a bribe, got caught, got tearfully forgiven, got engaged to the daughter. then on the first of April he decides it would be funny to hand over a formal letter of resignation as a prank. curls his hair, best coat, delivers it, then yells april fool like a kid shouting boo behind grandma's chair.",
+    "anchor": "As to-day was the first of April, I was pretending",
+    "endAnchor": "into her ear suddenly at the top of his voice, meaning to frighten her.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Starling",
+    "modern": "everyone laughs. wedding rings get ordered. weeks later the sack arrives. he runs to the boss going how, and the boss says calmly: you resigned. on the first of April. the letter was never taken back. then a page turns up with the birdcage he'd given the daughter and a note saying only, April 1st. he says he once meant to call that man a scoundrel to his face. he couldn't do it.",
+    "anchor": "Yes, you did--you sent in your papers on the first of--April.",
+    "endAnchor": "But somehow I couldn't bring myself to it, gentlemen.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Got On The Horse",
+    "modern": "eleven year old boy, house full of adults using him as entertainment, one of them needling him about a horse nobody dares ride. something snaps. he's down the steps in one jump and has a foot in the stirrup before the grooms can move. Tancred rears, rips loose and goes off like a hurricane with fifty people screaming behind him.",
+    "anchor": "at one bound, I was down the steps and beside Tancred.",
+    "endAnchor": "and dashed off like a hurricane, while every one cried out in horror.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Bee And The Letter",
+    "modern": "he's smuggled a letter into a bunch of flowers for the woman he's quietly, hopelessly in love with, and she takes the flowers without looking and sets them down. dead drop failed. then a bee turns up. she waves the flowers at it and the letter drops straight onto her open book. he shuts his eyes and fakes sleep while she reads it. her whole face changes.",
+    "anchor": "This was a big, golden bee, brought by a kindly breeze, luckily for me.",
+    "endAnchor": "there was happiness in the letter and all her misery was dispersed like smoke.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "My Childhood Was Over",
+    "modern": "someone calls her name through the trees. she gets up, bends right down over him to check he's really asleep, and a kiss and her tears land on his hand. then a second one on his mouth, and she's gone before he can open his eyes. he lies in the grass shaking. the line he uses for it: my childhood was over from that moment.",
+    "anchor": "Mme. M. did not answer, but she got up quickly from the seat",
+    "endAnchor": "the first vague glimpse of my nature. My childhood was over from that moment.",
+    "spice": 0,
+    "warnings": [
+     "sexual-content"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Lodgers Invent The News",
+    "modern": "last one. an elderly clerk lives behind a screen in the cheapest corner of a boarding house, five roubles a month, bothers nobody. the other lodgers work out he'll believe literally anything, so they start feeding him fake office news: married clerks get promoted faster, they're docking pay for compulsory dancing lessons, there's going to be an exam. he starts walking softly. starts listening at doors. starts asking his boss whether it's true.",
+    "anchor": "He would say, for instance, that some one had heard His Excellency that day",
+    "endAnchor": "thousands of similar very absurd rumours were discussed.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "They Cut Open The Mattress",
+    "modern": "he dies. they go through his things: two rags, socks, half a handkerchief, an old hat, some boot soles. then they shift the mattress and money hits the floor. there's a knife slit in it he cut himself. they send for scissors. coins keep coming, wrapped in paper, sorted by size, some of them a century old. final count: 2497 roubles and a half. he'd been living on nothing for twenty years.",
+    "anchor": "They attacked the mattress, they were about to lift it up",
+    "endAnchor": "there would perhaps have been just 2500 roubles.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "What If I'm Not Dead",
+    "modern": "the landlady wails that he cheated her, that he could have just handed it over and been looked after. and the book ends by putting words in a dead man's mouth. give over. stop whining. go to bed. it's nice lying here. though — look here — what if I get up.",
+    "quote": "what if I'm not dead, what if I get up, do you hear? What would happen then?",
+    "anchor": "What is it? Give over, do you hear, you stupid woman? Don't whine!",
+    "endAnchor": "what if I get up, do you hear? What would happen then?",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   }
+  ]
+ }
+}

@@ -1,13 +1,13 @@
 # Modernity checklist
 
-**72 / 108 done (67%)**
+**75 / 108 done (69%)**
 
-`████████████████████░░░░░░░░░░`
+`█████████████████████░░░░░░░░░`
 
 Do not edit by hand; the ledger is scripts/build-modernity-queue.mjs and
 the store is data-src/modernity-src.json. Rerun the script to refresh.
 
-## Streams (65/93)
+## Streams (68/93)
 
 - [x] #2701 **Moby Dick; Or, The Whale** — Herman Melville
 - [x] #1342 **Pride and Prejudice** — Jane Austen
@@ -66,15 +66,15 @@ the store is data-src/modernity-src.json. Rerun the script to refresh.
 - [x] #8800 **The divine comedy** — Dante Alighieri
 - [x] #5200 **Metamorphosis** — Franz Kafka
 - [x] #16 **Peter Pan: [Peter and Wendy]** — J. M. (James Matthew) Barrie
-- [ ] #18857 **A Journey to the Centre of the Earth** — Jules Verne
-- [ ] #36034 **White nights, and other stories** — Fyodor Dostoyevsky
+- [x] #18857 **A Journey to the Centre of the Earth** — Jules Verne
+- [x] #36034 **White nights, and other stories** — Fyodor Dostoyevsky
 - [x] #1952 **The Yellow Wallpaper** — Charlotte Perkins Gilman
 - [x] #103 **Around the World in Eighty Days** — Jules Verne
 - [x] #27673 **Oedipus King of Thebes: Translated into English Rhyming Verse with Explanatory Notes** — Sophocles
 - [x] #1837 **The Prince and the Pauper** — Mark Twain
 - [x] #2527 **The Sorrows of Young Werther** — Johann Wolfgang von Goethe
 - [x] #45 **Anne of Green Gables** — L. M. (Lucy Maud) Montgomery
-- [ ] #135 **Les Misérables** — Victor Hugo
+- [x] #135 **Les Misérables** — Victor Hugo
 - [x] #14244 **The Romance of Tristan and Iseult** — Joseph Bédier
 - [ ] #6130 **The Iliad** — Homer
 - [ ] #69087 **The murder of Roger Ackroyd** — Agatha Christie

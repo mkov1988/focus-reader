@@ -1363,3 +1363,19 @@ MECHANICAL VERIFICATION: I checked all 36 beats programmatically with
   - verifier: EDITION: complete, no gaps. C:\Users\Michael\Desktop\Focus Reader\public\books\14244.txt is the full Bedier/Belloc 1913 translation — all three parts, all 17 listed chapters, from "THE CHILDHOOD OF TRISTAN" through the briar and "THE END". Nothing the beats retell is missing from this edition.
 
 MECH
+
+## Run merged 2026-08-17 (verify3-stitched.json)
+
+- les-misrables: merged 50/50 beats
+  - note: This Is The Surprise: correctly flagged as pre-Valjean-POV flashback, consistent with voice rule 2
+  - note: The Note In The Colonel's Hand: flagged as different POV/flashback, consistent with voice rules
+  - verifier: All 50 beats check out. Spot-checked every anchor, endAnchor, and quote against public/books/135.txt (the full unabridged translation, so no edition-completeness problem); apparent grep misses were just line-wrap artifacts in the mirrored text, not missing content, confirmed by re-searching shorter 
+- a-journey-to-the-centre: merged 48/48 beats
+  - verifier: Spot-checked every quote and roughly two-thirds of anchor/endAnchor phrases (fixed-string search, allowing for Gutenberg italics/whitespace) against public/books/18857.txt; all hit. No plot inventions found; sequence (parchment, cipher, Sneffels, Hans, crater, tunnel, thirst crisis, whispering galle
+- white-nights: merged 47/47 beats
+  - note: Death By Gratitude: quote verified verbatim at line 8214
+  - note: Not Fit For Military Service: anchor confirmed verbatim (line-wrapped in source) at line 8239
+  - note: The April Fool: this is the Polzunkov story, correctly present in this edition
+  - note: They Cut Open The Mattress: figure 2497 roubles and a half confirmed verbatim at line 11773
+  - note: What If I'm Not Dead: quote confirmed verbatim at line 11857
+  - verifier: Edition check: the mirrored 36034.txt is a full 7-story collection (White Nights, Notes from Underground excerpts, A Faint Heart, A Christmas Tree and a Wedding, Polzunkov, A Little Hero, Mr. Prohartchin), all 11,941 lines. Every story the beats draw from is present and complete, nothing abridged. S

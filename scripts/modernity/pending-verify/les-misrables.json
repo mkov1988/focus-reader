@@ -1,0 +1,529 @@
+{
+ "primaryId": "135",
+ "title": "Les Misérables",
+ "author": "Victor Hugo",
+ "format": "stream",
+ "register": "full-send",
+ "slug": "les-misrables",
+ "work": {
+  "slug": "les-misrables",
+  "feelings": [
+   "tragic",
+   "epic",
+   "sad",
+   "hopeful"
+  ],
+  "intensity": "gripping",
+  "beats": [
+   {
+    "title": "Nobody Lets Me In",
+    "modern": "day one out of nineteen years inside. I walk into the nicest place in town, I have MONEY, I show my papers like a good boy. dude takes one look, writes a note, sends a kid running to the cops. chat I haven't done anything yet. the paperwork does the crime for me now.",
+    "anchor": "The man bent his steps towards this inn, which was the best",
+    "endAnchor": "the child set off on a run in the direction of the town-hall.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Bishop Sets Another Place",
+    "modern": "so I lead with it. name, sentence, all nineteen years, I am a convict, do NOT let me in. and this old priest doesn't even look up. set another place, he says. I say it AGAIN, louder, waving the yellow paper. he says put the good sheets on. chat I have been thrown out of a dog kennel this week. by the dog.",
+    "quote": "you will put white sheets on the bed in the alcove.",
+    "anchor": "See here. My name is Jean Valjean. I am a convict from the galleys.",
+    "endAnchor": "and your bed will be prepared while you are supping.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Nineteen Years For A Loaf",
+    "modern": "lore drop, since chat keeps asking what I did. my sister had seven kids. no work that winter, no bread, literally none. I punched through a bakery window and grabbed one loaf. dropped it running. never even ate it. five years. that was the opening offer.",
+    "anchor": "One Sunday evening, Maubert Isabeau, the baker on the Church Square at Faverolles",
+    "endAnchor": "Jean Valjean was condemned to five years in the galleys.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Escape Math",
+    "modern": "ran the numbers on my sentence, chat. five for the bread. tried to leave, plus three. tried again, plus five. again, plus three. last time I was out four HOURS and it cost me three years. five became nineteen and none of the extra was for the bread. the loaf was just the entry fee.",
+    "anchor": "Towards the end of this fourth year Jean Valjean’s turn to escape arrived.",
+    "endAnchor": "for having broken a pane of glass and taken a loaf of bread.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Gendarmes Bring Me Back",
+    "modern": "okay so I robbed him. the one man on earth who fed me. cops catch me with the silver in my bag and drag me back to his door for the confirm. easiest case ever made. and this man walks up smiling and goes oh good you're here, you forgot the rest of it. and tells the cops to let me go. chat. CHAT.",
+    "quote": "I gave you the candlesticks too, which are of silver like the rest",
+    "anchor": "In the meantime, Monseigneur Bienvenu had advanced as quickly as his great age permitted.",
+    "endAnchor": "And you have brought him back here? It is a mistake.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "I Buy Your Soul",
+    "modern": "he hands me the candlesticks. the actual silver. then he leans in quiet so the cops can't hear and says he's buying my soul off me and giving it to God, and that I promised to become an honest man. I promised NOTHING. he just wrote it into the save file and closed it. worst part is it worked.",
+    "quote": "It is your soul that I buy from you",
+    "anchor": "He stepped to the chimney-piece, took the two silver candlesticks",
+    "endAnchor": "from black thoughts and the spirit of perdition, and I give it to God.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Little Gervais",
+    "modern": "a kid walks by singing with his little coin. my boot comes down on it. he begs, I roar at him, he runs. then I look down and see silver shining and something in me just BREAKS. I ran that whole plain screaming his name into the dark. nobody answered. first time I cried in nineteen years and it wasn't for me.",
+    "quote": "I am a wretch!",
+    "anchor": "At that moment he caught sight of the forty-sou piece, which his foot",
+    "endAnchor": "It was the first time that he had wept in nineteen years.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "This Is The Surprise",
+    "modern": "story time, this part is before my POV. four rich students take four girls to dinner, promise them a big surprise, then leave the table and have a note delivered an hour later. our parents want us home, we're going to be respectable now, mourn quickly and replace us. p.s. dinner's paid for. three of the girls laughed it off. Fantine laughed too, then went home and remembered she had a baby.",
+    "quote": "The dinner is paid for.",
+    "anchor": "Favourite snatched the paper from the waiter’s hand. It was, in fact, a letter.",
+    "endAnchor": "as to a husband, and the poor girl had a child.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fifty-Seven Francs",
+    "modern": "she can't get hired anywhere with a kid, so she stops at an inn where two little girls are laughing on a swing and thinks: good mother, safe place. asks them to keep her daughter. wife says maybe. then the husband's voice comes out of the back room like a raid boss: not for less than seven a month, six months up front. she paid it. she thought she got lucky.",
+    "anchor": "This remark was probably the spark which the other mother had been waiting for.",
+    "endAnchor": "Not for less than seven francs. And six months paid in advance.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Father Madeleine, Local Legend",
+    "modern": "new save, new name, new town. I invented a cheaper way to make glass beads and the whole region got rich off it. schools, hospital beds, a free clinic. they offer me mayor, I say no. king offers me a medal, I say no. town's official verdict: he's probably some kind of adventurer. sure. whatever stops you checking my papers.",
+    "quote": "The two prime functionaries of the state are the nurse and the schoolmaster.",
+    "anchor": "The hospital was badly endowed; he founded six beds there.",
+    "endAnchor": "Well, so it was the cross that he wanted! Father Madeleine refused the cross.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Cart In The Mud",
+    "modern": "old man pinned under a wagon, mud swallowing it, nobody moves for twenty gold coins. then my inspector says, real slow, looking dead at me: only one man I ever knew could lift that. he was a convict. Toulon. chat he is FISHING. and the old man is screaming. so I got on my knees and lifted the cart in front of him.",
+    "quote": "He was a convict.",
+    "anchor": "I have never known but one man capable of doing what you ask.",
+    "endAnchor": "he fixed his tranquil eye on Javert, who was still staring at him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fired From My Own Factory",
+    "modern": "a woman on my floor had a kid she never mentioned. the town gossip took a paid trip to go LOOK at the child and came back to tell everyone. my supervisor hands her fifty francs and the door. in my name. I never heard a word about it. she didn't even come to me, chat. she decided the mayor gave her the money because he was kind and fired her because he was fair.",
+    "anchor": "Fantine had been at the factory for more than a year, when, one morning",
+    "endAnchor": "because he was good, and had dismissed her because he was just.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Hair, Then The Teeth",
+    "modern": "the innkeepers keep inventing bills. your kid is sick, they write. forty francs, they write. so she sells her hair. then a guy on a cart offers gold for her two front teeth and she runs from him screaming that he's a monster. that night she goes anyway. comes home smiling with blood in it and a black hole in her mouth. the kid was never sick. they made it up for the money.",
+    "quote": "The two teeth had been extracted.",
+    "anchor": "Fantine mingled in the group, and began to laugh with the rest",
+    "endAnchor": "it was a ruse of the Thénardiers to obtain money. Cosette was not ill.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Snow Down Her Back",
+    "modern": "some guy in a good hat spends his whole evening insulting a woman in the street for sport, gets bored that she won't react, sneaks up behind her and shoves a fistful of snow down her bare back. she turns and claws his face. guess which one of them gets arrested. he wandered off during the paperwork.",
+    "anchor": "Each time that the woman passed in front of him",
+    "endAnchor": "The dandy took advantage of the incident to make his escape.",
+    "spice": 2,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Highest Law Is Conscience",
+    "modern": "six months in jail, says my inspector. she has a daughter, she says. so I say one word: I. I let her go. he goes white. he says the law was insulted. I tell him conscience outranks the law and she will not serve a single day. chat I just used the mayor account to override the cop in front of his own station and he will never forgive it.",
+    "quote": "the highest law is conscience. I have heard this woman; I know what I am doing.",
+    "anchor": "The sound of the latch roused him. He raised his head with an expression",
+    "endAnchor": "Heed this well; she will not serve a single day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "He Reported Me To Himself",
+    "modern": "my inspector walks into my office and confesses. to me. he says he got angry after the cart thing and wrote to the Prefecture that the mayor is an escaped convict named Jean Valjean. he is telling me this to my face. chat, he reported me, and then came to tell me he reported me, because not telling me would have been dishonest.",
+    "quote": "Wrath impelled me; I denounced you at the Prefecture!",
+    "anchor": "He was a convict whom I was in the habit of seeing",
+    "endAnchor": "Wrath impelled me; I denounced you at the Prefecture!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "They Caught Jean Valjean",
+    "modern": "here's the twist. the reply came back and it says the real Jean Valjean is already in custody. some confused old man who stole apples. four witnesses positively ID'd him. trial tomorrow in Arras, galleys for life, done. my inspector explains all of this to me cheerfully while I pretend to read paperwork. so I'm free forever. all I have to do is nothing.",
+    "anchor": "If he is Jean Valjean, he has his previous conviction against him.",
+    "endAnchor": "The case has been taken to the Assizes at Arras.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Fire Me, Sir",
+    "modern": "and then he asks to be fired. for it. he says if one of his own men had accused an honest mayor with no proof he'd have thrown him out of the service, so throw him out. I'm sitting there going please stop. this man's entire personality is a rulebook and he has just found himself in violation of it.",
+    "anchor": "So far as exaggeration is concerned, I am not exaggerating.",
+    "endAnchor": "I should have declared him unworthy of the service, and have expelled him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "It Is I",
+    "modern": "I sat in the back of that courtroom for one hour and my hair went white in it. then I stood up, said the three witnesses' names out loud, and told the judge to release the prisoner and arrest me instead. nobody in the room breathed. the prosecutor offered to call a doctor. I told him I'm not mad, you were simply about to make a very large mistake.",
+    "quote": "He is not the man whom you are in search of; it is I: I am Jean Valjean.",
+    "anchor": "Even before the President and the district-attorney could utter a word",
+    "endAnchor": "which seizes the masses when something grand has been done.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Fantine Finds Out",
+    "modern": "I made it back to her sickbed. I asked him for three days to go and get her daughter. three days. he laughs in my face and announces to the whole room that there is no mayor here, there's a convict called Jean Valjean and he's got him by the collar. she sits up. she looks at me. she reaches for something that isn't there. and that's the clip.",
+    "anchor": "Fantine raised herself in bed with a bound, supporting herself",
+    "endAnchor": "with gaping mouth and staring, sightless eyes. She was dead.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "I Advise You Not To Disturb Me",
+    "modern": "I tore an iron bar off the spare bed and looked at him. he backed to the door. I told him quietly not to disturb me right now. then I put her head on the pillow the way you'd do for a sleeping kid, tied her collar, smoothed her hair, closed her eyes, knelt and kissed her hand. then I turned round and told him I'm ready.",
+    "quote": "I advise you not to disturb me at this moment.",
+    "anchor": "Jean Valjean stepped up to this bed, in a twinkling wrenched off the head-piece",
+    "endAnchor": "“Now,” said he, “I am at your disposal.”",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Number 9,430",
+    "modern": "back in the galleys, new number. sailor's hanging off a yard over open water and nobody will go up. I ask permission, snap my ankle chain with one hammer blow and go get him. whole harbour screaming pardon that man. then on the way down I fall in the sea and never surface. paper next day: convict 9,430 drowned, body not recovered, name Jean Valjean. yeah. about that.",
+    "anchor": "a man was seen climbing into the rigging with the agility of a tiger-cat",
+    "endAnchor": "this man was committed under the number 9,430, and his name was Jean Valjean.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Bucket In The Woods",
+    "modern": "found her in the forest at night. eight years old, hauling a bucket bigger than she is, alone, in the dark. I take the handle without a word and we walk. I ask about her mother. she says other people have mothers, I have none, I don't think I ever had any. chat I promised a dead woman I'd find this kid and I found her carrying water in the woods at night.",
+    "quote": "Other people have mothers. I have none.",
+    "anchor": "Then he approached the child, and silently grasped the handle of the bucket.",
+    "endAnchor": "“I don’t think so. Other people have mothers. I have none.”",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Catherine",
+    "modern": "there's a doll in the shop window she's been staring at for weeks and is never allowed to touch. I bought it. put it in her hands. she asked permission three separate times, from the woman who beats her, before she'd believe it. whole tavern went dead silent. she named it Catherine. chat that kid held that doll like it might be taken back.",
+    "quote": "I shall call her Catherine",
+    "anchor": "“Well, Cosette,” said the Thénardier, in a voice that strove to be sweet",
+    "endAnchor": "Cosette’s rags met and clasped the ribbons and fresh pink muslins of the doll.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Wooden Shoe",
+    "modern": "christmas eve. the two daughters of the house set their pretty little shoes by the fire and mother fairy has already dropped a coin in each one. then way back in the dark corner of the hearth there's a third. a beat-up wooden clog covered in ash and dried mud. she put hers out too. hoping. it was empty. I put a gold piece in it and went to bed.",
+    "quote": "There was nothing in this wooden shoe.",
+    "anchor": "He looked at it, and recognized a wooden shoe, a frightful shoe",
+    "endAnchor": "bent over and placed a louis d’or in Cosette’s shoe.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Fifteen Hundred Francs",
+    "modern": "innkeeper opens with a speech about how a father can't just hand his beloved foster daughter to a stranger, he'd need to know where she's going, he'd need to see a passport. I tell him he gets none of that. he reads the room in half a second and drops the whole act: I need fifteen hundred francs. I put the bills on the table under my thumb. go and fetch Cosette.",
+    "anchor": "“Sir,” said he, “I am in need of fifteen hundred francs.”",
+    "endAnchor": "drew out three bank-bills, which he laid on the table.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Over The Wall",
+    "modern": "dead end alley, patrol closing, my inspector's voice bouncing off the walls telling them to search it. she whispers dad I'm scared, who's coming. I tell her it's the innkeeper's wife come to take her back. cruel. it worked, she went silent. rope round her under the arms, up the wall barefoot, her on my back along the top, down the roof, into a garden. she never made a sound.",
+    "quote": "Search the blind alley! The Rue Droit-Mur is guarded!",
+    "anchor": "“Father,” said she, in a very low voice, “I am afraid.",
+    "endAnchor": "reached the linden-tree, and leaped to the ground.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Buried Alive",
+    "modern": "to stay in the convent I had to leave it and come back in through the front door legally. the plan: get nailed into a coffin, ride out with a real funeral, get dug up by my guy before they fill it in. priest leaves. I'm alone. I'm fine. then thunder. it's dirt. it's dirt hitting the lid. second shovelful. third. one of my air holes is gone.",
+    "quote": "It was a shovelful of earth falling on the coffin.",
+    "anchor": "“There, they are going now,” thought he. “I am alone.”",
+    "endAnchor": "which are too strong for the strongest man. Jean Valjean lost consciousness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Note In The Colonel's Hand",
+    "modern": "different stream, but you need this one. a rich kid's father dies and leaves him one scrap of paper. it says: the Emperor made me a baron at Waterloo, take the title. and then: a sergeant named Thénardier saved my life there, he keeps a little inn near Paris, if you ever meet him do all the good you can for him. the kid is Marius. the innkeeper is THAT innkeeper. hold that thought for years.",
+    "quote": "At that same battle of Waterloo, a sergeant saved my life. The man’s name was Thénardier.",
+    "anchor": "The servant found a scrap of paper, which she handed to Marius.",
+    "endAnchor": "he will do all the good he can to Thénardier.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Red-Hot Chisel",
+    "modern": "walked into a charity call, it was a trap, and the man running it is the innkeeper wearing a new name. six of them. they want my signature on a ransom letter. I tell them my life isn't worth the trouble of defending, then I pick their own glowing chisel off the fire and lay it on my bare arm and hold it there. nobody in that room could look at me. I threw it out the window. do what you like.",
+    "quote": "have no more fear of me than I have for you!",
+    "anchor": "You are wretches, but my life is not worth the trouble of defending it.",
+    "endAnchor": "whirling as it flew, and fell far away on the snow.",
+    "spice": 1,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "A Dog Scanning A Thief",
+    "modern": "there's a boy orbiting our bench in the park. every day. she's started noticing him. and I have spent my whole life being hunted so I know exactly what I look like right now: a dog watching a thief. so I moved the bench. then he found the street. so I moved the house. chat I know how this ends and I did it anyway.",
+    "quote": "It was a dog scanning a thief.",
+    "anchor": "Then his eyes were filled with a sad and extraordinary gleam.",
+    "endAnchor": "A week later, Jean Valjean had taken his departure.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Adore You",
+    "modern": "the garden clip I never got to see. he tells her the truth: he's broke, his boots let water in, he can't follow her to England, he can't even pay for a passport. then he puts his forehead against a tree like a statue of despair for two hours while she cries behind him. then: do you love me. she says I adore you. and he gives her his word of honour that if she leaves he'll die. he meant it literally. that's the problem.",
+    "quote": "I adore you!",
+    "anchor": "He came to her, fell at her knees, and slowly prostrating himself",
+    "endAnchor": "my most sacred word of honor, that if you go away I shall die.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Move Away From Your House",
+    "modern": "someone scratched an address into my garden wall in the night. fresh, plaster dust still on the nettles. I don't tell her. then I'm sitting out on the slope and a paper folded in four drops onto my knees from behind me: MOVE AWAY FROM YOUR HOUSE. I'm up instantly, nobody there, just something too big to be a child and too small to be a man vaulting the parapet.",
+    "quote": "MOVE AWAY FROM YOUR HOUSE.",
+    "anchor": "he had suddenly perceived on the wall, the following line, engraved",
+    "endAnchor": "Jean Valjean returned home at once, in a very thoughtful mood.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Funeral That Became A War",
+    "modern": "they buried a general and the whole city turned out. rain, a red flag, someone yelling take him to the Pantheon. dragoons blocking the bridge. three shots from nobody knows where: one kills a squadron chief, one kills a deaf old woman closing her window. a voice screams they're starting too soon. and Paris just goes up. stones, muskets, paving torn out, barricades within the hour.",
+    "quote": "They are beginning too soon!",
+    "anchor": "The hearse passed the Bastille, traversed the small bridge, and reached the esplanade",
+    "endAnchor": "Wrath spreads abroad the riot as wind spreads a fire.",
+    "spice": 0,
+    "warnings": [
+     "violence",
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Éponine's Last Clip",
+    "modern": "the innkeeper's eldest daughter. she took a musket ball through the HAND stopping it hitting him, and it went on into her, and she dragged herself to the barricade to die at his feet. she'd been carrying the letter from the girl he loves in her pocket the whole time. hands it over. asks one thing: kiss my forehead when I'm dead, I'll feel it. then, last words, almost cheerful: by the way, I think I was a little bit in love with you.",
+    "quote": "And by the way, Monsieur Marius, I believe that I was a little bit in love with you.",
+    "anchor": "She was sitting almost upright, but her voice was very low",
+    "endAnchor": "She tried to smile once more and expired.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Blotter In The Mirror",
+    "modern": "I'm pacing the new place feeling GOOD, chat. quiet street, London in a week, she's safe, everything's fine. then I catch four lines in the mirror over the sideboard. it's her letter. she blotted it and left the book lying open and the mirror flipped it the right way round for me. my dearest, my father is making us leave. she has a him. I sat down in that chair and the light went out of the world.",
+    "quote": "The mirror reflected the writing.",
+    "anchor": "In the inclined mirror facing him which surmounted the sideboard",
+    "endAnchor": "taking from the lion the dog which he has in his cage!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "A Fifth Uniform Falls From Heaven",
+    "modern": "they had four spare uniforms and five men with families, and Marius was being made to choose which one stays and dies. every one of them shouting me, me, me. then a fifth uniform lands on the pile out of nowhere. fifth man saved. Marius looks up and it's me. I walked into a barricade to carry a boy home to my daughter, chat. that is the entire reason I'm here.",
+    "anchor": "a fifth uniform fell, as if from heaven, upon the other four.",
+    "endAnchor": "recognized M. Fauchelevent. Jean Valjean had just entered the barricade.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Gavroche Outside The Wall",
+    "modern": "we're out of cartridges, so the smallest kid on the barricade climbs OUT with a basket and starts looting the dead in the open street, in front of the line, singing at them. every volley misses. he ducks, pops up, thumbs his nose, keeps singing, keeps filling the basket. we're all screaming at him to come back. then one bullet finds him. he sits up with blood on his face and starts the next verse anyway. he didn't get to finish it.",
+    "anchor": "Gavroche, though shot at, was teasing the fusillade.",
+    "endAnchor": "This grand little soul had taken its flight.",
+    "spice": 0,
+    "warnings": [
+     "death",
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "You Are Free",
+    "modern": "they had my inspector tied up to be shot and I asked for the job. everyone assumed. I walk him out to the alley past Éponine's body, put the pistol under my arm and open a knife. he goes: a clasp-knife, yeah, that suits you better. take your revenge. so I cut the rope at his neck, his wrists, his feet. you are free. here's my address, by the way. he stood there like a broken statue, then shouted back down the lane: you annoy me, kill me instead.",
+    "quote": "You are free.",
+    "anchor": "Jean Valjean thrust the pistol under his arm and fixed on Javert a look",
+    "endAnchor": "Javert turned round and shouted to Jean Valjean: “You annoy me. Kill me, rather.”",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Shoot Me",
+    "modern": "upstairs, last room, Enjolras alone with a broken gun barrel and no cartridges. twelve rifles on him. he throws the stub away, folds his arms and says shoot me. one guardsman lowers his gun saying it feels like shooting a flower. and then the drunk wakes up. Grantaire, asleep through the entire war, opens his eyes, understands everything instantly, stands up and shouts long live the Republic, I'm one of them. walks over. do you permit it? they died together.",
+    "quote": "Long live the Republic! I’m one of them.",
+    "anchor": "Relegated, as he was, to one corner, and sheltered behind the billiard-table",
+    "endAnchor": "Grantaire fell at his feet, as though struck by a thunderbolt.",
+    "spice": 0,
+    "warnings": [
+     "death",
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Quagmire",
+    "modern": "carrying the boy out through the sewers. unconscious, bleeding, dead weight on my back. then the floor stops being floor. it's a sinkhole. slime to my calves, then my knees, then water at my chin with him held up above my head. one more step and it's over for both of us. and then my foot hits stone. there was a shelf down there. there was a shelf down there, chat.",
+    "anchor": "Jean Valjean felt the pavement vanishing beneath his feet. He entered this slime.",
+    "endAnchor": "Jean Valjean mounted this inclined plane and reached the other side of the quagmire.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "You Pay When You Go Out",
+    "modern": "there's a locked grating at the outlet and a man in the dark with the key. it's HIM. the innkeeper. he doesn't recognise me under the filth, he's decided I murdered the boy on my back, and he is thrilled about it. robs my pockets, takes everything down to the coppers, tells me I cut people's throats too cheap. then unlocks the gate like a turnstile. it's like the fair here, you pay on the way out.",
+    "quote": "Now, my friend, you must leave. It’s like the fair here, you pay when you go out.",
+    "anchor": "And, forgetting his motto: “half shares,” he took all.",
+    "endAnchor": "A moment later, that hideous providence had retreated into the invisibility.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Waiting Outside The Grating",
+    "modern": "step out of the sewer into clean air and he's standing right there. arms folded. of course he is. I say inspector, you have me, I've counted myself your prisoner since this morning, just grant me one favour. he doesn't answer. he kneels down instead and wipes the blood off the boy's face with his own handkerchief and takes his pulse. I say he's wounded. he says he's a dead man. I say: no. not yet.",
+    "anchor": "“Inspector Javert,” said he, “you have me in your power.",
+    "endAnchor": "“He is wounded,” said Jean Valjean. “He is a dead man,” said Javert.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Javert Derailed",
+    "modern": "he let me go. drove me home, waited at my door, and left. then he went to the station and wrote the most Javert document in history: a numbered list of prison reforms. prisoners standing barefoot on cold flagstones. the bars on the canteen. ten sous docked for a broken thread. signed, inspector first class. then he walked back to the parapet above the rapids, set his hat on the stone, and stepped off.",
+    "anchor": "Javert remained motionless for several minutes, gazing at this opening of shadow",
+    "endAnchor": "of that obscure form which had disappeared beneath the water.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "My Name Is Not Fauchelevent",
+    "modern": "day after the wedding I walk into her husband's house and hand him the whole thing. I'm not her father. I'm not related to her at all. I'm a peasant from Faverolles who pruned trees for a living. my name is not Fauchelevent, it's Jean Valjean. he asks who on earth could prove that. I say: me. since I'm telling you. nobody lies that calmly. he believed me.",
+    "quote": "My name is not Fauchelevent, but Jean Valjean.",
+    "anchor": "Monsieur le Baron Pontmercy, I am a peasant of Faverolles.",
+    "endAnchor": "The truth could be felt in that chill of the tomb.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Pendulum Winding Down",
+    "modern": "so I stop visiting. not all at once. every evening I walk towards her street and every evening I stop a little sooner. the corner. then the street before it. then the street before that. an old man going out at the same hour to not arrive. the neighbours decided I was simple. children followed me laughing. one thought the whole way home: what's the use.",
+    "quote": "One would have said that he was a pendulum which was no longer wound up",
+    "anchor": "Little by little, this old man ceased to go as far",
+    "endAnchor": "the quarter said: “He is an innocent.” The children followed him and laughed.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blackmailed Into The Truth",
+    "modern": "the innkeeper turns up to sell Marius dirt on me. proof that I'm a murderer, he says. produces his evidence: a scrap of cloth he tore off the killer in the sewer that night. Marius has the matching coat upstairs. chat this man walked in to blackmail him and accidentally PROVED I carried him home. Marius pays him off to get out, then runs for a carriage shouting it was him, he saved my life, he carried me through the sewer.",
+    "quote": "It was he who saved my life!",
+    "anchor": "As soon as Thénardier had left the house, Marius rushed to the garden",
+    "endAnchor": "He carried me on his back through that frightful sewer.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "It Is Nothing To Die",
+    "modern": "they got there in time. both of them on their knees telling me I'm going to live. doctor takes my pulse and whispers two words to Marius: too late. and the only thing I can get out is that dying isn't the hard part. not living is. then I stood up, walked to the wall on my own legs, took down the little copper crucifix and set it on the table.",
+    "quote": "It is nothing to die; it is dreadful not to live.",
+    "anchor": "These barely articulate words were heard to issue from his mouth",
+    "endAnchor": "as he laid the crucifix on the table: “Behold the great martyr.”",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Candlesticks Go Back",
+    "modern": "leaving her the two candlesticks off the mantelpiece. they're only silver but to me they're gold, they're diamonds, they turn any candle you put in them into a wax taper. I hope the man who gave them to me is pleased with what I did with them. bury me under a plain stone, chat. no name on it.",
+    "quote": "They are of silver, but to me they are gold, they are diamonds",
+    "anchor": "I bequeath to her the two candlesticks which stand on the chimney-piece.",
+    "endAnchor": "under a stone to mark the spot. This is my wish.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Her Mother's Name",
+    "modern": "last thing. Cosette, it's time you knew your mother's name. she was called Fantine. kneel when you say it. she suffered as much as you have been happy, that's just how it got divided up. remember Montfermeil? the forest, the bucket, the first time I ever touched your hand and it was freezing. love each other always, there's nothing else in the world. come closer, both of you. let me put my hands on your heads. gg.",
+    "quote": "She was called Fantine. Remember that name—Fantine.",
+    "anchor": "Cosette, the moment has come to tell thee the name of thy mother.",
+    "endAnchor": "He was dead. The night was starless and extremely dark.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": false
+   }
+  ]
+ }
+}
