@@ -8,11 +8,12 @@
  *   node scripts/upload-audio-r2.mjs --ids=84 --voices=marlowe           narrower
  *   node scripts/upload-audio-r2.mjs --all                               every ok pair in work/
  *
- * Only pairs whose status.json says ok:true are uploaded — verify.mjs runs
- * before this, and nothing from a failing pair may ship. Uploaded files are
- * immutable forever (devices cache them for a year); a fixed recording ships
- * as new keys via a timing/manifest version bump, never by overwriting.
- * Run backup-r2.mjs after any upload.
+ * Only pairs whose status.json says ok:true AND verified:true are uploaded —
+ * verify.mjs stamps verified on a clean pass, and nothing unverified may
+ * ship. Uploaded files are immutable forever (devices cache them for a
+ * year); rclone runs with --ignore-existing so an already-shipped R2 key is
+ * NEVER overwritten — a fixed recording ships as new keys via a
+ * timing/manifest version bump. Run backup-r2.mjs after any upload.
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -64,20 +65,31 @@ for (const id of ids) {
     const voices = wantVoices.length
         ? wantVoices
         : readdirSync(bookDir).filter((d) => existsSync(path.join(bookDir, d, 'status.json')));
+    let pairsForId = 0;
     for (const voice of voices) {
         const statusPath = path.join(bookDir, voice, 'status.json');
-        if (!existsSync(statusPath) || !JSON.parse(readFileSync(statusPath, 'utf8')).ok) {
-            console.error(`${id}/${voice}: not ok — run finish.mjs + verify.mjs first. Refusing to upload anything from this run.`);
+        const status = existsSync(statusPath) ? JSON.parse(readFileSync(statusPath, 'utf8')) : null;
+        if (!status?.ok || !status?.verified) {
+            console.error(`${id}/${voice}: not ok+verified — run finish.mjs then verify.mjs first. Refusing to upload anything from this run.`);
             process.exit(1);
         }
         pairs.push({ id, voice, dir: path.join(bookDir, voice, 'out') });
+        pairsForId++;
+    }
+    // A requested id that contributes nothing is a mistake, not a no-op —
+    // plan.mjs creates the book dir long before anything is finished.
+    if (!pairsForId) {
+        console.error(`${id}: no finished voices found under ${bookDir} — run synth/finish/verify first.`);
+        process.exit(1);
     }
 }
 if (!pairs.length) { console.log('Nothing to upload.'); process.exit(0); }
 
 for (const { id, voice, dir } of pairs) {
     console.log(`\n== ${id}/${voice} -> ${BUCKET}/audio/${id}/${voice}/`);
-    const r = spawnSync(RCLONE, ['copy', dir, `:s3:${BUCKET}/audio/${id}/${voice}`, ...s3Flags, '--progress'], { stdio: 'inherit' });
+    // --ignore-existing enforces immutability: a key already in the bucket is
+    // never rewritten, whatever the local file says.
+    const r = spawnSync(RCLONE, ['copy', dir, `:s3:${BUCKET}/audio/${id}/${voice}`, ...s3Flags, '--ignore-existing', '--progress'], { stdio: 'inherit' });
     if (r.status !== 0) { console.error(`rclone exited with ${r.status ?? r.error}`); process.exit(r.status ?? 1); }
 }
 console.log(`\nUploaded ${pairs.length} book×voice pair(s). Run \`node scripts/backup-r2.mjs\` next.`);

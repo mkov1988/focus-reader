@@ -62,7 +62,10 @@ function gateScan(tokens, start, end) {
     for (let i = start; i <= end; i++) {
         const w = tokens[i].word;
         for (const { name, re } of GATE_PATTERNS) {
-            if (re.test(w)) hits.push({ token: i, word: w, pattern: name });
+            if (re.test(w)) {
+                const context = tokens.slice(Math.max(start, i - 6), Math.min(end + 1, i + 7)).map((t) => t.word).join(' ');
+                hits.push({ token: i, word: w, pattern: name, context });
+            }
         }
     }
     return hits;

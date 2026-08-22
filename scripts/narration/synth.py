@@ -94,21 +94,33 @@ def synth_unit(pipeline, voice_tensor, text, speed):
         audio_parts.append(audio)
         offset += len(audio) / SAMPLE_RATE
     if not audio_parts:
-        raise RuntimeError("Kokoro produced no audio for unit")
+        # A unit with nothing voiced (a '* * *' separator paragraph) can
+        # legitimately synthesize to nothing: emit a short deliberate silence
+        # with no tokens — alignment resolves its words to zero width and the
+        # pause reads as the scene break it is. Anything with voiced
+        # characters producing no audio is a real failure.
+        if not any(c.isalnum() for c in text):
+            return np.zeros(int(SAMPLE_RATE * 0.6), dtype="float32"), []
+        raise RuntimeError("Kokoro produced no audio for unit with voiced text")
     return np.concatenate(audio_parts), tokens
 
 
 def write_unit(dir_, i, audio, tokens):
+    """Both files land atomically, tokens LAST — the resume check requires the
+    pair, so a crash between writes can only leave a WAV that gets redone."""
     import soundfile as sf
 
     wav = dir_ / f"unit-{i:05d}.wav"
     tmp = dir_ / f"unit-{i:05d}.wav.tmp"
     sf.write(str(tmp), audio, SAMPLE_RATE, subtype="PCM_16", format="WAV")
     tmp.replace(wav)
-    (dir_ / f"unit-{i:05d}.tokens.json").write_text(
+    tok = dir_ / f"unit-{i:05d}.tokens.json"
+    tok_tmp = dir_ / f"unit-{i:05d}.tokens.json.tmp"
+    tok_tmp.write_text(
         json.dumps({"v": 1, "sampleRate": SAMPLE_RATE, "durS": len(audio) / SAMPLE_RATE, "tokens": tokens}),
         encoding="utf-8",
     )
+    tok_tmp.replace(tok)
 
 
 def run_sample(device):

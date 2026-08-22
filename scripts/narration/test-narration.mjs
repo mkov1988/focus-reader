@@ -133,6 +133,28 @@ const throws = (label, fn, needle) => {
     ), 'negative duration');
 }
 
+// ── 4. Regressions from the 2026-08-22 adversarial review ──────────────────
+{
+    // Segment-leading silence: Kokoro leaves onset silence before the first
+    // voiced word; it must attach to word 0 and the parity rail must hold.
+    // (This exact input used to throw 'parity identity broke'.)
+    const t = buildTiming(
+        { spanWords: 3, units: [{ i: 0, count: 3 }], segments: [{ i: 0, startWord: 0, words: 3, units: [0] }] },
+        { 0: { starts: [0.10, 0.35, 0.62], durS: 0.90 } },
+    );
+    check('regression: onset silence attaches to word 0, parity holds', t.durCs[0] === 35 && t.durCs.reduce((n, d) => n + d * 10, 0) === t.segments[0].durMs);
+
+    // A trailing RUN of silent words ('. . .', '* * *' rows, dash runs) used
+    // to leak null through the resolution loop and hard-fail the book.
+    const starts = alignUnit(['Hello', '--', '--'], [{ text: 'Hello', start: 0.10, end: 0.42 }]);
+    check('regression: trailing run of silent words collapses onto the end', starts[1] === 0.42 && starts[2] === 0.42);
+
+    // An all-silent unit (a '* * *' separator paragraph) must resolve to
+    // zeros, not leak nulls into buildTiming.
+    const silent = alignUnit(['*', '*', '*'], []);
+    check('regression: all-silent unit resolves to zeros', silent.every((s) => s === 0));
+}
+
 console.log('');
 if (failures) { console.error(`${failures} failure(s).`); process.exit(1); }
 console.log('narration pipeline contracts hold.');

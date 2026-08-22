@@ -19,8 +19,9 @@
  * Requires ffmpeg on PATH. WAVs are kept for verify.mjs --deep; delete the
  * work dir when a book has shipped.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -65,14 +66,21 @@ export function alignUnit(readerWords, kokoroTokens) {
         starts.push(len === 0 ? null : charStart[p]);
         p += len;
     }
-    // A punctuation-only token ("--") has no voiced chars: give it zero width
-    // at the next word's start; the silence stays with the preceding word.
-    for (let w = starts.length - 1; w >= 0; w--) {
-        if (starts[w] === null) starts[w] = w + 1 < starts.length ? starts[w + 1] : null;
+    // A punctuation-only token ("--", a "*" in a scene-break row) has no
+    // voiced chars: give it zero width at the next word's start, so the
+    // silence stays with the preceding word. Resolve the LAST position first
+    // (to the audio's final voiced moment, or 0 for an all-silent unit), then
+    // propagate backwards — order matters: a trailing RUN of silent words
+    // must all collapse onto that same edge.
+    if (starts.length && starts[starts.length - 1] === null) {
+        starts[starts.length - 1] = kokoroTokens.length ? kokoroTokens[kokoroTokens.length - 1].end : 0;
     }
-    if (starts.length && starts[starts.length - 1] === null) starts[starts.length - 1] = kokoroTokens.length ? kokoroTokens[kokoroTokens.length - 1].end : 0;
-    for (let w = 1; w < starts.length; w++) {
-        if (starts[w] < starts[w - 1]) throw new Error(`non-monotonic word starts at word ${w} (${starts[w - 1]} -> ${starts[w]})`);
+    for (let w = starts.length - 2; w >= 0; w--) {
+        if (starts[w] === null) starts[w] = starts[w + 1];
+    }
+    for (let w = 0; w < starts.length; w++) {
+        if (starts[w] === null || !Number.isFinite(starts[w])) throw new Error(`unresolved start at word ${w} — alignment bug`);
+        if (w > 0 && starts[w] < starts[w - 1]) throw new Error(`non-monotonic word starts at word ${w} (${starts[w - 1]} -> ${starts[w]})`);
     }
     return starts;
 }
@@ -100,6 +108,12 @@ export function buildTiming(plan, unitData) {
             for (const s of data.starts) startsCs.push(Math.round((offset + s) * 100));
             offset += data.durS;
         }
+        // Kokoro leaves onset silence before the first voiced word of nearly
+        // every unit; the segment's opening silence belongs to its first word
+        // (there is no earlier word to carry it), so clamp the first start to
+        // zero. Without this the opening silence falls out of Σdur and the
+        // parity rail below fails on every real book.
+        if (startsCs.length) startsCs[0] = 0;
         const segDurCs = Math.round(offset * 100);
         for (let i = 0; i < startsCs.length; i++) {
             const next = i + 1 < startsCs.length ? startsCs[i + 1] : segDurCs;
@@ -124,15 +138,20 @@ export function buildTiming(plan, unitData) {
 }
 
 function ffmpegConcatToOpus(wavPaths, outPath) {
-    const list = outPath + '.list.txt';
+    // The list file must NOT live in out/ — everything in out/ ships to R2.
+    const list = path.join(os.tmpdir(), `narr-concat-${process.pid}-${path.basename(outPath)}.txt`);
     writeFileSync(list, wavPaths.map((p) => `file '${p.replace(/'/g, "'\\''")}'`).join('\n') + '\n');
-    const r = spawnSync('ffmpeg', [
-        '-hide_banner', '-loglevel', 'error', '-y',
-        '-f', 'concat', '-safe', '0', '-i', list,
-        '-c:a', 'libopus', '-b:a', '24k', '-ac', '1', '-ar', '24000', '-application', 'voip',
-        outPath,
-    ], { stdio: ['ignore', 'inherit', 'inherit'] });
-    if (r.status !== 0) throw new Error(`ffmpeg failed for ${path.basename(outPath)} (is ffmpeg on PATH?)`);
+    try {
+        const r = spawnSync('ffmpeg', [
+            '-hide_banner', '-loglevel', 'error', '-y',
+            '-f', 'concat', '-safe', '0', '-i', list,
+            '-c:a', 'libopus', '-b:a', '24k', '-ac', '1', '-ar', '24000', '-application', 'voip',
+            outPath,
+        ], { stdio: ['ignore', 'inherit', 'inherit'] });
+        if (r.status !== 0) throw new Error(`ffmpeg failed for ${path.basename(outPath)} (is ffmpeg on PATH?)`);
+    } finally {
+        rmSync(list, { force: true });
+    }
 }
 
 function finishBookVoice(id, persona) {

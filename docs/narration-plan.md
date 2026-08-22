@@ -145,6 +145,11 @@ Edge rules:
 - Words outside the readable span keep their synthetic multipliers; narration
   audio only exists over the span. Scrubbing into front/back matter behaves
   exactly like today, silently.
+- A punctuation-only token (a bare `--`, a `*` in a scene-break row) has no
+  voiced sound, so it gets zero dwell in narration mode — it flashes past and
+  its silence stays with the word before it. Deliberate: the narrator's pause
+  belongs to the word that caused it, and a zero-width word advances on the
+  next frame, which the engine handles natively.
 - Sentence-mode's extra start-of-sentence hold is forced off while narrating
   (it would fight the recording; the narrator already breathes there).
 - If the next audio segment isn't downloaded yet, the voice drops out and the
@@ -216,7 +221,7 @@ door are covered by contract tests that need no Kokoro:
 | --- | --- |
 | `scripts/lib/load-ts.mjs` | Shared TS-transpile loader (the `test-tokenize.mjs` technique from the Android repo) so pipeline scripts import the REAL `src/utils/textProcessing.ts` + `chapterDetection.ts` — the tokenizer is never replicated |
 | `narration/plan.mjs` | Per book: read the exact mirror bytes (`public/books/<id>.txt`), run the real `parseText` → tokens + readable bounds; run the leftover gate; emit `work/<id>/plan.json` — synthesis units (paragraphs over the span, long ones split at sentence boundaries to ≤450 words) grouped into ~3,500-word segments starting on paragraph boundaries. Unit TTS text = the unit's tokens joined with single spaces, `_underscores_` stripped — token-space-preserving by construction |
-| `narration/synth.py` | Kokoro synthesis per unit at speed ≈1.2 (≈200 WPM natural), writing per-unit WAV + Kokoro token timestamps. Resumable (skips existing outputs); `--device=cuda\|cpu`; `--sample` mode for the §7 persona audition; `--voices=` takes pack names or blend specs |
+| `narration/synth.py` | Kokoro synthesis per unit at speed ≈1.2 (≈200 WPM natural), writing per-unit WAV + Kokoro token timestamps. Resumable (skips existing outputs); `--device=cuda\|cpu`; `--sample` mode for the §7 persona audition; `--voices=` takes persona keys (marlowe/rowan/hazel) — each persona's pack or blend is configured in `voices.json` |
 | `narration/finish.mjs` | Align Kokoro tokens → reader token ids (below); concatenate units per segment; encode Opus (ffmpeg, 24 kbps mono); compute per-word durations (centiseconds), `naturalWpm`, segment index; write `work/<id>/<voice>/out/` mirroring the R2 layout. Any rail failure = book+voice failed, exit 1 |
 | `narration/verify.mjs` | Independent re-check of every rail (§11); `--deep` adds whisper spot re-transcription |
 | `narration/build-manifest.mjs` | Aggregate verified outputs → `public/narration-v1.json` |
@@ -237,7 +242,8 @@ timestamp = unit failed = book+voice failed. Never patch, never munge.
 
 **Leftover gate** (in `plan.mjs`, hard): scan span tokens for
 `/gutenberg/i`, `https?://`, `\bwww\.`, `\be-?text\b`. Any hit excludes the
-book from narration and lists it in the checklist with the matched line. The
+book from narration and lists it in the checklist with the matched token and
+its surrounding context. The
 ~50 known dirty texts are simply not narratable until a coordinated re-strip +
 re-anchor happens (out of scope here).
 
@@ -288,6 +294,11 @@ paragraph boundary. R2 keys: `audio/<id>/<voice>/seg-NNN.opus`.
   wildcard + correct Content-Type, 404-with-CORS on miss. No Range support
   needed: the app downloads whole segments to disk, then plays locally.
 - `public/_headers`: add `/narration-v1.json` stanza (same as modernity's).
+  Note what immutable means for a growing manifest: server-side the file only
+  ever GROWS additively (build-manifest merges, never rebuilds from scratch),
+  but installed apps keep the snapshot they fetched — shelf growth reaches
+  them through the app's own refresh policy (§10), or a filename bump, never
+  through HTTP cache expiry. Same reality Modernity lives with.
 - `scripts/deploy-manifest.json`: add `narration-v1.json` to `mustExist` only
   once the manifest first ships (an empty `{v:1, voices:{}, books:{}}` can ship
   immediately to make that safe).
@@ -306,7 +317,11 @@ existing shared value, so the playbook invariants hold.
 
 Around it:
 - `src/services/narration.ts` — manifest on the deepStarts pattern (post-boot
-  silent background fetch, disk cache, sync lookups, never on the open path);
+  silent background fetch, disk cache, sync lookups, never on the open path),
+  with one addition deepStarts doesn't need: treat the disk copy as stale
+  after ~7 days and re-fetch in the background, because this manifest grows
+  as the shelf expands (§9) — audio and timing files stay
+  fetch-once-immutable;
   per-book timing + segments on the library.ts file-cache pattern
   (`narration/<id>/<voice>/` under the document dir; timing first, segments on
   demand, next segment prefetched at ~80% through the current one).

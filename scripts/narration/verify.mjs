@@ -21,7 +21,7 @@
  *                                       windows per pair; ≥85% word overlap
  *                                       (needs `whisper` CLI, ffmpeg)
  */
-import { readFileSync, existsSync, statSync, mkdtempSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, statSync, mkdtempSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import os from 'node:os';
@@ -104,7 +104,11 @@ for (const id of ids) {
         if (t.span[0] !== plan.span[0] || t.span[1] !== plan.span[1]) fail(label, `span ${t.span} != plan ${plan.span}`);
         if (t.durCs.length !== plan.spanWords) fail(label, `durCs ${t.durCs.length} != span ${plan.spanWords}`);
         if (t.durCs.some((d) => d < 0 || !Number.isInteger(d))) fail(label, 'durCs has negative or non-integer entries');
-        if (t.segments.length !== plan.segments.length) fail(label, 'segment count mismatch');
+        if (t.segments.length !== plan.segments.length) {
+            // Stale timing against a re-run plan: a recorded failure, not a crash.
+            fail(label, `segment count ${t.segments.length} != plan ${plan.segments.length} — stale out/? re-run finish.mjs`);
+            continue;
+        }
 
         let cursor = 0;
         let totalMs = 0;
@@ -140,31 +144,51 @@ for (const id of ids) {
             }
         }
 
-        if (DEEP && failures === failuresBefore && t.segments[0].durMs > 40000) {
-            const seg0 = t.segments[0];
-            for (const startMs of windowStarts(seg0.durMs - 30000, 3)) {
-                const heard = whisperWindow(path.join(outDir, seg0.file), startMs / 1000, 30);
+        if (DEEP && failures === failuresBefore) {
+            // Three 30s windows spread across the WHOLE book (§11), each
+            // mapped to its segment. Deterministic positions — verify must be
+            // reproducible. A window whose segment is too short is skipped.
+            for (const targetMs of windowStarts(totalMs, 3)) {
+                let segIdx = 0;
+                let before = 0;
+                while (segIdx < t.segments.length - 1 && before + t.segments[segIdx].durMs <= targetMs) before += t.segments[segIdx++].durMs;
+                const seg = t.segments[segIdx];
+                if (seg.durMs < 40000) continue;
+                const startMs = Math.max(0, Math.min(seg.durMs - 31000, targetMs - before));
+                const heard = whisperWindow(path.join(outDir, seg.file), startMs / 1000, 30);
                 // Overlap is measured on normalized word sets, not order — a
                 // cheap "is this the right audio for this text" tripwire, not
                 // a transcription benchmark. Walk durCs to find the window's
-                // words (segment 0 starts at span[0], durCs index 0).
+                // words (durCs index of the segment's first word = cumulative
+                // word count of prior segments).
+                let wordBase = 0;
+                for (let s = 0; s < segIdx; s++) wordBase += t.segments[s].words;
                 const expected = new Set();
                 let at = 0;
-                for (let w = 0; w < seg0.words; w++) {
+                for (let w = 0; w < seg.words; w++) {
                     if (at >= startMs && at <= startMs + 30000) {
-                        const tokenId = plan.span[0] + w;
+                        const tokenId = seg.startWord + w;
                         const unit = plan.units.find((u) => tokenId >= u.start && tokenId < u.start + u.count);
                         if (unit) expected.add(norm(unit.text.split(' ')[tokenId - unit.start]));
                     }
-                    at += t.durCs[w] * 10;
+                    at += t.durCs[wordBase + w] * 10;
                 }
                 expected.delete('');
                 const heardSet = new Set(heard.split(/\s+/).map(norm).filter(Boolean));
                 let hitCount = 0;
                 for (const wrd of expected) if (heardSet.has(wrd)) hitCount++;
                 const overlap = expected.size ? hitCount / expected.size : 0;
-                if (overlap < 0.85) fail(label, `--deep window @${Math.round(startMs / 1000)}s: ${(overlap * 100).toFixed(0)}% word overlap (<85%)`);
+                if (overlap < 0.85) fail(label, `--deep ${seg.file} @${Math.round(startMs / 1000)}s: ${(overlap * 100).toFixed(0)}% word overlap (<85%)`);
             }
+        }
+
+        // Stamp the verdict where upload-audio-r2.mjs gates on it: a pair may
+        // only ship after a clean verify (and a re-verify clears a stale stamp).
+        const statusPath = path.join(WORK, id, persona, 'status.json');
+        if (existsSync(statusPath)) {
+            const status = JSON.parse(readFileSync(statusPath, 'utf8'));
+            status.verified = failures === failuresBefore;
+            writeFileSync(statusPath, JSON.stringify(status) + '\n');
         }
 
         if (failures === failuresBefore) console.log(`ok  ${label} — ${t.segments.length} segments, ${(totalMs / 3600000).toFixed(1)}h, naturalWpm ${t.naturalWpm}`);
