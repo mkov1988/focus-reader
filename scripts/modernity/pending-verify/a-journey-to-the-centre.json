@@ -1,0 +1,482 @@
+{
+ "primaryId": "18857",
+ "title": "A Journey to the Centre of the Earth",
+ "author": "Jules Verne",
+ "format": "stream",
+ "register": "full-send",
+ "slug": "a-journey-to-the-centre",
+ "work": {
+  "slug": "a-journey-to-the-centre",
+  "feelings": [
+   "funny",
+   "epic",
+   "tense",
+   "chaotic"
+  ],
+  "intensity": "gripping",
+  "beats": [
+   {
+    "title": "The Parchment Falls Out",
+    "modern": "uncle kicks the door in screaming my name because he bought an old book. not a GOOD book. an old one. twelfth century Icelandic, unreadable, he's tapping his forehead going wonderful, wonderful. then a scrap of paper falls out of the pages covered in runes and chat I watched a man's whole personality reroute in real time. that scrap ends me. I just don't know it yet.",
+    "anchor": "I was about to venture upon some misplaced joke on the subject",
+    "endAnchor": "series of adventures which ever fell to the lot of human beings.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Nobody Eats Until I Solve It",
+    "modern": "he's decided the scribble is a cipher and he WILL crack it. \"until I discover the meaning of this sentence I will neither eat nor sleep.\" cool. inspiring. love that for you. then: \"nor you neither.\" EXCUSE ME? he locked the front door and pocketed the key. me and the cook are hostages to a man's side quest.",
+    "quote": "Until I discover the meaning of this sentence I will neither eat nor sleep.",
+    "anchor": "Why--how should I know? Did not Galileo make a secret of his discoveries",
+    "endAnchor": "It was lucky I had taken double allowance that day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Read It Backwards",
+    "modern": "day two. eyes fried, letters dancing, brain on fire. I start fanning myself with the cursed paper to not pass out, catch the BACK of it, and the ink has bled through. chat. you read it backwards. that's it. that's the whole puzzle. he's been raw-dogging alphabet math for two days and I solved it by being overheated.",
+    "anchor": "I was, in fact, fighting against an insurmountable difficulty",
+    "endAnchor": "All you had to do to understand the document was to read it backwards.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Perish The Fearful Secret",
+    "modern": "so I read it. and then I decided nobody on earth is ever knowing this. because if HE reads it he goes, and if he goes he takes me, and we do not come back. book in one hand, parchment in the other, walking to the fire. burning it. burning it right now— he walked in. he walked in.",
+    "anchor": "\"Never!\" cried I, jumping up. \"Never shall my uncle be made aware",
+    "endAnchor": "when the door opened and my uncle entered.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "I Did It, Signed Arne",
+    "modern": "I caved for a bread roll. he reads it out: go down the crater at Sneffels that the shadow of Scartaris touches, before July, brave traveler, and you'll reach the centre of the earth. I DID IT. some sixteenth century alchemist left a dare in a book three hundred years ago and my uncle just accepted it on my behalf.",
+    "quote": "Descend into the crater of Yocul of Sneffels, which the shade of Scartaris caresses, before the kalends of July, audacious traveler, and you will reach the centre of the earth. I did it.",
+    "anchor": "\"Backwards!\" cried my uncle, in wild amazement. \"Oh most cunning Saknussemm",
+    "endAnchor": "and you will reach the centre of the earth. I did it.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Gretchen Is Not Helping",
+    "modern": "told my fiancée the plan, fully expecting backup. she said, out loud, with her whole chest: what a magnificent journey, if only I were a man. babe. BABE. you were my last save point. she is ENVIOUS. the household has voted and I am going into a volcano.",
+    "quote": "What a magnificent journey. If I were only a man! A journey worthy of the nephew of Professor Hardwigg.",
+    "anchor": "What a magnificent journey. If I were only a man!",
+    "endAnchor": "This was, as it were, conclusive. The final blow of all.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Vertigo Bootcamp",
+    "modern": "I mentioned I get dizzy on tall things. so he took me to a church steeple with an outside staircase and asked, in the pitiless voice, if I was a coward. I went up on my hands and knees like a snake with my eyes shut. came down folded in half like a rheumatic old man. he did this to me for five days. day five I strolled up. worst part: it worked.",
+    "anchor": "\"Are you, after all, a coward, sir?\" said my uncle in a pitiless tone",
+    "endAnchor": "without even winking, and with some degree of pleasure.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Seasick Conqueror",
+    "modern": "eleven days at sea and the man who intends to conquer the interior of the earth cannot conquer a boat. flat on his back the entire crossing, groaning, unable to interrogate the captain about mountains. I was completely fine. chat I need you to know that I did not pity him. not once.",
+    "anchor": "The voyage offered no incident worthy of record. I bore it very well",
+    "endAnchor": "termination of the voyage. I didn't pity him.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Behold Mount Sneffels",
+    "modern": "we dock in Iceland and before he greets a single human being he hauls me to the quarterdeck, points north at a white two-peaked mountain, and whispers it like a password. then finger to the lips. scowl. we do NOT say the mountain's name out loud. we are being extremely normal about this.",
+    "quote": "Behold he whispered in an awe-stricken voice, behold--Mount Sneffels!",
+    "anchor": "he caught hold of my hand, led me to the quarterdeck of the schooner",
+    "endAnchor": "we stood upon the soil of mysterious Iceland!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Efter",
+    "modern": "hired a guide. Hans. duck-down hunter. moves approximately one muscle per hour, says one word per conversation. uncle tries to pay him up front and he says: after. then leaves. no questions. chat this man has agreed to walk into the centre of the earth for fourteen shillings a week and his only condition is that Saturday is payday.",
+    "quote": "Efter.",
+    "anchor": "My uncle wished to hand the eider-down hunter an advance, but he refused",
+    "endAnchor": "\"To the interior of the earth, yes,\" replied my uncle. \"Why not?\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Horse Says No",
+    "modern": "uncle tries to ride his pony across a sea inlet. pony sniffs the wave, says no. uncle whips it. pony spreads its legs, slides out from under him, and leaves him standing on two separate rocks like the Colossus of Rhodes. then Hans taps his shoulder and points at the FERRY. there was a ferry. there was always a ferry.",
+    "anchor": "But my uncle was in no humor to wait. He dug his heels",
+    "endAnchor": "\"Well,\" I cried, quite delighted with the information; \"so it is.\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Saknussemm Was Here",
+    "modern": "bottom of the crater. three holes, no way to pick. then uncle SCREAMS and I assume he's fallen in. no. he's frozen in front of a black slab tall enough to hold a statue, arms out, staring at a name carved into it three hundred years ago. still readable. \"now, unbeliever, do you begin to have faith?\" I could not produce one word.",
+    "quote": "\"Arne Saknussemm!\" cried my uncle, \"now, unbeliever, do you begin to have faith?\"",
+    "anchor": "Suddenly the Professor uttered a wild, unearthly cry.",
+    "endAnchor": "now, unbeliever, do you begin to have faith?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Shadow Hits The Pit",
+    "modern": "we needed direct sun to show us which of the three holes. six days of cloud and rain and I was quietly praying for one more so the whole thing gets postponed a year. Sunday the 28th the sky opens. noon exactly. the peak's shadow crawls across the floor and lands on the middle pit like a cursor. forward, he says. we went in at 1:13.",
+    "anchor": "Next day the sky was still overcast, but on Sunday, the 28th",
+    "endAnchor": "When we were quite ready, our watches indicated thirteen minutes past one!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Down The Rope",
+    "modern": "leaned over the shaft to look. hundred feet across, no bottom, nothing but throat. hair up, teeth chattering, I lose my centre of gravity and start to go over — and a hand catches me. Hans. doesn't speak, doesn't look at me, just puts me back. five days of steeple training and I nearly deleted myself on the tutorial.",
+    "anchor": "I leaned over a rock which stood on its edge, and looked down.",
+    "endAnchor": "in the art of looking down from lofty eminences without blinking!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Last Look At The Sky",
+    "modern": "lamps lit, packs up, he says forward. and right as I stepped into the tunnel I looked back up the shaft and there was a little circle of Iceland sky. and I knew. that's the one. that's the last one I get. I stood there thinking is that really it. then I walked in anyway.",
+    "anchor": "\"Forward!\" cried my uncle. Each took up his burden.",
+    "endAnchor": "Was it the last I should ever see of any sky?",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Trilobite Receipt",
+    "modern": "picked a fossil shell out of the wall and held it up to him. \"trilobite. nothing more, I assure you.\" sir. SIR. a trilobite means we left the lava road. we are not on Saknussemm's route. and then he admits it — he's known for hours. he just kept walking with his eyes closed, because to him being wrong out loud costs more than dying of thirst.",
+    "anchor": "I stooped on a sudden and picked up an almost perfect shell",
+    "endAnchor": "unable to discover my error until I get to the end of this gallery.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "No Thoroughfare",
+    "modern": "six days down the wrong tunnel and then: wall. no left, no right, no over, no under. rock saying no in a language you can't argue with. and the water is gone. tomorrow there is not one drop between the three of us. he tells me my courage went with it. I'd have traded a diamond mine for a glass of water.",
+    "quote": "I would have bartered a diamond mine for a glass of pure spring water!",
+    "anchor": "Suddenly, at six o'clock, we stood in front of a wall.",
+    "endAnchor": "I would have bartered a diamond mine for a glass of pure spring water!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Last Mouthful",
+    "modern": "I'm on the floor at the crossroads, lips split, done, ready to be somebody's interesting fossil. he lifts me up and puts the flask to my mouth. one swallow. he'd been carrying that swallow for days. said he resisted it a hundred times because he knew I'd fall here. this man tortures me daily and then does that.",
+    "quote": "Twenty times, a hundred times, I have resisted the fearful desire to drink it. But--no--no, Harry, I saved it for you.",
+    "anchor": "I then saw him take the gourd which he wore at his side.",
+    "endAnchor": "resisted the fearful desire to drink it. But--no--no, Harry, I saved it for you.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "One More Day",
+    "modern": "I said we turn around. he said: go, take Hans, I'll go on alone. and then he pitched me. Columbus asked his crew for three days and got a continent. he's asking me for one. one day to find water and if he doesn't he swears he takes us up. what am I supposed to say to that. we went down.",
+    "quote": "Now I, the Christopher Columbus of this subterranean region, only ask of you one more day.",
+    "anchor": "Go, leave me, I am very far from desiring your death.",
+    "endAnchor": "I will give up my mighty enterprise and return to the earth's surface.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Hans Digs For Water",
+    "modern": "Hans vanishes into the dark with the lamp. I assume he's leaving us to die. he comes back and says two words: water, below. then he walks the granite with his ear on it until he finds the exact spot and starts swinging a crowbar. an hour of small patient hits. then it BLASTS through and slams the far wall. we drink. it's boiling. \"never mind, it'll cool.\"",
+    "quote": "\"Well, never mind,\" said my uncle, \"it will soon get cool.\"",
+    "anchor": "I saw him raise the heavy crowbar and commence an attack upon the rock",
+    "endAnchor": "\"Well, never mind,\" said my uncle, \"it will soon get cool.\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Old Ocean Overhead",
+    "modern": "ran the numbers on the map. fifty leagues southeast of the coast means we're past the island. chat we are not under Iceland anymore. we are under the ATLANTIC. I announce this like it's terrible news and he rubs his hands together like I told him dinner's ready. whales over our heads. he says don't worry, they can't get through.",
+    "anchor": "if your calculations are correct we are no longer under Iceland",
+    "endAnchor": "\"Yes,\" I cried, \"no doubt old Ocean flows over our heads!\"",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Chat I Am Alone Down Here",
+    "modern": "walking out front examining granite, fully locked in, not looking back once. turn around. nobody. walk back fifteen minutes. nobody. shout, and the shout comes back at me from every direction at once and none of them are him. I told myself out loud there is only one road so we have to meet. I did not believe me.",
+    "anchor": "Suddenly halting and turning round, I found that I was alone!",
+    "endAnchor": "Only the echoes of my own footsteps could be heard.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The River Is Gone",
+    "modern": "the stream was my thread. follow the water, find them, follow it all the way back to daylight if I have to. I knelt to splash my face and my hands hit dry shingle. it's not here. it was never in this tunnel. I took one wrong fork at the halt and walked away from the only thread I had. thirty leagues of rock on my shoulders like Atlas.",
+    "anchor": "I stopped to plunge my hands and forehead in the pleasant water",
+    "endAnchor": "weighed upon my shoulders like the globe on the shoulders of Atlas.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Lights Out",
+    "modern": "lamp's failing. I watched the last thread of light shrink in the coil and I would not blink in case blinking cost me the end of it. then it went. not night-dark. deleted-dark. no light anywhere for a hundred miles to leak in. so I ran. screaming, falling, bleeding, tasting my own blood, until my legs quit under me.",
+    "anchor": "At last, one final trembling flame remained in the lamp",
+    "endAnchor": "a heavy inert mass along the side of the tunnel, and lost consciousness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Whispering Gallery",
+    "modern": "half dead against the wall and I hear voices coming out of the rock. figured I'd started hallucinating. then I hear my NAME. the tunnel bends sound like a wire and my ear happens to be resting on the one spot in the whole wall where it lands. I say uncle. and out of the granite: Harry, my boy, is that you?",
+    "anchor": "Again I listened; and this time--yes, this time--I heard my name distinctly pronounced",
+    "endAnchor": "Keep your courage, Harry. We will do our best.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forty Seconds",
+    "modern": "we timed it. he says my name and marks the second, I repeat it back, he marks the second it lands. forty seconds round trip. twenty each way. that's a league and a half of solid rock between me and them. he said the number cheerfully, like it was progress. it landed on me like a death knell.",
+    "quote": "\"Forty seconds,\" said my uncle. \"There has elapsed forty seconds between the two words.",
+    "anchor": "Well, take it into your hand. Pronounce my name, noting exactly the second",
+    "endAnchor": "These words fell on my soul like a kind of death knell.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Sea, The Sea",
+    "modern": "I crawl toward them, the floor drops, I fall down a well and wake up bandaged in a grotto four days later. there's LIGHT. there's WIND. there are WAVES. I stagger outside and there is an ocean. horizon, clouds, storms, a granite sky burning like a permanent aurora. a hundred miles underground. he names it on the spot, obviously.",
+    "quote": "\"The sea--the sea,\" I cried.",
+    "anchor": "At first I saw absolutely nothing. My eyes, wholly unused to the effulgence",
+    "endAnchor": "and hence of acquiring a right of giving it a name.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Forest Of Mushrooms",
+    "modern": "round a headland and there's a forest. straight trunks, tops like parasols, completely motionless in a stiff breeze. I'm already writing the discovery paper in my head. he glances at it for one second and says, in the flattest voice a human has produced, that it is a forest of mushrooms. forty feet tall. thousands of them. it is very dark under there.",
+    "quote": "\"It is only,\" he said, in his coolest manner, \"a forest of mushrooms.\"",
+    "anchor": "we suddenly turned a steep promontory, and found ourselves close to a lofty forest!",
+    "endAnchor": "beneath them reigned a gloomy and mystic darkness.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blind Fish",
+    "modern": "Hans drops a line in the underground sea and pulls up a fish that's been extinct since the Devonian. living fossil. uncle nearly ascends. then he adds the detail: it has no eyes. not damaged, not blinded — never had them. nothing down here has ever needed them. we caught dozens over two hours. every single one. all of them.",
+    "quote": "\"Not only blind,\" continued the Professor, \"but absolutely without organs of sight.\"",
+    "anchor": "This fish, my dear boy, belongs to a family which has been extinct",
+    "endAnchor": "enabled us to renew our stock of provisions in a very satisfactory way.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Something Bit The Crowbar",
+    "modern": "raft gets lifted clean out of the water and thrown twenty fathoms. Hans points. two hundred yards out, a black mass moving. then a sea lizard. then crocodile jaws. then two columns of spray going up like artillery. the SMALLEST thing out there could take the raft and all three of us in one bite. I picked up a rifle. against armour plate. sure.",
+    "anchor": "Hans raised his hand and pointed to where, about two hundred yards off",
+    "endAnchor": "could with ease have crushed our raft and ourselves with a single bite.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Tva",
+    "modern": "they charge each other instead of us. I'm counting five monsters out there — lizard, whale, croc, turtle, serpent. Hans holds up two fingers. \"two.\" and he's right. it's ONE ichthyosaur with a porpoise snout and lizard head and croc teeth, and ONE plesiosaur wearing a turtle shell with thirty feet of swan neck. two animals in five costumes.",
+    "quote": "\"Tva,\" he said.",
+    "anchor": "The two hideous and ravenous monsters passed within fifty fathoms of the raft",
+    "endAnchor": "the terrible enemy of its fearful rival, the Plesiosaurus, or sea crocodile.",
+    "spice": 0,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "Only One Comes Back Up",
+    "modern": "three hours of them tearing each other apart, mountains of water breaking over us, hissing loud enough to shake the roof of the world. then both go under and leave a whirlpool that nearly takes us with it. silence. then a head surfaces. just the plesiosaur, dying, thirty feet of neck whipping the sea like a cut worm until it stops. the other one never came back up.",
+    "anchor": "an enormous mass rises out of the waters--the head of the great Plesiosaurus",
+    "endAnchor": "an inert, dead mass on the surface of the now calm and placid waters.",
+    "spice": 0,
+    "warnings": [
+     "violence",
+     "death"
+    ],
+    "standalone": false
+   },
+   {
+    "title": "The Island Was A Geyser",
+    "modern": "black mountain lying on the sea, spouting water five hundred feet up. I said turn west. he said advance. I called him foolhardy and mad and threatened to cut the sail, the full meltdown, and he did not answer me once. then Hans points and says: island. it's an island. the spout is a geyser. uncle laughing his head off. then he named it after me.",
+    "quote": "\"Geyser,\" said Hans.",
+    "anchor": "I honestly confess that I was abjectly afraid. I declared that I would",
+    "endAnchor": "It was nothing, after all, but a natural phenomenon.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Ball Lightning On The Powder",
+    "modern": "three days of storm where we can't hear each other scream. then a ball of fire the size of a shell drops onto the raft. rolls the bulwark. hops the provisions. lands on the POWDER BARREL. does not go off. then it magnetises every piece of iron on board and my boot nails weld to the deck while the thing circles my feet. tore my foot free right as it burst.",
+    "anchor": "it clambered up one of the bulwarks of the raft",
+    "endAnchor": "Then all went out and darkness once more fell upon the deep!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Needle Points North",
+    "modern": "storm dumps us on a beach. uncle is delighted, we've crossed. he sets the compass down, reads it, closes his eyes, rubs them, reads it again, and then he can't speak. just points. the needle says the sea is north. we never crossed anything. the wind turned mid-tempest and put us back on the shore we left. every hour on that raft was nothing.",
+    "anchor": "As soon as we had reached the rock, my uncle took the compass",
+    "endAnchor": "back to the shores we had left, apparently forever, so many days before!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "This Is A Human Head",
+    "modern": "walked inland and hit a plain of bones. three square miles of every animal that ever lived, drifted into barrows going out to the horizon. he's standing in it with his arms raised at the granite sky, mouth open, having the best day of his life. then he snatches something out of the dust and his voice goes shaky: Harry, this is a human head.",
+    "quote": "Harry, my boy--Harry--this is a human head!",
+    "anchor": "a plain of bones, appeared suddenly before our eyes!",
+    "endAnchor": "\"A human head, Uncle!\" I said, no less amazed and stupefied than himself.",
+    "spice": 0,
+    "warnings": [
+     "death"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "The Giant Shepherd",
+    "modern": "living mastodons. a whole herd of them, pulling down trees with their trunks. already too much. then he drops his voice to a whisper and tells me to look. quarter mile out, leaning on a trunk: twelve feet tall, head like a buffalo, hair in a mane, holding a branch like a crook. he is HERDING them. we ran. I have spent years since telling myself we did not see that.",
+    "anchor": "I thought I saw--no, I really did see with my own eyes",
+    "endAnchor": "A quarter of an hour later we were far away from that terrible monster!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Rusty Dagger",
+    "modern": "found something shining in the sand. a dagger. Spanish, sixteenth century steel, blade chewed to bits from being dragged across stone. somebody stood on this beach. we walk the cliff face reading every crack and under an overhang there's a granite tablet, rubbed smooth, with two worn letters. A. S. he was here. and I'm holding the tool he wrote it with.",
+    "anchor": "And I handed to my startled relative a rusty dagger, of singular shape.",
+    "endAnchor": "You see, I was right. Arne Saknussemm, always Arne Saknussemm!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Blow It Up",
+    "modern": "the tunnel behind the initials is plugged by one enormous block of granite. no gap above, below, either side. pickaxes are a joke against it. so I said gunpowder. Hans hollowed a chamber, we packed fifty pounds of guncotton in and ran a wick out, and then we went to bed. six hours lying next to it knowing what's in the wall.",
+    "anchor": "What else but gunpowder, a subterranean mine? Let us blow up the obstacle",
+    "endAnchor": "to consent to wait for the explosion for six weary hours!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "We Drained The Sea",
+    "modern": "I lit it and ran. he counted me down off his chronometer like a man launching a firework. the rock didn't break, chat — the whole cliff drew aside like a curtain and behind it was a bottomless pit. and then the sea went in. the entire underground ocean poured down the hole and took the raft with it. we blew a drain in the bottom of the world.",
+    "anchor": "Only two, one! Now, then, mountains of granite, crumble beneath the power of man!",
+    "endAnchor": "Only one idea filled my mind. We were utterly and completely lost!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Food Is Gone",
+    "modern": "took inventory while we were falling. instruments: gone except compass and chronometer. ladders, ropes, tools: gone. food: one piece of dried meat and some soaked mouldy biscuit. for three men, at a hundred miles an hour, going down. I sat there holding it and decided not to tell him yet, because his calm was the last supply we had and I didn't want to spend it.",
+    "anchor": "Of all our former collection of nautical and philosophical instruments, there remained only",
+    "endAnchor": "to hold my tongue, to gnaw at my entrails like the Spartan boy.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "The Ape Gigans",
+    "modern": "fourteen feet of black-haired ape with saw teeth walks into the cave sniffing for me. fights a shark-crocodile over who gets to eat me. WINS. comes at me gory, breathing on my neck — and I woke up on the raft. it was a dream. and chat, the genuinely upsetting part is that this trip has made that a completely reasonable thing to dream.",
+    "anchor": "Fourteen feet high, covered with coarse hair, of a blackish brown",
+    "endAnchor": "with a horrid jump--awoke from my nightmare sleep.",
+    "spice": 0,
+    "warnings": [
+     "violence"
+    ],
+    "standalone": true
+   },
+   {
+    "title": "We Are Going Up",
+    "modern": "his voice in the pitch dark: don't you see what's happened, we're going up. I put my hand on the wall to check and pulled it back skinned to the meat. two fathoms a second. the sea we let loose hit the bottom of the gulf and now the whole shaft is a barrel and we are the shot.",
+    "anchor": "Well, don't you see what has happened? We are going upwards.",
+    "endAnchor": "we are being cast upon the summit of the waters.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "An Eruption Is Good News",
+    "modern": "water boiling under us. walls red hot to the touch. compass spinning pole to pole like it's possessed. I tell him it's an earthquake and we're finished. he says no, he's expecting something bigger. an eruption. and then he smiles at me from under his spectacles and calls it the most fortunate thing that could happen to us. and chat — he's right. a volcano is the only lift out.",
+    "quote": "An eruption, Harry.",
+    "anchor": "My nephew, I tell you that you are utterly mistaken,\" he continued.",
+    "endAnchor": "of ever escaping from the interior of the earth to the light of day.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Stromboli",
+    "modern": "spat out of a crater half naked into HEAT. olives. figs. grapes. we are supposed to be in the arctic. we grab a local kid and my uncle interrogates him in German, English, French, Italian, and then another dialect of Italian. finally the boy gives up one word and bolts: Stromboli. we went in under Iceland and came out in Sicily. that cone on the horizon is Etna.",
+    "quote": "\"Stromboli,\" replied the rickety little shepherd",
+    "anchor": "My fine fellow, do you or do you not mean to speak?",
+    "endAnchor": "which rose on the southern horizon was Etna, the fierce and celebrated Etna!",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "Farval",
+    "modern": "back in Hamburg he's a legend, waxwork offers, the whole thing. and Hans just leaves. wouldn't take a reward, wouldn't let us pay the debt, got homesick for Reykjavik. said one word — farewell — and went. the man carried us out of the earth for fourteen shillings a week and clocked off like it was any other shift.",
+    "quote": "\"Farval,\" said he",
+    "anchor": "Hans, despite everything he could say to the contrary, quitted Hamburg",
+    "endAnchor": "I hope, at some not distant day, to see him again.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": true
+   },
+   {
+    "title": "The Compass Lied",
+    "modern": "six months later I'm tidying his minerals, pick up the old compass, and the needle points SOUTH. the poles are swapped. the ball of fire on the raft magnetised the whole thing backwards. we never sailed north. we went exactly where we thought we were going. the one thing that had been eating him for half a year, solved by me dusting a shelf.",
+    "quote": "During the storm, upon the Central Sea, the ball of fire which made a magnet of the iron in our raft, turned our compass topsy-turvy.",
+    "anchor": "Why its needle points to the south and not to the north.",
+    "endAnchor": "it was a trick of that inexplicable electricity.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   },
+   {
+    "title": "Stream's Over",
+    "modern": "uncle: happiest learned man alive, arguing with every scientist in Europe. me: married Gretchen. we entered the earth by one volcano and left by another twelve hundred leagues away, and nobody at home believed a word of it until Hans stood there in the room. gg. stream's over.",
+    "anchor": "From that hour my uncle was the happiest of learned men",
+    "endAnchor": "in the double quality of niece and wife.",
+    "spice": 0,
+    "warnings": [],
+    "standalone": false
+   }
+  ]
+ }
+}

@@ -1,0 +1,15 @@
+{
+  "v": 1,
+  "voices": {
+    "marlowe": {
+      "label": "Marlowe"
+    },
+    "rowan": {
+      "label": "Rowan"
+    },
+    "hazel": {
+      "label": "Hazel"
+    }
+  },
+  "books": {}
+}

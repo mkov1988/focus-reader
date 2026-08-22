@@ -1,0 +1,25 @@
+{
+  "comment": "The three narrator personas (docs/narration-plan.md §7). `kokoro` is the voice pack (or blend) that carries the persona — the audition step (synth.py --sample) is where these get locked; edit `kokoro` there, never the keys. Blends are written 'pack*weight+pack*weight'. Keys are the voice ids used in R2 paths and manifests.",
+  "personas": {
+    "marlowe": {
+      "label": "Marlowe",
+      "profile": "deep, unhurried, warm-gravel American baritone; cinematic storyteller gravitas",
+      "kokoro": "am_michael",
+      "candidates": ["am_michael", "am_onyx", "am_michael*0.6+am_onyx*0.4"]
+    },
+    "rowan": {
+      "label": "Rowan",
+      "profile": "hushed, precise, older British male; naturalist-documentary cadence",
+      "kokoro": "bm_george",
+      "candidates": ["bm_george", "bm_fable", "bm_lewis", "bm_george*0.5+bm_fable*0.5"]
+    },
+    "hazel": {
+      "label": "Hazel",
+      "profile": "warm, expressive, mature American female; theatrical range without melodrama",
+      "kokoro": "af_heart",
+      "candidates": ["af_heart", "af_bella", "af_nicole", "af_heart*0.7+af_bella*0.3"]
+    }
+  },
+  "speed": 1.2,
+  "sampleText": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters."
+}

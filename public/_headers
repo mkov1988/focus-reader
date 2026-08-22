@@ -13,3 +13,11 @@
 /starts-v1.json
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
+
+/modernity-v1.json
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
+/narration-v1.json
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
