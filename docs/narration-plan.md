@@ -371,33 +371,37 @@ pilot listen test, not a dependency.
 
 ## 13. Desk runbook (next week)
 
-Nothing below runs from a phone; do it at the desk, in order. Long runs stay in
-your terminal per the standing rule.
+The pipeline, serving door, and tests are BUILT and on this branch
+(2026-08-22 session). Already validated without a model: all contract tests
+pass; `plan.mjs` ran against the three pilot books' exact bundled bytes (gate
+clean, spans tile — 84: 74,975 span words / 21 segments, 1342: 127,278 / 36,
+14838: 1,012 / 1 — and the shipped story-start anchors land in-span); the
+audio door passed a mocked contract test; `npm run build` and
+`check-strip-sync` stay green. Synthesis could not run in the session (the
+container's network policy blocks the model download) — it starts at the
+desk. In order:
 
-1. Sync this repo; open a session on this doc and say: *"Build the narration
-   pipeline per docs/narration-plan.md §8–9"* — that session writes
-   `scripts/narration/*`, `scripts/lib/load-ts.mjs`,
-   `scripts/upload-audio-r2.mjs`, `functions/audio/[[path]].js`, the
-   `_headers`/deploy-manifest/backup extensions, and the empty
-   `narration-v1.json`, with the rails and shapes above.
-2. One-time setup in `scripts/narration/`: Python 3.11 venv,
-   `pip install -r requirements.txt` (kokoro, soundfile, torch — CUDA build if
-   you want the GPU), `espeak-ng` installed (Kokoro's fallback for unusual
-   words — flagged in §14), ffmpeg on PATH. `npm run mirror:books` must have
-   populated `public/books/` locally.
-3. Audition: `python synth.py --sample` → listen to the candidate clips on
-   your phone → lock the three personas (edit the voice map in the manifest
-   builder).
-4. Pilot: `node plan.mjs --ids=84,1342,14838` → `python synth.py --ids=… --voices=…`
-   (overnight if CPU) → `node finish.mjs …` → `node verify.mjs …` →
-   `build-manifest.mjs` + `build-narration-checklist.mjs`.
-5. Listen test: play a chapter of each book/persona from the work dir. **This
-   is the go/no-go for the whole feature.** If the voices aren't good enough,
-   stop here — nothing has shipped and the app is untouched.
-6. Ship the data plane: `node scripts/upload-audio-r2.mjs --ids=…`,
+1. Sync this repo. One-time setup in `scripts/narration/`: Python 3.11 venv,
+   `pip install -r requirements.txt` (kokoro, soundfile, torch — CUDA build
+   first if you want the GPU), `espeak-ng` installed system-wide (§14),
+   ffmpeg on PATH. `npm run mirror:books` must have populated `public/books/`
+   locally, and `npm ci` the repo once for the TS loader.
+2. Audition: `python synth.py --sample` writes every candidate clip to
+   `work/_samples/` → listen on your phone → set each persona's `kokoro` pack
+   (or blend) in `voices.json`.
+3. Pilot: `node plan.mjs --ids=84,1342,14838` →
+   `python synth.py --ids=84,1342,14838 --voices=marlowe,rowan,hazel`
+   (overnight if CPU; resumable, rerun after any interruption) →
+   `node finish.mjs --ids=… --voices=…` → `node verify.mjs --ids=… --voices=…`
+   → `node build-manifest.mjs && node build-narration-checklist.mjs`.
+4. Listen test: play a chapter of each book/persona from
+   `work/<id>/<voice>/out/`. **This is the go/no-go for the whole feature.**
+   If the voices aren't good enough, stop here — nothing has shipped and the
+   app is untouched.
+5. Ship the data plane: `node scripts/upload-audio-r2.mjs --ids=84,1342,14838`,
    `node scripts/backup-r2.mjs`, `node scripts/deploy-pages.mjs --preview`,
-   run the §11 curls, then production deploy.
-7. App round (own branch in `focus-reader-android`, per §10), device
+   run the §11 curls against audit-preview, then production deploy.
+6. App round (own branch in `focus-reader-android`, per §10), device
    verification by version stamp.
 
 ## 14. Open questions (for Michael)
