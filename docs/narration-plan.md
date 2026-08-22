@@ -170,18 +170,20 @@ attributes, auditioned from Kokoro's voice packs, optionally blended (Kokoro
 supports voice-pack blending, so a persona can be a mix that exists nowhere
 else but Focus Reader):
 
-1. **The storyteller** — deep, unhurried, warm-gravel American baritone;
-   cinematic gravitas. Audition: `am_michael`, `am_onyx`, blends.
-2. **The naturalist** — hushed, precise, older British male; documentary
-   cadence, intimate rather than boomy. Audition: `bm_george`, `bm_fable`,
-   `bm_lewis`, blends.
-3. **The lead** — warm, expressive, mature American female; theatrical range
-   without melodrama. Audition: `af_heart` (Kokoro's top-rated voice),
+1. **Marlowe** — the storyteller: deep, unhurried, warm-gravel American
+   baritone; cinematic gravitas. Audition: `am_michael`, `am_onyx`, blends.
+2. **Rowan** — the naturalist: hushed, precise, older British male;
+   documentary cadence, intimate rather than boomy. Audition: `bm_george`,
+   `bm_fable`, `bm_lewis`, blends.
+3. **Hazel** — the lead: warm, expressive, mature American female; theatrical
+   range without melodrama. Audition: `af_heart` (Kokoro's top-rated voice),
    `af_bella`, `af_nicole`, blends.
 
-Display names are Michael's branding call (open question §14). The runbook
-includes a sampler step: synthesize one test paragraph per candidate, listen on
-the phone, lock the three before any full-book run.
+Names chosen 2026-08-22 (settled). Voice keys in manifests and R2 paths are
+the lowercase names: `marlowe`, `rowan`, `hazel`. The runbook still includes
+the sampler step: synthesize one test paragraph per candidate pack, listen on
+the phone, lock which pack (or blend) carries each persona before any
+full-book run.
 
 **The line, stated once:** these voices are never cloned from, tuned toward, or
 marketed by reference to any real person. Sound-alike imitations of
@@ -244,11 +246,11 @@ deepStarts pattern):
 ```json
 {
   "v": 1,
-  "voices": { "storyteller": { "label": "<display name TBD>" } },
+  "voices": { "marlowe": { "label": "Marlowe" } },
   "books": {
     "84": {
       "voices": {
-        "storyteller": { "naturalWpm": 199.2, "segments": 21, "bytes": 63008412, "span": [412, 74911] }
+        "marlowe": { "naturalWpm": 199.2, "segments": 21, "bytes": 63008412, "span": [412, 74911] }
       }
     }
   }
@@ -259,7 +261,7 @@ R2 `audio/<id>/<voice>/timing-v1.json`:
 
 ```json
 {
-  "v": 1, "bookId": "84", "voice": "storyteller", "naturalWpm": 199.2,
+  "v": 1, "bookId": "84", "voice": "marlowe", "naturalWpm": 199.2,
   "span": [412, 74911],
   "segments": [ { "file": "seg-000.opus", "startWord": 412, "words": 3496, "durMs": 1052832, "bytes": 3158496 } ],
   "durCs": [20, 26, 15, 79]
@@ -322,7 +324,7 @@ Around it:
   plus the mute-above-400 indicator. The voice picker waits for the Reading
   style sheet (Michael sketches surfaces first — standing rule). Persona
   selection for the pilot can live behind a long-press or default to
-  persona 1 until the sheet exists.
+  Marlowe until the sheet exists.
 - Background/lock-screen audio: explicitly deferred (new permission surface,
   known Expo bug, conflicts with the screen-on reading model).
 
@@ -396,7 +398,7 @@ your terminal per the standing rule.
 
 ## 14. Open questions (for Michael)
 
-1. Persona display names — your branding call (§7 profiles are locked).
+1. ~~Persona display names~~ — settled 2026-08-22: **Marlowe, Rowan, Hazel** (§7).
 2. OK installing espeak-ng on your machine? (Small system dependency Kokoro
    uses for out-of-vocabulary words.)
 3. After the pilot listen test: does Lane A (system TTS for the long tail)
