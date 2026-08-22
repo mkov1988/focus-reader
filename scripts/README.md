@@ -74,6 +74,25 @@ merge-redo and friends, committed together with the stores they produced).
 `harvest-deep-pass.mjs` drive the verification rounds; if another round ever
 runs, persist the verdicts JSON next to the chunk (audit D21 note).
 
+## 6. Narration (voice audio for the shelf)
+
+Full design and desk runbook: `../docs/narration-plan.md`. Synthesis is a
+LONG RUN: Michael's terminal, never a session. One-time venv setup lives in
+`narration/requirements.txt` (plus system `espeak-ng` and `ffmpeg`).
+
+| Step | Command | Notes |
+|---|---|---|
+| plan + leftover gate | `node scripts/narration/plan.mjs --ids=84,1342,14838` | needs `public/books/` mirrored; excluded books land in the checklist |
+| audition voices | `python scripts/narration/synth.py --sample` | then lock each persona's pack in `narration/voices.json` |
+| synthesize | `python scripts/narration/synth.py --ids=… --voices=marlowe,rowan,hazel` | resumable; overnight on CPU, minutes on GPU |
+| align + encode | `node scripts/narration/finish.mjs --ids=… --voices=…` | hard rails; Opus segments + timing-v1.json |
+| verify | `node scripts/narration/verify.mjs --ids=… --voices=…` | independent re-check; `--deep` re-transcribes spot windows |
+| manifest + ledger | `node scripts/narration/build-manifest.mjs && node scripts/narration/build-narration-checklist.mjs` | → `public/narration-v1.json`, ../NARRATION-CHECKLIST.md |
+| upload | `node scripts/upload-audio-r2.mjs --ids=…` | then `node scripts/backup-r2.mjs`, then deploy |
+
+Contract tests (no Kokoro needed): `node scripts/narration/test-narration.mjs`
+and `node scripts/test-audio-function.mjs`.
+
 ## Legal toolkit (read ../LEGAL.md first)
 
 - `lib/strip-gutenberg.mjs`, THE canonical strip, imported by both mirror scripts

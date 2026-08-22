@@ -1,0 +1,12 @@
+# Narration synthesis venv (scripts/narration/.venv — see docs/narration-plan.md §13).
+# System deps installed separately: espeak-ng (Kokoro's out-of-vocabulary
+# fallback), ffmpeg (finish/verify steps).
+#
+# torch installs the default build; for an NVIDIA GPU install the matching CUDA
+# build first (https://pytorch.org/get-started/locally/) and pip will keep it.
+kokoro>=0.9.4
+soundfile>=0.12
+torch>=2.2
+
+# Optional, only for `verify.mjs --deep` re-transcription spot checks:
+# openai-whisper

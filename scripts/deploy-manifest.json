@@ -2,5 +2,5 @@
   "comment": "Minimum content counts a production deploy must carry. public/books and public/covers are gitignored local artifacts, so a deploy from a machine missing them would otherwise silently wipe the live data plane every installed app reads. Update these numbers only when the curated set deliberately changes (see scripts/README.md).",
   "minBooks": 1401,
   "minCovers": 1468,
-  "mustExist": ["starts-v1.json"]
+  "mustExist": ["starts-v1.json", "narration-v1.json"]
 }

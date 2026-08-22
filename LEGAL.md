@@ -17,6 +17,10 @@ put to them at the same time:
    removed? (The exact trademark phrase is already stripped; these leftovers
    are links and nicknames.)
 2. The international exposure below.
+3. Voice narration: confirm comfort with the provenance of the Kokoro voice
+   packs (the open TTS model behind the narrator personas) for use in a paid
+   product. The synthesized audio itself is Apache-2.0-licensed model output;
+   the question is the voices' training provenance.
 
 ## The text is free to sell
 
@@ -58,6 +62,31 @@ A full scan found it in 6 curated texts and 89 long tail mirror files (95
 total). The strip now joins wrapped occurrences before filtering, and
 `scripts/resweep-trademark.mjs` cleaned the stored files. Changed mirror
 files must be re-uploaded to R2 (see docs/SERVING.md).
+
+## Voice narration is a derived work of the stripped text
+
+AI narration (docs/narration-plan.md) inherits every rule above, the way
+Modernity does: synthesis input is the STRIPPED text only, never raw
+Gutenberg files, and no "Project Gutenberg" reference may ever be voiced.
+Because narrated words must stay one-to-one with reader token ids, narration
+text is never edited to fix a leftover — the pipeline's gate
+(`scripts/narration/plan.mjs`) EXCLUDES any book whose narrated span still
+carries `gutenberg`/URL/eText leftovers, and the exclusion is listed in
+NARRATION-CHECKLIST.md. Excluded books stay un-narratable until a
+coordinated re-strip and re-anchor of all token data.
+
+Two narration-specific rules:
+
+- **Narrator voices are original archetype personas** (Marlowe, Rowan,
+  Hazel), never cloned from, tuned toward, or marketed by reference to a
+  real person. Sound-alike imitations of identifiable people lose in court
+  even unnamed (Midler v. Ford; Waits v. Frito-Lay; Tennessee's ELVIS Act
+  covers any "simulation of the voice"; California AB 1836 covers deceased
+  performers). Keep persona descriptions attribute-only in every doc.
+- **Generated audio carries the underlying edition's risk unchanged.** A
+  narration of a protected translation is as exposed as serving that
+  translation's text; the lawyer review list applies to narrated titles too
+  (and see gate question 3 above on voice-model provenance).
 
 ## Real risks to manage
 

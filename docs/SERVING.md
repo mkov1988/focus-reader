@@ -16,18 +16,27 @@ Cloudflare Pages project "focus-reader"  →  https://focus-reader-48z.pages.dev
   │     /books/<id>.txt      1,401 curated texts (hot set)
   │     /covers/<id>.webp    1,468 covers
   │     /starts-v1.json      54,525 deep-catalog story starts (filename IS the version)
+  │     /narration-v1.json   which books have narration, by voice (same contract)
   │     caching + CORS: public/_headers
   │
-  └── Pages Function  functions/books/[id].js   (only function)
-        static asset first (ASSETS.fetch, SPA-fallback content sniff),
-        else R2 bucket "focus-reader-books" key books/<id>.txt
-        54 gate-rejected books exist ONLY as static assets (see function header)
-        sets immutable cache + Access-Control-Allow-Origin on R2 responses
+  ├── Pages Function  functions/books/[id].js
+  │     static asset first (ASSETS.fetch, SPA-fallback content sniff),
+  │     else R2 bucket "focus-reader-books" key books/<id>.txt
+  │     54 gate-rejected books exist ONLY as static assets (see function header)
+  │     sets immutable cache + Access-Control-Allow-Origin on R2 responses
+  │
+  └── Pages Function  functions/audio/[[path]].js
+        /audio/<id>/<voice>/seg-NNN.opus and .../timing-v1.json from the
+        same bucket's audio/ prefix; strict path shape, no Range (the app
+        downloads whole segments to disk, then plays locally)
 
 R2 bucket "focus-reader-books"  (binding BOOKS in wrangler.toml)
-  books/<id>.txt   55,863 long-tail texts, ~19 GB
-  uploaded via scripts/upload-r2.mjs (keys in .r2.env at repo root)
-  rebuild source: mirror/books on Michael's machine (backup: docs/BACKUP.md)
+  books/<id>.txt                 55,863 long-tail texts, ~19 GB
+  audio/<id>/<voice>/…           narration segments + timing (pilot shelf)
+  uploaded via scripts/upload-r2.mjs and scripts/upload-audio-r2.mjs
+  (keys in .r2.env at repo root)
+  rebuild source: mirror/books + scripts/narration/work on Michael's machine
+  (backup: docs/BACKUP.md; backup-r2.mjs covers books, covers, and audio)
 ```
 
 ## The three URLs shipped inside APKs
@@ -44,6 +53,7 @@ SERVING_ORIGIN once (installed apps cannot be re-pointed afterward).
 | Deploy (production) | `npm run deploy` (guarded: refuses without books/covers/starts in dist) |
 | Deploy (preview) | `node scripts/deploy-pages.mjs --preview` |
 | Upload new/changed long-tail books | `npm run upload:r2 -- --changed` (or `--all`, `--ids=`) |
+| Upload finished narration audio | `node scripts/upload-audio-r2.mjs --ids=…` (then `node scripts/backup-r2.mjs`) |
 | Re-verify strip copies | `npm run check:strip` |
 
 Every production deploy replaces the whole static surface for installed

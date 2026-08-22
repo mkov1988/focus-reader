@@ -13,6 +13,9 @@
  *      upload-r2.mjs before this if local files changed)
  *   2. mirror/catalog.json and mirror/_rejected.json (crawl + gate records)
  *   3. public/covers -> covers/ (spares a future cover re-crawl)
+ *   4. audio/  primary bucket -> backup bucket, SERVER-SIDE (narration
+ *      segments + timing files; run upload-audio-r2.mjs before this if a
+ *      narration run shipped)
  *
  * Credentials: .r2.env at the repo root, same as upload-r2.mjs.
  * Run it (or the drive copy) after any mirror run or resweep.
@@ -47,6 +50,7 @@ const run = (label, args) => {
 };
 
 run('books: primary bucket -> backup bucket (server-side)', ['sync', `:s3:${SRC_BUCKET}/books`, `:s3:${DST_BUCKET}/books`]);
+run('audio: primary bucket -> backup bucket (server-side)', ['sync', `:s3:${SRC_BUCKET}/audio`, `:s3:${DST_BUCKET}/audio`]);
 run('catalog + gate records -> backup bucket', ['copy', path.join(ROOT, 'mirror'), `:s3:${DST_BUCKET}/mirror-meta`, '--include', 'catalog.json', '--include', '_rejected.json', '--include', '_failed.json']);
 if (existsSync(path.join(ROOT, 'public', 'covers'))) {
     run('covers -> backup bucket', ['sync', path.join(ROOT, 'public', 'covers'), `:s3:${DST_BUCKET}/covers`]);
@@ -61,7 +65,12 @@ const src = count(`:s3:${SRC_BUCKET}/books`);
 const dst = count(`:s3:${DST_BUCKET}/books`);
 console.log(`primary books: ${src?.count} objects, ${(src?.bytes / 1e9).toFixed(2)} GB`);
 console.log(`backup  books: ${dst?.count} objects, ${(dst?.bytes / 1e9).toFixed(2)} GB`);
-if (!src || !dst || src.count !== dst.count || src.bytes !== dst.bytes) {
+const srcAudio = count(`:s3:${SRC_BUCKET}/audio`);
+const dstAudio = count(`:s3:${DST_BUCKET}/audio`);
+console.log(`primary audio: ${srcAudio?.count} objects, ${(srcAudio?.bytes / 1e9).toFixed(2)} GB`);
+console.log(`backup  audio: ${dstAudio?.count} objects, ${(dstAudio?.bytes / 1e9).toFixed(2)} GB`);
+if (!src || !dst || src.count !== dst.count || src.bytes !== dst.bytes
+    || !srcAudio || !dstAudio || srcAudio.count !== dstAudio.count || srcAudio.bytes !== dstAudio.bytes) {
     console.error('MISMATCH — backup incomplete, rerun this script.');
     process.exit(1);
 }

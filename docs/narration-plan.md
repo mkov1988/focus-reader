@@ -201,13 +201,16 @@ stripped text only, and no "Project Gutenberg" (or gutenberg.org leftover) may
 ever be voiced — enforced by a hard gate (§8), by exclusion rather than
 editing, because narrated words must stay one-to-one with reader token ids.
 
-## 8. Lane B pipeline (`scripts/narration/`, to be built at the desk)
+## 8. Lane B pipeline (`scripts/narration/` — BUILT, runs at the desk)
 
 Node orchestrates (repo convention); Python only for synthesis (Kokoro is
 Python). Work products live in gitignored `scripts/narration/work/`; only the
 manifest and the checklist are committed. Modernity's discipline applies
 throughout: hard rails, exit-code failures, a generated `NARRATION-CHECKLIST.md`
-ledger, no silent patching.
+ledger, no silent patching. The planner, alignment, timing math, and the audio
+door are covered by contract tests that need no Kokoro:
+`node scripts/narration/test-narration.mjs` and
+`node scripts/test-audio-function.mjs`.
 
 | Script | Role |
 | --- | --- |
@@ -333,7 +336,8 @@ Around it:
 Pipeline rails (`finish.mjs` enforces, `verify.mjs` re-checks independently):
 normalized-stream equality per unit; timestamps monotonic and non-negative;
 `durCs` length equals span length exactly; per-segment duration sum matches
-ffprobe within ±50 ms; `naturalWpm` within 170–230 for every book and segment;
+ffprobe within ±50 ms; `naturalWpm` within 170–230 per book (per segment the
+rail is the looser 150–260 — prosody legitimately varies by passage);
 leftover gate clean; the parity identity — Σ(`delays_narr[i]` ×
 60000/`naturalWpm`) equals total audio ms — asserted on the exact numbers
 shipped, plus a printed "at 300 WPM this book takes X h" sanity line; `--deep`:
