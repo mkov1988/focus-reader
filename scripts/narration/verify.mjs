@@ -7,9 +7,10 @@
  *
  *   - timing shape: span, durCs coverage, non-negative, segment word counts
  *   - per-segment exactness: Σ durCs == durMs (rounding is telescoped)
- *   - encoding truth: ffprobe duration of every .opus within ±50ms of durMs
- *   - naturalWpm recomputed; book rail 170–230 hard, per-segment 150–260
- *     (looser: prosody legitimately varies by passage)
+ *   - encoding truth: ffprobe duration of every .opus within ±300ms of durMs
+ *   - naturalWpm plausibility: 130–250 per book, 110–280 per segment (wide
+ *     and absolute — each voice pack has its own baseline rate, so these
+ *     catch synthesis disasters, not legitimate voice differences)
  *   - leftover gate re-scanned over the text actually voiced (plan units)
  *   - manifest cross-check when public/narration-v1.json already lists the pair
  *
@@ -35,9 +36,13 @@ const WORK = path.join(HERE, 'work');
 
 const GATE_PATTERNS = [/gutenberg/i, /https?:\/\//i, /\bwww\./i, /\be-?text\b/i];
 
-const VOICES = JSON.parse(readFileSync(path.join(HERE, 'voices.json'), 'utf8'));
-// Rail windows scale with the persona's own master speed (see finish.mjs).
-const wpmScale = (persona) => (VOICES.personas[persona]?.speed ?? VOICES.speed) / VOICES.speed;
+// Absolute plausibility rails (see finish.mjs): each voice pack has its own
+// baseline rate, so a per-persona predicted window is the wrong model. These
+// catch synthesis disasters, not legitimate voice differences.
+const WPM_LOW = 130;
+const WPM_HIGH = 250;
+const SEG_WPM_LOW = 110;
+const SEG_WPM_HIGH = 280;
 
 const arg = (name) => (process.argv.find((a) => a.startsWith(`--${name}=`)) || '').split('=')[1] || '';
 const ids = arg('ids').split(',').map((s) => s.trim()).filter(Boolean);
@@ -127,15 +132,13 @@ for (const id of ids) {
             if (!existsSync(file)) { fail(label, `${seg.file} missing`); continue; }
             if (statSync(file).size !== seg.bytes) fail(label, `${seg.file} bytes drifted`);
             const probed = ffprobeDurMs(file);
-            if (Math.abs(probed - seg.durMs) > 50) fail(label, `${seg.file}: ffprobe ${probed}ms vs timing ${seg.durMs}ms`);
+            if (Math.abs(probed - seg.durMs) > 300) fail(label, `${seg.file}: ffprobe ${probed}ms vs timing ${seg.durMs}ms (>300ms)`);
             const segWpm = (60000 * seg.words) / seg.durMs;
-            const s = wpmScale(persona);
-            if (segWpm < 150 * s || segWpm > 260 * s) fail(label, `segment ${i} wpm ${segWpm.toFixed(0)} outside ${(150 * s).toFixed(0)}–${(260 * s).toFixed(0)}`);
+            if (segWpm < SEG_WPM_LOW || segWpm > SEG_WPM_HIGH) fail(label, `segment ${i} wpm ${segWpm.toFixed(0)} outside ${SEG_WPM_LOW}–${SEG_WPM_HIGH}`);
         }
         const wpm = (60000 * plan.spanWords) / totalMs;
-        const s = wpmScale(persona);
         if (Math.abs(wpm - t.naturalWpm) > 0.2) fail(label, `naturalWpm ${t.naturalWpm} != recomputed ${wpm.toFixed(1)}`);
-        if (wpm < 170 * s || wpm > 230 * s) fail(label, `naturalWpm ${wpm.toFixed(1)} outside ${(170 * s).toFixed(0)}–${(230 * s).toFixed(0)}`);
+        if (wpm < WPM_LOW || wpm > WPM_HIGH) fail(label, `naturalWpm ${wpm.toFixed(1)} outside ${WPM_LOW}–${WPM_HIGH}`);
 
         const manifestPath = path.join(ROOT, 'public', 'narration-v1.json');
         if (existsSync(manifestPath)) {

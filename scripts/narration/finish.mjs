@@ -19,7 +19,7 @@
  * Requires ffmpeg on PATH. WAVs are kept for verify.mjs --deep; delete the
  * work dir when a book has shipped.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync, rmSync, openSync, readSync, closeSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import os from 'node:os';
 import path from 'node:path';
@@ -94,7 +94,7 @@ export function alignUnit(readerWords, kokoroTokens) {
  * so per-segment sums are EXACT against the rounded segment duration — the
  * ±50ms rail in verify.mjs then measures encoding truth, not rounding noise.
  */
-export function buildTiming(plan, unitData, bounds = { low: 170, high: 230 }) {
+export function buildTiming(plan, unitData, bounds = { low: WPM_LOW, high: WPM_HIGH }) {
     const durCs = [];
     const segments = [];
     for (const seg of plan.segments) {
@@ -154,14 +154,46 @@ function ffmpegConcatToOpus(wavPaths, outPath) {
     }
 }
 
-// The 170–230 rail was calibrated for the global master speed (1.2). A
-// persona reading at its own slower speed (Marlowe) shifts the whole
-// window proportionally — the rail checks the voice's intended pace, not
-// one universal number.
-function wpmBoundsFor(persona) {
-    const voices = JSON.parse(readFileSync(path.join(HERE, 'voices.json'), 'utf8'));
-    const scale = (voices.personas[persona]?.speed ?? voices.speed) / voices.speed;
-    return { low: 170 * scale, high: 230 * scale };
+// A PLAUSIBILITY rail, not a prediction. Each Kokoro pack has its own
+// baseline speaking rate and `speed` multiplies it, so predicting a narrow
+// window per persona is wrong: Marlowe at speed 1.0 legitimately reads
+// ~195 wpm while Rowan at 1.2 reads ~169. What the rail must catch is a
+// real synthesis disaster (silence, garbage, wrong speed by a factor), so
+// it is wide and absolute. The app adapts to whatever the voice's actual
+// pace is — it derives its mute ceiling from naturalWpm per book+voice.
+const WPM_LOW = 130;
+const WPM_HIGH = 250;
+
+/** True duration of a PCM WAV, read from its own header. The tokens.json
+ *  durS is measured BEFORE the pitch filter runs, so for a persona with
+ *  pitchSemitones it under/over-states the real file by tens of ms per
+ *  segment — enough to trip the ±ffprobe rail downstream. The file on disk
+ *  is the truth. Returns null if the header is not the expected PCM shape. */
+function wavDurationS(file) {
+    const fd = openSync(file, 'r');
+    try {
+        const head = Buffer.alloc(4096);
+        const n = readSync(fd, head, 0, 4096, 0);
+        if (n < 44 || head.toString('ascii', 0, 4) !== 'RIFF' || head.toString('ascii', 8, 12) !== 'WAVE') return null;
+        let pos = 12;
+        let fmt = null;
+        while (pos + 8 <= n) {
+            const id = head.toString('ascii', pos, pos + 4);
+            const size = head.readUInt32LE(pos + 4);
+            if (id === 'fmt ') {
+                fmt = { channels: head.readUInt16LE(pos + 10), rate: head.readUInt32LE(pos + 12), bits: head.readUInt16LE(pos + 22) };
+            } else if (id === 'data') {
+                if (!fmt || !fmt.rate || !fmt.channels || !fmt.bits) return null;
+                const onDisk = statSync(file).size - (pos + 8);
+                const bytes = Math.min(size, onDisk);
+                return bytes / (fmt.rate * fmt.channels * (fmt.bits / 8));
+            }
+            pos += 8 + size + (size % 2);
+        }
+        return null;
+    } finally {
+        closeSync(fd);
+    }
 }
 
 function finishBookVoice(id, persona) {
@@ -179,10 +211,10 @@ function finishBookVoice(id, persona) {
         const rec = JSON.parse(readFileSync(base + '.tokens.json', 'utf8'));
         const readerWords = unit.text.split(' ');
         const starts = alignUnit(readerWords, rec.tokens);
-        unitData[unit.i] = { starts, durS: rec.durS };
+        unitData[unit.i] = { starts, durS: wavDurationS(base + '.wav') ?? rec.durS };
     }
 
-    const timing = buildTiming(plan, unitData, wpmBoundsFor(persona));
+    const timing = buildTiming(plan, unitData, { low: WPM_LOW, high: WPM_HIGH });
     for (const seg of plan.segments) {
         const outPath = path.join(outDir, timing.segments[seg.i].file);
         const wavs = seg.units.map((u) => path.join(dir, `unit-${String(u).padStart(5, '0')}.wav`));

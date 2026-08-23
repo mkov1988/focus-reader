@@ -20,6 +20,10 @@ name: Narration pilot
 
 on:
   workflow_dispatch:
+    inputs:
+      resume_from_run:
+        description: "Reuse synthesized WAVs from this earlier run id (skips synth)"
+        default: ""
 
 permissions:
   contents: write
@@ -34,6 +38,7 @@ env:
 jobs:
   synth:
     name: synth ${{ matrix.id }}/${{ matrix.voice }} ${{ matrix.shard }}
+    if: ${{ !github.event.inputs.resume_from_run }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     strategy:
@@ -89,6 +94,7 @@ jobs:
   finish:
     name: finish ${{ matrix.id }}/${{ matrix.voice }}
     needs: synth
+    if: ${{ always() && (needs.synth.result == 'success' || needs.synth.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -115,6 +121,8 @@ jobs:
           pattern: wavs-${{ matrix.id }}-${{ matrix.voice }}-*
           path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}
           merge-multiple: true
+          run-id: ${{ github.event.inputs.resume_from_run || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Align, time, encode
         run: node scripts/narration/finish.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
       - name: Verify
