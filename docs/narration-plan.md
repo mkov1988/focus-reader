@@ -401,23 +401,27 @@ desk. In order:
    first if you want the GPU), `espeak-ng` installed system-wide (§14),
    ffmpeg on PATH. `npm run mirror:books` must have populated `public/books/`
    locally, and `npm ci` the repo once for the TS loader.
-2. Audition: `python synth.py --sample` writes every candidate clip to
-   `work/_samples/` → listen on your phone → set each persona's `kokoro` pack
-   (or blend) in `voices.json`.
-3. Pilot: `node plan.mjs --ids=84,1342,14838` →
+2. Audition: `python synth.py --sample` writes every candidate clip
+   (~20s each) to `work/_samples/` → listen → set each persona's `kokoro`
+   pack (or blend) in `voices.json`.
+3. **Chapter listen test — the go/no-go (Michael's call, 2026-08-22: one
+   chapter of one book is the whole test).** `node plan.mjs --ids=84` then
+   `python synth.py --chapter-test --ids=84` → three WAVs in
+   `work/_samples/` — Frankenstein's Letter 1 (~6 min) read by Marlowe,
+   Rowan, and Hazel. Minutes to generate even on CPU. **If the voices aren't
+   good enough, stop here** — nothing has shipped and the app is untouched.
+4. Full pilot (only after 3 passes):
+   `node plan.mjs --ids=84,1342,14838` →
    `python synth.py --ids=84,1342,14838 --voices=marlowe,rowan,hazel`
    (overnight if CPU; resumable, rerun after any interruption) →
    `node finish.mjs --ids=… --voices=…` → `node verify.mjs --ids=… --voices=…`
    → `node build-manifest.mjs && node build-narration-checklist.mjs`.
-4. Listen test: play a chapter of each book/persona from
-   `work/<id>/<voice>/out/`. **This is the go/no-go for the whole feature.**
-   If the voices aren't good enough, stop here — nothing has shipped and the
-   app is untouched.
 5. Ship the data plane: `node scripts/upload-audio-r2.mjs --ids=84,1342,14838`,
    `node scripts/backup-r2.mjs`, `node scripts/deploy-pages.mjs --preview`,
-   run the §11 curls against audit-preview, then production deploy.
-6. App round (own branch in `focus-reader-android`, per §10), device
-   verification by version stamp.
+   run the §11 curls against audit-preview, then production deploy. The
+   installed v0.8.0 app lights up on its own once the manifest is live.
+6. Device verification by version stamp (the app round already shipped as
+   v0.8.0, dormant).
 
 ## 14. Open questions (for Michael)
 

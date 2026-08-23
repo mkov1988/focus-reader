@@ -84,6 +84,7 @@ LONG RUN: Michael's terminal, never a session. One-time venv setup lives in
 |---|---|---|
 | plan + leftover gate | `node scripts/narration/plan.mjs --ids=84,1342,14838` | needs `public/books/` mirrored; excluded books land in the checklist |
 | audition voices | `python scripts/narration/synth.py --sample` | then lock each persona's pack in `narration/voices.json` |
+| chapter listen test | `python scripts/narration/synth.py --chapter-test --ids=84` | one chapter × all personas → `work/_samples/` WAVs; the go/no-go before a full run |
 | synthesize | `python scripts/narration/synth.py --ids=… --voices=marlowe,rowan,hazel` | resumable; overnight on CPU, minutes on GPU |
 | align + encode | `node scripts/narration/finish.mjs --ids=… --voices=…` | hard rails; Opus segments + timing-v1.json |
 | verify | `node scripts/narration/verify.mjs --ids=… --voices=…` | independent re-check; `--deep` re-transcribes spot windows |

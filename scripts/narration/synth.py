@@ -12,6 +12,12 @@ Audition (pick which pack carries each persona, then edit voices.json):
 
     python synth.py --sample
 
+Chapter listen test — the go/no-go before any full run: ONE chapter of one
+book, read by all three personas, as plain WAVs in work/_samples/:
+
+    node plan.mjs --ids=84
+    python synth.py --chapter-test --ids=84
+
 Pilot run (resumable — rerun after any interruption, done units are skipped):
 
     python synth.py --ids=84,1342,14838 --voices=marlowe,rowan,hazel [--device=cuda]
@@ -146,6 +152,61 @@ def run_sample(device):
     print(f"\nSamples in {out} — listen, then set each persona's `kokoro` in voices.json.")
 
 
+def chapter_test_units(plan, target_words=2500, max_words=3500):
+    """Pick the units for the chapter listen test: the first REAL chapter
+    after the story's start when chapter boundaries are known, else the
+    opening ~target_words. Always whole units (paragraph-aligned), capped at
+    max_words so a monster chapter stays a listenable test."""
+    start = plan["span"][0]
+    bounds = [c for c in plan.get("chapters", []) if c > start + 50]
+    end = bounds[0] if bounds and bounds[0] - start <= max_words else None
+    picked = []
+    words = 0
+    for unit in plan["units"]:
+        if end is not None and unit["start"] >= end:
+            break
+        if end is None and words >= target_words:
+            break
+        picked.append(unit)
+        words += unit["count"]
+        if words >= max_words:
+            break
+    return picked, words
+
+
+def run_chapter_test(ids, device, speed):
+    """One chapter, every persona, one WAV each — the §13 go/no-go listen."""
+    import numpy as np
+    import soundfile as sf
+
+    out = WORK / "_samples"
+    out.mkdir(parents=True, exist_ok=True)
+    for book_id in ids:
+        plan_path = WORK / book_id / "plan.json"
+        if not plan_path.exists():
+            print(f"{book_id}: no plan.json — run `node plan.mjs --ids={book_id}` first.", file=sys.stderr)
+            sys.exit(1)
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        units, words = chapter_test_units(plan)
+        print(f"{book_id}: chapter test = {len(units)} units, {words} words (~{words / 200:.0f} min per voice at the master pace)")
+        for persona, cfg in VOICES["personas"].items():
+            dest = out / f"{book_id}-chapter--{persona}.wav"
+            if dest.exists():
+                print(f"skip {dest.name} (exists)")
+                continue
+            pipeline = make_pipeline(cfg["kokoro"], device)
+            voice = load_blend(pipeline, cfg["kokoro"])
+            parts = []
+            for i, unit in enumerate(units):
+                audio, _ = synth_unit(pipeline, voice, unit["text"], speed)
+                parts.append(audio)
+                if (i + 1) % 10 == 0 or i + 1 == len(units):
+                    print(f"  {persona}: {i + 1}/{len(units)} units")
+            sf.write(str(dest), np.concatenate(parts), SAMPLE_RATE, subtype="PCM_16", format="WAV")
+            print(f"wrote {dest.name}")
+    print(f"\nChapter clips in {out} — copy to your phone or play at the desk. This is the go/no-go.")
+
+
 def run_books(ids, personas, device, speed, limit_units):
     for book_id in ids:
         plan_path = WORK / book_id / "plan.json"
@@ -185,6 +246,7 @@ def main():
     ap.add_argument("--device", default=None, help="cuda or cpu (default: Kokoro's choice)")
     ap.add_argument("--speed", type=float, default=VOICES["speed"])
     ap.add_argument("--sample", action="store_true", help="synthesize the audition clips instead of books")
+    ap.add_argument("--chapter-test", action="store_true", help="one chapter of each --ids book in ALL personas, as WAVs in work/_samples/")
     ap.add_argument("--limit-units", type=int, default=0, help="smoke-test: only the first N units")
     args = ap.parse_args()
 
@@ -192,8 +254,13 @@ def main():
         run_sample(args.device)
         return
     ids = [s.strip() for s in args.ids.split(",") if s.strip()]
+    if args.chapter_test:
+        if not ids:
+            ap.error("pass --ids=84 with --chapter-test")
+        run_chapter_test(ids, args.device, args.speed)
+        return
     if not ids:
-        ap.error("pass --ids=84,1342,14838 (or --sample)")
+        ap.error("pass --ids=84,1342,14838 (or --sample / --chapter-test)")
     personas = [s.strip() for s in args.voices.split(",") if s.strip()]
     run_books(ids, personas, args.device, args.speed, args.limit_units)
 

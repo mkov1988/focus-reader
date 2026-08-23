@@ -191,6 +191,10 @@ for (const id of ids) {
         tokensTotal: parsed.tokens.length,
         span: [start, end],
         spanWords,
+        // Chapter start token indexes (detected; navigation-grade). Synthesis
+        // never uses these — they exist for the chapter listen test, which
+        // cuts one real chapter (synth.py --chapter-test).
+        chapters: parsed.chapters.map((c) => c.wordIndex),
         units: unitRecords,
         segments: segments.map((s) => ({ i: s.i, startWord: s.startWord, words: s.words, units: s.units })),
     };
