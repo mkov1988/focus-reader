@@ -91,3 +91,6 @@ scripts/.resweep-report.json
 /scripts/narration/work/
 /scripts/narration/.venv/
 
+
+# Python bytecode from the narration pipeline scripts.
+__pycache__/
