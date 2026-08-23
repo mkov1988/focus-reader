@@ -1,24 +1,39 @@
 {
-  "comment": "The three narrator personas (docs/narration-plan.md §7). `kokoro` is the voice pack (or blend) that carries the persona — the audition step (synth.py --sample) is where these get locked; edit `kokoro` there, never the keys. Blends are written 'pack*weight+pack*weight'. Keys are the voice ids used in R2 paths and manifests.",
+  "comment": "The three narrator personas (docs/narration-plan.md §7). `kokoro` is the voice pack (or blend 'pack*w+pack*w') that carries the persona; optional `speed` overrides the global master speed and optional `pitchSemitones` applies a duration-neutral pitch shift at encode time. Rowan and Hazel locked 2026-08-23 after the chapter listen test. Marlowe is being dialed in via the `lab` candidates below (synth.py --lab=marlowe): direction is deep chest baritone, deliberate unhurried cadence with real pauses, crisp but flowing enunciation, warm not clinical.",
   "personas": {
     "marlowe": {
       "label": "Marlowe",
       "profile": "deep, unhurried, warm-gravel American baritone; cinematic storyteller gravitas",
-      "kokoro": "am_michael",
+      "kokoro": "am_onyx",
+      "speed": 1.0,
+      "pitchSemitones": -1,
       "candidates": ["am_michael", "am_onyx", "am_michael*0.6+am_onyx*0.4"]
     },
     "rowan": {
       "label": "Rowan",
       "profile": "hushed, precise, older British male; naturalist-documentary cadence",
       "kokoro": "bm_george",
+      "locked": true,
       "candidates": ["bm_george", "bm_fable", "bm_lewis", "bm_george*0.5+bm_fable*0.5"]
     },
     "hazel": {
       "label": "Hazel",
       "profile": "warm, expressive, mature American female; theatrical range without melodrama",
       "kokoro": "af_heart",
+      "locked": true,
       "candidates": ["af_heart", "af_bella", "af_nicole", "af_heart*0.7+af_bella*0.3"]
     }
+  },
+  "lab": {
+    "marlowe": [
+      { "desc": "onyx-deliberate", "kokoro": "am_onyx", "speed": 1.0 },
+      { "desc": "onyx-dropped", "kokoro": "am_onyx", "speed": 1.0, "pitchSemitones": -1.5 },
+      { "desc": "onyx-slow-low", "kokoro": "am_onyx", "speed": 0.92, "pitchSemitones": -1 },
+      { "desc": "onyx-michael-low", "kokoro": "am_onyx*0.7+am_michael*0.3", "speed": 1.0, "pitchSemitones": -1 },
+      { "desc": "onyx-warm", "kokoro": "am_onyx*0.6+am_santa*0.4", "speed": 0.95, "pitchSemitones": -1 },
+      { "desc": "michael-dropped", "kokoro": "am_michael", "speed": 0.95, "pitchSemitones": -2 },
+      { "desc": "onyx-gravitas", "kokoro": "am_onyx", "speed": 0.85 }
+    ]
   },
   "speed": 1.2,
   "sampleText": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters."

@@ -18,6 +18,14 @@ on:
       ids:
         description: "Book id(s) for the chapter test"
         default: "84"
+      mode:
+        description: "chapter = audition kit + chapter test; lab = persona dial-in candidates"
+        type: choice
+        options: [chapter, lab]
+        default: chapter
+      persona:
+        description: "Persona for lab mode"
+        default: "marlowe"
 
 permissions:
   contents: write
@@ -68,10 +76,16 @@ jobs:
         run: node scripts/narration/plan.mjs --ids="${{ github.event.inputs.ids || '84' }}" --text-dir=/tmp/texts
 
       - name: Audition samples (every candidate pack, ~20s each)
+        if: ${{ (github.event.inputs.mode || 'chapter') == 'chapter' }}
         run: python scripts/narration/synth.py --sample
 
       - name: Chapter test (one chapter, all three personas)
+        if: ${{ (github.event.inputs.mode || 'chapter') == 'chapter' }}
         run: python scripts/narration/synth.py --chapter-test --ids="${{ github.event.inputs.ids || '84' }}"
+
+      - name: Lab (persona dial-in candidates)
+        if: ${{ github.event.inputs.mode == 'lab' }}
+        run: python scripts/narration/synth.py --lab="${{ github.event.inputs.persona || 'marlowe' }}" --ids="${{ github.event.inputs.ids || '84' }}"
 
       - name: Encode MP3s
         run: |

@@ -33,7 +33,9 @@ on any mismatch — this script never edits or reflows the planned text.
 
 import argparse
 import json
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -152,6 +154,36 @@ def run_sample(device):
     print(f"\nSamples in {out} — listen, then set each persona's `kokoro` in voices.json.")
 
 
+def persona_speed(cfg, base):
+    """A persona may set its own master speed (Marlowe reads more
+    deliberately than the global 1.2)."""
+    return float(cfg.get("speed", base))
+
+
+def apply_pitch(path, semitones):
+    """Duration-neutral pitch shift via ffmpeg, applied to a finished WAV.
+    Tries rubberband (formant-aware) first, falls back to the
+    asetrate+atempo identity (exact ratio, so total duration is preserved —
+    which is what keeps word timings valid downstream)."""
+    if not semitones:
+        return
+    factor = 2 ** (semitones / 12)
+    tmp = str(path) + ".pitch.wav"
+    filters = [
+        f"rubberband=pitch={factor:.6f}",
+        f"asetrate={SAMPLE_RATE * factor:.2f},aresample={SAMPLE_RATE},atempo={1 / factor:.6f}",
+    ]
+    for flt in filters:
+        r = subprocess.run(
+            ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(path), "-af", flt, tmp],
+            capture_output=True,
+        )
+        if r.returncode == 0:
+            Path(tmp).replace(path)
+            return
+    raise RuntimeError(f"pitch shift failed for {path}: {r.stderr.decode()[:300]}")
+
+
 def chapter_test_units(plan, target_words=2500, max_words=3500):
     """Pick the units for the chapter listen test: the first REAL chapter
     after the story's start when chapter boundaries are known, else the
@@ -174,7 +206,7 @@ def chapter_test_units(plan, target_words=2500, max_words=3500):
     return picked, words
 
 
-def run_chapter_test(ids, device, speed):
+def run_chapter_test(ids, device, speed, only_personas=None):
     """One chapter, every persona, one WAV each — the §13 go/no-go listen."""
     import numpy as np
     import soundfile as sf
@@ -190,21 +222,67 @@ def run_chapter_test(ids, device, speed):
         units, words = chapter_test_units(plan)
         print(f"{book_id}: chapter test = {len(units)} units, {words} words (~{words / 200:.0f} min per voice at the master pace)")
         for persona, cfg in VOICES["personas"].items():
+            if only_personas and persona not in only_personas:
+                continue
             dest = out / f"{book_id}-chapter--{persona}.wav"
             if dest.exists():
                 print(f"skip {dest.name} (exists)")
                 continue
             pipeline = make_pipeline(cfg["kokoro"], device)
             voice = load_blend(pipeline, cfg["kokoro"])
+            spd = persona_speed(cfg, speed)
             parts = []
             for i, unit in enumerate(units):
-                audio, _ = synth_unit(pipeline, voice, unit["text"], speed)
+                audio, _ = synth_unit(pipeline, voice, unit["text"], spd)
                 parts.append(audio)
                 if (i + 1) % 10 == 0 or i + 1 == len(units):
                     print(f"  {persona}: {i + 1}/{len(units)} units")
             sf.write(str(dest), np.concatenate(parts), SAMPLE_RATE, subtype="PCM_16", format="WAV")
-            print(f"wrote {dest.name}")
+            apply_pitch(dest, cfg.get("pitchSemitones"))
+            print(f"wrote {dest.name} (speed {spd}, pitch {cfg.get('pitchSemitones', 0)}st)")
     print(f"\nChapter clips in {out} — copy to your phone or play at the desk. This is the go/no-go.")
+
+
+def run_lab(persona, ids, device):
+    """Persona dial-in: every `lab` candidate reads the same longer passage
+    (~180 words from the planned book), with per-candidate speed and pitch.
+    Output: work/_samples/<persona>-lab-NN--<desc>.wav"""
+    import numpy as np
+    import soundfile as sf
+
+    candidates = VOICES.get("lab", {}).get(persona)
+    if not candidates:
+        print(f"no lab candidates for '{persona}' in voices.json", file=sys.stderr)
+        sys.exit(1)
+    book_id = ids[0]
+    plan_path = WORK / book_id / "plan.json"
+    if not plan_path.exists():
+        print(f"{book_id}: no plan.json — run `node plan.mjs --ids={book_id}` first.", file=sys.stderr)
+        sys.exit(1)
+    plan = json.loads(plan_path.read_text(encoding="utf-8"))
+    units = []
+    words = 0
+    for unit in plan["units"]:
+        units.append(unit)
+        words += unit["count"]
+        if words >= 180:
+            break
+    out = WORK / "_samples"
+    out.mkdir(parents=True, exist_ok=True)
+    print(f"lab {persona}: {len(candidates)} candidates × {words} words")
+    for i, cand in enumerate(candidates, 1):
+        dest = out / f"{persona}-lab-{i:02d}--{cand['desc']}.wav"
+        if dest.exists():
+            print(f"skip {dest.name} (exists)")
+            continue
+        pipeline = make_pipeline(cand["kokoro"], device)
+        voice = load_blend(pipeline, cand["kokoro"])
+        spd = float(cand.get("speed", VOICES["speed"]))
+        parts = [synth_unit(pipeline, voice, u["text"], spd)[0] for u in units]
+        sf.write(str(dest), np.concatenate(parts), SAMPLE_RATE, subtype="PCM_16", format="WAV")
+        apply_pitch(dest, cand.get("pitchSemitones"))
+        print(f"wrote {dest.name} (speed {spd}, pitch {cand.get('pitchSemitones', 0)}st)")
+    print(f"\nLab clips in {out}.")
 
 
 def run_books(ids, personas, device, speed, limit_units):
@@ -220,6 +298,8 @@ def run_books(ids, personas, device, speed, limit_units):
                 print(f"unknown persona '{persona}' — keys: {', '.join(VOICES['personas'])}", file=sys.stderr)
                 sys.exit(1)
             spec = cfg["kokoro"]
+            spd = persona_speed(cfg, speed)
+            pitch = cfg.get("pitchSemitones")
             dir_ = WORK / book_id / persona
             dir_.mkdir(parents=True, exist_ok=True)
             pipeline = make_pipeline(spec, device)
@@ -231,12 +311,15 @@ def run_books(ids, personas, device, speed, limit_units):
                 if (dir_ / f"unit-{i:05d}.wav").exists() and (dir_ / f"unit-{i:05d}.tokens.json").exists():
                     done += 1
                     continue
-                audio, tokens = synth_unit(pipeline, voice, unit["text"], speed)
+                audio, tokens = synth_unit(pipeline, voice, unit["text"], spd)
                 write_unit(dir_, i, audio, tokens)
+                # Pitch is duration-neutral, so the Kokoro timestamps written
+                # above stay valid for the shifted audio.
+                apply_pitch(dir_ / f"unit-{i:05d}.wav", pitch)
                 done += 1
                 if done % 25 == 0 or done == len(units):
                     print(f"{book_id}/{persona}: {done}/{len(units)} units")
-            print(f"{book_id}/{persona}: complete ({len(units)} units, voice {spec}, speed {speed})")
+            print(f"{book_id}/{persona}: complete ({len(units)} units, voice {spec}, speed {spd}, pitch {pitch or 0}st)")
 
 
 def main():
@@ -247,6 +330,8 @@ def main():
     ap.add_argument("--speed", type=float, default=VOICES["speed"])
     ap.add_argument("--sample", action="store_true", help="synthesize the audition clips instead of books")
     ap.add_argument("--chapter-test", action="store_true", help="one chapter of each --ids book in ALL personas, as WAVs in work/_samples/")
+    ap.add_argument("--only", default="", help="with --chapter-test: limit to these personas (comma-separated)")
+    ap.add_argument("--lab", default="", help="persona dial-in: synthesize every voices.json lab candidate for this persona")
     ap.add_argument("--limit-units", type=int, default=0, help="smoke-test: only the first N units")
     args = ap.parse_args()
 
@@ -254,13 +339,19 @@ def main():
         run_sample(args.device)
         return
     ids = [s.strip() for s in args.ids.split(",") if s.strip()]
+    if args.lab:
+        if not ids:
+            ap.error("pass --ids=84 with --lab")
+        run_lab(args.lab, ids, args.device)
+        return
     if args.chapter_test:
         if not ids:
             ap.error("pass --ids=84 with --chapter-test")
-        run_chapter_test(ids, args.device, args.speed)
+        only = [s.strip() for s in args.only.split(",") if s.strip()]
+        run_chapter_test(ids, args.device, args.speed, only or None)
         return
     if not ids:
-        ap.error("pass --ids=84,1342,14838 (or --sample / --chapter-test)")
+        ap.error("pass --ids=84,1342,14838 (or --sample / --chapter-test / --lab)")
     personas = [s.strip() for s in args.voices.split(",") if s.strip()]
     run_books(ids, personas, args.device, args.speed, args.limit_units)
 

@@ -94,7 +94,7 @@ export function alignUnit(readerWords, kokoroTokens) {
  * so per-segment sums are EXACT against the rounded segment duration — the
  * ±50ms rail in verify.mjs then measures encoding truth, not rounding noise.
  */
-export function buildTiming(plan, unitData) {
+export function buildTiming(plan, unitData, bounds = { low: 170, high: 230 }) {
     const durCs = [];
     const segments = [];
     for (const seg of plan.segments) {
@@ -126,8 +126,8 @@ export function buildTiming(plan, unitData) {
     if (durCs.length !== plan.spanWords) throw new Error(`durCs covers ${durCs.length} words, span is ${plan.spanWords}`);
     const totalDurMs = segments.reduce((n, s) => n + s.durMs, 0);
     const naturalWpm = (60000 * plan.spanWords) / totalDurMs;
-    if (naturalWpm < 170 || naturalWpm > 230) {
-        throw new Error(`naturalWpm ${naturalWpm.toFixed(1)} outside the 170–230 master range — wrong --speed, or a synthesis problem`);
+    if (naturalWpm < bounds.low || naturalWpm > bounds.high) {
+        throw new Error(`naturalWpm ${naturalWpm.toFixed(1)} outside the ${bounds.low.toFixed(0)}–${bounds.high.toFixed(0)} master range for this voice — wrong speed, or a synthesis problem`);
     }
     // The shipped identity the app depends on: pacing multipliers derived from
     // these exact numbers must sum back to the audio length (§5). This checks
@@ -154,6 +154,16 @@ function ffmpegConcatToOpus(wavPaths, outPath) {
     }
 }
 
+// The 170–230 rail was calibrated for the global master speed (1.2). A
+// persona reading at its own slower speed (Marlowe) shifts the whole
+// window proportionally — the rail checks the voice's intended pace, not
+// one universal number.
+function wpmBoundsFor(persona) {
+    const voices = JSON.parse(readFileSync(path.join(HERE, 'voices.json'), 'utf8'));
+    const scale = (voices.personas[persona]?.speed ?? voices.speed) / voices.speed;
+    return { low: 170 * scale, high: 230 * scale };
+}
+
 function finishBookVoice(id, persona) {
     const plan = JSON.parse(readFileSync(path.join(WORK, id, 'plan.json'), 'utf8'));
     const dir = path.join(WORK, id, persona);
@@ -172,7 +182,7 @@ function finishBookVoice(id, persona) {
         unitData[unit.i] = { starts, durS: rec.durS };
     }
 
-    const timing = buildTiming(plan, unitData);
+    const timing = buildTiming(plan, unitData, wpmBoundsFor(persona));
     for (const seg of plan.segments) {
         const outPath = path.join(outDir, timing.segments[seg.i].file);
         const wavs = seg.units.map((u) => path.join(dir, `unit-${String(u).padStart(5, '0')}.wav`));
