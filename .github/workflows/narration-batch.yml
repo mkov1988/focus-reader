@@ -35,6 +35,7 @@ jobs:
     outputs:
       synth_matrix: ${{ steps.mk.outputs.synth_matrix }}
       finish_matrix: ${{ steps.mk.outputs.finish_matrix }}
+      deferred: ${{ steps.mk.outputs.deferred }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -54,22 +55,35 @@ jobs:
           const { readFileSync, existsSync } = require('fs');
           const voices = Object.keys(JSON.parse(readFileSync('scripts/narration/voices.json', 'utf8')).personas);
           const ids = "${{ github.event.inputs.ids }}".split(',').map((s) => s.trim()).filter(Boolean);
-          const synth = [], finish = [], excluded = [];
+          // GitHub caps a matrix at 256 jobs. Rather than fail an oversized
+          // wave, fill up to MAX_JOBS in the order given and DEFER the rest —
+          // real span sizes are only known here, after planning, and a book
+          // like the complete Shakespeare can be worth 45 jobs on its own.
+          const MAX_JOBS = 220;
+          const synth = [], finish = [], excluded = [], deferred = [], sized = [];
+          let total = 0;
           for (const id of ids) {
             const planPath = `scripts/narration/work/${id}/plan.json`;
             if (!existsSync(planPath)) { excluded.push(id); continue; }
             const plan = JSON.parse(readFileSync(planPath, 'utf8'));
             const shards = Math.max(1, Math.ceil(plan.spanWords / 60000));
+            const jobs = shards * voices.length;
+            if (total + jobs > MAX_JOBS) { deferred.push(id); continue; }
+            total += jobs;
+            sized.push(`${id}: ${plan.spanWords}w -> ${shards} shards x ${voices.length} voices = ${jobs} jobs`);
             for (const voice of voices) {
               finish.push({ id, voice });
               for (let s = 0; s < shards; s++) synth.push({ id, voice, shard: `${s}/${shards}` });
             }
           }
-          if (!synth.length) { console.error('nothing to synthesize'); process.exit(1); }
-          if (synth.length > 250) { console.error(`matrix too big (${synth.length}) — smaller wave please`); process.exit(1); }
+          if (!synth.length) { console.error('nothing to synthesize (all ids gated or deferred)'); process.exit(1); }
           console.log(`synth_matrix=${JSON.stringify({ include: synth })}`);
           console.log(`finish_matrix=${JSON.stringify({ include: finish })}`);
-          console.error(`jobs: ${synth.length} synth, ${finish.length} finish; excluded/gated: ${excluded.join(',') || 'none'}`);
+          console.log(`deferred=${deferred.join(',')}`);
+          console.error(`jobs: ${synth.length} synth, ${finish.length} finish`);
+          console.error(sized.join('\n'));
+          console.error(`gated/excluded: ${excluded.join(',') || 'none'}`);
+          console.error(`DEFERRED to a later wave: ${deferred.join(',') || 'none'}`);
           EOF
 
   synth:
