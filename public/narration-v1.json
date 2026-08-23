@@ -11,5 +11,99 @@
       "label": "Hazel"
     }
   },
-  "books": {}
+  "books": {
+    "84": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 195.1,
+          "segments": 21,
+          "bytes": 67955456,
+          "span": [
+            67,
+            75041
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 202.7,
+          "segments": 21,
+          "bytes": 64944985,
+          "span": [
+            67,
+            75041
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 206.3,
+          "segments": 21,
+          "bytes": 63918484,
+          "span": [
+            67,
+            75041
+          ]
+        }
+      }
+    },
+    "1342": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 189.8,
+          "segments": 36,
+          "bytes": 117841241,
+          "span": [
+            81,
+            127358
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 198,
+          "segments": 36,
+          "bytes": 112410993,
+          "span": [
+            81,
+            127358
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 203.9,
+          "segments": 36,
+          "bytes": 109390592,
+          "span": [
+            81,
+            127358
+          ]
+        }
+      }
+    },
+    "14838": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 158.6,
+          "segments": 1,
+          "bytes": 1087965,
+          "span": [
+            0,
+            1011
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 169.1,
+          "segments": 1,
+          "bytes": 1021019,
+          "span": [
+            0,
+            1011
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 181.1,
+          "segments": 1,
+          "bytes": 948292,
+          "span": [
+            0,
+            1011
+          ]
+        }
+      }
+    }
+  }
 }
