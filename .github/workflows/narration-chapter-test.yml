@@ -1,0 +1,110 @@
+name: Narration chapter test
+
+# Runs the §13 chapter listen test (docs/narration-plan.md) on a GitHub
+# runner: one chapter of one book, synthesized in all three narrator
+# personas, plus the full voice-audition sample kit. Exists because cloud
+# Claude sessions cannot reach huggingface.co (egress policy) while runners
+# can — the runner downloads the Kokoro model, synthesizes, and pushes MP3s
+# to the `narration-samples` branch for pickup. Book text comes from the
+# serving origin itself (the exact stripped mirror bytes the app reads).
+#
+# This produces LISTEN-TEST material only — shippable pilot audio still goes
+# through the full plan → synth → finish → verify pipeline on Michael's
+# machine per the runbook.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Book id(s) for the chapter test"
+        default: "84"
+
+permissions:
+  contents: write
+
+jobs:
+  chapter-test:
+    name: Chapter listen test
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: System deps (espeak-ng, ffmpeg)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq espeak-ng ffmpeg
+
+      - name: Node deps (plan.mjs needs the repo's TypeScript)
+        run: npm ci --no-audit --no-fund
+
+      - name: Python deps (CPU torch + kokoro)
+        run: |
+          pip install --quiet torch --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet kokoro>=0.9.4 soundfile
+
+      - name: Fetch book text from the serving origin (exact mirror bytes)
+        run: |
+          mkdir -p /tmp/texts
+          for id in $(echo "${{ github.event.inputs.ids || '84' }}" | tr ',' ' '); do
+            curl -fsSL "https://focus-reader-48z.pages.dev/books/${id}.txt" -o "/tmp/texts/${id}.txt"
+            size=$(wc -c < "/tmp/texts/${id}.txt")
+            head -c 200 "/tmp/texts/${id}.txt" | grep -qi "<html" && { echo "::error::${id}.txt came back as HTML"; exit 1; }
+            [ "$size" -gt 50000 ] || { echo "::error::${id}.txt suspiciously small ($size bytes)"; exit 1; }
+            echo "${id}.txt: ${size} bytes"
+          done
+
+      - name: Plan
+        run: node scripts/narration/plan.mjs --ids="${{ github.event.inputs.ids || '84' }}" --text-dir=/tmp/texts
+
+      - name: Audition samples (every candidate pack, ~20s each)
+        run: python scripts/narration/synth.py --sample
+
+      - name: Chapter test (one chapter, all three personas)
+        run: python scripts/narration/synth.py --chapter-test --ids="${{ github.event.inputs.ids || '84' }}"
+
+      - name: Encode MP3s
+        run: |
+          cd scripts/narration/work/_samples
+          for f in *.wav; do
+            ffmpeg -hide_banner -loglevel error -y -i "$f" -codec:a libmp3lame -b:a 96k -ac 1 "${f%.wav}.mp3"
+          done
+          ls -la *.mp3
+
+      - name: Publish to the narration-samples branch
+        run: |
+          set -e
+          SRC="$PWD/scripts/narration/work/_samples"
+          git config user.name "narration-chapter-test"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout --orphan narration-samples
+          git rm -rf --quiet . || true
+          mkdir -p samples
+          cp "$SRC"/*.mp3 samples/
+          {
+            echo "# Narration listen-test samples"
+            echo ""
+            echo "Generated $(date -u +%FT%TZ) by the narration-chapter-test workflow (run ${{ github.run_id }})."
+            echo "Chapter files: <id>-chapter--<persona>.mp3 · Audition clips: <persona>--<pack>.mp3"
+            echo "Listen-test material only; shippable audio goes through the full pipeline."
+          } > samples/README.md
+          git add samples
+          git commit -m "narration listen-test samples (run ${{ github.run_id }})"
+          git push -f origin narration-samples
+
+      - name: Upload artifact (backup path)
+        uses: actions/upload-artifact@v4
+        with:
+          name: narration-samples
+          path: scripts/narration/work/_samples/*.mp3
+          retention-days: 14
