@@ -207,8 +207,14 @@ jobs:
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
         run: |
-          if [ -z "$R2_ACCESS_KEY_ID" ]; then
-            echo "::notice::R2 secrets not configured — skipping upload. Audio is in the pilot-bundle artifact; upload from the desk with scripts/upload-audio-r2.mjs, or add R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY / R2_ENDPOINT repository secrets and re-run this job."
+          # Check all three by name: a partially-configured set otherwise
+          # fails deep inside rclone with an opaque message.
+          missing=""
+          [ -z "$R2_ACCESS_KEY_ID" ] && missing="$missing R2_ACCESS_KEY_ID"
+          [ -z "$R2_SECRET_ACCESS_KEY" ] && missing="$missing R2_SECRET_ACCESS_KEY"
+          [ -z "$R2_ENDPOINT" ] && missing="$missing R2_ENDPOINT"
+          if [ -n "$missing" ]; then
+            echo "::warning::R2 upload skipped — missing repository secret(s):$missing (names must match EXACTLY). The audio is safe in this run's bundle artifact; add the secret(s) and re-run, or upload from the desk with scripts/upload-audio-r2.mjs."
             exit 0
           fi
           sudo apt-get install -y -qq rclone
