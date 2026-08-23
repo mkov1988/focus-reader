@@ -1,0 +1,218 @@
+name: Narration batch
+
+# Generic narration generation for ANY id list, in waves — the scaled-up
+# sibling of narration-pilot.yml built for the Popular-shelf rollout. A
+# prepare job plans every book (running the leftover gate), sizes shards
+# from real word counts (~60k words per shard keeps every job well inside
+# runner limits), and emits the synth/finish matrices dynamically. Everything
+# else matches the pilot: synth shards → finish+verify per book×voice →
+# collect (manifest merge + commit, R2 upload when secrets exist, bundle
+# artifact otherwise).
+#
+# GitHub caps a matrix at 256 jobs — run big shelves in waves of ~25 books.
+# Books the gate excludes are reported in the prepare job summary and land
+# in NARRATION-CHECKLIST.md at collect time.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Comma-separated Gutenberg ids for this wave"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: narration-batch
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: plan, gate, size shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      synth_matrix: ${{ steps.mk.outputs.synth_matrix }}
+      finish_matrix: ${{ steps.mk.outputs.finish_matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: Fetch texts + plan + gate
+        run: |
+          mkdir -p /tmp/texts
+          for id in $(echo "${{ github.event.inputs.ids }}" | tr ',' ' '); do
+            curl -fsSL "https://focus-reader-48z.pages.dev/books/${id}.txt" -o "/tmp/texts/${id}.txt" || echo "::warning::${id}: fetch failed"
+          done
+          node scripts/narration/plan.mjs --ids="${{ github.event.inputs.ids }}" --text-dir=/tmp/texts || true
+      - name: Build matrices
+        id: mk
+        run: |
+          node - <<'EOF' >> "$GITHUB_OUTPUT"
+          const { readFileSync, existsSync } = require('fs');
+          const voices = Object.keys(JSON.parse(readFileSync('scripts/narration/voices.json', 'utf8')).personas);
+          const ids = "${{ github.event.inputs.ids }}".split(',').map((s) => s.trim()).filter(Boolean);
+          const synth = [], finish = [], excluded = [];
+          for (const id of ids) {
+            const planPath = `scripts/narration/work/${id}/plan.json`;
+            if (!existsSync(planPath)) { excluded.push(id); continue; }
+            const plan = JSON.parse(readFileSync(planPath, 'utf8'));
+            const shards = Math.max(1, Math.ceil(plan.spanWords / 60000));
+            for (const voice of voices) {
+              finish.push({ id, voice });
+              for (let s = 0; s < shards; s++) synth.push({ id, voice, shard: `${s}/${shards}` });
+            }
+          }
+          if (!synth.length) { console.error('nothing to synthesize'); process.exit(1); }
+          if (synth.length > 250) { console.error(`matrix too big (${synth.length}) — smaller wave please`); process.exit(1); }
+          console.log(`synth_matrix=${JSON.stringify({ include: synth })}`);
+          console.log(`finish_matrix=${JSON.stringify({ include: finish })}`);
+          console.error(`jobs: ${synth.length} synth, ${finish.length} finish; excluded/gated: ${excluded.join(',') || 'none'}`);
+          EOF
+
+  synth:
+    name: synth ${{ matrix.id }}/${{ matrix.voice }} ${{ matrix.shard }}
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix: ${{ fromJSON(needs.prepare.outputs.synth_matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: System deps
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq espeak-ng ffmpeg
+      - run: npm ci --no-audit --no-fund
+      - name: Python deps
+        run: |
+          pip install --quiet torch --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet kokoro soundfile
+      - name: Fetch text + plan
+        run: |
+          mkdir -p /tmp/texts
+          curl -fsSL "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
+          node scripts/narration/plan.mjs --ids="${{ matrix.id }}" --text-dir=/tmp/texts
+      - name: Synthesize shard
+        run: python scripts/narration/synth.py --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}" --unit-stride="${{ matrix.shard }}"
+      - name: Upload shard WAVs
+        uses: actions/upload-artifact@v4
+        with:
+          name: bwavs-${{ matrix.id }}-${{ matrix.voice }}-${{ strategy.job-index }}
+          path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}/unit-*
+          retention-days: 3
+          if-no-files-found: error
+
+  finish:
+    name: finish ${{ matrix.id }}/${{ matrix.voice }}
+    needs: [prepare, synth]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.prepare.outputs.finish_matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - name: System deps
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: npm ci --no-audit --no-fund
+      - name: Fetch text + plan
+        run: |
+          mkdir -p /tmp/texts
+          curl -fsSL "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
+          node scripts/narration/plan.mjs --ids="${{ matrix.id }}" --text-dir=/tmp/texts
+      - name: Download shard WAVs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: bwavs-${{ matrix.id }}-${{ matrix.voice }}-*
+          path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}
+          merge-multiple: true
+      - name: Align, time, encode
+        run: node scripts/narration/finish.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
+      - name: Verify
+        run: node scripts/narration/verify.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
+      - name: Upload verified output
+        uses: actions/upload-artifact@v4
+        with:
+          name: bout-${{ matrix.id }}-${{ matrix.voice }}
+          path: |
+            scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}/out/*
+            scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}/status.json
+          retention-days: 14
+          if-no-files-found: error
+
+  collect:
+    name: collect, manifest, upload
+    needs: finish
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: Download verified pairs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: bout-*
+          path: /tmp/pairs
+      - name: Reassemble work layout + audio tree
+        run: |
+          set -e
+          mkdir -p audio-tree
+          for d in /tmp/pairs/bout-*; do
+            name=$(basename "$d"); rest=${name#bout-}; id=${rest%%-*}; voice=${rest#*-}
+            mkdir -p "scripts/narration/work/$id/$voice"
+            cp -r "$d"/* "scripts/narration/work/$id/$voice/"
+            mkdir -p "audio-tree/$id/$voice"
+            cp "scripts/narration/work/$id/$voice/out/"* "audio-tree/$id/$voice/"
+          done
+          du -sh audio-tree
+      - name: Build manifest + checklist
+        run: |
+          node scripts/narration/build-manifest.mjs
+          node scripts/narration/build-narration-checklist.mjs
+      - name: Commit manifest + checklist to master
+        run: |
+          git config user.name "narration-batch"
+          git config user.email "actions@users.noreply.github.com"
+          git pull --rebase origin master
+          git add public/narration-v1.json NARRATION-CHECKLIST.md
+          git diff --cached --quiet || git commit -m "feat(narration): batch manifest (run ${{ github.run_id }})
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+          git push origin master
+      - name: Upload to R2 (only when secrets are configured)
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          if [ -z "$R2_ACCESS_KEY_ID" ]; then
+            echo "::notice::R2 secrets not configured — audio stays in the batch-bundle artifact."
+            exit 0
+          fi
+          sudo apt-get install -y -qq rclone
+          rclone copy audio-tree :s3:focus-reader-books/audio \
+            --s3-provider Cloudflare \
+            --s3-access-key-id "$R2_ACCESS_KEY_ID" \
+            --s3-secret-access-key "$R2_SECRET_ACCESS_KEY" \
+            --s3-endpoint "$R2_ENDPOINT" \
+            --s3-no-check-bucket --ignore-existing
+      - name: Upload batch bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch-bundle-${{ github.run_id }}
+          path: |
+            audio-tree
+            public/narration-v1.json
+            NARRATION-CHECKLIST.md
+          retention-days: 14
