@@ -152,6 +152,7 @@ jobs:
   collect:
     name: collect, manifest, upload
     needs: finish
+    if: ${{ always() && needs.finish.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:

@@ -24,6 +24,9 @@ on:
       resume_from_run:
         description: "Reuse synthesized WAVs from this earlier run id (skips synth)"
         default: ""
+      collect_from_run:
+        description: "Reuse VERIFIED out-* from this earlier run id (skips synth AND finish)"
+        default: ""
 
 permissions:
   contents: write
@@ -38,7 +41,7 @@ env:
 jobs:
   synth:
     name: synth ${{ matrix.id }}/${{ matrix.voice }} ${{ matrix.shard }}
-    if: ${{ !github.event.inputs.resume_from_run }}
+    if: ${{ !github.event.inputs.resume_from_run && !github.event.inputs.collect_from_run }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     strategy:
@@ -94,7 +97,7 @@ jobs:
   finish:
     name: finish ${{ matrix.id }}/${{ matrix.voice }}
     needs: synth
-    if: ${{ always() && (needs.synth.result == 'success' || needs.synth.result == 'skipped') }}
+    if: ${{ always() && !github.event.inputs.collect_from_run && (needs.synth.result == 'success' || needs.synth.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -140,6 +143,10 @@ jobs:
   collect:
     name: collect, manifest, upload
     needs: finish
+    # Explicit: without this, a skipped ancestor (synth, on a resume run)
+    # propagates down the needs chain and silently skips collect — the run
+    # still reports success while producing no manifest at all.
+    if: ${{ always() && (needs.finish.result == 'success' || needs.finish.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -153,6 +160,8 @@ jobs:
         with:
           pattern: out-*
           path: /tmp/pairs
+          run-id: ${{ github.event.inputs.collect_from_run || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Reassemble work layout + audio tree
         run: |
           set -e
