@@ -1,13 +1,14 @@
 {
-  "comment": "The three narrator personas (docs/narration-plan.md §7). `kokoro` is the voice pack (or blend 'pack*w+pack*w') that carries the persona; optional `speed` overrides the global master speed and optional `pitchSemitones` applies a duration-neutral pitch shift at encode time. Rowan and Hazel locked 2026-08-23 after the chapter listen test. Marlowe is being dialed in via the `lab` candidates below (synth.py --lab=marlowe): direction is deep chest baritone, deliberate unhurried cadence with real pauses, crisp but flowing enunciation, warm not clinical.",
+  "comment": "The three narrator personas (docs/narration-plan.md §7). `kokoro` is the voice pack (or blend 'pack*w+pack*w') that carries the persona; optional `speed` overrides the global master speed and optional `pitchSemitones` applies a duration-neutral pitch shift. All three locked 2026-08-23: Rowan and Hazel from the chapter listen test, Marlowe from lab candidate #4 (onyx-michael-low). The `lab` list stays for future dial-ins (synth.py --lab=<persona>).",
   "personas": {
     "marlowe": {
       "label": "Marlowe",
       "profile": "deep, unhurried, warm-gravel American baritone; cinematic storyteller gravitas",
-      "kokoro": "am_onyx",
+      "kokoro": "am_onyx*0.7+am_michael*0.3",
       "speed": 1.0,
       "pitchSemitones": -1,
-      "candidates": ["am_michael", "am_onyx", "am_michael*0.6+am_onyx*0.4"]
+      "locked": true,
+      "candidates": ["am_michael", "am_onyx", "am_onyx*0.7+am_michael*0.3"]
     },
     "rowan": {
       "label": "Rowan",

@@ -285,7 +285,7 @@ def run_lab(persona, ids, device):
     print(f"\nLab clips in {out}.")
 
 
-def run_books(ids, personas, device, speed, limit_units):
+def run_books(ids, personas, device, speed, limit_units, stride=None):
     for book_id in ids:
         plan_path = WORK / book_id / "plan.json"
         if not plan_path.exists():
@@ -305,6 +305,12 @@ def run_books(ids, personas, device, speed, limit_units):
             pipeline = make_pipeline(spec, device)
             voice = load_blend(pipeline, spec)
             units = plan["units"][:limit_units] if limit_units else plan["units"]
+            if stride:
+                # Shard a long book across parallel workers: worker A of B
+                # takes units where i % B == A. Each worker writes disjoint
+                # unit files into the same layout, so shards merge by copy.
+                a, b = stride
+                units = [u for u in units if u["i"] % b == a]
             done = 0
             for unit in units:
                 i = unit["i"]
@@ -333,6 +339,7 @@ def main():
     ap.add_argument("--only", default="", help="with --chapter-test: limit to these personas (comma-separated)")
     ap.add_argument("--lab", default="", help="persona dial-in: synthesize every voices.json lab candidate for this persona")
     ap.add_argument("--limit-units", type=int, default=0, help="smoke-test: only the first N units")
+    ap.add_argument("--unit-stride", default="", help="shard a full run across workers: A/B takes units where i %% B == A")
     args = ap.parse_args()
 
     if args.sample:
@@ -353,7 +360,13 @@ def main():
     if not ids:
         ap.error("pass --ids=84,1342,14838 (or --sample / --chapter-test / --lab)")
     personas = [s.strip() for s in args.voices.split(",") if s.strip()]
-    run_books(ids, personas, args.device, args.speed, args.limit_units)
+    stride = None
+    if args.unit_stride:
+        a, b = args.unit_stride.split("/")
+        stride = (int(a), int(b))
+        if not 0 <= stride[0] < stride[1]:
+            ap.error("--unit-stride must be A/B with 0 <= A < B")
+    run_books(ids, personas, args.device, args.speed, args.limit_units, stride)
 
 
 if __name__ == "__main__":
