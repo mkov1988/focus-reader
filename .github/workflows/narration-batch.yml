@@ -185,12 +185,20 @@ jobs:
         run: |
           git config user.name "narration-batch"
           git config user.email "actions@users.noreply.github.com"
-          git pull --rebase origin master
           git add public/narration-v1.json NARRATION-CHECKLIST.md
-          git diff --cached --quiet || git commit -m "feat(narration): batch manifest (run ${{ github.run_id }})
+          if git diff --cached --quiet; then
+            echo "::notice::manifest unchanged — nothing to commit"
+          else
+            # Commit BEFORE syncing: the files we just wrote are
+            # tracked, and `pull --rebase` refuses to run with
+            # unstaged changes (exit 128).
+            git commit -m "feat(narration): batch manifest (run ${{ github.run_id }})
 
           Co-Authored-By: Claude <noreply@anthropic.com>"
-          git push origin master
+            git fetch origin master
+            git rebase origin/master
+            git push origin master
+          fi
       - name: Upload to R2 (only when secrets are configured)
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
