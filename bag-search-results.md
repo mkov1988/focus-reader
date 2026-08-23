@@ -1,0 +1,1 @@
+NETWORK STILL BLOCKED: outbound HTTPS to retail sites is refused by the session's agent proxy. `curl -sS -o /dev/null -w "%{http_code}" https://www.ebay.com` → `curl: (56) CONNECT tunnel failed, response 403` (HTTP code 000). Identical failures for https://www.etsy.com and https://www.walmart.com. Checked 2026-08-23. No product pages could be loaded; no listings were verified.
