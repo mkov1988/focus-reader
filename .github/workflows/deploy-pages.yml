@@ -1,0 +1,77 @@
+name: Deploy Pages
+
+# The desk deploy, liberated: rebuilds the gitignored data plane by fetching
+# it back from production (scripts/fetch-data-plane.mjs — every static file
+# must round-trip or the job fails), then runs the SAME scripts/deploy-pages.mjs
+# a desk deploy runs, guard and all. Cloudflare credentials arrive as the
+# repository secrets CLOUDFLARE_API_TOKEN (scoped: Pages:Edit on this account
+# only) and CLOUDFLARE_ACCOUNT_ID.
+#
+# Run with preview=true first for infra changes — same discipline as the desk
+# (`--preview` lands on the audit-preview alias and leaves production alone).
+# A production run commits the version bump back to master.
+
+on:
+  workflow_dispatch:
+    inputs:
+      preview:
+        description: "true = deploy to the audit-preview alias, production untouched"
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: fetch data plane, build, deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Require Cloudflare secrets
+        env:
+          T: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          A: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          missing=""
+          [ -z "$T" ] && missing="$missing CLOUDFLARE_API_TOKEN"
+          [ -z "$A" ] && missing="$missing CLOUDFLARE_ACCOUNT_ID"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing — create a Cloudflare API token with Pages:Edit permission (dash.cloudflare.com -> My Profile -> API Tokens) and copy the Account ID from the dashboard sidebar."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: Fetch data plane from production
+        run: node scripts/fetch-data-plane.mjs
+      - name: Build + guard + deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ "${{ github.event.inputs.preview }}" = "true" ]; then
+            node scripts/deploy-pages.mjs --preview
+          else
+            node scripts/deploy-pages.mjs
+          fi
+      - name: Commit version bump
+        if: ${{ github.event.inputs.preview != 'true' }}
+        run: |
+          git config user.name "deploy-pages"
+          git config user.email "actions@users.noreply.github.com"
+          git add version.json
+          if git diff --cached --quiet; then
+            echo "::notice::version.json unchanged"
+          else
+            git commit -m "chore: version bump from CI deploy (run ${{ github.run_id }})
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git fetch origin master
+            git rebase origin/master
+            git push origin master
+          fi

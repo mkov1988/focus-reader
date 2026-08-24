@@ -1,0 +1,45 @@
+name: Freeze data plane
+
+# One-shot: probe production for the exact static data plane (books + covers)
+# and commit scripts/deploy-data-plane.json. Run this before the first CI
+# deploy, and again whenever the curated set deliberately changes. ~15-25
+# minutes (~56k HEAD probes at concurrency 40 against the Cloudflare edge).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-plane-freeze
+  cancel-in-progress: false
+
+jobs:
+  freeze:
+    name: probe production, commit list
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - name: Probe + freeze
+        run: node scripts/freeze-data-plane.mjs
+      - name: Commit
+        run: |
+          git config user.name "data-plane-freeze"
+          git config user.email "actions@users.noreply.github.com"
+          git add scripts/deploy-data-plane.json
+          if git diff --cached --quiet; then
+            echo "::notice::deploy-data-plane.json unchanged"
+          else
+            git commit -m "chore: freeze static data plane from production (run ${{ github.run_id }})
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git fetch origin master
+            git rebase origin/master
+            git push origin master
+          fi
