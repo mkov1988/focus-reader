@@ -18,7 +18,10 @@
  *
  * Run from CI (data-plane-freeze.yml) — the id universe is ~56k HEAD probes.
  * The SPA fallback answers missing files with 200 text/html, so presence is
- * judged by content-type, never status alone.
+ * judged by content-type, never status alone. A fast sweep at concurrency 40
+ * sheds a few hundred transient connection errors against the edge; those
+ * ids get a second, slow pass, and only ids that STILL error block the
+ * freeze — an unresolved id might be a cover the list would silently drop.
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
@@ -64,25 +67,25 @@ for (const id of starts) add(id);
 const all = [...ids];
 console.log(`candidate universe: ${all.length} ids (${bookIds.size} derivable static books)`);
 
-async function head(url) {
-    for (let a = 0; a < 4; a++) {
+async function head(url, attempts, baseDelayMs) {
+    for (let a = 0; a < attempts; a++) {
         try {
             const r = await fetch(url, { method: 'HEAD' });
             return { status: r.status, type: r.headers.get('content-type') || '' };
-        } catch (err) { if (a === 3) return { status: -1, type: String(err).slice(0, 80) }; }
-        await new Promise((r) => setTimeout(r, 700 * (a + 1)));
+        } catch (err) { if (a === attempts - 1) return { status: -1, type: String(err).slice(0, 80) }; }
+        await new Promise((r) => setTimeout(r, baseDelayMs * (a + 1)));
     }
 }
 
-async function sweep(list, mk, keep, label) {
+async function sweep(list, mk, keep, label, conc, attempts = 4, baseDelayMs = 700) {
     const found = [], errs = [];
     const queue = [...list];
     let done = 0;
-    await Promise.all(Array.from({ length: 40 }, async () => {
+    await Promise.all(Array.from({ length: conc }, async () => {
         while (queue.length) {
             const id = queue.pop();
-            const r = await head(mk(id));
-            if (r.status === -1) errs.push(`${id}: ${r.type}`);
+            const r = await head(mk(id), attempts, baseDelayMs);
+            if (r.status === -1) errs.push(id);
             else if (keep(r)) found.push(id);
             if (++done % 5000 === 0) console.log(`${label}: ${done}/${list.length}, ${found.length} found`);
         }
@@ -90,21 +93,31 @@ async function sweep(list, mk, keep, label) {
     return { found, errs };
 }
 
-const covers = await sweep(all, (id) => `${BASE}/covers/${id}.webp`,
+// Fast sweep, then a slow second pass over just the ids that errored — a
+// 40-wide HEAD flood sheds ~0.7% transient connection errors at the edge.
+async function sweepWithRetry(list, mk, keep, label) {
+    const fast = await sweep(list, mk, keep, label, 40);
+    if (!fast.errs.length) return fast;
+    console.log(`${label}: retrying ${fast.errs.length} errored ids slowly`);
+    const slow = await sweep(fast.errs, mk, keep, `${label}-retry`, 5, 5, 2000);
+    return { found: [...fast.found, ...slow.found], errs: slow.errs };
+}
+
+const covers = await sweepWithRetry(all, (id) => `${BASE}/covers/${id}.webp`,
     (r) => r.status === 200 && r.type.includes('image'), 'covers');
-console.log(`covers on production: ${covers.found.length} (errors ${covers.errs.length})`);
+console.log(`covers on production: ${covers.found.length} (unresolved ${covers.errs.length})`);
 
 // Static books production must keep that the R2 mirror can't replace: probe
 // only candidates OUTSIDE the mirror (books inside it fall through to the R2
 // door with identical bytes even if their static copy is dropped).
 const nonMirror = all.filter((id) => !starts.has(id));
-const extraBooks = await sweep(nonMirror, (id) => `${BASE}/books/${id}.txt`,
+const extraBooks = await sweepWithRetry(nonMirror, (id) => `${BASE}/books/${id}.txt`,
     (r) => r.status === 200 && r.type.includes('text/plain'), 'books');
-console.log(`non-mirror statics: ${extraBooks.found.length} of ${nonMirror.length} candidates (errors ${extraBooks.errs.length})`);
+console.log(`non-mirror statics: ${extraBooks.found.length} of ${nonMirror.length} candidates (unresolved ${extraBooks.errs.length})`);
 
 if (covers.errs.length || extraBooks.errs.length) {
-    console.error('network errors during probe — refusing to freeze an incomplete list');
-    for (const e of [...covers.errs, ...extraBooks.errs].slice(0, 10)) console.error('  ' + e);
+    console.error('ids still unresolved after the slow retry — refusing to freeze an incomplete list:');
+    for (const e of [...covers.errs, ...extraBooks.errs].slice(0, 20)) console.error('  ' + e);
     process.exit(1);
 }
 
