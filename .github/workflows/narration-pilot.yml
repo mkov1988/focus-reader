@@ -231,7 +231,9 @@ jobs:
           sent=$(find audio-tree -type f | wc -l)
           held=$(rclone lsf -R --files-only :s3:focus-reader-books/audio "${RC[@]}" | wc -l)
           rclone size :s3:focus-reader-books/audio "${RC[@]}"
-          echo "this wave sent $sent files; R2 audio/ now holds $held objects"
+          # A ::notice:: survives as a run annotation, readable without
+          # downloading the whole log zip.
+          echo "::notice::R2 audio/: $held objects in the bucket; this wave sent $sent"
           if [ "$held" -lt "$sent" ]; then
             echo "::error::R2 holds $held objects but this wave sent $sent — upload incomplete"
             exit 1
