@@ -16,4 +16,8 @@ Standing rules:
 - Deploys are production for installed apps. Use
   `node scripts/deploy-pages.mjs --preview` to test infra changes first.
 - Challenge the premise before building; verify programmatically before
-  declaring done; keep explanations in plain language.
+  declaring done.
+- Talk to Michael in PLAIN ENGLISH, always. No jargon, no acronyms, no
+  insider shorthand (nothing like "long tail", "OCR", "CC0", "static
+  limit") — say what a thing is in everyday words or briefly explain it.
+  Keep it concise: results and decisions, not minutiae.
