@@ -1,0 +1,189 @@
+[
+ {
+  "mood": "cozy",
+  "id": "67979",
+  "title": "The Blue Castle: a novel",
+  "author": "L. M. (Lucy Maud) Montgomery",
+  "dl": 61483,
+  "hook": "Told she has a year to live, a downtrodden spinster starts saying exactly what she thinks.",
+  "voice": "third-person",
+  "era": "1920s small-town Ontario",
+  "tags": [
+   "cozy",
+   "funny",
+   "romantic",
+   "contemplative"
+  ]
+ },
+ {
+  "mood": "eerie",
+  "id": "43",
+  "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+  "author": "Robert Louis Stevenson",
+  "dl": 63757,
+  "hook": "A cautious London lawyer follows a friend's ugly secret through fog and locked doors toward something he cannot bring himself to name.",
+  "voice": "third-person",
+  "era": "Foggy Victorian London",
+  "tags": [
+   "eerie",
+   "thrilling",
+   "grim"
+  ]
+ },
+ {
+  "mood": "adventurous",
+  "id": "2701",
+  "title": "Moby Dick; Or, The Whale",
+  "author": "Herman Melville",
+  "dl": 135445,
+  "hook": "A restless sailor signs onto a whaling ship and discovers her captain is hunting one particular whale.",
+  "voice": "first-person",
+  "era": "1840s American whaling voyage",
+  "tags": [
+   "adventurous",
+   "grim",
+   "philosophical",
+   "thrilling"
+  ]
+ },
+ {
+  "mood": "romantic",
+  "id": "1342",
+  "title": "Pride and Prejudice",
+  "author": "Jane Austen",
+  "dl": 117126,
+  "hook": "Five sisters, two eligible newcomers, and a young woman who trusts her own judgment a little too far.",
+  "voice": "third-person",
+  "era": "Regency England country gentry",
+  "tags": [
+   "romantic",
+   "funny",
+   "cozy",
+   "contemplative"
+  ]
+ },
+ {
+  "mood": "pastoral",
+  "id": "1523",
+  "title": "As You Like It",
+  "author": "William Shakespeare",
+  "dl": 18905,
+  "hook": "Banished to a forest, a sharp-tongued heiress disguises herself as a boy and teaches her admirer how to woo.",
+  "voice": "play",
+  "era": "A French dukedom and forest",
+  "tags": [
+   "pastoral",
+   "funny",
+   "romantic",
+   "contemplative"
+  ]
+ },
+ {
+  "mood": "contemplative",
+  "id": "145",
+  "title": "Middlemarch",
+  "author": "George Eliot",
+  "dl": 67843,
+  "hook": "In a small English town, an ardent young woman and an ambitious young doctor each set out to do something great.",
+  "voice": "third-person",
+  "era": "1830s English Midlands",
+  "tags": [
+   "contemplative",
+   "philosophical",
+   "romantic"
+  ]
+ },
+ {
+  "mood": "thrilling",
+  "id": "1661",
+  "title": "The Adventures of Sherlock Holmes",
+  "author": "Arthur Conan Doyle",
+  "dl": 52111,
+  "hook": "Twelve cases in which a hat, a note or a scuffed boot gives a stranger's whole life away.",
+  "voice": "first-person",
+  "era": "1880s and 1890s London",
+  "tags": [
+   "thrilling",
+   "adventurous",
+   "eerie"
+  ]
+ },
+ {
+  "mood": "whimsical",
+  "id": "11",
+  "title": "Alice's Adventures in Wonderland",
+  "author": "Lewis Carroll",
+  "dl": 73700,
+  "hook": "A bored girl follows a waistcoated rabbit underground into a world that argues back and refuses to make sense.",
+  "voice": "third-person",
+  "era": "Victorian riverbank, then dreamland",
+  "tags": [
+   "whimsical",
+   "funny",
+   "eerie"
+  ]
+ },
+ {
+  "mood": "funny",
+  "id": "2160",
+  "title": "The Expedition of Humphry Clinker",
+  "author": "T. (Tobias) Smollett",
+  "dl": 42519,
+  "hook": "Five very different letter-writers describe one journey around Britain, and no two of them see a single thing the same way.",
+  "voice": "letters",
+  "era": "1760s Britain",
+  "tags": [
+   "funny",
+   "adventurous",
+   "contemplative"
+  ]
+ },
+ {
+  "mood": "grim",
+  "id": "84",
+  "title": "Frankenstein; or, the modern prometheus",
+  "author": "Mary Wollstonecraft Shelley",
+  "dl": 115954,
+  "hook": "A young scientist gives life to a being he cannot bear to look at, and cannot escape.",
+  "voice": "first-person",
+  "era": "1790s Europe and the Arctic",
+  "tags": [
+   "grim",
+   "eerie",
+   "tragic",
+   "philosophical"
+  ]
+ },
+ {
+  "mood": "tragic",
+  "id": "1513",
+  "title": "Romeo and Juliet",
+  "author": "William Shakespeare",
+  "dl": 88359,
+  "hook": "Two teenagers from feuding families meet at a party and decide, within hours, to marry in secret.",
+  "voice": "play",
+  "era": "Renaissance Verona, Italy",
+  "tags": [
+   "tragic",
+   "romantic",
+   "thrilling",
+   "funny"
+  ]
+ },
+ {
+  "mood": "philosophical",
+  "id": "44833",
+  "title": "Chaucer's Works, Volume 2 — Boethius and Troilus",
+  "author": "Geoffrey Chaucer",
+  "dl": 19320,
+  "hook": "Two Middle English masterworks: a ruined statesman visited by Philosophy herself, and a Trojan prince caught by love during the siege.",
+  "voice": "other",
+  "era": "Ancient Rome and legendary Troy",
+  "tags": [
+   "philosophical",
+   "tragic",
+   "romantic",
+   "contemplative"
+  ]
+ }
+]
