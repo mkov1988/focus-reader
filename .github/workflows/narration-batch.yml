@@ -19,6 +19,12 @@ on:
       ids:
         description: "Comma-separated Gutenberg ids for this wave"
         required: true
+      resume_from_run:
+        description: "Reuse synthesized WAVs from this earlier batch run id (skips synth)"
+        default: ""
+      collect_from_run:
+        description: "Reuse VERIFIED bout-* from this earlier batch run id (skips synth AND finish)"
+        default: ""
 
 permissions:
   contents: write
@@ -89,6 +95,7 @@ jobs:
   synth:
     name: synth ${{ matrix.id }}/${{ matrix.voice }} ${{ matrix.shard }}
     needs: prepare
+    if: ${{ !github.event.inputs.resume_from_run && !github.event.inputs.collect_from_run }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     strategy:
@@ -126,8 +133,14 @@ jobs:
   finish:
     name: finish ${{ matrix.id }}/${{ matrix.voice }}
     needs: [prepare, synth]
+    # A skipped ancestor propagates down the needs chain, so a resume run has
+    # to say so explicitly or finish never starts.
+    if: ${{ always() && !github.event.inputs.collect_from_run && needs.prepare.result == 'success' && (needs.synth.result == 'success' || needs.synth.result == 'skipped') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # 60 was sized for a novel. The complete Shakespeare is ~80 hours of audio
+    # in one job: ~10 GB of artifacts to pull, ~275 segments to encode, and an
+    # ffprobe pass over every one of them.
+    timeout-minutes: 180
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.prepare.outputs.finish_matrix) }}
@@ -135,6 +148,17 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: npm }
+      - name: Free disk space
+        # A 960k-word book unpacks ~14 GB of shard WAVs and a stock runner has
+        # only ~21 GB free. These toolchains are worth ~25 GB and this job
+        # touches none of them.
+        run: |
+          df -h / | tail -1
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc \
+                      /usr/local/share/boost /opt/hostedtoolcache/CodeQL \
+                      /usr/share/swift /usr/local/.ghcup || true
+          sudo docker image prune -af >/dev/null 2>&1 || true
+          df -h / | tail -1
       - name: System deps
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - run: npm ci --no-audit --no-fund
@@ -149,6 +173,8 @@ jobs:
           pattern: bwavs-${{ matrix.id }}-${{ matrix.voice }}-*
           path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}
           merge-multiple: true
+          run-id: ${{ github.event.inputs.resume_from_run || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Align, time, encode
         run: node scripts/narration/finish.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
       - name: Verify
@@ -165,8 +191,12 @@ jobs:
 
   collect:
     name: collect, manifest, upload
-    needs: finish
-    if: ${{ always() && needs.finish.result == 'success' }}
+    needs: [prepare, finish]
+    # finish is fail-fast:false and the manifest MERGES, so one bad book must
+    # not throw away the other eighteen: collect on failure too and ship every
+    # pair that actually verified. A wave with zero verified pairs is caught
+    # below, at reassembly.
+    if: ${{ always() && (needs.finish.result == 'success' || needs.finish.result == 'failure' || needs.finish.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
@@ -179,11 +209,20 @@ jobs:
         with:
           pattern: bout-*
           path: /tmp/pairs
+          run-id: ${{ github.event.inputs.collect_from_run || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Reassemble work layout + audio tree
         run: |
           set -e
           mkdir -p audio-tree
-          for d in /tmp/pairs/bout-*; do
+          shopt -s nullglob
+          pairs=(/tmp/pairs/bout-*)
+          if [ ${#pairs[@]} -eq 0 ]; then
+            echo "::error::no verified bout-* artifacts — every pair in this wave failed"
+            exit 1
+          fi
+          echo "verified pairs: ${#pairs[@]}"
+          for d in "${pairs[@]}"; do
             name=$(basename "$d"); rest=${name#bout-}; id=${rest%%-*}; voice=${rest#*-}
             mkdir -p "scripts/narration/work/$id/$voice"
             cp -r "$d"/* "scripts/narration/work/$id/$voice/"
