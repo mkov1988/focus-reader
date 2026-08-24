@@ -4,6 +4,17 @@ Written 2026-08-24 from a deep research pass over this repo, the Android repo,
 production, and external sources. Everything below was verified against real
 files, live production responses, or cited external documents — not guessed.
 
+**Status (2026-08-24, end of session):** Phase 0 done in-session — audit
+found **785 of 1,468 production covers carry Project Gutenberg branding**
+(list: `scripts/covers-audit/branded.json`), and `functions/covers/[id].js`
+now serves covers from R2 with clean 404s. Phase 1+2 tools are built and
+smoke-tested (`mirror-covers-hires.mjs`, `se-covers.mjs`,
+`mirror-covers-longtail.mjs`); the desk runs are in
+`scripts/covers-audit/RUNBOOK.md`. Phase 3 design pilot approved
+(`scripts/covers-pilot/`): mood scenes, wider muted palette, no era label;
+popular books get book-specific art (blue castle / deerstalker / Cheshire
+cat) only after Phase 1 shows what still needs covers.
+
 ## The one fact that shapes everything
 
 Both apps resolve every book's cover as

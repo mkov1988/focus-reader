@@ -63,6 +63,28 @@ total). The strip now joins wrapped occurrences before filtering, and
 `scripts/resweep-trademark.mjs` cleaned the stored files. Changed mirror
 files must be re-uploaded to R2 (see docs/SERVING.md).
 
+## Cover images carry the trademark too (found August 2026)
+
+The strip above is text-only, and cover images turned out to have the same
+problem: for books without real cover art, Project Gutenberg auto-generates
+a cover with "Project Gutenberg" printed on the image, and the cover mirror
+copied those verbatim. An audit of all 1,468 production covers
+(2026-08-24, method and list in `scripts/covers-audit/`) found **785 with
+the branding on the image** — live on the serving host. The "never show the
+words" rule applies to pixels the same as text. Rules:
+
+- Never serve a cover carrying "Project Gutenberg" (or a PGDP/Distributed
+  Proofreaders mark — lawyer question whether those count; treat as yes
+  until answered). `scripts/covers-audit/branded.json` is the known list.
+- Any pipeline that ingests cover images must classify and exclude the
+  auto-generated cards (`scripts/mirror-covers-longtail.mjs --classify`,
+  and the branded-skip in `scripts/mirror-covers-hires.mjs`).
+- Replacements: Standard Ebooks cover art is CC0 including the art
+  (`scripts/se-covers.mjs`); our own generated covers; real scans from the
+  book files. Open Library work-level covers are NOT cleared (modern
+  editions, film stills) — only pre-1930 edition-filtered use is safe.
+- Add covers to the lawyer-gate list in "Before charging money".
+
 ## Voice narration is a derived work of the stripped text
 
 AI narration (docs/narration-plan.md) inherits every rule above, the way
