@@ -269,12 +269,24 @@ jobs:
             exit 0
           fi
           sudo apt-get install -y -qq rclone
-          rclone copy audio-tree :s3:focus-reader-books/audio \
-            --s3-provider Cloudflare \
-            --s3-access-key-id "$R2_ACCESS_KEY_ID" \
-            --s3-secret-access-key "$R2_SECRET_ACCESS_KEY" \
-            --s3-endpoint "$R2_ENDPOINT" \
-            --s3-no-check-bucket --ignore-existing
+          # rclone flags are long and repeated; keep one copy. GitHub masks
+          # the secret values in the log.
+          RC=(--s3-provider Cloudflare
+              --s3-access-key-id "$R2_ACCESS_KEY_ID"
+              --s3-secret-access-key "$R2_SECRET_ACCESS_KEY"
+              --s3-endpoint "$R2_ENDPOINT"
+              --s3-no-check-bucket)
+          rclone copy audio-tree :s3:focus-reader-books/audio "${RC[@]}" --ignore-existing --stats-one-line --stats 5s
+          # Read BACK from the bucket. An exit-0 copy is not evidence the
+          # objects landed — the only proof is what the bucket returns.
+          sent=$(find audio-tree -type f | wc -l)
+          held=$(rclone lsf -R --files-only :s3:focus-reader-books/audio "${RC[@]}" | wc -l)
+          rclone size :s3:focus-reader-books/audio "${RC[@]}"
+          echo "this wave sent $sent files; R2 audio/ now holds $held objects"
+          if [ "$held" -lt "$sent" ]; then
+            echo "::error::R2 holds $held objects but this wave sent $sent — upload incomplete"
+            exit 1
+          fi
       - name: Upload batch bundle
         uses: actions/upload-artifact@v4
         with:
