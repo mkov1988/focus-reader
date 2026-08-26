@@ -48,7 +48,10 @@ async function buildMap(maxPages) {
         if (maxPages && page > maxPages) break;
         const html = await (await get(`${SITE}/ebooks?page=${page}`)).text();
         const slugs = [...new Set([...html.matchAll(/href="(\/ebooks\/[a-z0-9-]+\/[a-z0-9-]+)"/g)].map(m => m[1]))];
-        if (slugs.length === 0) { console.log('catalog end at page', page); break; }
+        // past the last page the site keeps answering with repeat links —
+        // stop when a page brings nothing new
+        if (slugs.length === 0 || slugs.every(s => map.seen?.includes(s))) { console.log('catalog end at page', page); break; }
+        map.seen = slugs;
         for (const slug of slugs) {
             await sleep(1000);
             try {
