@@ -34,8 +34,14 @@ warm and light; nothing shiny except glass and a little brass.
 Order along the length, matching what's already there:
 
 ```
-[ stairs? + LAUNDRY ~8' ] | existing partition | [ OFFICE ~11' ] | new divider | [ GYM ~17' ]
+[ LAUNDRY ~8' ] | partition + ENTRY DOOR | [ OFFICE ~11' ] | new divider | [ GYM ~17' + BACK DOOR on long wall ]
 ```
+
+Two confirmed doors shape the plan: the **entry from the stairs sits in the
+existing laundry/office partition**, so the office side of that wall is the
+arrival zone — keep a clear landing there, no furniture against the door
+swing. And the **gym has a back door on its long wall** — free equipment
+access and airflow, but the mirror wall and rack stay clear of it.
 
 | Total length | Laundry | Office | Gym |
 |---|---|---|---|

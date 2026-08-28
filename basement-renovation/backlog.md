@@ -5,7 +5,8 @@
 The measuring trip. Full detail in `docs/existing-conditions.md` → checklist.
 
 - [ ] Measure: length, width (both ends), slab-to-joist, slab-to-lowest-duct
-- [ ] Locate + photograph: stairs, panel (cover open), furnace, water heater, sump/floor drain, behind the white door, the gray panel behind the fridge
+- [ ] Doors: entry door (laundry/office partition) + gym back door — exact positions, swings, what's on the far side of each
+- [ ] Locate + photograph: panel (cover open), furnace, water heater, sump/floor drain
 - [ ] Windows: any? sizes?
 - [ ] Moisture test: plastic squares on wall ×2 + slab ×1, read at 48h
 - [ ] Radon test kit in the gym end
@@ -18,6 +19,7 @@ The measuring trip. Full detail in `docs/existing-conditions.md` → checklist.
 - [ ] Walls: paint / skim / frame (see options.md recommendation)
 - [ ] Layout A vs B
 - [ ] Divider: curtain vs glass
+- [ ] Generate photorealistic renders per `docs/render-prompts.md` (blocked on an image-model route: Vertex/Gemini key, Figma↔Weave link, or by hand) and embed them in the tier boards
 - [ ] Update mockups to the chosen combo; produce final shopping list with real quantities
 
 ## Phase 2 — Clear-out (free, one weekend)

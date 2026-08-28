@@ -38,9 +38,10 @@ Items marked **[verify]** need eyes or a tape measure — that's Phase 0 in
 - LG graphite front-load washer + dryer, side by side (washer on a riser).
 - White laminate counter run with drawer cabinets under it along the back
   (framed + drywalled) wall — usable but mismatched heights/desk-style.
-- White 6-panel door in the corner — likely stairs or a utility/mechanical
-  room. [verify what's behind it, and where furnace + water heater live —
-  neither appears in the photos, and their location constrains the layout]
+- White 6-panel door at the laundry/office partition — **confirmed by
+  Michael: this is the entry door into the whole space** (from the stairs).
+  [verify exact position in the wall + swing; also where furnace + water
+  heater live — neither appears in the photos]
 - Recessed in-wall box on the back wall (looks like a laundry supply/outlet
   box), plywood blocking panel with a surface box, two bare-bulb lights.
 - Overhead here is the busiest: DWV plumbing + the low duct trunk. If any
@@ -51,8 +52,10 @@ Items marked **[verify]** need eyes or a tape measure — that's Phase 0 in
 - Currently storage: black wire pantry shelving with food, silver
   fridge/freezer, coolers (all moving to the garage, out of scope), moving
   boxes, folding table.
-- One dark gray panel against the long wall behind the fridge. [verify —
-  door? board? access panel?]
+- **Back door on the long wall of the gym zone — confirmed by Michael.**
+  The dark gray panel behind the fridge in the photo is likely it. [verify
+  exact position, swing, and where it leads — walkout? bulkhead? another
+  room? It affects egress, equipment moves, and where the mirror wall goes]
 
 ## Gym end (far end)
 
@@ -83,9 +86,11 @@ Equipment staying (the keep list for layout planning):
 2. Slab-to-joist height; slab-to-lowest-obstruction (ducts, pipes) at three
    points along the length.
 3. Laundry room depth (block wall to new partition) and door/opening widths.
-4. Stairs: which end, which wall, landing clearance.
-5. Open the white door; photograph what's behind it. Find furnace + water
-   heater + panel; photograph panel with the cover open.
+4. Doors: exact position + swing of the entry door (in the laundry/office
+   partition) and the gym back door (long wall); what's on the far side of
+   each. Stairs landing clearance at the entry.
+5. Find furnace + water heater + panel; photograph panel with the cover
+   open.
 6. Windows: any? Sizes + sill heights.
 7. Moisture test: tape a 2'×2' plastic square tight to the block in two spots
    (gym end + one long wall) and to the slab; check for condensation under it

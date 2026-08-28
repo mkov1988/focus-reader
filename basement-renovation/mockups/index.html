@@ -174,9 +174,6 @@
       <svg viewBox="0 0 940 400" role="img" aria-label="Floor plan: laundry 8 feet, office 11 feet, gym 17 feet along a 36 by 12 foot basement, with furniture placed in each zone">
         <defs>
           <marker id="fp-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
-          <pattern id="fp-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="7" stroke="currentColor" stroke-width="1" opacity=".35"/>
-          </pattern>
         </defs>
         <g stroke="currentColor" fill="none" stroke-width="1">
           <!-- outer block walls -->
@@ -185,11 +182,16 @@
           <rect x="60" y="70" width="176" height="272" fill="var(--tint-laundry)" stroke="none"/>
           <rect x="243" y="70" width="242" height="272" fill="var(--tint-office)" stroke="none"/>
           <rect x="492" y="70" width="378" height="272" fill="var(--tint-gym)" stroke="none"/>
-          <!-- existing partition, finished; 3' opening w/ door swing -->
+          <!-- existing partition; ENTRY door from stairs lives in it -->
           <line x1="239" y1="70" x2="239" y2="252" stroke-width="7"/>
           <line x1="239" y1="318" x2="239" y2="342" stroke-width="7"/>
           <path d="M239,318 A66,66 0 0 1 305,252" stroke-dasharray="3 4" opacity=".7"/>
           <line x1="239" y1="318" x2="305" y2="252" opacity=".7"/>
+          <line x1="196" y1="285" x2="266" y2="285" marker-end="url(#fp-a)" opacity=".8"/>
+          <!-- back door in gym long wall -->
+          <line x1="552" y1="346" x2="618" y2="346" stroke="var(--surface)" stroke-width="10"/>
+          <line x1="552" y1="346" x2="552" y2="280"/>
+          <path d="M552,280 A66,66 0 0 1 618,346" stroke-dasharray="3 4" opacity=".7"/>
           <!-- new divider: glass/curtain line w/ 3' opening -->
           <line x1="489" y1="70" x2="489" y2="240" stroke-width="3" stroke="var(--brass)"/>
           <line x1="489" y1="306" x2="489" y2="342" stroke-width="3" stroke="var(--brass)"/>
@@ -199,7 +201,6 @@
           <rect x="120" y="76" width="52" height="52"/><circle cx="146" cy="102" r="15"/>
           <rect x="64" y="292" width="168" height="44"/>
           <line x1="64" y1="292" x2="232" y2="292" stroke-width="2"/>
-          <rect x="60" y="180" width="14" height="56" fill="url(#fp-hatch)" stroke-width="1.5"/>
           <!-- OFFICE: desk on top wall, chair, shelves bottom, rug -->
           <rect x="290" y="76" width="132" height="56"/>
           <circle cx="356" cy="162" r="17"/>
@@ -211,7 +212,7 @@
           <circle cx="768" cy="204" r="9"/><circle cx="864" cy="204" r="9"/>
           <rect x="656" y="188" width="88" height="32" rx="6"/>
           <rect x="560" y="76" width="150" height="62" rx="6"/>
-          <line x1="530" y1="342" x2="770" y2="342" stroke-width="5" stroke="var(--brass)"/>
+          <line x1="640" y1="342" x2="800" y2="342" stroke-width="5" stroke="var(--brass)"/>
           <rect x="500" y="80" width="34" height="18"/><rect x="500" y="104" width="34" height="18"/>
         </g>
         <!-- dimension lines -->
@@ -238,18 +239,19 @@
           <text x="90" y="140" text-anchor="middle">W</text>
           <text x="146" y="140" text-anchor="middle">D</text>
           <text x="148" y="308" text-anchor="middle">counter + sink</text>
-          <text x="80" y="212">stairs?</text>
           <text x="356" y="98" text-anchor="middle">desk</text>
           <text x="365" y="331" text-anchor="middle">shelves</text>
           <text x="816" y="146" text-anchor="middle">rack</text>
           <text x="635" y="153" text-anchor="middle">treadmill</text>
-          <text x="650" y="360" text-anchor="middle">mirror wall</text>
+          <text x="724" y="362" text-anchor="middle">mirror wall</text>
           <text x="517" y="137" text-anchor="middle">plates</text>
-          <text x="655" y="264" text-anchor="middle" font-size="9.5">open lifting lane ≥ 6' wide</text>
+          <text x="610" y="178" text-anchor="middle" font-size="9.5">open lifting lane ≥ 6' wide</text>
+          <text x="286" y="303" fill="var(--brass)">ENTRY · door from stairs</text>
+          <text x="585" y="268" text-anchor="middle" fill="var(--brass)">BACK DOOR</text>
           <text x="497" y="56" fill="var(--brass)">divider: curtain (T1) / glass (T2+)</text>
         </g>
       </svg>
-      <figcaption>Layout A (default). The brass line is the new office/gym divider — curtain at Tier 1, steel-framed glass at Tier 2+. Stairs assumed at the laundry end until verified.</figcaption>
+      <figcaption>Layout A (default). The entry door from the stairs sits in the existing laundry/office partition; the back door is on the gym's long wall (both positions approximate until measured — the mirror wall and equipment stay clear of the door swing). The brass line is the new office/gym divider — curtain at Tier 1, steel-framed glass at Tier 2+.</figcaption>
     </figure>
 
     <div class="grid2">
