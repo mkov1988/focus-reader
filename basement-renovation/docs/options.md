@@ -13,20 +13,19 @@ where a room needs to feel "finished" (office) or hide plumbing (laundry).
 | Option | What it is | Cost (DIY / pro) | Look | Watch out |
 |---|---|---|---|---|
 | **1. Paint the block** | Clean, masonry primer, 2 coats. Deep color at the gym, warm white elsewhere | $400–800 DIY / $1.5–3k pro | Honest industrial; coursing shows; very "boutique gym" | Do the 48h moisture test first. If walls pass dry: any quality masonry paint. If damp: breathable mineral/silicate paint (or limewash), never a film that traps moisture |
-| **2. Skim / parge coat** | Thin cement or plaster coat over block, then paint (or integral-color limewash) | $1–2/sq ft DIY / $3–6/sq ft pro | Softer, monolithic, "old European gym"; hides coursing without losing mass | Labor-heavy; still wants breathable finish |
+| **2. Skim / parge coat** | Thin cement or plaster coat over block, then paint (or integral-color limewash) | $1–2/sq ft DIY / $3–6/sq ft pro | Softer, monolithic, "old European gym" look; hides the block pattern without losing mass | Labor-heavy; still wants breathable finish |
 | **3. Fur + insulate + drywall** | 2×2/2×4 frame off the block, rigid foam or rockwool, drywall | $7–12/sq ft installed | Fully finished house-grade walls; warmer (real R-value), hides wiring | Loses 3–5" per side of an already narrow room; moisture detailing must be right (foam against block, no fiberglass touching masonry) |
 
 **Recommendation:** paint the block in the gym at every tier (it *is* the
 look), and only spend on framing where it buys comfort — office walls at Tier
-2+, everything at Tier 3. Limewash over block or skim is the sleeper pick for
-"classy" at mid cost.
+2+, everything at Tier 3. Limewash over block or skim is a good middle option.
 
 ## Ceiling
 
 | Option | Cost | Effect |
 |---|---|---|
 | **Open joists, painted out one dark color** (airless-sprayed flat black/near-black: joists, ducts, pipes, all of it) | $300–600 DIY (sprayer rental + paint) / $1.5–3k pro | The boutique-gym ceiling. Keeps every inch of height, hides the chaos by unifying it, keeps access to pipes/wires |
-| Drop ceiling (grid + tile) | $3–6/sq ft | Loses 3–4" minimum under already-low ducts; reads office-park — against the brief |
+| Drop ceiling (grid + tile) | $3–6/sq ft | Loses 3–4" minimum under already-low ducts; looks like an office — not the goal |
 | Drywall ceiling | $5–8/sq ft installed | Cleanest look, best for office zone at Tier 3; loses ~1", but access panels needed at valves/junctions |
 
 **Recommendation:** black-out open ceiling in the gym at every tier. Office
@@ -49,7 +48,7 @@ laminate). Rubber and LVP shrug off both moisture and dropped plates.
 | Option | Cost | Verdict |
 |---|---|---|
 | Blackout curtain on black pipe track, full height | $150–350 | Tier 1. Softens gym noise, disappears when open |
-| Steel-look glass partition (aluminum "Crittall-style" kit or local welder) with swing door | $2–4.5k | Tier 2–3. THE classy-gym move — light passes the whole length of the basement, office stays quiet-ish |
+| Steel-look glass partition (aluminum "Crittall-style" kit or local welder) with swing door | $2–4.5k | Tier 2–3. the big look upgrade — light passes the whole length of the basement, office stays quiet-ish |
 | Open shelving / slat divider | $400–1.2k | Alt if glass is out of budget; keeps sightline, zero sound control |
 | Framed wall + door | $1.5–2.5k | Most privacy, but chops the long space into a corridor — against the brief |
 

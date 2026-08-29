@@ -22,7 +22,7 @@ hand). Store outputs as `mockups/renders/<name>.jpg`.
 
 ## The five shots
 
-**t1-gym — Tier 1 "Iron & Paint"**
+**t1-gym — Tier 1 (budget)**
 > Cinder block walls painted warm bronze-charcoal (near-black warm brown), raw exposed wood
 > joist ceiling with silver ducts left as-is, black rubber stall-mat floor
 > with visible seams, black steel power rack with wooden gymnastic rings and
@@ -33,7 +33,7 @@ hand). Store outputs as `mockups/renders/<name>.jpg`.
 > closing off the near end, clean and organized, budget DIY renovation,
 > moody warm lighting, 35mm interior photograph.
 
-**t2-gym — Tier 2 "The Boutique"**
+**t2-gym — Tier 2 (mid)**
 > Smooth warm espresso painted block walls, ceiling joists, ducts and pipes all
 > spray-painted matte black, a warm LED cove line at the ceiling edge, two large black-framed backlit mirrors with warm halo glow on the long
 > wall, black-steel-framed glass partition wall with a glass door at the
@@ -42,7 +42,7 @@ hand). Store outputs as `mockups/renders/<name>.jpg`.
 > brass wall hooks, charcoal rubber roll flooring, black power rack with
 > wooden rings, warm accent lighting, editorial interior photograph.
 
-**t3-gym — Tier 3 "The Club"**
+**t3-gym — Tier 3 (full build)**
 > White oak slat feature wall with aged brass sconces and a floating oak
 > bench, opposite wall a full-height mirror wall reflecting a black power
 > rack with barbell, flush ceiling painted warm near-black with recessed

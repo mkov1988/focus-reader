@@ -9,9 +9,9 @@ Rule across tiers: **spend on the shell in tier order** — a Tier 1 weekend of
 paint is never wasted money if Tier 2 comes later; the tiers are designed to
 stack.
 
-## Tier 1 — "Iron & Paint" · ~$3.5k–6.5k · 2–4 weekends · all DIY
+## Tier 1 — Budget · ~$3.5k–6.5k · 2–4 weekends · all DIY
 
-The 80/20: paint, rubber, light, curtain. The space looks intentional and
+Paint, rubber, light, curtain. The space looks intentional and
 works day one.
 
 | Item | Est. |
@@ -33,7 +33,7 @@ works day one.
 Not included: any electrical work (lives on existing outlets), any framing,
 any HVAC. Bare bulbs get shaded fixtures but stay on their switches.
 
-## Tier 2 — "The Boutique" · ~$18k–32k · 4–7 weeks · subs for trades, DIY finishes
+## Tier 2 — Mid · ~$18k–32k · 4–7 weeks · subs for trades, DIY finishes
 
 Everything in Tier 1, plus real infrastructure and the glass line.
 
@@ -52,9 +52,9 @@ Everything in Tier 1, plus real infrastructure and the glass line.
 | Contingency 15% | $2,800–5,100 |
 | **Total** | **~$21.5k–39.5k** → value-engineer (DIY drywall, alum. partition kit) to land $18k–32k |
 
-## Tier 3 — "The Club" · ~$40k–70k · 8–12 weeks · GC + permits
+## Tier 3 — Full build · ~$40k–70k · 8–12 weeks · GC + permits
 
-Full finished build, boutique-hotel-gym grade. Everything above, upgraded:
+Full finished build, top-end finish. Everything above, upgraded:
 
 | Item | Est. |
 |---|---|
@@ -66,7 +66,7 @@ Full finished build, boutique-hotel-gym grade. Everything above, upgraded:
 | HVAC done right (mini-split + return rework), smart dimming throughout | $5k–8k |
 | GC coordination + permits + design contingency | $6k–10k |
 | **Total** | **~$43k–72k** |
-| Optional: 2-person cedar sauna in the gym corner (the full classy-gym flex) | +$7k–12k |
+| Optional: 2-person cedar sauna in the gym corner (optional) | +$7k–12k |
 | Optional: turf lane w/ sled strip along the long wall | +$1.5k–3k |
 
 ## What actually drives cost

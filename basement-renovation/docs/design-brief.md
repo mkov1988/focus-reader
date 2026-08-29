@@ -2,12 +2,12 @@
 
 ## The one-liner
 
-A **classy gym that happens to contain an office and a laundry** — not three
-small rooms. One material palette runs the full length so the long, narrow
+One look for the whole space — a good-looking gym that also contains an office
+and a laundry, not three unrelated small rooms. One material palette runs the full length so the long, narrow
 space reads as a single boutique-gym interior: dark painted block, matte black
 steel, warm wood, warm white, controlled pools of light.
 
-## Why "classy gym" works here
+## Why this look fits this basement
 
 The bones already are the aesthetic: block walls, exposed joists, black steel
 rack. Boutique gyms (think hotel gym / climbing-gym lounge) are built from

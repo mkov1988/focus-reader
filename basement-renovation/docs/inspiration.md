@@ -40,9 +40,9 @@ floor with an area rug. Mood: hotel-spa luxe.
 
 | Tier | Takes from | The move |
 |---|---|---|
-| 1 — Iron & Paint | 02 | Bronze-charcoal walls + a warm LED strip line at the ceiling edge (~$150–300 of strip + channel — the cheapest drama in the whole project) |
-| 2 — The Boutique | 01 + 02 | Blacked-out ceiling, LED cove line, backlit mirror pair with halo glow, brass details |
-| 3 — The Club | 03 + 01 | Wood-slat ceiling with integrated light channels, full backlit mirror wall framed by vertical light bars, sauna corner |
+| 1 — Budget | 02 | Bronze-charcoal walls + a warm LED strip line at the ceiling edge (~$150–300 of strip + channel — the cheapest drama in the whole project) |
+| 2 — Mid | 01 + 02 | Blacked-out ceiling, LED cove line, backlit mirror pair with halo glow, brass details |
+| 3 — Full build | 03 + 01 | Wood-slat ceiling with integrated light channels, full backlit mirror wall framed by vertical light bars, sauna corner |
 
 Renders should chase these images: the generation script can attach one of
 them as a style reference alongside the room photo (see

@@ -1,8 +1,8 @@
-# Basement Renovation — "The Club Downstairs"
+# Basement Renovation
 
 One long, narrow basement (~30–40 ft × 10–15 ft) becoming three zones with one
-look: **gym / office / laundry**, styled like a classy boutique gym rather than
-three unrelated rooms. Fridges, coolers, and pantry shelving move to the garage
+look: **gym / office / laundry**, with one consistent look across
+all three (dark warm walls, black steel, brass, oak, built-in warm lighting). Fridges, coolers, and pantry shelving move to the garage
 and are out of scope.
 
 **Status: Phase 0 — planning.** Nothing is decided, nothing is ordered. The
