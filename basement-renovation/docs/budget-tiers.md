@@ -24,7 +24,7 @@ works day one.
 | Finish the existing partition: tape, mud, prime, paint, case the opening | $250–450 |
 | Gym/office divider: full-height blackout curtain on black track | $150–350 |
 | Office: sit/stand desk, chair, rug, lamp (wide range — reuse what exists) | $800–1,800 |
-| Laundry refresh: paint, cabinet hardware, drying rod, counter tidy | $250–500 |
+| Laundry refresh: paint, hardware, drying rod, shelf + bin storage system | $300–600 |
 | Dehumidifier with drain hose | $250–350 |
 | Wall storage: plate pegs, bar holder, hook rail (black steel) | $150–300 |
 | Misc (caulk, covers, tape, rollers) | $200–350 |
@@ -46,7 +46,7 @@ Everything in Tier 1, plus real infrastructure and the glass line.
 | Glass + steel partition with swing door (office/gym) | $2,000–4,500 |
 | Gym floor: 8mm rubber rolls, glued | $1,200–2,200 |
 | Office + laundry LVP installed | $1,200–2,000 |
-| Laundry: counter over machines, backsplash, utility sink + faucet, door hung in partition | $1,500–3,000 |
+| Laundry: counter over machines, backsplash, utility sink + faucet, tall storage unit, door hung in partition | $1,700–3,300 |
 | Mirrors: 2× large backlit panels (warm halo) on gym long wall | $600–1,200 |
 | Doors, trim, paint labor | $1,200–2,500 |
 | Contingency 15% | $2,800–5,100 |

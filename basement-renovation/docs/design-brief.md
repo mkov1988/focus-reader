@@ -41,23 +41,28 @@ and a little brass.
 Order along the length, matching what's already there:
 
 ```
-[ LAUNDRY ~8' ] | partition + ENTRY DOOR | [ OFFICE ~11' ] | new divider | [ GYM ~17' + BACK DOOR on long wall ]
+[ LAUNDRY ~6' + storage ] | partition + THE ONE DOOR | [ OFFICE ~12' ] | new divider | [ GYM ~18' ]
 ```
 
-Two confirmed doors shape the plan: the **entry from the stairs sits in the
-existing laundry/office partition**, so the office side of that wall is the
-arrival zone — keep a clear landing there, no furniture against the door
-swing. And the **gym has a back door on its long wall** — free equipment
-access and airflow, but the mirror wall and rack stay clear of it.
+**One door serves the whole space** — the entry from the stairs, in the
+existing laundry/office partition (Michael, 2026-08-29). The office side of
+that wall is the arrival zone: keep a clear landing, no furniture against
+the swing. (An earlier note about a second door on the gym's long wall is
+withdrawn; Phase 0 still identifies the dark gray panel behind the fridge.)
+
+**Laundry is deliberately the smallest zone** and gets a real storage
+system: shelving over the machines, a tall storage wall beside them,
+sorting bins under the counter.
 
 | Total length | Laundry | Office | Gym |
 |---|---|---|---|
-| 30' | 7' | 9' | 14' |
-| **36' (planning)** | **8'** | **11'** | **17'** |
-| 40' | 8' | 13' | 19' |
+| 30' | 6' | 9' | 15' |
+| **36' (planning)** | **6'** | **12'** | **18'** |
+| 40' | 6' | 14' | 20' |
 
-- **Laundry** keeps the plumbing wall, gains a real counter + sink (tiered),
-  finished partition, a door.
+- **Laundry** keeps the plumbing wall at the smallest possible footprint:
+  machines, counter + sink, and a storage wall (shelving, tall cabinet,
+  bins). Finished partition with the entry door in it.
 - **Office** takes the current storage zone (fridge/pantry → garage). Desk on
   the long wall, storage behind, divider to the gym that lets light through.
 - **Gym** keeps the far end: tallest-feeling zone, rack stays roughly where it

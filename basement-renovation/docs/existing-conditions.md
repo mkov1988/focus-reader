@@ -52,10 +52,10 @@ Items marked **[verify]** need eyes or a tape measure — that's Phase 0 in
 - Currently storage: black wire pantry shelving with food, silver
   fridge/freezer, coolers (all moving to the garage, out of scope), moving
   boxes, folding table.
-- **Back door on the long wall of the gym zone — confirmed by Michael.**
-  The dark gray panel behind the fridge in the photo is likely it. [verify
-  exact position, swing, and where it leads — walkout? bulkhead? another
-  room? It affects egress, equipment moves, and where the mirror wall goes]
+- One dark gray panel against the long wall behind the fridge. Michael has
+  since clarified there is only ONE door into the space (the entry in the
+  partition), so this is probably not a door. [verify what it is — board?
+  access panel?]
 
 ## Gym end (far end)
 
@@ -86,9 +86,9 @@ Equipment staying (the keep list for layout planning):
 2. Slab-to-joist height; slab-to-lowest-obstruction (ducts, pipes) at three
    points along the length.
 3. Laundry room depth (block wall to new partition) and door/opening widths.
-4. Doors: exact position + swing of the entry door (in the laundry/office
-   partition) and the gym back door (long wall); what's on the far side of
-   each. Stairs landing clearance at the entry.
+4. The one entry door (in the laundry/office partition): exact position +
+   swing; stairs landing clearance. Also identify the dark gray panel on
+   the gym long wall (not a door, per Michael — so what is it?).
 5. Find furnace + water heater + panel; photograph panel with the cover
    open.
 6. Windows: any? Sizes + sill heights.

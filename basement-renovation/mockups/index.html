@@ -169,9 +169,9 @@
       <h2>Floor plan</h2>
       <span class="side">SCALE ~1/4" · DIMS UNVERIFIED</span>
     </div>
-    <p>Three zones in the order the basement already wants: laundry stays on its plumbing, the office takes the middle (where the fridges and pantry racks are now — those move to the garage), and the gym keeps the far end. The existing half-built partition stays and gets finished; the new office/gym divider lets light run the full length.</p>
+    <p>Three zones in the order the basement already wants: a deliberately small laundry stays on its plumbing (with a proper storage wall), the office takes the middle (where the fridges and pantry racks are now — those move to the garage), and the gym keeps the far end. The existing half-built partition stays and gets finished; the new office/gym divider lets light run the full length.</p>
     <figure class="board">
-      <svg viewBox="0 0 940 400" role="img" aria-label="Floor plan: laundry 8 feet, office 11 feet, gym 17 feet along a 36 by 12 foot basement, with furniture placed in each zone">
+      <svg viewBox="0 0 940 400" role="img" aria-label="Floor plan: laundry 6 feet with a storage wall, office 12 feet, gym 18 feet along a 36 by 12 foot basement; the single entry door sits in the laundry/office partition">
         <defs>
           <marker id="fp-a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/></marker>
         </defs>
@@ -179,79 +179,77 @@
           <!-- outer block walls -->
           <rect x="56" y="66" width="818" height="280" stroke-width="8" opacity=".9"/>
           <!-- zone tints -->
-          <rect x="60" y="70" width="176" height="272" fill="var(--tint-laundry)" stroke="none"/>
-          <rect x="243" y="70" width="242" height="272" fill="var(--tint-office)" stroke="none"/>
-          <rect x="492" y="70" width="378" height="272" fill="var(--tint-gym)" stroke="none"/>
-          <!-- existing partition; ENTRY door from stairs lives in it -->
-          <line x1="239" y1="70" x2="239" y2="252" stroke-width="7"/>
-          <line x1="239" y1="318" x2="239" y2="342" stroke-width="7"/>
-          <path d="M239,318 A66,66 0 0 1 305,252" stroke-dasharray="3 4" opacity=".7"/>
-          <line x1="239" y1="318" x2="305" y2="252" opacity=".7"/>
-          <line x1="196" y1="285" x2="266" y2="285" marker-end="url(#fp-a)" opacity=".8"/>
-          <!-- back door in gym long wall -->
-          <line x1="552" y1="346" x2="618" y2="346" stroke="var(--surface)" stroke-width="10"/>
-          <line x1="552" y1="346" x2="552" y2="280"/>
-          <path d="M552,280 A66,66 0 0 1 618,346" stroke-dasharray="3 4" opacity=".7"/>
-          <!-- new divider: glass/curtain line w/ 3' opening -->
-          <line x1="489" y1="70" x2="489" y2="240" stroke-width="3" stroke="var(--brass)"/>
-          <line x1="489" y1="306" x2="489" y2="342" stroke-width="3" stroke="var(--brass)"/>
-          <line x1="489" y1="240" x2="489" y2="306" stroke-dasharray="2 5" opacity=".5"/>
-          <!-- LAUNDRY: washer/dryer + counter + door to stairs (assumed) -->
-          <rect x="64" y="76" width="52" height="52"/><circle cx="90" cy="102" r="15"/>
-          <rect x="120" y="76" width="52" height="52"/><circle cx="146" cy="102" r="15"/>
-          <rect x="64" y="292" width="168" height="44"/>
-          <line x1="64" y1="292" x2="232" y2="292" stroke-width="2"/>
-          <!-- OFFICE: desk on top wall, chair, shelves bottom, rug -->
-          <rect x="290" y="76" width="132" height="56"/>
-          <circle cx="356" cy="162" r="17"/>
-          <rect x="270" y="314" width="190" height="22"/>
-          <rect x="280" y="150" width="150" height="120" rx="4" stroke-dasharray="4 4" opacity=".55"/>
-          <!-- GYM: rack on end wall, bench, treadmill top wall, mirror bottom, plates -->
-          <rect x="770" y="158" width="92" height="92" stroke-width="2"/>
-          <line x1="756" y1="204" x2="876" y2="204" stroke-width="2.5"/>
-          <circle cx="768" cy="204" r="9"/><circle cx="864" cy="204" r="9"/>
-          <rect x="656" y="188" width="88" height="32" rx="6"/>
-          <rect x="560" y="76" width="150" height="62" rx="6"/>
-          <line x1="640" y1="342" x2="800" y2="342" stroke-width="5" stroke="var(--brass)"/>
-          <rect x="500" y="80" width="34" height="18"/><rect x="500" y="104" width="34" height="18"/>
+          <rect x="60" y="70" width="132" height="272" fill="var(--tint-laundry)" stroke="none"/>
+          <rect x="199" y="70" width="264" height="272" fill="var(--tint-office)" stroke="none"/>
+          <rect x="468" y="70" width="396" height="272" fill="var(--tint-gym)" stroke="none"/>
+          <!-- partition; THE one entry door lives in it -->
+          <line x1="195" y1="70" x2="195" y2="252" stroke-width="7"/>
+          <line x1="195" y1="318" x2="195" y2="342" stroke-width="7"/>
+          <path d="M195,318 A66,66 0 0 1 261,252" stroke-dasharray="3 4" opacity=".7"/>
+          <line x1="195" y1="318" x2="261" y2="252" opacity=".7"/>
+          <line x1="152" y1="285" x2="222" y2="285" marker-end="url(#fp-a)" opacity=".8"/>
+          <!-- new divider: glass/curtain line w/ opening -->
+          <line x1="466" y1="70" x2="466" y2="240" stroke-width="3" stroke="var(--brass)"/>
+          <line x1="466" y1="306" x2="466" y2="342" stroke-width="3" stroke="var(--brass)"/>
+          <line x1="466" y1="240" x2="466" y2="306" stroke-dasharray="2 5" opacity=".5"/>
+          <!-- LAUNDRY: machines, counter+sink, storage wall -->
+          <rect x="64" y="76" width="50" height="50"/><circle cx="89" cy="101" r="14"/>
+          <rect x="118" y="76" width="50" height="50"/><circle cx="143" cy="101" r="14"/>
+          <rect x="64" y="296" width="124" height="40"/>
+          <line x1="64" y1="296" x2="188" y2="296" stroke-width="2"/>
+          <rect x="170" y="136" width="22" height="124" stroke-width="1.5"/>
+          <line x1="181" y1="136" x2="181" y2="260" stroke-dasharray="2 3" opacity=".6"/>
+          <!-- OFFICE: desk, chair, shelves, rug -->
+          <rect x="250" y="76" width="132" height="56"/>
+          <circle cx="316" cy="162" r="17"/>
+          <rect x="232" y="314" width="190" height="22"/>
+          <rect x="240" y="150" width="150" height="120" rx="4" stroke-dasharray="4 4" opacity=".55"/>
+          <!-- GYM: rack on end wall, bench, treadmill, mirror wall, plates -->
+          <rect x="766" y="158" width="92" height="92" stroke-width="2"/>
+          <line x1="752" y1="204" x2="872" y2="204" stroke-width="2.5"/>
+          <circle cx="764" cy="204" r="9"/><circle cx="860" cy="204" r="9"/>
+          <rect x="652" y="188" width="88" height="32" rx="6"/>
+          <rect x="545" y="76" width="150" height="62" rx="6"/>
+          <line x1="540" y1="342" x2="810" y2="342" stroke-width="5" stroke="var(--brass)"/>
+          <rect x="476" y="80" width="34" height="18"/><rect x="476" y="104" width="34" height="18"/>
         </g>
         <!-- dimension lines -->
         <g stroke="currentColor" stroke-width="1" opacity=".75">
           <line x1="60" y1="40" x2="870" y2="40" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
           <line x1="30" y1="70" x2="30" y2="342" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
-          <line x1="60" y1="372" x2="236" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
-          <line x1="243" y1="372" x2="485" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
-          <line x1="492" y1="372" x2="870" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
+          <line x1="60" y1="372" x2="192" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
+          <line x1="199" y1="372" x2="463" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
+          <line x1="468" y1="372" x2="864" y2="372" marker-start="url(#fp-a)" marker-end="url(#fp-a)"/>
         </g>
         <g fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="12">
           <text x="465" y="32" text-anchor="middle">36'-0" (verify)</text>
           <text x="22" y="210" text-anchor="middle" transform="rotate(-90 22 210)">12'-0" (verify)</text>
-          <text x="148" y="390" text-anchor="middle">8'-0"</text>
-          <text x="364" y="390" text-anchor="middle">11'-0"</text>
-          <text x="681" y="390" text-anchor="middle">17'-0"</text>
+          <text x="126" y="390" text-anchor="middle">6'-0"</text>
+          <text x="331" y="390" text-anchor="middle">12'-0"</text>
+          <text x="666" y="390" text-anchor="middle">18'-0"</text>
         </g>
         <g fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">
-          <text x="148" y="222" text-anchor="middle" letter-spacing="2">LAUNDRY</text>
-          <text x="364" y="222" text-anchor="middle" letter-spacing="2">OFFICE</text>
+          <text x="126" y="220" text-anchor="middle" letter-spacing="1">LNDRY</text>
+          <text x="331" y="222" text-anchor="middle" letter-spacing="2">OFFICE</text>
           <text x="640" y="290" text-anchor="middle" letter-spacing="2">GYM</text>
         </g>
         <g fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="10" opacity=".72">
-          <text x="90" y="140" text-anchor="middle">W</text>
-          <text x="146" y="140" text-anchor="middle">D</text>
-          <text x="148" y="308" text-anchor="middle">counter + sink</text>
-          <text x="356" y="98" text-anchor="middle">desk</text>
-          <text x="365" y="331" text-anchor="middle">shelves</text>
-          <text x="816" y="146" text-anchor="middle">rack</text>
-          <text x="635" y="153" text-anchor="middle">treadmill</text>
-          <text x="724" y="362" text-anchor="middle">mirror wall</text>
-          <text x="517" y="137" text-anchor="middle">plates</text>
-          <text x="610" y="178" text-anchor="middle" font-size="9.5">open lifting lane ≥ 6' wide</text>
-          <text x="286" y="303" fill="var(--brass)">ENTRY · door from stairs</text>
-          <text x="585" y="268" text-anchor="middle" fill="var(--brass)">BACK DOOR</text>
-          <text x="497" y="56" fill="var(--brass)">divider: curtain (T1) / glass (T2+)</text>
+          <text x="89" y="140" text-anchor="middle">W</text>
+          <text x="143" y="140" text-anchor="middle">D</text>
+          <text x="126" y="318" text-anchor="middle">counter + sink</text>
+          <text x="181" y="200" text-anchor="middle" transform="rotate(-90 181 200)" font-size="9">storage</text>
+          <text x="316" y="98" text-anchor="middle">desk</text>
+          <text x="327" y="331" text-anchor="middle">shelves</text>
+          <text x="812" y="146" text-anchor="middle">rack</text>
+          <text x="620" y="153" text-anchor="middle">treadmill</text>
+          <text x="700" y="362" text-anchor="middle">mirror wall</text>
+          <text x="493" y="137" text-anchor="middle">plates</text>
+          <text x="590" y="178" text-anchor="middle" font-size="9.5">open lifting lane ≥ 6' wide</text>
+          <text x="243" y="303" fill="var(--brass)">ENTRY · the one door, from stairs</text>
+          <text x="474" y="56" fill="var(--brass)">divider: curtain (T1) / glass (T2+)</text>
         </g>
       </svg>
-      <figcaption>Layout A (default). The entry door from the stairs sits in the existing laundry/office partition; the back door is on the gym's long wall (both positions approximate until measured — the mirror wall and equipment stay clear of the door swing). The brass line is the new office/gym divider — curtain at Tier 1, steel-framed glass at Tier 2+.</figcaption>
+      <figcaption>Layout A (default). One door into the whole space — in the existing laundry/office partition (position along the wall approximate until measured). Laundry is deliberately the smallest zone and gets a storage wall beside the machines. The brass line is the new office/gym divider — curtain at Tier 1, steel-framed glass at Tier 2+.</figcaption>
     </figure>
 
     <div class="grid2">
@@ -260,9 +258,9 @@
         <div class="tablewrap"><table>
           <thead><tr><th>If total length is</th><th>Laundry</th><th>Office</th><th>Gym</th></tr></thead>
           <tbody>
-            <tr><td>30'</td><td class="num" style="text-align:left">7'</td><td class="num" style="text-align:left">9'</td><td class="num" style="text-align:left">14'</td></tr>
-            <tr><td><b>36' (planning)</b></td><td class="num" style="text-align:left"><b>8'</b></td><td class="num" style="text-align:left"><b>11'</b></td><td class="num" style="text-align:left"><b>17'</b></td></tr>
-            <tr><td>40'</td><td class="num" style="text-align:left">8'</td><td class="num" style="text-align:left">13'</td><td class="num" style="text-align:left">19'</td></tr>
+            <tr><td>30'</td><td class="num" style="text-align:left">6'</td><td class="num" style="text-align:left">9'</td><td class="num" style="text-align:left">15'</td></tr>
+            <tr><td><b>36' (planning)</b></td><td class="num" style="text-align:left"><b>6'</b></td><td class="num" style="text-align:left"><b>12'</b></td><td class="num" style="text-align:left"><b>18'</b></td></tr>
+            <tr><td>40'</td><td class="num" style="text-align:left">6'</td><td class="num" style="text-align:left">14'</td><td class="num" style="text-align:left">20'</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -272,11 +270,11 @@
         <svg viewBox="0 0 460 74" role="img" aria-label="Layout B strip: laundry, then gym in the middle, then office at the far end">
           <g stroke="currentColor" fill="none">
             <rect x="8" y="10" width="444" height="54" stroke-width="3"/>
-            <line x1="106" y1="10" x2="106" y2="64" stroke-width="3"/>
+            <line x1="86" y1="10" x2="86" y2="64" stroke-width="3"/>
             <line x1="300" y1="10" x2="300" y2="64" stroke-width="2" stroke="var(--brass)"/>
           </g>
           <g fill="currentColor" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">
-            <text x="57" y="41">LAUNDRY</text><text x="203" y="41">GYM</text><text x="376" y="41">OFFICE</text>
+            <text x="47" y="41" font-size="9.5">LNDRY</text><text x="193" y="41">GYM</text><text x="376" y="41">OFFICE</text>
           </g>
         </svg>
       </div>
@@ -426,7 +424,7 @@
           <g stroke="#7C766A" stroke-width="1">
             <line x1="49" y1="450" x2="831" y2="450"/><line x1="49" y1="444" x2="49" y2="456"/><line x1="831" y1="444" x2="831" y2="456"/>
           </g>
-          <text x="440" y="443" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#A9A399">GYM ELEVATION · 17'-0" · PAINTED BLOCK + LED COVE LINE + STALL MATS + CURTAIN</text>
+          <text x="440" y="443" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#A9A399">GYM ELEVATION · 18'-0" · PAINTED BLOCK + LED COVE LINE + STALL MATS + CURTAIN</text>
         </svg>
         <figcaption>Tier 1 gym wall: block painted “Bronze Charcoal,” joists left raw, a warm LED cove line at the ceiling edge, plug-in black linear LEDs, 3/4" stall mats, curtain divider. Rack, rings, bar, bench, treadmill — all gear you already own.</figcaption>
       </figure>
@@ -487,7 +485,7 @@
             <li><b>Light</b> — warm LED strip line at the ceiling edge (the inspo cove line, ~$150 of strip + channel) + 4 plug-in black linear bars; bare bulbs retired</li>
             <li><b>Partition</b> — mud, sand, prime, paint; case the opening</li>
             <li><b>Divider</b> — blackout curtain on a black pipe track</li>
-            <li><b>Laundry</b> — paint, brass-ish hardware, wall drying rod</li>
+            <li><b>Laundry</b> — paint, brass-ish hardware, wall drying rod, storage: shelving over the machines + sorting bins</li>
             <li><b>Air</b> — dehumidifier with a drain hose (the basement MVP)</li>
           </ul>
         </div>
@@ -697,7 +695,7 @@
             <li><b>Light</b> — LED cove line at the ceiling edge, backlit mirror halos, linear pendants on dimmers</li>
             <li><b>The glass line</b> — steel-framed glass partition with swing door</li>
             <li><b>Floors</b> — glued 8mm rubber rolls in the gym, LVP installed elsewhere</li>
-            <li><b>Laundry</b> — counter over machines, tile backsplash, utility sink, real door</li>
+            <li><b>Laundry</b> — counter over machines, tile backsplash, utility sink, tall storage unit, real door</li>
           </ul>
         </div>
         <div>

@@ -5,7 +5,7 @@
 The measuring trip. Full detail in `docs/existing-conditions.md` → checklist.
 
 - [ ] Measure: length, width (both ends), slab-to-joist, slab-to-lowest-duct
-- [ ] Doors: entry door (laundry/office partition) + gym back door — exact positions, swings, what's on the far side of each
+- [ ] The one entry door (laundry/office partition): exact position + swing; identify the dark gray panel on the gym long wall
 - [ ] Locate + photograph: panel (cover open), furnace, water heater, sump/floor drain
 - [ ] Windows: any? sizes?
 - [ ] Moisture test: plastic squares on wall ×2 + slab ×1, read at 48h
