@@ -43,14 +43,27 @@ access (open painted, or removable panels) because the DWV plumbing lives there.
 Basement rule: nothing that hates moisture (no solid hardwood, no bare
 laminate). Rubber and LVP shrug off both moisture and dropped plates.
 
-## Office/gym divider
+## Desk nook (the office is one desk now, made intentional)
 
-| Option | Cost | Verdict |
+| Move | Cost | Effect |
 |---|---|---|
-| Blackout curtain on black pipe track, full height | $150–350 | Tier 1. Softens gym noise, disappears when open |
-| Steel-look glass partition (aluminum "Crittall-style" kit or local welder) with swing door | $2–4.5k | Tier 2–3. the big look upgrade — light passes the whole length of the basement, office stays quiet-ish |
-| Open shelving / slat divider | $400–1.2k | Alt if glass is out of budget; keeps sightline, zero sound control |
-| Framed wall + door | $1.5–2.5k | Most privacy, but chops the long space into a corridor — against the brief |
+| Slat or painted feature panel behind the desk | $150–500 DIY | Frames the nook so it reads designed, not leftover |
+| Floating desk (wall-mounted oak top) | $150–400 DIY / $1–2k millwork at T3 | No legs = smaller footprint, cleaner |
+| Sconce + rug + LVP pad underfoot | $200–500 | Its own light and ground = its own zone |
+| Low open shelf or half-height glass screen at the gym side | $300–1.5k | Optional edge without closing the room |
+
+## Bathroom (new, 6'×8' beside the laundry)
+
+- Placement is fixed by plumbing: shares the laundry wet wall + stack.
+- Layout: 32–36" shower in the outer corner, toilet on the plumbing wall,
+  compact vanity; door off the entry landing (in the partition).
+- Must-haves: exhaust fan (code), GFCI, moisture-rated board, waterproofed
+  shower surround, slab cut for drains.
+- The wildcard: **sewer depth**. Drains below sewer level need a sewage
+  ejector pit + pump (~$2–4k). Phase 0 finds the stack, cleanout, and depth.
+- Tier 2 = fiberglass/acrylic shower unit + standard fixtures. Tier 3 = tiled
+  walk-in with glass, wall-hung vanity, heated floor option.
+- A bathroom cannot be Tier 1: plumbing + permits by definition.
 
 ## Lighting (all tiers, scaled)
 

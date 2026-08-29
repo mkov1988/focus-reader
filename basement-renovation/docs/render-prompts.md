@@ -84,3 +84,18 @@ not the room)."* The generation script does this automatically:
 | t1-gym | inspiration/02-black-light-bars.jpg |
 | t2-gym, t2-office, t2-laundry | inspiration/01-halo-mirrors-cove.jpg |
 | t3-gym | inspiration/03-wood-ceiling-luxe.jpg |
+
+## Added 2026-08-30: bathroom + desk nook shots
+
+**bath — Tier 2/3** (concept mode)
+> Photorealistic small basement bathroom, 6 by 8 feet, walk-in shower with
+> warm white square tile, black-framed glass, wall-hung wood vanity with a
+> round backlit mirror glowing warm, matte black fixtures with brass
+> accents, dark warm painted walls, warm LED strip light, editorial
+> interior photograph.
+
+**desk-nook — all tiers** (concept mode, or same-room on the gym photo's near end)
+> Photorealistic desk nook along the wall of a dark moody home gym: floating
+> oak desk, wood slat panel behind it, warm brass sconce, small dark rug,
+> laptop, plant, warm pool of light in a dark bronze room, editorial
+> interior photograph.

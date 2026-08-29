@@ -2,8 +2,8 @@
 
 ## The one-liner
 
-One look for the whole space — a good-looking gym that also contains an office
-and a laundry, not three unrelated small rooms. One material palette runs the full length so the long, narrow
+One look for the whole space — a good-looking gym that also contains a small
+bathroom, a laundry, and a desk nook, not a warren of little rooms. One material palette runs the full length so the long, narrow
 space reads as a single boutique-gym interior: dark painted block, matte black
 steel, warm wood, warm white, controlled pools of light.
 
@@ -41,7 +41,7 @@ and a little brass.
 Order along the length, matching what's already there:
 
 ```
-[ LAUNDRY ~6' + storage ] | partition + THE ONE DOOR | [ OFFICE ~12' ] | new divider | [ GYM ~18' ]
+[ WET BLOCK ~8': LAUNDRY 6'x8' over BATH 6'x8' ] | partition + ENTRY DOOR + BATH DOOR | [ GYM ~28' with DESK NOOK by the door ]
 ```
 
 **One door serves the whole space** — the entry from the stairs, in the
@@ -54,32 +54,41 @@ withdrawn; Phase 0 still identifies the dark gray panel behind the fridge.)
 system: shelving over the machines, a tall storage wall beside them,
 sorting bins under the counter.
 
-| Total length | Laundry | Office | Gym |
-|---|---|---|---|
-| 30' | 6' | 9' | 15' |
-| **36' (planning)** | **6'** | **12'** | **18'** |
-| 40' | 6' | 14' | 20' |
+**A small 3-piece bathroom (2026-08-30)** — toilet, shower, sink — sits
+beside the laundry in the wet block, 6'×8', sharing the wet wall and stack
+for the shortest drain runs. Its door opens off the entry landing, in the
+partition next to the entry door. Below-slab drainage is the open risk: if
+the sewer line runs high, it needs a sewage ejector pump (~$2–4K). Bathroom
+work starts at Tier 2 by definition (plumbing + permits).
+
+**The office is now a desk nook, not a room (2026-08-30).** One floating
+desk along the wall just inside the entry, made intentional rather than
+leftover: a slat or painted feature panel behind it, a sconce, a rug, LVP
+underfoot. The gym runs as one continuous ~22–28' room past it; no glass
+partition, no divider.
+
+| Total length | Wet block (laundry + bath) | Gym incl. desk nook |
+|---|---|---|
+| 30' | 8' | 22' |
+| **36' (planning)** | **8'** | **28'** |
+| 40' | 8' | 32' |
 
 - **Laundry** keeps the plumbing wall at the smallest possible footprint:
   machines, counter + sink, and a storage wall (shelving, tall cabinet,
   bins). Finished partition with the entry door in it.
-- **Office** takes the current storage zone (fridge/pantry → garage). Desk on
-  the long wall, storage behind, divider to the gym that lets light through.
-- **Gym** keeps the far end: tallest-feeling zone, rack stays roughly where it
-  is on the end wall, treadmill folded against the long wall, mirror + plate
-  storage on the opposite long wall, open floor lane in the middle.
+- **Desk nook** sits along the long wall just inside the entry door — desk,
+  panel, sconce, rug. Open to the gym; no wall, no divider.
+- **Gym** owns everything past the partition (~22–28'): rack on the end
+  wall, treadmill against the long wall, mirror + plate storage opposite,
+  open lifting lane down the middle.
 
-## Layout options
+## Layout notes
 
-- **Layout A (default): laundry | office | gym.** Matches existing equipment
-  and plumbing; office is buffered from the gym by a glass or curtain divider
-  and from laundry noise by the (insulated, finished) existing partition.
-  Cost: you pass through the office to reach the gym.
-- **Layout B: laundry | gym | office.** Office gets the quiet far end and a
-  real door; gym sits in the middle with pass-through traffic. Cost: barbell
-  noise lives next to both other zones, and the rack moves off the end wall.
-- Call: **A unless Phase 0 finds a window at the far end** (a daylight office
-  would flip the answer to B).
+- The wet block (laundry + bath) is fixed by plumbing; the rest is one gym.
+- If Phase 0 finds the entry door on the other half of the partition, mirror
+  the laundry/bath split — the program doesn't change.
+- The desk nook can slide along the wall to wherever the panel + outlet land
+  best; it just stays out of the lifting lane.
 
 ## Experience details that make it "classy"
 
@@ -88,9 +97,9 @@ sorting bins under the counter.
   glowing ceiling channels and vertical light bars (Tier 3) — plus bright
   even task light for lifting and the laundry counter. Everything dimmable.
   No bare bulbs anywhere, no visible fixtures where a glow can do the job.
-- The divider between office and gym is glass or open — the gym should be
-  *visible* from the desk (that's the vibe and the nudge to use it).
+- The desk nook lives inside the gym on purpose — working at it, the room
+  is the view (and the nudge to use it).
 - Storage is part of the look: plates on wall pegs, bar in a vertical holder,
   rings hung on a hook — black steel against the dark wall like a shop wall.
-- One rug moment in the office; one plant that tolerates basements; art is
+- One rug moment at the desk nook; one plant that tolerates basements; art is
   a single large framed print per zone, not clutter.

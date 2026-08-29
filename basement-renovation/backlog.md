@@ -9,6 +9,7 @@ The measuring trip. Full detail in `docs/existing-conditions.md` → checklist.
 - [ ] Locate + photograph: panel (cover open), furnace, water heater, sump/floor drain
 - [ ] Windows: any? sizes?
 - [ ] Moisture test: plastic squares on wall ×2 + slab ×1, read at 48h
+- [ ] Sewer: locate main stack + cleanout, estimate sewer depth (bathroom gravity vs ejector)
 - [ ] Radon test kit in the gym end
 - [ ] Scratch-test the tan floor surface in a corner
 - [ ] Update `docs/existing-conditions.md` with real numbers; a session then re-scales the plan + mockups
@@ -18,7 +19,7 @@ The measuring trip. Full detail in `docs/existing-conditions.md` → checklist.
 - [ ] Pick tier (or "Tier 1 now, wired for Tier 2")
 - [ ] Walls: paint / skim / frame (see options.md recommendation)
 - [ ] Layout A vs B
-- [ ] Divider: curtain vs glass
+- [ ] Bathroom timing: full build at Tier 2 vs rough-in now, finish at Tier 3
 - [ ] Generate photorealistic renders per `docs/render-prompts.md` (blocked on an image-model route: Vertex/Gemini key, Figma↔Weave link, or by hand) and embed them in the tier boards
 - [ ] Update mockups to the chosen combo; produce final shopping list with real quantities
 

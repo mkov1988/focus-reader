@@ -1,8 +1,8 @@
 # Basement Renovation
 
-One long, narrow basement (~30–40 ft × 10–15 ft) becoming three zones with one
-look: **gym / office / laundry**, with one consistent look across
-all three (dark warm walls, black steel, brass, oak, built-in warm lighting). Fridges, coolers, and pantry shelving move to the garage
+One long, narrow basement (~30–40 ft × 10–15 ft) becoming a gym-first space with one
+look: **gym / small bathroom / laundry / desk nook**, with one consistent look throughout
+(dark warm walls, black steel, brass, oak, built-in warm lighting). Fridges, coolers, and pantry shelving move to the garage
 and are out of scope.
 
 **Status: Phase 0 — planning.** Nothing is decided, nothing is ordered. The
@@ -27,7 +27,7 @@ dimensions below are estimates from Michael's description and two photos;
 
 1. **Tier** — pick a price point (or a "start Tier 1, wire for Tier 2" path).
 2. **Walls** — keep + paint the block, skim-coat it, or frame + drywall. See `docs/options.md`.
-3. **Layout** — A (office in the middle) vs B (office at the far end). See `docs/design-brief.md`.
+3. **Bathroom timing** — full build at Tier 2, or rough-in now and finish at Tier 3. See `docs/design-brief.md`.
 4. **Measurements** — run the Phase 0 checklist in `docs/existing-conditions.md`.
 
 ## Housekeeping: this should be its own repo

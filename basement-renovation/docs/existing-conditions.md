@@ -95,7 +95,9 @@ Equipment staying (the keep list for layout planning):
 7. Moisture test: tape a 2'×2' plastic square tight to the block in two spots
    (gym end + one long wall) and to the slab; check for condensation under it
    after 48h. Result decides paint type and flooring underlayment.
-8. Radon: drop a ~$20 test kit in the gym end for 48–96h (it's a basement
+8. Sewer: find the main stack + cleanout; estimate how deep the sewer line
+   runs (gravity drain vs ejector pump for the new bathroom).
+9. Radon: drop a ~$20 test kit in the gym end for 48–96h (it's a basement
    people will exercise and work in all day).
 9. What is the tan floor surface — paint, or an overlay? Scratch an obscure
    corner.
