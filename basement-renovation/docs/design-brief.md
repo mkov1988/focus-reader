@@ -16,18 +16,25 @@ same direction — keep the industrial shell, refine it, light it well.
 
 ## Palette (all tiers, deepening as tiers rise)
 
+> **Pivot 2026-08-29:** moved off deep green to warm charcoal/bronze per
+> Michael's reference images — see `docs/inspiration.md` and `inspiration/`.
+> Green now appears only as plants.
+
 | Role | Spec | Where |
 |---|---|---|
-| Anchor dark | deep green-charcoal (SW Pewter Green / Iron Ore family) | gym feature walls, accents |
-| Field light | warm white (SW Alabaster family) | most walls, laundry |
-| Steel | matte black | rack (existing), fixtures, partition frames, hardware |
-| Wood | white oak / walnut tone | bench tops, desk, shelves, slats (T3) |
-| Metal accent | aged brass/bronze | knobs, hooks, sconces (Tier 2+) |
+| Anchor dark | warm bronze-charcoal (SW Urbane Bronze / Iron Ore family) | gym walls, doors, accents |
+| Field light | warm greige-white (SW Alabaster / Accessible Beige family) | office, laundry |
+| Steel | matte black | rack (existing), fixtures, partition frames |
+| Metal accent | aged brass / champagne | equipment details, knobs, hooks, sconces |
+| Wood | white oak / walnut | slats, desk, counters, bench |
+| **Light** | warm-white LED (~2700K) as architecture | cove perimeter line, backlit mirrors, vertical bars, ceiling channels — the signature of the whole build |
+| Green | plants only | one per zone |
 | Gym floor | charcoal rubber | gym zone |
 | Office floor | oak-tone LVP | office (and laundry Tier 1–2) |
 
-Rule of thumb: floors and lower walls go dark and tough; upper surfaces go
-warm and light; nothing shiny except glass and a little brass.
+Rule of thumb: surfaces go dark, warm, and matte; the drama comes from
+engineered glow on those dark surfaces; nothing shiny except mirror, glass,
+and a little brass.
 
 ## Zone program (planning basis 36' × 12', flexes with real measurements)
 
@@ -71,9 +78,11 @@ access and airflow, but the mirror wall and rack stay clear of it.
 
 ## Experience details that make it "classy"
 
-- Light in layers: bright + even for lifting (linear fixtures between joists),
-  warm + low for the office (sconce/lamp), task light at the laundry counter.
-  Everything dimmable. No bare bulbs anywhere.
+- Light in layers, light as architecture: a warm LED strip line where wall
+  meets ceiling (Tier 1's cheapest big move), backlit halo mirrors (Tier 2+),
+  glowing ceiling channels and vertical light bars (Tier 3) — plus bright
+  even task light for lifting and the laundry counter. Everything dimmable.
+  No bare bulbs anywhere, no visible fixtures where a glow can do the job.
 - The divider between office and gym is glass or open — the gym should be
   *visible* from the desk (that's the vibe and the nudge to use it).
 - Storage is part of the look: plates on wall pegs, bar in a vertical holder,

@@ -16,9 +16,9 @@ works day one.
 
 | Item | Est. |
 |---|---|
-| Masonry primer + paint: deep green-charcoal gym walls, warm white elsewhere | $450–700 |
+| Masonry primer + paint: warm bronze-charcoal gym walls, greige-white elsewhere | $450–700 |
 | Gym ceiling black-out (airless sprayer rental) — or skip and just relamp | $150–450 |
-| 4× linear black LED shop lights (plug-in, dimmable) + laundry/office fixtures | $350–600 |
+| Warm LED cove strip + channel, 4× black linear bars (plug-in, dimmable) + laundry/office fixtures | $350–600 |
 | Gym floor: 9× 4'×6' 3/4" rubber stall mats (~204 sq ft) | $650–900 |
 | Office floor: click LVP + underlayment (~132 sq ft) | $450–750 |
 | Finish the existing partition: tape, mud, prime, paint, case the opening | $250–450 |
@@ -47,7 +47,7 @@ Everything in Tier 1, plus real infrastructure and the glass line.
 | Gym floor: 8mm rubber rolls, glued | $1,200–2,200 |
 | Office + laundry LVP installed | $1,200–2,000 |
 | Laundry: counter over machines, backsplash, utility sink + faucet, door hung in partition | $1,500–3,000 |
-| Mirrors: 2× large framed panels on gym long wall | $600–1,200 |
+| Mirrors: 2× large backlit panels (warm halo) on gym long wall | $600–1,200 |
 | Doors, trim, paint labor | $1,200–2,500 |
 | Contingency 15% | $2,800–5,100 |
 | **Total** | **~$21.5k–39.5k** → value-engineer (DIY drywall, alum. partition kit) to land $18k–32k |

@@ -55,7 +55,8 @@ laminate). Rubber and LVP shrug off both moisture and dropped plates.
 
 ## Lighting (all tiers, scaled)
 
-- Gym: 4–6 linear LED bars (black housings) run between/under joists, 4000K,
+- Gym: a warm LED cove strip line where wall meets ceiling, plus 4–6 black
+  linear LED bars under the joists, 2700–3500K,
   dimmable. Tier 1 = plug-in versions on the existing circuit; Tier 2+ =
   hardwired on dimmers.
 - Office: no overhead glare — wall sconce + desk lamp at 2700–3000K; recessed

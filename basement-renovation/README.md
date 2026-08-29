@@ -18,6 +18,7 @@ dimensions below are estimates from Michael's description and two photos;
 | `docs/options.md` | Wall / ceiling / floor / partition choices with tradeoffs (incl. "paint the block or finish it?") |
 | `docs/budget-tiers.md` | Three price points with line items: ~$3.5–6.5k, ~$18–32k, ~$40–70k |
 | `docs/render-prompts.md` | Prompt pack for photorealistic AI renders (Nano Banana / any model), incl. same-room mode using `photos/` |
+| `docs/inspiration.md` + `inspiration/` | Michael's reference images and the design language extracted from them — source of the warm-charcoal + light-as-architecture direction |
 | `mockups/index.html` | Visual mockups: floor plan + per-tier look boards. Open in any browser. Also published (private to Michael's Claude account): <https://claude.ai/code/artifact/4fea912c-6902-4d43-8915-c9d3ac2a55b3> |
 | `backlog.md` | Phased task list; Phase 0 is Michael-with-a-tape-measure |
 | `photos/` | Current-state photos (Aug 2026), rotated upright |

@@ -26,6 +26,18 @@ OUT_DIR = os.path.join(ROOT, "mockups", "renders")
 PHOTO_GYM = os.path.join(ROOT, "photos", "2026-08-gym-end.jpg")
 PHOTO_LAUNDRY = os.path.join(ROOT, "photos", "2026-08-laundry-end.jpg")
 MODELS = ["gemini-2.5-flash-image", "gemini-2.5-flash-image-preview"]
+INSPO = os.path.join(ROOT, "inspiration")
+STYLE_REFS = {
+    "t1-gym": os.path.join(INSPO, "02-black-light-bars.jpg"),
+    "t2-gym": os.path.join(INSPO, "01-halo-mirrors-cove.jpg"),
+    "t3-gym": os.path.join(INSPO, "03-wood-ceiling-luxe.jpg"),
+    "t2-office": os.path.join(INSPO, "01-halo-mirrors-cove.jpg"),
+    "t2-laundry": os.path.join(INSPO, "01-halo-mirrors-cove.jpg"),
+}
+STYLE_NOTE = (
+    " Match the lighting mood, material palette and level of finish of the last "
+    "reference image (it is style inspiration, not the room)."
+)
 
 SAME_ROOM = (
     "Renovate this exact basement room, keeping the same camera angle, room "
@@ -35,28 +47,31 @@ SAME_ROOM = (
 
 SHOTS = {
     "t1-gym": {"photo": PHOTO_GYM, "prompt": SAME_ROOM + (
-        "paint the cinder block walls a deep forest green-charcoal, keep the raw exposed wood "
+        "paint the cinder block walls a warm bronze-charcoal (near-black warm brown), keep the raw exposed wood "
         "joist ceiling and silver ducts as-is, lay black rubber stall-mat flooring with visible "
         "seams, keep the black steel power rack with wooden gymnastic rings and add a loaded "
         "barbell on it, adjustable bench nearby, the black folding treadmill parked against the "
         "side wall, hang two slim black linear LED shop lights under the joists casting warm "
-        "pools of light, add a full-height dark charcoal blackout curtain closing off the near "
+        "pools of light, run a warm LED strip line where the wall meets the ceiling, add a "
+        "full-height dark charcoal blackout curtain closing off the near "
         "end, everything clean and organized. Budget DIY renovation, moody warm lighting, "
         "photorealistic interior photograph.")},
     "t2-gym": {"photo": PHOTO_GYM, "prompt": SAME_ROOM + (
-        "give the block walls a smooth deep green painted finish, spray-paint the entire ceiling "
-        "- joists, ducts and pipes - matte black, add two large black-framed mirrors against the "
+        "give the block walls a smooth warm espresso painted finish, spray-paint the entire ceiling "
+        "- joists, ducts and pipes - matte black, add two large black-framed backlit mirrors "
+        "with warm halo glow against the "
         "long wall, glue down charcoal rubber roll flooring, keep the black power rack with "
         "wooden rings, add an oak shelf and steel pegs holding black bumper plates with aged "
-        "brass wall hooks, hang suspended black linear pendant lights, and at the near end add a "
+        "brass wall hooks, hang suspended black linear pendant lights, run a warm LED cove line at the ceiling edge, and at the near end add a "
         "black-steel-framed glass partition wall with a glass door glowing warm from an office "
         "beyond. Boutique gym, warm accent lighting, photorealistic editorial interior "
         "photograph.")},
     "t3-gym": {"photo": PHOTO_GYM, "prompt": SAME_ROOM + (
         "transform it into a luxury boutique-hotel-style gym: one long wall clad in white oak "
         "slats with aged brass sconces and a floating oak bench, the opposite wall a full-height "
-        "mirror wall reflecting the black power rack with barbell, a flush painted ceiling in "
-        "warm near-black with recessed downlights and a warm cove glow washing the oak slats, "
+        "backlit mirror wall framed by vertical LED light bars, reflecting the black power rack "
+        "with barbell, a wood-slat ceiling with integrated warm linear light channels, recessed "
+        "downlights and a warm cove glow washing the oak slats, "
         "premium charcoal rubber floor, and a cedar sauna door with a glass window in the far "
         "corner. Unlacquered brass details, dramatic warm lighting, photorealistic Architectural "
         "Digest interior photograph.")},
@@ -64,15 +79,15 @@ SHOTS = {
         "Renovate this exact basement laundry room, keeping the same camera angle, room geometry "
         "and the two black front-load machines. Finish and paint all drywall warm white, mud and "
         "paint the unfinished wall seams, build a butcher-block oak counter over the two "
-        "machines, add a white square-tile backsplash, deep green painted cabinets with aged "
+        "machines, add a white square-tile backsplash, espresso-painted cabinets with aged "
         "brass knobs, a white utility sink, a drying rod with hangers, woven baskets, oak vinyl "
         "plank floor, bright even warm lighting. Photorealistic editorial interior photograph.")},
     "t2-office": {"photo": None, "aspect": "4:3", "prompt": (
         "Photorealistic interior photograph: a cozy refined basement home office, about 11 by 12 "
         "feet, warm white walls, oak luxury vinyl plank floor, walnut desk with a monitor and "
         "warm brass desk lamp, and behind the desk a black-steel-framed glass partition wall "
-        "looking into a moody dark green home gym with a black power rack and warm accent "
-        "lighting, warm wall sconce, dark green wool rug, one large framed art print, potted "
+        "looking into a moody warm charcoal home gym with a black power rack and warm accent "
+        "lighting, warm wall sconce, charcoal wool rug, one large framed art print, potted "
         "plant. Quiet, editorial interior photography.")},
 }
 
@@ -95,16 +110,25 @@ def call(model, payload, key):
         return -1, {"_error": str(e)[:300]}
 
 
-def build_payload(prompt, photo=None, aspect=None):
+def _img_part(path, max_side=1536):
+    from PIL import Image
+    im = Image.open(path)
+    im.thumbnail((max_side, max_side))
+    buf = io.BytesIO()
+    im.convert("RGB").save(buf, "JPEG", quality=85)
+    return {"inlineData": {"mimeType": "image/jpeg",
+                           "data": base64.b64encode(buf.getvalue()).decode()}}
+
+
+def build_payload(prompt, photo=None, aspect=None, style=None):
+    use_style = style and os.path.exists(style)
+    if use_style:
+        prompt += STYLE_NOTE
     parts = [{"text": prompt}]
     if photo:
-        from PIL import Image
-        im = Image.open(photo)
-        im.thumbnail((1536, 1536))
-        buf = io.BytesIO()
-        im.convert("RGB").save(buf, "JPEG", quality=85)
-        parts.append({"inlineData": {"mimeType": "image/jpeg",
-                                     "data": base64.b64encode(buf.getvalue()).decode()}})
+        parts.append(_img_part(photo))
+    if use_style:
+        parts.append(_img_part(style, max_side=1024))
     cfg = {"responseModalities": ["TEXT", "IMAGE"]}
     if aspect and not photo:
         cfg["imageConfig"] = {"aspectRatio": aspect}
@@ -148,7 +172,7 @@ def main():
     failures = 0
     for name in names:
         s = SHOTS[name]
-        payload = build_payload(s["prompt"], s.get("photo"), s.get("aspect"))
+        payload = build_payload(s["prompt"], s.get("photo"), s.get("aspect"), STYLE_REFS.get(name))
         for attempt in (1, 2):
             code, data = call(model, payload, key)
             if code == 200:
