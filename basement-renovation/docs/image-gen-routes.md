@@ -37,13 +37,19 @@ instruction). Flow: POST photo to
 `gradio_api/queue/data?session_hash=X`. Quota error = window spent, retry
 after reset. A daily self-wake trigger is set to spend this on hero shots.
 
-## One-time 3-minute phone task that unlocks the real engine
+## One-time 90-second task that unlocks the real engine
 
-**Cloudflare Workers AI** — free account (email+password, explicitly no
-credit card), 10,000 neurons/day ≈ ~170 FLUX-schnell images/day, and the
-catalog includes FLUX.2-klein which does generation AND reference-photo
-editing. Setup: dash.cloudflare.com/sign-up → note Account ID → create API
-token with Workers AI permission → paste token to the session once. Then:
+**Cloudflare Workers AI** — Michael ALREADY HAS the account (verified
+2026-08-30): it runs the focus-reader Pages site (focus-reader-48z.pages.dev)
+and the R2 buckets. The `CLOUDFLARE_API_TOKEN` stored in this repo's GitHub
+secrets is deliberately scoped Pages:Edit-only (per deploy-pages.yml) — it
+cannot call Workers AI, and GitHub secrets are unreadable by design, so a
+NEW token is needed. Setup in the existing account: dash.cloudflare.com →
+My Profile → API Tokens → Create Token → "Workers AI" template → paste the
+token to a session once, plus the Account ID (dashboard sidebar, or the
+R2_ENDPOINT line in the local `.r2.env`). Free allocation: 10,000
+neurons/day ≈ ~170 FLUX-schnell images/day; FLUX.2-klein does generation
+AND reference-photo editing. Then:
 `POST https://api.cloudflare.com/client/v4/accounts/{ACCT}/ai/run/@cf/black-forest-labs/flux-1-schnell`
 with `Authorization: Bearer <token>`, JSON `{"prompt":"...","steps":4}` →
 base64 image back. This turns every future "tweak the render" into a
