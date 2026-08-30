@@ -21,6 +21,9 @@ Standing rules:
   system), update `mockups/index.html` and the docs in the same change.
 - **Plain language.** Michael-readable. No renovation jargon without a
   one-line explanation.
+- **Direct links only.** When Michael needs to go somewhere, give the exact
+  deep link to the final page (e.g. dash.cloudflare.com/profile/api-tokens),
+  never "go to X, then click Y". He asked for this explicitly (2026-08-30).
 - **Scope guard.** Gym / office / laundry only. Fridges + food storage are
   moving to the garage and are out of scope. Challenge additions before
   building on them.

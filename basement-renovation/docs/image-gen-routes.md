@@ -44,10 +44,11 @@ after reset. A daily self-wake trigger is set to spend this on hero shots.
 and the R2 buckets. The `CLOUDFLARE_API_TOKEN` stored in this repo's GitHub
 secrets is deliberately scoped Pages:Edit-only (per deploy-pages.yml) — it
 cannot call Workers AI, and GitHub secrets are unreadable by design, so a
-NEW token is needed. Setup in the existing account: dash.cloudflare.com →
-My Profile → API Tokens → Create Token → "Workers AI" template → paste the
-token to a session once, plus the Account ID (dashboard sidebar, or the
-R2_ENDPOINT line in the local `.r2.env`). Free allocation: 10,000
+NEW token is needed. Setup in the existing account — direct links:
+token: <https://dash.cloudflare.com/profile/api-tokens> (Create Token →
+Workers AI template); account ID: open
+<https://dash.cloudflare.com/?to=/:account/ai/workers-ai> and copy the
+32-hex segment from the resulting URL (also in `.r2.env`'s R2_ENDPOINT). Free allocation: 10,000
 neurons/day ≈ ~170 FLUX-schnell images/day; FLUX.2-klein does generation
 AND reference-photo editing. Then:
 `POST https://api.cloudflare.com/client/v4/accounts/{ACCT}/ai/run/@cf/black-forest-labs/flux-1-schnell`
