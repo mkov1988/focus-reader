@@ -5,6 +5,23 @@ re-tested. Constraint: no new spending. "Server" = the Claude workspace box.
 
 ## Working now, server-side (no user action)
 
+**Cloudflare Workers AI — THE engine (verified live 2026-08-30).** Michael
+made a Workers AI token in his existing account; token + account ID live in
+the session scratchpad only (never in the repo — rotate the token at
+<https://dash.cloudflare.com/profile/api-tokens> when the project wraps).
+Free allocation ~10,000 neurons/day ≈ ~170 images/day. Two verified call
+shapes against `https://api.cloudflare.com/client/v4/accounts/{ACCT}/ai/run/…`:
+
+- `@cf/black-forest-labs/flux-2-klein-9b` — **same-room edits** (what made
+  the current renders in `mockups/renders/`: t1/t2/t3-gym, t2-laundry).
+  Multipart form ONLY (`prompt` text field + `image` jpeg file ≤1024px);
+  a JSON body is rejected with "required properties … 'multipart'".
+  Response JSON, base64 under `result.image`. Keeps the real walls, rack
+  and machines.
+- `@cf/black-forest-labs/flux-1-schnell` — text-to-image concepts (bath,
+  desk-nook renders). JSON `{"prompt":"...","steps":8}`; a `seed` key is
+  rejected. Response may be raw PNG or base64 JSON.
+
 **Local SDXL-Turbo pipeline** — produced the current renders in
 `mockups/renders/`. Recipe: mask-recolor the real photo to the plan's
 materials (walls/floor/ceiling polygons + luminance-preserving tint, LED
@@ -36,25 +53,6 @@ instruction). Flow: POST photo to
 "<edit prompt>",0,true,2.5,28],"fn_index":2,"session_hash":"X"}`, then SSE
 `gradio_api/queue/data?session_hash=X`. Quota error = window spent, retry
 after reset. A daily self-wake trigger is set to spend this on hero shots.
-
-## One-time 90-second task that unlocks the real engine
-
-**Cloudflare Workers AI** — Michael ALREADY HAS the account (verified
-2026-08-30): it runs the focus-reader Pages site (focus-reader-48z.pages.dev)
-and the R2 buckets. The `CLOUDFLARE_API_TOKEN` stored in this repo's GitHub
-secrets is deliberately scoped Pages:Edit-only (per deploy-pages.yml) — it
-cannot call Workers AI, and GitHub secrets are unreadable by design, so a
-NEW token is needed. Setup in the existing account — direct links:
-token: <https://dash.cloudflare.com/profile/api-tokens> (Create Token →
-Workers AI template); account ID: open
-<https://dash.cloudflare.com/?to=/:account/ai/workers-ai> and copy the
-32-hex segment from the resulting URL (also in `.r2.env`'s R2_ENDPOINT). Free allocation: 10,000
-neurons/day ≈ ~170 FLUX-schnell images/day; FLUX.2-klein does generation
-AND reference-photo editing. Then:
-`POST https://api.cloudflare.com/client/v4/accounts/{ACCT}/ai/run/@cf/black-forest-labs/flux-1-schnell`
-with `Authorization: Bearer <token>`, JSON `{"prompt":"...","steps":4}` →
-base64 image back. This turns every future "tweak the render" into a
-30-second server-side operation at high quality.
 
 ## Phone, manual (free or already paid)
 
