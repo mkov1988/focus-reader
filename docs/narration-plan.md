@@ -81,9 +81,10 @@ plays them locally — no streaming infra, no Range requests, and offline
 listening for any book you've started, matching how book text already works.
 
 The master is synthesized at a **~200 WPM natural pace** (Kokoro's speed knob,
-roughly 1.2). Android's pitch-corrected playback rate runs 0.5×–2.0×, so a
-200-natural master covers **WPM 100–400 exactly** — the full voiced range lands
-on our floor and the agreed mute point with nothing wasted.
+roughly 1.2). Android's pitch-corrected playback rate tops out at 2.0× (the
+app floors it at 0.25×, §5), so a 200-natural master covers **WPM 100–400
+exactly** — the full voiced range lands on our floor and the agreed mute point
+with nothing wasted.
 
 Pilot shelf: the three bundled books (84, 1342, 14838) × three personas.
 Roughly 21 hours of audio per persona, ~700 MB total at 24 kbps mono Opus —
@@ -135,11 +136,36 @@ What still needs active correction: the engine discards accumulator overshoot
 on every word advance (deliberate web parity), which loses about half a frame
 per word — roughly 4% slippage at 300 WPM, cumulative. So the audio controller
 does a throttled drift check (at most ~1/second, on word commits via the
-engine's index subscription): if the player position is more than ~250 ms from
-where the committed word says it should be, hard-seek the audio. Scrubs, seeks,
-and sentence skips need zero extra wiring — the next drift check sees a huge
-delta and reseeks. If seeks prove audible in practice, a ±2% rate nudge is the
-gentler correction; start with seek-only.
+engine's index subscription). Two rules, both learned the hard way — the
+2026-09-13 "repeats a word every seven to ten words, worse when changing
+speed" bug was the seek-only first cut breaking both:
+
+- **Measure against the engine's clock, never the JS-side index.** The
+  target position is the committed word's start plus the frame-time that
+  word has been on screen (`engine.readClock()`, one atomic UI-runtime read
+  of index + accumulator) times the reel rate. The JS thread hears about a
+  commit only when it gets around to it — tens to hundreds of ms late during
+  playback, while it re-renders the reel — and a check that compared the
+  live player position against the stale word's *start* read its own
+  lateness as "voice ahead", seeked back to the word start, and the reader
+  heard the word again, about once a second.
+- **Nudge, don't seek.** Drift inside ±0.8 s is corrected by a
+  pitch-corrected rate nudge, capped at ±15% and inaudible: a proportional
+  term closes 0.6 of the drift per second (in recording seconds, so the loop
+  gain is the same at 0.5× and 2.0×) and a slow integral learns the reel's
+  steady frame lag as a bias, so the voice settles *on* the reel rather than
+  a fixed distance ahead of it. Both gains are soft on purpose — the player
+  takes a new rate only once its processed audio drains, and a snappier pair
+  rings under that delay. A hard seek is reserved for real jumps
+  (scrubs, seeks, sentence skips — any non-±1 step of the index) and gross
+  drift. A WPM change only re-rates the player and lets the next check absorb
+  the fresh-dwell offset the engine's accumulator reset creates; the first
+  cut seeked on every tap, which replayed the word on every tap. The player's
+  rate floor is 0.25× (ExoPlayer allows 0.1×) so a 100 WPM reader on a
+  ~233 WPM voice follows at 0.43× instead of pinning at 0.5× and drifting
+  16% fast. The math is pure (`src/reader/narrationSync.ts` in the app
+  repo) and pinned by `scripts/test-narration-sync.mjs` there, including a
+  closed-loop run of the reel's frame lag that must never earn a seek.
 
 Edge rules:
 - Words outside the readable span keep their synthetic multipliers; narration
@@ -313,7 +339,10 @@ The entire engine change is one seam: `useReelEngine` grows an optional
 `pacingOverride: number[] | null`; the effect that fills the per-book delay
 table (`useReelEngine.ts:209-212`, `delaysSV`) uses the override when present.
 Worklet identity, shared values, gestures: untouched — the override rides the
-existing shared value, so the playbook invariants hold.
+existing shared value, so the playbook invariants hold. One read-only
+addition since (§5): `engine.readClock()` returns the committed index and
+the frame loop's accumulator in one UI-runtime hop, the follower's clock
+for drift measurement; no new shared value, no worklet change.
 
 Around it:
 - `src/services/narration.ts` — manifest on the deepStarts pattern (post-boot
@@ -330,8 +359,9 @@ Around it:
 - Two hooks in `ReaderScreen`: `useNarrationPacing` (book id + parsed →
   override array or null; null falls back to synthetic seamlessly) and
   `useNarrationAudio` (owns the expo-audio player; mirrors engine play/pause;
-  segment switching + drift check on the engine's index subscription; reapplies
-  rate + reseeks on WPM change; releases on unmount). AppState pause and
+  segment switching + the §5 drift controller on the engine's index
+  subscription — clock-measured, nudge-first, seeks only on jumps; re-rates
+  on WPM change; releases on unmount). AppState pause and
   back-nav pause already route through `engine.pause()`, so audio follows for
   free. Stats need no change: sessions are engine play→pause spans and the
   engine still drives.
