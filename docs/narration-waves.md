@@ -190,7 +190,7 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 
 | wave | batch run | result | deploy run | deployed |
 |---|---|---|---|---|
-| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing) | | |
+| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z to 22:58Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing); manifest committed as 2ae309e, R2 audio confirmed live | deferred until 1b completes the two partial books | |
 | 1b | | | | |
 | 2 | | | | |
 | 3 | | | | |
