@@ -164,7 +164,7 @@ reader's readable span starts there too. Consistent with what the app shows.
 
 | wave | batch run | result | deploy run | deployed |
 |---|---|---|---|---|
-| 1 | | | | |
+| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) started 2026-09-13 10:44Z, prepare ok (105 synth jobs, none gated) | running | | |
 | 2 | | | | |
 | 3 | | | | |
 | 4 | | | | |
