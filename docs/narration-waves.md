@@ -1,8 +1,8 @@
 # Narration waves: the remaining top-100 shelf
 
-Generated 2026-09-13 from the CORE_STORY ledger in `scripts/build-modernity-queue.mjs` minus the books already in
+Generated from the CORE_STORY ledger in `scripts/build-modernity-queue.mjs` minus the books already in
 `public/narration-v1.json`, sized by `scripts/narration/plan.mjs` exactly as the `Narration batch` prepare job sizes them
-(60k span words per shard, 3 voices, 220-job cap per wave).
+(60k span words per shard, 3 voices). Waves are packed so a run never holds more than ~90 artifacts (see Rails).
 
 ## How to run (no Claude needed)
 
@@ -10,15 +10,16 @@ Generated 2026-09-13 from the CORE_STORY ledger in `scripts/build-modernity-queu
 2. Wait for it to finish (roughly the hours listed). It commits the manifest to master itself and uploads audio to R2.
 3. GitHub -> Actions -> **Deploy Pages** -> Run workflow on `master`, preview = false. The books go live for installed apps.
 4. Next wave. **Never start a wave while another is running or pending.** The collect job merges into the manifest it checked out at trigger time; a queued run would rebase onto a stale manifest.
-5. A wave that fails part way still ships every book that verified. Put the missing ids into the next wave, or re-run the failed run id with `resume_from_run` (shard WAVs live 3 days) or `collect_from_run` (verified output lives 14 days).
+5. A wave that fails part way still ships every book that verified. Put the missing ids into a small follow-up wave (see Wave 1b). `resume_from_run` does NOT help when the cause is the artifact cap below, because the source run's artifacts are what get listed.
 6. After each deploy, check `https://focus-reader-48z.pages.dev/narration-v1.json` lists the wave's ids and one `audio/<id>/marlowe/timing-v1.json` returns 200.
 
 ## Rails the workflow does not enforce for you
 
 - **~3 minutes after triggering**, open the `plan, gate, size shards` job log. It must say `gated/excluded: none` and the expected `jobs: N synth`. A transient text-fetch failure is reported as an exclusion and silently drops the book from the wave.
-- **Keep every run under ~190 artifacts** (synth shards + 3 x books). The finish and collect jobs list artifacts through a path that stops at 200, and the oldest ones, which belong to the first books in the id line, silently vanish. That is what failed 7 books in run 32827119346. Every wave below is at most 177. Never merge two waves.
+- **Keep every run under ~90 artifacts: 3 x shards + 3 x books.** The finish job's download step (`actions/download-artifact@v4` with `run-id`) sees only the newest 100 artifacts of the run (`Found 100 artifact(s)` in the log). Shard WAVs of the first books in the id line are the oldest, so past 100 they vanish and those pairs fail with `unit N not synthesized yet`. Wave 1 (105 shards + 45 outputs) lost Cranford in all voices and the Marlowe voice of Wuthering Heights and Tom Jones this way; run 32827119346 lost 7 books the same way. A workflow fix (page the listing, or download by artifact id) would lift this; until then, small waves.
 - **One failed synth shard skips the whole finish stage** (the finish job's `if` only accepts synth success). The collect job then fails with `no verified bout-* artifacts`. Nothing is lost: re-run Narration batch with the same id line and `resume_from_run` = the failed run id within 3 days. Only the broken book fails at finish; everything else ships.
 - **The manifest is committed before the R2 upload.** If the rclone step fails, master already lists books that have no audio, and the bucket-count check cannot catch it. Before deploying, confirm the collect job's R2 step is green (the `R2 audio/: N objects` notice) or that `audio/<id>/marlowe/timing-v1.json` returns 200 on the live site for each new id. If not, re-run with `collect_from_run` = the run id (verified output lives 14 days) and do not deploy until it does.
+- **Re-running a book that is already in the manifest is safe.** `verify.mjs` fails any pair whose fresh output disagrees with the committed manifest entry, and the R2 upload skips existing objects, so only the missing voices get added.
 - kokoro and torch are installed unpinned in every synth job. A release that changes tokenization mid-campaign fails a whole wave at alignment. Recovery is `resume_from_run` after pinning; accepted risk.
 
 ## Gated out by the leftover gate (legally load bearing, do not force)
@@ -43,34 +44,32 @@ deep inside the book. Narrating these now would bake the wrong start into three 
 Known wart, not held back: some books open by narrating their table of contents (120, 164, 1232, 20203, 25344, 421) because the
 reader's readable span starts there too. Consistent with what the app shows.
 
-## Wave 1: 15 books, 105 synth jobs, 1,626,130 words, ~18 h
+## Wave 1 (ran 2026-09-13, run 34752619371): 15 books, 105 synth jobs
 
 ```
 394,768,6593,174,3296,74,844,1727,3268,2465,2542,120,2591,6133,21839
 ```
+
+40 of 45 pairs verified. Lost to the artifact cap: 394 (all voices), 768/marlowe, 6593/marlowe. Recovered by Wave 1b.
+
+## Wave 1b (fix-up): 3 books, 30 synth jobs, 39 artifacts, ~5 h
+
+```
+394,768,6593
+```
+
+Re-synthesizes all three voices; the four pairs already in the manifest are rejected by verify (or match) and only the missing five are added.
 
 | id | title | span words | shards | jobs |
 |---|---|---:|---:|---:|
 | 394 | Cranford | 70,676 | 2 | 6 |
 | 768 | Wuthering Heights | 115,940 | 2 | 6 |
 | 6593 | History of Tom Jones, a Foundling | 345,347 | 6 | 18 |
-| 174 | The Picture of Dorian Gray | 78,545 | 2 | 6 |
-| 3296 | The Confessions of St. Augustine | 111,801 | 2 | 6 |
-| 74 | The Adventures of Tom Sawyer, Complete | 69,977 | 2 | 6 |
-| 844 | The Importance of Being Earnest: A Trivial Comedy for Seriou | 20,714 | 1 | 3 |
-| 1727 | The Odyssey: Rendered into English prose for the use of thos | 127,353 | 3 | 9 |
-| 3268 | The Mysteries of Udolpho | 290,210 | 5 | 15 |
-| 2465 | Carmen | 23,946 | 1 | 3 |
-| 2542 | A Doll's House : a play | 26,479 | 1 | 3 |
-| 120 | Treasure Island | 68,485 | 2 | 6 |
-| 2591 | Grimms' Fairy Tales | 101,111 | 2 | 6 |
-| 6133 | The Extraordinary Adventures of Arsène Lupin, Gentleman-Burg | 53,860 | 1 | 3 |
-| 21839 | Sense and Sensibility | 121,686 | 3 | 9 |
 
-## Wave 2: 21 books, 105 synth jobs, 1,618,971 words, ~18 h
+## Wave 2: 11 books, 48 synth jobs, 81 artifacts, 747,468 words, ~7 h
 
 ```
-1998,52190,244,46976,55,2852,1695,20203,75201,1232,16328,1400,36462,1080,23,86,3207,209,829,5200,16
+1998,52190,244,46976,55,2852,1695,20203,75201,1232,16328
 ```
 
 | id | title | span words | shards | jobs |
@@ -86,6 +85,15 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 75201 | A farewell to arms | 88,603 | 2 | 6 |
 | 1232 | The Prince | 49,706 | 1 | 3 |
 | 16328 | Beowulf: An Anglo-Saxon Epic Poem | 39,170 | 1 | 3 |
+
+## Wave 3: 10 books, 57 synth jobs, 87 artifacts, 871,503 words, ~8 h
+
+```
+1400,36462,1080,23,86,3207,209,829,5200,16
+```
+
+| id | title | span words | shards | jobs |
+|---|---|---:|---:|---:|
 | 1400 | Great Expectations | 184,350 | 4 | 12 |
 | 36462 | King Arthur and the Knights of the Round Table | 98,548 | 2 | 6 |
 | 1080 | A Modest Proposal: For preventing the children of poor peopl | 3,420 | 1 | 3 |
@@ -97,10 +105,10 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 5200 | Metamorphosis | 21,935 | 1 | 3 |
 | 16 | Peter Pan : $b [Peter and Wendy] | 47,112 | 1 | 3 |
 
-## Wave 3: 16 books, 102 synth jobs, 1,549,974 words, ~18 h
+## Wave 4: 9 books, 45 synth jobs, 72 artifacts, 620,579 words, ~7 h
 
 ```
-205,18857,36034,1952,103,27673,1837,2527,45,135,14244,69087,863,1514,10148,175
+205,18857,36034,1952,103,27673,1837,2527,45
 ```
 
 | id | title | span words | shards | jobs |
@@ -114,6 +122,15 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 1837 | The Prince and the Pauper | 68,847 | 2 | 6 |
 | 2527 | The Sorrows of Young Werther | 42,480 | 1 | 3 |
 | 45 | Anne of Green Gables | 102,225 | 2 | 6 |
+
+## Wave 5: 7 books, 57 synth jobs, 78 artifacts, 929,395 words, ~8 h
+
+```
+135,14244,69087,863,1514,10148,175
+```
+
+| id | title | span words | shards | jobs |
+|---|---|---:|---:|---:|
 | 135 | Les Misérables | 562,839 | 10 | 30 |
 | 14244 | The Romance of Tristan and Iseult | 25,806 | 1 | 3 |
 | 69087 | The murder of Roger Ackroyd | 70,526 | 2 | 6 |
@@ -122,10 +139,10 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 10148 | The Merry Adventures of Robin Hood | 111,113 | 2 | 6 |
 | 175 | The Phantom of the Opera | 85,371 | 2 | 6 |
 
-## Wave 4: 17 books, 126 synth jobs, 1,973,770 words, ~20 h
+## Wave 6: 7 books, 66 synth jobs, 87 artifacts, 1,110,262 words, ~10 h
 
 ```
-583,164,25344,5921,204,46,766,421,1608,236,1063,1257,215,1497,1524,1533,601
+583,164,25344,5921,204,46,766
 ```
 
 | id | title | span words | shards | jobs |
@@ -137,6 +154,15 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 204 | The innocence of Father Brown | 78,917 | 2 | 6 |
 | 46 | A Christmas Carol in Prose; Being a Ghost Story of Christmas | 28,527 | 1 | 3 |
 | 766 | David Copperfield | 354,214 | 6 | 18 |
+
+## Wave 7: 10 books, 60 synth jobs, 90 artifacts, 863,508 words, ~8 h
+
+```
+421,1608,236,1063,1257,215,1497,1524,1533,601
+```
+
+| id | title | span words | shards | jobs |
+|---|---|---:|---:|---:|
 | 421 | Kidnapped | 80,198 | 2 | 6 |
 | 1608 | Camille (La Dame aux Camilias) | 66,507 | 2 | 6 |
 | 236 | The Jungle Book | 50,839 | 1 | 3 |
@@ -148,7 +174,7 @@ reader's readable span starts there too. Consistent with what the app shows.
 | 1533 | Macbeth | 18,393 | 1 | 3 |
 | 601 | The Monk: A Romance | 137,080 | 3 | 9 |
 
-## Wave 5: 1 books, 12 synth jobs, 188,828 words, ~4 h
+## Wave 8: 1 books, 12 synth jobs, 15 artifacts, 188,828 words, ~3 h
 
 ```
 6130
@@ -158,14 +184,18 @@ reader's readable span starts there too. Consistent with what the app shows.
 |---|---|---:|---:|---:|
 | 6130 | The Iliad | 188,828 | 4 | 12 |
 
-**Total: 70 books, 450 synth jobs, 6,957,673 span words.**
+**Remaining after Wave 1b: 55 books, 345 synth jobs, 5,331,543 span words.**
 
 ## Status log
 
 | wave | batch run | result | deploy run | deployed |
 |---|---|---|---|---|
-| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) started 2026-09-13 10:44Z, prepare ok (105 synth jobs, none gated) | running | | |
+| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing) | | |
+| 1b | | | | |
 | 2 | | | | |
 | 3 | | | | |
 | 4 | | | | |
 | 5 | | | | |
+| 6 | | | | |
+| 7 | | | | |
+| 8 | | | | |
