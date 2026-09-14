@@ -190,9 +190,9 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 
 | wave | batch run | result | deploy run | deployed |
 |---|---|---|---|---|
-| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z to 22:58Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing); manifest committed as 2ae309e, R2 audio confirmed live | deferred until 1b completes the two partial books | |
-| 1b | [34788359514](https://github.com/mkov1988/focus-reader/actions/runs/34788359514) 2026-09-13 23:03Z, prepare ok (30 synth jobs) | running | | |
-| 2 | | | | |
+| 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z to 22:58Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing); manifest committed as 2ae309e, R2 audio confirmed live | [34805654911](https://github.com/mkov1988/focus-reader/actions/runs/34805654911) success | 2026-09-14T04:21Z, 41 books live, all with 3 voices |
+| 1b | [34788359514](https://github.com/mkov1988/focus-reader/actions/runs/34788359514) 2026-09-13 23:03Z to 2026-09-14 04:18Z | 5 missing pairs verified, 4 already-shipped pairs rejected by verify as designed; manifest 015901e | same deploy as wave 1 | 2026-09-14T04:21Z |
+| 2 | [34805656187](https://github.com/mkov1988/focus-reader/actions/runs/34805656187) 2026-09-14 04:20Z, prepare ok (48 synth jobs, none gated) | running | | |
 | 3 | | | | |
 | 4 | | | | |
 | 5 | | | | |
