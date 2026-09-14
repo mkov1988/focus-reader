@@ -41,6 +41,8 @@ deep inside the book. Narrating these now would bake the wrong start into three 
 - 6400 The Lives of the Twelve Caesars, Complete: starts at 19% (section LXX of one Caesar)
 - 8800 The divine comedy: starts at 33% (Inferno Canto XXXIV)
 
+- 16328 Beowulf: not a bounds problem. Every voice failed `finish.mjs` at the alignment rail (`alignment stream mismatch at char 1`, the voice model's text stream is a different passage than the reader's unit). Needs a look at how synth.py orders or splits this book's units (glossed verse with `{...}` summaries and `* * * * *` breaks). Wave 2, run 34805656187.
+
 Known wart, not held back: some books open by narrating their table of contents (120, 164, 1232, 20203, 25344, 421) because the
 reader's readable span starts there too. Consistent with what the app shows.
 
@@ -192,7 +194,8 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 |---|---|---|---|---|
 | 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z to 22:58Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing); manifest committed as 2ae309e, R2 audio confirmed live | [34805654911](https://github.com/mkov1988/focus-reader/actions/runs/34805654911) success | 2026-09-14T04:21Z, 41 books live, all with 3 voices |
 | 1b | [34788359514](https://github.com/mkov1988/focus-reader/actions/runs/34788359514) 2026-09-13 23:03Z to 2026-09-14 04:18Z | 5 missing pairs verified, 4 already-shipped pairs rejected by verify as designed; manifest 015901e | same deploy as wave 1 | 2026-09-14T04:21Z |
-| 2 | [34805656187](https://github.com/mkov1988/focus-reader/actions/runs/34805656187) 2026-09-14 04:20Z, prepare ok (48 synth jobs, none gated) | running | | |
+| 2 | [34805656187](https://github.com/mkov1988/focus-reader/actions/runs/34805656187) 2026-09-14 04:20Z to 11:24Z | 29/33 pairs verified; 16328 failed alignment in all voices (held back); 20203/hazel lost to a transient text-fetch reset (curl has no --retry); manifest 4e9e789 | deferred until 2b completes 20203 | |
+| 2b | | | | |
 | 3 | | | | |
 | 4 | | | | |
 | 5 | | | | |
