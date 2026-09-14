@@ -94,3 +94,6 @@ scripts/.resweep-report.json
 
 # Python bytecode from the narration pipeline scripts.
 __pycache__/
+
+# Screenshot pass output (scripts/screenshot-native-app.mjs), local only
+scripts/.screenshots/

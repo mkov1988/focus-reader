@@ -106,6 +106,9 @@ and `node scripts/test-audio-function.mjs`.
   content guard counts come from `deploy-manifest.json`
 - `test-bounds.mjs` (`npm test`), readable bounds integration test
 - `build-parity-viewer.mjs`, the parity pack viewer
+- `screenshot-native-app.mjs`, every screen of the Android app captured through
+  its `npm run qa:web` build (dark/light, fresh/returning) for Figma and reviews;
+  needs Playwright, ~10 minutes, run it in a terminal (header has the steps)
 
 ## One time backfills, do not rerun casually
 
