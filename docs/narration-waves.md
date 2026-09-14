@@ -195,8 +195,8 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 | 1 | [34752619371](https://github.com/mkov1988/focus-reader/actions/runs/34752619371) 2026-09-13 10:44Z to 22:58Z | 40/45 pairs verified (13 books full, 768 and 6593 without Marlowe, 394 missing); manifest committed as 2ae309e, R2 audio confirmed live | [34805654911](https://github.com/mkov1988/focus-reader/actions/runs/34805654911) success | 2026-09-14T04:21Z, 41 books live, all with 3 voices |
 | 1b | [34788359514](https://github.com/mkov1988/focus-reader/actions/runs/34788359514) 2026-09-13 23:03Z to 2026-09-14 04:18Z | 5 missing pairs verified, 4 already-shipped pairs rejected by verify as designed; manifest 015901e | same deploy as wave 1 | 2026-09-14T04:21Z |
 | 2 | [34805656187](https://github.com/mkov1988/focus-reader/actions/runs/34805656187) 2026-09-14 04:20Z to 11:24Z | 29/33 pairs verified; 16328 failed alignment in all voices (held back); 20203/hazel lost to a transient text-fetch reset (curl has no --retry); manifest 4e9e789 | deferred until 2b completes 20203 | |
-| 2b | | | | |
-| 3 | | | | |
+| 2b | [34903679265](https://github.com/mkov1988/focus-reader/actions/runs/34903679265) 2026-09-14 22:21Z, prepare ok (6 synth jobs) | running | | |
+| 3 | [34903551993](https://github.com/mkov1988/focus-reader/actions/runs/34903551993) cancelled on purpose at 22:21Z so 2b could go first; re-trigger after the 2+2b deploy | | | |
 | 4 | | | | |
 | 5 | | | | |
 | 6 | | | | |
