@@ -1,22 +1,13 @@
 # Android: the intro tutorial ("Your first read")
 
-Handoff for a feature built for the native app (`../Focus Reader Android`)
-from a session that could only push to this repo. The complete change is
-[android-intro-tutorial.patch](android-intro-tutorial.patch), one commit
-on top of the Android repo's `master` at `e439cf6` (v0.9.0 / JS 0.9.1).
-
-Apply it from the Android checkout:
-
-```bash
-git checkout -b claude/onboarding-tutorial-speed master
-git am "../Focus Reader/docs/planning/android-intro-tutorial.patch"
-npm run typecheck && npm test
-```
-
-Both pass on the patched tree. The Expo fingerprint is unchanged from
-master (measured with `npx @expo/fingerprint fingerprint:generate
---platform android`), so this is a JS-only OTA round: `src/version.ts`
-goes to 0.9.2 and `app.json` is untouched.
+Built for the native app (`../Focus Reader Android`), where feature work
+lives. The change is one commit on branch
+`claude/onboarding-tutorial-speed-ds1r38` in the Android repo, on top of
+`master` at `e439cf6` (v0.9.0 / JS 0.9.1). Typecheck and `npm test` pass,
+and the Expo fingerprint is unchanged from master (measured with
+`npx @expo/fingerprint fingerprint:generate --platform android`), so it is a
+JS-only OTA round: `src/version.ts` goes to 0.9.2 and `app.json` is
+untouched.
 
 ## What it does
 
