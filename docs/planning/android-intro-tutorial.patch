@@ -1,0 +1,1103 @@
+From 827d2b158cb556d8b6e5b94473c0541388d4e5ac Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Mon, 14 Sep 2026 22:11:19 +0000
+Subject: [PATCH] feat(intro): Your first read, the onboarding tutorial in the
+ Today hero slot; JS 0.9.2
+
+A fresh install (and every existing install, once) meets a Start here card
+where the resume hero normally sits. Tapping it opens the reader on a
+bundled tutorial text that plays by itself: it starts at 200 words per
+minute, ramps to 300 over about thirty seconds, and the copy is about
+exactly that (you started at 200, you are now at 300, faster than the
+average adult). Then the controls tuck themselves away on cue, the speed
+pill unlocks, and the text teaches the gestures before sending the reader
+to the shelf.
+
+- src/intro.ts: the script as four beats with a per-word speed curve
+  (word space, not wall-clock, so pausing or scrubbing cannot desync the
+  copy), tokenized with parseText's own rule.
+- The ramp rides the engine's existing pacingOverride (the narration
+  mechanism): no change to the reel engine's frame worklet.
+- ReaderScreen: the intro always runs in the Focus view (no mode
+  selector) without touching the saved mode; auto-plays one beat after
+  mount (waiting out a finger on the reel); chrome stays pinned until the
+  handoff word, then normal auto-hide; after the handoff the pill drives
+  a local stepper value, so the reader's own WPM setting is never
+  written; no progress row, no session stats; marks the intro seen.
+- ReaderChrome: the WPM pill's readout reads the scripted speed
+  (subscribing to the index on its own, like ChapterProgress) with the
+  stepper dimmed and inert while the script is in force.
+- Store: persisted introSeen, schema v7 (older installs see the card once).
+- Settings: Replay the intro. Today: Skip.
+- scripts/test-intro.mjs, chained from test-tokenize.mjs so npm test
+  covers it without touching package.json (its scripts block is an Expo
+  fingerprint input; the fingerprint is verified unchanged from master):
+  token-space equivalence, no chapter detection, the curve and its
+  handoff, ramp timing (25-40 s), and the one-word display rules.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01L6qzmAF57Rvw79bjK4y7qw
+---
+ scripts/test-intro.mjs         | 145 +++++++++++++++++++++++++
+ scripts/test-tokenize.mjs      |   7 ++
+ src/bundledBooks.ts            |   6 ++
+ src/components/BookCover.tsx   |   6 +-
+ src/intro.ts                   | 190 +++++++++++++++++++++++++++++++++
+ src/reader/ReaderChrome.tsx    | 115 +++++++++++++++-----
+ src/screens/ReaderScreen.tsx   | 112 ++++++++++++++++---
+ src/screens/SettingsScreen.tsx |  33 +++++-
+ src/screens/TodayScreen.tsx    |  73 ++++++++++++-
+ src/store.ts                   |  20 +++-
+ src/version.ts                 |   2 +-
+ 11 files changed, 662 insertions(+), 47 deletions(-)
+ create mode 100644 scripts/test-intro.mjs
+ create mode 100644 src/intro.ts
+
+diff --git a/scripts/test-intro.mjs b/scripts/test-intro.mjs
+new file mode 100644
+index 0000000..b4ce0fb
+--- /dev/null
++++ b/scripts/test-intro.mjs
+@@ -0,0 +1,145 @@
++/**
++ * Pins the intro tutorial (src/intro.ts) to the reader it runs in.
++ *
++ * The intro's speed curve lives in WORD space: keyframe token indexes are
++ * computed by intro.ts with its own copy of parseText's whitespace rule. If
++ * the two ever disagree, the "you're now at 300" line lands on the wrong
++ * word. This test transpiles both modules with the repo's TypeScript (the
++ * same trick as test-tokenize.mjs), parses the real text with the real
++ * parser, and checks: the token counts agree; the parse has no front or back
++ * matter clipping (the reader would skip words); the curve starts at 200,
++ * reaches 300 exactly at the payoff word and stays there; the ramp lasts a
++ * sensible ~30 s on the reader's own clock (60000 / wpm × each word's
++ * punctuation multiplier); and the copy obeys the one-word-at-a-time display
++ * rules (no over-long words, no bare punctuation tokens).
++ *
++ *   npm test
++ */
++import { readFileSync } from 'node:fs';
++import path from 'node:path';
++import { fileURLToPath } from 'node:url';
++import { createRequire } from 'node:module';
++
++const require = createRequire(import.meta.url);
++const ts = require('typescript');
++
++const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
++
++function loadTsModule(rel, injectedModules = {}) {
++    const src = readFileSync(path.join(ROOT, rel), 'utf8');
++    const js = ts.transpileModule(src, {
++        compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
++    }).outputText;
++    const module = { exports: {} };
++    const localRequire = (name) => {
++        if (injectedModules[name]) return injectedModules[name];
++        return require(name);
++    };
++    new Function('require', 'module', 'exports', js)(localRequire, module, module.exports);
++    return module.exports;
++}
++
++const chapterDetection = loadTsModule('src/chapterDetection.ts');
++const tp = loadTsModule('src/textProcessing.ts', { './chapterDetection': chapterDetection });
++const intro = loadTsModule('src/intro.ts');
++
++const { INTRO_PLAN: plan, INTRO_TEXT: text, INTRO_SEGMENTS: segments, INTRO_START_WPM, INTRO_END_WPM } = intro;
++
++let failures = 0;
++const fail = (msg) => { failures++; console.error(`FAIL ${msg}`); };
++const ok = (msg) => console.log(`ok  ${msg}`);
++
++// ── 1. Token space agrees with the real parser ──────────────────────────
++const parsed = tp.parseText(text);
++const n = parsed.tokens.length;
++if (n !== plan.tokenCount) fail(`token count: intro.ts counted ${plan.tokenCount}, parseText produced ${n}`);
++else ok(`token space agrees (${n} words)`);
++
++if (parsed.readableStartWord !== 0 || parsed.readableEndWord !== n - 1) {
++    fail(`readable bounds [${parsed.readableStartWord}, ${parsed.readableEndWord}] would clip the intro (expected [0, ${n - 1}])`);
++} else ok('no front/back matter clipping');
++// Bare numbers or heading-like lines would become chapters: the progress
++// bar would read "Chapter 1: word…" and the scrubber would grow chapter arrows.
++if (parsed.chapters.length > 0) fail(`the copy detects as ${parsed.chapters.length} chapter(s)`);
++else ok('no chapter headings detected');
++
++// ── 2. The curve ────────────────────────────────────────────────────────
++const wpmAt = (i) => intro.introWpmAt(i, INTRO_END_WPM, plan);
++const kf = plan.keyframes;
++for (let k = 1; k < kf.length; k++) {
++    if (kf[k].index < kf[k - 1].index) fail(`keyframes out of order at ${k}`);
++}
++if (kf[0]?.index !== 0 || kf[0]?.wpm !== INTRO_START_WPM) fail(`curve must start at word 0 at ${INTRO_START_WPM} wpm`);
++if (wpmAt(plan.rampEnd) !== INTRO_END_WPM) fail(`payoff word ${plan.rampEnd} is at ${wpmAt(plan.rampEnd)} wpm, expected ${INTRO_END_WPM}`);
++if (!(wpmAt(plan.rampEnd - 1) < INTRO_END_WPM)) fail('the word before the payoff should still be below the final speed');
++for (let i = plan.rampEnd; i < n; i++) {
++    if (wpmAt(i) !== INTRO_END_WPM) { fail(`word ${i} after the payoff is at ${wpmAt(i)} wpm`); break; }
++}
++for (let i = 1; i < plan.rampEnd; i++) {
++    if (wpmAt(i) < wpmAt(i - 1)) { fail(`the curve dips at word ${i}`); break; }
++}
++if (plan.handoff <= plan.rampEnd) fail('the handoff must come after the payoff');
++// The pacing override must reproduce the curve exactly on the engine's clock.
++const mults = parsed.tokens.map((t) => t.delayMultiplier);
++for (const storeWpm of [200, 300, 450]) {
++    for (const tailWpm of [300, 350]) {
++        const pacing = intro.introPacing(mults, storeWpm, tailWpm, plan);
++        for (let i = 0; i < n; i++) {
++            const expected = (60000 / intro.introWpmAt(i, tailWpm, plan)) * mults[i];
++            const got = (60000 / storeWpm) * pacing[i];
++            if (Math.abs(expected - got) > 1e-6) { fail(`pacing override drifts at word ${i} (store ${storeWpm}, tail ${tailWpm})`); break; }
++        }
++    }
++}
++if (intro.introWpmAt(plan.handoff, 350, plan) !== 350 || intro.introWpmAt(plan.handoff - 1, 350, plan) !== INTRO_END_WPM) {
++    fail('the handoff word should be the first paced by the stepper value');
++}
++{
++    // Handed off: every word, ramp included, follows the stepper.
++    const pacing = intro.introPacing(mults, 300, 350, plan, true);
++    for (let i = 0; i < n; i++) {
++        if (Math.abs((60000 / 300) * pacing[i] - (60000 / 350) * mults[i]) > 1e-6) { fail(`after the handoff word ${i} does not follow the stepper`); break; }
++    }
++}
++if (failures === 0) ok(`curve: ${INTRO_START_WPM} → ${INTRO_END_WPM} at word ${plan.rampEnd}, handoff at word ${plan.handoff}`);
++
++// ── 3. Timing on the reader's clock ─────────────────────────────────────
++const dwellMs = (i) => (60000 / wpmAt(i)) * mults[i];
++const bounds = [];
++let idx = 0;
++for (const seg of segments) {
++    const marked = seg.text.replace(/\r\n?/g, '\n').replace(/\n[ \t]*\n+/g, ' [P] ').trim();
++    const count = marked ? marked.split(/\s+/).filter((w) => w !== '[P]').length : 0;
++    bounds.push([idx, idx + count]);
++    idx += count;
++}
++const seconds = bounds.map(([a, b]) => {
++    let ms = 0;
++    for (let i = a; i < b; i++) ms += dwellMs(i);
++    return ms / 1000;
++});
++const total = seconds.reduce((x, y) => x + y, 0);
++const rampS = seconds[1];
++console.log(`    beats: hold ${seconds[0].toFixed(1)}s · ramp ${rampS.toFixed(1)}s · payoff ${seconds[2].toFixed(1)}s · handoff ${seconds[3].toFixed(1)}s · total ${total.toFixed(1)}s`);
++if (rampS < 25 || rampS > 40) fail(`ramp lasts ${rampS.toFixed(1)}s, wanted about 30 (25-40)`);
++else ok(`ramp lasts ${rampS.toFixed(1)}s`);
++if (total > 150) fail(`the whole intro runs ${total.toFixed(0)}s; keep it under two and a half minutes`);
++
++// ── 4. Display rules for a one-word-at-a-time reader ────────────────────
++for (const t of parsed.tokens) {
++    const letters = t.word.replace(/[^A-Za-z0-9’']/g, '');
++    if (letters.length === 0) fail(`bare punctuation token "${t.word}" at ${t.id}`);
++    if (letters.length > 13) fail(`"${t.word}" (${letters.length} letters) is too long for the reel`);
++    if (/[—–…]/.test(t.word)) fail(`"${t.word}" carries a dash or ellipsis`);
++}
++const segText = (k) => segments[k].text;
++if (!/\b200\b/.test(segText(0))) fail('the opening beat should name 200');
++if (/\b300\b/.test(segText(1))) fail('the ramp beat must not reveal 300');
++if (!/\b300\b/.test(segText(2)) || !/\b200\b/.test(segText(2))) fail('the payoff must name both 200 and 300');
++if (/\bWPM\b/.test(segText(0))) fail('no "WPM" jargon in the opening beat');
++
++if (failures > 0) {
++    console.error(`\n${failures} intro check(s) failed.`);
++    process.exit(1);
++}
++console.log('ok  intro tutorial checks pass');
+diff --git a/scripts/test-tokenize.mjs b/scripts/test-tokenize.mjs
+index e0553df..aeb9d43 100644
+--- a/scripts/test-tokenize.mjs
++++ b/scripts/test-tokenize.mjs
+@@ -86,3 +86,10 @@ if (a !== b) {
+     process.exit(1);
+ }
+ console.log(`ok  tokenizer contract holds (${snapshot.words.length} tokens, readable [${snapshot.readable}])`);
++
++// The intro tutorial's checks ride on the same `npm test` from here rather
++// than their own package.json script: package.json `scripts` is an Expo
++// fingerprint input (measured 2026-09-15, @expo/fingerprint 0.15.5), so
++// adding a script there would change the runtime fingerprint and strand the
++// JS-only OTA round that carries it (AGENTS.md, hard rule 1).
++await import('./test-intro.mjs');
+diff --git a/src/bundledBooks.ts b/src/bundledBooks.ts
+index 257fdf9..44028da 100644
+--- a/src/bundledBooks.ts
++++ b/src/bundledBooks.ts
+@@ -11,6 +11,8 @@
+  * mirror time). To change the set, write new JSON files next to the existing
+  * ones ({ id, title, author, text }) and update the switch below.
+  */
++import { INTRO_BOOK, INTRO_BOOK_ID, INTRO_TEXT } from './intro';
++
+ export interface BundledBook {
+     id: string;
+     title: string;
+@@ -21,6 +23,10 @@ export interface BundledBook {
+ /* eslint-disable @typescript-eslint/no-require-imports */
+ function load(id: string): BundledBook | null {
+     switch (id) {
++        // The onboarding tutorial rides the same ladder as a bundled book, so
++        // the open transition, the parse handoff, and the reader all treat it
++        // as an ordinary offline title (src/intro.ts).
++        case INTRO_BOOK_ID: return { id: INTRO_BOOK.id, title: INTRO_BOOK.title, author: INTRO_BOOK.author, text: INTRO_TEXT };
+         case '84': return require('./data/bundled-books/84.json') as BundledBook;
+         case '1342': return require('./data/bundled-books/1342.json') as BundledBook;
+         case '14838': return require('./data/bundled-books/14838.json') as BundledBook;
+diff --git a/src/components/BookCover.tsx b/src/components/BookCover.tsx
+index a900608..b4117a6 100644
+--- a/src/components/BookCover.tsx
++++ b/src/components/BookCover.tsx
+@@ -14,6 +14,7 @@ import { Image } from 'expo-image';
+ import { LinearGradient } from 'expo-linear-gradient';
+ import { Leaf } from 'lucide-react-native';
+ import { coverUrl } from '../services/library';
++import { INTRO_BOOK_ID } from '../intro';
+ import { FONTS, MUSTARD, SAGE, useTheme } from '../theme';
+ 
+ export type CoverVariant = 'framed' | 'label' | 'solid';
+@@ -76,7 +77,10 @@ export function BookCover({ id, title, author, coverUrl: coverUrlProp, variant,
+     // surface keeps contrast on every tint, espresso included, in both modes.
+     const onTint = t.surface;
+ 
+-    const uri = coverUrlProp ?? (id ? coverUrl(id) : undefined);
++    // The intro tutorial has no art on the mirror: never request it, so its
++    // generated cover paints on the first frame instead of after a 404 (the
++    // face is transparent while an image is in flight).
++    const uri = coverUrlProp ?? (id && id !== INTRO_BOOK_ID ? coverUrl(id) : undefined);
+     const showImage = !!uri && failedUri !== uri;
+ 
+     const sm = size === 'sm';
+diff --git a/src/intro.ts b/src/intro.ts
+new file mode 100644
+index 0000000..7a896f0
+--- /dev/null
++++ b/src/intro.ts
+@@ -0,0 +1,190 @@
++/**
++ * The intro — "Your first read", the tutorial a fresh install meets in the
++ * Today hero slot (where the resume card normally sits). It is a tiny
++ * bundled "book" (tier 0 of the fetch ladder, see bundledBooks.ts) whose
++ * text is about the very thing happening on screen: the reader opens it at
++ * 200 words per minute and ramps to 300 while the copy talks the reader
++ * through it, then hands the controls over.
++ *
++ * The ramp is defined in WORD space, not wall-clock time, so the copy and the
++ * speed can never drift apart: each segment names the speed at its first word
++ * and the speed it has reached by the time the next segment begins,
++ * interpolated linearly per word between them. Pausing or scrubbing simply
++ * pauses or rewinds the ramp. The reader turns this curve into the engine's
++ * per-word pacing override (ReaderScreen), so the reel engine itself is
++ * untouched — and the intro never writes the reader's own WPM setting.
++ *
++ * Segment texts are tokenized here with EXACTLY parseText's rule (whitespace
++ * split after blank lines become the [P] marker, which is not a token), so the
++ * keyframe indexes line up with the reader's token ids. scripts/test-intro.mjs
++ * pins that equivalence and the ramp's timing.
++ */
++import type { BookMeta } from './services/gutenberg';
++
++export const INTRO_BOOK_ID = 'intro';
++
++export const INTRO_BOOK: BookMeta = {
++    id: INTRO_BOOK_ID,
++    title: 'Your first read',
++    author: 'Focus Reader',
++    downloads: 0,
++};
++
++/** The Today card's italic one-liner, and its length line under the title.
++ *  The whole intro runs about 86 s on the reader's clock (scripts/test-intro.mjs
++ *  prints the beats), so both lines say a minute and a half. */
++export const INTRO_BLURB = 'Ninety seconds, one letter, and a small unearned sense of superiority.';
++export const INTRO_LENGTH_LABEL = 'About a minute and a half';
++
++/** Speed the intro starts at, and the speed it leaves the reader on. */
++export const INTRO_START_WPM = 200;
++export const INTRO_END_WPM = 300;
++
++export interface IntroSegment {
++    /** Paragraphs separated by blank lines, like any book text. */
++    text: string;
++    /** Words per minute at this segment's first word … */
++    from: number;
++    /** … climbing linearly to this by the segment's end, so the NEXT
++     *  segment's first word is the first word read at `to`. */
++    to: number;
++}
++
++// Four beats, in order: hold at 200 · ramp to 300 · the payoff at 300 · the
++// controls handoff at 300 (the first word of that last beat is where the
++// chrome tucks away and the speed pill lights up — see ReaderScreen).
++export const INTRO_SEGMENTS: IntroSegment[] = [
++    {
++        from: INTRO_START_WPM, to: INTRO_START_WPM,
++        text: `Hello, and welcome.
++
++Keep your eyes on the coloured letter. It sits near the middle of every word, so your eyes never have to move. The words come to you.
++
++Right now you are reading at 200 words per minute. Comfortable, yes?`,
++    },
++    {
++        from: INTRO_START_WPM, to: INTRO_END_WPM,
++        text: `Nothing to do here but stay with the letter and let the words arrive.
++
++Most of us learned to read by moving our eyes along a line, back and forth, line after line. That is slow, and a little tiring. Here the line comes to you instead, one word at a time, and your eyes get to sit still for once.
++
++The pace has been creeping up for a little while now. You may not have noticed, and that is rather the point. If a word slips past, let it go. The next one is already here.
++
++Breathe. Blink if you like. Nearly there.`,
++    },
++    {
++        from: INTRO_END_WPM, to: INTRO_END_WPM,
++        text: `And there it is. You started at 200. You are now reading at 300 words a minute.
++
++The average adult manages about 240. Somewhere in the last half minute, you quietly became faster than average. Not bad for a first go.
++
++See how cool this app is? Take a bow. Nobody is watching.`,
++    },
++    {
++        from: INTRO_END_WPM, to: INTRO_END_WPM,
++        text: `There go the controls, tucking themselves away. And the minus and plus on the speed pill lit up as they went. They are yours now.
++
++Tap this word to pause. Tap anywhere else to bring the controls back. Drag the word up or down to scrub through the book. Below the word, swipe sideways to skip a sentence, or swipe down to leave. The pill sets your speed.
++
++The shelf is waiting on the home screen. Go and pick a book. It will not read itself. Well, this one did.`,
++    },
++];
++
++/** parseText's tokenizer, minus the token objects: how many words a text
++ *  yields. Keep in lockstep with textProcessing.parseText. */
++function countTokens(text: string): number {
++    const marked = text.replace(/\r\n?/g, '\n').replace(/\n[ \t]*\n+/g, ' [P] ');
++    const trimmed = marked.trim();
++    if (!trimmed) return 0;
++    return trimmed.split(/\s+/).filter((w) => w !== '[P]').length;
++}
++
++export interface IntroKeyframe {
++    /** Token index. */
++    index: number;
++    wpm: number;
++}
++
++export interface IntroPlan {
++    /** The whole tutorial as one book text. */
++    text: string;
++    /** Total token count parseText will produce for `text`. */
++    tokenCount: number;
++    /** Speed at each segment's first and last word, in token space. */
++    keyframes: IntroKeyframe[];
++    /** First token of the payoff beat — the ramp lands on INTRO_END_WPM here. */
++    rampEnd: number;
++    /** First token of the handoff beat — chrome unpins, speed pill unlocks,
++     *  and the reader's own WPM takes over from here on. */
++    handoff: number;
++}
++
++function buildPlan(segments: IntroSegment[]): IntroPlan {
++    const keyframes: IntroKeyframe[] = [];
++    const starts: number[] = [];
++    let index = 0;
++    for (const seg of segments) {
++        const n = countTokens(seg.text);
++        starts.push(index);
++        if (n > 0) {
++            keyframes.push({ index, wpm: seg.from });
++            // `to` lands on the word AFTER this segment (the next one's first
++            // word), so a payoff beat's opening word is the first at its speed.
++            keyframes.push({ index: index + n, wpm: seg.to });
++        }
++        index += n;
++    }
++    return {
++        text: segments.map((s) => s.text.trim()).join('\n\n'),
++        tokenCount: index,
++        keyframes,
++        rampEnd: starts[2] ?? index,
++        handoff: starts[3] ?? index,
++    };
++}
++
++export const INTRO_PLAN: IntroPlan = buildPlan(INTRO_SEGMENTS);
++export const INTRO_TEXT = INTRO_PLAN.text;
++
++/**
++ * The scripted speed for word `index`. Before the handoff it follows the
++ * keyframes (piecewise linear); from the handoff on, `tailWpm` — the speed
++ * the reader has been handed (the intro's own stepper value, seeded at
++ * INTRO_END_WPM) — paces the rest.
++ */
++export function introWpmAt(index: number, tailWpm: number, plan: IntroPlan = INTRO_PLAN): number {
++    if (index >= plan.handoff) return tailWpm;
++    const kf = plan.keyframes;
++    if (kf.length === 0) return tailWpm;
++    if (index <= kf[0].index) return kf[0].wpm;
++    for (let k = 1; k < kf.length; k++) {
++        const a = kf[k - 1];
++        const b = kf[k];
++        if (index <= b.index) {
++            if (b.index === a.index) return b.wpm;
++            const f = (index - a.index) / (b.index - a.index);
++            return a.wpm + (b.wpm - a.wpm) * f;
++        }
++    }
++    return kf[kf.length - 1].wpm;
++}
++
++/**
++ * The engine's per-word pacing override for the intro (the same mechanism
++ * narration uses): the reel engine computes each dwell as
++ * (60000 / storeWpm) × multiplier, so scaling every multiplier by
++ * storeWpm / scriptedWpm makes the dwell exactly (60000 / scriptedWpm) ×
++ * the word's own punctuation multiplier. Past the handoff the scripted speed
++ * is `tailWpm` (the intro's stepper), so the store setting never has to move;
++ * with `handedOff` the whole text follows the stepper.
++ */
++export function introPacing(multipliers: readonly number[], storeWpm: number, tailWpm: number, plan: IntroPlan = INTRO_PLAN, handedOff = false): number[] {
++    const out = new Array<number>(multipliers.length);
++    for (let i = 0; i < multipliers.length; i++) {
++        // Once the speed has been handed over, EVERY word follows the stepper
++        // (scrubbing back into the ramp reads at the pill's number, not 200).
++        const wpm = handedOff ? tailWpm : introWpmAt(i, tailWpm, plan);
++        out[i] = multipliers[i] * (storeWpm / wpm);
++    }
++    return out;
++}
+diff --git a/src/reader/ReaderChrome.tsx b/src/reader/ReaderChrome.tsx
+index 3ac0d23..ca3eb9c 100644
+--- a/src/reader/ReaderChrome.tsx
++++ b/src/reader/ReaderChrome.tsx
+@@ -9,7 +9,7 @@
+  *    destination paragraph/chapter, chapter double-arrows, the
+  *    paragraph-snapping track with chapter ticks, and the ✓ done button.
+  */
+-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react';
++import { useCallback, useEffect, useMemo, useState, useSyncExternalStore, type ReactNode } from 'react';
+ import { Pressable, StyleSheet, Text, View } from 'react-native';
+ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+ import Animated, { ReduceMotion, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+@@ -107,6 +107,84 @@ function paragraphIndexForWord(word: number, starts: number[]): number {
+     return ans;
+ }
+ 
++/** The engine's committed-index feed, threaded down from the reader screen.
++ *  Reading the index through a subscription (instead of a prop) is what keeps
++ *  the word advance from re-rendering the whole control bar — only the
++ *  clusters below that truly show the position subscribe. */
++interface LiveIndexSource {
++    getIndex: () => number;
++    subscribeIndex: (cb: () => void) => () => void;
++}
++
++/**
++ * A scripted speed — the intro tutorial drives the pace word by word. While a
++ * script is in force the pill reads the speed the script assigns to the word
++ * on screen (not the reader's own setting), and the minus/plus rest dimmed
++ * and inert until the reader hands the speed back and the script is dropped.
++ */
++export interface SpeedScript {
++    wpmAt: (index: number) => number;
++}
++
++/** The pill's readout text. */
++function WpmReadout({ wpm, locked }: { wpm: number; locked?: boolean }) {
++    const t = useTheme();
++    return (
++        <Text
++            accessibilityLabel={`${wpm} words per minute${locked ? ', set by the intro' : ''}`}
++            style={{ width: 64, textAlign: 'center', fontSize: 14, fontFamily: FONTS.sansMedium, color: t.text, fontVariant: ['tabular-nums'] }}
++        >
++            {wpm} WPM
++        </Text>
++    );
++}
++
++/** The readout while a speed script is in force: it alone subscribes to the
++ *  committed index (like ChapterProgress), so the climbing number re-renders
++ *  only this Text — never the stepper buttons and their icons around it. */
++function ScriptedWpmReadout({ getIndex, subscribeIndex, script }: LiveIndexSource & { script: SpeedScript }) {
++    const index = useSyncExternalStore(subscribeIndex, getIndex);
++    return <WpmReadout wpm={Math.round(script.wpmAt(index))} locked />;
++}
++
++/** The [– N WPM +] pill. `locked` dims and disables the stepper (a scripted
++ *  speed is in force); `readout` is the number between them. */
++function WpmPill({ readout, locked, onDecrease, onIncrease }: {
++    readout: ReactNode;
++    locked?: boolean;
++    onDecrease: () => void;
++    onIncrease: () => void;
++}) {
++    const t = useTheme();
++    return (
++        <View style={[s.wpmPill, { backgroundColor: t.inkA(0.06), borderColor: t.inkA(0.1) }]}>
++            <Pressable
++                onPress={onDecrease}
++                disabled={locked}
++                hitSlop={6}
++                accessibilityLabel="Decrease speed"
++                accessibilityState={{ disabled: !!locked }}
++                style={({ pressed }) => [s.wpmBtn, pressed && !locked && { backgroundColor: t.inkA(0.1) }, locked && { opacity: 0.3 }]}
++            >
++                <Minus size={16} color={t.textMuted} />
++            </Pressable>
++            {readout}
++            <Pressable
++                onPress={onIncrease}
++                disabled={locked}
++                hitSlop={6}
++                accessibilityLabel="Increase speed"
++                accessibilityState={{ disabled: !!locked }}
++                style={({ pressed }) => [s.wpmBtn, pressed && !locked && { backgroundColor: t.inkA(0.1) }, locked && { opacity: 0.3 }]}
++            >
++                <Plus size={16} color={t.textMuted} />
++            </Pressable>
++        </View>
++    );
++}
++
++const noop = () => undefined;
++
+ /**
+  * The playback face's bottom button row: [toc] [prev] [play] [next] [– wpm +].
+  * Split out for readability; none of it depends on the reading position, only on
+@@ -116,8 +194,8 @@ function paragraphIndexForWord(word: number, starts: number[]): number {
+  * frame delta in useReelEngine, not this.)
+  */
+ function PlaybackButtonRow({
+-    isPlaying, wpm, onOpenScrubber, onSkipSentence, onToggle, onWpmChange, onActivity,
+-}: {
++    isPlaying, wpm, onOpenScrubber, onSkipSentence, onToggle, onWpmChange, onActivity, speedScript, getIndex, subscribeIndex,
++}: LiveIndexSource & {
+     isPlaying: boolean;
+     wpm: number;
+     onOpenScrubber: () => void;
+@@ -125,6 +203,7 @@ function PlaybackButtonRow({
+     onToggle: () => void;
+     onWpmChange: (wpm: number) => void;
+     onActivity?: () => void;
++    speedScript?: SpeedScript;
+ }) {
+     const t = useTheme();
+     const decreaseWpm = () => { onActivity?.(); onWpmChange(Math.max(100, wpm - 50)); };
+@@ -150,30 +229,13 @@ function PlaybackButtonRow({
+             <Pressable onPress={() => onSkipSentence(1)} accessibilityLabel="Next sentence" style={({ pressed }) => secondaryBtn(pressed)}>
+                 <ChevronRight size={24} color={t.textMuted} />
+             </Pressable>
+-            <View style={[s.wpmPill, { backgroundColor: t.inkA(0.06), borderColor: t.inkA(0.1) }]}>
+-                <Pressable onPress={decreaseWpm} hitSlop={6} accessibilityLabel="Decrease speed" style={({ pressed }) => [s.wpmBtn, pressed && { backgroundColor: t.inkA(0.1) }]}>
+-                    <Minus size={16} color={t.textMuted} />
+-                </Pressable>
+-                <Text style={{ width: 64, textAlign: 'center', fontSize: 14, fontFamily: FONTS.sansMedium, color: t.text, fontVariant: ['tabular-nums'] }}>
+-                    {wpm} WPM
+-                </Text>
+-                <Pressable onPress={increaseWpm} hitSlop={6} accessibilityLabel="Increase speed" style={({ pressed }) => [s.wpmBtn, pressed && { backgroundColor: t.inkA(0.1) }]}>
+-                    <Plus size={16} color={t.textMuted} />
+-                </Pressable>
+-            </View>
++            {speedScript
++                ? <WpmPill locked readout={<ScriptedWpmReadout getIndex={getIndex} subscribeIndex={subscribeIndex} script={speedScript} />} onDecrease={noop} onIncrease={noop} />
++                : <WpmPill readout={<WpmReadout wpm={wpm} />} onDecrease={decreaseWpm} onIncrease={increaseWpm} />}
+         </View>
+     );
+ }
+ 
+-/** The engine's committed-index feed, threaded down from the reader screen.
+- *  Reading the index through a subscription (instead of a prop) is what keeps
+- *  the word advance from re-rendering the whole control bar — only the
+- *  clusters below that truly show the position subscribe. */
+-interface LiveIndexSource {
+-    getIndex: () => number;
+-    subscribeIndex: (cb: () => void) => () => void;
+-}
+-
+ interface ControlsProps extends LiveIndexSource {
+     isPlaying: boolean;
+     wpm: number;
+@@ -187,6 +249,8 @@ interface ControlsProps extends LiveIndexSource {
+     onWpmChange: (wpm: number) => void;
+     onActivity?: () => void;
+     onScrubbingChange?: (scrubbing: boolean) => void;
++    /** A scripted speed in force (the intro): see SpeedScript. */
++    speedScript?: SpeedScript;
+ }
+ 
+ /**
+@@ -424,7 +488,7 @@ function ScrubberFace({ getIndex, subscribeIndex, chapters, paragraphs, paraStar
+     );
+ }
+ 
+-export function Controls({ isPlaying, wpm, getIndex, subscribeIndex, totalWords, chapters, paragraphs, onToggle, onPause, onSkipSentence, onSeek, onWpmChange, onActivity, onScrubbingChange }: ControlsProps) {
++export function Controls({ isPlaying, wpm, getIndex, subscribeIndex, totalWords, chapters, paragraphs, onToggle, onPause, onSkipSentence, onSeek, onWpmChange, onActivity, onScrubbingChange, speedScript }: ControlsProps) {
+     const [scrubbing, setScrubbing] = useState(false);
+     const paraStarts = useMemo(() => paragraphs.map((p) => p[0]?.id ?? 0), [paragraphs]);
+ 
+@@ -470,6 +534,9 @@ export function Controls({ isPlaying, wpm, getIndex, subscribeIndex, totalWords,
+                         onToggle={onToggle}
+                         onWpmChange={onWpmChange}
+                         onActivity={onActivity}
++                        speedScript={speedScript}
++                        getIndex={getIndex}
++                        subscribeIndex={subscribeIndex}
+                     />
+                 </>
+             )}
+diff --git a/src/screens/ReaderScreen.tsx b/src/screens/ReaderScreen.tsx
+index bb5d70f..3605e12 100644
+--- a/src/screens/ReaderScreen.tsx
++++ b/src/screens/ReaderScreen.tsx
+@@ -46,13 +46,19 @@ import { useNarrationAudio, useNarrationPacing } from '../reader/useNarration';
+ import { getNarrationInfo } from '../services/narration';
+ import { useImmersive } from '../reader/useImmersive';
+ import { FocusReelDisplay, TrailDisplay, SentenceDisplay, ParagraphDisplay, READER_FONT_SIZE, sentenceDisplaySize } from '../reader/displays';
+-import { VisualizationSelector, Controls } from '../reader/ReaderChrome';
++import { VisualizationSelector, Controls, type SpeedScript } from '../reader/ReaderChrome';
++import { INTRO_BOOK_ID, INTRO_END_WPM, INTRO_PLAN, introPacing, introWpmAt } from '../intro';
+ import { InnerPageHeader } from '../components/InnerPageHeader';
+ import { Spinner } from '../components/Spinner';
+ 
+ const SWIPE_PX = 70;       // web useReaderGestures horizontal threshold
+ const SWIPE_DOWN_PX = 110; // web swipe-down-to-exit threshold
+ const PROGRESS_SAVE_INTERVAL_MS = 2000;
++// The intro starts reading by itself, one beat after the open transition has
++// handed off — long enough to take in the first word sitting there. If the
++// reel is under a finger at that moment, it tries again a little later.
++const INTRO_AUTOPLAY_DELAY_MS = 900;
++const INTRO_AUTOPLAY_RETRY_MS = 300;
+ 
+ type ZoneFrame = { x: number; y: number; w: number; h: number };
+ const inFrame = (f: ZoneFrame | null, x: number, y: number) =>
+@@ -81,7 +87,18 @@ export function ReaderScreen({ route, navigation }: Props) {
+     const t = useTheme();
+     const insets = useSafeAreaInsets();
+     const { book, startIndex } = route.params;
+-    const visMode = useStore((s) => s.visMode);
++    // ── The intro tutorial (src/intro.ts) ───────────────────────────────
++    // Same reader, same engine; a few things differ. It always runs in the
++    // Focus view (the copy describes that view's gestures) without touching
++    // the saved mode; its pace follows the script's word-by-word curve
++    // (200 → 300) through the engine's pacing override, then a LOCAL stepper
++    // value from the handoff word on, so the reader's own WPM setting is
++    // never written; nothing is persisted (no progress row, no session stats
++    // — a warm-up, not a book); and it starts playing by itself. Opening it
++    // also retires the Today card (Settings → Replay the intro brings it back).
++    const isIntro = book.id === INTRO_BOOK_ID;
++    const storeVisMode = useStore((s) => s.visMode);
++    const visMode = isIntro ? 'rsvp' : storeVisMode;
+     const wpm = useStore((s) => s.wpm);
+     const setWpm = useStore((s) => s.setWpm);
+     const setMenuOpen = useStore((s) => s.setMenuOpen);
+@@ -90,6 +107,8 @@ export function ReaderScreen({ route, navigation }: Props) {
+     const showOpenError = useStore((s) => s.showOpenError);
+     const narrationOn = useStore((s) => s.narration);
+     const narrationVoice = useStore((s) => s.narrationVoice);
++    const setIntroSeen = useStore((s) => s.setIntroSeen);
++    useEffect(() => { if (isIntro) setIntroSeen(true); }, [isIntro, setIntroSeen]);
+ 
+     // Transition-driven opens arrive fully parsed: the open transition runs
+     // parseText (plus the scene→chapter mapping) while the cover is still up
+@@ -119,6 +138,27 @@ export function ReaderScreen({ route, navigation }: Props) {
+     const parsed = parsedContent ?? EMPTY;
+     const ready = parsed.tokens.length > 0;
+ 
++    // The intro plan applies only when the parse is the script's own tokens
++    // (scripts/test-intro.mjs pins that they always are); on any mismatch the
++    // intro simply reads at the reader's setting, like a plain book.
++    const intro = isIntro && ready && parsed.tokens.length === INTRO_PLAN.tokenCount ? INTRO_PLAN : null;
++    // One-way: once the reel reaches the handoff word the script lets go —
++    // chrome unpins and the speed pill unlocks onto the intro's own stepper
++    // value, seeded at the ramp's final speed so nothing jumps. That value
++    // lives here, not in the store: the intro leaves the reader's setting
++    // exactly as it found it (a replay at 500 wpm goes back to 500).
++    const [handedOff, setHandedOff] = useState(false);
++    const [introWpm, setIntroWpm] = useState(INTRO_END_WPM);
++    const scripted = intro !== null && !handedOff;
++    const introPacingArr = useMemo(
++        () => (intro ? introPacing(parsed.tokens.map((tok) => tok.delayMultiplier), wpm, introWpm, intro, handedOff) : null),
++        [intro, parsed, wpm, introWpm, handedOff],
++    );
++    const speedScript = useMemo<SpeedScript | undefined>(
++        () => (scripted && intro ? { wpmAt: (i) => introWpmAt(i, INTRO_END_WPM, intro) } : undefined),
++        [scripted, intro],
++    );
++
+     // Prefer an authored scene map over heuristically detected chapters as the
+     // reader's landmarks — labels then match the home hero's recap.
+     const chapters = useMemo(() => {
+@@ -181,15 +221,20 @@ export function ReaderScreen({ route, navigation }: Props) {
+         // Narrating replaces the pacing table with the recording's own rhythm;
+         // the sentence-mode extras would fight it (§5), so they yield.
+         sentenceExtras: visMode === 'sentence' && !narrating,
+-        pacingOverride: narrating ? narr.pacing : null,
++        // The intro's scripted curve outranks narration (the intro has none).
++        pacingOverride: introPacingArr ?? (narrating ? narr.pacing : null),
+         readableStartWord: parsed.readableStartWord,
+         readableEndWord: parsed.readableEndWord,
+         onIndexChange,
+-        onSession: addSession,
++        onSession: isIntro ? undefined : addSession,
+         onTap: dispatchBandTap,
+     });
+ 
+-    const { chromeVisible, peek, poke } = useImmersive(engine.playing);
++    // While the intro is scripted the chrome stays put (the tutorial points at
++    // the controls, and the speed readout climbs in plain sight); at the
++    // handoff the reader's normal auto-hide takes over and, on cue, the
++    // controls tuck themselves away.
++    const { chromeVisible, peek, poke } = useImmersive(engine.playing && !scripted);
+     useKeepAwake();
+ 
+     // While the scrubber face is open, the controls block gains bottom padding
+@@ -204,6 +249,36 @@ export function ReaderScreen({ route, navigation }: Props) {
+     const engineRef = useRef(engine);
+     engineRef.current = engine;
+ 
++    // Intro: start reading by itself, one beat after mount. If a finger has
++    // the reel at that moment (a grab inside the first beat), wait it out
++    // rather than flip playback on under a drag — togglePlay has no drag
++    // guard, and a play started mid-drag would be cancelled by the release
++    // with `playing` left true.
++    useEffect(() => {
++        if (!intro) return;
++        let timer: ReturnType<typeof setTimeout> | null = null;
++        const attempt = () => {
++            timer = null;
++            const e = engineRef.current;
++            if (e.playing) return;
++            if (e.interacting.value) { timer = setTimeout(attempt, INTRO_AUTOPLAY_RETRY_MS); return; }
++            e.togglePlay();
++        };
++        timer = setTimeout(attempt, INTRO_AUTOPLAY_DELAY_MS);
++        return () => { if (timer) clearTimeout(timer); };
++    }, [intro]);
++
++    // Intro: the handoff, watched off the engine's index feed (no per-word
++    // re-render of the screen).
++    useEffect(() => {
++        if (!scripted || !intro) return;
++        const check = () => {
++            if (engine.getIndex() >= intro.handoff) setHandedOff(true);
++        };
++        check();
++        return engine.subscribeIndex(check);
++    }, [scripted, intro, engine.getIndex, engine.subscribeIndex]);
++
+     // Chrome fades as one unit — web: `transition-opacity duration-300
+     // ease-out`, and Tailwind 3.4's `ease-out` is cubic-bezier(0, 0, 0.2, 1),
+     // a strong decelerate (fast start, gentle landing). Same curve as the
+@@ -226,6 +301,7 @@ export function ReaderScreen({ route, navigation }: Props) {
+     const lastSavedIndexRef = useRef(-1);
+     const lastSavedAtRef = useRef(0);
+     const saveNow = useCallback(() => {
++        if (isIntro) return; // the intro never becomes a Reading row or a resume card
+         if (tokenCount > 0 && lastIndex.current !== lastSavedIndexRef.current) {
+             updateProgress({
+                 bookId: book.id,
+@@ -239,7 +315,7 @@ export function ReaderScreen({ route, navigation }: Props) {
+             lastSavedIndexRef.current = lastIndex.current;
+             lastSavedAtRef.current = Date.now();
+         }
+-    }, [book, tokenCount, updateProgress]);
++    }, [book, isIntro, tokenCount, updateProgress]);
+ 
+     // Index-driven saves ride the engine's index subscription, throttled to
+     // the 2s cadence whether playing or not. The old effect saved on EVERY
+@@ -475,13 +551,18 @@ export function ReaderScreen({ route, navigation }: Props) {
+                     its own label. Without it, TalkBack announces an unlabeled
+                     "double tap to activate" band (even while chrome is
+                     hidden). */}
+-                <Animated.View style={[chromeStyle, { zIndex: 50 }]}>
+-                    <Pressable accessible={false} onPress={handleTap}>
+-                        <View pointerEvents={chromeVisible ? 'auto' : 'none'}>
+-                            <VisualizationSelector onInteract={poke} />
+-                        </View>
+-                    </Pressable>
+-                </Animated.View>
++                {/* The intro runs in the Focus view only, so it shows no mode
++                    selector (a pill that could not switch the view would read
++                    as broken; the other views wait for the first real book). */}
++                {!isIntro && (
++                    <Animated.View style={[chromeStyle, { zIndex: 50 }]}>
++                        <Pressable accessible={false} onPress={handleTap}>
++                            <View pointerEvents={chromeVisible ? 'auto' : 'none'}>
++                                <VisualizationSelector onInteract={poke} />
++                            </View>
++                        </Pressable>
++                    </Animated.View>
++                )}
+ 
+                 {/* Reading area. Sentence mode: the strip IS the whole stage
+                     and owns every touch (web: it captures the pointer and
+@@ -578,7 +659,7 @@ export function ReaderScreen({ route, navigation }: Props) {
+                         <View pointerEvents={chromeVisible ? 'auto' : 'none'}>
+                             <Controls
+                                 isPlaying={engine.playing}
+-                                wpm={wpm}
++                                wpm={isIntro ? introWpm : wpm}
+                                 getIndex={engine.getIndex}
+                                 subscribeIndex={engine.subscribeIndex}
+                                 totalWords={parsed.tokens.length}
+@@ -588,9 +669,10 @@ export function ReaderScreen({ route, navigation }: Props) {
+                                 onPause={engine.pause}
+                                 onSkipSentence={engine.skipSentence}
+                                 onSeek={engine.seek}
+-                                onWpmChange={setWpm}
++                                onWpmChange={isIntro ? setIntroWpm : setWpm}
+                                 onActivity={poke}
+                                 onScrubbingChange={setNavigating}
++                                speedScript={speedScript}
+                             />
+                         </View>
+                     </Pressable>
+diff --git a/src/screens/SettingsScreen.tsx b/src/screens/SettingsScreen.tsx
+index 1b69243..237ef09 100644
+--- a/src/screens/SettingsScreen.tsx
++++ b/src/screens/SettingsScreen.tsx
+@@ -6,7 +6,7 @@
+  */
+ import { Pressable, StyleSheet, Text, View } from 'react-native';
+ import type { NativeStackScreenProps } from '@react-navigation/native-stack';
+-import { Check, Moon, Sun } from 'lucide-react-native';
++import { Check, ChevronRight, Moon, RotateCcw, Sun } from 'lucide-react-native';
+ import type { RootStackParamList } from '../nav';
+ import type { FitMode } from '../textProcessing';
+ import { haptics } from '../haptics';
+@@ -34,6 +34,15 @@ export function SettingsScreen({ navigation }: Props) {
+     const setWpm = useStore((s) => s.setWpm);
+     const fitMode = useStore((s) => s.fitMode);
+     const setFitMode = useStore((s) => s.setFitMode);
++    const setIntroSeen = useStore((s) => s.setIntroSeen);
++
++    // Puts the intro card back in the Today hero slot and goes there, so the
++    // replay is one tap away (and so a tester can run it again at will).
++    const replayIntro = () => {
++        haptics.tick();
++        setIntroSeen(false);
++        navigation.popToTop();
++    };
+ 
+     return (
+         <PageShell
+@@ -155,6 +164,28 @@ export function SettingsScreen({ navigation }: Props) {
+                         })}
+                     </View>
+                 </View>
++
++                {/* The intro tutorial, on demand */}
++                <View>
++                    <Text style={[s.groupLabel, { color: t.mutedA(0.7) }]}>GETTING STARTED</Text>
++                    <Pressable
++                        onPress={replayIntro}
++                        accessibilityRole="button"
++                        style={({ pressed }) => [
++                            s.accentRow,
++                            { backgroundColor: t.paperA(0.6), borderColor: t.inkA(0.1), transform: [{ scale: pressed ? 0.99 : 1 }] },
++                        ]}
++                    >
++                        <RotateCcw size={16} color={t.accent} />
++                        <View style={{ flex: 1 }}>
++                            <Text style={{ fontFamily: FONTS.serif, fontSize: 15, color: t.text }}>Replay the intro</Text>
++                            <Text style={{ fontSize: 12, lineHeight: 17, fontFamily: FONTS.sans, color: t.mutedA(0.8), marginTop: 2 }}>
++                                Puts “Your first read” back at the top of Today.
++                            </Text>
++                        </View>
++                        <ChevronRight size={18} color={t.inkA(0.25)} />
++                    </Pressable>
++                </View>
+             </View>
+         </PageShell>
+     );
+diff --git a/src/screens/TodayScreen.tsx b/src/screens/TodayScreen.tsx
+index 0815c3d..d7dd36b 100644
+--- a/src/screens/TodayScreen.tsx
++++ b/src/screens/TodayScreen.tsx
+@@ -28,6 +28,7 @@ import { centerRect } from '../open/centerRect';
+ import { VIBES_META, type VibeIcon } from '../vibesMeta';
+ import { APP_VERSION } from '../version';
+ import { UpdatePanel } from '../components/UpdatePanel';
++import { INTRO_BLURB, INTRO_BOOK, INTRO_LENGTH_LABEL } from '../intro';
+ 
+ type Props = NativeStackScreenProps<RootStackParamList, 'Today'>;
+ 
+@@ -45,6 +46,12 @@ export function TodayScreen({ navigation }: Props) {
+     // re-render invisibly on each one (it catches up on the way back).
+     const progressById = useFocusedSelector((s) => s.progressById);
+     const stats = useFocusedSelector((s) => s.stats);
++    // The intro card owns the hero slot until it has been opened or skipped
++    // (a fresh install's very first screen). Focus-gated like the rest: the
++    // reader flips it while Today is parked underneath, and Today catches up
++    // on the way back.
++    const introSeen = useFocusedSelector((s) => s.introSeen);
++    const setIntroSeen = useStore((s) => s.setIntroSeen);
+     const [query, setQuery] = useState('');
+     // Web: `focus-within:ring-coral-accent/40` — the pill's ring warms to
+     // coral while the input holds focus.
+@@ -133,6 +140,11 @@ export function TodayScreen({ navigation }: Props) {
+         navigation.navigate('Library');
+     };
+ 
++    const skipIntro = () => {
++        haptics.tick();
++        setIntroSeen(true);
++    };
++
+     // ── Reading stats (web "Your Reading" card) ────────────────────────
+     const minutes = Math.round(stats.msRead / 60000);
+     const pages = Math.floor(stats.wordsRead / 250);
+@@ -186,7 +198,9 @@ export function TodayScreen({ navigation }: Props) {
+         <PageShell header={header} scrollRef={scrollRef} keyboardPersist>
+             {/* ── Hero card ─────────────────────────────────────────── */}
+             <View style={[s.hero, { backgroundColor: t.surface, borderColor: t.inkA(0.1) }]}>
+-                {hasProgress && progress ? (
++                {!introSeen ? (
++                    <HeroIntro onSkip={skipIntro} />
++                ) : hasProgress && progress ? (
+                     <HeroResume
+                         progress={progress}
+                         pct={progressPct}
+@@ -574,6 +588,63 @@ function HeroResume({ progress, pct, scene, onRecents }: {
+     );
+ }
+ 
++/** The onboarding card a fresh install meets in the hero slot: the intro
++ *  "book" (src/intro.ts) wearing the same press-and-hold cover and hold-to-
++ *  fire Start button as Today's pick, plus Skip, which clears the card for
++ *  good (Settings → Replay the intro brings it back). Opening it clears the
++ *  card too — the reader marks the intro seen on mount. */
++function HeroIntro({ onSkip }: { onSkip: () => void }) {
++    const t = useTheme();
++    const open = useOpenTransition();
++    const coverRef = useRef<View>(null);
++
++    const instantOpen = () => {
++        measureRect(coverRef, (r) => {
++            open.begin(INTRO_BOOK, r ?? centerRect(), { slotId: `kbd:${INTRO_BOOK.id}`, instant: true });
++        });
++    };
++    const startPress = useHoldFire(instantOpen);
++
++    return (
++        <>
++            <Eyebrow>· Start here ·</Eyebrow>
++            <View style={{ flexDirection: 'row', gap: 16, marginTop: 16 }}>
++                <HeroCover book={INTRO_BOOK} coverRef={coverRef}>
++                    {/* No variant, like the open transition's cover — the two
++                        must match, since the lift carries one into the other. */}
++                    <BookCover id={INTRO_BOOK.id} title={INTRO_BOOK.title} author={INTRO_BOOK.author} size="sm" width={88} />
++                </HeroCover>
++                <View style={{ flex: 1, minWidth: 0, paddingTop: 4 }}>
++                    <Text style={{ fontFamily: FONTS.serifStrong, fontSize: 20, lineHeight: 25, color: t.text }} numberOfLines={2}>{INTRO_BOOK.title}</Text>
++                    <Text style={{ fontFamily: FONTS.serifItalic, fontSize: 12, color: t.textMuted, marginTop: 4 }}>{INTRO_LENGTH_LABEL}</Text>
++                </View>
++            </View>
++            <Text style={{ fontFamily: FONTS.serifItalic, fontSize: 13, lineHeight: 21, color: t.textMuted, marginTop: 16 }}>
++                {INTRO_BLURB}
++            </Text>
++            <View style={{ flexDirection: 'row', gap: 12, marginTop: 20 }}>
++                <Pressable
++                    {...startPress}
++                    accessibilityRole="button"
++                    accessibilityLabel="Start your first read"
++                    style={[s.primaryBtn, { backgroundColor: t.accent, shadowColor: t.accent }]}
++                >
++                    <BookOpen size={18} color={t.accentText} />
++                    <Text style={{ fontSize: 15, fontFamily: FONTS.sansSemiBold, color: t.accentText }}>Start</Text>
++                </Pressable>
++                <Pressable
++                    onPress={onSkip}
++                    accessibilityRole="button"
++                    accessibilityLabel="Skip the intro"
++                    style={({ pressed }) => [s.secondaryBtn, { backgroundColor: t.surface, borderColor: t.inkA(0.15), transform: [{ scale: pressed ? 0.98 : 1 }] }]}
++                >
++                    <Text style={{ fontSize: 15, fontFamily: FONTS.sansSemiBold, color: t.text }}>Skip</Text>
++                </Pressable>
++            </View>
++        </>
++    );
++}
++
+ function HeroPick({ book }: { book: BookMeta }) {
+     const t = useTheme();
+     const open = useOpenTransition();
+diff --git a/src/store.ts b/src/store.ts
+index 2e839ba..f1876a1 100644
+--- a/src/store.ts
++++ b/src/store.ts
+@@ -71,6 +71,11 @@ export interface AppState {
+      *  after a failed open's cancel spring settles; persistent until the X
+      *  dismisses it. Ephemeral — never persisted. */
+     openError: string | null;
++    /** Whether the reader has been shown the intro (the "Your first read"
++     *  tutorial that fills the Today hero slot on a fresh install). Flips true
++     *  the moment the intro opens, or when the card is skipped; Settings can
++     *  flip it back to replay. Persisted, so it is seen once per install. */
++    introSeen: boolean;
+ 
+     setThemeIndex: (i: number) => void;
+     setMenuOpen: (open: boolean) => void;
+@@ -86,6 +91,7 @@ export interface AppState {
+     showToast: (message: string) => void;
+     showOpenError: (message: string) => void;
+     dismissOpenError: () => void;
++    setIntroSeen: (seen: boolean) => void;
+ }
+ 
+ const DEFAULT_WPM = 300;
+@@ -106,6 +112,7 @@ export const useStore = create<AppState>()(
+             toast: null,
+             menuOpen: false,
+             openError: null,
++            introSeen: false,
+ 
+             setThemeIndex: (i) => set({ themeIndex: i }),
+             setMenuOpen: (menuOpen) => set({ menuOpen }),
+@@ -133,17 +140,21 @@ export const useStore = create<AppState>()(
+             showToast: (message) => set({ toast: { id: Date.now(), message } }),
+             showOpenError: (message) => set({ openError: message }),
+             dismissOpenError: () => set({ openError: null }),
++            setIntroSeen: (introSeen) => set({ introSeen }),
+         }),
+         {
+             name: 'focus-reader-state',
+             // v5 matched the retired web store; v6 is Android-only (sound on
+             // by default). The migrate flips narration true ONCE on upgrade so
+             // installs that predate the new default actually feel it — after
+-            // that, muting persists like any other setting.
+-            version: 6,
++            // that, muting persists like any other setting. v7 added introSeen:
++            // older installs get the intro card once too (a fresh default of
++            // false), then it clears like any other setting.
++            version: 7,
+             migrate: (persisted, version) => {
+-                const s = persisted as Partial<AppState>;
+-                if (version < 6) return { ...s, narration: true };
++                let s = persisted as Partial<AppState>;
++                if (version < 6) s = { ...s, narration: true };
++                if (version < 7) s = { ...s, introSeen: false };
+                 return s;
+             },
+             storage: createJSONStorage(() => AsyncStorage),
+@@ -159,6 +170,7 @@ export const useStore = create<AppState>()(
+                 fitMode: s.fitMode,
+                 narration: s.narration,
+                 narrationVoice: s.narrationVoice,
++                introSeen: s.introSeen,
+             }),
+         },
+     ),
+diff --git a/src/version.ts b/src/version.ts
+index 0202927..4b7258c 100644
+--- a/src/version.ts
++++ b/src/version.ts
+@@ -14,7 +14,7 @@
+  * the round is genuinely native (new native module, native config, SDK
+  * bump), which needs a real build and a manual install anyway.
+  */
+-export const APP_VERSION = '0.9.1';
++export const APP_VERSION = '0.9.2';
+ 
+ /** The binary this JS expects to be running inside (app.json expo.version).
+  *  Only changes on native rounds. Shown in the update panel so a mismatched
+-- 
+2.43.0
+
