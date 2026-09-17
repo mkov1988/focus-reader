@@ -189,6 +189,24 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 
 **Remaining after Wave 1b: 55 books, 345 synth jobs, 5,331,543 span words.**
 
+## Outcome (2026-09-17)
+
+All eight waves plus two fix-ups are done. **95 books are live with all three voices**, up from 26 when the
+campaign started: 30.7 GB of Opus audio over 11.6 million narrated words per voice. Every wave was verified
+against the live manifest and the audio door before the next one started, and no book is live with a missing voice.
+
+Ten books from the curated top-100 list are NOT narrated, all for reasons that need a code fix rather than a re-run:
+
+| ids | why | what a fix needs |
+|---|---|---|
+| 4200, 68283 | leftover gate: Gutenberg trademark text inside the readable span | nothing — the gate is legally load bearing, leave them out |
+| 98, 245, 1399, 2600, 4300, 6400, 8800 | `calculateReadableBounds` in `src/utils/textProcessing.ts` picks a late run of chapters in books whose numbering restarts per part, so the reader itself starts mid-book | fix chapter detection (the same detector ships in the Android app), re-run `plan.mjs`, check the new span's first and last unit text, then narrate. 4300 Ulysses also has a 2-word tail segment that would fail the per-segment WPM rail |
+| 16328 | `finish.mjs` alignment rail: the voice model's token stream is a different passage than the reader's unit (`alignment stream mismatch at char 1`) in all three voices | look at how `synth.py` orders or splits this book's glossed verse (`{...}` summaries, `* * * * *` breaks) |
+
+Worth fixing in the workflow before any future campaign: the finish job's artifact download sees only the newest
+100 artifacts of a run (page the listing or download by artifact id), and the prepare job's `curl` has no `--retry`,
+which cost one book a voice in wave 2.
+
 ## Status log
 
 | wave | batch run | result | deploy run | deployed |
@@ -202,4 +220,4 @@ Re-synthesizes all three voices; the four pairs already in the manifest are reje
 | 5 | [35101660214](https://github.com/mkov1988/focus-reader/actions/runs/35101660214) 2026-09-16 13:24Z to 21:33Z | 21/21 pairs verified, no failures; Les Miserables came in at 158 segments per voice and 1.52 GB for all three; manifest cb664ea | [35153251053](https://github.com/mkov1988/focus-reader/actions/runs/35153251053) success | 2026-09-16 21:37Z, 77 books live, all with 3 voices |
 | 6 | [35153259910](https://github.com/mkov1988/focus-reader/actions/runs/35153259910) 2026-09-16 21:35Z to 2026-09-17 07:26Z | 21/21 pairs verified, no failures; manifest dcbcf46 | [35194664575](https://github.com/mkov1988/focus-reader/actions/runs/35194664575) success | 2026-09-17 07:29Z, 84 books live, all with 3 voices |
 | 7 | [35194670571](https://github.com/mkov1988/focus-reader/actions/runs/35194670571) 2026-09-17 07:28Z to 15:06Z | 30/30 pairs verified, no failures; manifest 4e3e136 | [35238189249](https://github.com/mkov1988/focus-reader/actions/runs/35238189249) success | 2026-09-17 15:09Z, 94 books live, all with 3 voices |
-| 8 | | | | |
+| 8 | [35238198714](https://github.com/mkov1988/focus-reader/actions/runs/35238198714) 2026-09-17 15:08Z to 17:44Z | 3/3 pairs verified; the all-Greek unit 83 voiced fine, so the isolation was precautionary only | [35254658126](https://github.com/mkov1988/focus-reader/actions/runs/35254658126) success | 2026-09-17 17:46Z, 95 books live, all with 3 voices |
