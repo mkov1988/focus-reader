@@ -2213,6 +2213,37 @@
         }
       }
     },
+    "6130": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 182,
+          "segments": 53,
+          "bytes": 183644301,
+          "span": [
+            390,
+            189217
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 189.6,
+          "segments": 53,
+          "bytes": 174967500,
+          "span": [
+            390,
+            189217
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 192.8,
+          "segments": 53,
+          "bytes": 172224644,
+          "span": [
+            390,
+            189217
+          ]
+        }
+      }
+    },
     "6133": {
       "voices": {
         "marlowe": {
