@@ -5,13 +5,13 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 
 **21 / 30** book×voice pairs finished.
 
+- 46: ☑ marlowe  ☑ rowan  ☑ hazel
 - 84: ☐ marlowe  ☐ rowan  ☐ hazel
-- 135: ☑ marlowe  ☑ rowan  ☑ hazel
-- 175: ☑ marlowe  ☑ rowan  ☑ hazel
-- 863: ☑ marlowe  ☑ rowan  ☑ hazel
+- 164: ☑ marlowe  ☑ rowan  ☑ hazel
+- 204: ☑ marlowe  ☑ rowan  ☑ hazel
+- 583: ☑ marlowe  ☑ rowan  ☑ hazel
+- 766: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1342: ☐ marlowe  ☐ rowan  ☐ hazel
-- 1514: ☑ marlowe  ☑ rowan  ☑ hazel
-- 10148: ☑ marlowe  ☑ rowan  ☑ hazel
-- 14244: ☑ marlowe  ☑ rowan  ☑ hazel
+- 5921: ☑ marlowe  ☑ rowan  ☑ hazel
 - 14838: ☐ marlowe  ☐ rowan  ☐ hazel
-- 69087: ☑ marlowe  ☑ rowan  ☑ hazel
+- 25344: ☑ marlowe  ☑ rowan  ☑ hazel
