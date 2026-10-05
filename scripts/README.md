@@ -94,6 +94,13 @@ LONG RUN: Michael's terminal, never a session. One-time venv setup lives in
 Contract tests (no Kokoro needed): `node scripts/narration/test-narration.mjs`
 and `node scripts/test-audio-function.mjs`.
 
+The Android app's intro tutorial has a voice track too, but it ships INSIDE
+the app rather than through R2 and the manifest: the Android repo's
+`node scripts/build-intro-narration.mjs` runs this same plan → synth →
+finish → verify chain over the intro text (work dir `narration/work/intro/`,
+ignored like the rest) and copies the verified output into that repo. Nothing
+here needs committing for it; build-manifest.mjs skips the non-numeric id.
+
 ## Legal toolkit (read ../LEGAL.md first)
 
 - `lib/strip-gutenberg.mjs`, THE canonical strip, imported by both mirror scripts
