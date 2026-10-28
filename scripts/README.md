@@ -29,6 +29,11 @@ Outputs are gitignored local artifacts served as Pages static assets; the
 deploy guard in deploy-pages.mjs counts them before any push.
 
 - `npm run mirror:covers` → `public/covers/` (1,468 webp)
+- `node scripts/classify-stamped-covers.mjs` → `src/data/stamped-covers.json`,
+  the covers that carry Project Gutenberg's name (a pixel pass over the
+  mirrored webp files; `--sheets=<folder>` draws contact sheets to check
+  by eye). The paywall's shelf shows our generated cover for those. Rerun
+  after any cover mirror, then `npm run export:native`.
 - `npm run mirror:books` → `public/books/` (1,401 txt, stripped at mirror
   time by `lib/strip-gutenberg.mjs`)
 
