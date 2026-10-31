@@ -1,5 +1,11 @@
 {
-  "_note": "The paywall rush's bundled covers (plans/build-paywall.md in the Android repo). Picked by eye from the top 300 by downloads on 28 October 2026, minus every cover with Project Gutenberg printed on it, the CIA factbooks, pulp magazines and anything off brand. slam: the ten the blur slows down through, in order, so the last three (the most downloaded books we carry) land slow and steady and the last of them makes 60,000. pool: the rest of the stream. Michael crosses out and swaps. Consumed by scripts/export-native.mjs.",
+  "_note": "The paywall rush's bundled covers (plans/build-paywall.md in the Android repo). Picked by eye from the top 300 by downloads on 28 October 2026, minus every cover with Project Gutenberg printed on it, the CIA factbooks, pulp magazines and anything off brand. open: the first covers, in order, one, two, three, four, the next most downloaded after the famous three and recognisable at a glance (the 6th and 8th by downloads, A Room with a View and Middlemarch, skipped as not). slam: the ten the blur slows down through, in order, so the last three (the most downloaded books we carry) land slow and steady and the last of them makes 60,000. pool: the rest of the stream, never an opener or a famous one. Michael crosses out and swaps. Consumed by scripts/export-native.mjs.",
+  "open": [
+    "2554",
+    "1184",
+    "11",
+    "43"
+  ],
   "slam": [
     "120",
     "174",
@@ -7,7 +13,7 @@
     "1661",
     "1260",
     "64317",
-    "11",
+    "37106",
     "84",
     "1342",
     "2701"
@@ -19,13 +25,9 @@
     "2600",
     "5921",
     "236",
-    "2554",
-    "1184",
     "2641",
     "145",
-    "43",
     "67979",
-    "37106",
     "8492",
     "16389",
     "76",
