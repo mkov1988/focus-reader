@@ -1,0 +1,2035 @@
+{
+  "_about": "Title list for the key-idea summaries shelf (pipeline step 1). Snapshot of Amazon's best-seller lists, deduplicated across formats and editions, with non-books and off-topic titles removed. 'rank' is the order to generate in. 'faith' marks Christian-living titles so they can be filtered as a group. 'rights' decides the source: public_domain_us titles are summarized from the full text Focus Reader can serve; in_copyright titles are summarized from the model's knowledge, never from a copy of the book. 'next_up' are the replacements, in order, for any title you drop.",
+  "source": {
+    "fetched_at": "2026-11-04T08:43Z",
+    "lists": [
+      {
+        "name": "Self-Help",
+        "url": "https://www.amazon.com/Best-Sellers-Books-Self-Help/zgbs/books/4736",
+        "role": "primary, ranks 1-100"
+      },
+      {
+        "name": "Personal Transformation",
+        "url": "https://www.amazon.com/Best-Sellers-Books-Personal-Transformation-Self-Help/zgbs/books/4745",
+        "role": "backfill"
+      },
+      {
+        "name": "Success",
+        "url": "https://www.amazon.com/Best-Sellers-Books-Success-Self-Help/zgbs/books/4749",
+        "role": "backfill"
+      },
+      {
+        "name": "Motivational",
+        "url": "https://www.amazon.com/Best-Sellers-Books-Motivational-Self-Help/zgbs/books/4744",
+        "role": "backfill"
+      }
+    ],
+    "ordering": "Self-Help rank first; titles not in the Self-Help top 100 follow by their best rank in the other three lists. Amazon ranks are hourly, so this is a point-in-time order.",
+    "excluded_when": [
+      "illustrated gift book too short to summarize without substituting for it",
+      "memoir or poetry without a life-advice frame",
+      "non-English edition of a listed work",
+      "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)",
+      "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)",
+      "scripture or daily devotional"
+    ]
+  },
+  "titles": [
+    {
+      "rank": 1,
+      "title": "Contend: Standing Boldly for Biblical Truth While Winning the War Within",
+      "author": "Philip Anthony Mitchell",
+      "amazon_ranks": {
+        "Self-Help": 1
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GRGF7QPB",
+      "asins": [
+        "B0GRGF7QPB"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 2,
+      "title": "The Let Them Theory: A Life-Changing Tool That Millions of People Can’t Stop Talking About",
+      "author": "Mel Robbins",
+      "amazon_ranks": {
+        "Self-Help": 2,
+        "Success": 1
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0DFMZMKFJ",
+      "asins": [
+        "B0DFMZMKFJ"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 3,
+      "title": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
+      "author": "James Clear",
+      "amazon_ranks": {
+        "Personal Transformation": 1,
+        "Self-Help": 3
+      },
+      "amazon_url": "https://www.amazon.com/dp/B07RFSSYBH",
+      "asins": [
+        "B07RFSSYBH"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 4,
+      "title": "Protocols: An Operating Manual for the Human Body",
+      "author": "Andrew D. Huberman Ph.D.",
+      "amazon_ranks": {
+        "Self-Help": 5
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0D67XWLY9",
+      "asins": [
+        "B0D67XWLY9"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 5,
+      "title": "Stop Letting Everything Affect You: How to Break Free from Overthinking, Emotional Chaos, and Self-Sabotage",
+      "author": "Daniel Chidiac",
+      "amazon_ranks": {
+        "Self-Help": 6
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0FJP3TFG3",
+      "asins": [
+        "B0FJP3TFG3"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 6,
+      "title": "The Science of Getting Rich",
+      "author": "Wallace D. Wattles",
+      "amazon_ranks": {
+        "Motivational": 75,
+        "Self-Help": 7,
+        "Success": 2
+      },
+      "amazon_url": "https://www.amazon.com/dp/B001WYVB7O",
+      "asins": [
+        "1585426016",
+        "B001WYVB7O"
+      ],
+      "faith": false,
+      "rights": "public_domain_us",
+      "pd_first_published": "1910",
+      "gutenberg_id": 59844,
+      "note": "Public domain full text on Gutenberg. Generate cards from the text, not from memory.",
+      "in_curated_catalog": false
+    },
+    {
+      "rank": 7,
+      "title": "Vibe: The Secrets of Strong Connections in a Lonely World",
+      "author": "Adam Grant",
+      "amazon_ranks": {
+        "Personal Transformation": 2,
+        "Self-Help": 8
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GPJQ4B6H",
+      "asins": [
+        "B0GPJQ4B6H"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 8,
+      "title": "Making Peace with What I Can’t Control: Find Relief from the Exhaustion of Overthinking, Trying to Fix Others, and Wanting to Figure It All Out",
+      "author": "Lysa TerKeurst",
+      "amazon_ranks": {
+        "Self-Help": 9
+      },
+      "amazon_url": "https://www.amazon.com/dp/1400230721",
+      "asins": [
+        "1400230721"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 9,
+      "title": "The Courage to Be Disliked: How to Free Yourself, Change Your Life, and Achieve Real Happiness",
+      "author": "Ichiro Kishimi",
+      "amazon_ranks": {
+        "Motivational": 2,
+        "Self-Help": 11
+      },
+      "amazon_url": "https://www.amazon.com/dp/B07BRPW98K",
+      "asins": [
+        "B07BRPW98K"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 10,
+      "title": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life",
+      "author": "Mark Manson",
+      "amazon_ranks": {
+        "Motivational": 3,
+        "Self-Help": 12,
+        "Success": 3
+      },
+      "amazon_url": "https://www.amazon.com/dp/B01I29Y344",
+      "asins": [
+        "B01I29Y344"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 11,
+      "title": "How to Win Friends & Influence People",
+      "author": "Dale Carnegie",
+      "amazon_ranks": {
+        "Personal Transformation": 17,
+        "Self-Help": 14,
+        "Success": 16
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0006IU7JK",
+      "asins": [
+        "0671027034",
+        "B0006IU7JK"
+      ],
+      "faith": false,
+      "rights": "in_copyright",
+      "note": "1936, copyright renewed; in copyright in the US until 2032."
+    },
+    {
+      "rank": 12,
+      "title": "Don't Believe Everything You Think (Expanded Edition): Why Your Thinking Is The Beginning & End Of Suffering",
+      "author": "Joseph Nguyen",
+      "amazon_ranks": {
+        "Motivational": 7,
+        "Personal Transformation": 5,
+        "Self-Help": 15
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0DHJH6QHB",
+      "asins": [
+        "B0DHJH6QHB"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 13,
+      "title": "The Life-Changing Art of Self-Brain Surgery: Connecting Neuroscience and Faith to Radically Transform Your Life",
+      "author": "W. Lee Warren, MD",
+      "amazon_ranks": {
+        "Personal Transformation": 3,
+        "Self-Help": 16
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0FD7PR4K7",
+      "asins": [
+        "B0FD7PR4K7"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 14,
+      "title": "The Four Agreements: A Practical Guide to Personal Freedom",
+      "author": "Don Miguel Ruiz",
+      "amazon_ranks": {
+        "Personal Transformation": 8,
+        "Self-Help": 17,
+        "Success": 9
+      },
+      "amazon_url": "https://www.amazon.com/dp/1878424319",
+      "asins": [
+        "1878424319"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 15,
+      "title": "The Mountain Is You: Transforming Self-Sabotage into Self-Mastery",
+      "author": "Brianna Wiest",
+      "amazon_ranks": {
+        "Motivational": 5,
+        "Personal Transformation": 7,
+        "Self-Help": 21
+      },
+      "amazon_url": "https://www.amazon.com/dp/B09WXLQM7J",
+      "asins": [
+        "B09WXLQM7J"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 16,
+      "title": "Never Split the Difference: Negotiating as if Your Life Depended on It",
+      "author": "Chris Voss",
+      "amazon_ranks": {
+        "Motivational": 38,
+        "Self-Help": 22,
+        "Success": 28
+      },
+      "amazon_url": "https://www.amazon.com/dp/B01COR1GM2",
+      "asins": [
+        "0062407805",
+        "B01COR1GM2"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 17,
+      "title": "The Law of the Sublime",
+      "author": "Robert Greene",
+      "amazon_ranks": {
+        "Motivational": 6,
+        "Self-Help": 23,
+        "Success": 4
+      },
+      "amazon_url": "https://www.amazon.com/dp/1984881043",
+      "asins": [
+        "1984881043"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 18,
+      "title": "Adult Children of Emotionally Immature Parents: How to Heal from Distant, Rejecting, or Self-Involved Parents",
+      "author": "Lindsay C. Gibson",
+      "amazon_ranks": {
+        "Personal Transformation": 15,
+        "Self-Help": 25
+      },
+      "amazon_url": "https://www.amazon.com/dp/1626251703",
+      "asins": [
+        "1626251703"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 19,
+      "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness",
+      "author": "Morgan Housel",
+      "amazon_ranks": {
+        "Motivational": 8,
+        "Self-Help": 27,
+        "Success": 5
+      },
+      "amazon_url": "https://www.amazon.com/dp/0857197681",
+      "asins": [
+        "0857197681"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 20,
+      "title": "Greenlights",
+      "author": "Matthew McConaughey",
+      "amazon_ranks": {
+        "Personal Transformation": 51,
+        "Self-Help": 28,
+        "Success": 50
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08HLW2JXD",
+      "asins": [
+        "0593139151",
+        "B08HLW2JXD"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 21,
+      "title": "The Untethered Soul: The Journey Beyond Yourself",
+      "author": "Michael A. Singer",
+      "amazon_ranks": {
+        "Personal Transformation": 4,
+        "Self-Help": 29
+      },
+      "amazon_url": "https://www.amazon.com/dp/1572245379",
+      "asins": [
+        "1572245379"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 22,
+      "title": "Man's Search for Meaning",
+      "author": "Viktor E. Frankl",
+      "amazon_ranks": {
+        "Motivational": 9,
+        "Self-Help": 30
+      },
+      "amazon_url": "https://www.amazon.com/dp/0807014273",
+      "asins": [
+        "0807014273"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 23,
+      "title": "Tuesdays with Morrie: An Old Man, a Young Man, and Life's Greatest Lesson, 25th Anniversary Edition",
+      "author": "Mitch Albom",
+      "amazon_ranks": {
+        "Motivational": 10,
+        "Self-Help": 31
+      },
+      "amazon_url": "https://www.amazon.com/dp/076790592X",
+      "asins": [
+        "076790592X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 24,
+      "title": "The Inner Game of Tennis: The Classic Guide to the Mental Side of Peak Performance",
+      "author": "W. Timothy Gallwey",
+      "amazon_ranks": {
+        "Self-Help": 32,
+        "Success": 6
+      },
+      "amazon_url": "https://www.amazon.com/dp/0679778314",
+      "asins": [
+        "0679778314"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 25,
+      "title": "The Laws of Human Nature",
+      "author": "Robert Greene",
+      "amazon_ranks": {
+        "Motivational": 11,
+        "Self-Help": 33,
+        "Success": 7
+      },
+      "amazon_url": "https://www.amazon.com/dp/B07DLDD46C",
+      "asins": [
+        "B07DLDD46C"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 26,
+      "title": "The Anxious Generation: How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness",
+      "author": "Jonathan Haidt",
+      "amazon_ranks": {
+        "Self-Help": 34
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0C9N2L56X",
+      "asins": [
+        "B0C9N2L56X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 27,
+      "title": "Die With Zero: Getting All You Can from Your Money and Your Life―A Revolutionary Approach to Maximizing Life Experiences Over Accumulating Wealth",
+      "author": "Bill Perkins",
+      "amazon_ranks": {
+        "Motivational": 21,
+        "Self-Help": 35,
+        "Success": 15
+      },
+      "amazon_url": "https://www.amazon.com/dp/0358567092",
+      "asins": [
+        "0358567092"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 28,
+      "title": "The 48 Laws of Power",
+      "author": "Robert Greene",
+      "amazon_ranks": {
+        "Self-Help": 36,
+        "Success": 8
+      },
+      "amazon_url": "https://www.amazon.com/dp/0140280197",
+      "asins": [
+        "0140280197"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 29,
+      "title": "The Artist's Way: 30th Anniversary Edition",
+      "author": "Julia Cameron",
+      "amazon_ranks": {
+        "Motivational": 12,
+        "Personal Transformation": 6,
+        "Self-Help": 37
+      },
+      "amazon_url": "https://www.amazon.com/dp/0143129252",
+      "asins": [
+        "0143129252"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 30,
+      "title": "The Seven Principles for Making Marriage Work: A Practical Guide from the Country's Foremost Relationship Expert",
+      "author": "John Gottman PhD",
+      "amazon_ranks": {
+        "Self-Help": 38
+      },
+      "amazon_url": "https://www.amazon.com/dp/0553447718",
+      "asins": [
+        "0553447718"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 31,
+      "title": "Into the quiet: Following Jesus in a world of noise",
+      "author": "John Mark Comer",
+      "amazon_ranks": {
+        "Self-Help": 40
+      },
+      "amazon_url": "https://www.amazon.com/dp/0593193806",
+      "asins": [
+        "0593193806"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 32,
+      "title": "Attached: The New Science of Adult Attachment and How It Can Help You Find--and Keep--Love",
+      "author": "Amir Levine",
+      "amazon_ranks": {
+        "Personal Transformation": 9,
+        "Self-Help": 42
+      },
+      "amazon_url": "https://www.amazon.com/dp/1585429139",
+      "asins": [
+        "1585429139"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 33,
+      "title": "The Creative Act: A Way of Being",
+      "author": "Rick Rubin",
+      "amazon_ranks": {
+        "Personal Transformation": 10,
+        "Self-Help": 43
+      },
+      "amazon_url": "https://www.amazon.com/dp/0593652886",
+      "asins": [
+        "0593652886"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 34,
+      "title": "Conversation: How to Connect with Anyone & Make Every Interaction Count",
+      "author": "Vanessa Van Edwards",
+      "amazon_ranks": {
+        "Self-Help": 44
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GS8G9893",
+      "asins": [
+        "B0GS8G9893"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 35,
+      "title": "The Meaning of Your Life: Finding Purpose in an Age of Emptiness",
+      "author": "Arthur C. Brooks",
+      "amazon_ranks": {
+        "Self-Help": 45,
+        "Success": 82
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0FHJT4LRP",
+      "asins": [
+        "B0FHJT4LRP",
+        "B0FKPFYDGX"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 36,
+      "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
+      "author": "David Goggins",
+      "amazon_ranks": {
+        "Motivational": 92,
+        "Personal Transformation": 14,
+        "Self-Help": 46,
+        "Success": 10
+      },
+      "amazon_url": "https://www.amazon.com/dp/B07KKP62FW",
+      "asins": [
+        "1544512279",
+        "B07KKP62FW"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 37,
+      "title": "Before We Forget How to Connect: Be Heard, Be Seen, and Communicate with Confidence",
+      "author": "Vinh Giang",
+      "amazon_ranks": {
+        "Self-Help": 47
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0H1V9GV4J",
+      "asins": [
+        "B0H1V9GV4J"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 38,
+      "title": "The Ruthless Elimination of Hurry: How to Stay Emotionally Healthy and Spiritually Alive in the Chaos of the Modern World",
+      "author": "John Mark Comer",
+      "amazon_ranks": {
+        "Self-Help": 48
+      },
+      "amazon_url": "https://www.amazon.com/dp/0525653090",
+      "asins": [
+        "0525653090"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 39,
+      "title": "You Are a Badass at Making Money: Master the Mindset of Wealth",
+      "author": "Jen Sincero",
+      "amazon_ranks": {
+        "Motivational": 13,
+        "Personal Transformation": 11,
+        "Self-Help": 49
+      },
+      "amazon_url": "https://www.amazon.com/dp/B01MQSSGFT",
+      "asins": [
+        "B01MQSSGFT"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 40,
+      "title": "Situated: Find the People and Places That Bring Out Your Best",
+      "author": "Angela Duckworth",
+      "amazon_ranks": {
+        "Motivational": 14,
+        "Personal Transformation": 12,
+        "Self-Help": 50
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GC6NNGFY",
+      "asins": [
+        "B0GC6NNGFY"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 41,
+      "title": "Four Thousand Weeks: Time Management for Mortals",
+      "author": "Oliver Burkeman",
+      "amazon_ranks": {
+        "Self-Help": 51
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08XZY5ZF7",
+      "asins": [
+        "B08XZY5ZF7"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 42,
+      "title": "The 5 Love Languages®: The Secret to Love that Lasts",
+      "author": "Gary Chapman",
+      "amazon_ranks": {
+        "Self-Help": 52
+      },
+      "amazon_url": "https://www.amazon.com/dp/080241270X",
+      "asins": [
+        "080241270X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 43,
+      "title": "Sleeping Beauties: Why Good Ideas Go Dormant and How They Wake Up",
+      "author": "David Byrne",
+      "amazon_ranks": {
+        "Self-Help": 54
+      },
+      "amazon_url": "https://www.amazon.com/dp/0593655273",
+      "asins": [
+        "0593655273"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 44,
+      "title": "Becoming Supernatural: How Common People Are Doing The Uncommon",
+      "author": "Dr. Joe Dispenza",
+      "amazon_ranks": {
+        "Personal Transformation": 13,
+        "Self-Help": 55
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08KHCVRZZ",
+      "asins": [
+        "B08KHCVRZZ"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 45,
+      "title": "Awaken the Giant Within, Updated",
+      "author": "Tony Robbins",
+      "amazon_ranks": {
+        "Motivational": 15,
+        "Self-Help": 56,
+        "Success": 11
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GFY6LJVS",
+      "asins": [
+        "B0GFY6LJVS"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 46,
+      "title": "Good Inside: A Guide to Becoming the Parent You Want to Be",
+      "author": "Becky Kennedy",
+      "amazon_ranks": {
+        "Self-Help": 57
+      },
+      "amazon_url": "https://www.amazon.com/dp/0063159481",
+      "asins": [
+        "0063159481"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 47,
+      "title": "Forgiving What You Can't Forget: Discover How to Move On, Make Peace with Painful Memories, and Create a Life That’s Beautiful Again",
+      "author": "Lysa TerKeurst",
+      "amazon_ranks": {
+        "Motivational": 27,
+        "Self-Help": 58
+      },
+      "amazon_url": "https://www.amazon.com/dp/B085XNMMHV",
+      "asins": [
+        "B085XNMMHV"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 48,
+      "title": "All About Love: New Visions",
+      "author": "bell hooks",
+      "amazon_ranks": {
+        "Personal Transformation": 25,
+        "Self-Help": 60
+      },
+      "amazon_url": "https://www.amazon.com/dp/0060959479",
+      "asins": [
+        "0060959479"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 49,
+      "title": "Influence, New and Expanded: The Psychology of Persuasion",
+      "author": "Robert B. Cialdini",
+      "amazon_ranks": {
+        "Motivational": 45,
+        "Self-Help": 61,
+        "Success": 12
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08RLT11Q3",
+      "asins": [
+        "0062937650",
+        "B08RLT11Q3"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 50,
+      "title": "Breaking the Habit of Being Yourself",
+      "author": "Joe Dispenza",
+      "amazon_ranks": {
+        "Motivational": 16,
+        "Personal Transformation": 52,
+        "Self-Help": 62
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0868X3NHH",
+      "asins": [
+        "1401938094",
+        "B0868X3NHH"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 51,
+      "title": "The Untriggered Woman: How to Calm Your Nervous System, Stop Spiraling, Let Go of Control, and Feel Like Yourself Again",
+      "author": "Andrei Nedelcu",
+      "amazon_ranks": {
+        "Personal Transformation": 18,
+        "Self-Help": 63
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0HBR85R46",
+      "asins": [
+        "B0HBR85R46"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 52,
+      "title": "Mastery",
+      "author": "Robert Greene",
+      "amazon_ranks": {
+        "Motivational": 17,
+        "Self-Help": 64,
+        "Success": 13
+      },
+      "amazon_url": "https://www.amazon.com/dp/B00A6G9CGG",
+      "asins": [
+        "B00A6G9CGG"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 53,
+      "title": "Rules to Live By: How Extraordinary Lives Define What Really Matters",
+      "author": "Jimmy Chin",
+      "amazon_ranks": {
+        "Motivational": 18,
+        "Self-Help": 66
+      },
+      "amazon_url": "https://www.amazon.com/dp/1250371643",
+      "asins": [
+        "1250371643"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 54,
+      "title": "How to Be Good at Life: Simple Systems to Achieve More and Stress Less",
+      "author": "Ben Meer",
+      "amazon_ranks": {
+        "Personal Transformation": 19,
+        "Self-Help": 67
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GFCWM3CY",
+      "asins": [
+        "B0GFCWM3CY"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 55,
+      "title": "No Bad Parts: Healing Trauma and Restoring Wholeness with the Internal Family Systems Model",
+      "author": "Richard C. Schwartz PhD",
+      "amazon_ranks": {
+        "Personal Transformation": 20,
+        "Self-Help": 68
+      },
+      "amazon_url": "https://www.amazon.com/dp/1683646681",
+      "asins": [
+        "1683646681"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 56,
+      "title": "Boundaries Updated and Expanded Edition: When to Say Yes, How to Say No To Take Control of Your Life",
+      "author": "Henry Cloud",
+      "amazon_ranks": {
+        "Self-Help": 69
+      },
+      "amazon_url": "https://www.amazon.com/dp/0310351804",
+      "asins": [
+        "0310351804"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 57,
+      "title": "The Purpose Driven Life: What on Earth Am I Here For?",
+      "author": "Rick Warren",
+      "amazon_ranks": {
+        "Motivational": 19,
+        "Self-Help": 70,
+        "Success": 14
+      },
+      "amazon_url": "https://www.amazon.com/dp/031033750X",
+      "asins": [
+        "031033750X"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 58,
+      "title": "Think Faster, Talk Smarter: How to Speak Successfully When You're Put on the Spot",
+      "author": "Matt Abrahams",
+      "amazon_ranks": {
+        "Self-Help": 71
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0BW2DNZHX",
+      "asins": [
+        "B0BW2DNZHX"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 59,
+      "title": "Season of the Witch: A Psychiatrist's Case for Magic",
+      "author": "Ellen Vora MD",
+      "amazon_ranks": {
+        "Self-Help": 72
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GM4N9N17",
+      "asins": [
+        "B0GM4N9N17"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 60,
+      "title": "Come As You Are: Revised and Updated: The Surprising New Science That Will Transform Your Sex Life",
+      "author": "Emily Nagoski Ph.D.",
+      "amazon_ranks": {
+        "Self-Help": 73
+      },
+      "amazon_url": "https://www.amazon.com/dp/1982165316",
+      "asins": [
+        "1982165316"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 61,
+      "title": "The Power of Positive Thinking",
+      "author": "Dr. Norman Vincent Peale",
+      "amazon_ranks": {
+        "Motivational": 20,
+        "Personal Transformation": 44,
+        "Self-Help": 74
+      },
+      "amazon_url": "https://www.amazon.com/dp/0743234804",
+      "asins": [
+        "0743234804"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 62,
+      "title": "Art of Seduction: An Indispensible Primer on the Ultimate Form of Power",
+      "author": "Robert Greene",
+      "amazon_ranks": {
+        "Self-Help": 75
+      },
+      "amazon_url": "https://www.amazon.com/dp/B00X0TKYKE",
+      "asins": [
+        "B00X0TKYKE"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 63,
+      "title": "Signs: The Secret Language of the Universe",
+      "author": "Laura Lynne Jackson",
+      "amazon_ranks": {
+        "Personal Transformation": 22,
+        "Self-Help": 76
+      },
+      "amazon_url": "https://www.amazon.com/dp/0399591613",
+      "asins": [
+        "0399591613"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 64,
+      "title": "Let Them Miss You: The Power of Pulling Back, Standing Firm, and Becoming Unavailable to What Doesn’t Serve You",
+      "author": "Logan West",
+      "amazon_ranks": {
+        "Personal Transformation": 21,
+        "Self-Help": 77
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GBRK6SV9",
+      "asins": [
+        "B0GBRK6SV9"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 65,
+      "title": "Codependent No More: How to Stop Controlling Others and Start Caring for Yourself (Revised and Updated)",
+      "author": "Melody Beattie",
+      "amazon_ranks": {
+        "Self-Help": 78
+      },
+      "amazon_url": "https://www.amazon.com/dp/195411821X",
+      "asins": [
+        "195411821X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 66,
+      "title": "Psycho-Cybernetics: Updated and Expanded",
+      "author": "Maxwell Maltz",
+      "amazon_ranks": {
+        "Motivational": 25,
+        "Self-Help": 79,
+        "Success": 21
+      },
+      "amazon_url": "https://www.amazon.com/dp/B06XRJZN8Q",
+      "asins": [
+        "B06XRJZN8Q"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 67,
+      "title": "Why Am I Like This?: Break Your Relationship Patterns and Create the Life You Want",
+      "author": "Sabrina Zohar",
+      "amazon_ranks": {
+        "Self-Help": 80
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GM545DFC",
+      "asins": [
+        "B0GM545DFC"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 68,
+      "title": "Inner Excellence: Train Your Mind for Extraordinary Performance and the Best Possible Life",
+      "author": "Jim Murphy",
+      "amazon_ranks": {
+        "Motivational": 71,
+        "Personal Transformation": 53,
+        "Self-Help": 81,
+        "Success": 18
+      },
+      "amazon_url": "https://www.amazon.com/dp/1538777800",
+      "asins": [
+        "1538777800",
+        "B0DY2F4JSS"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 69,
+      "title": "Unoffendable Heart: Breaking Free from the Cycle of Offense to Live in Freedom, Love, and Forgiveness",
+      "author": "Mike Signorelli",
+      "amazon_ranks": {
+        "Self-Help": 82
+      },
+      "amazon_url": "https://www.amazon.com/dp/080077261X",
+      "asins": [
+        "080077261X"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 70,
+      "title": "The Gifts of Imperfection, 10th Anniversary Edition: Features a New Foreword",
+      "author": "Brené Brown",
+      "amazon_ranks": {
+        "Motivational": 22,
+        "Personal Transformation": 23,
+        "Self-Help": 83
+      },
+      "amazon_url": "https://www.amazon.com/dp/B085LLCPT5",
+      "asins": [
+        "B085LLCPT5"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 71,
+      "title": "The 7 Habits of Highly Effective People: 30th Anniversary Edition (The Covey Habits Series)",
+      "author": "Stephen R. Covey",
+      "amazon_ranks": {
+        "Motivational": 30,
+        "Self-Help": 84,
+        "Success": 17
+      },
+      "amazon_url": "https://www.amazon.com/dp/1982137274",
+      "asins": [
+        "1982137274",
+        "B0006IU4C0"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 72,
+      "title": "The Next Conversation: Argue Less, Talk More",
+      "author": "Jefferson Fisher",
+      "amazon_ranks": {
+        "Self-Help": 85
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0DGQW15QF",
+      "asins": [
+        "B0DGQW15QF"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 73,
+      "title": "The Way of the Superior Man: A Spiritual Guide to Mastering the Challenges of Women, Work, and Sexual Desire (20th Anniversary Edition)",
+      "author": "David Deida",
+      "amazon_ranks": {
+        "Motivational": 48,
+        "Personal Transformation": 24,
+        "Self-Help": 86,
+        "Success": 19
+      },
+      "amazon_url": "https://www.amazon.com/dp/1622038320",
+      "asins": [
+        "1622038320"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 74,
+      "title": "Unfu*k Yourself: Get Out of Your Head and into Your Life",
+      "author": "Gary John Bishop",
+      "amazon_ranks": {
+        "Motivational": 23,
+        "Personal Transformation": 87,
+        "Self-Help": 87,
+        "Success": 20
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0731QJ482",
+      "asins": [
+        "B071F7C5NQ",
+        "B0731QJ482"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 75,
+      "title": "The 5 Second Rule: Transform your Life, Work, and Confidence with Everyday Courage",
+      "author": "Mel Robbins",
+      "amazon_ranks": {
+        "Motivational": 24,
+        "Self-Help": 89,
+        "Success": 27
+      },
+      "amazon_url": "https://www.amazon.com/dp/B06W9M3QDJ",
+      "asins": [
+        "B06W9M3QDJ"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 76,
+      "title": "Hold Me Tight: Seven Conversations for a Lifetime of Love (The Dr. Sue Johnson Collection, 1)",
+      "author": "Dr. Sue Johnson EdD",
+      "amazon_ranks": {
+        "Motivational": 68,
+        "Self-Help": 90
+      },
+      "amazon_url": "https://www.amazon.com/dp/031611300X",
+      "asins": [
+        "031611300X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 77,
+      "title": "Dare to Lead: Brave Work. Tough Conversations. Whole Hearts.",
+      "author": "Brené Brown",
+      "amazon_ranks": {
+        "Motivational": 53,
+        "Personal Transformation": 26,
+        "Self-Help": 92
+      },
+      "amazon_url": "https://www.amazon.com/dp/B07DJYFLX8",
+      "asins": [
+        "B07DJYFLX8"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 78,
+      "title": "The Happiness Trap (Second Edition): How to Stop Struggling and Start Living",
+      "author": "Russ Harris",
+      "amazon_ranks": {
+        "Self-Help": 93
+      },
+      "amazon_url": "https://www.amazon.com/dp/1645471160",
+      "asins": [
+        "1645471160"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 79,
+      "title": "The Science of Scaling: Grow Your Business Bigger and Faster Than You Think Possible",
+      "author": "Dr. Benjamin Hardy",
+      "amazon_ranks": {
+        "Self-Help": 94,
+        "Success": 23
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0DJTS2C3T",
+      "asins": [
+        "B0DJTS2C3T"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 80,
+      "title": "Stand Firm and Act Like Men: Becoming the Man You Were Created to Be Instead of Who the World Says You Are",
+      "author": "Joby Martin",
+      "amazon_ranks": {
+        "Self-Help": 95
+      },
+      "amazon_url": "https://www.amazon.com/dp/1546008217",
+      "asins": [
+        "1546008217"
+      ],
+      "faith": true,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 81,
+      "title": "Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century (Think and Grow Rich Series)",
+      "author": "Napoleon Hill",
+      "amazon_ranks": {
+        "Motivational": 26,
+        "Personal Transformation": 27,
+        "Self-Help": 96,
+        "Success": 24
+      },
+      "amazon_url": "https://www.amazon.com/dp/1585424331",
+      "asins": [
+        "1585424331",
+        "B000XJNDVQ"
+      ],
+      "faith": false,
+      "rights": "in_copyright",
+      "note": "The listed edition is the 2005 revised text, which is copyrighted. The original 1937 text is claimed public domain through non-renewal; unverified, so treat as in copyright."
+    },
+    {
+      "rank": 82,
+      "title": "Grit: The Power of Passion and Perseverance",
+      "author": "Angela Duckworth",
+      "amazon_ranks": {
+        "Motivational": 32,
+        "Personal Transformation": 31,
+        "Self-Help": 97
+      },
+      "amazon_url": "https://www.amazon.com/dp/B01D3AC5VU",
+      "asins": [
+        "B01D3AC5VU"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 83,
+      "title": "I Will Teach You to Be Rich: No Guilt. No Excuses. Just a 6-Week Program That Works (Second Edition)",
+      "author": "Ramit Sethi",
+      "amazon_ranks": {
+        "Self-Help": 98,
+        "Success": 25
+      },
+      "amazon_url": "https://www.amazon.com/dp/1523505745",
+      "asins": [
+        "1523505745"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 84,
+      "title": "Detached: How to Let Go, Heal, and Become Irresistible",
+      "author": "Sabrina Alexis Bendory",
+      "amazon_ranks": {
+        "Self-Help": 99
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0FYK1HNXB",
+      "asins": [
+        "B0FYK1HNXB"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 85,
+      "title": "Mysteries into Miracles: The 12 Paradoxes of Manifesting",
+      "author": "Mike Dooley",
+      "amazon_ranks": {
+        "Motivational": 28,
+        "Personal Transformation": 28,
+        "Self-Help": 100
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GLF5M5MB",
+      "asins": [
+        "B0GLF5M5MB"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 86,
+      "title": "Make Your Bed: Little Things That Can Change Your Life...And Maybe the World",
+      "author": "Admiral William H. McRaven",
+      "amazon_ranks": {
+        "Motivational": 29,
+        "Personal Transformation": 40,
+        "Success": 26
+      },
+      "amazon_url": "https://www.amazon.com/dp/1455570249",
+      "asins": [
+        "1455570249"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 87,
+      "title": "The Power of Now: A Guide to Spiritual Enlightenment",
+      "author": "Eckhart Tolle",
+      "amazon_ranks": {
+        "Motivational": 31,
+        "Personal Transformation": 29
+      },
+      "amazon_url": "https://www.amazon.com/dp/1577314808",
+      "asins": [
+        "1577314808"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 88,
+      "title": "Crucial Conversations: Tools for Talking When Stakes are High, Third Edition",
+      "author": "Joseph Grenny",
+      "amazon_ranks": {
+        "Success": 29
+      },
+      "amazon_url": "https://www.amazon.com/dp/1260474186",
+      "asins": [
+        "1260474186"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 89,
+      "title": "Meditations (Deluxe Hardbound Edition)",
+      "author": "Marcus Aurelius",
+      "amazon_ranks": {
+        "Personal Transformation": 30
+      },
+      "amazon_url": "https://www.amazon.com/dp/9354407269",
+      "asins": [
+        "0140449337",
+        "9354407269"
+      ],
+      "faith": false,
+      "rights": "public_domain_us",
+      "pd_first_published": "c. 180",
+      "gutenberg_id": 2680,
+      "note": "Serve the George Long translation already in the curated catalog (Gutenberg 2680). Gregory Hays and other modern translations are copyrighted.",
+      "in_curated_catalog": true
+    },
+    {
+      "rank": 90,
+      "title": "Extreme Ownership: How U.S. Navy SEALs Lead and Win (New Edition) (Extreme Ownership Series, 1)",
+      "author": "Jocko Willink",
+      "amazon_ranks": {
+        "Success": 30
+      },
+      "amazon_url": "https://www.amazon.com/dp/1250183863",
+      "asins": [
+        "1250183863"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 91,
+      "title": "Life in Perspective: The Art and Power of the Annual Life Review",
+      "author": "Tiago Forte",
+      "amazon_ranks": {
+        "Success": 31
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GPJ3YVW2",
+      "asins": [
+        "B0GPJ3YVW2"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 92,
+      "title": "Wintering: The Power of Rest and Retreat in Difficult Times",
+      "author": "Katherine May",
+      "amazon_ranks": {
+        "Motivational": 35,
+        "Personal Transformation": 32
+      },
+      "amazon_url": "https://www.amazon.com/dp/0593189485",
+      "asins": [
+        "0593189485"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 93,
+      "title": "As a Man Thinketh - The Original 1902 Classic (includes The Mastery of Destiny) (Reader's Library Classics)",
+      "author": "James Allen",
+      "amazon_ranks": {
+        "Motivational": 37,
+        "Personal Transformation": 33
+      },
+      "amazon_url": "https://www.amazon.com/dp/1954839367",
+      "asins": [
+        "1954839367"
+      ],
+      "faith": false,
+      "rights": "public_domain_us",
+      "pd_first_published": "1903",
+      "gutenberg_id": 4507,
+      "note": "Public domain full text on Gutenberg. Generate cards from the text, not from memory.",
+      "in_curated_catalog": false
+    },
+    {
+      "rank": 94,
+      "title": "The Obstacle Is the Way: The Timeless Art of Turning Trials into Triumph",
+      "author": "Ryan Holiday",
+      "amazon_ranks": {
+        "Success": 33
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0BT53FNVH",
+      "asins": [
+        "B0BT53FNVH"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 95,
+      "title": "Wisdom Takes Work: Learn. Apply. Repeat. (The Stoic Virtues Series)",
+      "author": "Ryan Holiday",
+      "amazon_ranks": {
+        "Motivational": 33
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0F2M5DNBW",
+      "asins": [
+        "B0F2M5DNBW"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 96,
+      "title": "The 21 Irrefutable Laws of Leadership: Follow Them and People Will Follow You",
+      "author": "John C. Maxwell",
+      "amazon_ranks": {
+        "Motivational": 34,
+        "Success": 75
+      },
+      "amazon_url": "https://www.amazon.com/dp/B09MGFPBM1",
+      "asins": [
+        "1400236169",
+        "B09MGFPBM1"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 97,
+      "title": "Think Again: The Power of Knowing What You Don't Know",
+      "author": "Adam Grant",
+      "amazon_ranks": {
+        "Personal Transformation": 34
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08HJQHNH9",
+      "asins": [
+        "B08HJQHNH9"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 98,
+      "title": "Journey: The Year That Changes Everything: 365 Daily Reflections to Build Self-Awareness and Inner Peace",
+      "author": "Yung Pueblo",
+      "amazon_ranks": {
+        "Success": 34
+      },
+      "amazon_url": "https://www.amazon.com/dp/0593980948",
+      "asins": [
+        "0593980948"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 99,
+      "title": "What Happened to You?: Conversations on Trauma, Resilience, and Healing",
+      "author": "Oprah Winfrey",
+      "amazon_ranks": {
+        "Personal Transformation": 35
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08PW4Q284",
+      "asins": [
+        "B08PW4Q284"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 100,
+      "title": "Start With Yourself: A New Vision for Work & Life",
+      "author": "Emma Grede",
+      "amazon_ranks": {
+        "Success": 35
+      },
+      "amazon_url": "https://www.amazon.com/dp/1668085488",
+      "asins": [
+        "1668085488"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": null,
+      "requested_by": "Michael",
+      "title": "The Art of War",
+      "author": "Sun Tzu",
+      "amazon_ranks": {},
+      "amazon_url": null,
+      "asins": [],
+      "faith": false,
+      "rights": "public_domain_us",
+      "pd_first_published": "c. 5th century BC; Lionel Giles translation 1910",
+      "gutenberg_id": 132,
+      "note": "Already in the curated catalog as full text. Modern translations are copyrighted; serve Giles only.",
+      "in_curated_catalog": true
+    }
+  ],
+  "next_up": [
+    {
+      "rank": 101,
+      "title": "Do Something: The Case for Action in an Age of Overthinking",
+      "author": "Michael Easter",
+      "amazon_ranks": {
+        "Personal Transformation": 36,
+        "Success": 38
+      },
+      "amazon_url": "https://www.amazon.com/dp/006345260X",
+      "asins": [
+        "006345260X"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 102,
+      "title": "The 7 Habits of Highly Effective Teens",
+      "author": "Sean Covey",
+      "amazon_ranks": {
+        "Motivational": 39,
+        "Success": 36
+      },
+      "amazon_url": "https://www.amazon.com/dp/1476764662",
+      "asins": [
+        "1476764662"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 103,
+      "title": "The E-Myth Revisited: Why Most Small Businesses Don't Work and What to Do About It",
+      "author": "Michael E. Gerber",
+      "amazon_ranks": {
+        "Motivational": 36
+      },
+      "amazon_url": "https://www.amazon.com/dp/B00094F0ES",
+      "asins": [
+        "B00094F0ES"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 104,
+      "title": "The Daily Stoic 10th Anniversary Edition: 366 Meditations on Wisdom, Perseverance, and the Art of Living",
+      "author": "Ryan Holiday",
+      "amazon_ranks": {
+        "Success": 37
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GFD691K8",
+      "asins": [
+        "0735211736",
+        "B0GFD691K8"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 105,
+      "title": "When Things Fall Apart: Heart Advice for Difficult Times",
+      "author": "Pema Chodron",
+      "amazon_ranks": {
+        "Personal Transformation": 38
+      },
+      "amazon_url": "https://www.amazon.com/dp/1611803438",
+      "asins": [
+        "1611803438"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 106,
+      "title": "12 Rules for Life: An Antidote to Chaos",
+      "author": "Jordan B. Peterson",
+      "amazon_ranks": {
+        "Personal Transformation": 41,
+        "Success": 39
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0797Y87JC",
+      "asins": [
+        "B0797Y87JC"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 107,
+      "title": "How to Know a Person: The Art of Seeing Others Deeply and Being Deeply Seen",
+      "author": "David Brooks",
+      "amazon_ranks": {
+        "Personal Transformation": 39
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0BXFNXWS7",
+      "asins": [
+        "B0BXFNXWS7"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 108,
+      "title": "The Energy Bus: 10 Rules to Fuel Your Life, Work, and Team with Positive Energy",
+      "author": "Jon Gordon",
+      "amazon_ranks": {
+        "Success": 40
+      },
+      "amazon_url": "https://www.amazon.com/dp/0470100281",
+      "asins": [
+        "0470100281"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 109,
+      "title": "Procrastinators Get Stuff Done: How to Go from Overwhelmed to Finished",
+      "author": "Dana K. White",
+      "amazon_ranks": {
+        "Motivational": 40
+      },
+      "amazon_url": "https://www.amazon.com/dp/B0GRGLXPWZ",
+      "asins": [
+        "B0GRGLXPWZ"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    },
+    {
+      "rank": 110,
+      "title": "The Comfort Crisis: Embrace Discomfort to Reclaim Your Wild, Happy, Healthy Self",
+      "author": "Michael Easter",
+      "amazon_ranks": {
+        "Motivational": 41
+      },
+      "amazon_url": "https://www.amazon.com/dp/B08LDX3TZ2",
+      "asins": [
+        "B08LDX3TZ2"
+      ],
+      "faith": false,
+      "rights": "in_copyright"
+    }
+  ],
+  "excluded": [
+    {
+      "title": "SAS Survival Handbook, Third Edition: The Ultimate Guide to Surviving Anywhere ― The Classic Survival Handbook, Updated with Urban Survival",
+      "author": "John 'Lofty' Wiseman",
+      "amazon_ranks": {
+        "Self-Help": 4
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "The Steps: A Memoir",
+      "author": "Sylvester Stallone",
+      "amazon_ranks": {
+        "Motivational": 1,
+        "Self-Help": 10
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "My Book of Days: A Memoir in Moments",
+      "author": "Eric Dane",
+      "amazon_ranks": {
+        "Motivational": 4,
+        "Self-Help": 13
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "The Lost Skills of Independence",
+      "author": "Claude Davis",
+      "amazon_ranks": {
+        "Self-Help": 18
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "My First Library: Boxset of 10 Board Books for Kids",
+      "author": "Wonder House Books",
+      "amazon_ranks": {
+        "Self-Help": 19
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "Strangers: A Memoir of Marriage",
+      "author": "Belle Burden",
+      "amazon_ranks": {
+        "Self-Help": 20
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "Forgotten Home Apothecary: 250 Powerful Remedies at Your Fingertips: 250 Powerful Remedies at Your Fingertips",
+      "author": "Dr. Nicole Apelian",
+      "amazon_ranks": {
+        "Self-Help": 24
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Prepare Your Home for a Sudden Grid-Down Situation: Take Self-Reliance to the Next Level with Proven Methods and Strategies to Survive a Grid-Down ... the Modern Family to Prepare for Any Crisis)",
+      "author": "Ted Riley",
+      "amazon_ranks": {
+        "Self-Help": 26
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Bushcraft 101: A Field Guide to the Art of Wilderness Survival (Bushcraft Survival Skills Series)",
+      "author": "Dave Canterbury",
+      "amazon_ranks": {
+        "Self-Help": 39
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "The Encyclopedia of Country Living, 50th Anniversary Edition: The Original Manual for Living Off the Land & Doing It Yourself (Homesteading & Off-Grid Survival)",
+      "author": "Carla Emery",
+      "amazon_ranks": {
+        "Self-Help": 41
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Stress Relief: Coloring Book for Adults and Kids, Bold and Easy, Simple and Big Designs for Relaxation Featuring Animals, Landscape, Flowers, Patterns, Cute Things And Many More",
+      "author": "Coco Wyo",
+      "amazon_ranks": {
+        "Self-Help": 53
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "NIV, The Woman's Study Bible, Hardcover, Full-Color, Red Letter: Receiving God's Truth for Balance, Hope, and Transformation",
+      "author": "Thomas Nelson",
+      "amazon_ranks": {
+        "Personal Transformation": 16,
+        "Self-Help": 59
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "Wreck This Journal: Now in Color",
+      "author": "Keri Smith",
+      "amazon_ranks": {
+        "Self-Help": 65
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "Jesus Calling, Padded Hardcover, with Scripture References: Enjoying Peace in His Presence (A 365-Day Devotional) – The Perfect Christian Christmas Gift",
+      "author": "Sarah Young",
+      "amazon_ranks": {
+        "Self-Help": 88
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "The Atomic Habits Daily Calendar: 365 Powerful Ideas for a Better Year",
+      "author": "James Clear",
+      "amazon_ranks": {
+        "Success": 32
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "The Boy, the Mole, the Fox and the Horse: A #1 Bestselling Modern Fable Illustrated for All Ages",
+      "author": "Charlie Mackesy",
+      "amazon_ranks": {
+        "Motivational": 43,
+        "Success": 41
+      },
+      "reason": "illustrated gift book too short to summarize without substituting for it"
+    },
+    {
+      "title": "Stripped Down: Unfiltered and Unapologetic",
+      "author": "Bunnie Xo",
+      "amazon_ranks": {
+        "Motivational": 42
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "Fluent Forever (Revised Edition): How to Learn Any Language Fast and Never Forget It",
+      "author": "Gabriel Wyner",
+      "amazon_ranks": {
+        "Success": 43
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Jesus Calling, Large Text Brown Leathersoft, with Full Scriptures: Enjoying Peace in His Presence (A 365-Day Devotional) – The Perfect Christian Christmas Gift",
+      "author": "Sarah Young",
+      "amazon_ranks": {
+        "Motivational": 44
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "The Atomic Habits Workbook: Official Companion to the #1 Worldwide Bestseller",
+      "author": "James Clear",
+      "amazon_ranks": {
+        "Personal Transformation": 45
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "In the Manger: 25 Inspirational Selections for Advent (A 25-Day Christmas Devotional) – The Perfect Christian Gift for the Holiday Season",
+      "author": "Max Lucado",
+      "amazon_ranks": {
+        "Motivational": 47
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "Jesus Listens--for Advent and Christmas, Padded Hardcover, with Full Scriptures: Prayers for the Season (A 40-Day Devotional) – The Perfect Christian Gift for the Holidays",
+      "author": "Sarah Young",
+      "amazon_ranks": {
+        "Motivational": 55
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "KJV Holy Bible, Giant Print with Cross-References, Soft Pink LeatherTouch with Floral Cover Design, Thumb Index, Ribbon Marker, Red Letter, Full-Color Maps, Easy-to-Read MCM Type, King James Version",
+      "author": "Holman Bible Publishers",
+      "amazon_ranks": {
+        "Personal Transformation": 60
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "A Dirty Guide to a Clean Home: Housekeeping Hacks You Can't Live Without",
+      "author": "Melissa Dilkes Pateras",
+      "amazon_ranks": {
+        "Motivational": 60
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Homemaking with Babs: Tips and Tricks for Making a House a Home",
+      "author": "Barbara Costello",
+      "amazon_ranks": {
+        "Motivational": 61
+      },
+      "reason": "practical manual outside personal development (survival, homesteading, remedies, housekeeping, languages)"
+    },
+    {
+      "title": "Poems & Prayers",
+      "author": "Matthew McConaughey",
+      "amazon_ranks": {
+        "Motivational": 64
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "NKJV, The Woman's Study Bible, Hardcover, Red Letter, Full-Color Edition: Receiving God's Truth for Balance, Hope, and Transformation, New King James Version",
+      "author": "Thomas Nelson",
+      "amazon_ranks": {
+        "Personal Transformation": 66
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "Deja de ser tú: La mente crea la realidad",
+      "author": "Joe Dispenza",
+      "amazon_ranks": {
+        "Motivational": 76,
+        "Personal Transformation": 72
+      },
+      "reason": "non-English edition of a listed work"
+    },
+    {
+      "title": "NKJV, End-of-Verse Reference Bible, Personal Size Large Print, Leathersoft, Brown, Red Letter, Comfort Print: Holy Bible, New King James Version",
+      "author": "Thomas Nelson",
+      "amazon_ranks": {
+        "Personal Transformation": 75
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "Always Remember: The Boy, the Mole, the Fox, the Horse and the Storm",
+      "author": "Charlie Mackesy",
+      "amazon_ranks": {
+        "Motivational": 80
+      },
+      "reason": "illustrated gift book too short to summarize without substituting for it"
+    },
+    {
+      "title": "Meditations for Breaking the Habit of Being Yourself: A 4-Week Guided Practice for Reprogramming Your Subconscious Mind and Creating a New Future",
+      "author": "Joe Dispenza",
+      "amazon_ranks": {
+        "Motivational": 97,
+        "Personal Transformation": 88
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "He Whispers Your Name 365 Devotions for Women - Hope and Comfort to Strengthen Your Walk of Faith - Teal Faux Leather Devotional Gift Book w/Ribbon Marker",
+      "author": "Cherie Hill",
+      "amazon_ranks": {
+        "Motivational": 88
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "God's Promises for Your Every Need, NKJV: A Treasury of Scripture for Life",
+      "author": "Thomas Nelson",
+      "amazon_ranks": {
+        "Motivational": 90
+      },
+      "reason": "scripture or daily devotional"
+    },
+    {
+      "title": "Trump: The Art of the Deal",
+      "author": "Donald J. Trump",
+      "amazon_ranks": {
+        "Success": 92
+      },
+      "reason": "memoir or poetry without a life-advice frame"
+    },
+    {
+      "title": "Woodland Wardens: 52-Card Oracle Deck & Guidebook",
+      "author": "Jessica Roux",
+      "amazon_ranks": {
+        "Personal Transformation": 96
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "Mary Engelbreit's A Moment Here, A Memory There 2027 Monthly/Weekly Planner",
+      "author": "Mary Engelbreit",
+      "amazon_ranks": {
+        "Motivational": 96
+      },
+      "reason": "not a prose book (coloring, board book, journal, planner, calendar, workbook, deck)"
+    },
+    {
+      "title": "Jesus Calling, Small Brown Leathersoft, with Scripture References: Enjoying Peace in His Presence (A 365-Day Devotional) – The Perfect Christian Christmas Gift",
+      "author": "Sarah Young",
+      "amazon_ranks": {
+        "Motivational": 99
+      },
+      "reason": "scripture or daily devotional"
+    }
+  ]
+}
