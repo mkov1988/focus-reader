@@ -221,3 +221,296 @@ which cost one book a voice in wave 2.
 | 6 | [35153259910](https://github.com/mkov1988/focus-reader/actions/runs/35153259910) 2026-09-16 21:35Z to 2026-09-17 07:26Z | 21/21 pairs verified, no failures; manifest dcbcf46 | [35194664575](https://github.com/mkov1988/focus-reader/actions/runs/35194664575) success | 2026-09-17 07:29Z, 84 books live, all with 3 voices |
 | 7 | [35194670571](https://github.com/mkov1988/focus-reader/actions/runs/35194670571) 2026-09-17 07:28Z to 15:06Z | 30/30 pairs verified, no failures; manifest 4e3e136 | [35238189249](https://github.com/mkov1988/focus-reader/actions/runs/35238189249) success | 2026-09-17 15:09Z, 94 books live, all with 3 voices |
 | 8 | [35238198714](https://github.com/mkov1988/focus-reader/actions/runs/35238198714) 2026-09-17 15:08Z to 17:44Z | 3/3 pairs verified; the all-Greek unit 83 voiced fine, so the isolation was precautionary only | [35254658126](https://github.com/mkov1988/focus-reader/actions/runs/35254658126) success | 2026-09-17 17:46Z, 95 books live, all with 3 voices |
+
+---
+
+# Campaign 2: the next 100 most-downloaded books (started 2026-11-06)
+
+Selection: `src/data/curated.json` sorted by `downloadCount`, skipping the 95 narrated books and the books held back in Campaign 1.
+From the top 160 candidates: 15 fail the leftover gate, 8 are reference works (dictionary, Factbooks, a surgery manual, a concrete manual, a roll call, a word book, an anthology index),
+6 are dropped by hand (4 duplicate editions of narrated books, a biographical dictionary, a mushroom guide), 15 show the readable-bounds bug. The first 100 that pass are below.
+Sized by `scripts/narration/plan.mjs` like the batch prepare job; waves packed to at most 90 artifacts (3 x shards + 3 x books) because of the artifact listing cap (see Rails above).
+
+**100 books, 10,293,411 span words, 684 synth jobs, about 1,200 runner-hours. Same procedure as Campaign 1: one wave at a time, deploy after each, never two runs at once.**
+
+## Held back in this campaign
+
+Readable-bounds bug (do not narrate until chapter detection is fixed):
+
+- 42671 Pride and Prejudice :: later-heading, start 28% :: "CHAPTER XX."
+- 47530 Oliver Twist, Vol. 2 (of 3) :: later-heading :: "CHAPTER XX."
+- 22091 The best short stories of 1920, and the  :: start 82%, end 86% :: "M. Level's case. These stories are not l"
+- 55059 Modern English biography, volume 1 (of 4 :: start 39% :: "V. A. 18 June 1857; retired on a pension"
+- 50603 Minute Mysteries [Detectograms] :: end 75% :: "MINUTE MYSTERIES [Detectograms]"
+- 51649 The Mysteries of London, v. 4/4 :: later-heading, end 81% :: "CHAPTER CX."
+- 40058 The Life of Florence Nightingale, vol. 2 :: later-heading, end 87% :: "PART V"
+- 27279 Southern Literature From 1579-1895: A co :: start 31% :: "L. L. D.\" were fighting in the wars; and"
+- 21190 Expositions of Holy Scripture: Second Co :: start 88% :: "IV. Lastly, 'the Lord of Peace' gives it"
+- 26315 Shakespeare's family :: end 90% :: "PREFACE"
+- 3177 Roughing It :: later-heading :: "CHAPTER LXXVIII. Return to San Francisco"
+- 30849 The Works of Robert Louis Stevenson - Sw :: later-heading :: "VOLUME XX"
+- 47221 Quintus Claudius: A Romance of Imperial  :: end 89% :: "PREFACE"
+- 70854 The Countess of Pembroke's Arcadia :: later-heading, start 77% :: "BOOK IV"
+- 23609 Searchlights on Health: Light on Dark Co :: start 64% :: "I. INFANT FEEDING.--The care of milk, mi"
+
+Gated out by the leftover gate (legally load bearing):
+
+- 25851 The Life of Charles Dickens, Vol. I-III, Complete
+- 22541 The Misplaced Battleship
+- 12082 Color Images from Mars Rovers: Spirit and Opportun
+- 27997 Robert Orange: Being a Continuation of the History
+- 42681 The Hero of the People: A Historical Romance of Lo
+- 57669 The problem of Cell 13
+- 47642 The Strand Magazine, Vol. 27, February 1904, No. 1
+- 21765 The Metamorphoses of Ovid, Books I-VII
+- 18459 Hypnerotomachia: The Strife of Loue in a Dreame
+- 34323 The Samurai Strategy
+- 4499 Complete Short Works of George Meredith
+- 34318 Life Blood
+- 3922 The Red Lily — Complete
+- 393 The Blue Lagoon: A Romance
+- 2620 The Home Book of Verse — Volume 2
+
+Reference works and duplicates (not worth a narrator):
+
+- 37683 Chambers's Twentieth Century Dictionary (part 1 of 4: A
+- 27558 The 2003 CIA World Factbook
+- 27509 The 2006 CIA World Factbook
+- 31100 The Complete Project Gutenberg Works of Jane Austen: A 
+- 24855 Concrete Construction: Methods and Costs
+- 51143 The Waterloo Roll Call: With Biographical Notes and Ane
+- 28428 Manual of Surgery Volume Second: Extremities—Head—Neck.
+- 13188 Putnam's Word Book: A Practical Aid in Expressing Ideas
+- 45839 Dracula :: duplicate edition of 345 Dracula
+- 161 Sense and Sensibility :: duplicate edition of 21839 Sense and Sensibility
+- 48320 Adventures of Sherlock Holmes: Illustrated :: duplicate edition of 1661 Sherlock Holmes
+- 71046 Modern English biography, volume 2 (of 4), I- :: reference: biographical dictionary
+- 26492 Studies of American Fungi. Mushrooms, Edible, :: reference: mushroom field guide
+- 42 The strange case of Dr. Jekyll and Mr. Hyde :: duplicate edition of 43 Jekyll and Hyde
+
+Note: `JUNK_TITLE` in `scripts/mirror-all.mjs` never matches "Dictionary", "Encyclopedia", "Bibliography" or "Glossary": the trailing `\b` after a word stem like `dictionar` needs a word boundary that the real word does not have. The selection above used a corrected pattern.
+
+## C2 Wave 1: 7 books, 63 synth jobs, 84 artifacts, 1,022,693 words
+
+```
+6761,4085,24739,34413,2680,51252,23784
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 6761 | The Adventures of Ferdinand Count Fathom — Complete | 42,392 | 161,618 | 3 | 9 |
+| 4085 | The Adventures of Roderick Random | 41,248 | 188,667 | 4 | 12 |
+| 24739 | Bidwell's Travels, from Wall Street to London Prison: F | 38,127 | 134,753 | 3 | 9 |
+| 34413 | The Love Letters of Mary Wollstonecraft to Gilbert Imla | 38,116 | 33,240 | 1 | 3 |
+| 2680 | Meditations | 38,017 | 70,292 | 2 | 6 |
+| 51252 | The Book of the Thousand Nights and a Night — Volume 01 | 36,667 | 174,123 | 3 | 9 |
+| 23784 | The History of Sir Richard Calmady: A Romance | 34,954 | 260,000 | 5 | 15 |
+
+## C2 Wave 2: 9 books, 60 synth jobs, 87 artifacts, 911,644 words
+
+```
+65238,19771,2868,53874,27827,3011,40284,27475,51428
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 65238 | The Secret of Chimneys | 31,401 | 74,617 | 2 | 6 |
+| 19771 | Henrietta Temple: A Love Story | 31,021 | 142,684 | 3 | 9 |
+| 2868 | The Green Mummy | 29,838 | 87,738 | 2 | 6 |
+| 53874 | Under the Red Dragon: A Novel | 28,630 | 150,956 | 3 | 9 |
+| 27827 | The Kama Sutra of Vatsyayana: Translated From the Sansc | 28,422 | 58,310 | 1 | 3 |
+| 3011 | The Lady of the Lake | 27,922 | 78,494 | 2 | 6 |
+| 40284 | The Sex Life of the Gods | 27,853 | 32,334 | 1 | 3 |
+| 27475 | That Girl Montana | 27,847 | 103,088 | 2 | 6 |
+| 51428 | That Which Hath Wings: A Novel of the Day | 27,524 | 183,423 | 4 | 12 |
+
+## C2 Wave 3: 7 books, 60 synth jobs, 81 artifacts, 909,025 words
+
+```
+19476,7326,26849,53416,53154,58866,55179
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 19476 | A Honeymoon in Space | 27,045 | 63,641 | 2 | 6 |
+| 7326 | The Yeoman Adventurer | 26,670 | 125,029 | 3 | 9 |
+| 26849 | The Works of Mr. George Gillespie (Vol. 1 of 2) | 26,576 | 264,214 | 5 | 15 |
+| 53416 | Only a girl's love | 26,446 | 141,107 | 3 | 9 |
+| 53154 | Cameron of Lochiel | 26,430 | 87,145 | 2 | 6 |
+| 58866 | The Murder on the Links | 26,184 | 64,611 | 2 | 6 |
+| 55179 | One of the Six Hundred: A Novel | 26,180 | 163,278 | 3 | 9 |
+
+## C2 Wave 4: 9 books, 54 synth jobs, 81 artifacts, 739,667 words
+
+```
+48296,49987,43453,57641,48438,15399,46276,25789,2148
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 48296 | Linnet: A Romance | 26,150 | 141,311 | 3 | 9 |
+| 49987 | Forest Days: A Romance of Old Times | 25,843 | 168,470 | 3 | 9 |
+| 43453 | A Pickle for the Knowing Ones | 25,803 | 13,980 | 1 | 3 |
+| 57641 | One Woman: Being the Second Part of a Romance of Sussex | 25,785 | 84,085 | 2 | 6 |
+| 48438 | Rizal's own story of his life | 25,714 | 11,979 | 1 | 3 |
+| 15399 | The Interesting Narrative of the Life of Olaudah Equian | 25,521 | 81,006 | 2 | 6 |
+| 46276 | The Treasure of Pearls: A Romance of Adventures in Cali | 25,373 | 75,033 | 2 | 6 |
+| 25789 | Emily Brontë | 25,160 | 68,760 | 2 | 6 |
+| 2148 | The Works of Edgar Allan Poe — Volume 2 | 24,865 | 95,043 | 2 | 6 |
+
+## C2 Wave 5: 7 books, 66 synth jobs, 87 artifacts, 1,064,524 words
+
+```
+831,72,4363,76178,53419,59828,42389
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 831 | Four Arthurian Romances | 24,854 | 191,088 | 4 | 12 |
+| 72 | Thuvia, maid of Mars | 24,852 | 47,059 | 1 | 3 |
+| 4363 | Beyond Good and Evil | 24,587 | 62,459 | 2 | 6 |
+| 76178 | I am a woman | 24,468 | 75,012 | 2 | 6 |
+| 53419 | Twenty-Five Ghost Stories | 24,382 | 55,986 | 1 | 3 |
+| 59828 | The String of Pearls; Or, The Barber of Fleet Street. A | 24,322 | 436,564 | 8 | 24 |
+| 42389 | The Pirate: Andrew Lang Edition | 24,312 | 196,356 | 4 | 12 |
+
+## C2 Wave 6: 8 books, 54 synth jobs, 78 artifacts, 803,463 words
+
+```
+58820,32155,24793,26563,22163,76639,32474,50133
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 58820 | Whose Body? A Lord Peter Wimsey Novel | 24,287 | 58,706 | 1 | 3 |
+| 32155 | The Love Letters of Henry VIII to Anne Boleyn; With Not | 24,028 | 5,800 | 1 | 3 |
+| 24793 | Blow The Man Down: A Romance Of The Coast | 24,026 | 140,281 | 3 | 9 |
+| 26563 | The Crack of Doom | 23,950 | 42,668 | 1 | 3 |
+| 22163 | The Rover Boys on the Farm; or, Last Days at Putnam Hal | 23,863 | 48,932 | 1 | 3 |
+| 76639 | Eloisa : $b or, A series of original letters | 23,506 | 307,437 | 6 | 18 |
+| 32474 | The Memoirs of the Conquistador Bernal Diaz del Castill | 23,418 | 182,270 | 4 | 12 |
+| 50133 | The Dunwich horror | 23,404 | 17,369 | 1 | 3 |
+
+## C2 Wave 7: 9 books, 60 synth jobs, 87 artifacts, 903,818 words
+
+```
+57342,54219,37499,43098,468,38311,31472,50290,564
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 57342 | The Lives and Opinions of Eminent Philosophers | 23,235 | 186,304 | 4 | 12 |
+| 54219 | A Little English Gallery | 23,101 | 51,077 | 1 | 3 |
+| 37499 | Napoleon's Letters to Josephine, 1796-1812: For the Fir | 23,090 | 91,042 | 2 | 6 |
+| 43098 | Selected Works of Voltairine de Cleyre | 23,083 | 135,601 | 3 | 9 |
+| 468 | Manon Lescaut | 23,052 | 62,272 | 2 | 6 |
+| 38311 | What Will People Say? A Novel | 22,891 | 149,330 | 3 | 9 |
+| 31472 | Cynthia's Chauffeur | 22,688 | 82,470 | 2 | 6 |
+| 50290 | Space Station 1 | 22,536 | 50,114 | 1 | 3 |
+| 564 | The Mystery of Edwin Drood | 22,522 | 95,608 | 2 | 6 |
+
+## C2 Wave 8: 10 books, 60 synth jobs, 90 artifacts, 904,321 words
+
+```
+31635,28203,33823,31257,38177,23184,36223,23639,2097,23500
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 31635 | The Silent Barrier | 22,513 | 83,217 | 2 | 6 |
+| 28203 | Moods | 22,509 | 86,074 | 2 | 6 |
+| 33823 | The Gay Adventure: A Romance | 22,504 | 77,372 | 2 | 6 |
+| 31257 | Dainty's Cruel Rivals; Or, The Fatal Birthday | 22,433 | 53,924 | 1 | 3 |
+| 38177 | The Passionate Elopement | 22,412 | 107,781 | 2 | 6 |
+| 23184 | Monte-Cristo's Daughter | 22,089 | 84,611 | 2 | 6 |
+| 36223 | The Boy with Wings | 22,059 | 89,828 | 2 | 6 |
+| 23639 | Plutarch's Morals | 22,048 | 156,614 | 3 | 9 |
+| 2097 | The Sign of the Four | 21,895 | 43,002 | 1 | 3 |
+| 23500 | The Car of Destiny | 21,782 | 121,898 | 3 | 9 |
+
+## C2 Wave 9: 10 books, 60 synth jobs, 90 artifacts, 856,498 words
+
+```
+37734,7452,36725,35548,11030,7524,7889,43063,15381,921
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 37734 | Some Jewish Witnesses For Christ | 21,735 | 138,500 | 3 | 9 |
+| 7452 | Autobiography of a Yogi | 21,735 | 155,152 | 3 | 9 |
+| 36725 | On the Cross: A Romance of the Passion Play at Oberamme | 21,678 | 167,439 | 3 | 9 |
+| 35548 | Doctor Cupid: A Novel | 21,645 | 123,271 | 3 | 9 |
+| 11030 | Incidents in the Life of a Slave Girl, Written by Herse | 21,621 | 82,409 | 2 | 6 |
+| 7524 | The Germany and the Agricola of Tacitus | 21,618 | 48,783 | 1 | 3 |
+| 7889 | Erotica Romana | 21,400 | 6,727 | 1 | 3 |
+| 43063 | A Case in Camera | 21,083 | 80,522 | 2 | 6 |
+| 15381 | Victorian Short Stories: Stories of Courtship | 20,945 | 35,954 | 1 | 3 |
+| 921 | De Profundis | 20,791 | 17,741 | 1 | 3 |
+
+## C2 Wave 10: 7 books, 63 synth jobs, 84 artifacts, 990,108 words
+
+```
+22187,2147,40361,17460,4367,22210,21700
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 22187 | Chambers's Edinburgh Journal, No. 452: Volume 18, New S | 20,684 | 20,778 | 1 | 3 |
+| 2147 | The Works of Edgar Allan Poe — Volume 1 | 20,678 | 90,359 | 2 | 6 |
+| 40361 | The Air Pirate | 20,678 | 60,895 | 2 | 6 |
+| 17460 | Lorna Doone: A Romance of Exmoor | 20,301 | 274,421 | 5 | 15 |
+| 4367 | Personal Memoirs of U. S. Grant, Complete | 20,201 | 281,117 | 5 | 15 |
+| 22210 | In the forbidden land : $b an account of a journey into | 20,145 | 137,416 | 3 | 9 |
+| 21700 | Don Juan | 20,059 | 125,122 | 3 | 9 |
+
+## C2 Wave 11: 11 books, 54 synth jobs, 87 artifacts, 722,584 words
+
+```
+25359,6081,21092,10441,48893,8197,42486,30340,31469,12758,45109
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 25359 | Boys and Girls Bookshelf; a Practical Plan of Character | 20,055 | 90,668 | 2 | 6 |
+| 6081 | Biographia Literaria | 20,000 | 137,585 | 3 | 9 |
+| 21092 | On the Trail of the Space Pirates | 19,987 | 52,389 | 1 | 3 |
+| 10441 | The Green Mouse | 19,955 | 47,422 | 1 | 3 |
+| 48893 | Mademoiselle de Maupin, Volume 1 (of 2) | 19,907 | 67,715 | 2 | 6 |
+| 8197 | India's Love Lyrics | 19,827 | 21,986 | 1 | 3 |
+| 42486 | The Two Magics: The Turn of the Screw, Covering End | 19,805 | 77,044 | 2 | 6 |
+| 30340 | The Passionate Friends | 19,723 | 104,235 | 2 | 6 |
+| 31469 | The Shunned House | 19,715 | 10,836 | 1 | 3 |
+| 12758 | Library of the World's Best Mystery and Detective Stori | 19,627 | 101,640 | 2 | 6 |
+| 45109 | The Enchiridion | 19,551 | 11,064 | 1 | 3 |
+
+## C2 Wave 12: 6 books, 30 synth jobs, 48 artifacts, 465,066 words
+
+```
+38983,108,834,18875,16921,28780
+```
+
+| id | title | downloads | span words | shards | jobs |
+|---|---|---:|---:|---:|---:|
+| 38983 | The Camp Fire Girls Solve a Mystery; Or, The Christmas  | 19,509 | 53,006 | 1 | 3 |
+| 108 | The Return of Sherlock Holmes | 19,450 | 112,116 | 2 | 6 |
+| 834 | The Memoirs of Sherlock Holmes | 19,431 | 95,425 | 2 | 6 |
+| 18875 | The Prairie Wife | 19,411 | 54,259 | 1 | 3 |
+| 16921 | Plague Ship | 19,370 | 60,020 | 2 | 6 |
+| 28780 | Peter the Brazen: A Mystery Story of Modern China | 19,332 | 90,240 | 2 | 6 |
+
+## Campaign 2 status log
+
+| wave | batch run | result | deploy run | deployed |
+|---|---|---|---|---|
+| C2-1 | | | | |
+| C2-2 | | | | |
+| C2-3 | | | | |
+| C2-4 | | | | |
+| C2-5 | | | | |
+| C2-6 | | | | |
+| C2-7 | | | | |
+| C2-8 | | | | |
+| C2-9 | | | | |
+| C2-10 | | | | |
+| C2-11 | | | | |
+| C2-12 | | | | |
