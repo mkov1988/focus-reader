@@ -29,6 +29,11 @@ Outputs are gitignored local artifacts served as Pages static assets; the
 deploy guard in deploy-pages.mjs counts them before any push.
 
 - `npm run mirror:covers` → `public/covers/` (1,468 webp)
+- `node scripts/classify-stamped-covers.mjs` → `src/data/stamped-covers.json`,
+  the covers that carry Project Gutenberg's name (a pixel pass over the
+  mirrored webp files; `--sheets=<folder>` draws contact sheets to check
+  by eye). The paywall's shelf shows our generated cover for those. Rerun
+  after any cover mirror, then `npm run export:native`.
 - `npm run mirror:books` → `public/books/` (1,401 txt, stripped at mirror
   time by `lib/strip-gutenberg.mjs`)
 
@@ -93,6 +98,13 @@ LONG RUN: Michael's terminal, never a session. One-time venv setup lives in
 
 Contract tests (no Kokoro needed): `node scripts/narration/test-narration.mjs`
 and `node scripts/test-audio-function.mjs`.
+
+The Android app's intro tutorial has a voice track too, but it ships INSIDE
+the app rather than through R2 and the manifest: the Android repo's
+`node scripts/build-intro-narration.mjs` runs this same plan → synth →
+finish → verify chain over the intro text (work dir `narration/work/intro/`,
+ignored like the rest) and copies the verified output into that repo. Nothing
+here needs committing for it; build-manifest.mjs skips the non-numeric id.
 
 ## Legal toolkit (read ../LEGAL.md first)
 
