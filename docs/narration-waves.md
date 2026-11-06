@@ -32,6 +32,8 @@ Generated from the CORE_STORY ledger in `scripts/build-modernity-queue.mjs` minu
 
 ## Held back: wrong readable bounds (fix chapter detection first, then narrate)
 
+Fixed on the branch 2026-11-06, see "Chapter detector fix" under Campaign 2 for what changed and the order of operations (Android app first).
+
 `calculateReadableBounds` in `src/utils/textProcessing.ts` takes the first non-front-matter chapter the detector found. In books whose
 chapter numbering restarts per part, the detector keeps a late run of chapters, so the reader (and therefore the narration) starts
 deep inside the book. Narrating these now would bake the wrong start into three voices. Same detector lives in the Android port.
@@ -237,7 +239,7 @@ Sized by `scripts/narration/plan.mjs` like the batch prepare job; waves packed t
 
 ## Held back in this campaign
 
-Readable-bounds bug (do not narrate until chapter detection is fixed):
+Readable-bounds bug (do not narrate until the Android app ships the chapter detector fix below):
 
 - 42671 Pride and Prejudice :: later-heading, start 28% :: "CHAPTER XX."
 - 47530 Oliver Twist, Vol. 2 (of 3) :: later-heading :: "CHAPTER XX."
@@ -291,6 +293,30 @@ Reference works and duplicates (not worth a narrator):
 - 42 The strange case of Dr. Jekyll and Mr. Hyde :: duplicate edition of 43 Jekyll and Hyde
 
 Note: `JUNK_TITLE` in `scripts/mirror-all.mjs` never matches "Dictionary", "Encyclopedia", "Bibliography" or "Glossary": the trailing `\b` after a word stem like `dictionar` needs a word boundary that the real word does not have. The selection above used a corrected pattern.
+
+## Chapter detector fix (2026-11-06, branch `claude/sharp-franklin-r40hxz`; NOT yet in the Android app)
+
+The "chapter bug" behind both held-back lists. Five changes, each with the book that showed it:
+
+1. `src/utils/chapterDetection.ts` dropped a table of contents by keeping the LAST line for each chapter number. Books whose numbering restarts per part lost every part but the last: War and Peace has 34 body lines reading "CHAPTER I" and the reader opened at Book 15, Chapter XXXV. Now a contents page is recognised by shape: a run of 3 or more headings at most 30 words apart whose numbers all appear again later in the body. Headings with titles over 60 characters count toward the shape but never become chapters (Around the World in 80 Days: only 5 of 37 contents lines were short enough to be candidates, so they never looked like a list). Unnumbered headings (PREFACE, PROLOGUE, INTRODUCTION) keep the keep-last rule: a preface does not restart, so an earlier one is the contents entry (Phantom of the Opera, Zarathustra, 421).
+2. "CHAPTER I—M. MYRIEL" (em dash before the title, the Hapgood Les Misérables) was not a heading at all; 365 chapters were missing from the map.
+3. Initials matched as roman-numeral headings: "M. Maret tells me", "L. L. D.", "I. O. U." gave Ulysses six fake chapters and a reader start a third of the way in. A roman-title heading's title may not open with another initial; a lone M or D is not a chapter number.
+4. `detectBackMatterStart` accepted the wrapped prose line "advertisement be now?”" / "advertisement." as the ADVERTISEMENTS heading. The Enchanted April (16389) lost its last three chapters (cut at 88%), A Study in Scarlet (244) its last 4.6% — in the reader and in the narration built on it. A heading now has to start with a capital and be its own paragraph (blank line before and after).
+5. `calculateReadableBounds` in `src/utils/textProcessing.ts`: a book never starts at an Epilogue/Afterword/Conclusion (the Complete Works of Shakespeare detects only the plays' prologues and epilogues and would have opened at the Epilogue of All's Well, 7% in), and never skips more than 15% of the file as front matter (fail safe to inclusion; a late run of headings is a detector mistake).
+
+Checked against 265 texts (95 shipped, the 160 Campaign 2 candidates, the known-bad books): 224 unchanged; the 10 known-bad books now open at their first chapter and run to the end; for the 100 Campaign 2 books the new span contains the old span in 99 cases (30340 The Passionate Friends starts 17 title-page tokens later). `npm test` and `npm run build` pass. `plan.mjs` on the 95 shipped books reproduces the manifest span exactly for 92; the three that differ:
+
+| book | manifest span | new span | what it means |
+|---|---|---|---|
+| 244 A Study in Scarlet | 120–41439 | 120–43426 | shipped narration is missing the last 4.6% (false ADVERTISEMENTS clamp). Re-narrate. |
+| 16389 The Enchanted April | 53–68986 | 53–78257 | shipped narration is missing chapters 20–22 (last 12%). Re-narrate. |
+| 45304 The City of God, Volume I | 73–231156 | 24–231156 | 49 title-page tokens ("VOL. I. THE CITY OF GOD, VOLUME I. EDINBURGH…") now inside the span. Harmless. |
+
+Order of operations, do not reorder:
+
+1. Port the same five changes to the Android app's copy of the detector and bounds calculation (the app and the narration must tokenize and bound a book identically; see `docs/narration-plan.md`). Until it ships, the app computes the OLD bounds while any wave run from this branch plans the NEW ones; that is safe only because new ⊇ old for every Campaign 2 book (checked above). Campaign 2 wave 1 ran from master (old detector); the chained waves 2–12 run from this branch.
+2. After the app ships: re-narrate 244 and 16389 in a fix-up wave (shipped books are exempt from the bounds guard, so no flag is needed), then narrate the bounds-held books: the 7 from Campaign 1 (98, 245, 1399, 2600, 4300, 6400, 8800) and the 15 listed above. Run `plan.mjs` on them first and read each span's first and last unit text; the guard passes all of them now. 4300 Ulysses: the detector now finds no chapters at all (the six were initials), so the span is the whole file.
+3. App rule worth adding: for a book that has narration, the readable span is the manifest's `span`, not the detector's. Then no future detector change can desync the reader from the audio.
 
 ## C2 Wave 1: 7 books, 63 synth jobs, 84 artifacts, 1,022,693 words
 

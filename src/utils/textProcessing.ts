@@ -173,6 +173,20 @@ export interface ParsedText {
 // Classification regexes for content bounds calculation (prefix-flexible matching with word boundaries)
 const SKIPPABLE_FRONT_RE = /^(table of contents|contents|list of (illustrations|figures|tables)|illustrations|figures|title page|copyright|publisher'?s note)\b/i;
 const SKIPPABLE_BACK_RE = /^(index|glossary|advertisements?|ads|colophon|bibliography|further reading|appendix)\b/i;
+/**
+ * Headings that close something. A book cannot begin at one, so they never
+ * pick the start: the Complete Works of Shakespeare detects only the plays'
+ * Prologues and Epilogues, and its first heading is the Epilogue that ends
+ * All's Well That Ends Well, 7% in.
+ */
+const ENDING_RE = /^(epilogue|afterword|conclusion)\b/i;
+/**
+ * Never skip more than this share of a book as front matter. Front matter that
+ * long is a chapter detector mistaking a late run of headings for the
+ * beginning (a collection whose first stories have no chapter headings; prose
+ * lines misread as headings), and the reader fails safe to inclusion.
+ */
+const MAX_FRONT_SKIP = 0.15;
 
 export function calculateReadableBounds(
     totalTokensCount: number,
@@ -200,19 +214,26 @@ export function calculateReadableBounds(
     const cleanTitle = (t: string) => t.trim().toLowerCase().replace(/[.:;\-\s]+$/, '');
 
     // Identify Start Word
+    const isStartCandidate = (c: Chapter) => {
+        const t = cleanTitle(c.title);
+        return !SKIPPABLE_FRONT_RE.test(t) && !ENDING_RE.test(t);
+    };
     if (confidence === 'high') {
-        const firstReadable = chapters.find((c) => !SKIPPABLE_FRONT_RE.test(cleanTitle(c.title)));
+        const firstReadable = chapters.find(isStartCandidate);
         if (firstReadable) {
             startWord = firstReadable.wordIndex;
         }
     } else if (confidence === 'medium') {
         const hasSkippableFront = SKIPPABLE_FRONT_RE.test(cleanTitle(chapters[0].title));
         if (hasSkippableFront && chapters.length > 1) {
-            const firstReadable = chapters.find((c) => !SKIPPABLE_FRONT_RE.test(cleanTitle(c.title)));
+            const firstReadable = chapters.find(isStartCandidate);
             if (firstReadable) {
                 startWord = firstReadable.wordIndex;
             }
         }
+    }
+    if (startWord > totalTokensCount * MAX_FRONT_SKIP) {
+        startWord = 0;
     }
 
     // Identify End Word
