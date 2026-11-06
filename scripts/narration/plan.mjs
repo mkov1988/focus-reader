@@ -32,6 +32,33 @@ const UNIT_MAX_WORDS = 450;
 // A segment is one shipped Opus file (~20 min at the ~200wpm master pace).
 const SEGMENT_TARGET_WORDS = 3500;
 
+// Readable-bounds heuristics (see the guard in the main loop). A span that
+// opens on a numbered heading other than the first, or that drops more than
+// 12% of the front or 10% of the back of the file, is a chapter-detection
+// miss far more often than a real front/back-matter trim.
+const BOUNDS_GUARD = !process.argv.includes('--no-bounds-guard');
+const FIRST_HEADING = /^(CHAPTER|BOOK|PART|CANTO|ACT|LETTER|VOLUME|SCENE|STAVE)\s+(I\b|1\b|ONE\b|FIRST\b|THE FIRST\b)/i;
+// VOLUME is left out on purpose: "VOLUME X" on a title page is the series
+// volume (White Nights is vol. X of Dostoevsky's works), not a chapter.
+const ANY_HEADING = /^(CHAPTER|BOOK|PART|CANTO|ACT|LETTER|STAVE)\s+[A-Z0-9]+/i;
+// Books already in the committed manifest have their span pinned by it
+// (verify.mjs cross-checks every pair against it), so the guard never blocks
+// re-planning a shipped book for a fix-up run.
+const SHIPPED = (() => {
+    try { return new Set(Object.keys(JSON.parse(readFileSync(path.join(ROOT, 'public', 'narration-v1.json'), 'utf8')).books)); }
+    catch { return new Set(); }
+})();
+function boundsCheck(tokens, start, end, firstUnitWords) {
+    const first = tokens.slice(start, start + 8).map((t) => t.word).join(' ').replace(/\s+/g, ' ').slice(0, 60);
+    const total = tokens.length;
+    // A heading is its own short paragraph. A long opening unit that merely
+    // mentions "CHAPTER XVIII" is a table of contents (The Prince), not a start.
+    if (firstUnitWords <= 12 && ANY_HEADING.test(first) && !FIRST_HEADING.test(first)) return { why: 'opens on a later heading', first };
+    if (start / total > 0.12) return { why: `starts ${Math.round(start / total * 100)}% into the file`, first };
+    if (end / total < 0.85) return { why: `ends at ${Math.round(end / total * 100)}% of the file`, first };
+    return null;
+}
+
 // The leftover gate. The strip removes every line carrying the trademark
 // phrase, but bare gutenberg.org URLs and "this Gutenberg eText" nicknames
 // survive in ~50 texts (LEGAL.md open question) — narration must never voice
@@ -151,6 +178,26 @@ for (const id of ids) {
     const end = parsed.readableEndWord;
     const dir = path.join(WORK, String(id));
     mkdirSync(dir, { recursive: true });
+
+    // Readable-bounds guard. calculateReadableBounds picks a late run of
+    // chapters in books whose numbering restarts per part (War and Peace
+    // opens at "CHAPTER XXXV" of Book 15), so the reader AND the narration
+    // would start deep inside the book. Narrating that bakes the mistake into
+    // three voices; refuse instead and leave the book for the chapter fix.
+    // --no-bounds-guard skips this (re-planning a shipped book, for example).
+    // Words left in the paragraph the span opens in (a heading is a short one).
+    const openingPara = parsed.paragraphs.find((para) => para.length && para[0].id <= start && para[para.length - 1].id >= start);
+    const firstUnitWords = openingPara ? openingPara[openingPara.length - 1].id - start + 1 : 1;
+    const guardThis = BOUNDS_GUARD && (!SHIPPED.has(String(id)) || process.env.BOUNDS_GUARD_IGNORE_SHIPPED === '1');
+    const boundsHit = guardThis ? boundsCheck(parsed.tokens, start, end, firstUnitWords) : null;
+    if (boundsHit) {
+        writeFileSync(path.join(dir, 'excluded.json'), JSON.stringify({
+            v: 1, bookId: String(id), reason: 'readable-bounds', hits: [{ token: start, word: boundsHit.first, pattern: boundsHit.why }],
+        }, null, 2) + '\n');
+        console.error(`${id}: EXCLUDED — readable bounds look wrong (${boundsHit.why}); span opens "${boundsHit.first}"`);
+        failures++;
+        continue;
+    }
 
     const gateHits = gateScan(parsed.tokens, start, end);
     if (gateHits.length) {

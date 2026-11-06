@@ -79,7 +79,10 @@ const JUNK_TOPICS = [
 // Conservative title check for reference works whose subject tags are missing.
 // Kept narrow on purpose: a false "junk" verdict hides a real book, which is
 // worse than letting an odd duck through for a human to prune later.
-const JUNK_TITLE = /\b(dictionar|thesaur|encyclop|word list|language list|word book|factbook|gazetteer|almanac|concordance|bibliograph|glossar|index (?:of|to)|linked index|catalogue of|catalog of|genome|human chromosome)\b/i;
+// Stems (dictionar, thesaur, encyclop, bibliograph, glossar) must NOT be
+// followed by \b: "Dictionary" has no word boundary after "dictionar", so the
+// old pattern never matched the very titles it was written for.
+const JUNK_TITLE = /\b(dictionar|thesaur|encyclop|bibliograph|glossar|word list\b|language list\b|word book\b|factbook\b|gazetteer\b|almanac\b|concordance\b|index (?:of|to)\b|linked index\b|catalogue of\b|catalog of\b|genome\b|human chromosome\b)/i;
 
 /** Decide from metadata alone whether a book belongs in the collection.
  *  Returns null to admit, or a short human-readable reason to reject. */

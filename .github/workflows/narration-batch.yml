@@ -12,6 +12,14 @@ name: Narration batch
 # GitHub caps a matrix at 256 jobs — run big shelves in waves of ~25 books.
 # Books the gate excludes are reported in the prepare job summary and land
 # in NARRATION-CHECKLIST.md at collect time.
+#
+# Chaining: pass next_waves (id lines separated by ';') and each wave, once
+# its audio is in R2 and its manifest is on master, deploys the data plane
+# and dispatches the next wave on the same ref. The chain stops on the first
+# wave whose collect fails, so a human looks before more compute is spent.
+#
+# Running from a branch is safe: collect commits the manifest onto a fresh
+# origin/master (cherry-pick), never the branch's own history.
 
 on:
   workflow_dispatch:
@@ -19,6 +27,9 @@ on:
       ids:
         description: "Comma-separated Gutenberg ids for this wave"
         required: true
+      next_waves:
+        description: "Waves to run after this one, each a comma-separated id line, waves separated by ';'. Each deploys when done and starts the next."
+        default: ""
       resume_from_run:
         description: "Reuse synthesized WAVs from this earlier batch run id (skips synth)"
         default: ""
@@ -28,6 +39,7 @@ on:
 
 permissions:
   contents: write
+  actions: write   # list and download another run's artifacts; dispatch deploy-pages and the next wave
 
 concurrency:
   group: narration-batch
@@ -51,7 +63,7 @@ jobs:
         run: |
           mkdir -p /tmp/texts
           for id in $(echo "${{ github.event.inputs.ids }}" | tr ',' ' '); do
-            curl -fsSL "https://focus-reader-48z.pages.dev/books/${id}.txt" -o "/tmp/texts/${id}.txt" || echo "::warning::${id}: fetch failed"
+            curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors "https://focus-reader-48z.pages.dev/books/${id}.txt" -o "/tmp/texts/${id}.txt" || echo "::warning::${id}: fetch failed"
           done
           node scripts/narration/plan.mjs --ids="${{ github.event.inputs.ids }}" --text-dir=/tmp/texts || true
       - name: Build matrices
@@ -100,7 +112,7 @@ jobs:
     timeout-minutes: 350
     strategy:
       fail-fast: false
-      max-parallel: 16
+      max-parallel: 19   # the Free plan allows 20 concurrent jobs; one stays free for deploys
       matrix: ${{ fromJSON(needs.prepare.outputs.synth_matrix) }}
     steps:
       - uses: actions/checkout@v4
@@ -118,7 +130,7 @@ jobs:
       - name: Fetch text + plan
         run: |
           mkdir -p /tmp/texts
-          curl -fsSL "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
+          curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
           node scripts/narration/plan.mjs --ids="${{ matrix.id }}" --text-dir=/tmp/texts
       - name: Synthesize shard
         run: python scripts/narration/synth.py --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}" --unit-stride="${{ matrix.shard }}"
@@ -135,7 +147,11 @@ jobs:
     needs: [prepare, synth]
     # A skipped ancestor propagates down the needs chain, so a resume run has
     # to say so explicitly or finish never starts.
-    if: ${{ always() && !github.event.inputs.collect_from_run && needs.prepare.result == 'success' && (needs.synth.result == 'success' || needs.synth.result == 'skipped') }}
+    # 'failure' is accepted on purpose: synth is fail-fast:false, so one dead
+    # shard (a runner shutdown, say) must cost its own book x voice, not the
+    # whole wave's finish stage. That pair fails here with "unit N not
+    # synthesized yet"; everything else ships.
+    if: ${{ always() && !github.event.inputs.collect_from_run && needs.prepare.result == 'success' && (needs.synth.result == 'success' || needs.synth.result == 'skipped' || needs.synth.result == 'failure') }}
     runs-on: ubuntu-latest
     # 60 was sized for a novel. The complete Shakespeare is ~80 hours of audio
     # in one job: ~10 GB of artifacts to pull, ~275 segments to encode, and an
@@ -165,16 +181,14 @@ jobs:
       - name: Fetch text + plan
         run: |
           mkdir -p /tmp/texts
-          curl -fsSL "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
+          curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors "https://focus-reader-48z.pages.dev/books/${{ matrix.id }}.txt" -o "/tmp/texts/${{ matrix.id }}.txt"
           node scripts/narration/plan.mjs --ids="${{ matrix.id }}" --text-dir=/tmp/texts
       - name: Download shard WAVs
-        uses: actions/download-artifact@v4
-        with:
-          pattern: bwavs-${{ matrix.id }}-${{ matrix.voice }}-*
-          path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}
-          merge-multiple: true
-          run-id: ${{ github.event.inputs.resume_from_run || github.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        # Not actions/download-artifact: its cross-run listing stops at the
+        # newest 100 artifacts and silently drops the rest (see fetch-artifacts.sh).
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/narration/ci/fetch-artifacts.sh "${{ github.event.inputs.resume_from_run || github.run_id }}" "bwavs-${{ matrix.id }}-${{ matrix.voice }}-" "scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}" merge
       - name: Align, time, encode
         run: node scripts/narration/finish.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
       - name: Verify
@@ -205,12 +219,9 @@ jobs:
         with: { node-version: 20, cache: npm }
       - run: npm ci --no-audit --no-fund
       - name: Download verified pairs
-        uses: actions/download-artifact@v4
-        with:
-          pattern: bout-*
-          path: /tmp/pairs
-          run-id: ${{ github.event.inputs.collect_from_run || github.run_id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/narration/ci/fetch-artifacts.sh "${{ github.event.inputs.collect_from_run || github.run_id }}" "bout-" /tmp/pairs split
       - name: Reassemble work layout + audio tree
         run: |
           set -e
@@ -230,28 +241,6 @@ jobs:
             cp "scripts/narration/work/$id/$voice/out/"* "audio-tree/$id/$voice/"
           done
           du -sh audio-tree
-      - name: Build manifest + checklist
-        run: |
-          node scripts/narration/build-manifest.mjs
-          node scripts/narration/build-narration-checklist.mjs
-      - name: Commit manifest + checklist to master
-        run: |
-          git config user.name "narration-batch"
-          git config user.email "actions@users.noreply.github.com"
-          git add public/narration-v1.json NARRATION-CHECKLIST.md
-          if git diff --cached --quiet; then
-            echo "::notice::manifest unchanged — nothing to commit"
-          else
-            # Commit BEFORE syncing: the files we just wrote are
-            # tracked, and `pull --rebase` refuses to run with
-            # unstaged changes (exit 128).
-            git commit -m "feat(narration): batch manifest (run ${{ github.run_id }})
-
-          Co-Authored-By: Claude <noreply@anthropic.com>"
-            git fetch origin master
-            git rebase origin/master
-            git push origin master
-          fi
       - name: Upload to R2 (only when secrets are configured)
         env:
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
@@ -289,6 +278,47 @@ jobs:
             echo "::error::R2 holds $held objects but this wave sent $sent — upload incomplete"
             exit 1
           fi
+      - name: Build manifest + checklist, commit to master
+        # Runs AFTER the R2 upload on purpose: a manifest entry must never
+        # exist without its audio. Builds against master's CURRENT manifest
+        # (not this checkout's, which may be a branch or a stale master) and
+        # lands the result on a fresh origin/master, so a run from any ref
+        # pushes exactly one commit of exactly these two files. Retries when
+        # another run pushed first.
+        run: |
+          set -e
+          git config user.name "narration-batch"
+          git config user.email "actions@users.noreply.github.com"
+          ORIG=$(git rev-parse HEAD)
+          for attempt in 1 2 3; do
+            # Explicit refspec: actions/checkout only configures the fetch
+            # refspec for the ref it checked out, so on a branch run a bare
+            # "git fetch origin master" would not update origin/master.
+            git fetch -q --force origin master:refs/remotes/origin/master
+            git checkout -q "$ORIG"
+            git checkout -q origin/master -- public/narration-v1.json NARRATION-CHECKLIST.md
+            node scripts/narration/build-manifest.mjs
+            node scripts/narration/build-narration-checklist.mjs
+            git add public/narration-v1.json NARRATION-CHECKLIST.md
+            if git diff --quiet origin/master -- public/narration-v1.json NARRATION-CHECKLIST.md; then
+              echo "::notice::manifest unchanged — nothing to commit"
+              break
+            fi
+            git commit -q -m "feat(narration): batch manifest (run ${{ github.run_id }})
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            NEW=$(git rev-parse HEAD)
+            git checkout -q --detach origin/master
+            git cherry-pick -q "$NEW"
+            if git push origin HEAD:master; then
+              echo "manifest pushed to master as $(git rev-parse --short HEAD)"
+              break
+            fi
+            echo "::warning::push to master rejected (attempt $attempt) — someone pushed first; rebuilding on the new master"
+            git cherry-pick --abort 2>/dev/null || true
+            [ "$attempt" -eq 3 ] && exit 1
+            sleep 10
+          done
       - name: Upload batch bundle
         uses: actions/upload-artifact@v4
         with:
@@ -298,3 +328,30 @@ jobs:
             public/narration-v1.json
             NARRATION-CHECKLIST.md
           retention-days: 14
+
+
+  chain:
+    name: deploy, then next wave
+    needs: collect
+    # Only after collect succeeded: audio read back from R2 and manifest on
+    # master. A failed wave stops the chain so a human looks first.
+    if: ${{ needs.collect.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Deploy the data plane
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy-pages.yml --repo "$GITHUB_REPOSITORY" --ref master -f preview=false
+      - name: Start the next wave
+        if: ${{ github.event.inputs.next_waves != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEXT: ${{ github.event.inputs.next_waves }}
+        run: |
+          IDS="${NEXT%%;*}"
+          REST="${NEXT#*;}"
+          [ "$REST" = "$NEXT" ] && REST=""
+          echo "next wave: $IDS"
+          echo "waves after it: ${REST:-none}"
+          gh workflow run narration-batch.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f ids="$IDS" -f next_waves="$REST"
