@@ -19,8 +19,11 @@
  * violating cards; otherwise its violating cards are dropped and the rest
  * kept. No surviving run → rejected. One → every card is a single-run card.
  * Two → cards are paired greedily by Jaccard similarity of their content
- * words (≥ 0.2); a pair keeps run a's wording with consensus: true, the rest
- * are single-run. A claim is confirmed only when the other run mentions it
+ * words (≥ 0.2), leaving out stopwords and any word that more than half of a
+ * run's cards use (the book's own vocabulary says nothing about which card is
+ * which, and would pair cards that merely share it); a pair keeps run a's
+ * wording with consensus: true, the rest are single-run. A claim is
+ * confirmed only when the other run mentions it
  * too. A card sharing LIMITS.ngram consecutive words with the source text is
  * dropped as copied. Consensus cards come first, then singletons, capped at
  * LIMITS.maxCards and rechecked with checkSet.
@@ -28,9 +31,11 @@
  * Status: ok (no card carries a flag), needs-check (some card does), rejected
  * (nothing survived, or fewer than LIMITS.minCards remain). A card file with
  * "checked": true, a human's mark that it was read against the hard copy, is
- * left alone unless --force; so is a file whose run files are gone (work/ is
- * gitignored scratch, so a fresh checkout must not reject every committed
- * title). Exit 1 when any selected title is rejected.
+ * left alone unless --force. So is a card file whose title has no run files
+ * at all (work/ is gitignored scratch, so a fresh clone has none; verifying
+ * must never rewrite committed cards as rejected). A run file that is merely
+ * missing while its sibling exists is a failed run. Exit 1
+ * when any selected title is rejected.
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, renameSync } from 'node:fs';
 import path from 'node:path';
@@ -79,11 +84,27 @@ const normalizeCard = (c) => ({
     claims: (Array.isArray(c.claims) ? c.claims : []).map((x) => String(x).trim()).filter(Boolean),
 });
 
-/** Everything one run said, lowercased: what a claim from the other run is confirmed against. */
+// Claims are matched as case-insensitive substrings over whitespace-squashed
+// text: source.txt keeps Gutenberg's hard line wrapping, so a two-word name
+// split across a line break (or by a double space) must still count as found.
+const squash = (s) => String(s).replace(/\s+/g, ' ').trim().toLowerCase();
+
+/**
+ * Everything one run said, squashed: what a claim from the other run is
+ * confirmed against. The separator keeps a claim from matching across two
+ * parts (the end of one card's title and the start of its idea, say).
+ */
 function corpusOf(output) {
     const parts = [output.about];
     for (const c of output.cards) parts.push(c.title, c.idea, c.why, ...(Array.isArray(c.claims) ? c.claims.map(String) : []));
-    return parts.join('\n').toLowerCase();
+    return squash(parts.join(' | '));
+}
+
+/** generate.mjs records a failure as { type, message }; this file's own read errors are plain strings. */
+function errorDetail(e) {
+    if (!e) return 'output is null';
+    if (typeof e === 'string') return e;
+    return [e.type, e.message].filter(Boolean).join(': ') || JSON.stringify(e);
 }
 
 /**
@@ -99,7 +120,7 @@ function gateRun(run, label) {
         return out;
     }
     if (run.output == null) {
-        rec.violations.push({ rule: 'no-output', detail: run.error ? String(run.error) : 'output is null' });
+        rec.violations.push({ rule: 'no-output', detail: errorDetail(run.error) });
         return out;
     }
     const shape = shapeViolation(run.output);
@@ -124,7 +145,20 @@ function gateRun(run, label) {
     return out;
 }
 
-const contentWords = (card) => new Set(words(`${card.title} ${card.idea}`).filter((w) => !STOPWORDS.has(w)));
+/**
+ * Words that more than half of a run's cards use are the book's vocabulary
+ * (or, in the mock, a shared template), not any one idea's: two cards that
+ * share only those are not the same idea. Left out of the match like the
+ * stopwords. A run of one or two cards has no majority worth the name.
+ */
+function runCommonWords(cards) {
+    if (cards.length < 3) return new Set();
+    const counts = new Map();
+    for (const c of cards) for (const w of new Set(words(`${c.title} ${c.idea}`))) counts.set(w, (counts.get(w) ?? 0) + 1);
+    return new Set([...counts].filter(([, n]) => n > cards.length / 2).map(([w]) => w));
+}
+
+const contentWords = (card, ignore) => new Set(words(`${card.title} ${card.idea}`).filter((w) => !STOPWORDS.has(w) && !ignore.has(w)));
 
 function jaccard(A, B) {
     let both = 0;
@@ -135,8 +169,9 @@ function jaccard(A, B) {
 
 /** Greedy best-first pairing of run a's cards with run b's, each card used once: Map of a-index → b-index. */
 function matchCards(a, b) {
-    const wa = a.map(contentWords);
-    const wb = b.map(contentWords);
+    const ignore = new Set([...runCommonWords(a), ...runCommonWords(b)]);
+    const wa = a.map((c) => contentWords(c, ignore));
+    const wb = b.map((c) => contentWords(c, ignore));
     const pairs = [];
     for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < b.length; j++) {
@@ -225,20 +260,20 @@ function verifyTitle(entry, dir, source) {
     // Claims: confirmed only when every surviving run mentions it (the run
     // that made the claim trivially does, so this is "the other run agrees").
     const corpora = surviving.map((l) => gated[l].corpus);
-    const confirmed = (claim) => corpora.length > 1 && corpora.every((t) => t.includes(claim.toLowerCase()));
+    const confirmed = (claim) => corpora.length > 1 && corpora.every((t) => t.includes(squash(claim)));
     for (const c of [...consensus, ...singles]) {
         for (const claim of c.claims) if (!confirmed(claim)) c.flags.push(`unconfirmed-claim: ${claim}`);
     }
 
     // Public-domain titles: nothing copied from the text, every claim in it.
-    if (source) {
-        const sourceLower = source.toLowerCase();
+    if (source !== null) {
+        const sourceLower = squash(source);
         const notCopied = (c) => {
             if (sharedNgrams(`${c.title} ${c.idea} ${c.why}`, source).length) {
                 dropped.push({ title: c.title, reason: 'copied' });
                 return false;
             }
-            for (const claim of c.claims) if (!sourceLower.includes(claim.toLowerCase())) c.flags.push(`claim-not-in-text: ${claim}`);
+            for (const claim of c.claims) if (!sourceLower.includes(squash(claim))) c.flags.push(`claim-not-in-text: ${claim}`);
             return true;
         };
         consensus = consensus.filter(notCopied);
@@ -256,7 +291,16 @@ function verifyTitle(entry, dir, source) {
     for (let setV = checkSet({ about, cards }); setV.length; setV = checkSet({ about, cards })) {
         const rules = [...new Set(setV.map((v) => v.rule))].join(', ');
         if (!singles.length) return reject(`merged set fails ${rules} with no singleton left to drop`);
-        dropped.push({ title: singles.pop().title, reason: rules });
+        // The last singleton goes, except that a duplicate title names its own
+        // offender: the later of the pair, always a singleton (each run passed
+        // checkSet on its own, and consensus cards all carry run a's titles).
+        let k = singles.length - 1;
+        if (rules.includes('duplicate-title')) {
+            const titles = cards.map((c) => c.title.trim().toLowerCase());
+            const dup = titles.findLastIndex((t, i) => titles.indexOf(t) < i);
+            if (dup >= consensus.length) k = dup - consensus.length;
+        }
+        dropped.push({ title: singles.splice(k, 1)[0].title, reason: rules });
         cards = [...consensus, ...singles];
         if (cards.length < LIMITS.minCards) return tooFew(cards.length);
     }
@@ -270,11 +314,18 @@ function buildChecklist(paths) {
     if (existsSync(paths.cards)) {
         for (const f of readdirSync(paths.cards)) {
             if (!/^\d+\.json$/.test(f)) continue;
+            let rec = null;
             try {
-                recs.push(JSON.parse(readFileSync(path.join(paths.cards, f), 'utf8')));
+                rec = JSON.parse(readFileSync(path.join(paths.cards, f), 'utf8'));
             } catch (err) {
                 console.error(`checklist: skipping unreadable ${f}: ${err.message}`);
+                continue;
             }
+            if (!rec || typeof rec !== 'object' || Array.isArray(rec) || !Number.isInteger(rec.id)) {
+                console.error(`checklist: skipping ${f}: not a card file`);
+                continue;
+            }
+            recs.push(rec);
         }
     }
     recs.sort((x, y) => x.id - y.id);
@@ -330,28 +381,37 @@ for (const entry of entries) {
     } catch (err) {
         console.error(`${entry.id}: existing ${file} is unreadable (${err.message}); rewriting it`);
     }
-    const hasRuns = RUNS.some((l) => existsSync(path.join(dir, `run-${l}.json`)));
-    if (existing && !force && (existing.checked === true || !hasRuns)) {
-        const why = existing.checked === true ? 'checked: true' : `no run files under ${dir}`;
-        console.log(`${entry.id}: kept — ${why}; existing ${existing.status} file left alone (pass --force to overwrite)`);
+    if (existing?.checked === true && !force) {
+        console.log(`${entry.id}: kept — checked: true; existing ${existing.status} file left alone (pass --force to overwrite)`);
+        if (existing.status === 'rejected') rejected++;
+        continue;
+    }
+    // work/ is gitignored scratch: on a fresh clone every run file is gone,
+    // and verifying then must not rewrite committed, verified cards as
+    // rejected. A title with no run files at all keeps its existing card file.
+    const noRuns = RUNS.every((l) => !existsSync(path.join(dir, `run-${l}.json`)));
+    if (noRuns && existing && typeof existing === 'object' && !force) {
+        console.log(`${entry.id}: kept — no run files under ${dir}; existing ${existing.status} file left alone (run generate.mjs, or pass --force to rewrite it as rejected)`);
         if (existing.status === 'rejected') rejected++;
         continue;
     }
     const sourceFile = path.join(dir, 'source.txt');
     const source = existsSync(sourceFile) ? readFileSync(sourceFile, 'utf8') : null;
+    if (source !== null && !source.trim()) console.error(`${entry.id}: ${sourceFile} is empty; every claim will be flagged claim-not-in-text`);
     const rec = verifyTitle(entry, dir, source);
     if (existing?.checked === true) console.log(`${entry.id}: --force overwrites a checked file; the checked mark does not carry over`);
     writeAtomic(file, JSON.stringify(rec, null, 2) + '\n');
     const runsNote = RUNS.map((l) => `${l} ${rec.runs[l].ok ? 'ok' : 'failed'}`).join(', ');
     if (rec.status === 'rejected') {
         rejected++;
-        console.error(`${entry.id}: REJECTED — ${rec.reason} (runs: ${runsNote})`);
+        const hint = RUNS.every((l) => rec.runs[l].violations.some((v) => v.rule === 'missing')) ? `; no run files under ${dir}, run generate.mjs first` : '';
+        console.error(`${entry.id}: REJECTED — ${rec.reason} (runs: ${runsNote}${hint})`);
         continue;
     }
     const consensus = rec.cards.filter((c) => c.consensus).length;
     const flagged = rec.cards.filter((c) => c.flags.length).length;
     console.log(`${entry.id}: ${rec.status} — ${rec.cards.length} cards (${consensus} consensus, ${rec.cards.length - consensus} single-run), `
-        + `${flagged} flagged, ${rec.dropped.length} dropped; runs: ${runsNote}${source ? '; source text checked' : ''}`);
+        + `${flagged} flagged, ${rec.dropped.length} dropped; runs: ${runsNote}${source !== null ? '; source text checked' : ''}`);
 }
 const n = buildChecklist(paths);
 console.log(`checklist: ${paths.checklist} (${n} title(s))`);
