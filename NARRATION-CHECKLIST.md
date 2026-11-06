@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**285 / 285** book×voice pairs finished across 95 book(s).
+**306 / 306** book×voice pairs finished across 102 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -70,17 +70,20 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 2554: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2591: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2641: ☑ marlowe  ☑ rowan  ☑ hazel
+- 2680: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2701: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2852: ☑ marlowe  ☑ rowan  ☑ hazel
 - 3207: ☑ marlowe  ☑ rowan  ☑ hazel
 - 3268: ☑ marlowe  ☑ rowan  ☑ hazel
 - 3296: ☑ marlowe  ☑ rowan  ☑ hazel
+- 4085: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5197: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5200: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5921: ☑ marlowe  ☑ rowan  ☑ hazel
 - 6130: ☑ marlowe  ☑ rowan  ☑ hazel
 - 6133: ☑ marlowe  ☑ rowan  ☑ hazel
 - 6593: ☑ marlowe  ☑ rowan  ☑ hazel
+- 6761: ☑ marlowe  ☑ rowan  ☑ hazel
 - 8492: ☑ marlowe  ☑ rowan  ☑ hazel
 - 10148: ☑ marlowe  ☑ rowan  ☑ hazel
 - 14244: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -89,14 +92,18 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 18857: ☑ marlowe  ☑ rowan  ☑ hazel
 - 20203: ☑ marlowe  ☑ rowan  ☑ hazel
 - 21839: ☑ marlowe  ☑ rowan  ☑ hazel
+- 23784: ☑ marlowe  ☑ rowan  ☑ hazel
+- 24739: ☑ marlowe  ☑ rowan  ☑ hazel
 - 25344: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
+- 34413: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36034: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36462: ☑ marlowe  ☑ rowan  ☑ hazel
 - 37106: ☑ marlowe  ☑ rowan  ☑ hazel
 - 45304: ☑ marlowe  ☑ rowan  ☑ hazel
 - 46976: ☑ marlowe  ☑ rowan  ☑ hazel
+- 51252: ☑ marlowe  ☑ rowan  ☑ hazel
 - 52190: ☑ marlowe  ☑ rowan  ☑ hazel
 - 64317: ☑ marlowe  ☑ rowan  ☑ hazel
 - 67979: ☑ marlowe  ☑ rowan  ☑ hazel
