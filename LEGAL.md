@@ -105,6 +105,41 @@ Two narration-specific rules:
    IPs. Mirror from an official mirror site at a gentle rate. Operational,
    not copyright, but it gates the build step.
 
+## Key-idea summaries shelf (November 2026)
+
+The Key Ideas shelf (scripts/summaries/, data-src/summaries-src.json) ships
+short, own-words retellings of best-selling self-help books that are still in
+copyright. Michael chose this knowingly: no license is taken, the same
+position Blinkist, Headway and Deepstash operate from, which no court has
+tested. The lawyer gate above still applies to this shelf before payments
+go live; the rules below are what the pipeline enforces on every card set
+so the output stays on the summary side of the line the Twin Peaks and
+Seinfeld cases drew (abridgments that substitute for the work lose).
+
+- **Shape caps, enforced by `scripts/summaries/lib.mjs`:** 8 to 12 cards,
+  40 to 80 words each, 1,000 words a title. Ideas are ordered by usefulness,
+  never by the book's chapter order, and card titles may not walk the
+  book's own structure (no Law 1, Habit 3, Chapter 5).
+- **Never a quotation.** No quotation marks anywhere; verify.mjs rejects
+  them mechanically. Public-domain titles are generated from their full
+  stripped text and any 8-word run shared with the source drops the card.
+- **Nothing invented.** Every name, number, study or anecdote a card cites
+  is listed as a claim; a claim that only one of the two independent runs
+  makes is flagged for Michael's check against his hard copy
+  (SUMMARIES-CHECKLIST.md). Public-domain claims must appear in the text.
+- **Descriptive use only.** Title and author are named plainly, once, with
+  the line that this is not the book and is not affiliated with the author
+  or publisher. Generated covers only, never jacket art or publisher marks.
+  The buy link lives in the manifest, never in the text.
+- **Kill switch.** `public/summaries-v1.json` is served with a five-minute
+  cache; `npm run summaries:build -- --hide=<id>` pulls a title in minutes
+  with no app release. Any complaint from a rights holder is answered by
+  pulling the title, not by arguing.
+- **Pricing.** The paid tier is the app. Never market it as access to
+  summaries of a named book.
+- **Narration** of a card set inherits all of the above; the text is the
+  stripped, verified render and nothing else.
+
 ## Business reality
 
 No exclusivity is possible on public domain text; a competitor can legally

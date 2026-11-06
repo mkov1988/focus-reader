@@ -1,5 +1,5 @@
 {
-  "_about": "Title list for the key-idea summaries shelf (pipeline step 1). Snapshot of Amazon's best-seller lists, deduplicated across formats and editions, with non-books and off-topic titles removed. 'rank' is the order to generate in. 'faith' marks Christian-living titles so they can be filtered as a group. 'rights' decides the source: public_domain_us titles are summarized from the full text Focus Reader can serve; in_copyright titles are summarized from the model's knowledge, never from a copy of the book. 'next_up' are the replacements, in order, for any title you drop.",
+  "_about": "Title list for the key-idea summaries shelf (pipeline step 1). Snapshot of Amazon's best-seller lists, deduplicated across formats and editions, with non-books and off-topic titles removed. 'rank' is the order to generate in. 'faith' marks Christian-living titles so they can be filtered as a group. 'rights' decides the source: public_domain_us titles are summarized from the full text Focus Reader can serve; in_copyright titles are summarized from the model's knowledge, never from a copy of the book. 'next_up' are the replacements, in order, for any title you drop. \"id\" is the stable numeric key for every downstream file (work dir, text file, manifest, narration): 800001 upward, assigned in file order once and never reassigned; new titles append after the highest id.",
   "source": {
     "fetched_at": "2026-11-04T08:43Z",
     "lists": [
@@ -36,6 +36,7 @@
   },
   "titles": [
     {
+      "id": 800001,
       "rank": 1,
       "title": "Contend: Standing Boldly for Biblical Truth While Winning the War Within",
       "author": "Philip Anthony Mitchell",
@@ -50,6 +51,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800002,
       "rank": 2,
       "title": "The Let Them Theory: A Life-Changing Tool That Millions of People Can’t Stop Talking About",
       "author": "Mel Robbins",
@@ -65,6 +67,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800003,
       "rank": 3,
       "title": "Atomic Habits: An Easy & Proven Way to Build Good Habits & Break Bad Ones",
       "author": "James Clear",
@@ -80,6 +83,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800004,
       "rank": 4,
       "title": "Protocols: An Operating Manual for the Human Body",
       "author": "Andrew D. Huberman Ph.D.",
@@ -94,6 +98,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800005,
       "rank": 5,
       "title": "Stop Letting Everything Affect You: How to Break Free from Overthinking, Emotional Chaos, and Self-Sabotage",
       "author": "Daniel Chidiac",
@@ -108,6 +113,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800006,
       "rank": 6,
       "title": "The Science of Getting Rich",
       "author": "Wallace D. Wattles",
@@ -129,6 +135,7 @@
       "in_curated_catalog": false
     },
     {
+      "id": 800007,
       "rank": 7,
       "title": "Vibe: The Secrets of Strong Connections in a Lonely World",
       "author": "Adam Grant",
@@ -144,6 +151,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800008,
       "rank": 8,
       "title": "Making Peace with What I Can’t Control: Find Relief from the Exhaustion of Overthinking, Trying to Fix Others, and Wanting to Figure It All Out",
       "author": "Lysa TerKeurst",
@@ -158,6 +166,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800009,
       "rank": 9,
       "title": "The Courage to Be Disliked: How to Free Yourself, Change Your Life, and Achieve Real Happiness",
       "author": "Ichiro Kishimi",
@@ -173,6 +182,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800010,
       "rank": 10,
       "title": "The Subtle Art of Not Giving a F*ck: A Counterintuitive Approach to Living a Good Life",
       "author": "Mark Manson",
@@ -189,6 +199,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800011,
       "rank": 11,
       "title": "How to Win Friends & Influence People",
       "author": "Dale Carnegie",
@@ -207,6 +218,7 @@
       "note": "1936, copyright renewed; in copyright in the US until 2032."
     },
     {
+      "id": 800012,
       "rank": 12,
       "title": "Don't Believe Everything You Think (Expanded Edition): Why Your Thinking Is The Beginning & End Of Suffering",
       "author": "Joseph Nguyen",
@@ -223,6 +235,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800013,
       "rank": 13,
       "title": "The Life-Changing Art of Self-Brain Surgery: Connecting Neuroscience and Faith to Radically Transform Your Life",
       "author": "W. Lee Warren, MD",
@@ -238,6 +251,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800014,
       "rank": 14,
       "title": "The Four Agreements: A Practical Guide to Personal Freedom",
       "author": "Don Miguel Ruiz",
@@ -254,6 +268,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800015,
       "rank": 15,
       "title": "The Mountain Is You: Transforming Self-Sabotage into Self-Mastery",
       "author": "Brianna Wiest",
@@ -270,6 +285,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800016,
       "rank": 16,
       "title": "Never Split the Difference: Negotiating as if Your Life Depended on It",
       "author": "Chris Voss",
@@ -287,6 +303,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800017,
       "rank": 17,
       "title": "The Law of the Sublime",
       "author": "Robert Greene",
@@ -303,6 +320,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800018,
       "rank": 18,
       "title": "Adult Children of Emotionally Immature Parents: How to Heal from Distant, Rejecting, or Self-Involved Parents",
       "author": "Lindsay C. Gibson",
@@ -318,6 +336,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800019,
       "rank": 19,
       "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness",
       "author": "Morgan Housel",
@@ -334,6 +353,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800020,
       "rank": 20,
       "title": "Greenlights",
       "author": "Matthew McConaughey",
@@ -351,6 +371,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800021,
       "rank": 21,
       "title": "The Untethered Soul: The Journey Beyond Yourself",
       "author": "Michael A. Singer",
@@ -366,6 +387,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800022,
       "rank": 22,
       "title": "Man's Search for Meaning",
       "author": "Viktor E. Frankl",
@@ -381,6 +403,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800023,
       "rank": 23,
       "title": "Tuesdays with Morrie: An Old Man, a Young Man, and Life's Greatest Lesson, 25th Anniversary Edition",
       "author": "Mitch Albom",
@@ -396,6 +419,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800024,
       "rank": 24,
       "title": "The Inner Game of Tennis: The Classic Guide to the Mental Side of Peak Performance",
       "author": "W. Timothy Gallwey",
@@ -411,6 +435,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800025,
       "rank": 25,
       "title": "The Laws of Human Nature",
       "author": "Robert Greene",
@@ -427,6 +452,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800026,
       "rank": 26,
       "title": "The Anxious Generation: How the Great Rewiring of Childhood Is Causing an Epidemic of Mental Illness",
       "author": "Jonathan Haidt",
@@ -441,6 +467,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800027,
       "rank": 27,
       "title": "Die With Zero: Getting All You Can from Your Money and Your Life―A Revolutionary Approach to Maximizing Life Experiences Over Accumulating Wealth",
       "author": "Bill Perkins",
@@ -457,6 +484,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800028,
       "rank": 28,
       "title": "The 48 Laws of Power",
       "author": "Robert Greene",
@@ -472,6 +500,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800029,
       "rank": 29,
       "title": "The Artist's Way: 30th Anniversary Edition",
       "author": "Julia Cameron",
@@ -488,6 +517,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800030,
       "rank": 30,
       "title": "The Seven Principles for Making Marriage Work: A Practical Guide from the Country's Foremost Relationship Expert",
       "author": "John Gottman PhD",
@@ -502,6 +532,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800031,
       "rank": 31,
       "title": "Into the quiet: Following Jesus in a world of noise",
       "author": "John Mark Comer",
@@ -516,6 +547,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800032,
       "rank": 32,
       "title": "Attached: The New Science of Adult Attachment and How It Can Help You Find--and Keep--Love",
       "author": "Amir Levine",
@@ -531,6 +563,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800033,
       "rank": 33,
       "title": "The Creative Act: A Way of Being",
       "author": "Rick Rubin",
@@ -546,6 +579,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800034,
       "rank": 34,
       "title": "Conversation: How to Connect with Anyone & Make Every Interaction Count",
       "author": "Vanessa Van Edwards",
@@ -560,6 +594,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800035,
       "rank": 35,
       "title": "The Meaning of Your Life: Finding Purpose in an Age of Emptiness",
       "author": "Arthur C. Brooks",
@@ -576,6 +611,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800036,
       "rank": 36,
       "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
       "author": "David Goggins",
@@ -594,6 +630,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800037,
       "rank": 37,
       "title": "Before We Forget How to Connect: Be Heard, Be Seen, and Communicate with Confidence",
       "author": "Vinh Giang",
@@ -608,6 +645,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800038,
       "rank": 38,
       "title": "The Ruthless Elimination of Hurry: How to Stay Emotionally Healthy and Spiritually Alive in the Chaos of the Modern World",
       "author": "John Mark Comer",
@@ -622,6 +660,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800039,
       "rank": 39,
       "title": "You Are a Badass at Making Money: Master the Mindset of Wealth",
       "author": "Jen Sincero",
@@ -638,6 +677,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800040,
       "rank": 40,
       "title": "Situated: Find the People and Places That Bring Out Your Best",
       "author": "Angela Duckworth",
@@ -654,6 +694,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800041,
       "rank": 41,
       "title": "Four Thousand Weeks: Time Management for Mortals",
       "author": "Oliver Burkeman",
@@ -668,6 +709,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800042,
       "rank": 42,
       "title": "The 5 Love Languages®: The Secret to Love that Lasts",
       "author": "Gary Chapman",
@@ -682,6 +724,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800043,
       "rank": 43,
       "title": "Sleeping Beauties: Why Good Ideas Go Dormant and How They Wake Up",
       "author": "David Byrne",
@@ -696,6 +739,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800044,
       "rank": 44,
       "title": "Becoming Supernatural: How Common People Are Doing The Uncommon",
       "author": "Dr. Joe Dispenza",
@@ -711,6 +755,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800045,
       "rank": 45,
       "title": "Awaken the Giant Within, Updated",
       "author": "Tony Robbins",
@@ -727,6 +772,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800046,
       "rank": 46,
       "title": "Good Inside: A Guide to Becoming the Parent You Want to Be",
       "author": "Becky Kennedy",
@@ -741,6 +787,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800047,
       "rank": 47,
       "title": "Forgiving What You Can't Forget: Discover How to Move On, Make Peace with Painful Memories, and Create a Life That’s Beautiful Again",
       "author": "Lysa TerKeurst",
@@ -756,6 +803,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800048,
       "rank": 48,
       "title": "All About Love: New Visions",
       "author": "bell hooks",
@@ -771,6 +819,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800049,
       "rank": 49,
       "title": "Influence, New and Expanded: The Psychology of Persuasion",
       "author": "Robert B. Cialdini",
@@ -788,6 +837,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800050,
       "rank": 50,
       "title": "Breaking the Habit of Being Yourself",
       "author": "Joe Dispenza",
@@ -805,6 +855,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800051,
       "rank": 51,
       "title": "The Untriggered Woman: How to Calm Your Nervous System, Stop Spiraling, Let Go of Control, and Feel Like Yourself Again",
       "author": "Andrei Nedelcu",
@@ -820,6 +871,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800052,
       "rank": 52,
       "title": "Mastery",
       "author": "Robert Greene",
@@ -836,6 +888,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800053,
       "rank": 53,
       "title": "Rules to Live By: How Extraordinary Lives Define What Really Matters",
       "author": "Jimmy Chin",
@@ -851,6 +904,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800054,
       "rank": 54,
       "title": "How to Be Good at Life: Simple Systems to Achieve More and Stress Less",
       "author": "Ben Meer",
@@ -866,6 +920,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800055,
       "rank": 55,
       "title": "No Bad Parts: Healing Trauma and Restoring Wholeness with the Internal Family Systems Model",
       "author": "Richard C. Schwartz PhD",
@@ -881,6 +936,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800056,
       "rank": 56,
       "title": "Boundaries Updated and Expanded Edition: When to Say Yes, How to Say No To Take Control of Your Life",
       "author": "Henry Cloud",
@@ -895,6 +951,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800057,
       "rank": 57,
       "title": "The Purpose Driven Life: What on Earth Am I Here For?",
       "author": "Rick Warren",
@@ -911,6 +968,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800058,
       "rank": 58,
       "title": "Think Faster, Talk Smarter: How to Speak Successfully When You're Put on the Spot",
       "author": "Matt Abrahams",
@@ -925,6 +983,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800059,
       "rank": 59,
       "title": "Season of the Witch: A Psychiatrist's Case for Magic",
       "author": "Ellen Vora MD",
@@ -939,6 +998,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800060,
       "rank": 60,
       "title": "Come As You Are: Revised and Updated: The Surprising New Science That Will Transform Your Sex Life",
       "author": "Emily Nagoski Ph.D.",
@@ -953,6 +1013,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800061,
       "rank": 61,
       "title": "The Power of Positive Thinking",
       "author": "Dr. Norman Vincent Peale",
@@ -969,6 +1030,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800062,
       "rank": 62,
       "title": "Art of Seduction: An Indispensible Primer on the Ultimate Form of Power",
       "author": "Robert Greene",
@@ -983,6 +1045,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800063,
       "rank": 63,
       "title": "Signs: The Secret Language of the Universe",
       "author": "Laura Lynne Jackson",
@@ -998,6 +1061,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800064,
       "rank": 64,
       "title": "Let Them Miss You: The Power of Pulling Back, Standing Firm, and Becoming Unavailable to What Doesn’t Serve You",
       "author": "Logan West",
@@ -1013,6 +1077,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800065,
       "rank": 65,
       "title": "Codependent No More: How to Stop Controlling Others and Start Caring for Yourself (Revised and Updated)",
       "author": "Melody Beattie",
@@ -1027,6 +1092,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800066,
       "rank": 66,
       "title": "Psycho-Cybernetics: Updated and Expanded",
       "author": "Maxwell Maltz",
@@ -1043,6 +1109,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800067,
       "rank": 67,
       "title": "Why Am I Like This?: Break Your Relationship Patterns and Create the Life You Want",
       "author": "Sabrina Zohar",
@@ -1057,6 +1124,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800068,
       "rank": 68,
       "title": "Inner Excellence: Train Your Mind for Extraordinary Performance and the Best Possible Life",
       "author": "Jim Murphy",
@@ -1075,6 +1143,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800069,
       "rank": 69,
       "title": "Unoffendable Heart: Breaking Free from the Cycle of Offense to Live in Freedom, Love, and Forgiveness",
       "author": "Mike Signorelli",
@@ -1089,6 +1158,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800070,
       "rank": 70,
       "title": "The Gifts of Imperfection, 10th Anniversary Edition: Features a New Foreword",
       "author": "Brené Brown",
@@ -1105,6 +1175,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800071,
       "rank": 71,
       "title": "The 7 Habits of Highly Effective People: 30th Anniversary Edition (The Covey Habits Series)",
       "author": "Stephen R. Covey",
@@ -1122,6 +1193,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800072,
       "rank": 72,
       "title": "The Next Conversation: Argue Less, Talk More",
       "author": "Jefferson Fisher",
@@ -1136,6 +1208,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800073,
       "rank": 73,
       "title": "The Way of the Superior Man: A Spiritual Guide to Mastering the Challenges of Women, Work, and Sexual Desire (20th Anniversary Edition)",
       "author": "David Deida",
@@ -1153,6 +1226,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800074,
       "rank": 74,
       "title": "Unfu*k Yourself: Get Out of Your Head and into Your Life",
       "author": "Gary John Bishop",
@@ -1171,6 +1245,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800075,
       "rank": 75,
       "title": "The 5 Second Rule: Transform your Life, Work, and Confidence with Everyday Courage",
       "author": "Mel Robbins",
@@ -1187,6 +1262,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800076,
       "rank": 76,
       "title": "Hold Me Tight: Seven Conversations for a Lifetime of Love (The Dr. Sue Johnson Collection, 1)",
       "author": "Dr. Sue Johnson EdD",
@@ -1202,6 +1278,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800077,
       "rank": 77,
       "title": "Dare to Lead: Brave Work. Tough Conversations. Whole Hearts.",
       "author": "Brené Brown",
@@ -1218,6 +1295,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800078,
       "rank": 78,
       "title": "The Happiness Trap (Second Edition): How to Stop Struggling and Start Living",
       "author": "Russ Harris",
@@ -1232,6 +1310,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800079,
       "rank": 79,
       "title": "The Science of Scaling: Grow Your Business Bigger and Faster Than You Think Possible",
       "author": "Dr. Benjamin Hardy",
@@ -1247,6 +1326,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800080,
       "rank": 80,
       "title": "Stand Firm and Act Like Men: Becoming the Man You Were Created to Be Instead of Who the World Says You Are",
       "author": "Joby Martin",
@@ -1261,6 +1341,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800081,
       "rank": 81,
       "title": "Think and Grow Rich: The Landmark Bestseller Now Revised and Updated for the 21st Century (Think and Grow Rich Series)",
       "author": "Napoleon Hill",
@@ -1280,6 +1361,7 @@
       "note": "The listed edition is the 2005 revised text, which is copyrighted. The original 1937 text is claimed public domain through non-renewal; unverified, so treat as in copyright."
     },
     {
+      "id": 800082,
       "rank": 82,
       "title": "Grit: The Power of Passion and Perseverance",
       "author": "Angela Duckworth",
@@ -1296,6 +1378,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800083,
       "rank": 83,
       "title": "I Will Teach You to Be Rich: No Guilt. No Excuses. Just a 6-Week Program That Works (Second Edition)",
       "author": "Ramit Sethi",
@@ -1311,6 +1394,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800084,
       "rank": 84,
       "title": "Detached: How to Let Go, Heal, and Become Irresistible",
       "author": "Sabrina Alexis Bendory",
@@ -1325,6 +1409,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800085,
       "rank": 85,
       "title": "Mysteries into Miracles: The 12 Paradoxes of Manifesting",
       "author": "Mike Dooley",
@@ -1341,6 +1426,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800086,
       "rank": 86,
       "title": "Make Your Bed: Little Things That Can Change Your Life...And Maybe the World",
       "author": "Admiral William H. McRaven",
@@ -1357,6 +1443,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800087,
       "rank": 87,
       "title": "The Power of Now: A Guide to Spiritual Enlightenment",
       "author": "Eckhart Tolle",
@@ -1372,6 +1459,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800088,
       "rank": 88,
       "title": "Crucial Conversations: Tools for Talking When Stakes are High, Third Edition",
       "author": "Joseph Grenny",
@@ -1386,6 +1474,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800089,
       "rank": 89,
       "title": "Meditations (Deluxe Hardbound Edition)",
       "author": "Marcus Aurelius",
@@ -1405,6 +1494,7 @@
       "in_curated_catalog": true
     },
     {
+      "id": 800090,
       "rank": 90,
       "title": "Extreme Ownership: How U.S. Navy SEALs Lead and Win (New Edition) (Extreme Ownership Series, 1)",
       "author": "Jocko Willink",
@@ -1419,6 +1509,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800091,
       "rank": 91,
       "title": "Life in Perspective: The Art and Power of the Annual Life Review",
       "author": "Tiago Forte",
@@ -1433,6 +1524,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800092,
       "rank": 92,
       "title": "Wintering: The Power of Rest and Retreat in Difficult Times",
       "author": "Katherine May",
@@ -1448,6 +1540,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800093,
       "rank": 93,
       "title": "As a Man Thinketh - The Original 1902 Classic (includes The Mastery of Destiny) (Reader's Library Classics)",
       "author": "James Allen",
@@ -1467,6 +1560,7 @@
       "in_curated_catalog": false
     },
     {
+      "id": 800094,
       "rank": 94,
       "title": "The Obstacle Is the Way: The Timeless Art of Turning Trials into Triumph",
       "author": "Ryan Holiday",
@@ -1481,6 +1575,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800095,
       "rank": 95,
       "title": "Wisdom Takes Work: Learn. Apply. Repeat. (The Stoic Virtues Series)",
       "author": "Ryan Holiday",
@@ -1495,6 +1590,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800096,
       "rank": 96,
       "title": "The 21 Irrefutable Laws of Leadership: Follow Them and People Will Follow You",
       "author": "John C. Maxwell",
@@ -1511,6 +1607,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800097,
       "rank": 97,
       "title": "Think Again: The Power of Knowing What You Don't Know",
       "author": "Adam Grant",
@@ -1525,6 +1622,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800098,
       "rank": 98,
       "title": "Journey: The Year That Changes Everything: 365 Daily Reflections to Build Self-Awareness and Inner Peace",
       "author": "Yung Pueblo",
@@ -1539,6 +1637,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800099,
       "rank": 99,
       "title": "What Happened to You?: Conversations on Trauma, Resilience, and Healing",
       "author": "Oprah Winfrey",
@@ -1553,6 +1652,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800100,
       "rank": 100,
       "title": "Start With Yourself: A New Vision for Work & Life",
       "author": "Emma Grede",
@@ -1567,6 +1667,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800101,
       "rank": null,
       "requested_by": "Michael",
       "title": "The Art of War",
@@ -1584,6 +1685,7 @@
   ],
   "next_up": [
     {
+      "id": 800102,
       "rank": 101,
       "title": "Do Something: The Case for Action in an Age of Overthinking",
       "author": "Michael Easter",
@@ -1599,6 +1701,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800103,
       "rank": 102,
       "title": "The 7 Habits of Highly Effective Teens",
       "author": "Sean Covey",
@@ -1614,6 +1717,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800104,
       "rank": 103,
       "title": "The E-Myth Revisited: Why Most Small Businesses Don't Work and What to Do About It",
       "author": "Michael E. Gerber",
@@ -1628,6 +1732,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800105,
       "rank": 104,
       "title": "The Daily Stoic 10th Anniversary Edition: 366 Meditations on Wisdom, Perseverance, and the Art of Living",
       "author": "Ryan Holiday",
@@ -1643,6 +1748,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800106,
       "rank": 105,
       "title": "When Things Fall Apart: Heart Advice for Difficult Times",
       "author": "Pema Chodron",
@@ -1657,6 +1763,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800107,
       "rank": 106,
       "title": "12 Rules for Life: An Antidote to Chaos",
       "author": "Jordan B. Peterson",
@@ -1672,6 +1779,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800108,
       "rank": 107,
       "title": "How to Know a Person: The Art of Seeing Others Deeply and Being Deeply Seen",
       "author": "David Brooks",
@@ -1686,6 +1794,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800109,
       "rank": 108,
       "title": "The Energy Bus: 10 Rules to Fuel Your Life, Work, and Team with Positive Energy",
       "author": "Jon Gordon",
@@ -1700,6 +1809,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800110,
       "rank": 109,
       "title": "Procrastinators Get Stuff Done: How to Go from Overwhelmed to Finished",
       "author": "Dana K. White",
@@ -1714,6 +1824,7 @@
       "rights": "in_copyright"
     },
     {
+      "id": 800111,
       "rank": 110,
       "title": "The Comfort Crisis: Embrace Discomfort to Reclaim Your Wild, Happy, Healthy Self",
       "author": "Michael Easter",

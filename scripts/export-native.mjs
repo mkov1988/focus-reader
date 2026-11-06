@@ -86,6 +86,18 @@ emit('scenes.json', scenes, 'src/data/scenes.json (build:scenes)', Object.keys(J
 const starts = readFileSync(path.join(ROOT, 'src', 'data', 'story-starts.json'), 'utf8');
 emit('story-starts.json', starts, 'src/data/story-starts.json (build:starts)', Object.keys(JSON.parse(starts)).length);
 
+// summaries.json <- src/data/summaries.json (summaries:build): the Key Ideas
+// shelf's bundled snapshot. The app refreshes it from /summaries-v1.json at
+// runtime (same content, short cache), so a pulled title disappears without a
+// release. The file is absent until the first summaries:build.
+{
+    const p = path.join(ROOT, 'src', 'data', 'summaries.json');
+    if (existsSync(p)) {
+        const summaries = readFileSync(p, 'utf8');
+        emit('summaries.json', summaries, 'src/data/summaries.json (summaries:build)', JSON.parse(summaries).titles.length);
+    }
+}
+
 // The paywall rush's bundled covers <- rush-covers.json + public/covers/.
 // The webp files go to Android assets/covers/ (Metro assets, so they ride the
 // over-the-air update like the narration files do), and src/data/rushCovers.ts

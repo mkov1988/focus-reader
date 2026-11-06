@@ -22,6 +22,10 @@
     "merge:starts": "node scripts/merge-story-start-overrides.mjs",
     "build:downloads": "node scripts/add-curated-downloads.mjs",
     "export:native": "node scripts/export-native.mjs",
+    "summaries:generate": "node scripts/summaries/generate.mjs",
+    "summaries:verify": "node scripts/summaries/verify.mjs",
+    "summaries:build": "node scripts/summaries/build.mjs",
+    "summaries:test": "node scripts/summaries/test-summaries.mjs",
     "check:strip": "node scripts/check-strip-sync.mjs",
     "upload:r2": "node scripts/upload-r2.mjs",
     "backup:r2": "node scripts/backup-r2.mjs",
@@ -39,6 +43,7 @@
     "zustand": "^5.0.11"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",

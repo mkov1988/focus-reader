@@ -106,6 +106,29 @@ finish → verify chain over the intro text (work dir `narration/work/intro/`,
 ignored like the rest) and copies the verified output into that repo. Nothing
 here needs committing for it; build-manifest.mjs skips the non-numeric id.
 
+## 7. Key-idea summaries (the Key Ideas shelf)
+
+Short, own-words cards for best-selling self-help titles (in copyright) plus
+a few public-domain ones, shipped as very short "books". The contract is
+`scripts/summaries/lib.mjs`; the legal shape it enforces is in ../LEGAL.md.
+Ids are 800001 upward, assigned once in `data-src/summaries-src.json` and
+never reused. Step 1 needs `ANTHROPIC_API_KEY` (Claude Opus 5.5, roughly
+$0.20 a title, half on the Batch API); everything else is offline.
+
+| Step | Command | Notes |
+|---|---|---|
+| 0 | `data-src/summaries-src.json` | the title list (authored; append new titles, never renumber) |
+| 1 | `npm run summaries:generate -- --pilot=5` (or `--ids=…`, `--all`, `--batch`) | two model runs per title → `scripts/summaries/work/<id>/run-*.json` (resumable). Public-domain titles are fed their full stripped text and never written from memory |
+| 2 | `npm run summaries:verify -- --ids=…` | mechanical gates + cross-run consensus → `data-src/summaries/<id>.json` and `../SUMMARIES-CHECKLIST.md`, the hard-copy spot-check list. Set `"checked": true` in a card file once a title is checked; verify then leaves it alone |
+| 3 | `npm run summaries:build` (`-- --hide=800003` pulls a title) | renders `public/summaries/<id>.txt`, writes `public/summaries-v1.json` (served with a short cache: the kill switch) and `src/data/summaries.json` |
+| 4 | `npm run export:native` | ships `summaries.json` to the app |
+| 5 | `node scripts/narration/plan.mjs --ids=800003 --text-dir=public/summaries`, then the usual narration chain | a summary is a numeric-id book to the narration pipeline; nothing there changes |
+
+Contract test, no network and no key: `npm run summaries:test`. It runs the
+three scripts in mock mode and the narration planner over a rendered text.
+Deploys: `summaries-v1.json` joins `deploy-manifest.json`'s mustExist list
+once the shelf ships; until then a missing manifest only means an empty shelf.
+
 ## Legal toolkit (read ../LEGAL.md first)
 
 - `lib/strip-gutenberg.mjs`, THE canonical strip, imported by both mirror scripts

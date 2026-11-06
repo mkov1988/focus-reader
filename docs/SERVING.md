@@ -17,6 +17,8 @@ Cloudflare Pages project "focus-reader"  →  https://focus-reader-48z.pages.dev
   │     /covers/<id>.webp    1,468 covers
   │     /starts-v1.json      54,525 deep-catalog story starts (filename IS the version)
   │     /narration-v1.json   which books have narration, by voice (same contract)
+  │     /summaries/<id>.txt  Key Ideas shelf texts (ids 800001+, scripts/summaries/)
+  │     /summaries-v1.json   the Key Ideas shelf manifest; SHORT cache, it is the kill switch
   │     caching + CORS: public/_headers
   │
   ├── Pages Function  functions/books/[id].js

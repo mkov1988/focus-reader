@@ -94,3 +94,12 @@ scripts/.resweep-report.json
 
 # Python bytecode from the narration pipeline scripts.
 __pycache__/
+
+# Key-idea summaries pipeline (scripts/summaries/): raw model runs, fetched
+# source texts and batch ledgers are regenerable scratch; the rendered texts
+# are build output of the committed cards (npm run summaries:build). The
+# committed files are data-src/summaries-src.json, data-src/summaries/,
+# data-src/summaries-hidden.json, public/summaries-v1.json and
+# src/data/summaries.json.
+/scripts/summaries/work/
+/public/summaries/
