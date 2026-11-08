@@ -530,7 +530,8 @@ Order of operations, do not reorder:
 
 | wave | batch run | result | deploy run | deployed |
 |---|---|---|---|---|
-| C2-1 | [42189860030](https://github.com/mkov1988/focus-reader/actions/runs/42189860030) 2026-11-06 08:44Z on master (old workflow), prepare ok (63 synth jobs, none gated) | running | | |
+| C2-1 | [42189860030](https://github.com/mkov1988/focus-reader/actions/runs/42189860030) 2026-11-06 08:44Z to 20:14Z on master (old workflow), 63 synth jobs, none gated | 21/21 pairs verified, all three voices of all 7 books answer at the audio door, manifest [7d67c090](https://github.com/mkov1988/focus-reader/commit/7d67c090) (102 books) | deployed by the chain job of the 31469 re-collect run (next row) | |
+| test (31469) | [42191272055](https://github.com/mkov1988/focus-reader/actions/runs/42191272055) 2026-11-06 08:56Z to 21:33Z on the branch, first run of the new workflow | fetch-artifacts.sh, finish-on-partial and the R2 read-back all worked (15 objects); the commit step died on `git cherry-pick -q` (no such flag, exit 129), chain skipped. Fixed 2026-11-07: the two built files are committed in a worktree of origin/master, no cherry-pick. Re-collected with `collect_from_run=42191272055` and `next_waves` = waves 2–12, which also deploys wave 1 and starts wave 2 | | |
 | C2-2 | | | | |
 | C2-3 | | | | |
 | C2-4 | | | | |

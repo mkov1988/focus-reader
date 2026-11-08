@@ -281,44 +281,48 @@ jobs:
       - name: Build manifest + checklist, commit to master
         # Runs AFTER the R2 upload on purpose: a manifest entry must never
         # exist without its audio. Builds against master's CURRENT manifest
-        # (not this checkout's, which may be a branch or a stale master) and
-        # lands the result on a fresh origin/master, so a run from any ref
-        # pushes exactly one commit of exactly these two files. Retries when
-        # another run pushed first.
+        # (not this checkout's, which may be a branch or a stale master) with
+        # THIS checkout's scripts, then commits the two built files into a
+        # separate worktree of origin/master, so a run from any ref pushes
+        # exactly one commit of exactly these two files. No merge or
+        # cherry-pick is involved (the first version cherry-picked and would
+        # have hit conflicts in the one-line-per-book JSON; it also died on
+        # `cherry-pick -q`, which is not a flag). Retries when another run
+        # pushed first.
         run: |
           set -e
           git config user.name "narration-batch"
           git config user.email "actions@users.noreply.github.com"
-          ORIG=$(git rev-parse HEAD)
+          WT=/tmp/master-worktree
           for attempt in 1 2 3; do
             # Explicit refspec: actions/checkout only configures the fetch
             # refspec for the ref it checked out, so on a branch run a bare
             # "git fetch origin master" would not update origin/master.
             git fetch -q --force origin master:refs/remotes/origin/master
-            git checkout -q "$ORIG"
             git checkout -q origin/master -- public/narration-v1.json NARRATION-CHECKLIST.md
             node scripts/narration/build-manifest.mjs
             node scripts/narration/build-narration-checklist.mjs
-            git add public/narration-v1.json NARRATION-CHECKLIST.md
-            if git diff --quiet origin/master -- public/narration-v1.json NARRATION-CHECKLIST.md; then
+            git worktree remove --force "$WT" 2>/dev/null || true
+            git worktree add -q --detach "$WT" origin/master
+            cp public/narration-v1.json "$WT/public/narration-v1.json"
+            cp NARRATION-CHECKLIST.md "$WT/NARRATION-CHECKLIST.md"
+            git -C "$WT" add public/narration-v1.json NARRATION-CHECKLIST.md
+            if git -C "$WT" diff --cached --quiet; then
               echo "::notice::manifest unchanged — nothing to commit"
               break
             fi
-            git commit -q -m "feat(narration): batch manifest (run ${{ github.run_id }})
+            git -C "$WT" commit -q -m "feat(narration): batch manifest (run ${{ github.run_id }})
 
           Co-Authored-By: Claude <noreply@anthropic.com>"
-            NEW=$(git rev-parse HEAD)
-            git checkout -q --detach origin/master
-            git cherry-pick -q "$NEW"
-            if git push origin HEAD:master; then
-              echo "manifest pushed to master as $(git rev-parse --short HEAD)"
+            if git -C "$WT" push origin HEAD:master; then
+              echo "manifest pushed to master as $(git -C "$WT" rev-parse --short HEAD)"
               break
             fi
             echo "::warning::push to master rejected (attempt $attempt) — someone pushed first; rebuilding on the new master"
-            git cherry-pick --abort 2>/dev/null || true
             [ "$attempt" -eq 3 ] && exit 1
             sleep 10
           done
+          git worktree remove --force "$WT" 2>/dev/null || true
       - name: Upload batch bundle
         uses: actions/upload-artifact@v4
         with:
