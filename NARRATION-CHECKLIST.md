@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**306 / 306** book×voice pairs finished across 102 book(s).
+**309 / 309** book×voice pairs finished across 103 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -97,6 +97,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 25344: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
+- 31469: ☑ marlowe  ☑ rowan  ☑ hazel
 - 34413: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36034: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36462: ☑ marlowe  ☑ rowan  ☑ hazel

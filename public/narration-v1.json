@@ -2802,6 +2802,37 @@
         }
       }
     },
+    "31469": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 183.8,
+          "segments": 4,
+          "bytes": 10437815,
+          "span": [
+            0,
+            10835
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 191.1,
+          "segments": 4,
+          "bytes": 9963297,
+          "span": [
+            0,
+            10835
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 194.2,
+          "segments": 4,
+          "bytes": 9825850,
+          "span": [
+            0,
+            10835
+          ]
+        }
+      }
+    },
     "34413": {
       "voices": {
         "marlowe": {
