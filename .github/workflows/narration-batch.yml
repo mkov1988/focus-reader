@@ -339,7 +339,12 @@ jobs:
     needs: collect
     # Only after collect succeeded: audio read back from R2 and manifest on
     # master. A failed wave stops the chain so a human looks first.
-    if: ${{ needs.collect.result == 'success' }}
+    # `!cancelled()` is load bearing: without a status function in the
+    # expression GitHub ANDs in an implicit success(), which looks at the whole
+    # needs tree, and on a collect_from_run/resume_from_run run synth and
+    # finish are skipped, so this job was skipped too (run 42445119637 put
+    # its manifest on master and then deployed nothing).
+    if: ${{ !cancelled() && needs.collect.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
