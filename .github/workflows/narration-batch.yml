@@ -127,6 +127,19 @@ jobs:
         run: |
           pip install --quiet torch --index-url https://download.pytorch.org/whl/cpu
           pip install --quiet kokoro soundfile
+          # Kokoro's English G2P (misaki) pip-installs the spaCy model from a
+          # GitHub release at first import. That download answered HTTP 504 for
+          # an hour on 2026-11-09 and cost wave 2 nine shards; pip does not
+          # retry a 5xx. Fetch the wheel here with curl's retry and install it
+          # from the file, so the import finds it already present. If even this
+          # fails, fall through: misaki will try its own download as before.
+          WHL=en_core_web_sm-3.8.0-py3-none-any.whl
+          if curl -fsSL --retry 8 --retry-delay 15 --retry-all-errors -o "/tmp/$WHL" \
+               "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/$WHL"; then
+            pip install --quiet "/tmp/$WHL"
+          else
+            echo "::warning::spaCy model prefetch failed after retries; leaving it to misaki's own download"
+          fi
       - name: Fetch text + plan
         run: |
           mkdir -p /tmp/texts
@@ -353,7 +366,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run deploy-pages.yml --repo "$GITHUB_REPOSITORY" --ref master -f preview=false
       - name: Start the next wave
-        if: ${{ github.event.inputs.next_waves != '' }}
+        # Never on a re-run: "re-run failed jobs" re-runs this job too, and
+        # the first attempt already dispatched the next wave. A duplicate
+        # dispatch would run the same books again and chain a second copy of
+        # every wave after it.
+        if: ${{ github.event.inputs.next_waves != '' && github.run_attempt == 1 }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NEXT: ${{ github.event.inputs.next_waves }}
