@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**346 / 348** book×voice pairs finished across 116 book(s).
+**373 / 375** book×voice pairs finished across 125 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -63,6 +63,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 1837: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1952: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1998: ☑ marlowe  ☑ rowan  ☑ hazel
+- 2148: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2160: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2465: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2527: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -91,6 +92,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 10148: ☑ marlowe  ☑ rowan  ☑ hazel
 - 14244: ☑ marlowe  ☑ rowan  ☑ hazel
 - 14838: ☑ marlowe  ☑ rowan  ☑ hazel
+- 15399: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16389: ☑ marlowe  ☑ rowan  ☑ hazel
 - 18857: ☑ marlowe  ☑ rowan  ☑ hazel
 - 19476: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -100,6 +102,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 23784: ☑ marlowe  ☑ rowan  ☑ hazel
 - 24739: ☑ marlowe  ☑ rowan  ☑ hazel
 - 25344: ☑ marlowe  ☑ rowan  ☑ hazel
+- 25789: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27827: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -109,14 +112,20 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 36462: ☑ marlowe  ☑ rowan  ☑ hazel
 - 37106: ☑ marlowe  ☑ rowan  ☑ hazel
 - 40284: ☐ marlowe  ☑ rowan  ☑ hazel
+- 43453: ☑ marlowe  ☑ rowan  ☑ hazel
 - 45304: ☑ marlowe  ☑ rowan  ☑ hazel
+- 46276: ☑ marlowe  ☑ rowan  ☑ hazel
 - 46976: ☑ marlowe  ☑ rowan  ☑ hazel
+- 48296: ☑ marlowe  ☑ rowan  ☑ hazel
+- 48438: ☑ marlowe  ☑ rowan  ☑ hazel
+- 49987: ☑ marlowe  ☑ rowan  ☑ hazel
 - 51252: ☑ marlowe  ☑ rowan  ☑ hazel
 - 52190: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53154: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53416: ☐ marlowe  ☑ rowan  ☑ hazel
 - 53874: ☑ marlowe  ☑ rowan  ☑ hazel
 - 55179: ☑ marlowe  ☑ rowan  ☑ hazel
+- 57641: ☑ marlowe  ☑ rowan  ☑ hazel
 - 58866: ☑ marlowe  ☑ rowan  ☑ hazel
 - 64317: ☑ marlowe  ☑ rowan  ☑ hazel
 - 65238: ☑ marlowe  ☑ rowan  ☑ hazel
