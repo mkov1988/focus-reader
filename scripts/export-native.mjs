@@ -21,10 +21,29 @@
  * from scripts/classify-stamped-covers.mjs, plus rush-covers.json's
  * shelfSkip) are marked art: false and wear our generated cover there.
  *
+ * Also writes src/data/about.json: what the book pickup page says about a
+ * book (Android src/open/PickupPage.tsx). One entry per bundled book the deep
+ * pass covered: the one line hook, era, narrative voice and mood tags from
+ * scripts/deep-starts/meta.json, plus pacing, cast, content notes and themes
+ * from scripts/deep-starts/details.json. Cast lines are split into
+ * [name, description] here so the app never parses prose. The export refuses
+ * to write if any of it carries the word "Gutenberg" (LEGAL.md: the name
+ * never shows in the product).
+ *
  * Also writes src/data/_provenance.json in the Android repo: which script
  * generated each file, from what source, when, with counts and hashes. The
  * app never imports it (Metro bundles only imported files); it exists so
  * drift is diagnosable at a glance. Never hand edit any of these files.
+ *
+ * Two switches for checkouts that are not Michael's desk:
+ *   FOCUS_READER_ANDROID=<path>   the Android repo, when it is not at
+ *                                 "../Focus Reader Android" (a cloud session
+ *                                 clones it as ../focus-reader-android).
+ *   --only=about.json[,name...]   write just the named files and fold their
+ *                                 entries into the existing provenance. The
+ *                                 rush covers and the shelf need public/covers/
+ *                                 (a gitignored local mirror), so a checkout
+ *                                 without it can still export the JSON data.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, unlinkSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -32,12 +51,27 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const NATIVE_ROOT = path.join(ROOT, '..', 'Focus Reader Android');
+const NATIVE_ROOT = process.env.FOCUS_READER_ANDROID
+    ? path.resolve(process.env.FOCUS_READER_ANDROID)
+    : path.join(ROOT, '..', 'Focus Reader Android');
 const NATIVE_DATA = path.join(NATIVE_ROOT, 'src', 'data');
 if (!existsSync(NATIVE_DATA)) {
     console.error(`Android repo not found at ${NATIVE_DATA}`);
     process.exit(1);
 }
+
+/** Every file this script writes into the Android repo's src/data/. */
+const OUTPUTS = ['catalog.json', 'vibes.json', 'scenes.json', 'story-starts.json', 'about.json', 'rushCovers.ts', 'shelf.ts'];
+const onlyArg = process.argv.slice(2).find((a) => a.startsWith('--only='));
+const only = onlyArg ? onlyArg.slice('--only='.length).split(',').map((n) => n.trim()).filter(Boolean) : null;
+if (only) {
+    const unknown = only.filter((n) => !OUTPUTS.includes(n));
+    if (unknown.length || only.length === 0) {
+        console.error(`--only takes file names from: ${OUTPUTS.join(', ')}${unknown.length ? ` (unknown: ${unknown.join(', ')})` : ''}`);
+        process.exit(1);
+    }
+}
+const wanted = (name) => !only || only.includes(name);
 
 const md5 = (s) => createHash('md5').update(s).digest('hex');
 
@@ -56,6 +90,8 @@ const provenance = { generatedBy: 'Focus Reader (web repo) scripts/export-native
 let changed = 0;
 
 function emit(name, content, source, count) {
+    if (!OUTPUTS.includes(name)) throw new Error(`emit('${name}') is not listed in OUTPUTS`);
+    if (!wanted(name)) return;
     const dest = path.join(NATIVE_DATA, name);
     const before = existsSync(dest) ? readFileSync(dest, 'utf8') : null;
     const isSame = before === content;
@@ -86,6 +122,48 @@ emit('scenes.json', scenes, 'src/data/scenes.json (build:scenes)', Object.keys(J
 const starts = readFileSync(path.join(ROOT, 'src', 'data', 'story-starts.json'), 'utf8');
 emit('story-starts.json', starts, 'src/data/story-starts.json (build:starts)', Object.keys(JSON.parse(starts)).length);
 
+// about.json <- the deep pass stores, cut down to the books the app bundles
+// (story-starts.json's ids are exactly catalog + vibes). A book the deep pass
+// never reached simply has no entry; the pickup page then shows what the app
+// already knows (progress, length, the opening lines).
+if (wanted('about.json')) {
+    const meta = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'meta.json'), 'utf8'));
+    const details = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'details.json'), 'utf8'));
+    // "Name: what they are", "Name, what they are" or "Name — what they are":
+    // the earliest separator ends the name. A line with no separator, or one
+    // whose first separator falls inside a clause ("A young nurse whose merry,
+    // grave eyes…"), stays whole under an empty name.
+    const splitCast = (line) => {
+        const whole = String(line).trim();
+        const m = /^(.{2,48}?)(?::\s+|\s+[—–]\s+|,\s+)(\S.*)$/.exec(whole);
+        if (!m || /\b(?:who|whose|whom|that|which|is|are|was|were)\b/i.test(m[1])) return ['', whole];
+        return [m[1], m[2]];
+    };
+    const about = {};
+    for (const id of Object.keys(JSON.parse(starts))) {
+        const m = meta[id];
+        if (!m || typeof m.hook !== 'string' || !m.hook.trim()) continue;
+        const d = details[id];
+        about[id] = {
+            hook: m.hook.trim(),
+            ...(m.era ? { era: m.era } : {}),
+            ...(m.voice && m.voice !== 'other' ? { voice: m.voice } : {}),
+            ...(Array.isArray(m.tags) && m.tags.length ? { tags: m.tags.filter((t) => t !== 'other') } : {}),
+            ...(d?.pacing ? { pacing: d.pacing } : {}),
+            ...(Array.isArray(d?.cast) && d.cast.length ? { cast: d.cast.map(splitCast) } : {}),
+            ...(Array.isArray(d?.contentNotes) && d.contentNotes.length ? { notes: d.contentNotes } : {}),
+            ...(Array.isArray(d?.themes) && d.themes.length ? { themes: d.themes } : {}),
+        };
+    }
+    const aboutJson = JSON.stringify(about);
+    if (/gutenberg/i.test(aboutJson)) {
+        const bad = Object.keys(about).filter((id) => /gutenberg/i.test(JSON.stringify(about[id])));
+        console.error(`about.json would carry the word "Gutenberg" (LEGAL.md) for: ${bad.join(', ')}. Fix the deep pass store, then export again.`);
+        process.exit(1);
+    }
+    emit('about.json', aboutJson, 'scripts/deep-starts/meta.json + details.json (the deep pass), bundled ids only', Object.keys(about).length);
+}
+
 // The paywall rush's bundled covers <- rush-covers.json + public/covers/.
 // The webp files go to Android assets/covers/ (Metro assets, so they ride the
 // over-the-air update like the narration files do), and src/data/rushCovers.ts
@@ -93,7 +171,11 @@ emit('story-starts.json', starts, 'src/data/story-starts.json (build:starts)', O
 // list is generated, like bundledBooks.ts. Covers dropped from the list are
 // deleted from assets/covers/. Titles and authors ride along from curated.json
 // for the generated fallback cover and the accessibility label.
-{
+if (wanted('rushCovers.ts') || wanted('shelf.ts')) {
+    if (only && !(wanted('rushCovers.ts') && wanted('shelf.ts'))) {
+        console.error('rushCovers.ts and shelf.ts are built together from the same cover list: name both in --only, or neither.');
+        process.exit(1);
+    }
     const rush = JSON.parse(readFileSync(path.join(ROOT, 'src', 'data', 'rush-covers.json'), 'utf8'));
     const byId = new Map(curated.map((b) => [String(b.id), b]));
     const open = rush.open ?? [];
@@ -239,8 +321,17 @@ emit('story-starts.json', starts, 'src/data/story-starts.json (build:starts)', O
 {
     const provPath = path.join(NATIVE_DATA, '_provenance.json');
     const strip = (o) => JSON.stringify({ ...o, generatedAt: undefined });
-    let same = false;
-    try { same = strip(JSON.parse(readFileSync(provPath, 'utf8'))) === strip(provenance); } catch { same = false; }
+    let before = null;
+    try { before = JSON.parse(readFileSync(provPath, 'utf8')); } catch { before = null; }
+    // A partial run keeps every other file's entry (in OUTPUTS order, so a
+    // later full run rewrites the same bytes) and replaces only its own.
+    if (only && before?.files) {
+        const merged = { ...before.files, ...provenance.files };
+        provenance.files = Object.fromEntries(
+            [...OUTPUTS.filter((n) => n in merged), ...Object.keys(merged).filter((n) => !OUTPUTS.includes(n))].map((n) => [n, merged[n]]),
+        );
+    }
+    const same = before !== null && strip(before) === strip(provenance);
     if (!same || changed) writeFileSync(provPath, JSON.stringify(provenance, null, 2) + '\n');
 }
 

@@ -6,10 +6,17 @@ rerun casually. Authored source data lives in `../data-src/` (precious,
 committed); `scripts/` itself is code plus gitignored scratch (dotfiles) plus
 the committed deep pass stores under `deep-starts/`.
 
-**Every pipeline ends the same way:** `npm run export:native` writes the four
+**Every pipeline ends the same way:** `npm run export:native` writes the
 bundled data files into the Android repo in native schema. Hand copying is
 retired; if you changed data and the app should see it, run the export and
-bump `expo.version` over there.
+bump `APP_VERSION` in its `src/version.ts` (the export prints the reminder).
+
+Two switches for a checkout that is not Michael's desk (a cloud session):
+`FOCUS_READER_ANDROID=<path>` points the export at an Android repo that is
+not at `../Focus Reader Android`, and `--only=about.json` (any of the file
+names, comma separated) writes just those files. The rush covers and the
+shelf need `public/covers/`, a gitignored local mirror, so `--only` is how a
+checkout without it still exports the JSON data.
 
 ## 1. Curated catalog
 
@@ -84,7 +91,17 @@ bytes (see ../docs/BACKUP.md for why that makes backups load bearing).
 | build scenes | `npm run build:scenes` | resolves anchors → `src/data/scenes.json` |
 | deep pass merge | `node scripts/merge-deep-pass.mjs <results.json>` | one funnel: updates the `deep-starts/` stores, appends to scenes-src, refreshes ../DEEP-PASS-CHECKLIST.md |
 | bulk starts file | `node scripts/build-starts-bundle.mjs` | → `public/starts-v1.json` (filename IS the version, never mutate v1) |
-| ship | `npm run export:native` | scenes + starts into the app |
+| ship | `npm run export:native` | scenes + starts + about into the app |
+
+**What the app says about a book** (`about.json`, the Android pickup page: the
+page a held book opens to). The export builds it straight from the deep pass
+stores, for the bundled books only: hook, era, narrative voice and mood tags
+from `deep-starts/meta.json`; pacing, cast, content notes and themes from
+`deep-starts/details.json`. No build step of its own: merge a deep pass
+round, run the export. A book the deep pass never reached has no entry and
+the page says nothing about it (accuracy beats coverage). The export refuses
+to write if any of it carries the word "Gutenberg". The long tail's hooks
+(54k books in `meta.json`) are not shipped; they wait on per book serving.
 
 Deep pass tooling lives in `deep-starts/` (wf-chunk, collect-journal,
 merge-redo and friends, committed together with the stores they produced).
