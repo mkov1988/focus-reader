@@ -2957,6 +2957,37 @@
         }
       }
     },
+    "22163": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 183.1,
+          "segments": 14,
+          "bytes": 46132562,
+          "span": [
+            76,
+            49007
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 194.7,
+          "segments": 14,
+          "bytes": 43351859,
+          "span": [
+            76,
+            49007
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 207.5,
+          "segments": 14,
+          "bytes": 40679393,
+          "span": [
+            76,
+            49007
+          ]
+        }
+      }
+    },
     "23784": {
       "voices": {
         "marlowe": {
@@ -3019,6 +3050,37 @@
         }
       }
     },
+    "24793": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 190.6,
+          "segments": 40,
+          "bytes": 128400063,
+          "span": [
+            0,
+            140280
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 200.2,
+          "segments": 40,
+          "bytes": 121900517,
+          "span": [
+            0,
+            140280
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 210.3,
+          "segments": 40,
+          "bytes": 116140524,
+          "span": [
+            0,
+            140280
+          ]
+        }
+      }
+    },
     "25344": {
       "voices": {
         "marlowe": {
@@ -3077,6 +3139,37 @@
           "span": [
             338,
             69097
+          ]
+        }
+      }
+    },
+    "26563": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 184.2,
+          "segments": 13,
+          "bytes": 40516185,
+          "span": [
+            41,
+            42708
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 193.2,
+          "segments": 13,
+          "bytes": 38458177,
+          "span": [
+            41,
+            42708
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 199.9,
+          "segments": 13,
+          "bytes": 37221728,
+          "span": [
+            41,
+            42708
           ]
         }
       }
@@ -3201,6 +3294,68 @@
           "span": [
             0,
             10835
+          ]
+        }
+      }
+    },
+    "32155": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 191.5,
+          "segments": 2,
+          "bytes": 5301285,
+          "span": [
+            0,
+            5799
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 197.9,
+          "segments": 2,
+          "bytes": 5099629,
+          "span": [
+            0,
+            5799
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 206.3,
+          "segments": 2,
+          "bytes": 4894855,
+          "span": [
+            0,
+            5799
+          ]
+        }
+      }
+    },
+    "32474": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 189.3,
+          "segments": 51,
+          "bytes": 170423371,
+          "span": [
+            1921,
+            184190
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 196.2,
+          "segments": 51,
+          "bytes": 163311286,
+          "span": [
+            1921,
+            184190
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 200.5,
+          "segments": 51,
+          "bytes": 160004328,
+          "span": [
+            1921,
+            184190
           ]
         }
       }
@@ -3568,6 +3723,37 @@
         }
       }
     },
+    "50133": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 186.8,
+          "segments": 5,
+          "bytes": 16461336,
+          "span": [
+            0,
+            17368
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 195,
+          "segments": 5,
+          "bytes": 15657875,
+          "span": [
+            0,
+            17368
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 198.2,
+          "segments": 5,
+          "bytes": 15419325,
+          "span": [
+            0,
+            17368
+          ]
+        }
+      }
+    },
     "51252": {
       "voices": {
         "marlowe": {
@@ -3803,6 +3989,37 @@
           "span": [
             71,
             86797
+          ]
+        }
+      }
+    },
+    "58820": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 186.1,
+          "segments": 17,
+          "bytes": 55114026,
+          "span": [
+            181,
+            58886
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 195.4,
+          "segments": 17,
+          "bytes": 52293685,
+          "span": [
+            181,
+            58886
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 202.2,
+          "segments": 17,
+          "bytes": 50583836,
+          "span": [
+            181,
+            58886
           ]
         }
       }
@@ -4051,6 +4268,37 @@
           "span": [
             0,
             75011
+          ]
+        }
+      }
+    },
+    "76639": {
+      "voices": {
+        "marlowe": {
+          "naturalWpm": 200.6,
+          "segments": 85,
+          "bytes": 271283858,
+          "span": [
+            10229,
+            317665
+          ]
+        },
+        "rowan": {
+          "naturalWpm": 207.5,
+          "segments": 85,
+          "bytes": 260350404,
+          "span": [
+            10229,
+            317665
+          ]
+        },
+        "hazel": {
+          "naturalWpm": 210.3,
+          "segments": 85,
+          "bytes": 257282692,
+          "span": [
+            10229,
+            317665
           ]
         }
       }
