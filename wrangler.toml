@@ -5,9 +5,11 @@ name = "focus-reader"
 pages_build_output_dir = "dist"
 compatibility_date = "2026-07-01"
 
-# The full-catalog book mirror (55,863 stripped .txt files under books/<id>.txt),
-# read by functions/books/[id].js when a requested book isn't a bundled static
-# asset. See docs/planning/book_access_strategy.md §6.
+# The one bucket behind every door: books/<id>.txt (the 55,863-book mirror plus
+# the curated hot set), covers/<id>.webp (curated covers), audio/<id>/<voice>/
+# (narration). functions/books/[id].js and functions/covers/[id].js read it when
+# a request isn't a bundled static asset; functions/audio/[[path]].js always.
+# See docs/SERVING.md and docs/planning/book_access_strategy.md §6.
 [[r2_buckets]]
 binding = "BOOKS"
 bucket_name = "focus-reader-books"

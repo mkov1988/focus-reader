@@ -1,0 +1,101 @@
+name: R2 hot set
+
+# Puts the static hot set — the 1,401 curated texts and 1,468 covers that ship
+# as Pages static assets — into the focus-reader-books bucket as well, so the
+# bucket holds every book and every cover the app can ask for:
+#
+#   books/<id>.txt    adds the ~54 curated texts the bulk mirror's quality
+#                     gate rejected (until now they existed only as static
+#                     assets); the other ~1,347 are already there
+#   covers/<id>.webp  all 1,468 covers (new prefix, read by
+#                     functions/covers/[id].js when a cover is not static)
+#
+# Bytes come from PRODUCTION through scripts/fetch-data-plane.mjs — the exact
+# files installed apps read today, never a fresh crawl (docs/BACKUP.md: story
+# starts are token positions against these bytes). `--ignore-existing`: an
+# object already in the bucket is never overwritten, so a re-run only adds
+# what is missing. Read-back at the end proves every hot-set id is in the
+# bucket. Needs the repository secrets R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY,
+# R2_ENDPOINT (the same three narration-batch.yml uses). About 5 minutes.
+#
+# Run it again whenever the curated set changes (after mirror:covers /
+# mirror:books and a deploy), or from the desk: `node scripts/upload-r2.mjs`
+# for texts and `rclone copy public/covers :s3:focus-reader-books/covers`.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r2-hot-set
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    name: fetch hot set from production, copy into the bucket, read back
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Require R2 secrets
+        env:
+          A: ${{ secrets.R2_ACCESS_KEY_ID }}
+          S: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          E: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          missing=""
+          [ -z "$A" ] && missing="$missing R2_ACCESS_KEY_ID"
+          [ -z "$S" ] && missing="$missing R2_SECRET_ACCESS_KEY"
+          [ -z "$E" ] && missing="$missing R2_ENDPOINT"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing (names must match EXACTLY)"
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: Fetch hot set from production
+        # Every listed file must round-trip or this exits 1 (same rule as a
+        # deploy): a partial hot set in the bucket would be a lie the read-back
+        # below would then also catch.
+        run: node scripts/fetch-data-plane.mjs
+      - name: Copy into the bucket (never overwrites)
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          set -e
+          sudo apt-get install -y -qq rclone
+          # GitHub masks the secret values in the log.
+          RC=(--s3-provider Cloudflare
+              --s3-access-key-id "$R2_ACCESS_KEY_ID"
+              --s3-secret-access-key "$R2_SECRET_ACCESS_KEY"
+              --s3-endpoint "$R2_ENDPOINT"
+              --s3-no-check-bucket)
+          books_before=$(rclone lsf --files-only :s3:focus-reader-books/books "${RC[@]}" | wc -l)
+          covers_before=$(rclone lsf --files-only :s3:focus-reader-books/covers "${RC[@]}" | wc -l)
+          echo "bucket before: books/ $books_before objects, covers/ $covers_before objects"
+          rclone copy public/books :s3:focus-reader-books/books "${RC[@]}" --ignore-existing --include "*.txt" --transfers 32 --checkers 32 --stats-one-line --stats 10s
+          rclone copy public/covers :s3:focus-reader-books/covers "${RC[@]}" --ignore-existing --include "*.webp" --transfers 32 --checkers 32 --stats-one-line --stats 10s
+          # Read BACK from the bucket. An exit-0 copy is not evidence the
+          # objects landed — the only proof is what the bucket returns.
+          rclone lsf --files-only :s3:focus-reader-books/books "${RC[@]}" > /tmp/books.lst
+          rclone lsf --files-only :s3:focus-reader-books/covers "${RC[@]}" > /tmp/covers.lst
+          echo "bucket after:  books/ $(wc -l < /tmp/books.lst) objects, covers/ $(wc -l < /tmp/covers.lst) objects"
+          node - <<'EOF'
+          const { readFileSync } = require('fs');
+          const plane = JSON.parse(readFileSync('scripts/deploy-data-plane.json', 'utf8'));
+          const have = (f) => new Set(readFileSync(f, 'utf8').split('\n').filter(Boolean));
+          const books = have('/tmp/books.lst'), covers = have('/tmp/covers.lst');
+          const missingBooks = plane.books.filter((id) => !books.has(`${id}.txt`));
+          const missingCovers = plane.covers.filter((id) => !covers.has(`${id}.webp`));
+          console.log(`hot set in bucket: ${plane.books.length - missingBooks.length}/${plane.books.length} books, ${plane.covers.length - missingCovers.length}/${plane.covers.length} covers`);
+          if (missingBooks.length || missingCovers.length) {
+            console.error(`::error::missing from the bucket — books: ${missingBooks.join(',') || 'none'}; covers: ${missingCovers.join(',') || 'none'}`);
+            process.exit(1);
+          }
+          console.log(`::notice::R2 holds the whole hot set: books/ ${books.size} objects, covers/ ${covers.size} objects`);
+          EOF

@@ -22,8 +22,8 @@ Cost: roughly thirty cents a month of R2 storage.
 |---|---|
 | Full 55,863 book corpus | this disk (mirror/books) + primary bucket + backup bucket |
 | Crawl catalog + gate records | this disk (mirror/) + backup bucket (mirror-meta/) |
-| Covers | this disk (public/covers) + live Pages deploy + backup bucket (covers/) |
-| Curated texts (public/books) | this disk + live Pages deploy; regenerable from the mirror |
+| Covers | this disk (public/covers) + primary bucket (covers/, since 2026-11 via the "R2 hot set" workflow) + live Pages deploy + backup bucket (covers/) |
+| Curated texts (public/books) | this disk + primary bucket (books/, all 1,401 since 2026-11; the 54 the bulk gate rejected are NOT regenerable from the mirror) + live Pages deploy |
 | Deep pass stores (scripts/deep-starts) | git, pushed to GitHub |
 | Bucket keys (.r2.env at repo root) | this disk; keep a copy in the password manager |
 | Android signing keystore | EAS cloud account; export per the Android repo's RELEASE.md |

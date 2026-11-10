@@ -1,5 +1,5 @@
 {
- "comment": "Static data plane a deploy must carry, frozen by scripts/freeze-data-plane.mjs probing production. books = curated+vibes union plus production statics not in the R2 mirror; covers = exactly the .webp files production serves. Regenerate deliberately (data-plane-freeze.yml) when the curated set changes — never trim to make a deploy pass: a Pages deploy REPLACES the site and covers have no R2 fallback.",
+ "comment": "Static data plane a deploy must carry, frozen by scripts/freeze-data-plane.mjs probing production. books = curated+vibes union plus production statics not in the R2 mirror; covers = exactly the .webp files production serves. Regenerate deliberately (data-plane-freeze.yml) when the curated set changes — never trim to make a deploy pass: a Pages deploy REPLACES the site. Since 2026-11 the bucket also holds these files (r2-hot-set.yml) and functions/covers/[id].js serves a missing cover from it, so a miss is no longer a deletion — but static is free and the Function door is metered, so the full list still ships.",
  "frozenAt": "2026-08-24",
  "books": [
   "10",

@@ -56,8 +56,13 @@ const run = (label, args) => {
 run('books: primary bucket -> backup bucket (server-side)', ['sync', `:s3:${SRC_BUCKET}/books`, `:s3:${DST_BUCKET}/books`]);
 run('audio: primary bucket -> backup bucket (server-side, copy — never deletes)', ['copy', `:s3:${SRC_BUCKET}/audio`, `:s3:${DST_BUCKET}/audio`]);
 run('catalog + gate records -> backup bucket', ['copy', path.join(ROOT, 'mirror'), `:s3:${DST_BUCKET}/mirror-meta`, '--include', 'catalog.json', '--include', '_rejected.json', '--include', '_failed.json']);
+// Covers: since 2026-11 the primary bucket holds covers/ too (r2-hot-set.yml),
+// so copy server-side like books and audio — copy, never sync, so a primary
+// that has not been filled yet cannot empty the backup. The local sync stays
+// for the desk, where public/covers may be newer than either bucket.
+run('covers: primary bucket -> backup bucket (server-side, copy — never deletes)', ['copy', `:s3:${SRC_BUCKET}/covers`, `:s3:${DST_BUCKET}/covers`]);
 if (existsSync(path.join(ROOT, 'public', 'covers'))) {
-    run('covers -> backup bucket', ['sync', path.join(ROOT, 'public', 'covers'), `:s3:${DST_BUCKET}/covers`]);
+    run('covers -> backup bucket', ['copy', path.join(ROOT, 'public', 'covers'), `:s3:${DST_BUCKET}/covers`]);
 }
 
 console.log('\nVerifying object counts...');

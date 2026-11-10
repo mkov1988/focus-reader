@@ -8,8 +8,11 @@
  * from the live site ARE the mirror bytes.
  *
  * Every listed file must fetch cleanly or this exits 1 — a Pages deploy
- * replaces the whole site, so "most of the covers" would silently delete the
- * rest from production. Covers have no R2 fallback door; nothing may be lost.
+ * replaces the whole site, so "most of the covers" would silently thin the
+ * free static surface. Since 2026-11 the bucket holds the same files and
+ * functions/covers/[id].js serves a cover the deploy lacks, so a miss is no
+ * longer a deletion from production; the rule stays because static is free
+ * and the Function door is metered (docs/SERVING.md).
  *
  *   node scripts/fetch-data-plane.mjs            fetch whatever is missing
  *   BOOK_BASE=https://... overrides the source (default: production)

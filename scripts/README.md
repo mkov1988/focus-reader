@@ -26,7 +26,12 @@ The 988 book curated set in `src/data/curated.json`.
 ## 2. Covers and curated book text (the hot set)
 
 Outputs are gitignored local artifacts served as Pages static assets; the
-deploy guard in deploy-pages.mjs counts them before any push.
+deploy guard in deploy-pages.mjs counts them before any push. Since 2026-11
+the same files also live in the `focus-reader-books` bucket (`books/`,
+`covers/`) and `functions/covers/[id].js` / `functions/books/[id].js` serve
+them from there when a deploy lacks the static copy: after any cover or
+curated-text mirror AND a deploy, run the GitHub Actions workflow "R2 hot set"
+(`.github/workflows/r2-hot-set.yml`) so the bucket catches up.
 
 - `npm run mirror:covers` → `public/covers/` (1,468 webp)
 - `node scripts/classify-stamped-covers.mjs` → `src/data/stamped-covers.json`,
@@ -116,6 +121,9 @@ here needs committing for it; build-manifest.mjs skips the non-numeric id.
 
 - `node scripts/deploy-pages.mjs` (`--preview` for a non production URL);
   content guard counts come from `deploy-manifest.json`
+- `.github/workflows/r2-hot-set.yml`, copies the static hot set into the
+  bucket (never overwrites, reads back); `test-covers-function.mjs` and
+  `test-audio-function.mjs`, contract tests for the R2 doors
 - `test-bounds.mjs` (`npm test`), readable bounds integration test
 - `build-parity-viewer.mjs`, the parity pack viewer
 

@@ -5,9 +5,11 @@
  * Why probing, not deriving: public/books and public/covers are gitignored
  * desk artifacts. The books can be derived (curated.json + vibes.json union),
  * but production serves ~67 covers whose ids appear in no current or
- * historical data file — and covers have no R2 fallback door, so a deploy
- * that misses one DELETES it from production (a Pages deploy replaces the
- * whole site). Production is the only complete authority.
+ * historical data file. Until 2026-11 covers had no R2 fallback door, so a
+ * deploy that missed one DELETED it from production (a Pages deploy replaces
+ * the whole site); the bucket now holds covers/ too and functions/covers/[id].js
+ * serves them, but the free static surface should still carry every cover
+ * production served, so production stays the authority for this list.
  *
  * Candidates probed: every id in src/data/*.json (current AND every git
  * revision of curated/vibes — run with full history), plus every id in
