@@ -1,0 +1,105 @@
+name: Covers for the long tail
+
+# Fetches a cover for every book the app can show (public/starts-v1.json +
+# curated + vibes, ~55k ids) from an official Project Gutenberg mirror at low
+# concurrency, converts each to the same small WebP as the curated covers,
+# and copies them into the focus-reader-books bucket under covers/<id>.webp,
+# where functions/covers/[id].js serves them. Resumable: it lists the bucket
+# first and skips what is there, and books without a cover are remembered in
+# covers/_no-cover.json so they are not asked for again. One run does about
+# 5 hours of fetching (--max-minutes), then uploads; re-run until the summary
+# says "to fetch 0". Static Pages assets never hold these (20k-file cap);
+# the bucket is their only home, backed up by scripts/backup-r2.mjs.
+#
+# Needs the repository secrets R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY,
+# R2_ENDPOINT (same as narration-batch.yml and r2-hot-set.yml).
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: "Stop after this many fetches (smoke test); empty = all"
+        default: ""
+      max_minutes:
+        description: "Fetch budget before uploading what was fetched"
+        default: "300"
+      source:
+        description: "Mirror to fetch from"
+        default: "https://gutenberg.pglaf.org"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: covers-long-tail
+  cancel-in-progress: false
+
+jobs:
+  covers:
+    name: fetch from the mirror, convert, copy into the bucket
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - name: Require R2 secrets
+        env:
+          A: ${{ secrets.R2_ACCESS_KEY_ID }}
+          S: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          E: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          missing=""
+          [ -z "$A" ] && missing="$missing R2_ACCESS_KEY_ID"
+          [ -z "$S" ] && missing="$missing R2_SECRET_ACCESS_KEY"
+          [ -z "$E" ] && missing="$missing R2_ENDPOINT"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secret(s):$missing (names must match EXACTLY)"
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci --no-audit --no-fund
+      - name: What the bucket already holds
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          set -e
+          sudo apt-get install -y -qq rclone
+          RC=(--s3-provider Cloudflare --s3-access-key-id "$R2_ACCESS_KEY_ID" --s3-secret-access-key "$R2_SECRET_ACCESS_KEY" --s3-endpoint "$R2_ENDPOINT" --s3-no-check-bucket)
+          rclone lsf --files-only :s3:focus-reader-books/covers "${RC[@]}" > /tmp/existing.lst
+          rclone copyto :s3:focus-reader-books/covers/_no-cover.json /tmp/no-cover.json "${RC[@]}" 2>/dev/null || echo '{"v":1,"ids":[]}' > /tmp/no-cover.json
+          echo "covers in bucket: $(grep -c '\.webp$' /tmp/existing.lst); known no-cover: $(node -e 'console.log(JSON.parse(require("fs").readFileSync("/tmp/no-cover.json","utf8")).ids.length)')"
+      - name: Fetch + convert
+        run: |
+          LIMIT="${{ github.event.inputs.limit }}"
+          node scripts/mirror-covers-all.mjs --out=/tmp/covers-new --existing=/tmp/existing.lst --no-cover=/tmp/no-cover.json \
+            --source="${{ github.event.inputs.source }}" --max-minutes="${{ github.event.inputs.max_minutes }}" ${LIMIT:+--limit=$LIMIT}
+      - name: Copy into the bucket (never overwrites), read back
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          set -e
+          RC=(--s3-provider Cloudflare --s3-access-key-id "$R2_ACCESS_KEY_ID" --s3-secret-access-key "$R2_SECRET_ACCESS_KEY" --s3-endpoint "$R2_ENDPOINT" --s3-no-check-bucket)
+          sent=$(find /tmp/covers-new -name '*.webp' | wc -l)
+          if [ "$sent" -gt 0 ]; then
+            rclone copy /tmp/covers-new :s3:focus-reader-books/covers "${RC[@]}" --ignore-existing --include "*.webp" --transfers 32 --checkers 32 --stats-one-line --stats 30s
+          fi
+          rclone copyto /tmp/no-cover.json :s3:focus-reader-books/covers/_no-cover.json "${RC[@]}"
+          rclone lsf --files-only :s3:focus-reader-books/covers "${RC[@]}" > /tmp/after.lst
+          held=$(grep -c '\.webp$' /tmp/after.lst)
+          echo "::notice::covers/ now holds $held .webp objects (this run sent $sent); no-cover list: $(node -e 'console.log(JSON.parse(require("fs").readFileSync("/tmp/no-cover.json","utf8")).ids.length)') ids"
+          # Every file this run produced must be in the bucket now.
+          missing=0
+          for f in /tmp/covers-new/*.webp; do [ -e "$f" ] || continue; grep -qx "$(basename "$f")" /tmp/after.lst || { echo "::error::not in bucket: $(basename "$f")"; missing=$((missing+1)); }; done
+          [ "$missing" -eq 0 ]
+      - name: Keep the failure list
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: covers-failed-${{ github.run_id }}
+          path: /tmp/covers-new/_failed.json
+          if-no-files-found: ignore
+          retention-days: 14

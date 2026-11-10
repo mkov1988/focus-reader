@@ -41,6 +41,14 @@ curated-text mirror AND a deploy, run the GitHub Actions workflow "R2 hot set"
   after any cover mirror, then `npm run export:native`.
 - `npm run mirror:books` → `public/books/` (1,401 txt, stripped at mirror
   time by `lib/strip-gutenberg.mjs`)
+- Covers for the whole catalog (~55k ids, bucket only — Pages caps a deploy
+  at 20k files): GitHub Actions workflow "Covers for the long tail"
+  (`.github/workflows/covers-long-tail.yml` → `scripts/mirror-covers-all.mjs`).
+  Fetches from the official mirror gutenberg.pglaf.org at concurrency 4,
+  same WebP as above, into `covers/<id>.webp`; resumable, ~5 h per run,
+  re-run until it reports "to fetch 0". Books without a cover are listed in
+  the bucket's `covers/_no-cover.json`. The Android app has to ask
+  `COVER_BASE/<id>.webp` for long-tail ids too before any of this shows.
 
 ## 3. Bulk mirror and R2 (the 55,863 book long tail)
 
