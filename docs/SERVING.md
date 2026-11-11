@@ -38,8 +38,10 @@ place that holds everything the app can ask for:
                                  curated texts (54 of them exist nowhere else
                                  in the mirror: the bulk quality gate rejected
                                  them, they were served statically all along)
-  covers/<id>.webp               1,468 curated covers (long-tail covers go here
-                                 too when they are made)
+  covers/<id>.webp               55,973 covers: the 1,468 curated ones plus
+                                 54,505 for the long tail (2026-11-10, from the
+                                 official mirror gutenberg.pglaf.org; every id
+                                 in starts-v1 + curated + vibes has one)
   audio/<id>/<voice>/…           narration segments + timing
   uploaded via scripts/upload-r2.mjs, scripts/upload-audio-r2.mjs and
   .github/workflows/r2-hot-set.yml (keys in .r2.env at repo root / repo secrets)

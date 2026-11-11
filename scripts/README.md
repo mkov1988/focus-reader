@@ -45,10 +45,13 @@ curated-text mirror AND a deploy, run the GitHub Actions workflow "R2 hot set"
   at 20k files): GitHub Actions workflow "Covers for the long tail"
   (`.github/workflows/covers-long-tail.yml` → `scripts/mirror-covers-all.mjs`).
   Fetches from the official mirror gutenberg.pglaf.org at concurrency 4,
-  same WebP as above, into `covers/<id>.webp`; resumable, ~5 h per run,
-  re-run until it reports "to fetch 0". Books without a cover are listed in
-  the bucket's `covers/_no-cover.json`. The Android app has to ask
-  `COVER_BASE/<id>.webp` for long-tail ids too before any of this shows.
+  same WebP as above, into `covers/<id>.webp`; resumable, re-run until it
+  reports "to fetch 0". Books without a cover are listed in the bucket's
+  `covers/_no-cover.json`. First full run 2026-11-10 (run 42768188504): 54,505
+  covers in 55 minutes, none missing, none failed; with the 1,468 curated
+  ones the bucket holds a cover for every one of the 55,973 ids the app can
+  show. The Android app has to ask `COVER_BASE/<id>.webp` for long-tail ids
+  too before any of this shows.
 
 ## 3. Bulk mirror and R2 (the 55,863 book long tail)
 
