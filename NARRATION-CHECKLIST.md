@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**373 / 375** book×voice pairs finished across 125 book(s).
+**442 / 444** book×voice pairs finished across 148 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -14,6 +14,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 45: ☑ marlowe  ☑ rowan  ☑ hazel
 - 46: ☑ marlowe  ☑ rowan  ☑ hazel
 - 55: ☑ marlowe  ☑ rowan  ☑ hazel
+- 72: ☑ marlowe  ☑ rowan  ☑ hazel
 - 74: ☑ marlowe  ☑ rowan  ☑ hazel
 - 76: ☑ marlowe  ☑ rowan  ☑ hazel
 - 84: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -35,11 +36,14 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 345: ☑ marlowe  ☑ rowan  ☑ hazel
 - 394: ☑ marlowe  ☑ rowan  ☑ hazel
 - 421: ☑ marlowe  ☑ rowan  ☑ hazel
+- 468: ☑ marlowe  ☑ rowan  ☑ hazel
+- 564: ☑ marlowe  ☑ rowan  ☑ hazel
 - 583: ☑ marlowe  ☑ rowan  ☑ hazel
 - 601: ☑ marlowe  ☑ rowan  ☑ hazel
 - 766: ☑ marlowe  ☑ rowan  ☑ hazel
 - 768: ☑ marlowe  ☑ rowan  ☑ hazel
 - 829: ☑ marlowe  ☑ rowan  ☑ hazel
+- 831: ☑ marlowe  ☑ rowan  ☑ hazel
 - 844: ☑ marlowe  ☑ rowan  ☑ hazel
 - 863: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1063: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -80,6 +84,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 3268: ☑ marlowe  ☑ rowan  ☑ hazel
 - 3296: ☑ marlowe  ☑ rowan  ☑ hazel
 - 4085: ☑ marlowe  ☑ rowan  ☑ hazel
+- 4363: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5197: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5200: ☑ marlowe  ☑ rowan  ☑ hazel
 - 5921: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -99,19 +104,28 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 19771: ☑ marlowe  ☑ rowan  ☑ hazel
 - 20203: ☑ marlowe  ☑ rowan  ☑ hazel
 - 21839: ☑ marlowe  ☑ rowan  ☑ hazel
+- 22163: ☑ marlowe  ☑ rowan  ☑ hazel
 - 23784: ☑ marlowe  ☑ rowan  ☑ hazel
 - 24739: ☑ marlowe  ☑ rowan  ☑ hazel
+- 24793: ☑ marlowe  ☑ rowan  ☑ hazel
 - 25344: ☑ marlowe  ☑ rowan  ☑ hazel
 - 25789: ☑ marlowe  ☑ rowan  ☑ hazel
+- 26563: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27827: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
 - 31469: ☑ marlowe  ☑ rowan  ☑ hazel
+- 31472: ☑ marlowe  ☑ rowan  ☑ hazel
+- 32155: ☑ marlowe  ☑ rowan  ☑ hazel
+- 32474: ☑ marlowe  ☑ rowan  ☑ hazel
 - 34413: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36034: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36462: ☑ marlowe  ☑ rowan  ☑ hazel
 - 37106: ☑ marlowe  ☑ rowan  ☑ hazel
+- 37499: ☑ marlowe  ☑ rowan  ☑ hazel
+- 38311: ☑ marlowe  ☑ rowan  ☑ hazel
 - 40284: ☐ marlowe  ☑ rowan  ☑ hazel
+- 43098: ☑ marlowe  ☑ rowan  ☑ hazel
 - 43453: ☑ marlowe  ☑ rowan  ☑ hazel
 - 45304: ☑ marlowe  ☑ rowan  ☑ hazel
 - 46276: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -119,16 +133,25 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 48296: ☑ marlowe  ☑ rowan  ☑ hazel
 - 48438: ☑ marlowe  ☑ rowan  ☑ hazel
 - 49987: ☑ marlowe  ☑ rowan  ☑ hazel
+- 50133: ☑ marlowe  ☑ rowan  ☑ hazel
+- 50290: ☑ marlowe  ☑ rowan  ☑ hazel
 - 51252: ☑ marlowe  ☑ rowan  ☑ hazel
 - 52190: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53154: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53416: ☐ marlowe  ☑ rowan  ☑ hazel
+- 53419: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53874: ☑ marlowe  ☑ rowan  ☑ hazel
+- 54219: ☑ marlowe  ☑ rowan  ☑ hazel
 - 55179: ☑ marlowe  ☑ rowan  ☑ hazel
+- 57342: ☑ marlowe  ☑ rowan  ☑ hazel
 - 57641: ☑ marlowe  ☑ rowan  ☑ hazel
+- 58820: ☑ marlowe  ☑ rowan  ☑ hazel
 - 58866: ☑ marlowe  ☑ rowan  ☑ hazel
+- 59828: ☑ marlowe  ☑ rowan  ☑ hazel
 - 64317: ☑ marlowe  ☑ rowan  ☑ hazel
 - 65238: ☑ marlowe  ☑ rowan  ☑ hazel
 - 67979: ☑ marlowe  ☑ rowan  ☑ hazel
 - 69087: ☑ marlowe  ☑ rowan  ☑ hazel
 - 75201: ☑ marlowe  ☑ rowan  ☑ hazel
+- 76178: ☑ marlowe  ☑ rowan  ☑ hazel
+- 76639: ☑ marlowe  ☑ rowan  ☑ hazel
