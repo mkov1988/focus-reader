@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**442 / 444** book×voice pairs finished across 148 book(s).
+**472 / 474** book×voice pairs finished across 158 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -67,6 +67,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 1837: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1952: ☑ marlowe  ☑ rowan  ☑ hazel
 - 1998: ☑ marlowe  ☑ rowan  ☑ hazel
+- 2097: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2148: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2160: ☑ marlowe  ☑ rowan  ☑ hazel
 - 2465: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -105,6 +106,9 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 20203: ☑ marlowe  ☑ rowan  ☑ hazel
 - 21839: ☑ marlowe  ☑ rowan  ☑ hazel
 - 22163: ☑ marlowe  ☑ rowan  ☑ hazel
+- 23184: ☑ marlowe  ☑ rowan  ☑ hazel
+- 23500: ☑ marlowe  ☑ rowan  ☑ hazel
+- 23639: ☑ marlowe  ☑ rowan  ☑ hazel
 - 23784: ☑ marlowe  ☑ rowan  ☑ hazel
 - 24739: ☑ marlowe  ☑ rowan  ☑ hazel
 - 24793: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -114,15 +118,21 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27827: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
+- 28203: ☑ marlowe  ☑ rowan  ☑ hazel
+- 31257: ☑ marlowe  ☑ rowan  ☑ hazel
 - 31469: ☑ marlowe  ☑ rowan  ☑ hazel
 - 31472: ☑ marlowe  ☑ rowan  ☑ hazel
+- 31635: ☑ marlowe  ☑ rowan  ☑ hazel
 - 32155: ☑ marlowe  ☑ rowan  ☑ hazel
 - 32474: ☑ marlowe  ☑ rowan  ☑ hazel
+- 33823: ☑ marlowe  ☑ rowan  ☑ hazel
 - 34413: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36034: ☑ marlowe  ☑ rowan  ☑ hazel
+- 36223: ☑ marlowe  ☑ rowan  ☑ hazel
 - 36462: ☑ marlowe  ☑ rowan  ☑ hazel
 - 37106: ☑ marlowe  ☑ rowan  ☑ hazel
 - 37499: ☑ marlowe  ☑ rowan  ☑ hazel
+- 38177: ☑ marlowe  ☑ rowan  ☑ hazel
 - 38311: ☑ marlowe  ☑ rowan  ☑ hazel
 - 40284: ☐ marlowe  ☑ rowan  ☑ hazel
 - 43098: ☑ marlowe  ☑ rowan  ☑ hazel
