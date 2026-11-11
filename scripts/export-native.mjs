@@ -24,8 +24,9 @@
  * Also writes src/data/about.json: what the book pickup page says about a
  * book (Android src/open/PickupPage.tsx). One entry per bundled book the deep
  * pass covered: the one line hook, era, narrative voice and mood tags from
- * scripts/deep-starts/meta.json, plus pacing, cast, content notes and themes
- * from scripts/deep-starts/details.json. Cast lines are split into
+ * scripts/deep-starts/meta.json, plus pacing, cast and themes from
+ * scripts/deep-starts/details.json. Content notes stay behind: many of them
+ * name a book's twist or its ending, and the page exists to invite reading. Cast lines are split into
  * [name, description] here so the app never parses prose. The export refuses
  * to write if any of it carries the word "Gutenberg" (LEGAL.md: the name
  * never shows in the product).
@@ -151,7 +152,6 @@ if (wanted('about.json')) {
             ...(Array.isArray(m.tags) && m.tags.length ? { tags: m.tags.filter((t) => t !== 'other') } : {}),
             ...(d?.pacing ? { pacing: d.pacing } : {}),
             ...(Array.isArray(d?.cast) && d.cast.length ? { cast: d.cast.map(splitCast) } : {}),
-            ...(Array.isArray(d?.contentNotes) && d.contentNotes.length ? { notes: d.contentNotes } : {}),
             ...(Array.isArray(d?.themes) && d.themes.length ? { themes: d.themes } : {}),
         };
     }

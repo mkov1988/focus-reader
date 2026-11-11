@@ -96,8 +96,9 @@ bytes (see ../docs/BACKUP.md for why that makes backups load bearing).
 **What the app says about a book** (`about.json`, the Android pickup page: the
 page a held book opens to). The export builds it straight from the deep pass
 stores, for the bundled books only: hook, era, narrative voice and mood tags
-from `deep-starts/meta.json`; pacing, cast, content notes and themes from
-`deep-starts/details.json`. No build step of its own: merge a deep pass
+from `deep-starts/meta.json`; pacing, cast and themes from
+`deep-starts/details.json` (not the content notes: many name a twist or an
+ending, so they need a spoiler pass before any page shows them). No build step of its own: merge a deep pass
 round, run the export. A book the deep pass never reached has no entry and
 the page says nothing about it (accuracy beats coverage). The export refuses
 to write if any of it carries the word "Gutenberg". The long tail's hooks
