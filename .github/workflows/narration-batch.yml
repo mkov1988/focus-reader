@@ -48,7 +48,14 @@ concurrency:
 jobs:
   prepare:
     name: plan, gate, size shards
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. On 2026-11-11 the latest image rolled to
+    # ubuntu-26.04 in the middle of wave 9; the same afternoon all 30 finish
+    # jobs died in apt-get ("Temporary failure resolving security.ubuntu.com",
+    # a two-hour runner DNS outage, now retried below), the chain stopped and
+    # the shard WAVs expired before anyone looked. The outage was not the
+    # image's fault, but a mid-campaign image change is a risk we don't need:
+    # everything here was validated on 24.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     outputs:
       synth_matrix: ${{ steps.mk.outputs.synth_matrix }}
@@ -108,7 +115,14 @@ jobs:
     name: synth ${{ matrix.id }}/${{ matrix.voice }} ${{ matrix.shard }}
     needs: prepare
     if: ${{ !github.event.inputs.resume_from_run && !github.event.inputs.collect_from_run }}
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. On 2026-11-11 the latest image rolled to
+    # ubuntu-26.04 in the middle of wave 9; the same afternoon all 30 finish
+    # jobs died in apt-get ("Temporary failure resolving security.ubuntu.com",
+    # a two-hour runner DNS outage, now retried below), the chain stopped and
+    # the shard WAVs expired before anyone looked. The outage was not the
+    # image's fault, but a mid-campaign image change is a risk we don't need:
+    # everything here was validated on 24.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 350
     strategy:
       fail-fast: false
@@ -121,7 +135,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - name: System deps
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq espeak-ng ffmpeg
+        # Three tries: an apt mirror hiccup must not cost a shard.
+        run: for i in 1 2 3; do sudo apt-get update -qq && sudo apt-get install -y -qq espeak-ng ffmpeg && break; [ "$i" = 3 ] && exit 1; sleep 20; done
       - run: npm ci --no-audit --no-fund
       - name: Python deps
         run: |
@@ -152,7 +167,10 @@ jobs:
         with:
           name: bwavs-${{ matrix.id }}-${{ matrix.voice }}-${{ strategy.job-index }}
           path: scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}/unit-*
-          retention-days: 3
+          # 7, not 3: wave 9's shards expired over a long weekend before the
+          # failed finish stage could be re-run, and the whole wave had to be
+          # synthesized again. Artifact storage is free on a public repo.
+          retention-days: 7
           if-no-files-found: error
 
   finish:
@@ -165,7 +183,14 @@ jobs:
     # whole wave's finish stage. That pair fails here with "unit N not
     # synthesized yet"; everything else ships.
     if: ${{ always() && !github.event.inputs.collect_from_run && needs.prepare.result == 'success' && (needs.synth.result == 'success' || needs.synth.result == 'skipped' || needs.synth.result == 'failure') }}
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. On 2026-11-11 the latest image rolled to
+    # ubuntu-26.04 in the middle of wave 9; the same afternoon all 30 finish
+    # jobs died in apt-get ("Temporary failure resolving security.ubuntu.com",
+    # a two-hour runner DNS outage, now retried below), the chain stopped and
+    # the shard WAVs expired before anyone looked. The outage was not the
+    # image's fault, but a mid-campaign image change is a risk we don't need:
+    # everything here was validated on 24.04.
+    runs-on: ubuntu-24.04
     # 60 was sized for a novel. The complete Shakespeare is ~80 hours of audio
     # in one job: ~10 GB of artifacts to pull, ~275 segments to encode, and an
     # ffprobe pass over every one of them.
@@ -189,7 +214,7 @@ jobs:
           sudo docker image prune -af >/dev/null 2>&1 || true
           df -h / | tail -1
       - name: System deps
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+        run: for i in 1 2 3; do sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && break; [ "$i" = 3 ] && exit 1; sleep 20; done
       - run: npm ci --no-audit --no-fund
       - name: Fetch text + plan
         run: |
@@ -224,7 +249,14 @@ jobs:
     # pair that actually verified. A wave with zero verified pairs is caught
     # below, at reassembly.
     if: ${{ always() && (needs.finish.result == 'success' || needs.finish.result == 'failure' || needs.finish.result == 'skipped') }}
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. On 2026-11-11 the latest image rolled to
+    # ubuntu-26.04 in the middle of wave 9; the same afternoon all 30 finish
+    # jobs died in apt-get ("Temporary failure resolving security.ubuntu.com",
+    # a two-hour runner DNS outage, now retried below), the chain stopped and
+    # the shard WAVs expired before anyone looked. The outage was not the
+    # image's fault, but a mid-campaign image change is a risk we don't need:
+    # everything here was validated on 24.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
@@ -358,7 +390,14 @@ jobs:
     # finish are skipped, so this job was skipped too (run 42445119637 put
     # its manifest on master and then deployed nothing).
     if: ${{ !cancelled() && needs.collect.result == 'success' }}
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest. On 2026-11-11 the latest image rolled to
+    # ubuntu-26.04 in the middle of wave 9; the same afternoon all 30 finish
+    # jobs died in apt-get ("Temporary failure resolving security.ubuntu.com",
+    # a two-hour runner DNS outage, now retried below), the chain stopped and
+    # the shard WAVs expired before anyone looked. The outage was not the
+    # image's fault, but a mid-campaign image change is a risk we don't need:
+    # everything here was validated on 24.04.
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Deploy the data plane
