@@ -25,7 +25,7 @@ infrastructure, data pipelines, and archived spec; the repo README is the map.
 ## Archive (history, not guidance)
 
 Everything else: `archive/` (web era agent personas, marketing, logs),
-`planning/archived_*` (web UI specs, input source brainstorm, iOS plan,
+`planning/archived_*` (web UI specs, iOS plan,
 Figma handoff), `technical/archived_implementation_plan.md` (web
 architecture), `Requirements/` (the original PRD and use cases),
 `research/` (the cognitive science corpus the product is grounded in),

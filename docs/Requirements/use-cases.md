@@ -251,59 +251,7 @@ One interface cannot serve all these. We need **context-aware UX** that adapts t
 
 ---
 
-## 📄 Use Case 4: Work Documents & PDFs
-
-### The Precision Reader
-
-**Jessica needs to review a 40-page legal contract**
-
-#### The Challenge
-- Can't skim - might miss critical clauses
-- Can't read slowly - deadline in 2 hours
-- Needs to spot differences from last version
-
-#### Document Mode
-
-1. **Upload & Scan**
-   - Drags PDF into Focus Reader
-   - AI scans document structure:
-     - 12 sections
-     - 3 exhibits
-     - Standard legal boilerplate detected
-
-2. **Scanning Mode**
-   - Instead of reading every word, she enables "Keyword Scan"
-   - Defines keywords: "liability", "termination", "indemnification", "fee"
-   - RSVP runs at 800 WPM
-   - **Auto-stops** when keywords appear
-   - She reads those paragraphs at 300 WPM
-   - Resumes scanning
-
-3. **Compare Mode** (Advanced)
-   - Uploads previous version
-   - Focus Reader highlights only changed text during RSVP
-   - New text appears in blue
-   - Deleted text appears as strikethrough for 1 second
-
-4. **Annotation for Review**
-   - Section 7.3 looks problematic
-   - **Action**: Presses `!` during RSVP
-   - Adds flag: "Needs legal review - indemnification scope too broad"
-   - Can export annotated PDF with flags as comments
-
-### Key Features for Work Docs
-
-| Feature | Why It Matters |
-|---------|----------------|
-| **Keyword Scanner** | Stop on important terms automatically |
-| **Version Compare** | See only what changed |
-| **Hierarchical Navigation** | Jump to sections/chapters |
-| **Collaboration Flags** | Team can review same doc with shared notes |
-| **Export Annotations** | Highlights → PDF comments or Google Doc suggestions |
-
----
-
-## 🎧 Use Case 5: Audio Content (Future)
+## 🎧 Use Case 4: Audio Content (Future)
 
 ### The Podcast Speedrunner
 
@@ -330,7 +278,7 @@ One interface cannot serve all these. We need **context-aware UX** that adapts t
 
 ---
 
-## 🌐 Use Case 6: Web Articles via Extension
+## 🌐 Use Case 5: Web Articles via Extension
 
 ### The Research Sprint
 

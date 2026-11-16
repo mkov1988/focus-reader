@@ -4,7 +4,7 @@
 **User**: Michael
 
 ## 1. Project Goal & Requirements
--   **Core Mission**: Build a web app that can "ingest anything" (Paste text, PDFs, EPUBs) and display it using **RSVP (Rapid Serial Visual Presentation)**.
+-   **Core Mission**: Build a web app that displays text using **RSVP (Rapid Serial Visual Presentation)**.
 -   **Critical UX Requirement**: A "focal letter" (highlighted in red) must be **absolutely centered** on the screen. Words must not "jitter" or "tear" at high speeds (500-800 WPM).
 -   **Inspiration**: Derived from a Twitter video (`tweet_oembed.json`) showing a perfect example of this reading style.
 
@@ -44,7 +44,6 @@
 3.  **Strategy Documentation**: Created a robust set of product strategy documents:
     -   **PRD.md**: Defined core MVP features and success metrics.
     -   **Use Cases.md**: Mapped out specific flows for students, researchers, and professional context.
-    -   **Brainstorm-input-sources.md**: Explored "Ingest Anything" possibilities.
 
 ### Phase 6: Massive Data Mining & Research Extraction
 1.  **Data Ingestion**: Aggregated ~176,000 words of raw research from public domain psychology texts, educational manuals, and US Patent data into `user-research-raw.md`.
@@ -65,6 +64,5 @@
 -   **Documentation**: `CHANGELOG.md` and `conversation_log.md` are synchronized with the latest deployment state.
 
 ## 4. Immediate Action Plan
-1.  **PDF/EPUB Wiring**: The next major UX hurdle is transitioning from plain text paste to robust file ingestion using the installed `pdfjs-dist` and `epubjs` libraries.
-2.  **Library View**: Implement the 3D stone-slab library view as outlined in the `implementation_plan.md` to move toward the Book Mode vision.
-3.  **Settings UI**: Refactor hardcoded font sizes in `App.tsx` into a proper user-controlled Settings modal.
+1.  **Library View**: Implement the 3D stone-slab library view as outlined in the `implementation_plan.md` to move toward the Book Mode vision.
+2.  **Settings UI**: Refactor hardcoded font sizes in `App.tsx` into a proper user-controlled Settings modal.

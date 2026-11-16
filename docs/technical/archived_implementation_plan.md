@@ -10,11 +10,7 @@ A web-based RSVP (Rapid Serial Visual Presentation) speed-reading application de
 - Biohackers interested in reading optimization.
 
 ### Key Features
-1.  **Text Input**:
-    - Paste text directly.
-    - Upload PDF or EPUB files.
-    - Live preview of content.
-2.  **Reading Mode (RSVP)**:
+1.  **Reading Mode (RSVP)**:
     - **Visual Style**:
         - Words displayed one at a time.
         - **Critical Requirement**: The "Focal Letter" (highlighted in red) must be **absolutely centered** on the screen.
@@ -26,11 +22,11 @@ A web-based RSVP (Rapid Serial Visual Presentation) speed-reading application de
         - Play/Pause (Spacebar).
         - Navigation: Rewind/Forward by 10 words (Arrow keys).
         - Progress bar and time remaining.
-3.  **Customization**:
+2.  **Customization**:
     - Font Size (24px - 96px).
     - Font Family (Sans-serif options).
     - Theme (Light/Dark).
-4.  **Accessibility**:
+3.  **Accessibility**:
     - High contrast support.
     - Keyboard shortcuts.
 
@@ -41,7 +37,6 @@ A web-based RSVP (Rapid Serial Visual Presentation) speed-reading application de
 -   **Styling**: Tailwind CSS.
     -   *Why?* rapid UI development with a consistent design system (colors, spacing).
 -   **State Management**: React `useState` / `useReducer` (or `Zustand` if complex).
--   **File Parsing**: `pdfjs-dist` (PDFs), `epubjs` (EPUBs).
 -   **Icons**: `lucide-react`.
 
 ## 3. Architecture & Standards
@@ -62,14 +57,10 @@ src/
 │   │   ├── RSVPDisplay.tsx   # 2D reading view (overlay)
 │   │   ├── Controls.tsx
 │   │   └── ProgressBar.tsx
-│   ├── Input/            # File upload & text paste
-│   │   ├── FileUpload.tsx
-│   │   └── TextInput.tsx
 │   └── Settings/         # Config options
 │       └── SettingsModal.tsx
 ├── hooks/
 │   ├── useRSVP.ts        # The "Brain": handles the WPM timer loop
-│   ├── useFileParser.ts  # Handles .pdf / .epub extraction
 │   └── useLibrary3D.ts   # NEW: Handles 3D interactions (raycasting, selection)
 ├── utils/
 │   ├── textProcessing.ts # Splitting text, finding focal points
@@ -170,9 +161,7 @@ To support different reading styles, the `RSVPDisplay` component will support th
 -   [ ] **Frame-Perfect Timing**: Ensure loop is jitter-free at 1000 WPM.
 
 ### Phase 2: Content Pipeline (The "Moat")
-*Goal: Ensure we can actually ingest real-world content.*
--   [ ] **PDF Extraction**: Implement robust parsing.
--   [ ] **EPUB Parsing**: Extract chapter text cleanly.
+*Goal: Split real-world text cleanly.*
 -   [ ] **"Smart Splitting"**: Algorithm to chunk text intelligently.
 
 ### Phase 3: Mobile Interactions (Future)

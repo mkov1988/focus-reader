@@ -13,7 +13,7 @@
 
 **Key Research Insight:** Speed reading apps fail because they prioritize *Rote Memory* (seeing words) over *Logical Memory* (understanding meaning). Our engine must give the brain time to encode, not just scan.
 
-**Recommended MVP:** A **Complexity-Aware RSVP** reader that adapts timing to difficulty signals, supports paste + .txt + best-effort PDF with clear fallback, and includes strong recovery primitives.
+**Recommended MVP:** A **Complexity-Aware RSVP** reader that adapts timing to difficulty signals and includes strong recovery primitives.
 
 ---
 
@@ -98,7 +98,6 @@ This section provides the cognitive science "why" behind our design decisions. I
 | **Comprehension > Speed** | Users quit when they feel like they're "processing words, not meaning." | Comprehension is the product, speed is the interface. |
 | **Regressions Matter** | Inability to go back is a top complaint. | Recovery primitives are a moat. |
 | **Technical Reliability is Trust** | Crashes, stutters, and parsing failures are fatal. | Parsing quality is a quality gate. |
-| **PDF/EPUB Support** | Make-or-break capability. | Table stakes. Best-effort with clear fallback. |
 | **Paywall Backlash** | Paywalls create backlash when core value can't be tried. | Freemium with generous free tier. |
 
 ### White Space
@@ -117,7 +116,6 @@ This section provides the cognitive science "why" behind our design decisions. I
 | **Play/Pause, Skip ±10** | Gives agency. Users don't want to feel like they're "watching words flash." |
 | **Punctuation-Aware Timing** | Restores sentence rhythm so the brain can assemble meaning. 3x for `.!?`, 2x for `,`. |
 | **Paragraph-Aware Timing** | 5x pause on `\n\n` to signal logical breaks and allow encoding. |
-| **Paste Text Input** | Minimizes time-to-first-read. Reliable baseline when file parsing fails. |
 | **Dark Mode (Default)** | Reduces eye strain; mitigates migraine/comfort concerns. |
 
 ---
@@ -133,9 +131,6 @@ This section provides the cognitive science "why" behind our design decisions. I
 ### MVP Scope (In)
 | Feature | Rationale |
 |:---|:---|
-| **Paste text** | Zero-failure input path. |
-| **Drag-and-drop `.txt`** | Fast, local-first, no lock-in. |
-| **Best-effort PDF extraction** | Table stakes. Transparent fallback preserves trust. |
 | **Complexity-aware pacing** | The MVP wedge. Addresses *why* RSVP fails. |
 | **Minimal session memory** | Resume position. Supports interruptible reading. |
 
@@ -151,7 +146,6 @@ This section provides the cognitive science "why" behind our design decisions. I
 *   Social media workflows
 *   Browser extension
 *   AI summaries / tasks / sharing / library systems
-*   EPUB (P1)
 
 ---
 
@@ -162,7 +156,6 @@ This section provides the cognitive science "why" behind our design decisions. I
 | **Unknown-Vocabulary Detection** | What is the simplest offline heuristic that feels accurate? | Open |
 | **Micro-Chunking Thresholds** | Always chunk numbers (`$12,450`) or only on high difficulty? | Open |
 | **Preview/Context Aids** | Does a faint sentence preview improve comprehension or distract? | Needs Testing |
-| **PDF Reality** | How much effort for "good enough"? What fallback preserves trust? | Needs Validation |
 | **Bionic Reading** | Would bolding first portion of words compete with the red focal? | Under Consideration |
 
 ---
@@ -174,9 +167,7 @@ This section provides the cognitive science "why" behind our design decisions. I
 2.  **Lightweight Usability Study (5-7 participants)**
     *   Tasks: Read for gist vs. read for detail, recover from distraction, numeric passage accuracy.
     *   Measures: Perceived comprehension, rewind frequency, fatigue, preference vs. baseline.
-3.  **PDF Extraction Validation Pass**
-    *   Test with a batch of real-world PDFs and classify failure modes.
-4.  **Finalize "Unknown Vocab" Heuristic**
+3.  **Finalize "Unknown Vocab" Heuristic**
     *   Pick one approach and tune it using the benchmark set.
 
 ---

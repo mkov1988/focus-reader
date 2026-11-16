@@ -49,13 +49,7 @@ Reading isn't just about WPM — it's about *comprehension flow*. Punctuation pa
 - **Clause break (,)** → 2x pause (mini-breath)
 - **Long words** → slight extra time (recognition cost)
 
-### 3. Zero Friction Input
-"Ingest anything" means:
-- Paste text instantly
-- Drop a file (PDF, EPUB, TXT)
-- Eventually: browser extension, URL paste, email forward
-
-### 4. Distraction-Free Reading
+### 3. Distraction-Free Reading
 During active reading:
 - No UI chrome except essential controls
 - Dark mode to reduce eye strain
@@ -76,19 +70,9 @@ During active reading:
 | Play/Pause (Space) | ✅ Done | Instant control is essential |
 | Skip forward/back (← →) | ✅ Done | Recovery from distraction |
 | Punctuation-aware pausing | ✅ Done | Comprehension rhythm |
-| Text paste input | ✅ Done | Zero friction entry point |
 | Dark mode | ✅ Done | Reduce eye strain |
 
-### P1 — Input Expansion
-
-| Feature | Status | UX Rationale |
-|---------|--------|--------------|
-| PDF text extraction | 🔜 Pending | Major content source |
-| EPUB text extraction | 🔜 Pending | Books are the ultimate use case |
-| Drag-and-drop files | ✅ Done | Faster than file picker |
-| URL paste → article extraction | ❌ Not started | Web reading is huge |
-
-### P2 — Reading Experience Polish
+### P1 — Reading Experience Polish
 
 | Feature | Priority | UX Rationale |
 |---------|----------|--------------|
@@ -99,7 +83,7 @@ During active reading:
 | **Full-screen mode** | Medium | Total immersion |
 | **Reading stats** | Low | Gamification (words read, time saved) |
 
-### P3 — Platform Expansion
+### P2 — Platform Expansion
 
 | Feature | Notes |
 |---------|-------|
@@ -124,7 +108,7 @@ During active reading:
 
 | Metric | Target | Why |
 |--------|--------|-----|
-| Time to first read | < 10 seconds | Paste → Reading with no barriers |
+| Time to first read | < 10 seconds | Open → Reading with no barriers |
 | Sustained reading session | > 5 minutes | Users actually use it, not just try it |
 | Return usage | 3+ sessions/week | Habit formation |
 | WPM increase over time | +100 WPM after 1 week | Skill building |
@@ -152,4 +136,4 @@ During active reading:
 | Reedy (Android) | Good mobile UX | Android only |
 | SwiftRead | Browser extension | Extension-only, no standalone |
 
-**Focus Reader's edge**: Modern stack, open, premium UX, "ingest anything" philosophy.
+**Focus Reader's edge**: Modern stack, open, premium UX.

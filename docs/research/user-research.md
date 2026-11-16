@@ -297,8 +297,8 @@ a# Competitive User Research
 **The Lesson:** Users hate "freemium" apps where the free version is useless. They also hate unclear value propositions.
 
 **For Focus Reader:**
-- ✅ **Philosophy:** Generous free tier (paste text, RSVP engine, up to 50,000 words)
-- 🔜 **Free:** Files (PDF, EPUB, TXT), basic stats, unlimited reading
+- ✅ **Philosophy:** Generous free tier (RSVP engine, up to 50,000 words)
+- 🔜 **Free:** Basic stats, unlimited reading
 - 🔜 **Pro ($9/mo or $67/year):** Email sync, browser extension, reading library with persistent position, advanced stats, Readwise/Notion export
 - 🔜 **Communicate clearly:** Landing page shows side-by-side Free vs Pro chart
 

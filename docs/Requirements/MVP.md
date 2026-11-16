@@ -116,7 +116,7 @@ This granular flowchart details the exact paths, states, and gesture controls fr
     *   Download Count (social proof/quality proxy)
 
 ### B. "Streaming" Content Delivery
-*   **Concept**: Eliminate the "Download -> Find File -> Upload" friction.
+*   **Concept**: Open a book straight from the catalog, with no file handling.
 *   **Mechanism**:
     1.  **Fetch**: Direct CORS fetch of the `.txt` (UTF-8) version from Gutenberg mirrors.
     2.  **Sanitize**: Auto-strip the "Project Gutenberg" legal headers/footers (approx first 50 lines and last 300 lines) to jump straight to the content.

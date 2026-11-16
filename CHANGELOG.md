@@ -185,7 +185,7 @@ A QA pass caught two defects in the work above and corrected them:
 Transitioned the project focus from the core reading engine to building an expansive, native-feeling Storefront discovery UI in preparation for the upcoming Gutendex library integration.
 
 **What Changed:**
--   **Quad-Scroller Layout**: Implemented a responsive multi-carousel architecture replacing the standard text input screen. Added full horizontal scroll sections dynamically sliced into four categories: `Popular`, `Latest`, `Title`, and `Random`.
+-   **Quad-Scroller Layout**: Implemented a responsive multi-carousel architecture replacing the original start screen. Added full horizontal scroll sections dynamically sliced into four categories: `Popular`, `Latest`, `Title`, and `Random`.
 -   **Vertical Category Navigation**: Built a sleek, iOS App Store-style vertical list at the bottom of the feed for exploring core Gutenberg genres (Literature, History, Arts & Culture).
 -   **Native Scroll Fixes**: Tracked down and stripped out legacy core CSS locks (`overflow: hidden` on `#root` tags) that were prohibiting mobile touch swipe-to-scroll gestures.
 -   **Realistic Prototyping**: Injected 20 historically accurate Project Gutenberg titles into the memory arrays to stress-test UI density, typography truncation (`line-clamp-2`), and visual cadence before live API fetching begins.
@@ -245,15 +245,6 @@ This is our first working version! It's a web app that lets you read text at 2-3
 ---
 
 ### ✨ What You Can Do Right Now
-
-#### 📝 Input Your Content
-- **Paste text directly** - Just Ctrl+V and start reading
-- **Drag and drop files** - Drop a `.txt` file anywhere on the screen
-- **See your text count** - Know how many characters you're about to read
-
-**Why this matters**: We wanted zero friction. No sign-ups, no file pickers, just paste and go.
-
----
 
 #### 👁️ The Reading Experience
 
@@ -329,7 +320,7 @@ This rhythm is what makes high-speed reading *comprehensible* instead of just fa
 - `Space` → Play/Pause (toggle)
 - `←` Left Arrow → Jump back 10 words
 - `→` Right Arrow → Jump forward 10 words
-- `Esc` → Exit reading mode, return to input screen
+- `Esc` → Exit reading mode
 
 **Mouse controls:**
 - Big red play/pause button in the center
@@ -489,18 +480,14 @@ left: calc(50% + focalWidth/2);
 - `typescript` 5.6.2 - Type safety
 - `tailwindcss` 3.4.17 - Utility-first CSS
 - `lucide-react` 0.469.0 - Beautiful SVG icons
-- `pdfjs-dist` 4.10.38 - *Installed but not yet wired up*
-- `epubjs` 0.3.93 - *Installed but not yet wired up*
 
 **File Structure:**
 ```
 src/
 ├── components/
-│   ├── Reader/
-│   │   ├── RSVPDisplay.tsx    # The core word display
-│   │   └── Controls.tsx       # Playback controls
-│   └── Input/
-│       └── TextInput.tsx      # Paste and file upload
+│   └── Reader/
+│       ├── RSVPDisplay.tsx    # The core word display
+│       └── Controls.tsx       # Playback controls
 ├── hooks/
 │   └── useRSVP.ts            # Timing engine
 ├── utils/
@@ -570,20 +557,6 @@ These features are planned but not yet implemented:
 - **Thread intelligence** - Only show new messages, skip quoted replies
 - **Signature stripping** - Auto-skip "Sent from my iPhone" junk
 - **Keyword alerts** - Slow down on words like "URGENT" or "deadline"
-
----
-
-### 📄 PDF & EPUB Support
-
-**The missing piece:** Most people's content is locked in PDFs and ebooks.
-
-**Plan:**
-- Wire up `pdfjs-dist` for PDF text extraction
-- Wire up `epubjs` for EPUB parsing
-- Handle multi-column layouts, headers/footers, page numbers
-- Maintain reading position across sessions
-
-**Challenge:** DRM. Amazon Kindle books are locked down. May need creative solutions.
 
 ---
 
@@ -763,13 +736,11 @@ body.dark {
 ## 🎯 Known Limitations (v0.1.0)
 
 **What doesn't work yet:**
-- ❌ No PDF or EPUB reading (libraries installed, extraction not wired up)
 - ❌ Can't save/resume reading position
 - ❌ No note-taking or annotations
 - ❌ No browser extension
 - ❌ Settings modal incomplete (font size hardcoded in `App.tsx`)
 - ❌ No URL → article extraction
-- ❌ Drag-and-drop only works for `.txt` files, not PDF/EPUB yet
 
 **What we're working around:**
 - Progress isn't saved - if you refresh, you lose your position
@@ -781,13 +752,6 @@ body.dark {
 ## 📈 Metrics (If We Had Analytics)
 
 **North Star Metric:** Time to first read < 10 seconds
-
-**Current estimate:** ~5 seconds
-1. Open app (1s)
-2. Paste text (1s)  
-3. Click submit (1s)
-4. Click play (1s)
-5. Reading (1s to see first few words)
 
 **Other metrics we'd track:**
 - Average reading session length (target: >5 minutes)
@@ -814,7 +778,7 @@ body.dark {
 | **v0.1.2** | 2026-02-13 | Sentence View overhaul: Teleprompter centering, rhythm pacing (1.8x/1.5x), stable layout |
 | **v0.1.1** | 2026-02-08 | Cognitive Science research ingest, pivots to "Cognitive Efficiency" |
 | **v0.1.0** | 2026-02-07 | MVP with core RSVP engine, perfect centering, intelligent pausing |
-| **v0.2.0** | TBD | Book mode, email integration, PDF/EPUB support |
+| **v0.2.0** | TBD | Book mode, email integration |
 
 ---
 
