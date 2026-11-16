@@ -5,7 +5,7 @@ The pipeline and run order live in `docs/narration-plan.md` §13.
 Finished pairs come from `public/narration-v1.json`, the manifest the installed apps read.
 In-progress, failed and excluded rows come from the live `scripts/narration/work/` run.
 
-**569 / 573** book×voice pairs finished across 191 book(s).
+**576 / 579** book×voice pairs finished across 193 book(s).
 
 - 11: ☑ marlowe  ☑ rowan  ☑ hazel
 - 16: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -137,6 +137,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 25359: ☑ marlowe  ☑ rowan  ☑ hazel
 - 25789: ☑ marlowe  ☑ rowan  ☑ hazel
 - 26563: ☑ marlowe  ☑ rowan  ☑ hazel
+- 27475: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27673: ☑ marlowe  ☑ rowan  ☑ hazel
 - 27827: ☑ marlowe  ☑ rowan  ☑ hazel
 - 28054: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -162,7 +163,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 38177: ☑ marlowe  ☑ rowan  ☑ hazel
 - 38311: ☑ marlowe  ☑ rowan  ☑ hazel
 - 38983: ☑ marlowe  ☑ rowan  ☑ hazel
-- 40284: ☐ marlowe  ☑ rowan  ☑ hazel
+- 40284: ☑ marlowe  ☑ rowan  ☑ hazel
 - 40361: ☑ marlowe  ☑ rowan  ☑ hazel
 - 42486: ☑ marlowe  ☑ rowan  ☑ hazel
 - 43063: ☑ marlowe  ☑ rowan  ☑ hazel
@@ -179,6 +180,7 @@ In-progress, failed and excluded rows come from the live `scripts/narration/work
 - 50133: ☑ marlowe  ☑ rowan  ☑ hazel
 - 50290: ☑ marlowe  ☑ rowan  ☑ hazel
 - 51252: ☑ marlowe  ☑ rowan  ☑ hazel
+- 51428: ☑ marlowe  ☑ rowan  ☑ hazel
 - 52190: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53154: ☑ marlowe  ☑ rowan  ☑ hazel
 - 53416: ☐ marlowe  ☑ rowan  ☑ hazel
