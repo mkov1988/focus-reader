@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "78087",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Dream in the Marble Room",
+          "blurb": "In a dream she wears another woman's jewels and waits, half in terror, for a turbaned stranger whose gift carries a serpent's fascination.",
+          "feelings": ["dreamlike", "romantic", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Princess and the Genie",
+          "blurb": "With the boarding house empty for one afternoon, a lonely lodger and a slangy errand boy transform the dreary parlor into an enchanted palace.",
+          "feelings": ["whimsical", "cozy", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "78088",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Open and Shut",
+          "blurb": "A man lies shot dead in the road, his killer found sprawled senseless beside the rifle. The sheriff waits alone with the evidence while a mob gathers outside.",
+          "feelings": ["grim", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78092",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Pint of Water",
+          "blurb": "Left behind on a desert march, a fainting traveler begs the passing thousands for water and is mocked, until one young stranger stops beside him.",
+          "feelings": ["grim", "tender"],
+          "kind": "adventure",
+          "warnings": ["death", "cruelty", "era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78094",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Dropped Match",
+          "blurb": "Sleepless past midnight, Margot drops a burning match beside her bed and leans over to find it. Something in the dark finds it first.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78102",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Her Uncle's House",
+          "blurb": "Off the night train from the farm, Ellen follows her suave uncle into a big echoing house where lights burn low and the housekeeper hints at secrets.",
+          "feelings": ["unsettling", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78103",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "When the Clock Struck Twelve",
+          "blurb": "The old house is deadly still until the clock strikes twelve, and then come clanking chains, breaking crockery, and a screech no honest thing could make.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "Cuts off mid-sentence just as the narrator steps into the hall, before the noises are faced or explained."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78105",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Spider's Thread",
+          "blurb": "From the lotus pond of Paradise, the Buddha looks straight down into Hell and remembers the one good deed of a robber squirming below.",
+          "feelings": ["dreamlike", "contemplative", "hopeful"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Devil's Flowers",
+          "blurb": "A friendly foreign priest tends a field of nameless purple flowers and offers a passing cattle dealer a simple wager: guess what they are.",
+          "feelings": ["whimsical", "unsettling"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "78106",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Great Flea Campaign",
+          "blurb": "Plagued by fleas in a Soho lodging, a man of odd practicality goes to war armed with treacle, newspaper, and a flash of genius.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78108",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Man with Beautiful Hands",
+          "blurb": "A car lies wrecked in the night. Its passenger steps out, checks each finger of his exquisite hands, and only then glances at his bleeding chauffeur.",
+          "feelings": ["unsettling"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78109",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The New Year's Kiss",
+          "blurb": "A hurt boy lies in a hospital bed on New Year's morning, and a motherly nurse's small kindness undoes him completely.",
+          "feelings": ["tender", "aching", "hopeful"],
+          "kind": "slice of life",
+          "warnings": ["illness"],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "books": [
+    {
+      "id": "135",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Night Errand",
+          "blurb": "Sent for water after dark, a small girl stands frozen between the terrors of the night forest and the woman waiting at home.",
+          "feelings": ["eerie", "aching"],
+          "kind": "other",
+          "warnings": ["child harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Convict at the Door",
+          "blurb": "Turned away from every inn and even a dog's kennel, a weary stranger announces exactly what he is at a quiet fireside, and waits to be cast out.",
+          "feelings": ["tender", "hopeful", "aching"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two unrelated scenes, a child in the forest and a stranger at a fireside; nothing shared."
+    },
+    {
+      "id": "139",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Fair Warning",
+          "blurb": "Before a young visitor meets the notorious professor, the great man's wife takes him aside with urgent instructions on surviving the encounter.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "An Audience with the Professor",
+          "blurb": "A journalist bluffs his way into a volcanic scientist's study armed with borrowed jargon, hoping the great man will not notice.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The short is the scene immediately before the story begins; no shared text, and each lands its own joke."
+    },
+    {
+      "id": "145",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Two Wills",
+          "blurb": "At three in the morning a dying miser, all his faculties sharp, orders his young night-nurse to open the iron chest and burn one of his two wills.",
+          "feelings": ["grim", "unsettling", "aching"],
+          "kind": "other",
+          "warnings": ["illness"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the two-wills deathbed night behind the book's inheritance surprise, though not which will stands.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "149",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Forty Yards of Lion",
+          "blurb": "Alone on foot with a rifle, a traveller faces his first charging lion and coolly reasons where the single stopping bullet must go.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "155",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Curse in the Armoury",
+          "blurb": "Amid the sack of a palace, an officer follows screams to a torchlit room, a bloodied dagger, and a dying man's last words.",
+          "feelings": ["grim", "eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Shivering Sand",
+          "blurb": "An old house-steward tries to coax a sad young housemaid away from the quicksand that draws her, until an unexpected arrival changes her face.",
+          "feelings": ["bittersweet", "tender", "eerie"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A battlefield prologue and a quiet seaside scene told by a different narrator; nothing shared."
+    },
+    {
+      "id": "158",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Matter of the Wedding-Cake",
+          "blurb": "A kindly invalid who distrusts all rich food wages a polite one-man campaign against the neighbourhood's wedding-cake.",
+          "feelings": ["funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "I Would Not Influence You",
+          "blurb": "A farmer's heartfelt proposal arrives by letter, and a young woman's clever friend insists, repeatedly, that the decision must be entirely her own.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A domestic comic miniature and a drawing-room persuasion scene; different characters at the centre, nothing shared."
+    },
+    {
+      "id": "160",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "First Swim by Moonlight",
+          "blurb": "After a summer of failed lessons, a woman suddenly finds her stroke one night and swims out alone toward the moonlit horizon.",
+          "feelings": ["dreamlike", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Hammock",
+          "blurb": "Past midnight, a wife stays out in the hammock; her husband commands, coaxes, and finally sits smoking beside a will he cannot move.",
+          "feelings": ["contemplative", "unsettling"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two scenes from the same summer night, the swim and then the hammock; sequential with no shared text, and each carries its own charge."
+    },
+    {
+      "id": "161",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Gentleman in the Rain",
+          "blurb": "A twisted ankle on a wet hillside brings a handsome stranger who carries the injured girl home and leaves the whole household wondering.",
+          "feelings": ["romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "164",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Pearl Diver and the Shark",
+          "blurb": "From the shadow of a rock, undersea watchers observe a poor diver work his oyster bed, until a huge shape glides over him.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "sea story",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "173",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Doctor's Menagerie",
+          "blurb": "In a dim vault, a captor fondles his marmoset and lovingly catalogues the scorpions, pythons, and spiders he keeps for his enemies.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": ["era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

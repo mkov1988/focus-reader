@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "76759",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Letter at Ten O'Clock",
+          "blurb": "A letter of sad tidings arrives at ten o'clock. A woman who dare not be seen in daylight kisses the corner bed goodbye and slips into the night.",
+          "feelings": ["aching", "tender", "eerie"],
+          "kind": "mystery",
+          "warnings": ["illness"],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Scuffle Next Door",
+          "blurb": "Two boys leaning out a night window hear a policeman seize a prowler next door, and the whole household tumbles downstairs into a small, delicious mystery.",
+          "feelings": ["funny", "eerie", "cozy"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate scenes with different characters; no shared text or shared payoff."
+    },
+    {
+      "id": "76796",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Body in Millfield Lane",
+          "blurb": "Walking home past midnight in the rain, a very new doctor finds a dead man lying across a lonely lane and goes to fetch the police.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76834",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Hoofs, Hoofs, Hoofs",
+          "blurb": "A wounded Mountie and the killer holding his gun sit marooned on one boulder while a caribou migration thunders past, trading taunts to keep from going mad.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text stops mid-sentence ('filled with clashing antlers and the'), so the standoff simply cuts off with no ending."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76849",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Too Much Fish",
+          "blurb": "A young hunter comes ashore with more fish than one man can eat, and the chief's sharp-tongued daughter stops by, carrying a message that could mean combat.",
+          "feelings": ["funny", "romantic"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Silver Egg",
+          "blurb": "Against every instinct, a stone-age hunter walks east past sabre-tooth country, drawn by an urge he cannot fight toward a silver egg taller than the trees.",
+          "feelings": ["eerie", "dreamlike"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals what the silver ovoid is and the visitors' ecology experiment, the premise the full story builds its opening mystery around.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Village courtship and the alien summons are separate beats with no shared payoff."
+    },
+    {
+      "id": "76857",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Hello, Barton",
+          "blurb": "In an empty town, every phone rings for one old man. The voice on the line is young, tireless, and impossible to hang up on.",
+          "feelings": ["eerie", "unsettling", "aching"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the caller is Barton's own younger recorded self, the central conceit the full story unfolds gradually.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76858",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "I See Her Night and Day",
+          "blurb": "A year on, Jack is a wasted shadow of himself, flinching from something no one else can see. His friend gently coaxes out what happened.",
+          "feelings": ["tragic", "eerie", "aching"],
+          "kind": "ghost story",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Mesmerist's Betrothed",
+          "blurb": "A parlour mesmerist makes a boy play Mozart he never learned, and his betrothed begs to be put under too. He tells what came of giving in.",
+          "feelings": ["eerie", "tragic", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["death", "illness"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "deflates",
+      "pairNote": "The short's closing shock, 'I killed her,' is the very event the story span recounts in full, so reading either first flattens the other."
+    },
+    {
+      "id": "76871",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Eminent Ex-Congressman",
+          "blurb": "Peter Q. Hornswoggle, eminent ex-congressman, holds a barroom audience spellbound with tales of apple-parers and applause, until a newspaper item lights a gleam in his eye.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Very Popular Safe",
+          "blurb": "A chemist wakes to crashing glassware and finds two rival burglars brawling in his laboratory. Then a third walks in, and this one handles a revolver expertly.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "comedy",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The bar sketch introduces the schemer whom the burglary scene later catches red-handed; complementary, not duplicated."
+    },
+    {
+      "id": "76899",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Porky's Confession",
+          "blurb": "Cheerful Porky Jenks arrives rumpled and haunted, begging his writer friend to believe the impossible: last week, sitting by his window, he became somebody else entirely.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76903",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Aunt Lona's Inspection",
+          "blurb": "A young man enters his own house hat in hand and is met by a crochet-wielding aunt with the bearing of a drill sergeant.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76914",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Frozen to the Pane",
+          "blurb": "Someone has peeped through the window on two nights running. On his way past the frosted pane, Renfro finds what the cold kept for him.",
+          "feelings": ["whimsical", "eerie"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "77022",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Reporter's Unruly Ears",
+          "blurb": "A newsroom tyrant glares from his throne at Jimmy Price, a first rate reporter cursed with ears that wiggle on their own whenever excitement strikes.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "One Last Cigarette",
+          "blurb": "Handcuffed in a shabby room, a burglar learns murder now hangs over him. He begs for one cigarette, and his slow mind starts moving very fast.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A newsroom character sketch and a criminal's escape; no shared scenes, characters, or reveals."
+    },
+    {
+      "id": "77033",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "No Trout Today",
+          "blurb": "A restless young detective daydreams of trout streams through a slow spring morning, until one short phone call snaps every fiber of him awake.",
+          "feelings": ["cozy", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Proposal in the Rain",
+          "blurb": "In a rain washed midnight cab, Donald finally speaks his love. Mary trembles at her own doorstep, haunted by something she cannot bring herself to name.",
+          "feelings": ["romantic", "aching", "unsettling"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Both circle the same Waverly Place address from opposite angles, but they share no text and neither hands over the other's payoff."
+    },
+    {
+      "id": "77056",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Enter Moris Klaw",
+          "blurb": "Into a hushed crime scene shuffles an ancient stranger in a caped cloak, spraying scent on his brow and announcing that he smells dead men.",
+          "feelings": ["eerie", "whimsical", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "77092",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Danbazzar Papyrus",
+          "blurb": "A dealer in smuggled antiquities spreads a stained papyrus before a rich collector and his son, promising secrets no living man has heard since the pharaohs.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "77097",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Duel by Torchlight",
+          "blurb": "Torches ring a midnight field as two knights break lance after lance before the lady Gabrielle, one riding with grace, the other with fury.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "77099",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Freia's Altar",
+          "blurb": "A woodsman climbs to a forbidden pagan altar and meets a veiled figure claiming to be a goddess returned, with two iron knights at her call.",
+          "feelings": ["eerie", "unsettling", "grim"],
+          "kind": "ghost story",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "77109",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Among the Walking Trees",
+          "blurb": "Stranded on a strange world, a traveler flees a bellowing bull and climbs the nearest tree, which slaps him down and files charges.",
+          "feelings": ["whimsical", "funny", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78004",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Finding Alexander Selkirk",
+          "blurb": "Privateers anchoring at a lonely island find not a prize but a ragged Scot who has survived there alone for four years, hiding from every wrong flag.",
+          "feelings": ["adventurous", "hopeful"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Wreck of the Speedwell",
+          "blurb": "A gale drives a ship onto the rocks. The survivors build a new vessel from her bones while discipline rots and the crew writes its own law.",
+          "feelings": ["adventurous", "grim"],
+          "kind": "sea story",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate true episodes from different voyages, a castaway's rescue and a shipwreck ordeal, with no shared text or characters."
+    },
+    {
+      "id": "78010",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Knife Between His Teeth",
+          "blurb": "Bound to a cot while a sinister surgeon prepares his instruments and sponge of ether, Cole has one knife within reach and only seconds to use it.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78011",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Cat in the Dark Cell",
+          "blurb": "In the black punishment cells a prisoner strokes a visiting cat, praying the guard will not notice what his fingers have found under her fur.",
+          "feelings": ["grim", "hopeful"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Up From the Punishment Block",
+          "blurb": "Out of a lightless punishment block a prisoner creeps toward the one locked door, meaning to free his broken comrades or die at the top of the stairs.",
+          "feelings": ["thrilling", "grim", "hopeful"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Consecutive beats of one escape; the story presumes the sawing happened but never restages the cat's secret, so each keeps its own punch."
+    }
+  ]
+}

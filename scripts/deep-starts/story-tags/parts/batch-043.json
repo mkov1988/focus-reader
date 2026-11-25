@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "78012",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Armada Chest",
+          "blurb": "A vendor swears his old box is Armada treasure, kept in his family for generations. The woman examining it reads its true history with her fingertips.",
+          "feelings": ["contemplative", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78017",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Voyage of the Tubs",
+          "blurb": "A shipwrecked family sets out for an unknown shore in eight wooden tubs, with hens under planks, a bag of mysteries, and two dogs swimming behind.",
+          "feelings": ["adventurous", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78024",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Girl on the Hillside",
+          "blurb": "Boys chase a weeping stranger up a hillside orchard until a young man steps in. She has lived on the island a year, and nobody has ever seen her.",
+          "feelings": ["tender", "aching", "romantic"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78028",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Wrong Suitcase",
+          "blurb": "In a curtained cafe booth, an overheard quarrel ends in gunfire and sudden darkness. A cowboy flees with a frightened stranger, a suitcase that is not his, and an idea.",
+          "feelings": ["thrilling", "adventurous", "hopeful"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78031",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Hothouse Bouquet",
+          "blurb": "Fenella brings her mother a gentleman's hothouse flowers, expecting delight. Instead the household erupts, and the child glimpses truths her mother never meant to show.",
+          "feelings": ["aching", "unsettling"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78033",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "An English Word",
+          "blurb": "In a guarded German town, an interned Englishman watches a young mother and her baby on their balcony, and risks a single forbidden sentence in passing.",
+          "feelings": ["tender", "bittersweet"],
+          "kind": "war story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78039",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "No Tears for Josiah",
+          "blurb": "A parlor maid finds the master of the house still at his desk in his dinner coat. Upstairs, his widow discovers she cannot feel what she should.",
+          "feelings": ["contemplative", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": ["death"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Boarder on Suosso's Lane",
+          "blurb": "A little old lady in a worn shawl climbs off the bus at a rope works, asking for a job in an accent that is not her own.",
+          "feelings": ["hopeful", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate episodes from one woman's story, a death in a grand house and a later venture among mill workers; neither gives away the other's turn."
+    },
+    {
+      "id": "78040",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Pirates of the Sound",
+          "blurb": "On calm water, a honeymoon canoe draws the notice of a great war canoe with sixteen paddlers. A parley buys minutes; a steady rifle must buy the rest.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence", "death", "era racism"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "It shows Kate already married to Isaac Pelton, settling the courtship question the romance builds toward.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78044",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Bab Improves His Mind",
+          "blurb": "Studying above the library door, a girl overhears schoolmates gleefully mocking someone below, and every teasing word seems aimed straight at her own tender spot.",
+          "feelings": ["funny", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78045",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Voice in the Hedge",
+          "blurb": "A whisper slips through the garden hedge: the fair is on at Oakfield, there is a real live elephant, and mother need never know.",
+          "feelings": ["contemplative", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "15399",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "First Snow",
+          "blurb": "A boy of twelve, newly arrived in England, finds the ship's deck white overnight and runs to tell the mate that someone has thrown salt everywhere.",
+          "feelings": ["tender", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Struck Upon the Rocks",
+          "blurb": "A sailor dreams of shipwreck three nights running, then spots the rock himself. When the sloop strikes, the captain gives an order that could doom everyone below deck.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "sea story",
+          "warnings": ["cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "16389",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Opening the Shutters",
+          "blurb": "A woman wakes in a castle bedroom in Italy, throws open the shutters, and finds more beauty waiting than she knows how to hold.",
+          "feelings": ["hopeful", "dreamlike", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Arrival by Lantern Light",
+          "blurb": "Two Englishwomen, stranded at night in Italy with no Italian, must follow a stranger with a lantern down steps and along a dark quay toward a castle they cannot see.",
+          "feelings": ["funny", "eerie", "hopeful"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Consecutive scenes in the book, the night walk then the next morning, but each carries its own payoff."
+    },
+    {
+      "id": "16433",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "His Grandfather's Bed",
+          "blurb": "A small, immaculate man travels far to sleep in his grandfather's bed, and sits down to supper among four giant sons who dwarf everyone but his talk.",
+          "feelings": ["cozy", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "17157",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Bound by Tiny Hands",
+          "blurb": "A traveller wakes flat on his back, arms, legs, and hair pinned to the ground, as something alive and six inches tall marches up his chest.",
+          "feelings": ["whimsical", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "18575",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Snow Child",
+          "blurb": "A merchant comes home after ten years abroad to find a young son, and his wife has a perfectly calm explanation involving a leaf of sorrel and snow.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Dead Drunk",
+          "blurb": "A drunk Dutchman corners a priest, demands confession at knifepoint, receives absolution, and then decides the sensible next step is to die at once and go straight to heaven.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "18857",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Sea Below the World",
+          "blurb": "Deep underground, a traveller opens his dazzled eyes on something impossible: a limitless sea breaking on golden sand beneath a roof of rock.",
+          "feelings": ["dreamlike", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the discovery of the vast underground sea, one of the book's central wonders.",
+          "broken": true,
+          "brokenNote": "The last sentence breaks off unfinished ('the mighty rocks faded away like'), so the ending is visibly truncated."
+        },
+        {
+          "tier": "story",
+          "title": "A Battle of Monsters",
+          "blurb": "On a raft far from any shore, three travellers are jolted awake as two enormous creatures from a vanished age circle their vessel and then turn on each other.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the famous prehistoric sea monster battle and which creature wins.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "18875",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Man Under the Straw",
+          "blurb": "Alone on a prairie homestead, a woman is handed a rifle by a Mounted Policeman and told to shoot anyone who breaks cover while he searches her farm.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "19146",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Faded Rose",
+          "blurb": "A rich creditor lays a pressed rose before the daughter of the ruined judge and confesses the strange, patient obsession behind every loan he made.",
+          "feelings": ["aching", "unsettling"],
+          "kind": "love story",
+          "warnings": ["era racism"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the creditor's long secret love and his offer of marriage, the early turning point that sets the novel in motion.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "19412",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Meeting the Dragon",
+          "blurb": "At a Paris station, a girl with a red rose watches for the ogre she has agreed to meet under a borrowed name. He is nothing like she pictured.",
+          "feelings": ["funny", "romantic"],
+          "kind": "love story",
+          "warnings": ["era racism"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "19476",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Last Lunarians",
+          "blurb": "A ship of explorers sinks into a lightless crater on the moon and finds stagnant water, grey moss, and something that was once, perhaps, human.",
+          "feelings": ["eerie", "grim", "unsettling"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

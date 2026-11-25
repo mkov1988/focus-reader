@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "1023",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Stuck in the Railings",
+          "blurb": "A visitor arrives at a chaotic household to find a small boy wedged by the neck between iron railings, and everyone's rescue plan makes it worse.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1063",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Luckily Met at Carnival",
+          "blurb": "At the height of carnival, a man in motley is flattered into abandoning the festivities to prove his palate against a rival's, whatever the cold vaults hold.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Down Among the Bones",
+          "blurb": "Two friends descend by torchlight through bone-lined vaults in search of a rare wine, one coughing in the damp, the other oddly solicitous about turning back.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "The trowel moment strongly telegraphs what the narrator plans for his companion in the vaults.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The short is the carnival lure and the story is the descent that follows; contiguous scenes but no shared text and no shared payoff."
+    },
+    {
+      "id": "1079",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Corporal Drops His Hat",
+          "blurb": "News of a death reaches the kitchen, and a corporal's single gesture with his hat says more about mortality than any sermon.",
+          "feelings": ["bittersweet", "funny", "contemplative"],
+          "kind": "slice of life",
+          "warnings": ["death"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1153",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Headless Ones",
+          "blurb": "From a hidden vantage, a traveler watches headless human bodies crawl and feed inside a walled enclosure, and slowly realizes this is their normal condition.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the headless creatures the heroine discovers early in the book, though not what they truly are.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1155",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Two Simple Words",
+          "blurb": "A broke young woman interviews for a suspiciously generous job in Paris, and a name plucked from memory turns her genial employer purple with rage.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1184",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "In the Name of the Law",
+          "blurb": "Three blows at the door interrupt a gathering, and a magistrate with soldiers asks which of the company answers to a certain name.",
+          "feelings": ["unsettling", "grim"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1212",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Most Violent Knocking",
+          "blurb": "A family round their fireside hears a thunderous knocking and must debate, at length and with great philosophy, whether anyone is actually at the door.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1251",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Mantle of Kings' Beards",
+          "blurb": "A messenger brings an outrageous demand: a rival king trims his mantle with the beards of conquered kings, and one place remains.",
+          "feelings": ["adventurous", "funny"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Kitchen Knight",
+          "blurb": "A damosel begs the court for a champion and storms off when the quest goes to a kitchen page. Then he starts unhorsing famous knights.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "1257",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Siege of the Cellar",
+          "blurb": "A barricaded friend finally opens the cellar door, upright but swaying, having spent his siege drinking the innkeeper's stock down to the last cask.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Four Against Five",
+          "blurb": "A young hothead must choose a side in seconds when three outnumbered swordsmen face the cardinal's guards, and the choice will cost blood.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "1259",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "One of the Forty Ways",
+          "blurb": "A captive duke entertains his jailer by describing, step by step, exactly how a prisoner might escape, while a pie sits waiting on the table.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Shows that the duke's long-planned escape from the fortress succeeds.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,308 @@
+{
+ "books": [
+  {
+   "id": "10",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Writing on the Wall",
+     "blurb": "A king throws a lavish feast and drinks from stolen temple gold. Then the fingers of a human hand appear and write on the palace wall.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "David and Goliath",
+     "blurb": "A giant soldier taunts a terrified army for forty days, until a shepherd boy delivering bread to his brothers asks why nobody has answered him.",
+     "feelings": ["thrilling", "hopeful", "adventurous"],
+     "kind": "war story",
+     "warnings": ["violence", "death"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "11",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "We're All Mad Here",
+     "blurb": "Lost at a crossroads, a girl asks a grinning cat for directions and receives logic, a diagnosis of madness, and an invitation to croquet.",
+     "feelings": ["whimsical", "funny"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "A Mad Tea Party",
+     "blurb": "A girl sits down uninvited at an endless tea table, where the riddles have no answers, the watch runs on butter, and it is always six o'clock.",
+     "feelings": ["whimsical", "funny"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "12",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "There's Glory for You",
+     "blurb": "Humpty Dumpty quizzes a polite girl on birthdays and arithmetic, then announces that a word means exactly what he chooses it to mean.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Tweedledum and Tweedledee",
+     "blurb": "Two round brothers agree to battle over a spoiled new rattle, armoured in bolsters and coal scuttles, while something dark flies toward the wood.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "16",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Dog for a Nurse",
+     "blurb": "A tidy London family cannot afford a proper nurse, so they engage a Newfoundland dog named Nana, who takes childcare very seriously indeed.",
+     "feelings": ["cozy", "funny", "whimsical"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Boy Who Lost His Shadow",
+     "blurb": "A crying boy breaks into a nursery hunting for his lost shadow, and the girl who wakes knows exactly what to do about it.",
+     "feelings": ["whimsical", "tender"],
+     "kind": "fairy tale",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "20",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Evil, Be Thou My Good",
+     "blurb": "A ruined spirit, utterly alone, asks whether any way back remains, and talks himself out of every answer but one.",
+     "feelings": ["grim", "aching", "contemplative"],
+     "kind": "tragedy",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "21",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Thief and the Innkeeper",
+     "blurb": "A guest who cannot pay his bill yawns, howls like a wolf, and politely asks the innkeeper to hold his clothes.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "fable",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "23",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Ships in the Bay",
+     "blurb": "From a high bank above the Chesapeake, an enslaved boy watches white sails glide out to freedom and pours his whole heart after them.",
+     "feelings": ["aching", "hopeful"],
+     "kind": "meditation",
+     "warnings": ["cruelty"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Battle with Covey",
+     "blurb": "Carrying a root said to protect him from any whipping, an enslaved young man decides one Monday morning that he will fight back.",
+     "feelings": ["thrilling", "hopeful"],
+     "kind": "other",
+     "warnings": ["violence", "cruelty"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "26",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "No Place for Repentance",
+     "blurb": "Alone with himself, a fallen spirit weighs pardon against pride, counts what surrender would cost him, and makes his choice.",
+     "feelings": ["grim", "aching", "contemplative"],
+     "kind": "tragedy",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Gates of Hell",
+     "blurb": "A fleeing rebel spirit reaches ninefold gates of brass, iron, and rock, and finds two monstrous shapes guarding them, one wearing the likeness of a crown.",
+     "feelings": ["eerie", "grim"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Hints that the shapes guarding the gate are Satan's own kin, a disclosure the poem stages as a revelation just after this scene.",
+     "broken": true,
+     "brokenNote": "The passage opens and closes mid-sentence, cutting off Satan's reply before the standoff resolves."
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "35",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "No Trickery",
+     "blurb": "After dinner, an inventor asks his sceptical guests to examine a beautifully made little machine, then invites one of them to press the lever.",
+     "feelings": ["eerie", "dreamlike"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The White Sphinx",
+     "blurb": "A reckless traveller hurls himself into futurity, then risks everything to stop. He lands in hail and blossoms under the gaze of a marble sphinx.",
+     "feelings": ["dreamlike", "eerie", "adventurous"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "36",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Thing in the Pit",
+     "blurb": "A crowd gathers at a pit expecting a man to climb out of the fallen cylinder. What emerges instead glistens like wet leather.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "mild",
+     "spoilerNote": "Shows what the invaders actually look like, a horror the book builds up to across its opening chapters.",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Third Falling Star",
+     "blurb": "Driving home near midnight under a gathering storm, a man sees a green thread of fire fall into a field, and then something enormous begins to walk.",
+     "feelings": ["thrilling", "eerie"],
+     "kind": "adventure",
+     "warnings": ["animal harm"],
+     "intensity": "gripping",
+     "spoiler": "mild",
+     "spoilerNote": "Reveals the invaders' giant walking machines, whose first appearance the book stages as a shock.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  }
+ ]
+}

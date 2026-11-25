@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "1564",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "I Do Indeed Come from Scotland",
+          "blurb": "A nervous young Scot finally meets the literary giant he reveres, and his very first sentence hands the famous wit a perfect opening.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Dinner with Jack Wilkes",
+          "blurb": "A determined young matchmaker of enemies tricks a great moralist into dining with the scandalous politician he loathes, then watches nervously from across the table.",
+          "feelings": ["funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate anecdotes from the same friendship, years apart; neither repeats or flattens the other."
+    },
+    {
+      "id": "1597",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Swineherd",
+          "blurb": "A scorned prince disguises himself as a palace pigkeeper and sets an unusual price on his ingenious toys: kisses from the princess who rejected him.",
+          "feelings": ["whimsical", "funny"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1608",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Devotion",
+          "blurb": "At a late supper party, a young man follows a beautiful, ailing courtesan from the table and offers her the one thing she refuses to believe in.",
+          "feelings": ["romantic", "aching", "tender"],
+          "kind": "love story",
+          "warnings": ["illness"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1661",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Down Upper Swandam Lane",
+          "blurb": "Sent to fetch a friend home from a riverside opium den at midnight, a doctor feels a pluck at his sleeve and a whisper: walk past, then look back.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1685",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Ungloved Hand",
+          "blurb": "A young reporter arrives at a chateau, stares at his host's gloved hands, and refuses to shake until he sees what the gloves conceal.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Man at the Desk",
+          "blurb": "Midnight at a guarded chateau: a young reporter climbs a ladder to a lit window and finds an intruder calmly writing at the victim's desk.",
+          "feelings": ["thrilling", "eerie"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "It hints that the attacked woman knows her assailant and is shielding him, a question the full book unwinds slowly.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "An arrival scene and a midnight stakeout from different points in the investigation; no shared text or shared payoff."
+    },
+    {
+      "id": "1686",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Turning Key",
+          "blurb": "Two watchers keep a silent vigil over a sleeping general when a key turns softly in the lock and an arm reaches through the dark.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1695",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Lamp and the Tree",
+          "blurb": "A poet waits rigid as a statue beneath a street lamp at night, determined to end an argument about order and anarchy once and for all.",
+          "feelings": ["eerie", "contemplative"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Lobster and the Bombs",
+          "blurb": "In a greasy beershop, a poet orders champagne and lobster for his guest, then politely warns him not to be alarmed if the table begins to turn.",
+          "feelings": ["whimsical", "thrilling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Back-to-back scenes from the same night; the story picks up soon after the short's ominous closing line, but neither repeats the other's punch."
+    },
+    {
+      "id": "1719",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Harp in the Danish Camp",
+          "blurb": "A defeated king lays down his sword, takes up an old harp, and walks unarmed into the firelit camp of the invaders to sing for them.",
+          "feelings": ["contemplative", "adventurous"],
+          "kind": "war story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1727",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Noman and the Cyclops",
+          "blurb": "Trapped in a man-eating giant's cave, a cunning captain sharpens a beam of olive wood, pours strong wine, and gives a very careful answer about his name.",
+          "feelings": ["adventurous", "thrilling", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence", "death", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1747",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Hand in the Dark",
+          "blurb": "Letting himself into a friend's dark apartment at night, a man reaches for the light switch and closes his fingers over warm flesh.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Morning in the Police Court",
+          "blurb": "A ragged burglar caught hiding in a coat closet stands before the judge, while the volunteer lawyer defending him grows strangely uneasy.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A courtroom scene and a later break-in scuffle; separate incidents with separate shocks."
+    }
+  ]
+}

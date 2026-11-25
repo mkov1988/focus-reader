@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "24149",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Gifts With the Morning Milk",
+          "blurb": "A fine meerschaum pipe appears on a detective's doorstep with no card. He knows exactly who sent it, and exactly what he is going to do about it.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "When Your Eyelid Twitches",
+          "blurb": "A detective lists the week's peculiar accidents: burning pants, a scorched getaway driver, a bomb that failed. The calm man across the desk is not curious at all.",
+          "feelings": ["funny", "whimsical", "thrilling"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "It shows Brink knowingly behind the criminals' impossible mishaps, something the full story unfolds more gradually.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate episodes of the same feud, no shared text and neither steals the other's payoff."
+    },
+    {
+      "id": "24375",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "An Audience With the Inquisitor",
+          "blurb": "A man accused of witchcraft demands to see the Inquisitor himself. He has one demonstration to make, and torture waits on the other side of failure.",
+          "feelings": ["thrilling", "unsettling", "grim"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "24793",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Stolen Kiss",
+          "blurb": "For days he has kept the madness leashed. Then, in the space of a finger-snap, he seizes her, and waits in agony for her to speak.",
+          "feelings": ["romantic", "aching"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Right of Way",
+          "blurb": "A big steamer breaks the rules of the road to pinch a yacht against a reef, with fog rolling in fast. Then the owner starts giving orders.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "24869",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Breaking of the Bow",
+          "blurb": "A king presents a bow that gods, fiends and titans have failed to bend, then invites a young prince to try before the assembled thousands of his court.",
+          "feelings": ["adventurous", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "25001",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Two Days Too Late",
+          "blurb": "A man returns from years abroad, rich at last, to find the woman he loves newly engaged. He confronts her betrothed with a question neither can escape.",
+          "feelings": ["aching", "contemplative"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "25049",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Half Past Three",
+          "blurb": "An officer strikes matches under his macintosh, counting the minutes until his men charge the trenches in darkness, wondering how many will answer roll call tomorrow.",
+          "feelings": ["contemplative", "thrilling"],
+          "kind": "war story",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "25087",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Mare for a Chain",
+          "blurb": "A farmer who brags about his horse trades takes a shine to a young peddler's neck chain. The peddler, very reluctantly, lets himself be talked into a swap.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "25502",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Beowulf and Grendel",
+          "blurb": "A hero vows to face a night-fiend bare-handed in a great hall no man has survived after dark. When everything is still, the monster comes.",
+          "feelings": ["thrilling", "eerie", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "25551",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Burglar in Blue Calico",
+          "blurb": "Someone is climbing through the back window with great care. Mrs. Dering tiptoes around the corner expecting a burglar and finds something far more drenched.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Empty Place at Supper",
+          "blurb": "Supper is called, the cakes are hot, and one sister does not answer. As the clock strikes on through the night, four girls grow quietly frightened.",
+          "feelings": ["unsettling", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A comic soaking and an anxious night vigil, different scenes and different sisters."
+    },
+    {
+      "id": "25868",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Lantern on the Semaphore",
+          "blurb": "A boy climbs a semaphore with an old switch lantern to flash a telegraph warning across the dark, while angry men race to pull him down.",
+          "feelings": ["thrilling", "adventurous", "hopeful"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

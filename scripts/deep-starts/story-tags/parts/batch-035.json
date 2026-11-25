@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "64317",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Room Full of Wind",
+          "blurb": "A visitor steps into a bright, breezy room where curtains stream like flags and two young women in white seem to float above an enormous couch.",
+          "feelings": ["dreamlike", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Looking for the Host",
+          "blurb": "At a glittering summer party, a guest wanders from bar to library hunting for the host nobody has met, and no one can say who he really is.",
+          "feelings": ["dreamlike", "funny", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the charming surprise of how the mysterious host first introduces himself, an early staged moment in the novel.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate scenes from different evenings; no shared text and neither contains the other's payoff."
+    },
+    {
+      "id": "65238",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Caller in the Study",
+          "blurb": "A poised young widow receives a foreign stranger who produces a compromising letter signed with her name. Her reaction is not at all what he planned for.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "66446",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Under the Seat",
+          "blurb": "A young naval officer has an empty first-class carriage, a faint whiff of chloroform, and a suitcase that will not slide under the opposite seat.",
+          "feelings": ["eerie", "unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text visibly cuts off mid-sentence at the very end ('the imperative jerking of the'), so the final line reads as a glitch rather than a close."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "67098",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Wrong Sort of Bees",
+          "blurb": "A bear with a taste for honey borrows a blue balloon, disguises himself as a small black cloud, and floats up beside a bee tree. The bees grow suspicious.",
+          "feelings": ["whimsical", "funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "67173",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Her Uncle's Wager",
+          "blurb": "A strange will gives a clever young woman one year to outwit her dead uncle and find what he hid at the manor. She brings the puzzle to a specialist.",
+          "feelings": ["contemplative", "hopeful"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "67804",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Voice in the Darkness",
+          "blurb": "In the dark of a cold night, a disguised English captain hears a commanding Spanish voice and decides to escort its owner straight into an enemy city.",
+          "feelings": ["adventurous", "thrilling", "romantic"],
+          "kind": "adventure",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The passage stops mid-sentence in the middle of a muttered vow ('for my queen—if'), leaving the final line hanging."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "67979",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Greatest Happiness",
+          "blurb": "At a stiff family dinner, the quiet cousin everyone ignores suddenly says exactly what she thinks. Nobody knows what to do about it.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "In Defense of Barney Snaith",
+          "blurb": "Her relatives trade lurid rumors about a mysterious recluse until the family's quietest woman starts demanding proof, and then stops holding her tongue altogether.",
+          "feelings": ["funny", "bittersweet"],
+          "kind": "comedy",
+          "warnings": ["illness"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Both stretches come from the same family dinner but share no text, and each lands its own distinct punchline."
+    },
+    {
+      "id": "68283",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Cult in the Swamp",
+          "blurb": "New Orleans police follow drumbeats into night-black cypress woods that terrified locals refuse to enter, toward a red glare and a chant no human throat should utter.",
+          "feelings": ["eerie", "grim", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["violence", "death", "child harm", "cruelty", "era racism"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the cult, its chant, and the carven idol that the full story unveils as step-by-step discoveries, though not its final horror.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "69087",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Marrow Over the Wall",
+          "blurb": "A man weeding his garden is nearly struck by a vegetable marrow flung over the wall. The neighbor's apology is stranger than the assault.",
+          "feelings": ["funny", "whimsical", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "69700",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Science of Observation",
+          "blurb": "A sunburned stranger takes the visitor's chair, and his silent host names his war, his regiment, and his trade before he can begin his story.",
+          "feelings": ["cozy", "contemplative"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Count and the Waxwork",
+          "blurb": "A jewel thief creeps into an empty room to strike down his enemy, only to find a wax figure in the chair and the real man watching.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Shows the wax decoy and the detective's disguises that this particular case's closing trick is built on.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The two passages open entirely different cases in the collection and share nothing."
+    }
+  ]
+}

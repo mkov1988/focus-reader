@@ -1,0 +1,269 @@
+{
+  "books": [
+    {
+      "id": "25919",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Old Campaigner",
+          "blurb": "A village spinster's window commands every secret in town, including the Major's unexplained wound, his Indian habits, and the lock of hair he thinks nobody sees him kiss.",
+          "feelings": ["funny", "whimsical", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "Otherwise a complete comic portrait, but the final sentence cuts off mid clause."
+        },
+        {
+          "tier": "story",
+          "title": "Popping In on Diva",
+          "blurb": "Armed with two telltale chintz roses and a rumor about coal fines, a smiling caller sets out to make her dearest rival thoroughly uncomfortable.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Different subjects entirely: one sketches the Major from a window, the other follows a needling social call on Diva."
+    },
+    {
+      "id": "25948",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Five Feet of Water",
+          "blurb": "Through a cabin door left ajar, two girls overhear the captain confess what the crew already knows: the ship is leaking faster than the pumps can fight.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Fifteen Miles After Dark",
+          "blurb": "A wrong carriage strands a girl fifteen miles from home with ninepence, a moonlit road, and rather too much confidence.",
+          "feelings": ["adventurous", "eerie", "unsettling"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two unrelated tales drawn from an anthology of fifty two stories."
+    },
+    {
+      "id": "25971",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Joey the Pedigree Pom",
+          "blurb": "A landlady's daughter parades seven little dogs upstairs for a lodger, saving for last a scrawny white Pom whose pedigree rests entirely on love.",
+          "feelings": ["tender", "funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Hat He Sat On",
+          "blurb": "He ruins her cheap hat on purpose, buys her a beautiful one, and then asks a question she believes she has no right to answer.",
+          "feelings": ["romantic", "tender", "bittersweet"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the novelist Tanqueray courts and proposes marriage to the servant Rose, a turn the novel stages as a surprise to his circle.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate stages of the same courtship; the later scene deepens the earlier without repeating it."
+    },
+    {
+      "id": "26009",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Gringalet Pleads His Case",
+          "blurb": "A greyhound raised from a bottle by his master's devoted servant invites himself along on an expedition, pleading with ears, paw, and beseeching eyes.",
+          "feelings": ["tender", "funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "26482",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Listener in the Leaves",
+          "blurb": "Troubled by a forced suitor and a harsh stepfather, a girl climbs to her childhood refuge to think, and the wrong men stop beneath her branch.",
+          "feelings": ["contemplative", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Standoff at the Door",
+          "blurb": "Dressed to walk out forever, she finds the doorway blocked by a smiling man certain that no little empress can defy him.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "Stops mid sentence at the climactic grapple, leaving the final action hanging."
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate episodes, though the longer one shows the lover the girl trusts in the shorter turned captor."
+    },
+    {
+      "id": "26524",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Psalms and Scythes",
+          "blurb": "Fifty men come down a mountain at night, singing a psalm, carrying scythes and hatchets, to demand prisoners a militia will not release.",
+          "feelings": ["grim", "thrilling"],
+          "kind": "war story",
+          "warnings": ["violence", "death", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "26563",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Message from Brande",
+          "blurb": "He knows who sent the telegram before he opens it. What he cannot explain is what becomes of it afterward.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the reach of Brande's telepathic power, which the novel discloses step by step.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Drop of Water",
+          "blurb": "On a dark sea, a host promises his guests a scientific amusement: he will unmake a single drop of water and let them watch.",
+          "feelings": ["grim", "unsettling", "thrilling"],
+          "kind": "other",
+          "warnings": ["death", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Shows the annihilating power of Brande's science, which the novel builds toward gradually.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two distinct demonstrations of Brande's powers with no shared text or shared payoff."
+    },
+    {
+      "id": "26704",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Into the Beggar King's Swamp",
+          "blurb": "A detective in hobo disguise is warned that men who fail inspection never leave the swamp. Then the blindfold goes on.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Plants the strong suspicion that the outlaw chief Hobo Harry is a woman, the identity mystery at the heart of the novel.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "26951",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Ridden Down",
+          "blurb": "A horseman answers an insult by riding a man into the dust before a shocked girl. The beaten man's apology hides a plan.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence", "era racism"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "26960",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Twelve Children on a Warship",
+          "blurb": "On an old anchored warship, a grizzled father raises twelve children, one of whom insists, quite calmly, that he can swim to shore.",
+          "feelings": ["cozy", "whimsical", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

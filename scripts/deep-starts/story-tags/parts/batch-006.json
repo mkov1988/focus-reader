@@ -1,0 +1,282 @@
+{
+  "books": [
+    {
+      "id": "421",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Keep Clear of the Shaws",
+          "blurb": "A lad on the road asks about the great house where he hopes for a place. Every stranger gives him the same wary answer.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Unfinished Stair",
+          "blurb": "An old man hands his nephew a rusty key and sends him up an unlit tower stair at night, warning him only to keep to the wall.",
+          "feelings": ["thrilling", "eerie"],
+          "kind": "crime",
+          "warnings": ["cruelty"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Shows early that the uncle means his nephew deadly harm, though the book's larger schemes stay hidden.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Different scenes on the same journey with no shared text; the short only builds mood the story does not repeat."
+    },
+    {
+      "id": "468",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Visitor at the Seminary",
+          "blurb": "On the day of his triumph in the theology schools, a young man in holy orders receives a caller, the woman who left him two years before.",
+          "feelings": ["romantic", "aching"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The scene itself is complete, but the final sentence is clipped mid phrase, so the closing declaration ends in the air."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "500",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Take Me Instead",
+          "blurb": "A wooden puppet pleads with the fearsome master of a marionette theater to spare his best friend from the fire.",
+          "feelings": ["tender", "whimsical", "hopeful"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Field of Wonders",
+          "blurb": "A wooden boy with five gold pieces meets a lame Fox and a blind Cat who know of a magic field where money grows overnight.",
+          "feelings": ["whimsical", "funny", "unsettling"],
+          "kind": "fable",
+          "warnings": ["animal harm"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Back to back episodes with no shared text; the longer one only glances back at the theater scene in passing."
+    },
+    {
+      "id": "514",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Behind the Curtain",
+          "blurb": "At a party, a bashful girl slips behind a curtain to hide and finds the boy from next door already there.",
+          "feelings": ["cozy", "funny", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Thin Ice",
+          "blurb": "Refused forgiveness at home, a younger sister chases the skaters down the frozen river, where the ice past the bend has gone soft.",
+          "feelings": ["aching", "thrilling", "tender"],
+          "kind": "slice of life",
+          "warnings": ["child harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate scenes, one at a dance and one on the river, with no shared text or shared payoff."
+    },
+    {
+      "id": "521",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Footprint in the Sand",
+          "blurb": "Walking to his boat, a castaway long alone finds something pressed into the sand that stops him cold.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the island's long solitude is broken, a shock the novel spends years of story building toward.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Cast Ashore",
+          "blurb": "Eleven men abandon a dying ship in a small boat as mountainous seas drive them toward an unknown shore.",
+          "feelings": ["thrilling", "bittersweet"],
+          "kind": "sea story",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The wreck and the footprint sit years apart in the tale and share nothing."
+    },
+    {
+      "id": "524",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Her Duty to Go",
+          "blurb": "A daughter dresses for the ball her father has forbidden. Her father is waiting downstairs by the front door.",
+          "feelings": ["aching", "unsettling"],
+          "kind": "slice of life",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "537",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Tread in the Darkness",
+          "blurb": "A stumble in an underground stream leaves an explorer without light in a cave labyrinth. Then he hears footsteps, and they are not human.",
+          "feelings": ["eerie", "unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Confirms that something real and enormous lives in the cave, a question the full tale keeps in doubt for longer.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "551",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Face in the Water",
+          "blurb": "Adrift in a lifeboat, a young man leans over the side toward a beautiful face floating on the sea.",
+          "feelings": ["tender", "romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Tug That Charged",
+          "blurb": "A little tug swings its bow toward a surfaced enemy submarine and rings for full speed. Her crew means to board, with pistols, fists, and one good dog.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "war story",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The battle resolves fully, but the last sentence is clipped mid phrase and visibly trails off."
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Sequential beats of the same escape; the story assumes the rescue the short depicts but repeats none of it."
+    },
+    {
+      "id": "553",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Banshee",
+          "blurb": "Five armed men look up from a strange land at something flapping across the sky, and not one of them remembers his rifle.",
+          "feelings": ["eerie", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Can't Waste Ammunition",
+          "blurb": "When a giant cave bear charges out of a thicket, one man trips in the roots, and the coolest head in the party makes himself the bait.",
+          "feelings": ["thrilling", "adventurous", "funny"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate encounters with different creatures; neither steals the other's payoff."
+    },
+    {
+      "id": "558",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Milkman Trick",
+          "blurb": "With watchers on the street and a body in his rooms, a man stakes his whole escape on the morning milkman.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the murder of the hero's houseguest, the shock that sets the novel moving, though none of its later secrets.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

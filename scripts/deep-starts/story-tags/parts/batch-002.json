@@ -1,0 +1,269 @@
+{
+ "books": [
+  {
+   "id": "74",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Cat and the Painkiller",
+     "blurb": "A boy offers his aunt's cat a taste of patent medicine, and the cat accepts. What follows involves flower pots, somersaults, and an open window.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": ["animal harm"],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Glorious Whitewasher",
+     "blurb": "Sentenced to whitewash thirty yards of fence on a perfect Saturday, a boy discovers a law of human nature that turns his punishment into a privilege.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": ["era racism"],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Two separate pranks from different days; neither borrows the other's payoff."
+  },
+  {
+   "id": "76",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Signal at Midnight",
+     "blurb": "Alone at midnight, a superstitious boy reads doom in a shriveled spider, until a soft meow from the dark trees tells him adventure is waiting.",
+     "feelings": ["eerie", "adventurous"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Trapped on the Wreck",
+     "blurb": "Creeping through a wrecked steamboat in the dark, a boy overhears two men deciding how a third will die, then finds his own escape has floated away.",
+     "feelings": ["thrilling", "unsettling"],
+     "kind": "adventure",
+     "warnings": ["violence"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "A quiet night scene and a steamboat escapade, with no shared text or shared payoff."
+  },
+  {
+   "id": "84",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Dreary Night of November",
+     "blurb": "On a rainy November night, after two years of secret labor, a young scientist watches a dull yellow eye open, and his dream curdles into horror.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Creature and Creator",
+     "blurb": "High on a glacier, a maker meets the being he made and abandoned. The creature asks only to be heard, and his plea is harder to refuse than to hate.",
+     "feelings": ["aching", "unsettling", "contemplative"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Reveals that the creature has already murdered the narrator's young brother, a death the book stages as a shock.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "The creation night and the glacier meeting are distinct scenes; each lands on its own."
+  },
+  {
+   "id": "86",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Eclipse",
+     "blurb": "Chained to the stake before four thousand silent watchers, a condemned man bets his life on the sky going dark at exactly the right moment.",
+     "feelings": ["thrilling", "funny"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Gives away how the hero escapes execution, the payoff of the book's opening predicament.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "98",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "One Hundred and Five, North Tower",
+     "blurb": "A wine merchant turns cannonier as a living sea of people breaks against a fortress. When the towers fall, he wants one cell above all.",
+     "feelings": ["grim", "thrilling"],
+     "kind": "war story",
+     "warnings": ["violence"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": true,
+     "brokenNote": "The text stops in the middle of a sentence while describing the cell, so the story ends mid air."
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "103",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Four Minutes Too Slow",
+     "blurb": "A young Frenchman of many trades applies to serve the most exact gentleman in England, and learns his new master counts life in minutes.",
+     "feelings": ["funny", "cozy"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "108",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Obvious Facts",
+     "blurb": "A wild eyed young man bursts in on two friends at breakfast, certain his name explains everything. His host knows only what a glance can tell, which is plenty.",
+     "feelings": ["funny", "thrilling"],
+     "kind": "mystery",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "113",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Animal Charmer",
+     "blurb": "In a spring wood a girl finds a boy playing a wooden pipe while a squirrel, a pheasant, and two rabbits creep close to listen.",
+     "feelings": ["tender", "whimsical", "cozy"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "120",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Battle of Looks",
+     "blurb": "In a quiet parlour, a drunken old seaman draws a knife on the one guest who refuses to be afraid of him.",
+     "feelings": ["thrilling"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Black Dog Appears and Disappears",
+     "blurb": "A pale stranger missing two fingers waits behind an inn door for his old shipmate Bill, and the reunion ends in drawn cutlasses.",
+     "feelings": ["thrilling", "unsettling"],
+     "kind": "adventure",
+     "warnings": ["violence"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Two different visitors menace the same inn guest, but each confrontation has its own arc and payoff."
+  },
+  {
+   "id": "121",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Duties of a Partner",
+     "blurb": "At a ball, a young lady's new partner performs both halves of polite small talk, smirks included, and she can barely keep from laughing.",
+     "feelings": ["funny", "romantic"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Nerves Fit for Sliding Panels",
+     "blurb": "Riding toward an old abbey, a young reader of horrid novels hears her companion describe, in loving detail, the gloomy chamber and hidden manuscript awaiting her.",
+     "feelings": ["funny", "whimsical", "eerie"],
+     "kind": "satire",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Two separate flirtations built on the same teasing wit, with no shared text and separate punch lines."
+  }
+ ]
+}

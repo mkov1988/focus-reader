@@ -1,0 +1,282 @@
+{
+  "books": [
+    {
+      "id": "70008",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Snails and Suspicions",
+          "blurb": "Over snails and oysters, two friends weigh whether suspicion is ever a duty, until the doctor at the next table breaks in with a grievance of his own.",
+          "feelings": ["funny", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "70175",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Priest's Confession",
+          "blurb": "Pressed at last to explain how he untangles murders, a small quiet priest gives an answer that lifts his questioner clean out of his chair.",
+          "feelings": ["contemplative", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the titular 'secret' of the priest's method, which the book's frame story stages as its own reveal.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Shots in the Judge's Garden",
+          "blurb": "On a midnight ramble, a detective and his friend hear two revolver shots from a judge's strangely illuminated garden and go over the wall.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "mystery",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The confession frame and the garden murder come from different parts of the book and share no text or payoff."
+    },
+    {
+      "id": "70652",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The City in the Ice",
+          "blurb": "Two explorers in a small aeroplane climb toward an untrodden polar pass, where the wind pipes weirdly through cave mouths, and look on what no human eye has seen.",
+          "feelings": ["eerie", "dreamlike", "unsettling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the mirage city beyond the mountains is real, one of the book's staged discoveries, though none of its deeper horrors.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "72824",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Hard Man's Daughter",
+          "blurb": "A millionaire confronts the son-in-law who ruined his daughter's marriage, and hears a colder account of that marriage than he bargained for.",
+          "feelings": ["bittersweet", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "75201",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Close to the Front",
+          "blurb": "On a garden bench near the front, a soldier admires a nurse's hair, and she tells him, without tears, exactly what the war has already taken from her.",
+          "feelings": ["aching", "tender", "bittersweet"],
+          "kind": "love story",
+          "warnings": ["death"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Dugout",
+          "blurb": "In a shallow dugout, ambulance drivers share macaroni, cheese, and sour wine while the shelling walks closer with every cough of the guns.",
+          "feelings": ["grim", "tragic", "unsettling"],
+          "kind": "war story",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A first meeting and a wounding, far apart in the book, with no shared text and neither spoiling the other."
+    },
+    {
+      "id": "75288",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "They Needn't Die in My House",
+          "blurb": "A gentle peer, newly restored to his ancestral acres, complains about steam-roller personalities, depressing virtues, and the sheer inconsiderateness of people dying in his house.",
+          "feelings": ["funny", "cozy", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Man in the Road",
+          "blurb": "A fast car, a man reeling out of the hedge, a dying message she cannot understand: then the doctor comes back from his surgery looking grim.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals an early death and the dying message that launches the book's plot, though none of its later secrets.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Comic banter at the house and a death on the road; separate scenes in different registers."
+    },
+    {
+      "id": "75643",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Tea with Mr. Gilder",
+          "blurb": "Her brother invents an errand and vanishes, leaving her alone in a gray-eyed stranger's library, where the hospitality turns out to have a purpose.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Hints that the heroine's heart turns toward Dick rather than her fiance, and that her brother is in Gilder's power, early developments rather than final reveals.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "75790",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Man with the Guitar",
+          "blurb": "A merry Italian stranger fills the kitchen with song and chatter, until the narrator's father holds out his hand for the guitar he has itched to play for years.",
+          "feelings": ["cozy", "whimsical", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Tapping at the Window",
+          "blurb": "Safe by the fire in a lonely hut, a boy listens to his father's tale of buried gold and dead men, until something taps at the window.",
+          "feelings": ["eerie", "unsettling", "thrilling"],
+          "kind": "ghost story",
+          "warnings": ["death", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The guitar visitor and the fireside tale are separate episodes with no shared text."
+    },
+    {
+      "id": "75808",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Ten Thousand Pounds",
+          "blurb": "A hospital doctor, desperate for funds, takes a telephone call from a young woman who claims she has already sent him ten thousand pounds, after a fashion.",
+          "feelings": ["whimsical", "hopeful", "funny"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Midnight Ambulance",
+          "blurb": "While a great house sleeps, a slim figure slips from bedroom to bedroom among the guests' jewels, and an ambulance idles at the door below.",
+          "feelings": ["thrilling", "whimsical"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate capers by the same thief; each carries its own payoff."
+    },
+    {
+      "id": "75840",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Another Man's Face",
+          "blurb": "An old woman holds up the candle and looks from one young man to the other: the same face twice, and only one of them owns it.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the villainous usher has an exact double, machinery the book later puts to use.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Making a Swing",
+          "blurb": "At midnight a schoolmaster knots three ropes together and climbs from his window, telling the feverish boy in his care that he is making a swing.",
+          "feelings": ["grim", "unsettling", "eerie"],
+          "kind": "crime",
+          "warnings": ["violence", "child harm", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The double's unveiling and the night crime are different scenes; neither gives away the other's punch."
+    }
+  ]
+}

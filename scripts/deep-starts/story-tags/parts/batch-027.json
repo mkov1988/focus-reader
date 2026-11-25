@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "27168",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Question in the Park",
+          "blurb": "In a holiday crowd, a shy suitor keeps losing his nerve until a chance meeting with a frail girl in a mystery wheelchair speaks for him.",
+          "feelings": ["tender", "romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": ["illness"],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that Millard's courtship of Phillida ends in an engagement, a development the novel stages.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27365",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Master Mathematician",
+          "blurb": "His calculations finished after four sleepless nights, a mathematician looks from his window at a strange new star and decides what to tell his students at noon.",
+          "feelings": ["eerie", "unsettling", "contemplative"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The First of All Axes",
+          "blurb": "Dawn creeps over a chalk cliff where two sleepers camp on a narrow ledge. Something huge is climbing down the gully toward them, and the fire is ash.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence", "animal harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Drawn from two different tales in the collection, with no shared text and separate payoffs."
+    },
+    {
+      "id": "27384",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Bell in the Chimney",
+          "blurb": "In a pitch dark cell, a young prisoner wakes to a small bell ringing from nowhere, then taps beneath the floor, then a string swinging at his window.",
+          "feelings": ["eerie", "whimsical"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the hero Gaston is eventually imprisoned in the Bastille, a later turn in the novel.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27385",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Masked Princess",
+          "blurb": "In a hidden palace, a masked lady tells a young chevalier she is a persecuted princess seeking a champion. He pledges his sword half in jest.",
+          "feelings": ["romantic", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the staged unmasking of the conspiracy's patron as the Duchesse de Maine.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Captain's Lesson",
+          "blurb": "Six gentlemen walk into a quiet glade to settle affairs of honor, and an old campaigner turns his duel with a furious boy into a fencing lesson.",
+          "feelings": ["funny", "adventurous", "contemplative"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The duel and the recruitment are separate early scenes with no shared text, and each keeps its own payoff."
+    },
+    {
+      "id": "27430",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Farewell at Fraunces Tavern",
+          "blurb": "A victorious general embraces his weeping officers at a tavern by the ferry, settles his accounts to the penny, and asks leave to become a private citizen.",
+          "feelings": ["tender", "hopeful"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27475",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Silent Target",
+          "blurb": "Outside a frontier dance, a lone watcher quietly turns troublemakers away so the music never stops, and pays a price nobody inside ever notices.",
+          "feelings": ["bittersweet", "aching"],
+          "kind": "slice of life",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27587",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Wrestling Crown",
+          "blurb": "Twenty thousand hold their breath as an Athenian and a furious Spartan meet for the final wrestling of the games, two casts out of three for the crown.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27673",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A City Begs Its King",
+          "blurb": "A king steps out to find his whole city kneeling at his altars, wreathed and wailing, while a priest gives voice to a land wasted by plague.",
+          "feelings": ["grim", "contemplative"],
+          "kind": "tragedy",
+          "warnings": ["illness", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27743",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Night in the Castle",
+          "blurb": "Two travelers land at dawn in Finland, set on sleeping in a ruined island castle, whatever the bats, the owls, and the Mayor may say.",
+          "feelings": ["cozy", "whimsical", "adventurous"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27766",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Terms of Surrender",
+          "blurb": "A knight delivers his commander's terms to a besieged lady, who tears them to pieces and dashes them in his face. What he admits next softens her.",
+          "feelings": ["romantic", "thrilling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text stops partway through the lady's closing sentence, cutting off the scene's final beat."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

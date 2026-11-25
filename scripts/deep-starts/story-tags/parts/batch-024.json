@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "22541",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Battleship in the Files",
+          "blurb": "A safecracking agent picks his chief's bedroom lock at midnight to show him proof that someone is quietly building a warship extinct for a thousand years.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "22749",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Silver from the Bay of Bengal",
+          "blurb": "By the hot Indian surf, a painter watches a boy ride a log through breakers while a whole village hauls in the glittering catch of the season.",
+          "feelings": ["cozy", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23172",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "An Incredible Testimony",
+          "blurb": "A dusty young journalist rides hard to reach a mountain cabin inquest, where he must swear under oath to an account he himself calls incredible.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Something in the Wild Oats",
+          "blurb": "Two hunters cross a quail meadow when the wild oats begin to bend and flatten under something no eye can see, and one of them raises his gun.",
+          "feelings": ["eerie", "unsettling", "thrilling"],
+          "kind": "ghost story",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "It shows the invisible creature's attack that the full story approaches sideways through its inquest frame, though the final explanation is not given.",
+          "broken": true,
+          "brokenNote": "The passage stops mid-sentence in its final line, cutting the climax short."
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The short is the inquest frame and the story is the testimony given there; separate scenes that complement rather than repeat."
+    },
+    {
+      "id": "23184",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Nooses by the Roadside",
+          "blurb": "Bandits swarm a moonlit Roman road and seize two young gentlemen, one wounded, one owing a death, while nooses are already swinging from the trees.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23500",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Vow in the Moonlight",
+          "blurb": "Hidden beneath a plane tree at night, a man watches a golden haired girl step from a carriage, and she turns as if he had called her name.",
+          "feelings": ["romantic", "dreamlike", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23637",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Nerve Enough to Own the World",
+          "blurb": "A brindled intruder strolls in, starts a fight, absorbs a kicking without blinking, and comes away with the household ham and every shred of dignity in the room.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": ["animal harm"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Saving the Distance",
+          "blurb": "An old preacher and his stiff old pacer face three sleek trotters before a jeering grandstand, needing only to survive the first heat with their distance saved.",
+          "feelings": ["hopeful", "funny", "thrilling"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A parlour dog comedy and a horse race heat; different scenes with different stakes, sharing only one bystander."
+    },
+    {
+      "id": "23700",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Chichibio and the Crane",
+          "blurb": "A cook gives away one leg of his master's roasted crane and swears cranes have only one, a lie he must prove by the riverside at dawn.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23731",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "We Are Friends",
+          "blurb": "A stranded explorer plants himself in the path of a headless barrel creature pushing a cart, holds out both hands, and offers friendship.",
+          "feelings": ["funny", "whimsical", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23761",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Forbidden Parlour",
+          "blurb": "A toddler slips at last into the forbidden parlour on a cold morning and finds his mother lying still among flowers, resting for the first time.",
+          "feelings": ["aching", "tender", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": ["death"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "23790",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Ship From Outside",
+          "blurb": "A tiny patrol ship near Pluto meets a stranger half a mile long, and its crew begin dying in perfect silence while two men run for the tender.",
+          "feelings": ["thrilling", "eerie", "unsettling"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

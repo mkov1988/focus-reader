@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "76200",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Sleeping Jury",
+          "blurb": "At the Clue Club, a judge watches the members around him slump into slumber, one by one, while the waiter calmly explains that this is not a mock trial.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text is cut off mid-sentence at the end ('or sprawled on the')."
+        },
+        {
+          "tier": "story",
+          "title": "Trial by Candlelight",
+          "blurb": "On Christmas Eve, by candlelight, a strange waiter puts a hanging judge on trial for the sentence of death, with the club's sleeping members as the stakes.",
+          "feelings": ["unsettling", "contemplative"],
+          "kind": "crime",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "deflates",
+      "pairNote": "The story restates the short's whole punch, that the waiter has drugged the members into a reversible lethargy, so reading it first defuses the short's apparent deaths."
+    },
+    {
+      "id": "76212",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Pearls in the Lining",
+          "blurb": "Lady Moya's pearls have vanished from a locked dressing-room. Michael bets they never left it, and asks to see her wardrobe.",
+          "feelings": ["cozy", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76257",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Red Lady of Toulouse",
+          "blurb": "An executioner and his crew celebrate too well the night before a morning's work in Toulouse. At three o'clock, the 'red lady' still waits to be assembled.",
+          "feelings": ["funny", "grim"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76261",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Thing by the Ruined Mill",
+          "blurb": "A rider takes a dark November road home. At the ruined mill his mare wheels in terror, and something cold and clammy strikes him in the face.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76339",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Missing Ticket Stub",
+          "blurb": "Caught slipping out of a theatre, a small-time crook swears he bought a ticket, if only he could find the stub. The Inspector waits, unimpressed.",
+          "feelings": ["funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76352",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Screaming Forest",
+          "blurb": "On an opal road between bright-green globes, a running figure is snatched by something that screams in triumph. The stranger watching from a cave has an axe.",
+          "feelings": ["eerie", "thrilling", "aching"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76411",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Dragon in the Cave",
+          "blurb": "Peter calls three times at the cave mouth, sword thrust out, certain nothing will answer. Then comes a deep, deep sigh, and yards of bright green.",
+          "feelings": ["whimsical", "funny", "tender"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Dragon at the Window",
+          "blurb": "Tap, tap, tap at the nursery window: the dragon is back, warm as a stove, with room on his back for three children and more.",
+          "feelings": ["whimsical", "dreamlike", "cozy"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "76418",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Two Burglars, One Safe",
+          "blurb": "A burglar switches on his pocket light and finds another man already at the safe, masked, armed, and equally unwilling to introduce himself.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76435",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Dreams from the Sea",
+          "blurb": "Each night Dean's dream grows: the green, shining place under the sea comes clearer, and the swimming shadows draw closer. His doctor writes a prescription for nerves.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Kiss in the Cave",
+          "blurb": "A cable from a far-travelling uncle warns Dean to leave the house above the sea at once. Instead he watches the moon rise, and sleeps, and dreams.",
+          "feelings": ["eerie", "dreamlike", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Depicts the kiss that sets the book's possession plot in motion, hinting at what is invading Dean before the book explains it.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "76442",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Stand and Deliver",
+          "blurb": "Two robbers stop a big, cheerful traveller on a forest road and demand his wallet. Simon has a cudgel, solid brawn, and nothing worth stealing but onions.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Help, Ye Forest Powers",
+          "blurb": "A furious wood-nymph drags a lazy misanthrope on a headlong midnight run to a forest clearing, where a lone youth holds off a ring of robbers.",
+          "feelings": ["adventurous", "whimsical", "thrilling"],
+          "kind": "fairy tale",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    }
+  ]
+}

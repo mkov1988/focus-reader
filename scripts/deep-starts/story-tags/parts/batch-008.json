@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "829",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Six Inches High",
+          "blurb": "A man wakes flat on his back, unable to stir, every limb tied down. Then something alive, six inches tall, comes marching up his chest.",
+          "feelings": ["dreamlike", "unsettling", "whimsical"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "834",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Cigars in the Coal Scuttle",
+          "blurb": "A doctor shares rooms with a brilliant friend who keeps cigars in the coal scuttle, tobacco in a slipper, and does pistol practice indoors. A fond, exasperated portrait.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "844",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Not Even for Ready Money",
+          "blurb": "An aunt arrives for tea expecting the cucumber sandwiches she was promised. There are none, not even for ready money, and the excuses are exquisite.",
+          "feelings": ["funny", "cozy", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Handbag Interview",
+          "blurb": "A formidable mother interviews a hopeful suitor: income, politics, parents. His answers go beautifully until she asks who his people are, and he must mention a handbag.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate tea-time scenes with the same cast; the sandwich vignette and the interview stand apart without repeating or resolving each other."
+    },
+    {
+      "id": "851",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Tenth of February",
+          "blurb": "At sunrise, gunfire wakes a frontier town. From inside a burning house, a mother watches neighbors fall and must walk out through the smoke with her children.",
+          "feelings": ["grim", "tragic", "unsettling"],
+          "kind": "war story",
+          "warnings": ["violence", "death", "child harm", "cruelty", "era racism"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "863",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Behind the Locked Door",
+          "blurb": "In the small hours a household wakes to alarming sounds behind a locked bedroom door. The doors will not give, and the lady inside is very ill.",
+          "feelings": ["eerie", "unsettling", "grim"],
+          "kind": "mystery",
+          "warnings": ["death", "illness"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "910",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "One Fish Short",
+          "blurb": "Two men and six sled dogs camp in the frozen dark. At feeding time Bill counts the animals that came for fish, and the number is wrong.",
+          "feelings": ["eerie", "funny", "unsettling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Wolves at the Firelight",
+          "blurb": "Wolves shadow two men across the frozen dark, and each night the circle draws in. A doglike shape slides into the firelight, watching the dogs, not the men.",
+          "feelings": ["eerie", "grim", "funny"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "deflates",
+      "pairNote": "The longer piece openly explains the riddle the short one turns on: a seventh animal that comes in at feeding time is the wolf pack's decoy."
+    },
+    {
+      "id": "940",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Marksman in the Oak",
+          "blurb": "A rifle shot comes from an impossible direction. High in a ragged oak across the river, a marksman is hidden, and the men below must bring him down.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "war story",
+          "warnings": ["violence", "death", "era racism"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "967",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Nothing, Please Sir",
+          "blurb": "A small boy perched on a trunk commits the crime of sneezing. His schoolmaster's response, in a public coffee room, says everything about the school ahead.",
+          "feelings": ["grim", "unsettling"],
+          "kind": "slice of life",
+          "warnings": ["child harm", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Schoolmaster Meets His Match",
+          "blurb": "A runaway boy is dragged back to be flogged before the whole school. The new young assistant sits at his desk, and something in his face is different.",
+          "feelings": ["grim", "thrilling", "hopeful"],
+          "kind": "other",
+          "warnings": ["violence", "child harm", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "One is a coach-stop vignette, the other the schoolroom revolt weeks later; neither repeats or spoils the other's turn."
+    },
+    {
+      "id": "974",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Called to Account",
+          "blurb": "A stout, sleepy secret agent is summoned to the Embassy and dressed down by a new master who wants activity. The agent has one talent left to show.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1001",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Abandon All Hope",
+          "blurb": "A traveler reads the dreadful inscription over a dark gateway, then passes through into starless air full of sighs, led by a guide who knows the way.",
+          "feelings": ["eerie", "grim", "contemplative"],
+          "kind": "meditation",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Paolo and Francesca",
+          "blurb": "In a black wind that never rests, whirled spirits cry out. Two of them drift close, still together, and one tells how a shared book undid them.",
+          "feelings": ["tragic", "romantic", "aching"],
+          "kind": "love story",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two different stops on the same descent; the gateway and the lovers share nothing but the traveler."
+    }
+  ]
+}

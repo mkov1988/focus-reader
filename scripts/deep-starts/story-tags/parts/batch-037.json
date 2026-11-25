@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "75896",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Pigeon for the Plucking",
+          "blurb": "An inspector arrives with a new case, and the private detective he consults cannot stop laughing at him. The trouble concerns a very worthy parish priest.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "It gives away the running joke that the detective profits from every case the inspector brings him, which the book first springs as a surprise.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Nothing Was Stolen",
+          "blurb": "A baroness hires a detective who works for free. He asks one question about her locked boudoir, then invites her to look closer at what the thief left behind.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "It reveals that the necklace was secretly swapped for paste, the discovery this episode of the book builds toward.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "75922",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Trespassing, Fifty Dollars",
+          "blurb": "Three ladies drive their automobile through a rotten bridge, and the woman who owns it names her price for everything: trespassing, timber, even water.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "75949",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Black Thread",
+          "blurb": "An odd, solemn man crawls up a dark staircase on his knees, striking at the empty air with his stick, while a young constable watches from below.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Malicious Man",
+          "blurb": "A flashy man with jewelled rings waits at Waterloo Station for a girl who wants nothing to do with him. Then someone takes his arm.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "75967",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Guest Holds the Bank",
+          "blurb": "At a private club, a courteous elderly guest holds the bank while a steady player loses and loses, feeling his own thoughts slip out of his grip.",
+          "feelings": ["eerie", "unsettling", "dreamlike"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "75998",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Lights Out in the Library",
+          "blurb": "A girl kills the lights as a gunman slips into the library, then moves along the wall in blackness while he hunts her by sound and flash.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76059",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "You May Call It a Dog",
+          "blurb": "Called to a sleepless, ragged patient, a doctor finds a sleeve torn away in one rip and wounds the man will only half explain.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76072",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Cloak Drawn to Her Chin",
+          "blurb": "Summoned at night to a strange house, a doctor finds a bruised door, a silent weeping man, and a pale patient who answers no questions.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76131",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Altar on the Mountain",
+          "blurb": "A man remembers the mountain that filled his first nightmares, the ring of standing stones he found near its summit, and the promise a doctor made him give.",
+          "feelings": ["eerie", "dreamlike", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["child harm"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76168",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Visitor in Yellow Boots",
+          "blurb": "On his daughter's wedding day, a prosperous man receives a shabby visitor just out of prison, who believes he is owed forty thousand pounds.",
+          "feelings": ["grim", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "The visitor's talk of his own boy and the daughter's wedding day hints at the revenge scheme the book soon unmasks.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76178",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Standing in a Hole",
+          "blurb": "Laura plans to endure a blind date, not enjoy it. Then her date looks up at her, asks if she is standing in a hole, and ruins her gloom.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

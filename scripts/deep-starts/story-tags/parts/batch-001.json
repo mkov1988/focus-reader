@@ -1,0 +1,282 @@
+{
+  "books": [
+    {
+      "id": "42",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Story of the Door",
+          "blurb": "Out on a walk, a gentleman points to a shabby door and tells of a trampled child, a hateful stranger, and a cheque signed with an unmentionable name.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["violence", "child harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "43",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Juggernaut",
+          "blurb": "Three in the morning, streets empty and lamplit, a lone walker longing for the sight of a policeman. Then two figures collide at a corner.",
+          "feelings": ["eerie", "unsettling", "grim"],
+          "kind": "crime",
+          "warnings": ["violence", "child harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Mr. Seek",
+          "blurb": "A lawyer keeps watch on a shabby door by every light and hour, determined to see the face of a man he has never met.",
+          "feelings": ["eerie", "unsettling", "contemplative"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "These two do not overlap each other, but the short duplicates a stretch inside book 42's story span, since 42 and 43 are editions of the same novel."
+    },
+    {
+      "id": "45",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Call Me Cordelia",
+          "blurb": "Asked her name, a small orphan opens negotiations instead: she pleads for an elegant alias, and failing that, for one crucial letter.",
+          "feelings": ["funny", "whimsical", "tender"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Raspberry Cordial",
+          "blurb": "Keeping house for the first time, a talkative girl pours her best friend generous tumblerfuls of raspberry cordial and chatters on, not noticing anything amiss.",
+          "feelings": ["funny", "whimsical", "bittersweet"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "46",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "More Gravy Than Grave",
+          "blurb": "A bitter old man tells the ghost sitting opposite that he does not believe in it, and blames his supper. The spectre listens, perfectly motionless.",
+          "feelings": ["eerie", "funny"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Fezziwig's Ball",
+          "blurb": "A spirit leads an old man back to the warehouse where he was apprenticed, just as the shutters go up and a Christmas Eve ball begins.",
+          "feelings": ["cozy", "tender", "bittersweet"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "55",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Cowardly Lion",
+          "blurb": "A great lion springs at a little dog and gets its nose slapped by a furious little girl. The conversation that follows surprises everyone.",
+          "feelings": ["funny", "tender", "whimsical"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Witch's Silver Whistle",
+          "blurb": "From her castle door, a witch whose single eye sees everywhere spies four travelers crossing her country. She blows her silver whistle, and wolves come running first.",
+          "feelings": ["adventurous", "whimsical"],
+          "kind": "fairy tale",
+          "warnings": ["violence", "animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "62",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Winning the Watchdog",
+          "blurb": "A stranger on a strange world sits down beside his fearsome guard beast, puts his arms around its neck, and coaxes it like a hound from home.",
+          "feelings": ["tender", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "64",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Red Star Answers",
+          "blurb": "For ten years a man has prayed beneath a red star, arms outstretched, begging to be carried back across the void. Tonight something answers.",
+          "feelings": ["dreamlike", "eerie", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "68",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Before the Gates of Kaol",
+          "blurb": "Waked at dawn by stealthy movement, a lone swordsman spies a silent line of green warriors hidden beside the road, waiting to slaughter a city's unsuspecting troops.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "72",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Mistress of the Man-Eaters",
+          "blurb": "Great predators look up from their feast and pad toward two travelers. The man draws his sword; the girl tells him to put it away.",
+          "feelings": ["adventurous", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Insult in the Royal Garden",
+          "blurb": "In a royal garden, a prince presses unwanted love on a princess and seizes her arm. Her cry brings the guard, and someone far swifter.",
+          "feelings": ["romantic", "thrilling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "73",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Forest Chapel",
+          "blurb": "Deep in the forest, arching boughs make a quiet chapel floored with pine needles. A young soldier pushes the green doors aside and steps in.",
+          "feelings": ["eerie", "grim", "unsettling"],
+          "kind": "war story",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Tattered Man",
+          "blurb": "A road streams with wounded men, cursing, singing, staggering to the rear. A boy falls in with the march, and a stranger with a gentle voice keeps pace beside him.",
+          "feelings": ["grim", "aching", "unsettling"],
+          "kind": "war story",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the young soldier has no wound of his own, hinting he ran from the battle.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    }
+  ]
+}

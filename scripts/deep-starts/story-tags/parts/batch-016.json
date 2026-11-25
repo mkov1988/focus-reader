@@ -1,0 +1,243 @@
+{
+ "books": [
+  {
+   "id": "3823",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Sigurd's Cavern",
+     "blurb": "Deep in a torchlit cavern, an English traveler meets its keeper, a misshapen dwarf with wild blue eyes who says the dead have summoned him across the sea.",
+     "feelings": ["eerie", "dreamlike", "unsettling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Sigurd's prophecy hints early at the book's central romance and foreshadows how his own devotion to Thelma will end.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "3875",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Worst Dancer at Court",
+     "blurb": "Asked if he dances well, a young courtier answers with confidence. At the royal ball, before the King himself, he gets his chance to prove it.",
+     "feelings": ["funny", "bittersweet"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The King's Farewell",
+     "blurb": "An old king, dying in state, calls his court to his bedside: cardinals, princes, weeping duchesses, and at last a small child who will inherit everything.",
+     "feelings": ["tender", "contemplative", "bittersweet"],
+     "kind": "other",
+     "warnings": ["death", "illness"],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "3891",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Affair of the Necklace",
+     "blurb": "A jeweller arrives at a lady's country house demanding payment for a fabulous necklace the Queen insists she never bought. Someone is lying, and the sums are ruinous.",
+     "feelings": ["unsettling", "thrilling"],
+     "kind": "crime",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "3913",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Concert of Monsieur Vaussore",
+     "blurb": "A penniless young wanderer reinvents himself as a Parisian music master, though he cannot read a note. Then a professor asks him to compose a piece for his concert.",
+     "feelings": ["funny", "bittersweet"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "4085",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Examination at Surgeons' Hall",
+     "blurb": "A trembling young Scot faces a dozen grim examiners for his surgeon's licence, fielding trick questions until his judges start quarrelling among themselves.",
+     "feelings": ["funny"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "4200",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Great Fire",
+     "blurb": "Woken at three in the morning by a maid's report of a fire, a London official goes back to sleep. By daylight, the whole riverfront is burning.",
+     "feelings": ["grim", "thrilling"],
+     "kind": "other",
+     "warnings": ["animal harm"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "4206",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Waiting for the Overt Act",
+     "blurb": "February 1917: a cabinet secretary writes a friend in confidence, recording what the President says behind closed doors as German submarines push a neutral nation toward war.",
+     "feelings": ["contemplative", "unsettling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "4300",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Milk for the Pussens",
+     "blurb": "A gentle man moves softly about his kitchen at breakfast time, sizing up his black cat as she sizes up him.",
+     "feelings": ["cozy", "whimsical"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Tea and Metempsychosis",
+     "blurb": "He carries the breakfast tray up to his wife, answers her question about a strange word, and tries not to think about the letter under her pillow.",
+     "feelings": ["tender", "bittersweet", "contemplative"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Adjacent slices of the same Dublin morning, but they share no text and each has its own payoff."
+  },
+  {
+   "id": "4367",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Price of the Colt",
+     "blurb": "A boy of eight wants a neighbour's colt so badly that his father finally lets him ride over and bargain for it himself.",
+     "feelings": ["funny", "bittersweet"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "First Day Under Fire",
+     "blurb": "A young lieutenant advances through tall prairie grass into his first battle, watching cannon balls ricochet slowly enough to dodge, and learning what war actually does.",
+     "feelings": ["adventurous", "grim"],
+     "kind": "war story",
+     "warnings": ["violence", "death"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "4499",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Distant View of Wilsonople",
+     "blurb": "A complacent General opens a letter from Italy and finds it composed of ink sketches of a city called Wilsonople. Page by page, they grow alarmingly personal.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  }
+ ]
+}

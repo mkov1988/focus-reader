@@ -1,0 +1,243 @@
+{
+ "books": [
+  {
+   "id": "11982",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Swapped Composition",
+     "blurb": "A schoolgirl trades her clever composition for a friend's dull one, then watches the exchange unravel in front of the whole school.",
+     "feelings": ["aching", "bittersweet"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "A Girl as Good as a Boy",
+     "blurb": "After her brother's death, an eleven-year-old girl vows to be everything a son could be: Greek before breakfast, fences on horseback, all to earn one sentence from her father.",
+     "feelings": ["aching", "tender", "bittersweet"],
+     "kind": "slice of life",
+     "warnings": ["death", "illness"],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Two separate childhood episodes from the same memoir; no shared text or payoff."
+  },
+  {
+   "id": "11987",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "I'll Try This Case Myself",
+     "blurb": "A mild-seeming judge starts asking questions nobody expects, and two shyster lawyers and a crooked policeman feel the courtroom floor tilt under them.",
+     "feelings": ["thrilling", "hopeful"],
+     "kind": "crime",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "mild",
+     "spoilerNote": "Shows the courtroom collapse of the frame-up against Tony, which is the payoff of one story in the collection.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "12345",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Sugar Corner",
+     "blurb": "Three hundred picked men wait for the gong on the Exchange floor. The calmest face in the middle of the mob is about to set the market on fire.",
+     "feelings": ["thrilling"],
+     "kind": "other",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "12758",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Drum of the Sands",
+     "blurb": "Crossing a sea of burning sand, a caravan halts: somewhere among the dunes an invisible drum begins to roll, and the guides whisper of death.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "other",
+     "warnings": ["death"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "An Uncomfortable Bed",
+     "blurb": "A guest at a chateau full of practical jokers lies awake certain a prank is coming, and takes elaborate precautions against every trick he can imagine.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Two unrelated tales from the anthology; nothing shared."
+  },
+  {
+   "id": "14244",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Hair of Gold",
+     "blurb": "A knight lands disguised in a hostile country, fights a fire-breathing dragon alone, and wakes to find his life in the hands of the woman he came to win.",
+     "feelings": ["adventurous", "romantic", "thrilling"],
+     "kind": "adventure",
+     "warnings": ["violence", "animal harm"],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Reveals the hero's hidden identity as the Morholt's slayer and how he wins the princess from the false seneschal, an early staged discovery of the legend.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "14471",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Footsteps on the Stair",
+     "blurb": "Alone at night by his open door, a student hears boots climbing the spiral staircase toward him, loud and close, long before anyone comes into view.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "ghost story",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Search at Midnight",
+     "blurb": "A man and his elderly aunt search an empty house at midnight, room by room and floor by floor, and the house begins to answer back.",
+     "feelings": ["eerie", "thrilling", "unsettling"],
+     "kind": "ghost story",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "Drawn from two different ghost stories in the collection; nothing shared."
+  },
+  {
+   "id": "14818",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Knock in the Blizzard",
+     "blurb": "Midnight, a howling blizzard, and a pounding at the front door. A small-town couple in their nightclothes argue over who has to answer it.",
+     "feelings": ["funny", "cozy", "tender"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "15272",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Errour's Den",
+     "blurb": "Warned by his lady and begged by his dwarf to fly, a young knight walks into a monster's den anyway, his glimmering armor the only light.",
+     "feelings": ["adventurous", "grim"],
+     "kind": "adventure",
+     "warnings": ["violence"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "15381",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Hooked",
+     "blurb": "An angler swerves politely around a rival's cast at dusk and takes the fly in his ear. The stranger holding the rod is not what he expected.",
+     "feelings": ["funny", "romantic", "whimsical"],
+     "kind": "love story",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "15384",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Put Off in the Rain",
+     "blurb": "A conductor demands a fare she has already paid. The girl refuses, the rain roars down, and a stranger's gloved hand starts gathering her scattered note-books.",
+     "feelings": ["funny", "romantic"],
+     "kind": "love story",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  }
+ ]
+}

@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "560",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Man Who Wouldn't Fight",
+          "blurb": "A traveler in a grey tweed suit endures a carriage of strangers' contempt for not being at the front, while hiding the reason he cannot answer them.",
+          "feelings": ["contemplative", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Escape by Aeroplane",
+          "blurb": "A fugitive slips into the air in a friend's aeroplane just ahead of the police, tastes the pure joy of flight, then the engine begins to sputter.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "580",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Taken for an Informer",
+          "blurb": "A gentleman who notes down everything takes a cab across London, and his notebook convinces the driver of something sinister enough to start a street brawl.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The final sentence is cut off mid-phrase, so the passage ends on an unfinished clause even though the comic arc itself is complete."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "583",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Lady at the Window",
+          "blurb": "A visitor enters a breakfast room and sees a graceful stranger at the far window; each step she takes toward him revises what he thinks he sees.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Touch at Midnight",
+          "blurb": "On a lonely road at one in the morning, a hand falls on a walker's shoulder, and a woman dressed all in white asks the way to London.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "589",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Duel in Hunter's Bog",
+          "blurb": "A leering stranger picks a quarrel, blow answers insult, and a young man who has never learned to fence must walk to a duel he expects to lose.",
+          "feelings": ["thrilling", "funny", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "599",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Bowl of Rack Punch",
+          "blurb": "At a pleasure garden, one bowl of punch proves too tempting for a vain gourmand, and an evening that should have settled a marriage goes gloriously sideways.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "600",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Treated Like a Fly",
+          "blurb": "A man sunk in depression walks into a tavern half hoping to be thrown out of a window, and receives an insult far harder to forgive.",
+          "feelings": ["aching", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "601",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Look at the Sheets",
+          "blurb": "A whispered warning from the woodman's wife sends a traveler to check his bed, and what he finds keeps him listening in the dark at the window.",
+          "feelings": ["eerie", "thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "730",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Asking for More",
+          "blurb": "In a workhouse where boys starve on thin gruel, lots are cast, and one small desperate child must walk up to the master and ask for more.",
+          "feelings": ["funny", "aching"],
+          "kind": "satire",
+          "warnings": ["child harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Word Against His Mother",
+          "blurb": "A charity-boy bully needles a quiet orphan at dinner, prodding and jeering until he finds the one subject that turns the mild child to fire.",
+          "feelings": ["aching", "funny"],
+          "kind": "satire",
+          "warnings": ["child harm", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "766",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "His Formidable Aunt",
+          "blurb": "A boy who has walked for days, robbed and sleeping in fields, gathers his last courage to introduce himself to an aunt famous for chasing boys away.",
+          "feelings": ["tender", "funny", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "It reveals that the narrator's mother has died, a loss the full book only reaches after several chapters.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "768",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Let Me In",
+          "blurb": "Kept awake by a branch tapping the glass, a sleeper breaks the pane to silence it, and his fingers close on something that grips back.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["violence", "child harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Lighted Window",
+          "blurb": "Two wild children run barefoot through the dark to spy on a rich family's bright window, laughing at what they see, until the bulldog is let loose.",
+          "feelings": ["adventurous", "thrilling", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": ["animal harm", "child harm", "era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "224",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Walk on the Parapet",
+          "blurb": "A young woman steps onto a tower's narrow parapet to prove she can. The man watching her is not amused, until a slip changes the conversation entirely.",
+          "feelings": ["romantic", "thrilling", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Shows Elfride warming to a second suitor, a courtship the novel develops gradually.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "228",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Laocoön and the Serpents",
+          "blurb": "A priest sacrifices a steer at the shore when two great serpents come gliding over the sea, crests flaming, making straight for him and his young sons.",
+          "feelings": ["grim", "tragic", "unsettling"],
+          "kind": "tragedy",
+          "warnings": ["violence", "death", "child harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "236",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Splendid Hunting Ground",
+          "blurb": "A curious young mongoose scouts his splendid new garden, finds a nest of weeping birds, and hears a low cold hiss rise from the thick grass.",
+          "feelings": ["adventurous", "whimsical", "unsettling"],
+          "kind": "fable",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Council Rock",
+          "blurb": "On a moonlit hilltop, a wolf pack must decide whether a laughing man's cub may run with them, while a tiger roars for his prize in the dark.",
+          "feelings": ["adventurous", "hopeful", "contemplative"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two unrelated tales from the same collection, a mongoose vignette and a wolf-pack council; they coexist fine."
+    },
+    {
+      "id": "244",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Word on the Wall",
+          "blurb": "At a murder scene, a proud detective unveils his prize discovery: a word scrawled on the wall in blood. An amateur with a tape measure reads it differently.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the poison method and the revenge meaning of the bloody word, early deductions though not the killer's identity.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "245",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Hat Island Crossing",
+          "blurb": "A steamboat races the sunset toward a crossing no pilot dares run in the dark, while every man aboard stands watch in hand, silent.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "271",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The First Train",
+          "blurb": "A young horse grazing by the railway meets a rushing, smoking black thing that shrieks and grinds past, and must decide how frightened to stay.",
+          "feelings": ["cozy", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Night of the Broken Bridge",
+          "blurb": "Driving home through a wild autumn storm, a horse stops dead at the flooded wooden bridge and will not stir, whatever his master says.",
+          "feelings": ["thrilling", "tender", "cozy"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate episodes from different points in the horse's life, with no shared text or payoff."
+    },
+    {
+      "id": "345",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Shaving Glass",
+          "blurb": "A guest shaving at dawn is startled by his host's greeting; the mirror shows the whole room behind him, and no one else in it.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Tips early that the host is something inhuman, part of the novel's slow-building dread.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Derelict in the Storm",
+          "blurb": "A sudden tempest turns a glassy sea into a roaring monster, and watchers on the cliff spot a schooner, all sails set, driving straight for the harbour reef.",
+          "feelings": ["eerie", "thrilling", "grim"],
+          "kind": "sea story",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A castle bedroom and a harbour storm, different narrators and settings with no shared reveal."
+    },
+    {
+      "id": "389",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Man in the Wood",
+          "blurb": "A small boy waiting in a hallway shrieks and collapses in terror. What he points to, once he wakes, has been in the wall all along.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["child harm"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Links the child's terror to an ancient satyr-like presence, pointing toward the novella's central revelation.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "394",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Dinner with an Old Bachelor",
+          "blurb": "Three genteel ladies dine at an old-fashioned farmhouse, where green peas defeat two-pronged forks and their host quotes poetry to the trees.",
+          "feelings": ["cozy", "funny", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "408",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Vast Veil",
+          "blurb": "In a New England schoolhouse, children merrily trade visiting-cards until one glance of refusal shows a boy, all in a day, the world he stands outside.",
+          "feelings": ["aching", "contemplative", "hopeful"],
+          "kind": "meditation",
+          "warnings": ["era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The School Behind the Hill",
+          "blurb": "A young teacher tramps the hot Tennessee hills hunting a school of his own, and finds one in a log hut behind a rail fence.",
+          "feelings": ["tender", "bittersweet", "hopeful"],
+          "kind": "slice of life",
+          "warnings": ["era racism"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The passage cuts off mid-sentence, ending on the dangling words \"usually convinced them—for\"."
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate autobiographical episodes, one from childhood and one from young manhood, with no overlap."
+    }
+  ]
+}
