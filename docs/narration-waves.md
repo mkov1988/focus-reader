@@ -545,21 +545,39 @@ Order of operations, do not reorder:
 | C2-9 (1st try) | [42978132506](https://github.com/mkov1988/focus-reader/actions/runs/42978132506) 2026-11-11 07:15Z to 16:27Z, started by C2-8's chain, 60 synth jobs, none gated | all 60 shards synthesized, then all 30 finish jobs died in `apt-get install ffmpeg`: `Temporary failure resolving 'security.ubuntu.com'` on every runner between 14:16Z and 16:27Z (a GitHub runner DNS outage; the image had also just rolled to ubuntu-26.04). Collect found no verified pairs, the chain stopped, and nobody looked for four days — the shard WAVs expired (3-day retention), so the whole wave is synthesized again. Fixes: apt retried 3×, runners pinned to ubuntu-24.04, shard retention 7 days | — | — |
 | C2-9 (2nd try) | [43694170603](https://github.com/mkov1988/focus-reader/actions/runs/43694170603) 2026-11-15 08:22Z to 15:45Z, dispatched by hand with next_waves = waves 10–12 (first run with the apt retry, the 24.04 pin and 7-day shards) | 30/30 pairs verified, 93/93 jobs green | [43731662548](https://github.com/mkov1988/focus-reader/actions/runs/43731662548) (chain) | 2026-11-15 15:47Z, live manifest 168 books |
 | C2-10 | [43731665089](https://github.com/mkov1988/focus-reader/actions/runs/43731665089) 2026-11-15 15:45Z to 23:35Z, started by C2-9's chain, 63 synth jobs, none gated | 21/21 pairs verified, 87/87 jobs green | [43775590225](https://github.com/mkov1988/focus-reader/actions/runs/43775590225) (chain) | 2026-11-15 23:36Z, live manifest 175 books |
-| C2-11 | [43775592933](https://github.com/mkov1988/focus-reader/actions/runs/43775592933) 2026-11-15 23:34Z, started by C2-10's chain | running | | |
+| C2-11 | [43775592933](https://github.com/mkov1988/focus-reader/actions/runs/43775592933) 2026-11-15 23:34Z to 2026-11-16 05:07Z, started by C2-10's chain, 51 synth jobs, none gated | 28/30 pairs verified, no shard lost. 45109 rowan and marlowe failed the WPM rail at segment 3 (109 and 99 wpm; hazel passed) → held back, same as 26849/53416 | [43808132639](https://github.com/mkov1988/focus-reader/actions/runs/43808132639) (chain) | 2026-11-16 05:08Z |
 | C2-7 | | | | |
 | C2-8 | | | | |
 | C2-9 | | | | |
 | C2-10 | | | | |
 | C2-11 | | | | |
-| C2-12 | | | | |
+| C2-12 | [43808135225](https://github.com/mkov1988/focus-reader/actions/runs/43808135225) 2026-11-16 05:07Z to 08:46Z, started by C2-11's chain, none gated | 18/18 pairs verified, every job green | [43833934371](https://github.com/mkov1988/focus-reader/actions/runs/43833934371) (chain) | 2026-11-16 08:47Z, live manifest 191 books |
+| fix-up | [43835112989](https://github.com/mkov1988/focus-reader/actions/runs/43835112989) 2026-11-16 08:54Z to 11:59Z, dispatched by hand: ids 40284,27475,51428 (the C2-2 spaCy-outage losses), no next_waves, 21 synth jobs | 7/9 pairs verified = exactly the 7 that were missing. 40284 rowan and hazel were re-synthesized too and `verify.mjs` refused them ("narration-v1.json disagrees with out/"): the shipped recordings stayed, as the rail intends. All three books now have all three voices | [43862527515](https://github.com/mkov1988/focus-reader/actions/runs/43862527515) (chain) | 2026-11-16 12:00Z, live manifest 193 books |
 
-## Fix-up queue (run as one wave after C2-12, no `next_waves`)
+## Campaign 2 outcome (2026-11-16)
 
-Books that lost a voice or a shard to a transient failure during the chained campaign. One dispatch with all of them; verify.mjs pins the voices that already shipped, the R2 upload skips existing objects, only the missing pairs are added.
+**193 books narrated and live** (95 before the campaign, 98 added), 576 book×voice pairs, 56.8 GB of Opus in the bucket, all three personas for every shipped book except the two below. Live manifest: https://focus-reader-48z.pages.dev/narration-v1.json. Twelve chained waves plus one fix-up wave, 2026-11-06 to 2026-11-16, all on free GitHub runners; after wave 1 every deploy and every next wave was started by the workflow itself.
 
-- 40284 (lost marlowe, C2-2, spaCy model download 504)
-- 27475 (lost all three voices, C2-2, same)
-- 51428 (lost marlowe, rowan, hazel shards, C2-2, same)
+Of the 100 selected books, 98 shipped in full. Not shipped or partial:
+
+| book | what | why | next |
+|---|---|---|---|
+| 26849 The Works of Mr. George Gillespie | no voice | every voice fails the per-segment WPM rail (segments 76–78 at 95–104 wpm) | listen to those segments; if the audio is fine, the rail is too strict for Latin-heavy prose and can be loosened for this book — do not loosen blind |
+| 42389 | no voice | `finish.mjs` alignment mismatch in all voices: Kokoro's text stream is one character shorter after a footnote marker (`…Strathnavern[42] K. I shall…`), same bug class as Beowulf 16328 | pipeline fix in `synth.py`/`finish.mjs` (unit-level fallback), then re-run both books |
+| 45109 | hazel only | rowan and marlowe fail the WPM rail at segment 3 (109 and 99 wpm) | as 26849 |
+| 53416 | rowan + hazel | marlowe fails the WPM rail at segment 40 (109 wpm) | as 26849 |
+
+What the campaign cost in incidents, all documented in the status log: one 100-artifact cap bug (fixed before the campaign), one `cherry-pick -q` typo and one skipped chain job in the new workflow (fixed on the first two runs), nine shards lost to a GitHub release download outage (fixed-up), one whole wave lost to a two-hour runner DNS outage because nobody looked for four days (re-run; shard retention is now seven days and runners are pinned).
+
+Still waiting on the Android app's chapter-detector port (see "Chapter detector fix"): re-narration of 244 and 16389 (truncated by the old detector) and the 22 bounds-held books.
+
+## Fix-up queue (ran 2026-11-16 as the fix-up wave, see the status log)
+
+Books that lost a voice or a shard to a transient failure during the chained campaign. One dispatch with all of them; verify.mjs pins the voices that already shipped, the R2 upload skips existing objects, only the missing pairs are added. Done: all three now have all three voices.
+
+- 40284 (lost marlowe, C2-2, spaCy model download 504) — fixed up
+- 27475 (lost all three voices, C2-2, same) — fixed up
+- 51428 (lost marlowe, rowan, hazel shards, C2-2, same) — fixed up
 
 Pipeline bug, not a re-run: 42389 (C2-5) failed the alignment rail in all three voices — the reader's token stream reads `…Strathnavern[42] K. I shall never forget it…` (812 chars in that unit) and Kokoro's reads one character shorter (`…42 I shall…`): the model swallows a lone initial after a footnote marker. Same class as Beowulf 16328. Needs a look at how `synth.py` hands such units to the model (or a unit-level fallback that re-synthesizes the unit word by word) before either book can ship.
 
