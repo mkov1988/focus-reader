@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "76919",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Derelict Handbag",
+          "blurb": "On a misty November night, two friends pass a locked church and find a handbag abandoned in the dark porch, forced open by hands unknown.",
+          "feelings": ["eerie", "contemplative"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Silent Passenger",
+          "blurb": "A train stands at a junction platform with one passenger who will never wake. Two sharp-eyed doctors sift the compartment for small clues before the police arrive.",
+          "feelings": ["grim", "thrilling"],
+          "kind": "mystery",
+          "warnings": ["death", "violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "76927",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Thirty Thousand a Year",
+          "blurb": "A private soldier learns he has inherited a vast fortune, and watches his own master weep with envy. The money cannot buy back what he truly misses.",
+          "feelings": ["bittersweet", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76929",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Glove and the Blue Ribbon",
+          "blurb": "At a tournament before Charlemagne, a victorious young knight sees a tiny glove tied with blue ribbon fall at his feet, and looks up.",
+          "feelings": ["romantic", "whimsical"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Sorcerer and the Emperor",
+          "blurb": "A sorcerer walks unseen through a sleeping army camp, relieving an emperor of his sword, his crown, and his dignity, then offers to lead the pursuit.",
+          "feelings": ["whimsical", "adventurous", "funny"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "76931",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Rope in the Lantern Light",
+          "blurb": "A wallet vanishes from a wagon camp at midnight. When the crowd finds it in a red-headed stranger's bag, someone quietly suggests a rope.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76950",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Visitor in a Thick Veil",
+          "blurb": "A businessman returns to his office and hears a lady waited an hour for him yesterday. He turns white, for he knows why that cannot be.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76981",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Wake Up, I'm Here",
+          "blurb": "Helen slips past the screen to wake Lord Abbotsford, asleep by the fire, his table laid out with banknotes, diamonds, and her only photograph.",
+          "feelings": ["grim", "tragic", "unsettling"],
+          "kind": "tragedy",
+          "warnings": ["death", "suicide"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76983",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Three Shots at Dawn",
+          "blurb": "A cowhand rigs a dummy of himself beside a disputed spring and beds down in the brush. At first light, a rifle speaks three times.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76995",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Parson Plays the Wheel",
+          "blurb": "A minister walks into a crowded saloon to settle an unusual bargain: the gambler sat through his sermon, so tonight the parson takes his turn at the wheel.",
+          "feelings": ["whimsical", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76998",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Jonah and the Fox",
+          "blurb": "A weary prophet shares his supper with a polite fox, who has one small theological question that the Schools never quite answered.",
+          "feelings": ["whimsical", "contemplative", "funny"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Marriage Embassy",
+          "blurb": "A proud mother and her tongue-tied brother call on a prince with an audacious request on behalf of her son, the prophet.",
+          "feelings": ["funny", "bittersweet"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals in advance that the prince refuses Jonah's hoped-for marriage to the Lady Judith.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "77001",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The O'Shea",
+          "blurb": "A handsome stranger in white drill studies a document through a monocle, until an old soldier across the room recognizes him and jumps up.",
+          "feelings": ["whimsical", "contemplative"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "42188",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Grandfather of All Parrots",
+          "blurb": "Two wanderers on a silent shore meet an ancient parrot that fixes them with knowing eyes, then shrieks words in a tongue no living person can name.",
+          "feelings": ["eerie", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42196",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Bolted Door",
+          "blurb": "A traveler wakes in the dark to the door he bolted swinging open, and something enormous with a misshapen head slipping quietly inside.",
+          "feelings": ["thrilling", "eerie"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Shows the night attack that the book builds toward as a creeping suspicion about what happens to guests of a treacherous host.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42236",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Goddess Wakes",
+          "blurb": "In a lost palace a thief stands over a woman dead for a thousand years. Then color touches her cheeks and her lashes begin to lift.",
+          "feelings": ["eerie", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42243",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Haunter of the Pits",
+          "blurb": "Handed a dagger by a stranger, a prisoner steps out of his cell into a vast darkness where something huge and silent is smelling out his trail.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the hero is imprisoned partway through the book and escapes the dungeon with a smuggled dagger.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42259",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Hillman's Parley",
+          "blurb": "A governor holding seven tribesmen hostage summons their chieftain to parley. The man arrives through the window, knife first, and the night takes a wilder turn.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Gives away the queen's incognito visit to the frontier fort and her abduction, the book's early pivotal turn.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42389",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "He May Yet Be Saved",
+          "blurb": "A storm hurls a great ship against a cliff and grinds it to splinters. Then a watching boy spots one man still alive among the waves.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "42486",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Face at the Window",
+          "blurb": "On a grey afternoon a woman steps into the dining room and finds a familiar face at the window, close to the glass, staring straight in.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the apparition's return and the narrator's certainty that it has come for someone else, an early key development of the book.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "43063",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Crash in Chelsea",
+          "blurb": "An aeroplane falls out of a May morning and a tangled parachute lands on a studio roof. Neighbors, painters and police scramble, but one man never comes upstairs.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "43936",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Cowardly Lion",
+          "blurb": "A great lion bounds into the road and bowls over her friends, until a small girl slaps his nose and hears a very surprising confession.",
+          "feelings": ["funny", "tender", "whimsical"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Kalidahs",
+          "blurb": "A gulf too wide to leap blocks the forest road, then a second, then two beasts with bodies like bears and heads like tigers close in.",
+          "feelings": ["adventurous", "whimsical", "thrilling"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate episodes from different stretches of the same journey, with no shared text and no repeated payoff."
+    },
+    {
+      "id": "44608",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Poisoned Dish",
+          "blurb": "An emperor takes a few mouthfuls at dinner, feels his heart rise, and grows suspicious. The cooks go under guard while a dog tells the truth.",
+          "feelings": ["unsettling", "hopeful"],
+          "kind": "crime",
+          "warnings": ["animal harm", "illness"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

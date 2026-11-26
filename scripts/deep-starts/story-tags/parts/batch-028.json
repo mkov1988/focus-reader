@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "27794",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Voice Over Her Shoulder",
+          "blurb": "Alone in her grand hotel suite, a princess hears something move, checks every room, finds nothing, and settles into her bath. Then a voice speaks at her ear.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The passage stops mid-sentence just as the intruder's voice begins, so the scene has no ending."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "27997",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Pennies for the Monkey",
+          "blurb": "On a seaside honeymoon a bride kisses the dog, laughs at the monkey, and delights in everything except her new husband, who wants to know why.",
+          "feelings": ["tender", "romantic", "whimsical"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "28054",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Parable of the Onion",
+          "blurb": "A woman retells a folk tale her cook taught her: a wicked soul in a lake of fire, an angel, and one small onion held out in hope.",
+          "feelings": ["contemplative", "aching"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "28074",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Night Climb",
+          "blurb": "Three men slip a skiff into a moonlit Kent cove in 1656. Their fierce leader knows a hidden way up the sheer cliff, and takes it.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "28152",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Buried Hat",
+          "blurb": "A boy hauling iron ore forgets, for one moment, that thirsty oxen and a high bridge make a dangerous pair. His hat pays the price.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "28203",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Making Him Talk",
+          "blurb": "Determined to crack a silent companion, a lively girl peppers him with questions while he weaves a birch basket. His answers are shorter than her patience.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Into the Burning Wood",
+          "blurb": "Told the forest fire is too far to visit, a wilful girl marches straight toward it. The flames are grander and hungrier than she bargained for.",
+          "feelings": ["thrilling", "contemplative"],
+          "kind": "adventure",
+          "warnings": ["death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate outings with the same pair, one playful and one perilous; neither steals the other's payoff."
+    },
+    {
+      "id": "28329",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Nantucket Pudding",
+          "blurb": "A guest who has already dined is pressed to try his hostess's prized pudding. Politeness demands one plate; hospitality has other plans.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Followed Through the Ruins",
+          "blurb": "A foreign traveler misses his turn at midnight in Moscow and strays into a quarter where a giant figure begins to follow. He speaks no Russian, and he is unarmed.",
+          "feelings": ["thrilling", "unsettling", "funny"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "30340",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Why Should I Be Fought For",
+          "blurb": "A husband appears at the terrace window while his wife stands with her lover. As a storm gathers outside, three people try to decide what happens next.",
+          "feelings": ["unsettling", "aching"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the wife's affair with the narrator exists and is discovered by her husband, a central turn of the novel.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "30434",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Honest, Just a Joke",
+          "blurb": "Two gunmen pick the wrong taxi to hold up. One passenger has a very large revolver, and the cabbie has a colorful past of his own.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "30849",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Scissors Duel",
+          "blurb": "In a prison yard a mocked soldier answers an insult to a young girl's name with a quiet promise. That night, two scissor blades settle it.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

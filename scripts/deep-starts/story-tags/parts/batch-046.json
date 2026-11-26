@@ -1,0 +1,190 @@
+{
+  "books": [
+    {
+      "id": "78111",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Four Wild Horses",
+          "blurb": "Plotting revenge on the road, a lady's maid collides with the handsome gentleman hunting for her mistress's address, and decides wild horses will not drag it from her.",
+          "feelings": ["funny", "romantic"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The passage stops mid-sentence in the closing line of dialogue, leaving her final speech unfinished."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78114",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Cup of Gyptis",
+          "blurb": "A Greek ship led by a priestess searches a coastline for an empty harbour, and finds a king's feast where a princess must choose her husband by handing a cup.",
+          "feelings": ["dreamlike", "romantic", "hopeful"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78115",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Boy and the Bear",
+          "blurb": "Ice-bound on a polar expedition, a fearless midshipman slips off the ship at midnight with one rusty musket, determined to bring home a bear's skin for his father.",
+          "feelings": ["adventurous", "funny"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Blind Eye",
+          "blurb": "Ships run aground, pilots lose their nerve, and a distant admiral signals retreat. Amid the smoke, a one-eyed commander raises a telescope and chooses not to see.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "war story",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A boyhood bear hunt on the ice and a fleet battle decades later; they share nothing but the man."
+    },
+    {
+      "id": "78116",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Long Walk in Tight Boots",
+          "blurb": "Cowboys who hate walking jog miles through the dark in tight boots, trailing a rival's horse to steal a glimpse of his secret trick-riding stunt.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78118",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Pup Night",
+          "blurb": "On the second night of term, hazers corner a sobbing younger boy in the dark road, and a newcomer decides this has gone far enough.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "slice of life",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78120",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Door in the Tree",
+          "blurb": "A cheerfully useless guide gets two children lost beneath twisted grey trees, where they find a small rusted door set into the biggest trunk of all.",
+          "feelings": ["eerie", "whimsical"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78124",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Invention of the Navy",
+          "blurb": "A gloriously muddled history lesson in which King Arthur invents conferences, Alfred builds longer ships than the Danes, and the defeated are made romantic by decree.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Wrong but Wromantic",
+          "blurb": "The Civil War explained at last: Cavaliers are Wrong but Wromantic, Roundheads Right but Repulsive, and under these circumstances war is inevitable.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate centuries and separate jokes in the same parody register; neither dulls the other."
+    },
+    {
+      "id": "78127",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Awake in the Dark",
+          "blurb": "A famous barrister wakes in pitch dark in a bunk that is not his bed, certain of yesterday's appointments and nothing else, least of all where he is.",
+          "feelings": ["dreamlike", "whimsical"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

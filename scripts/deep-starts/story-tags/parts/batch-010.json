@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "1260",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "How Dare I",
+          "blurb": "Trembling but unstoppable, a small girl finally tells the woman who raised her exactly what her coldness and cruelty have cost, and what she will tell the world.",
+          "feelings": ["aching", "thrilling"],
+          "kind": "other",
+          "warnings": ["cruelty", "child harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1268",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Thirty Miles to Land",
+          "blurb": "A storm-driven balloon sinks toward furious waves with land in sight; its passengers cling to the net and count the miles as the gas runs out.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1342",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Mr. Collins's Proposal",
+          "blurb": "A pompous clergyman proposes marriage with his reasons numbered and his patroness quoted; the lady refuses plainly, but refusal is not an answer he recognizes.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text cuts off mid-sentence on a dangling comma in Mr. Collins's final reply."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1353",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "England Can Afford It",
+          "blurb": "A catastrophe has left thirteen soldiers on a shrunken island where days last six hours; the two officers in charge calmly finish their chess move and settle the men's pay.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "It sketches the strange physical changes to the world whose cause the full book stages as a slow-dawning mystery.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1399",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Glance Between Strangers",
+          "blurb": "Stepping aside at a carriage door, an officer glances at a lady and must look again; something in her face keeps escaping her control.",
+          "feelings": ["romantic", "contemplative"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Steeplechase",
+          "blurb": "Before the Tsar and all the crowd, an officer and his beloved mare fly the barriers together, a rival's hoofbeats never fading behind them.",
+          "feelings": ["thrilling", "tragic", "aching"],
+          "kind": "tragedy",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "1400",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Twenty Minutes to Nine",
+          "blurb": "A boy is sent to play in a candlelit house where daylight never enters, before a lady in a yellowed bridal dress whose clocks stopped long ago.",
+          "feelings": ["eerie", "unsettling", "aching"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1510",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Taken with a Maid",
+          "blurb": "Arrested for being caught with a girl, a country clown disputes every word of the royal proclamation, from wench to damsel to maid.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Four Woodcocks in a Dish",
+          "blurb": "A lord who swore an oath against love hides to watch his king and two friends, one by one, read aloud the sonnets they should never have written.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "1513",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Two Blushing Pilgrims",
+          "blurb": "At a masked feast, a stranger takes a girl's hand and turns one touch into a playful theology of saints and pilgrims; then he learns whose daughter she is.",
+          "feelings": ["romantic", "bittersweet"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Balcony Scene",
+          "blurb": "From a dark orchard, a young man overhears the girl he loves asking the night why a name should stand between them, and steps out to answer.",
+          "feelings": ["romantic", "tender", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Consecutive beats of one courtship, but the ball's banter and the balcony's vows each land on their own."
+    },
+    {
+      "id": "1514",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Sharp Athenian Law",
+          "blurb": "A father hauls his daughter before the duke, demanding an old law: wed the suitor he chose or die. Left alone, the lovers make another plan.",
+          "feelings": ["romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "Cuts off mid-sentence in Hermia's closing vow ('Tomorrow truly will'), leaving the ending hanging in the air."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "1523",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Hercules Be Thy Speed",
+          "blurb": "An unknown young man insists on wrestling the duke's fearsome champion while two ladies cheer him on; his father's name matters more than anyone expects.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Cure for Love",
+          "blurb": "Deep in the forest, a quick-tongued youth corners the poet who hangs love rhymes on trees and prescribes a strange cure: woo me as your Rosalind.",
+          "feelings": ["funny", "whimsical", "romantic"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    }
+  ]
+}

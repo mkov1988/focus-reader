@@ -1,0 +1,256 @@
+{
+  "books": [
+    {
+      "id": "2147",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Chain of Thought",
+          "blurb": "On a night walk through Paris, a man answers his companion's silent thoughts aloud, then retraces every link of the invisible chain that led him there.",
+          "feelings": ["eerie", "contemplative"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2148",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Sealed Abbey",
+          "blurb": "A plague empties the countryside, its whole course half an hour. A prince gathers a thousand friends behind welded iron gates and provides every pleasure.",
+          "feelings": ["eerie", "grim"],
+          "kind": "other",
+          "warnings": ["illness", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Cask of Amontillado",
+          "blurb": "During carnival's madness, a man nursing a secret grudge dangles a rare wine before a connoisseur in motley and leads him down into the family catacombs.",
+          "feelings": ["unsettling", "grim"],
+          "kind": "crime",
+          "warnings": ["cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "2199",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Hector and Andromache",
+          "blurb": "A warrior in full armour reaches for his baby son, who shrieks at the nodding plume of his helmet. Laughter, a prayer, and a farewell follow.",
+          "feelings": ["tender", "aching", "bittersweet"],
+          "kind": "war story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2350",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "But Why Turkish?",
+          "blurb": "A detective glances at his friend's boots and asks an impossible question. Pressed to explain his method, he starts instead with mud splashes on a coat sleeve.",
+          "feelings": ["cozy", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2376",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Clock and the Cap",
+          "blurb": "A boy working at a furnace nudges the clock hands forward each morning to make it to school, then faces a second problem: every other child wears a hat.",
+          "feelings": ["tender", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Fifty Cents and a Broom",
+          "blurb": "Penniless in a strange city, a young traveler sleeps under a board sidewalk and unloads pig iron, still set on reaching the school of his dreams.",
+          "feelings": ["hopeful", "aching"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "2397",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Who Put Salt in the Water?",
+          "blurb": "A child springs into the surf without fear until a wave pulls the ground away. Rescued and furious, she has one burning question about the sea.",
+          "feelings": ["thrilling", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Everything Has a Name",
+          "blurb": "A wordless child meets the stranger who spells letters into her hand. The finger game means nothing to her until one morning beside the water spout.",
+          "feelings": ["hopeful", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "2465",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Letting Her Go",
+          "blurb": "A corporal marches a beautiful prisoner to jail through winding streets. She drops her mantilla, guesses his home country, and begins to speak his language.",
+          "feelings": ["romantic", "bittersweet"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2489",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Bedfellow with a Tomahawk",
+          "blurb": "In a dark inn room, a traveler's unknown bedfellow climbs in with a tomahawk pipe between his teeth. Neither man can make himself understood.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": ["era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2527",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Waltz and the Storm",
+          "blurb": "A young man waltzes at a country ball with a girl who dances with her whole heart, until a smiling stranger wags a finger and repeats one name.",
+          "feelings": ["romantic", "bittersweet"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2542",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Silk Stockings",
+          "blurb": "A wife shows a family friend the silk stockings she will wear tomorrow. His answers keep drifting toward a farewell she refuses to hear.",
+          "feelings": ["bittersweet", "aching"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Hints that Doctor Rank is near death, a thread the play unfolds gradually.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Discrepancy in the Date",
+          "blurb": "A man about to lose his post at the bank calls on the wife of the man dismissing him. He has a paper, and questions about a date.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "ruins",
+          "spoilerNote": "Reveals Nora's secret loan and forged signature, the discovery that drives the entire play.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate confrontations from different acts with no shared text or shared payoff."
+    }
+  ]
+}

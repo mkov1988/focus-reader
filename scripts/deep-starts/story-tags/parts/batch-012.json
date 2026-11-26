@@ -1,0 +1,256 @@
+{
+ "books": [
+  {
+   "id": "1837",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "No Hereditary Scratcher",
+     "blurb": "A boy dining before a solemn court is seized by an itch, and nothing in English history offers guidance on what to do next.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Rags and Splendours",
+     "blurb": "A little prince and a beggar boy trade stories of their worlds, then trade clothes for a lark, and a mirror shows them something strange.",
+     "feelings": ["whimsical", "adventurous", "bittersweet"],
+     "kind": "adventure",
+     "warnings": ["violence", "child harm"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "One stages the clothes swap, the other plays out a comic consequence at court; they complement without repeating."
+  },
+  {
+   "id": "1849",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Go Back to Lenox",
+     "blurb": "An old man arrives at a hotel trailing his vanished wife and finds a letter already waiting, four words scrawled in a peculiar shade of yellow pencil.",
+     "feelings": ["unsettling", "thrilling"],
+     "kind": "mystery",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "1872",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Dear Madman",
+     "blurb": "A gentleman of independent means picks his professions, and his railway stops, purely on whim. His latest stop lands him at a friend's door at exactly the wrong moment.",
+     "feelings": ["cozy", "funny", "unsettling"],
+     "kind": "mystery",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "1874",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Six Red Flags",
+     "blurb": "The hillside slides down onto the railway line, and three children with seven minutes and nothing red must find a way to warn the 11.29.",
+     "feelings": ["thrilling", "hopeful"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": true,
+     "brokenNote": "The final sentence is cut off in the middle of its phrase, ending on 'the sticks of the little red', a visible truncation right at the emotional climax."
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "1931",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Trophy Hat",
+     "blurb": "A freckled schoolgirl bursts in waving a gentleman's hat found where the enemy airship passed over, and she is not about to surrender it to anyone.",
+     "feelings": ["funny", "whimsical", "cozy"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "A Letter of Introduction",
+     "blurb": "A muddy stranger climbs through a lady's library window, apologizes beautifully, blocks her way to the bell, and seems to know exactly who everyone is.",
+     "feelings": ["whimsical", "unsettling"],
+     "kind": "mystery",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": "The hat found in one is the hat lost in the other; the link enriches both rather than repeating a payoff."
+  },
+  {
+   "id": "1952",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Yellow Smell",
+     "blurb": "In a damp week the smell arrives, creeping through every room of the house, hanging over her bed at night. She cannot name it, but she keeps trying.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "other",
+     "warnings": ["illness"],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "The rubbed streak round the room quietly foreshadows the tale's closing revelation without explaining it.",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Woman Behind the Pattern",
+     "blurb": "By moonlight the wallpaper pattern shakes. She begs her doctor husband to take her away; he knows better, of course. So she keeps watching.",
+     "feelings": ["eerie", "unsettling", "aching"],
+     "kind": "other",
+     "warnings": ["illness"],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Reveals the woman behind the pattern, a development the full tale builds to gradually, though the ending stays hidden.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "2038",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Voice in the Dark",
+     "blurb": "An officers' mess drowses through a hot evening of engagement talk until a tired voice lifts out of the darkness, asking for her husband.",
+     "feelings": ["funny", "unsettling"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "2040",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Immortal Druggist",
+     "blurb": "On a wet London Sunday a man steps into a chemist's shop and comes to believe the dull fellow behind the counter is no mortal at all.",
+     "feelings": ["dreamlike", "whimsical", "contemplative"],
+     "kind": "meditation",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Pensive Citadel",
+     "blurb": "At half past three on a July morning a schoolboy rises to run away, pausing to kiss a picture goodbye and smuggle a mighty trunk past his headmaster's door.",
+     "feelings": ["bittersweet", "funny", "contemplative"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "2087",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Trick With the Old Hat",
+     "blurb": "A schoolboy learns from an older boy that a certain old hat, moved just so, buys cakes for free in any shop in town.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "2097",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Brother's Watch",
+     "blurb": "To puncture his friend's dogmatic streak, a doctor hands over a newly cleaned pocket watch and asks what can possibly be read from it.",
+     "feelings": ["contemplative", "bittersweet"],
+     "kind": "mystery",
+     "warnings": ["death"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  }
+ ]
+}

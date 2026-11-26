@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "31257",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Monk's Cough",
+          "blurb": "Alone for her first night in a strange grand house, a girl hears coughing from a room the maid swears is empty, and learns the legend behind it.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Left Behind",
+          "blurb": "Two jealous cousins slip away by night to strand their prettier cousin at home, certain she is too timid to travel alone. Then a stranger knocks.",
+          "feelings": ["whimsical", "romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The journey scheme and the first night ghost legend are separate scenes with no shared text or shared payoff."
+    },
+    {
+      "id": "31469",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Sleeper's Many Faces",
+          "blurb": "Deep in a rotting damp house, a young man keeps the night watch while his sleeping uncle drifts into dreams that do not seem to be his own.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "The dream of a choking, possessing presence hints at the danger that later closes over the sleeping uncle in the full story.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "31635",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Secret Benefactor",
+          "blurb": "A breezy American walks into a shabby weekly's office with an odd proposition: send a young writer to Switzerland in style, and never tell her who paid.",
+          "feelings": ["funny", "whimsical", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "32398",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Bound in the Stolen Ship",
+          "blurb": "A pilot wakes tied hand and foot aboard his own stolen spacecraft, while the terrified thief at the controls flees glowing serpents that strip ships bare.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "32759",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Apples of Derketa",
+          "blurb": "Treed on a crag by a monster no blade can pierce, a barbarian lashes three sticks, a dagger, and poisoned fruit into one last weapon.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "33118",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A High Pink Finish",
+          "blurb": "At a hotel manicure table, a big spender in diamonds lays on the flattery while a sharp young manicurist files, parries, and weighs his dinner invitation.",
+          "feelings": ["funny", "romantic", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "33644",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Building With No Door",
+          "blurb": "In a lonely valley, a father and son blast their way into a sealed, humming building that has been doing something strange to the sunlight.",
+          "feelings": ["adventurous", "eerie"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "34206",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Story of the Humpback",
+          "blurb": "A merry humpback chokes at a tailor's supper, and his corpse begins a midnight journey from house to house as each new host panics.",
+          "feelings": ["funny", "grim"],
+          "kind": "comedy",
+          "warnings": ["death", "violence", "era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "It opens and closes mid-sentence, ending on a clipped word with the chain of blame still hanging unresolved."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "34856",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Question at Free Trade Hall",
+          "blurb": "Two young women bring one small banner and one question to a packed political meeting, and refuse to sit down until somebody answers it.",
+          "feelings": ["hopeful", "thrilling"],
+          "kind": "other",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "36034",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Girl on the Embankment",
+          "blurb": "Walking home late along a canal, a hopelessly shy dreamer hears a stranger crying at the railing, and chance hands him his first real conversation with a woman.",
+          "feelings": ["romantic", "tender", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

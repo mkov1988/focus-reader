@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "51649",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Escape in a Silk Gown",
+          "blurb": "Bailiffs search the house for a debt-dodging captain, who slips downstairs in his landlady's silk gown and veil. Staying free will take nerve, cheek, and one good punch.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "52404",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Ambush on the Platform",
+          "blurb": "A man waits alone for a shuttle train, one hand never leaving his coat pocket. Two strangers creep out of the woods behind him with a revolver.",
+          "feelings": ["thrilling", "grim"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "53419",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Chair Number Thirteen",
+          "blurb": "Aboard a night train, a traveler keeps glimpsing someone in chair thirteen, though the seat is plainly empty. Then a helpful voice speaks up behind her.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Toe in the Moonlight",
+          "blurb": "A traveler in a lockless room at a Dutch inn wakes at midnight to see a single bare human toe standing in a strip of moonlight.",
+          "feelings": ["eerie", "thrilling", "unsettling"],
+          "kind": "ghost story",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two unrelated tales from the same collection, with different settings and payoffs."
+    },
+    {
+      "id": "53874",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Adrift Below the Cliffs",
+          "blurb": "A stolen hour below the sea cliffs goes wrong: the lady cannot climb back, dusk is falling, fog is rolling in, and one small boat is their only chance.",
+          "feelings": ["thrilling", "romantic"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "55179",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Major and the Tiger",
+          "blurb": "Brought to bay, a tiger throws himself on his back, claws out, as hunters fire from their elephant. Then the twenty-two-stone major loses his balance.",
+          "feelings": ["funny", "adventurous"],
+          "kind": "comedy",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "57426",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Court Depressor",
+          "blurb": "Deep underground, a traveler and his dog meet a small solemn man whose hand glows clear as amber, and who sorrowfully bids them welcome to his land.",
+          "feelings": ["whimsical", "dreamlike"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "57669",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Thinking Machine's Wager",
+          "blurb": "A frail professor insists mind is master of all things, and wagers he can escape a prison death-cell within a week, asking only tooth powder, cash, and a shoeshine.",
+          "feelings": ["contemplative", "whimsical"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "57763",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Boy in the Cherry Tree",
+          "blurb": "A princess who knows only her birds and butterflies chases a strange purple butterfly to the palace wall, where a laughing boy pelts her with ripe cherries.",
+          "feelings": ["tender", "bittersweet", "whimsical"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "57821",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Changed Prayer",
+          "blurb": "Through the long nights an enslaved woman prays for her master's heart to change, while he brings buyers to look at her. In March, her prayer changes.",
+          "feelings": ["aching", "contemplative"],
+          "kind": "other",
+          "warnings": ["death", "era racism", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Rescue of Charles Nalle",
+          "blurb": "Word races through Troy that a fugitive has been seized and will be sent south. One woman pushes through the crowd to the commissioner's door and stands her ground.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "adventure",
+          "warnings": ["violence", "era racism", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate true episodes from the same life, one inward and quiet, one a public street rescue."
+    },
+    {
+      "id": "58866",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Question of Symmetry",
+          "blurb": "Over breakfast, a fastidious little man lectures his friend on sea sickness, nervous ladies, and the moral failings of an asymmetrical piece of toast.",
+          "feelings": ["funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Road to Merlinville",
+          "blurb": "A detective and his friend cross to France in high spirits, trading banter about fox hunts and footprints, summoned by a millionaire's plea for protection.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the client is found murdered on arrival, the inciting shock at the end of the novel's opening chapters.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The longer span alludes back to the breakfast conversation but shares no text with it, and their payoffs are entirely different."
+    }
+  ]
+}

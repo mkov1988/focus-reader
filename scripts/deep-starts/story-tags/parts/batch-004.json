@@ -1,0 +1,230 @@
+{
+ "books": [
+  {
+   "id": "174",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Talking Through Wagner",
+     "blurb": "An unexpected caller sweeps in, dressed as if by a tempest, and explains why she loves loud opera: one can talk the whole time without being heard.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "The Girl in the Greenroom",
+     "blurb": "Fresh from a disastrous performance, an actress glows with secret joy, certain her lover will understand why she can no longer pretend on stage.",
+     "feelings": ["aching", "tragic", "unsettling"],
+     "kind": "tragedy",
+     "warnings": ["cruelty"],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Reveals that Dorian turns on the actress Sibyl and destroys their engagement, an early turning point in the novel.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "175",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Voice in Box Five",
+     "blurb": "At the peak of her triumph, a soprano opens her mouth and an impossible sound comes out, while two managers feel an unseen presence breathing beside them.",
+     "feelings": ["eerie", "thrilling", "unsettling"],
+     "kind": "ghost story",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "mild",
+     "spoilerNote": "Gives away the ghost's sabotage of Carlotta and the chandelier disaster, a famous set piece the novel stages as a shock.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "202",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Fight with Covey",
+     "blurb": "Seized in a stable loft before dawn, a young man who has trembled at his tormentor's word for months discovers, mid fight, that he is done trembling.",
+     "feelings": ["thrilling", "hopeful"],
+     "kind": "other",
+     "warnings": ["violence", "cruelty", "era racism"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "203",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "Eliza Crosses the Ice",
+     "blurb": "With slave catchers minutes behind her, a mother snatches up her child and runs for the frozen river, where broken ice heaves between her and free ground.",
+     "feelings": ["thrilling", "hopeful"],
+     "kind": "adventure",
+     "warnings": ["cruelty", "era racism"],
+     "intensity": "gripping",
+     "spoiler": "mild",
+     "spoilerNote": "Shows that Eliza's famous escape across the river ice succeeds, defusing the novel's first great chase.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "204",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Halfpenny Bun",
+     "blurb": "A red haired young man orders his usual halfpenny bun and black coffee, then adds one more item to the order: the shopgirl's hand in marriage.",
+     "feelings": ["funny", "romantic", "whimsical"],
+     "kind": "love story",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "205",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Mouse at Lunchtime",
+     "blurb": "While building a house in the woods, a man is visited each lunchtime by a wild mouse that has never seen a person before.",
+     "feelings": ["cozy", "tender", "whimsical"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "A Man Against a Loon",
+     "blurb": "On a calm October pond, a paddler tries to outguess a diving loon whose wild laughter keeps ringing out from wherever he is not looking.",
+     "feelings": ["whimsical", "contemplative", "dreamlike"],
+     "kind": "slice of life",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "209",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "The Man on the Tower",
+     "blurb": "A young governess on her evening stroll daydreams of meeting a charming stranger on the path, until her imagination suddenly turns real in the wrong place.",
+     "feelings": ["eerie", "unsettling"],
+     "kind": "ghost story",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "215",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Man in the Red Sweater",
+     "blurb": "A kidnapped dog, caged and raging for two days, meets a calm man in a red sweater who carries a hatchet and a club.",
+     "feelings": ["grim", "unsettling", "aching"],
+     "kind": "adventure",
+     "warnings": ["animal harm", "violence", "death", "cruelty"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "221",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Smiling Blackmailer",
+     "blurb": "A plump, purring gentleman with a frozen smile names his price for a lady's indiscreet letters, and no appeal, threat, or trap can shift him.",
+     "feelings": ["unsettling", "thrilling"],
+     "kind": "crime",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "223",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The King of Thieves",
+     "blurb": "A coach tips over a cliff into a flowery hollow so soft it seems providential, and a little priest wonders aloud why they fell just there.",
+     "feelings": ["adventurous", "whimsical", "thrilling"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "mild",
+     "spoilerNote": "Gives away the courier Ezza's secret identity as the brigand king Montano, a mid story surprise in one of the collection's tales.",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  }
+ ]
+}

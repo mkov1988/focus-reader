@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "6130",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Hector and Andromache",
+          "blurb": "A warrior slips home from the battle to find his wife and infant son at the city gate. She begs him to stay; he answers with what honor demands.",
+          "feelings": ["tender", "aching", "tragic"],
+          "kind": "war story",
+          "warnings": ["death", "violence"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Hector's forebodings of his own death and Troy's fall point toward the epic's ending, though the poem itself announces both throughout.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "6133",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Letter From Prison",
+          "blurb": "A country baron signs for a registered letter and reads, in flawless courtesy, a list of his own treasures and an eight-day deadline.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Passenger List",
+          "blurb": "Word spreads that a famous burglar is aboard a transatlantic steamer, traveling under a name beginning with R. The passengers turn detective, and the jewels start disappearing.",
+          "feelings": ["thrilling", "funny"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "6235",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Night Climb",
+          "blurb": "The tide is out and the moon is up as a sailor sets his fingers to a cliff no one has climbed, with a girl's voice calling from below.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "6593",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Churchyard Battle",
+          "blurb": "A village mob turns on one young woman in a churchyard, and she answers with a skull and a thigh-bone, in the grandest epic style.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "6635",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Race to the Crossing",
+          "blurb": "Two riders tear toward the city at a mad gallop until a train whistle and a falling crossing gate stop everything at once.",
+          "feelings": ["thrilling", "romantic"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Eleven Nickels",
+          "blurb": "A ragged small boy with a crowbar breaks into a saloon after dark, bent on settling accounts with the machine that swallowed his nickels.",
+          "feelings": ["whimsical", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "6768",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Falling for a Swimmer",
+          "blurb": "A well-brought-up young man knows staring is rude, but the girl swimming past the pier is a special case, and the railing is only so high.",
+          "feelings": ["funny", "romantic"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Knocking From Above",
+          "blurb": "A composer at her piano keeps hearing a boot-heel banging on the ceiling. She marches upstairs to crush the brute responsible.",
+          "feelings": ["funny", "romantic", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate stories from the same collection; neither touches the other."
+    },
+    {
+      "id": "7326",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Pike and the Lady",
+          "blurb": "A young fisherman hooks the pike of a lifetime just as a beautiful stranger kneels on the bank to help, with dragoons on the road behind her.",
+          "feelings": ["adventurous", "romantic"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "7452",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Flight Toward the Himalayas",
+          "blurb": "Three schoolboys in new English clothes slip away by train toward the mountains, hoping for masters and cosmic consciousness, with a clever older brother on their trail.",
+          "feelings": ["adventurous", "funny", "bittersweet"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "7735",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Highwayman's Prescription",
+          "blurb": "Three highwaymen stop a nobleman's carriage on a frosty road. What follows is less a robbery than a duel of perfect manners.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "8486",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Prince of the Air",
+          "blurb": "In an old count's papers, a traveling scholar finds a recipe for long life that begins with a pilgrimage to Chorazin. He finds himself lingering by the mausoleum.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "It reveals the count's secret occult pilgrimage, which the full tale uncovers gradually, though the story's ending stays untouched.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

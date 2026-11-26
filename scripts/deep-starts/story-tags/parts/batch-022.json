@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "19742",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Make-Believe Bride",
+          "blurb": "Roped into posing for a moving picture crew, a girl and her reluctant guardian play out a runaway wedding at the blacksmith's anvil, and something in the game turns real.",
+          "feelings": ["romantic", "whimsical", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "His secret purchase of the wedding gown hints at the romance the book is quietly building toward.",
+          "broken": true,
+          "brokenNote": "The text cuts off mid-sentence in its final line ('because, whatever happens, I'), so the closing thought never lands."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "20121",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Court of Political Justice",
+          "blurb": "A newcomer watches a murder trial where both sides agree the defendant did it, and the only question is what the dead senator did to deserve it.",
+          "feelings": ["funny", "unsettling"],
+          "kind": "satire",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "20203",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Three Puffy Rolls",
+          "blurb": "A soaked, hungry young runaway arrives in a strange city with a dollar in his pocket, buys three great puffy rolls, and walks straight past his future wife's door.",
+          "feelings": ["cozy", "hopeful"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "20439",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Arrested for Voting",
+          "blurb": "A deputy marshal rings the doorbell to arrest a woman for the crime of casting a ballot. She insists on being treated like any other criminal.",
+          "feelings": ["funny", "hopeful"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "20628",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Girl in the Shop Window",
+          "blurb": "A lonely lumberman confides an odd secret: the mannequin in a shop window he passes every noon is breathing, and she is exactly the girl he has dreamed of.",
+          "feelings": ["funny", "whimsical", "romantic"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "21092",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Bluff on Spaceman's Row",
+          "blurb": "Disguised as a shady freighter crew in a spaceport dive, two undercover lawmen work a scarred stranger for a lead, spinning lies they cannot afford to unravel.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "21430",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Heretic Marriage",
+          "blurb": "An Englishman in Mexico loves a lady the Church refuses to marry to a heretic. He finds his own way to the altar, and the Church does not forgive it.",
+          "feelings": ["funny", "romantic"],
+          "kind": "love story",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "21536",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Silence Behind the Door",
+          "blurb": "Alone at midnight, a man lights strange powders, reads from an old book, and waits. The silence that answers is not the silence of an empty room.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "21638",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "She Would Not Let Him",
+          "blurb": "A conqueror announces a prisoner will die tomorrow. The only thing standing in his way is a girl who calmly tells him no.",
+          "feelings": ["thrilling", "tender"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals Elza's feelings for the narrator and the conqueror's weakness for her, threads the book develops slowly.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Burning Tower",
+          "blurb": "One charge in a borrowed weapon, one princess behind an electrified tower wall, and a city waking to alarms. A rescue with no room to pause.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Shows Wolfgar secretly working for the heroes, an allegiance the book stages as its own discovery.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate episodes with different leads; the defiance scene and the tower escape share no text and neither gives away the other's payoff."
+    },
+    {
+      "id": "21700",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Midnight Search",
+          "blurb": "A jealous old husband storms his young wife's bedroom with lawyers and pistols, hunting a lover. She answers with the most magnificent scolding in Spain.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "78046",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Telling His Father",
+          "blurb": "A young man leans across the table and tries to tell his father about the woman who makes him hold his breath. His father listens, then reaches over.",
+          "feelings": ["tender", "romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Long Walk Uptown",
+          "blurb": "Down to one pipeful of tobacco and a humiliating offer, a hungry man drinks a neighbor's coffee, dreams over blueprints, then walks uptown into the snow.",
+          "feelings": ["aching", "grim"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "78047",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Brides of Venice",
+          "blurb": "Pirates burst into a Venetian wedding and carry off the brides, dowry chests and all. The Doge girds on his sword and the bridegrooms give chase.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78048",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Them Huggins Boys",
+          "blurb": "A newcomer to the Sandhills keeps hearing ill of two notorious brothers, and a station agent's tangled warning only deepens the mystery.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78055",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Married This Afternoon",
+          "blurb": "She agrees to fly to Callisto with him only after a provisional marriage, and he grins and tells her the paperwork was signed that afternoon.",
+          "feelings": ["unsettling"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Headache Satellite",
+          "blurb": "A couple lands on a nightmare moon where an unheard pulse floods their minds, and finds survivors pinned down by something that answers every signal with a blast.",
+          "feelings": ["eerie", "thrilling"],
+          "kind": "adventure",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "78060",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Girl on the Platform",
+          "blurb": "Coming home after a year away, a traveler steps off the train because his old love beckons from the platform. On the dark road, she is nowhere.",
+          "feelings": ["eerie", "aching"],
+          "kind": "ghost story",
+          "warnings": ["illness"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78067",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Seal Chaser",
+          "blurb": "During a circus diving act, an outlandish spectator bolts from his seat to catch the performing seal before she bites somebody, and chases her up to the tank.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Runaway Balloon",
+          "blurb": "A balloon snaps its cable with eight passengers aboard, and a young circus flier powers up his steel-winged machine to chase it above the clouds.",
+          "feelings": ["thrilling", "adventurous", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "78073",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Challenger's Category",
+          "blurb": "Sealed in a soundproof force field, an undefeated stamp expert faces a challenger whose chosen category is the planet Mars, with questions no human has seen.",
+          "feelings": ["thrilling", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "Cuts off mid-sentence during the first round of questions, before the contest turns or resolves anything."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78083",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Princess Who Feared Daylight",
+          "blurb": "A slighted fairy decrees that a wished-for princess must not see daylight before fifteen, so she rides to her lovesick prince in a coach without windows.",
+          "feelings": ["dreamlike", "whimsical", "bittersweet"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78084",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Three Knocks at Midnight",
+          "blurb": "A storm howls around a country house at midnight when three loud knocks sound at the door, and a stranger enters dressed, for an instant, in rainbow colors.",
+          "feelings": ["eerie", "cozy"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "78086",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "No Big Elk Boy",
+          "blurb": "Held as a spy by one prickly cow town, a scrawny stranger fights back the only way he knows: insulting it to its face, at length.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

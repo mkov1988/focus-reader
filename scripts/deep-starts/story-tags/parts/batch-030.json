@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "36462",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Sword in the Stone",
+          "blurb": "England has no king, and a sword no lord can budge stands in a churchyard stone. A boy rides back for his brother's forgotten blade.",
+          "feelings": ["hopeful", "adventurous"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "36725",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Banished Magdalene",
+          "blurb": "A village that stages the Passion has cast out its finest player. On a stormy night she walks the weir plank, and a stranger watches from the shore.",
+          "feelings": ["aching", "tender", "hopeful"],
+          "kind": "other",
+          "warnings": ["suicide", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "37106",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Behind the Curtain",
+          "blurb": "At a dance, a girl who hates parties backs into a curtained nook already occupied by a shy boy from next door.",
+          "feelings": ["cozy", "funny", "tender"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The final line stops mid sentence, so the reader hits a visible truncation instead of an ending."
+        },
+        {
+          "tier": "story",
+          "title": "Anger on Thin Ice",
+          "blurb": "Amy burns the little book her sister spent years writing. Jo vows never to forgive her, while the last ice of winter waits on the river.",
+          "feelings": ["aching", "thrilling"],
+          "kind": "slice of life",
+          "warnings": ["child harm"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "37499",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "An Hour After Midnight",
+          "blurb": "It is an hour after midnight; a letter has just told a general that his friend is dead. He writes through grief to the one soul that steadies him.",
+          "feelings": ["aching", "romantic", "contemplative"],
+          "kind": "meditation",
+          "warnings": ["death"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "38177",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Two Minutes for Panting",
+          "blurb": "At a fashionable spa, the whole town's morning is ruled by one very small man with a monocle, a physician with an enormous watch, and perfect timing.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "satire",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "38311",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Lilacs at Sunrise",
+          "blurb": "A guest slips out at dawn to bid goodbye to a borrowed paradise and to the woman who belongs in it. Then a window opens above him.",
+          "feelings": ["romantic", "dreamlike", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "38477",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Doctor's Scar",
+          "blurb": "A country doctor carries a long scar down his jaw. The story behind it begins with a slip on a rug in a room full of surgical instruments.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "other",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "38983",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Singing House",
+          "blurb": "Lost on a winter night and unable to recall her friend's name, a girl hears a voice singing inside a dark and empty house.",
+          "feelings": ["eerie", "whimsical"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "40284",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Out of the Wreckage",
+          "blurb": "A man wakes in the night forest beside a burning plane, with a lump on his head and no memory beyond one blinding flash of light.",
+          "feelings": ["dreamlike", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "40361",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Pirates' Chorus",
+          "blurb": "Two travelers reach a lonely moorland inn where a room full of young gentlemen sings pirate songs. One listener knows exactly what the singing means.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Shows that Major Helzephron commands the pirate gang, an identity the novel spends its early chapters building toward.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

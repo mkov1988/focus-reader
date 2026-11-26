@@ -1,0 +1,243 @@
+{
+  "books": [
+    {
+      "id": "45631",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "My Beloved Violin",
+          "blurb": "Locked in years of bondage, a man tells what one violin gave him: friends, rest, comfort at midnight, and the wildest dancing in Louisiana starlight.",
+          "feelings": ["bittersweet", "tender", "hopeful"],
+          "kind": "meditation",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "47221",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Niece of Cinna",
+          "blurb": "Surrounded on a dark Roman road by three swaggering men of rank, a young woman has only her name, her nerve, and one loyal slave beside her.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Summons by Moonlight",
+          "blurb": "A secret note calls a young Roman to a moonlit temple where a veiled woman waits. She offers him everything; he wants only to see her face.",
+          "feelings": ["dreamlike", "unsettling", "thrilling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals who the veiled woman at the temple is and that she becomes the hero's secret enemy, a discovery the book stages through the mysterious summons.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Different characters and different nights; neither scene touches the other's payoff."
+    },
+    {
+      "id": "47262",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "First Night at the Wheel",
+          "blurb": "His pilot falls sick, the raftsmen want Stillwater tonight, and a boy of nineteen takes the wheel just as lightning rolls down the lake.",
+          "feelings": ["adventurous", "thrilling", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "47960",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Balcony Scene",
+          "blurb": "Hidden in a dark orchard, a young man hears the girl above confess her love to the night air. He answers, though being found means death.",
+          "feelings": ["romantic", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "48296",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Robbler's Feather",
+          "blurb": "On a Tyrol mountain path, a feather worn the wrong way in a hat means a challenge to fight. A girl hurries to explain before fists fly.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "48320",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Battered Hat",
+          "blurb": "Two men examine a shabby black hat a stranger left behind. One sees nothing; the other reads the owner's whole fortunes from its brim.",
+          "feelings": ["funny", "contemplative"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Bar of Gold",
+          "blurb": "A doctor is pulled from his fireside to fetch a friend home from an opium den by the docks. Among the smoke, an old man plucks his sleeve.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two entirely separate cases with no shared text or shared reveals."
+    },
+    {
+      "id": "48893",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Two Horses in Step",
+          "blurb": "Two riders pace down an avenue of elms at sunset, horses perfectly in step, neither speaking. He will call it the one moment he truly lived.",
+          "feelings": ["romantic", "dreamlike", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "49987",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Man in Lincoln Green",
+          "blurb": "A lord's kinsman spoils a village May dance and calls for a farmer's ears. Then a stranger in green leaps from the inn window, staff in hand.",
+          "feelings": ["adventurous", "thrilling"],
+          "kind": "adventure",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "50133",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Forbidden Loan",
+          "blurb": "A librarian looks up at a bent, goatish giant asking to borrow a dreadful old book, and weighs what refusing such a visitor might cost.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "States outright that the visitor is barely human and hints his mother met a dark end, points the book unveils gradually.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Prints in the Road",
+          "blurb": "Dogs bark all night in a hill country village. By morning there are round prints in the road, big as barrel heads, and the party line hums with panic.",
+          "feelings": ["eerie", "unsettling", "grim"],
+          "kind": "other",
+          "warnings": ["animal harm"],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Mentions in passing that Wilbur has died and that something was reared in the sealed house, developments the book stages before this point.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate episodes; the story span notes in passing a death that follows the short's scene, but neither contains the other's payoff."
+    },
+    {
+      "id": "50290",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Runaway Freighter",
+          "blurb": "From a station promenade, watchers follow a doomed freighter circling Earth like a runaway moon, waiting for the flare that will end it.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

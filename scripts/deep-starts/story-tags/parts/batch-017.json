@@ -1,0 +1,204 @@
+{
+  "books": [
+    {
+      "id": "4599",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Earl and the Bull",
+          "blurb": "A timid young clerk hears shouting from a pasture: an elderly earl is holding off a charging bull with nothing but a garden spud.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "4712",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Man Who Called Himself Farr",
+          "blurb": "A sunburnt stranger in vagrant's clothes strolls a June road, baffling a constable, rescuing a stalled motorcar, and trading looks with a girl who remembers to say please.",
+          "feelings": ["whimsical", "romantic", "hopeful"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "4918",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Dandelion Clock",
+          "blurb": "Alone by the bridge, a girl blows dandelion seeds to divine a stranger's age. On the very last puff, a shadow falls across the grass.",
+          "feelings": ["romantic", "whimsical", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5131",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Eve of Waterloo",
+          "blurb": "Brussels dances by lamplight, a thousand hearts beating happily, when a deep sound rolls in from the distance. Some say it is only the wind.",
+          "feelings": ["thrilling", "tragic", "aching"],
+          "kind": "war story",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5222",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Sacred Goose",
+          "blurb": "Three sacred geese ambush a temple guest, and he fights back with a table leg. The priestess returns to find her darling dead and her house polluted.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5225",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Widow of Ephesus",
+          "blurb": "A widow famed for devotion vows to starve in her husband's tomb. Nearby, a soldier guarding crucified thieves notices a light among the graves.",
+          "feelings": ["funny", "grim"],
+          "kind": "satire",
+          "warnings": ["death", "sexual content", "suicide"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5307",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Da Capo!",
+          "blurb": "After a rehearsal so wretched he nearly stays home, a young composer goes to his symphony's premiere, resolved to seize the first violin himself if things go wrong.",
+          "feelings": ["hopeful", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5610",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Shelter from the Storm",
+          "blurb": "A sudden storm drives three drenched walkers to a bachelor's gate. He lights the kitchen fire, pours brandy, and hands round tea while the thunder does its work.",
+          "feelings": ["cozy", "romantic", "tender"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5700",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Wedding in the Dark",
+          "blurb": "On a quiet Sunday evening a young governess learns her wedding is to happen at once, in a darkened room, to a bridegroom who cannot bear the light.",
+          "feelings": ["dreamlike", "romantic", "eerie"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the heroine's secret marriage to the unseen recluse takes place, a mid-book development, though the deeper mystery of the bridegroom stays intact.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "5921",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Undoer of Wrongs",
+          "blurb": "A knight-errant follows cries into a thicket, where a farmer flogs a shepherd boy. Justice is pronounced, sworn to, and left to keep itself.",
+          "feelings": ["funny", "grim"],
+          "kind": "satire",
+          "warnings": ["violence", "child harm", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

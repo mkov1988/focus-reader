@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "2868",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Crate Came Alone",
+          "blurb": "A precious mummy case arrives without the assistant who guarded it across the sea. As an impatient professor pries off the lid, an old woman asks where her boy is.",
+          "feelings": ["unsettling", "grim", "tragic"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals the murder discovery that launches the novel's mystery, though nothing of who did it or why.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3011",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Stag at Eve",
+          "blurb": "A stag wakes at dawn to hounds and horns on the mountain. The whole glen erupts as the chase sweeps past, then fades into silence.",
+          "feelings": ["thrilling", "adventurous", "contemplative"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3044",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Fire in the Thatch",
+          "blurb": "Thatch blazes faster than water can touch it, and one man vanishes into the burning inn. Neighbors force the door against the flames to bring him out.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that the inn burns down, an event the novel stages as a dramatic turn in its central mystery.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3070",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Marks Beside the Body",
+          "blurb": "A country doctor recounts the night he examined a dead man whose face was convulsed with fear, then lowers his voice to name what he found nearby.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "mystery",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Curse of the Baskervilles",
+          "blurb": "An old manuscript tells how a wicked squire carried off a farmer's daughter, and what came running over the moonlit moor on the night she fled.",
+          "feelings": ["eerie", "grim", "thrilling"],
+          "kind": "ghost story",
+          "warnings": ["violence", "death", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "One is the ancient family legend and the other the modern death it haunts; they share no text and neither gives away the other's payoff."
+    },
+    {
+      "id": "3146",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Terrible Science",
+          "blurb": "Under the open night sky, a young astronomer argues that the stars offer not wonder but horror: sizes beyond awe, and lights already dying.",
+          "feelings": ["contemplative", "eerie"],
+          "kind": "meditation",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Five Minutes to Eleven",
+          "blurb": "Two lovers slip into a near-empty church to be married in secret, fearing every passing glance. The parson is late, and she begins to read omens.",
+          "feelings": ["romantic", "tender", "bittersweet"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Shows that the astronomer and the lady marry in secret, a development the novel spends chapters building toward.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "A starlit conversation and a secret wedding from different stretches of the book; nothing shared, nothing deflated."
+    },
+    {
+      "id": "3177",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Genuine Mexican Plug",
+          "blurb": "A newcomer to a frontier town, dazzled by the local horsemanship, bids on an auction horse with one remarkable talent. A stranger's whisper closes the sale.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3289",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Bodymaster's Welcome",
+          "blurb": "A cocky newcomer elbows through a crowded saloon to introduce himself to its dangerous owner, and the interview swings from banter to a drawn revolver.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3321",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "First Night Out",
+          "blurb": "Fresh from prison, a quick-tongued schemer settles an old score on a dark pier, then climbs the stairs to dinner and finds a girl all grown up.",
+          "feelings": ["thrilling", "romantic"],
+          "kind": "crime",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3526",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Through the Zone of Fire",
+          "blurb": "Becalmed over dark villages as a tropical tempest gathers, three balloonists must choose: drop toward the trees or climb straight through the lightning.",
+          "feelings": ["thrilling", "adventurous", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "3748",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Voices in the Granite",
+          "blurb": "Lost in absolute darkness deep underground, a weakened wanderer presses his ear to the rock and catches what cannot possibly be there: words.",
+          "feelings": ["eerie", "hopeful"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

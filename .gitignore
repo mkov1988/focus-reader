@@ -76,6 +76,8 @@ lint_output.txt
 !/scripts/deep-starts/deep-pass-results/
 !/scripts/deep-starts/*.mjs
 !/scripts/deep-starts/.verify-workflow.js
+!/scripts/deep-starts/story-tags.json
+!/scripts/deep-starts/story-tags/
 
 # Generated triage/scratch artifacts from the story-start + recap pipelines.
 scripts/.story-starts-report.json

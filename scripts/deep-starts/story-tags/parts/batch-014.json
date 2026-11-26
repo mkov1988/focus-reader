@@ -1,0 +1,217 @@
+{
+  "books": [
+    {
+      "id": "2610",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Drop of Water",
+          "blurb": "Chained to the pillory, a deaf man endures the crowd's stones and jeers. He begs for a drink, and the last person he expects climbs the ladder.",
+          "feelings": ["aching", "tender", "hopeful"],
+          "kind": "other",
+          "warnings": ["violence", "cruelty"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2638",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Last Five Minutes",
+          "blurb": "A condemned man, given five minutes before execution, divides them carefully: farewells, reflection, one last look. A sunlit church spire holds his gaze until the end.",
+          "feelings": ["contemplative", "dreamlike", "aching"],
+          "kind": "meditation",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2641",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Something Tremendous Has Happened",
+          "blurb": "At dusk in an Italian square, a young woman sees a stabbing and faints into the arms of a man she hardly knows. The walk home changes something.",
+          "feelings": ["romantic", "contemplative", "unsettling"],
+          "kind": "love story",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Signals the bond forming between the two leads, a connection the novel keeps in suspense.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2701",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Gold for the White Whale",
+          "blurb": "A captain holds a Spanish gold coin up to the sun and nails it to the mast, promising it to whoever first sights a certain white whale.",
+          "feelings": ["thrilling", "eerie"],
+          "kind": "sea story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2806",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Kings of Kafiristan",
+          "blurb": "Two sunburnt loafers walk into a newspaper office at four in the morning with maps to borrow and a plan: march into a wild mountain country and crown themselves kings.",
+          "feelings": ["adventurous", "funny"],
+          "kind": "adventure",
+          "warnings": ["era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2813",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Something in the Cream Puff",
+          "blurb": "In a grand hotel dining room, a watchful young woman sees an elegant Baroness quietly take something out of her dessert that should not be there.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "Shows the Baroness slipping in her fake accent, flagging early the disguise the novel later unmasks.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2825",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Girl Without a Soul",
+          "blurb": "On her wedding evening, a laughing girl tells the priest she has no soul, then asks through tears whether such a gift is lovely or terrible.",
+          "feelings": ["eerie", "unsettling", "dreamlike"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "mild",
+          "spoilerNote": "States outright that she has no soul, the secret of her nature that the book reveals just after the wedding.",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Island in the Flood",
+          "blurb": "A storm has cut the peninsula off from the world, and a knight wades into the midnight flood, warned off by a voice in the water, to find a girl lost in it.",
+          "feelings": ["dreamlike", "romantic", "eerie"],
+          "kind": "fairy tale",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate scenes with no shared text; the short's soul confession is not the flood story's payoff."
+    },
+    {
+      "id": "2833",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Splendid Security",
+          "blurb": "An English lord lays his heart, his lands, and the whole world's climates at a young American woman's feet. She likes him immensely. And yet.",
+          "feelings": ["romantic", "bittersweet", "contemplative"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Implies she will refuse this eligible suitor, settling early one of the novel's open questions.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2848",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "David and Goliath",
+          "blurb": "A giant in brass armor taunts an army for forty days, until a shepherd boy carrying provisions to his brothers decides someone should answer him.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "war story",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "2852",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "A Hound of Hell",
+          "blurb": "A wild and godless squire carries off a yeoman's daughter. When she escapes across the moonlit moor, he swears his soul to the Powers of Evil and rides.",
+          "feelings": ["eerie", "grim", "thrilling"],
+          "kind": "ghost story",
+          "warnings": ["violence", "death", "cruelty"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

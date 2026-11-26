@@ -1,0 +1,217 @@
+{
+ "books": [
+  {
+   "id": "21767",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Bear Pit",
+     "blurb": "A pleasant zoo outing turns in an instant when a restless toddler squirms above the sunken bear den, and only one quiet man does not step back.",
+     "feelings": ["thrilling", "tender"],
+     "kind": "love story",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22063",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Runaway Scow",
+     "blurb": "A rope snaps and a scow with one crouching passenger is swept into a black-walled canyon; a young man leaps aboard as the rapids ahead begin to roar.",
+     "feelings": ["thrilling", "romantic"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22066",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Hill at Manassas",
+     "blurb": "Shells scream over a hilltop where a quiet general steadies his men, while up from the smoke below gallops a rider crying that all is lost.",
+     "feelings": ["grim", "thrilling"],
+     "kind": "war story",
+     "warnings": ["violence", "death"],
+     "intensity": "gripping",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22094",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "The Price of a Christian",
+     "blurb": "At a desert well, a traveling Englishman learns that the local chief means to kill him for being a Christian, and the haggling begins.",
+     "feelings": ["thrilling", "funny"],
+     "kind": "adventure",
+     "warnings": ["violence", "cruelty"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22210",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Through the Sleeping Camp",
+     "blurb": "A traveler creeps into a strangers' camp at night, watching firelit faces and spinning prayer wheels, then leads his men straight through it in the dark.",
+     "feelings": ["adventurous", "thrilling"],
+     "kind": "adventure",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22304",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Sold at the Ford",
+     "blurb": "A crowd jeers at a ford as a slave dealer praises his wares: a lean girl with burning eyes, chained wrists, and a welt across her shoulders.",
+     "feelings": ["grim", "aching"],
+     "kind": "slice of life",
+     "warnings": ["cruelty"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    },
+    {
+     "tier": "story",
+     "title": "Firelight and Fury",
+     "blurb": "A young storyteller holds a camp of drovers spellbound with a tale of the afterlife, until one burly listener demands to know how he can know it.",
+     "feelings": ["thrilling", "unsettling"],
+     "kind": "slice of life",
+     "warnings": ["violence"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "none",
+   "pairNote": ""
+  },
+  {
+   "id": "22342",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Not Even a Little Pink",
+     "blurb": "American visitors stand in Red Square and find it, somehow, not red at all; a sour MVD man defends the symbolism of glorious Russia.",
+     "feelings": ["funny", "whimsical"],
+     "kind": "comedy",
+     "warnings": [],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22372",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "Be You a Real Doctor?",
+     "blurb": "From a miserable makeshift boat, a silent brown-faced figure waits offshore for hours before daring a single question of the doctor at the rail.",
+     "feelings": ["aching", "tender"],
+     "kind": "slice of life",
+     "warnings": ["illness"],
+     "intensity": "gentle",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22400",
+   "spans": [
+    {
+     "tier": "short",
+     "title": "A Reckless Act of Zeal",
+     "blurb": "An English merchant in Portugal, appalled by the worship at a royal wedding, settles his affairs, closes his books, and returns to the cathedral with a New Testament.",
+     "feelings": ["tragic", "grim"],
+     "kind": "tragedy",
+     "warnings": ["violence", "death"],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  },
+  {
+   "id": "22536",
+   "spans": [
+    {
+     "tier": "story",
+     "title": "A Card of Lace",
+     "blurb": "A respectable lady buys black lace in a Bath shop; a quarter hour later she stands accused of theft, facing gaol and perhaps transportation.",
+     "feelings": ["unsettling", "tender"],
+     "kind": "crime",
+     "warnings": [],
+     "intensity": "steady",
+     "spoiler": "none",
+     "spoilerNote": "",
+     "broken": false,
+     "brokenNote": ""
+    }
+   ],
+   "pairOverlap": "single",
+   "pairNote": ""
+  }
+ ]
+}

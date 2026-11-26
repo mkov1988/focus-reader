@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "76462",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Man Called Brown",
+          "blurb": "A self-satisfied spy creeps up a dark hillside to eavesdrop on a mysterious wireless operator, and hears rather more about his colleague's loyalty than he bargained for.",
+          "feelings": ["funny", "thrilling"],
+          "kind": "satire",
+          "warnings": ["violence"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76533",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Flight from the Crystal Baths",
+          "blurb": "An earthquake splits a vast crystal bathhouse, and a winged islander straps a wingless visitor to her back for a desperate flight through the collapsing roof.",
+          "feelings": ["thrilling", "dreamlike"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The final sentence is cut off mid-clause, ending on the words \"as it leapt over the\"."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76541",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "A Shot in the Dark Street",
+          "blurb": "Two drunk friends weave down a dark street of little shops until a silent stranger blocks their path. What happens next takes seconds, and lands on the wrong man.",
+          "feelings": ["grim", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Body in the Snow",
+          "blurb": "A lawyer is flagged down on a frozen road where an old client lies dead in the snow. Then a mild stranger with a furled umbrella steps from the dark.",
+          "feelings": ["eerie", "funny"],
+          "kind": "mystery",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The two scenes come from different cases in the same collection and share no text or payoff."
+    },
+    {
+      "id": "76553",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Coolest Lady Afloat",
+          "blurb": "A gallant artist hurls himself into the surf to save a lady drifting out to sea, only to find her provokingly unbothered by her own rescue.",
+          "feelings": ["funny", "romantic", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76592",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Whom He Loves Best",
+          "blurb": "A butler crosses himself as he announces the visitor. Alone in the sunny drawing room, the caller lays out a scrap of red silk and a card bearing a curse.",
+          "feelings": ["eerie", "unsettling", "grim"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76634",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Memorandum Book",
+          "blurb": "On a silent winter street, an assailant demands a memorandum book from a frail old man who knows too much. A young journalist's footsteps arrive a moment late.",
+          "feelings": ["tragic", "grim", "aching"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76668",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Shooting the Rapids",
+          "blurb": "A quiet bushman stands up in his canoe, reads the raging water ahead, and drives his frail craft straight into the torrent with a plan behind his eyes.",
+          "feelings": ["thrilling", "adventurous"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Place of the Testing",
+          "blurb": "A quiet trapper watches his wife watching the handsome guest in the bow of the canoe. Ahead, the rapids roar, and he has chosen them for a reason.",
+          "feelings": ["unsettling", "thrilling"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "It announces a decisive test of the love triangle, then stops one paragraph into it with all three people flung into the water and nothing resolved."
+        }
+      ],
+      "pairOverlap": "overlaps",
+      "pairNote": "The story span contains the short span's entire rapids run word for word."
+    },
+    {
+      "id": "76677",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Twenty Thousand Pounds",
+          "blurb": "A poised young woman from the police calls on a titled lady with one quiet question: why did twenty thousand pounds leave her bank on Monday?",
+          "feelings": ["unsettling", "eerie"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76728",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Marriage Bargain",
+          "blurb": "At midnight, a young woman calls on the elderly man who holds her father's ruin in his hands, and negotiates the terms of her own marriage.",
+          "feelings": ["aching", "unsettling"],
+          "kind": "other",
+          "warnings": ["suicide"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The closing sentence is truncated mid-clause, ending on \"anxious to get home before\"."
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "76737",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Run Along, Little Man",
+          "blurb": "Among ghosts at cards, a hopelessly small leader is deputed to eject a giant professional gambler from the presence of ladies preparing to learn poker.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}

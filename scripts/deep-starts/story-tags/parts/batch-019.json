@@ -1,0 +1,282 @@
+{
+  "books": [
+    {
+      "id": "8492",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Marble Lily",
+          "blurb": "A friend drops an Easter lily into a basin of strange liquid. What he lifts out is flawless marble, veined faintly blue, with a flush deep in its heart.",
+          "feelings": ["eerie", "dreamlike"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "8800",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Abandon All Hope",
+          "blurb": "Two travelers pass beneath a portal carved with terrible words, into starless air loud with sighs, and one asks his guide who these wailing souls are.",
+          "feelings": ["eerie", "grim", "contemplative"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "Paolo and Francesca",
+          "blurb": "A ceaseless black wind whirls spirits like flocks of starlings. Two who fly together, light upon the storm, descend to tell how love brought them here.",
+          "feelings": ["tragic", "romantic", "aching"],
+          "kind": "tragedy",
+          "warnings": ["death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two separate visions from different circles of the same journey; neither contains the other's payoff."
+    },
+    {
+      "id": "8954",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Secret Drawer",
+          "blurb": "Left alone with their mistress's jewels, a maid and her sweetheart press a hidden knob, and what springs out is worth more to her than any diamond.",
+          "feelings": ["unsettling"],
+          "kind": "mystery",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "mild",
+          "spoilerNote": "Shows that the lady of the house secretly keeps a baby's shoe and lock of hair, an early planted clue to her hidden past.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "9473",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Danusia's Knight",
+          "blurb": "When a bench tips and a little singer totters, a young squire springs like a wildcat to catch her, and a laughing princess names him her knight.",
+          "feelings": ["tender", "romantic"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "9911",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Officer's Toast",
+          "blurb": "A drunken officer rises, glass in hand, to toast the prettiest girl in the room and take the rose beside her plate. Her look alone answers him.",
+          "feelings": ["unsettling"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Duel in the Clearing",
+          "blurb": "In a flowered clearing outside town, two young men face each other with pistols, while a terrified old second hides behind a bush to shout the count.",
+          "feelings": ["thrilling", "funny", "hopeful"],
+          "kind": "other",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The toast is the insult that provokes the duel, but each scene keeps its own payoff."
+    },
+    {
+      "id": "10002",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Face at the Window",
+          "blurb": "Reading after dinner, a man glances up to see eyes and ears above the window ledge. He takes it for a pig. It is no pig.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "ghost story",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Creatures from the Pit",
+          "blurb": "A crash from the Pit sends dust boiling into the evening sky. A man takes his gun to the edge and looks down at what is climbing out.",
+          "feelings": ["thrilling", "eerie"],
+          "kind": "ghost story",
+          "warnings": ["violence"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Both feature the same swine creatures, a first sighting and a later attack, but each scene has its own payoff."
+    },
+    {
+      "id": "10148",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Stranger on the Bridge",
+          "blurb": "Two proud men meet midway on a log bridge over a pebbly stream, and neither will give way. Staves are cut, and the question must be settled.",
+          "feelings": ["adventurous", "funny", "whimsical"],
+          "kind": "adventure",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "10441",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Impossible Mice",
+          "blurb": "She has heard squeals in the walls and means to write to the landlord. Then, out of the wainscoting, comes a single file of mice in colors mice never wear.",
+          "feelings": ["whimsical", "funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Runaway Elevator",
+          "blurb": "A maid mistakes a young man's camera case for a doctor's bag and runs him home to her mistress. The ornate house elevator has plans of its own.",
+          "feelings": ["funny", "whimsical", "romantic"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Separate comic episodes with different characters and different payoffs."
+    },
+    {
+      "id": "11030",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "New Year on the Auction Block",
+          "blurb": "While others keep holiday, a mother sits on a cold cabin floor, watching children who may be taken from her by morning. A witness sets down what she saw.",
+          "feelings": ["tragic", "aching", "grim"],
+          "kind": "tragedy",
+          "warnings": ["cruelty", "child harm", "era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "A Letter from New York",
+          "blurb": "From a cramped hiding place, a runaway writes a letter for a trusted sailor to post far away, then waits, silent behind a door, to hear her hunter read it.",
+          "feelings": ["thrilling", "unsettling", "hopeful"],
+          "kind": "other",
+          "warnings": ["cruelty", "era racism"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": ""
+    },
+    {
+      "id": "11339",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Buffoon and the Countryman",
+          "blurb": "A clown brings the theatre down with his imitation of a pig's squeal. A countryman swears he can do better, and hides something under his smock.",
+          "feelings": ["funny", "whimsical"],
+          "kind": "fable",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": true,
+          "brokenNote": "The text ends mid-sentence on a comma, cutting off the countryman's closing retort that is the fable's point."
+        },
+        {
+          "tier": "story",
+          "title": "A Handful of Fables",
+          "blurb": "A flattered crow, a wolf hunting for an excuse, a blind woman with a clever defense, and a god testing an honest woodman. Small tales with sharp points.",
+          "feelings": ["whimsical", "funny", "contemplative"],
+          "kind": "fable",
+          "warnings": ["animal harm"],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Different fables entirely, with no shared text."
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "books": [
+    {
+      "id": "58984",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Suspicious Major",
+          "blurb": "Travelers land on a coast plagued by pirates and meet a planter leaning on a monstrous rifle. Breakfast or a bullet depends on what he decides they are.",
+          "feelings": ["funny", "cozy"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "59827",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Who Made God?",
+          "blurb": "A boy certain of scripture meets one question he cannot answer. Within an hour his whole spiritual world lies in ruins, and something unexpected rises in its place.",
+          "feelings": ["contemplative", "funny"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Night Chicago Burned",
+          "blurb": "A city burns to the waterline while thousands camp on the lakeshore. One young drover races to save a herd of cattle and discovers what people are made of.",
+          "feelings": ["thrilling", "hopeful"],
+          "kind": "adventure",
+          "warnings": ["animal harm"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "Two unrelated episodes, a boyhood crisis of faith and the great fire, that coexist without touching."
+    },
+    {
+      "id": "59828",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "The Dog at the Door",
+          "blurb": "A sailor fresh from an Indian voyage stops for a shave on Fleet Street. His dog takes one look at the barber and refuses to leave the door.",
+          "feelings": ["eerie", "unsettling"],
+          "kind": "crime",
+          "warnings": ["violence", "death"],
+          "intensity": "gripping",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "59892",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "The Square Cop",
+          "blurb": "A policeman swears he is on the square. The Commissioner tests him with a sneer, then hands him orders that no honest man could stomach.",
+          "feelings": ["grim", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "unknown-book",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "59931",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Playing the Game",
+          "blurb": "A wife asks her barrister husband for her freedom. He names one condition, and she must choose between a single easy lie and the truth that costs everything.",
+          "feelings": ["aching", "unsettling"],
+          "kind": "love story",
+          "warnings": [],
+          "intensity": "gripping",
+          "spoiler": "mild",
+          "spoilerNote": "Reveals that Aliette admits an attachment and that her husband refuses her a divorce, a central mid-book turning point.",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "60316",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "An Ear for an Ear",
+          "blurb": "A king pardons the stray arrow that takes his ear. Then shipwreck, murder, and a stranger's blood on his clothes leave his life hanging on one lucky throw.",
+          "feelings": ["adventurous", "hopeful"],
+          "kind": "fable",
+          "warnings": ["violence", "death"],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "60979",
+      "spans": [
+        {
+          "tier": "story",
+          "title": "Take Away That Bauble",
+          "blurb": "A grandly eloquent bucket shop manager mistakes two young motorists for college boys with pocket money to lose. They let him keep believing it.",
+          "feelings": ["funny"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "61168",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "I Hate Being Involved",
+          "blurb": "A gentleman devoted to his club, his bridge, and his comfort explains why he hates being involved in anything, just as a telegram arrives to involve him.",
+          "feelings": ["funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        },
+        {
+          "tier": "story",
+          "title": "The Dancer's Whip Hand",
+          "blurb": "After her triumph, a dancer receives an elegant visitor and confides her plan: she alone holds the whip hand over the mastermind they both serve.",
+          "feelings": ["thrilling", "unsettling"],
+          "kind": "crime",
+          "warnings": [],
+          "intensity": "steady",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "none",
+      "pairNote": "The diary sketch and the dressing room scene share no text, characters, or reveals."
+    },
+    {
+      "id": "61262",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Deduce, Poirot!",
+          "blurb": "From a window over a London street, one friend spins a drama of crooks and shadowers below. The other simply rises to look for himself.",
+          "feelings": ["funny", "cozy"],
+          "kind": "comedy",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    },
+    {
+      "id": "63754",
+      "spans": [
+        {
+          "tier": "short",
+          "title": "Going Back to Grandma",
+          "blurb": "Three years old and done with it all, a small girl announces she is leaving home for Grandma's. Between her and the way stands a black embankment.",
+          "feelings": ["tender", "bittersweet"],
+          "kind": "slice of life",
+          "warnings": [],
+          "intensity": "gentle",
+          "spoiler": "none",
+          "spoilerNote": "",
+          "broken": false,
+          "brokenNote": ""
+        }
+      ],
+      "pairOverlap": "single",
+      "pairNote": ""
+    }
+  ]
+}
