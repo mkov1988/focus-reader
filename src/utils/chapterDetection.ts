@@ -228,7 +228,24 @@ function dropTableOfContents(candidates: Candidate[]): Candidate[] {
         let recurring = 0;
         for (let k = runStart; k < i; k++) if (recursLater(k)) recurring++;
         if (recurring >= TOC_MIN_RUN) {
-            for (let k = runStart; k < i; k++) if (recursLater(k)) isToc[k] = true;
+            // The body often begins within a few words of the contents' last
+            // line ("CHAPTER XXVIII." … "BOOK ONE: 1805" … "CHAPTER I."), so
+            // the run's tail can be the body's first headings. In books whose
+            // numbering restarts per part those recur later too, so the test
+            // above cannot tell them apart; their ORDER can: the body starts
+            // the way the contents start. A tail of the run that repeats the
+            // run's head key for key — and is followed by the head's next key
+            // — is the start of the book, not more contents (War and Peace,
+            // A Tale of Two Cities, The Divine Comedy opened at chapter II).
+            let bodyFrom = i;
+            for (let t = Math.floor((i - runStart) / 2); t >= 1; t--) {
+                const tailStart = i - t;
+                let match = true;
+                for (let k = 0; k < t && match; k++) if (sorted[tailStart + k].key !== sorted[runStart + k].key) match = false;
+                const next = sorted[i];
+                if (match && (!next || next.key === sorted[runStart + t].key)) { bodyFrom = tailStart; break; }
+            }
+            for (let k = runStart; k < bodyFrom; k++) if (recursLater(k)) isToc[k] = true;
         }
         runStart = i;
     }

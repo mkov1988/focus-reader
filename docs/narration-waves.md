@@ -571,6 +571,18 @@ What the campaign cost in incidents, all documented in the status log: one 100-a
 
 Still waiting on the Android app's chapter-detector port (see "Chapter detector fix"): re-narration of 244 and 16389 (truncated by the old detector) and the 22 bounds-held books.
 
+## Held-back books, round 3 (2026-11-26)
+
+Detector fix, second pass (`src/utils/chapterDetection.ts`, copied verbatim to the Android app): in books whose chapter numbering restarts per part, the body's first heading sits within a few words of the contents' last line and was swallowed with the contents — War and Peace, A Tale of Two Cities and The Divine Comedy opened at chapter II. A contents run whose tail repeats its head key for key (and is followed by the head's next key) now ends before that tail. On the 265 test texts only those three books and 26849 move.
+
+The exact-match rule was the real hazard: the app plays a recording only when the recording's span equals the span the phone computes, so every detector change silently muted the books whose span moved — including campaign 2 books planned on the branch's detector while installed apps still ran the old one. The Android branch `claude/chapters-covers` replaces that equality with a paragraph-alignment check (see that repo), so recordings made with any detector version keep playing.
+
+Narrated now, as four chained waves after the five-book fix-up run: 98, 245, 1399, 2600, 6400, 8800, 42671, 47530, 22091, 51649, 40058, 27279, 21190, 26315, 3177, 30849, 47221, 70854, 23609 (19 books, 3.78M words, 222 synth jobs). 47530, 51649 and 40058 are later volumes that really open on a later heading; plan.mjs `BOUNDS_REVIEWED` records that.
+
+Not narrated: 4300 Ulysses and 50603 Minute Mysteries — with the full span they now voice text the leftover gate stops (LEGAL.md; never forced). 55059 Modern English Biography vol. 1 — a 600k-word biographical dictionary; its vol. 2 was dropped by hand in campaign 2 for the same reason.
+
+Still waiting for the app update: 244 and 16389 re-narration (their shipped recordings are pinned by the manifest; replacing them would need `build-manifest --drop` first).
+
 ## Fix-up queue (ran 2026-11-16 as the fix-up wave, see the status log)
 
 Books that lost a voice or a shard to a transient failure during the chained campaign. One dispatch with all of them; verify.mjs pins the voices that already shipped, the R2 upload skips existing objects, only the missing pairs are added. Done: all three now have all three voices.

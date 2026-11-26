@@ -48,6 +48,14 @@ const SHIPPED = (() => {
     try { return new Set(Object.keys(JSON.parse(readFileSync(path.join(ROOT, 'public', 'narration-v1.json'), 'utf8')).books)); }
     catch { return new Set(); }
 })();
+// Books whose span was read by hand and is RIGHT although the guard's shape
+// test says otherwise: later volumes that genuinely open on a later heading.
+// Each entry: why, and what the span opens on (checked 2026-11-26).
+const BOUNDS_REVIEWED = new Map([
+    ['47530', 'Oliver Twist, Vol. 2 (of 3): the volume opens at CHAPTER XX'],
+    ['51649', 'The Mysteries of London, v. 4/4: the volume opens at CHAPTER CX'],
+    ['40058', 'The Life of Florence Nightingale, vol. 2: the volume opens at PART V'],
+]);
 function boundsCheck(tokens, start, end, firstUnitWords) {
     const first = tokens.slice(start, start + 8).map((t) => t.word).join(' ').replace(/\s+/g, ' ').slice(0, 60);
     const total = tokens.length;
@@ -199,7 +207,7 @@ for (const id of ids) {
     // Words left in the paragraph the span opens in (a heading is a short one).
     const openingPara = parsed.paragraphs.find((para) => para.length && para[0].id <= start && para[para.length - 1].id >= start);
     const firstUnitWords = openingPara ? openingPara[openingPara.length - 1].id - start + 1 : 1;
-    const guardThis = BOUNDS_GUARD && (!SHIPPED.has(String(id)) || process.env.BOUNDS_GUARD_IGNORE_SHIPPED === '1');
+    const guardThis = BOUNDS_GUARD && !BOUNDS_REVIEWED.has(String(id)) && (!SHIPPED.has(String(id)) || process.env.BOUNDS_GUARD_IGNORE_SHIPPED === '1');
     const boundsHit = guardThis ? boundsCheck(parsed.tokens, start, end, firstUnitWords) : null;
     if (boundsHit) {
         writeFileSync(path.join(dir, 'excluded.json'), JSON.stringify({
