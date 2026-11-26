@@ -591,6 +591,10 @@ Five-book fix run [45764579125](https://github.com/mkov1988/focus-reader/actions
 - 26849 Gillespie: refused in all three voices, segments 76–78. Its last chapter is FOOTNOTES (tokens 264,798 onward, ~25,800 words — about four hours per voice) and those segments are the densest stretch: ~480 numbered Latin citations each (`1023 Exam., part 2, p. 221.`). Speech-to-text heard 8–82% per window, which can't tell slow-but-right from wrong. Not forced. The real fix is the reader ending a book at a FOOTNOTES/NOTES heading (`SKIPPABLE_BACK_RE` in textProcessing.ts), but that moves the end of every book with such a chapter, live recordings included — only after the Android app with the paragraph-alignment check is out.
 - The "manifest disagrees" failures for 45109/hazel, 53416/rowan and 53416/hazel are the protection working: those pairs were live and the new copies were not allowed to replace them.
 
+Held waves (chained from run 45765473690):
+
+- H1 [45765473690](https://github.com/mkov1988/focus-reader/actions/runs/45765473690) 2600, 51649, 8800 — 2026-11-26 11:56Z to 20:31Z, 9/9 pairs verified, deployed by the chain; live manifest 198 books. Started H2 [45891712692](https://github.com/mkov1988/focus-reader/actions/runs/45891712692) (1399, 70854, 21190, 98).
+
 ## Fix-up queue (ran 2026-11-16 as the fix-up wave, see the status log)
 
 Books that lost a voice or a shard to a transient failure during the chained campaign. One dispatch with all of them; verify.mjs pins the voices that already shipped, the R2 upload skips existing objects, only the missing pairs are added. Done: all three now have all three voices.
