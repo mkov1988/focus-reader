@@ -21,6 +21,12 @@
  *     --deep                            whisper-tiny re-transcribes 3 random 30s
  *                                       windows per pair; ≥85% word overlap
  *                                       (needs `whisper` CLI, ffmpeg)
+ *     --hear-slow                       a segment under the 110 wpm rail (but not
+ *                                       under 80) is LISTENED to instead of failed:
+ *                                       no silence of 3 s or more anywhere in it,
+ *                                       and whisper base.en hears ≥85% of the book's
+ *                                       words on average (≥75% in every one of four
+ *                                       45 s windows). Pass = slow but correct.
  */
 import { readFileSync, writeFileSync, existsSync, statSync, mkdtempSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
@@ -48,6 +54,14 @@ const arg = (name) => (process.argv.find((a) => a.startsWith(`--${name}=`)) || '
 const ids = arg('ids').split(',').map((s) => s.trim()).filter(Boolean);
 const personas = arg('voices').split(',').map((s) => s.trim()).filter(Boolean);
 const DEEP = process.argv.includes('--deep');
+const HEAR_SLOW = process.argv.includes('--hear-slow');
+// The rail flags slow segments because a slow segment USUALLY means the
+// model mangled the text (babble, dropped words padded with silence). Some
+// prose is just slow to say — 17th-century Scots theology thick with Latin
+// (26849), Epictetus (45109) — and Kokoro reads it correctly, only slowly.
+// --hear-slow settles which case a flagged segment is by listening, the way
+// a person would: dead air and wrong words fail it, correct words pass it.
+const HEAR_SLOW_FLOOR = 80;
 const BUNDLED = arg('bundled');
 if (!ids.length || !personas.length) {
     console.error('Pass --ids=84,1342,14838 --voices=marlowe,rowan,hazel [--deep] [--bundled=dir]');
@@ -63,18 +77,74 @@ function ffprobeDurMs(file) {
     return Math.round(parseFloat(JSON.parse(r.stdout).format.duration) * 1000);
 }
 
-function whisperWindow(opusPath, startS, durS) {
+function whisperWindow(opusPath, startS, durS, model = 'tiny.en') {
     const tmp = mkdtempSync(path.join(os.tmpdir(), 'narr-verify-'));
     try {
         const wav = path.join(tmp, 'w.wav');
         let r = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-ss', String(startS), '-t', String(durS), '-i', opusPath, '-ar', '16000', '-ac', '1', wav], { stdio: 'ignore' });
         if (r.status !== 0) throw new Error('ffmpeg window extraction failed');
-        r = spawnSync('whisper', [wav, '--model', 'tiny.en', '--output_format', 'txt', '--output_dir', tmp, '--fp16', 'False'], { encoding: 'utf8' });
+        r = spawnSync('whisper', [wav, '--model', model, '--output_format', 'txt', '--output_dir', tmp, '--fp16', 'False'], { encoding: 'utf8' });
         if (r.status !== 0) throw new Error('whisper CLI failed — pip install openai-whisper in the narration venv for --deep');
         return readFileSync(path.join(tmp, 'w.txt'), 'utf8');
     } finally {
         rmSync(tmp, { recursive: true, force: true });
     }
+}
+
+/** Longest stretch of silence in a file, in seconds (ffmpeg silencedetect at
+ *  -40 dB; anything under 0.5 s is ordinary pausing and not reported). */
+function longestSilenceS(file) {
+    const r = spawnSync('ffmpeg', ['-hide_banner', '-nostats', '-i', file, '-af', 'silencedetect=noise=-40dB:d=0.5', '-f', 'null', '-'], { encoding: 'utf8' });
+    let longest = 0;
+    for (const m of (r.stderr || '').matchAll(/silence_duration: ([0-9.]+)/g)) longest = Math.max(longest, parseFloat(m[1]));
+    return longest;
+}
+
+/** The book's normalized words voiced in [startMs, startMs+durMs) of segment
+ *  segIdx, found by walking durCs (the timing file's own word clock). */
+function expectedWords(t, plan, segIdx, startMs, durMs) {
+    const seg = t.segments[segIdx];
+    let wordBase = 0;
+    for (let s = 0; s < segIdx; s++) wordBase += t.segments[s].words;
+    const expected = new Set();
+    let at = 0;
+    for (let w = 0; w < seg.words; w++) {
+        if (at >= startMs && at <= startMs + durMs) {
+            const tokenId = seg.startWord + w;
+            const unit = plan.units.find((u) => tokenId >= u.start && tokenId < u.start + u.count);
+            if (unit) expected.add(norm(unit.text.split(' ')[tokenId - unit.start]));
+        }
+        at += t.durCs[wordBase + w] * 10;
+    }
+    expected.delete('');
+    return expected;
+}
+
+const overlapOf = (expected, heard) => {
+    const heardSet = new Set(heard.split(/\s+/).map(norm).filter(Boolean));
+    let hit = 0;
+    for (const w of expected) if (heardSet.has(w)) hit++;
+    return expected.size ? hit / expected.size : 0;
+};
+
+/** --hear-slow: is this slow segment slow-but-correct? Returns null when it
+ *  passes, else the reason it does not. */
+function hearSlowSegment(t, plan, segIdx, file) {
+    const seg = t.segments[segIdx];
+    const silence = longestSilenceS(file);
+    if (silence >= 3) return `${silence.toFixed(1)} s of silence`;
+    const n = 4, win = 45000;
+    const overlaps = [];
+    for (let k = 0; k < n; k++) {
+        const startMs = Math.max(0, Math.floor(((seg.durMs - win) * (k + 0.5)) / n));
+        const heard = whisperWindow(file, startMs / 1000, win / 1000, 'base.en');
+        overlaps.push(overlapOf(expectedWords(t, plan, segIdx, startMs, win), heard));
+    }
+    const mean = overlaps.reduce((a, b) => a + b, 0) / n;
+    const shown = overlaps.map((o) => `${Math.round(o * 100)}%`).join(' ');
+    if (mean < 0.85 || Math.min(...overlaps) < 0.75) return `heard ${shown} of the book's words (need avg 85%, each 75%)`;
+    console.log(`    heard ${seg.file}: ${shown} of the book's words, longest silence ${silence.toFixed(1)} s — slow but correct`);
+    return null;
 }
 
 // Deterministic per-pair window picks (no RNG: verify must be reproducible).
@@ -134,7 +204,12 @@ for (const id of ids) {
             const probed = ffprobeDurMs(file);
             if (Math.abs(probed - seg.durMs) > 300) fail(label, `${seg.file}: ffprobe ${probed}ms vs timing ${seg.durMs}ms (>300ms)`);
             const segWpm = (60000 * seg.words) / seg.durMs;
-            if (segWpm < SEG_WPM_LOW || segWpm > SEG_WPM_HIGH) fail(label, `segment ${i} wpm ${segWpm.toFixed(0)} outside ${SEG_WPM_LOW}–${SEG_WPM_HIGH}`);
+            if (segWpm < SEG_WPM_LOW && segWpm >= HEAR_SLOW_FLOOR && HEAR_SLOW) {
+                const why = hearSlowSegment(t, plan, i, file);
+                if (why) fail(label, `segment ${i} wpm ${segWpm.toFixed(0)} under ${SEG_WPM_LOW}, and listening did not clear it: ${why}`);
+            } else if (segWpm < SEG_WPM_LOW || segWpm > SEG_WPM_HIGH) {
+                fail(label, `segment ${i} wpm ${segWpm.toFixed(0)} outside ${SEG_WPM_LOW}–${SEG_WPM_HIGH}`);
+            }
         }
         const wpm = (60000 * plan.spanWords) / totalMs;
         if (Math.abs(wpm - t.naturalWpm) > 0.2) fail(label, `naturalWpm ${t.naturalWpm} != recomputed ${wpm.toFixed(1)}`);
@@ -170,23 +245,7 @@ for (const id of ids) {
                 // a transcription benchmark. Walk durCs to find the window's
                 // words (durCs index of the segment's first word = cumulative
                 // word count of prior segments).
-                let wordBase = 0;
-                for (let s = 0; s < segIdx; s++) wordBase += t.segments[s].words;
-                const expected = new Set();
-                let at = 0;
-                for (let w = 0; w < seg.words; w++) {
-                    if (at >= startMs && at <= startMs + 30000) {
-                        const tokenId = seg.startWord + w;
-                        const unit = plan.units.find((u) => tokenId >= u.start && tokenId < u.start + u.count);
-                        if (unit) expected.add(norm(unit.text.split(' ')[tokenId - unit.start]));
-                    }
-                    at += t.durCs[wordBase + w] * 10;
-                }
-                expected.delete('');
-                const heardSet = new Set(heard.split(/\s+/).map(norm).filter(Boolean));
-                let hitCount = 0;
-                for (const wrd of expected) if (heardSet.has(wrd)) hitCount++;
-                const overlap = expected.size ? hitCount / expected.size : 0;
+                const overlap = overlapOf(expectedWords(t, plan, segIdx, startMs, 30000), heard);
                 if (overlap < 0.85) fail(label, `--deep ${seg.file} @${Math.round(startMs / 1000)}s: ${(overlap * 100).toFixed(0)}% word overlap (<85%)`);
             }
         }

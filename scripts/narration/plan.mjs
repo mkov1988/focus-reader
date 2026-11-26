@@ -70,6 +70,17 @@ const GATE_PATTERNS = [
     { name: 'etext', re: /\be-?text\b/i },
 ];
 
+// What the voice model is given for one reader token. Underscores are
+// Gutenberg italic markup. And "](" is broken up: Kokoro reads
+// "[text](target)" as a pronunciation instruction (markdown-link syntax) and
+// silently drops the bracketed target. That cost two books every voice at the
+// alignment rail: Beowulf's "[6](He is earth-folk's protector)" lost the whole
+// parenthesis (16328), The Pirate's "Strathnavern[42](_k_)--I" lost the "k"
+// (42389). ")(" reads as plain punctuation. Token in, token out — the norm
+// both sides align on ignores punctuation, so token space never changes, and
+// finish.mjs aligns against this same text (unit.text).
+const speechForm = (word) => word.replace(/_/g, '').replace(/\]\(/g, ')(');
+
 const arg = (name, fallback = null) => {
     const hit = process.argv.find((a) => a.startsWith(`--${name}=`));
     return hit ? hit.slice(name.length + 3) : fallback;
@@ -226,9 +237,10 @@ for (const id of ids) {
         start: u.start,
         count: u.count,
         // The model reads exactly the reader's tokens, joined with single
-        // spaces. Underscores are Gutenberg italic markup, stripped for speech
-        // (the alignment norm discards them anyway, so token space is safe).
-        text: parsed.tokens.slice(u.start, u.start + u.count).map((t) => t.word).join(' ').replace(/_/g, ''),
+        // spaces, in speech form (speechForm above): italic underscores
+        // dropped, "](" defused. One token in, one token out, so the unit's
+        // word count — and token space — never changes.
+        text: parsed.tokens.slice(u.start, u.start + u.count).map((t) => speechForm(t.word)).join(' '),
     }));
 
     const plan = {

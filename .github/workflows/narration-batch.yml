@@ -36,6 +36,9 @@ on:
       collect_from_run:
         description: "Reuse VERIFIED bout-* from this earlier batch run id (skips synth AND finish)"
         default: ""
+      hear_slow:
+        description: "true = a segment under the 110 wpm rail is listened to (whisper + silence check) instead of failed; see verify.mjs --hear-slow"
+        default: ""
 
 permissions:
   contents: write
@@ -229,8 +232,13 @@ jobs:
         run: bash scripts/narration/ci/fetch-artifacts.sh "${{ github.event.inputs.resume_from_run || github.run_id }}" "bwavs-${{ matrix.id }}-${{ matrix.voice }}-" "scripts/narration/work/${{ matrix.id }}/${{ matrix.voice }}" merge
       - name: Align, time, encode
         run: node scripts/narration/finish.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
+      - name: Speech-to-text for --hear-slow
+        if: ${{ github.event.inputs.hear_slow == 'true' }}
+        run: |
+          pip install --quiet torch --index-url https://download.pytorch.org/whl/cpu
+          pip install --quiet openai-whisper
       - name: Verify
-        run: node scripts/narration/verify.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}"
+        run: node scripts/narration/verify.mjs --ids="${{ matrix.id }}" --voices="${{ matrix.voice }}" ${{ github.event.inputs.hear_slow == 'true' && '--hear-slow' || '' }}
       - name: Upload verified output
         uses: actions/upload-artifact@v4
         with:
