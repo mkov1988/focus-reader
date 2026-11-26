@@ -57,11 +57,17 @@ const DEEP = process.argv.includes('--deep');
 const HEAR_SLOW = process.argv.includes('--hear-slow');
 // The rail flags slow segments because a slow segment USUALLY means the
 // model mangled the text (babble, dropped words padded with silence). Some
-// prose is just slow to say — 17th-century Scots theology thick with Latin
-// (26849), Epictetus (45109) — and Kokoro reads it correctly, only slowly.
+// prose is just slow to say and Kokoro reads it correctly, only slowly.
+// Run of 2026-11-26 (45764579125): 53416 cleared by listening; 26849's
+// failures are its FOOTNOTES chapter (numbered Latin citations, which the
+// speech-to-text cannot confirm, so they stay refused); 45109's only failure
+// was its 22-word last segment, a publisher's address (SHORT_SEGMENT_WORDS).
 // --hear-slow settles which case a flagged segment is by listening, the way
 // a person would: dead air and wrong words fail it, correct words pass it.
 const HEAR_SLOW_FLOOR = 80;
+/** Under --hear-slow, a segment with fewer words than this is judged on
+ *  silence alone (see hearSlowSegment). */
+const SHORT_SEGMENT_WORDS = 60;
 const BUNDLED = arg('bundled');
 if (!ids.length || !personas.length) {
     console.error('Pass --ids=84,1342,14838 --voices=marlowe,rowan,hazel [--deep] [--bundled=dir]');
@@ -133,6 +139,15 @@ function hearSlowSegment(t, plan, segIdx, file) {
     const seg = t.segments[segIdx];
     const silence = longestSilenceS(file);
     if (silence >= 3) return `${silence.toFixed(1)} s of silence`;
+    // A few lines (a book's last colophon line, a publisher's address) are
+    // too short for a pace to mean anything — the pauses between lines
+    // dominate — and shorter than one listening window, so the four windows
+    // would all hear the same seconds. Alignment has already matched every
+    // word to the voice's tokens; the silence check above is the guard here.
+    if (seg.words < SHORT_SEGMENT_WORDS) {
+        console.log(`    ${seg.file}: ${seg.words} words only, longest silence ${silence.toFixed(1)} s — too short to pace, passed on silence`);
+        return null;
+    }
     const n = 4, win = 45000;
     const overlaps = [];
     for (let k = 0; k < n; k++) {

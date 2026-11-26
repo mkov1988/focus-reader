@@ -583,6 +583,14 @@ Not narrated: 4300 Ulysses and 50603 Minute Mysteries — with the full span the
 
 Still waiting for the app update: 244 and 16389 re-narration (their shipped recordings are pinned by the manifest; replacing them would need `build-manifest --drop` first).
 
+Five-book fix run [45764579125](https://github.com/mkov1988/focus-reader/actions/runs/45764579125) (2026-11-26 05:54Z to 11:55Z, `hear_slow=true`; manifest bf0f1e8, deployed by the chain):
+
+- 16328 Beowulf and 42389 The Pirate: shipped, all three voices. The cause was Kokoro's markdown-link syntax: `[text](target)` drops the target, and both books have a footnote marker in brackets right before a parenthesis or an italic word. plan.mjs `speechForm` now turns `](` into `)(` before the model sees it.
+- 53416 Only a Girl's Love: marlowe shipped (listening cleared its slow segment 40); rowan and hazel were already live. The book has all three voices.
+- 45109 The Enchiridion: hazel already live. marlowe and rowan failed only on segment 3, the book's last 22 words (a publisher's address, 13 s of audio) — the listening check heard the same 13 s in all four windows and the address's abbreviations (W., N. Y., 72nd) don't come back word for word. verify.mjs now judges segments under `SHORT_SEGMENT_WORDS` (60) on silence alone. To do once the held waves are done (artifacts expire 2026-12-03): dispatch `ids=45109 resume_from_run=45764579125 hear_slow=true` — a dispatch while the chain is running would knock its pending wave out of the concurrency queue.
+- 26849 Gillespie: refused in all three voices, segments 76–78. Its last chapter is FOOTNOTES (tokens 264,798 onward, ~25,800 words — about four hours per voice) and those segments are the densest stretch: ~480 numbered Latin citations each (`1023 Exam., part 2, p. 221.`). Speech-to-text heard 8–82% per window, which can't tell slow-but-right from wrong. Not forced. The real fix is the reader ending a book at a FOOTNOTES/NOTES heading (`SKIPPABLE_BACK_RE` in textProcessing.ts), but that moves the end of every book with such a chapter, live recordings included — only after the Android app with the paragraph-alignment check is out.
+- The "manifest disagrees" failures for 45109/hazel, 53416/rowan and 53416/hazel are the protection working: those pairs were live and the new copies were not allowed to replace them.
+
 ## Fix-up queue (ran 2026-11-16 as the fix-up wave, see the status log)
 
 Books that lost a voice or a shard to a transient failure during the chained campaign. One dispatch with all of them; verify.mjs pins the voices that already shipped, the R2 upload skips existing objects, only the missing pairs are added. Done: all three now have all three voices.
