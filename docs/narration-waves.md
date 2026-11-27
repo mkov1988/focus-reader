@@ -594,6 +594,7 @@ Five-book fix run [45764579125](https://github.com/mkov1988/focus-reader/actions
 Held waves (chained from run 45765473690):
 
 - H1 [45765473690](https://github.com/mkov1988/focus-reader/actions/runs/45765473690) 2600, 51649, 8800 — 2026-11-26 11:56Z to 20:31Z, 9/9 pairs verified, deployed by the chain; live manifest 198 books. Started H2 [45891712692](https://github.com/mkov1988/focus-reader/actions/runs/45891712692) (1399, 70854, 21190, 98).
+- H2 [45891712692](https://github.com/mkov1988/focus-reader/actions/runs/45891712692) 1399, 70854, 21190, 98 — 2026-11-26 20:31Z to 2026-11-27 04:34Z, 12/12 pairs verified, deployed by the chain; live manifest 202 books. Started H3 [45940741629](https://github.com/mkov1988/focus-reader/actions/runs/45940741629) (6400, 40058, 245, 42671, 22091, 27279).
 
 ## Fix-up queue (ran 2026-11-16 as the fix-up wave, see the status log)
 
