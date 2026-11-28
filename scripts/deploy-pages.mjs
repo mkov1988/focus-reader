@@ -20,6 +20,8 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 
 const PROJECT = 'focus-reader'
+// The project's pages.dev host (the Android app's SERVING_ORIGIN).
+const PAGES_HOST = 'focus-reader-48z.pages.dev'
 const PREVIEW = process.argv.includes('--preview')
 const versionFile = new URL('../version.json', import.meta.url)
 const manifest = JSON.parse(readFileSync(new URL('./deploy-manifest.json', import.meta.url), 'utf8'))
@@ -83,4 +85,34 @@ console.log(`Content guard OK: ${books} books, ${covers} covers, ${(manifest.mus
 const branch = PREVIEW ? 'audit-preview' : 'main'
 const r = sh('npx', ['--yes', 'wrangler@latest', 'pages', 'deploy', 'dist', `--project-name=${PROJECT}`, `--branch=${branch}`, '--commit-dirty=true'])
 if (r.error) console.error(r.error)
-process.exit(r.status ?? 1)
+if (r.status !== 0) process.exit(r.status ?? 1)
+
+// Read back: every mustExist file is fetched from the site that was just
+// deployed (the preview alias, or production) and compared byte for byte
+// with what was built. A deploy that uploaded but does not serve a file the
+// apps depend on fails here, in the log, not on a phone. This is also how a
+// preview run proves a new static file loads before production gets it.
+const origin = PREVIEW ? `https://audit-preview.${PAGES_HOST}` : `https://${PAGES_HOST}`
+const sleep = (ms) => new Promise((done) => setTimeout(done, ms))
+let unserved = []
+for (let attempt = 1; attempt <= 6; attempt++) {
+  unserved = []
+  for (const f of manifest.mustExist ?? []) {
+    try {
+      const res = await fetch(`${origin}/${f}`, { cache: 'no-store' })
+      const type = res.headers.get('content-type') || ''
+      const body = Buffer.from(await res.arrayBuffer())
+      // The site answers a missing file with its index page and status 200.
+      if (!res.ok || type.includes('text/html') || !body.equals(readFileSync(`dist/${f}`))) unserved.push(`${f} (HTTP ${res.status}, ${type}, ${body.length} bytes)`)
+    } catch (e) {
+      unserved.push(`${f} (${e.message})`)
+    }
+  }
+  if (!unserved.length) break
+  await sleep(10000)
+}
+if (unserved.length) {
+  console.error(`DEPLOYED BUT NOT SERVED from ${origin}: ${unserved.join('; ')}`)
+  process.exit(1)
+}
+console.log(`Read back OK from ${origin}: ${(manifest.mustExist ?? []).join(', ')}`)
