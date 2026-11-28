@@ -31,7 +31,14 @@ export const meta = {
 // (deep-queue.mjs marks it) is not read through: one agent looks at its
 // opening and the head of each chapter.
 
-const BOOKS = (args && args.books) || []
+// `books`: [{ id, segments }] (a reference work: { id, segments: 0, reference: true }),
+// or the same as one compact string, "3600:13,2895:5,20851:r".
+const BOOKS = typeof (args && args.books) === 'string'
+  ? args.books.split(',').filter(Boolean).map((t) => {
+      const [id, n] = t.trim().split(':')
+      return n === 'r' ? { id, segments: 0, reference: true } : { id, segments: Number(n) }
+    })
+  : (args && args.books) || []
 const READER = (args && args.reader) || 'haiku'
 const COMPOSER = (args && args.composer) || 'sonnet'
 const ROOT = (args && args.root) || '/workspace/focus-reader'

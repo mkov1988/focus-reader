@@ -5,7 +5,8 @@
  *
  *   node scripts/deep-starts/deep-queue.mjs --count 50 | node scripts/deep-starts/split-chunk.mjs 8
  *
- * Prints one JSON array per line (the `books` arg of each wf-listed-deep run).
+ * Prints one group per line as "id:segments,..." (the `books` arg of each
+ * wf-listed-deep run; `r` marks a reference work).
  */
 const n = Number(process.argv[2] ?? 8);
 let input = '';
@@ -17,5 +18,6 @@ process.stdin.on('data', (d) => { input += d; }).on('end', () => {
         g.books.push(b);
         g.load += b.segments + 1;
     }
-    for (const g of groups) if (g.books.length) console.log(JSON.stringify(g.books));
+    // One group a line, in the workflow's compact form: "id:segments,...", `r` for a reference work.
+    for (const g of groups) if (g.books.length) console.log(g.books.map((b) => `${b.id}:${b.reference ? 'r' : b.segments}`).join(','));
 });
