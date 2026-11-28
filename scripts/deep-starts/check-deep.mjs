@@ -18,7 +18,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { tokenize, resolveAnchor } from '../build-story-starts.mjs';
+import { tokenize } from '../build-story-starts.mjs';
+import { anchorFinder } from '../lib/anchor-finder.mjs';
 import { VOICES, TAGS } from './check-lean.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -39,12 +40,12 @@ function bookLines(plan) {
  *  blank lines, so a count of the lines before it is exact. */
 const tokensBefore = (lines, line) => tokenize(lines.slice(0, line - 1).join('\n')).length;
 
-function beatProblems(beat, where, tokens, lo, hi, prev) {
+function beatProblems(beat, where, find, lo, hi, prev) {
     const out = [];
     if (!isText(beat?.anchor)) return { out: [`${where}: anchor is missing`], at: prev };
     const n = count(beat.anchor);
     if (n < 8 || n > 14) out.push(`${where}: anchor is ${n} words, need 8 to 14`);
-    const at = resolveAnchor(tokens, beat.anchor);
+    const at = find(beat.anchor);
     if (at < 0) out.push(`${where}: anchor "${beat.anchor.slice(0, 50)}" is not in the text word for word. Read that place again and copy the words exactly`);
     else if (at < lo) out.push(`${where}: the words "${beat.anchor.slice(0, 50)}" first occur earlier in the book than this segment. Use the next words of the same sentence, or another sentence`);
     else if (at >= hi) out.push(`${where}: anchor "${beat.anchor.slice(0, 50)}" lies after this segment`);
@@ -69,7 +70,7 @@ export function notesProblems(id, segNo) {
     if (notes.kind !== 'story' && notes.kind !== 'not-story') out.push('kind must be "story" or "not-story"');
     if (!isText(notes.summary) || count(notes.summary) < 20) out.push('summary: 3 to 6 sentences on what this segment holds');
     const lines = bookLines(plan);
-    const tokens = tokenize(lines.join('\n'));
+    const find = anchorFinder(tokenize(lines.join('\n')));
     const lo = tokensBefore(lines, seg.from);
     const hi = tokensBefore(lines, seg.to + 1);
     if (!Array.isArray(notes.beats) || notes.beats.length < 2 || notes.beats.length > 8) out.push('beats: 3 to 6 of them');
@@ -77,7 +78,7 @@ export function notesProblems(id, segNo) {
         let prev = lo - 1;
         const at = [];
         notes.beats.forEach((b, i) => {
-            const r = beatProblems(b, `beat ${i + 1}`, tokens, lo, hi, prev);
+            const r = beatProblems(b, `beat ${i + 1}`, find, lo, hi, prev);
             out.push(...r.out);
             if (r.at > prev) at.push(r.at);
             prev = r.at;
@@ -145,13 +146,14 @@ export function bookProblems(id) {
         }
     } else if (scenes) {
         const tokens = tokenize(bookLines(plan).join('\n'));
+        const find = anchorFinder(tokens);
         const big = plan.segments.length >= 2 || plan.words >= 30000;
         const min = r.nonNarrative ? 3 : big ? 6 : 3;
         if (scenes.length < min || scenes.length > 12) out.push(`scenes: ${scenes.length} of them, need ${min} to 12`);
         let prev = -1;
         const starts = [];
         scenes.forEach((s, i) => {
-            const res = beatProblems(s, `scene ${i + 1}`, tokens, 0, tokens.length, prev);
+            const res = beatProblems(s, `scene ${i + 1}`, find, 0, tokens.length, prev);
             out.push(...res.out.map((p) => p.replace('than this segment', 'than the place you mean').replace('lies after this segment', 'is not in the text')));
             if (res.at > prev) starts.push(res.at);
             prev = res.at;

@@ -18,6 +18,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { anchorFinder } from './lib/anchor-finder.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC_PATH = path.join(ROOT, 'data-src', 'scenes-src.json');
@@ -61,10 +62,13 @@ async function main() {
         const file = path.join(BOOKS_DIR, `${id}.txt`);
         if (!existsSync(file)) { problems.push(`#${id}: no mirrored text (run mirror:books)`); continue; }
         const words = tokenize(await readFile(file, 'utf8'));
+        // One normalised stream per book (lib/anchor-finder.mjs): the same
+        // matcher as resolveAnchor above, not rebuilt for every scene.
+        const find = anchorFinder(words);
         const resolved = [];
         let prev = -1;
         for (const s of scenes) {
-            const startIndex = resolveAnchor(words, s.anchor);
+            const startIndex = find(s.anchor);
             if (startIndex < 0) { problems.push(`#${id}: anchor not found: "${s.anchor.slice(0, 40)}…"`); continue; }
             if (startIndex <= prev) { problems.push(`#${id}: anchor out of order at "${s.label}" (idx ${startIndex} <= ${prev})`); }
             prev = startIndex;

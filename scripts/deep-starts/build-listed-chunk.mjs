@@ -27,7 +27,8 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { tokenize, resolveAnchor } from '../build-story-starts.mjs';
+import { tokenize } from '../build-story-starts.mjs';
+import { anchorFinder } from '../lib/anchor-finder.mjs';
 import { bookProblems, loadPlan } from './check-deep.mjs';
 
 const DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -47,14 +48,14 @@ const levels = JSON.parse(readFileSync(LEVELS, 'utf8'));
 const chunkNo = 1 + Math.max(0, ...readdirSync(RESULTS).map((f) => Number(/^listed-(\d+)\.json$/.exec(f)?.[1] ?? 0)));
 
 /** A chapter's anchor: the words of the text from its first word on, as
- *  many as it takes for them to occur nowhere earlier. Null if 40 words do
+ *  many as it takes for them to occur nowhere earlier. Null if 60 words do
  *  not do it, or the text there is not the heading the parser reported. */
-function chapterAnchor(tokens, lines, chapter) {
+function chapterAnchor(tokens, find, lines, chapter) {
     const first = norm((lines[chapter.line - 1] ?? '').trim().split(/\s+/)[0] ?? '');
     if (!first || norm(tokens[chapter.startIndex] ?? '') !== first) return null;
-    for (let k = 10; k <= 40; k += 3) {
+    for (let k = 10; k <= 60; k += 5) {
         const anchor = tokens.slice(chapter.startIndex, chapter.startIndex + k).join(' ');
-        if (resolveAnchor(tokens, anchor) === chapter.startIndex) return anchor;
+        if (find(anchor) === chapter.startIndex) return anchor;
     }
     return null;
 }
@@ -78,7 +79,8 @@ for (const id of existsSync(WORK) ? readdirSync(WORK) : []) {
         const tokens = tokenize(text);
         const lines = text.split('\n');
         const notes = new Map((r.chapterNotes ?? []).map((c) => [c.n, clean(c.note)]));
-        scenes = plan.chapters.map((c) => ({ anchor: chapterAnchor(tokens, lines, c), label: clean(c.heading), recap: '', ...(notes.get(c.n) ? { note: notes.get(c.n) } : {}) }));
+        const find = anchorFinder(tokens);
+        scenes = plan.chapters.map((c) => ({ anchor: chapterAnchor(tokens, find, lines, c), label: clean(c.heading), recap: '', ...(notes.get(c.n) ? { note: notes.get(c.n) } : {}) }));
         if (scenes.some((s) => !s.anchor)) { skipped.push(`#${id}: a chapter's first words could not be pinned in the text`); continue; }
     } else {
         scenes = r.scenes.map((s) => ({ anchor: clean(s.anchor), label: clean(s.label), recap: clean(s.recap) }));
