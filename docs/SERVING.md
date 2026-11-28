@@ -17,6 +17,10 @@ Cloudflare Pages project "focus-reader"  →  https://focus-reader-48z.pages.dev
   │     /covers/<id>.webp    1,468 covers (same)
   │     /starts-v1.json      54,525 deep-catalog story starts (filename IS the version)
   │     /narration-v1.json   which books have narration, by voice (same contract)
+  │     /about-v1/<n>.json   what the pickup page says about each book (hook, era,
+  │                          voice, moods, length, language, chapter count), in
+  │                          pieces of 500 ids: book 1342 is in piece 2. The
+  │                          directory name IS the version (same contract)
   │     caching + CORS: public/_headers
   │
   ├── Pages Function  functions/books/[id].js

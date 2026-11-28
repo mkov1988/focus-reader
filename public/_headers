@@ -14,6 +14,12 @@
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
 
+# What the pickup page says about each book, in pieces by id range
+# (scripts/build-about-pieces.mjs). The directory name is the version.
+/about-v1/*
+  Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
+
 /modernity-v1.json
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
