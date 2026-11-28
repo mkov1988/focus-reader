@@ -68,7 +68,7 @@ async function main() {
             if (startIndex < 0) { problems.push(`#${id}: anchor not found: "${s.anchor.slice(0, 40)}…"`); continue; }
             if (startIndex <= prev) { problems.push(`#${id}: anchor out of order at "${s.label}" (idx ${startIndex} <= ${prev})`); }
             prev = startIndex;
-            resolved.push({ startIndex, label: s.label, recap: s.recap });
+            resolved.push({ startIndex, label: s.label, recap: s.recap, ...(s.note ? { note: s.note } : {}) });
         }
         resolved.sort((a, b) => a.startIndex - b.startIndex);
         out[id] = resolved;

@@ -5,7 +5,9 @@
  *   node scripts/merge-deep-pass.mjs scripts/deep-starts/deep-pass-results/chunk-1.json
  *
  * Per book: { id, nonNarrative,
- *   scenes:   [{anchor,label,recap}]            — 6-12 spoiler-safe scene beats
+ *   scenes:   [{anchor,label,recap,note?}]      — 6-12 spoiler-safe scene beats (for a
+ *                                                  listed book that is not a story: its
+ *                                                  own chapters, each with a plain `note`)
  *   details:  { cast:[], pacing, contentNotes:[], themes:[] }
  *   snipShort:{ anchor, words, teaser }          — ~1-minute quick hit (240-320 words)
  *   snipStory:{ anchor, words, teaser }          — 3-5 minute story (800-1400 words)
@@ -66,7 +68,9 @@ async function main() {
         if (Array.isArray(b.scenes) && b.scenes.length) {
             if (src[id]) stats.scenesSkippedExisting++;
             else if (existsSync(path.join(PUBLIC, `${id}.txt`))) {
-                src[id] = b.scenes.map((s) => ({ anchor: s.anchor, label: s.label, recap: s.recap }));
+                // `note`: a plain line on what a part covers, for a book that
+                // is not a story (build-listed-chunk.mjs); shown with the part.
+                src[id] = b.scenes.map((s) => ({ anchor: s.anchor, label: s.label, recap: s.recap, ...(s.note ? { note: s.note } : {}) }));
                 stats.scenesBundled++;
             } else {
                 deepScenes[id] = b.scenes;

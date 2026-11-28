@@ -26,7 +26,7 @@
  * pass covered: the one line hook, era, narrative voice and mood tags from
  * scripts/deep-starts/meta.json, plus pacing, cast and themes from
  * scripts/deep-starts/details.json, plus the story's word count, its language
- * level and its pace (1 to 5 each) from scripts/deep-starts/levels.json
+ * level, its pace (1 to 5 each) and its chapter count from scripts/deep-starts/levels.json
  * (scripts/deep-starts/measure-levels.mjs). Content notes stay behind: many of them
  * name a book's twist or its ending, and the page exists to invite reading. Cast lines are split into
  * [name, description] here so the app never parses prose. The export refuses
@@ -134,6 +134,7 @@ if (wanted('about.json')) {
     const details = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'details.json'), 'utf8'));
     const levels = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'levels.json'), 'utf8'));
     const level = (v) => (Number.isInteger(v) && v >= 1 && v <= 5 ? v : undefined);
+    const authoredParts = JSON.parse(scenes);
     // "Name: what they are", "Name, what they are" or "Name — what they are":
     // the earliest separator ends the name. A line with no separator, or one
     // whose first separator falls inside a clause ("A young nurse whose merry,
@@ -160,6 +161,11 @@ if (wanted('about.json')) {
             ...(Number.isInteger(levels[id]?.words) && levels[id].words > 0 ? { words: levels[id].words } : {}),
             ...(level(levels[id]?.language) ? { language: levels[id].language } : {}),
             ...(level(levels[id]?.pace) ? { pace: levels[id].pace } : {}),
+            // How many of the book's own chapters make parts the page can
+            // show (measure-levels.mjs): only for a book with no authored
+            // parts, whose page draws its parts from those chapters and
+            // holds their place before the text has loaded.
+            ...(!authoredParts[id] && Number.isInteger(levels[id]?.chapters) && levels[id].chapters >= 2 ? { chapters: levels[id].chapters } : {}),
         };
     }
     const aboutJson = JSON.stringify(about);
