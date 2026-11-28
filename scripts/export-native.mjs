@@ -25,7 +25,9 @@
  * book (Android src/open/PickupPage.tsx). One entry per bundled book the deep
  * pass covered: the one line hook, era, narrative voice and mood tags from
  * scripts/deep-starts/meta.json, plus pacing, cast and themes from
- * scripts/deep-starts/details.json. Content notes stay behind: many of them
+ * scripts/deep-starts/details.json, plus the story's word count, its language
+ * level and its pace (1 to 5 each) from scripts/deep-starts/levels.json
+ * (scripts/deep-starts/measure-levels.mjs). Content notes stay behind: many of them
  * name a book's twist or its ending, and the page exists to invite reading. Cast lines are split into
  * [name, description] here so the app never parses prose. The export refuses
  * to write if any of it carries the word "Gutenberg" (LEGAL.md: the name
@@ -130,6 +132,8 @@ emit('story-starts.json', starts, 'src/data/story-starts.json (build:starts)', O
 if (wanted('about.json')) {
     const meta = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'meta.json'), 'utf8'));
     const details = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'details.json'), 'utf8'));
+    const levels = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'levels.json'), 'utf8'));
+    const level = (v) => (Number.isInteger(v) && v >= 1 && v <= 5 ? v : undefined);
     // "Name: what they are", "Name, what they are" or "Name — what they are":
     // the earliest separator ends the name. A line with no separator, or one
     // whose first separator falls inside a clause ("A young nurse whose merry,
@@ -153,6 +157,9 @@ if (wanted('about.json')) {
             ...(d?.pacing ? { pacing: d.pacing } : {}),
             ...(Array.isArray(d?.cast) && d.cast.length ? { cast: d.cast.map(splitCast) } : {}),
             ...(Array.isArray(d?.themes) && d.themes.length ? { themes: d.themes } : {}),
+            ...(Number.isInteger(levels[id]?.words) && levels[id].words > 0 ? { words: levels[id].words } : {}),
+            ...(level(levels[id]?.language) ? { language: levels[id].language } : {}),
+            ...(level(levels[id]?.pace) ? { pace: levels[id].pace } : {}),
         };
     }
     const aboutJson = JSON.stringify(about);
@@ -161,7 +168,7 @@ if (wanted('about.json')) {
         console.error(`about.json would carry the word "Gutenberg" (LEGAL.md) for: ${bad.join(', ')}. Fix the deep pass store, then export again.`);
         process.exit(1);
     }
-    emit('about.json', aboutJson, 'scripts/deep-starts/meta.json + details.json (the deep pass), bundled ids only', Object.keys(about).length);
+    emit('about.json', aboutJson, 'scripts/deep-starts/meta.json + details.json + levels.json (the deep pass), bundled ids only', Object.keys(about).length);
 }
 
 // The paywall rush's bundled covers <- rush-covers.json + public/covers/.

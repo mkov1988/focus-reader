@@ -1,0 +1,2345 @@
+{
+ "10": {
+  "words": 821110,
+  "language": 3,
+  "pace": 2
+ },
+ "11": {
+  "words": 26435,
+  "language": 1,
+  "pace": 4
+ },
+ "12": {
+  "words": 29255,
+  "language": 1,
+  "pace": 4
+ },
+ "16": {
+  "words": 47111,
+  "language": 1,
+  "pace": 4
+ },
+ "20": {
+  "words": 79996,
+  "pace": 1
+ },
+ "21": {
+  "words": 38160,
+  "language": 2,
+  "pace": 4
+ },
+ "23": {
+  "words": 36192,
+  "language": 2,
+  "pace": 4
+ },
+ "26": {
+  "words": 79715,
+  "pace": 1
+ },
+ "35": {
+  "words": 30691,
+  "language": 3,
+  "pace": 4
+ },
+ "36": {
+  "words": 59884,
+  "language": 3,
+  "pace": 4
+ },
+ "41": {
+  "words": 12162,
+  "language": 5,
+  "pace": 2
+ },
+ "42": {
+  "words": 25573,
+  "language": 2,
+  "pace": 4
+ },
+ "43": {
+  "words": 25569,
+  "language": 2,
+  "pace": 3
+ },
+ "45": {
+  "words": 102224,
+  "language": 2,
+  "pace": 2
+ },
+ "46": {
+  "words": 28430,
+  "language": 2,
+  "pace": 4
+ },
+ "55": {
+  "words": 39267,
+  "language": 1,
+  "pace": 4
+ },
+ "62": {
+  "words": 65992,
+  "language": 3,
+  "pace": 5
+ },
+ "64": {
+  "words": 81517,
+  "language": 2,
+  "pace": 5
+ },
+ "68": {
+  "words": 57066,
+  "language": 3,
+  "pace": 5
+ },
+ "72": {
+  "words": 47058,
+  "language": 3,
+  "pace": 5
+ },
+ "73": {
+  "words": 46027,
+  "language": 3,
+  "pace": 3
+ },
+ "74": {
+  "words": 69813,
+  "language": 2,
+  "pace": 4
+ },
+ "76": {
+  "words": 109895,
+  "language": 3,
+  "pace": 3
+ },
+ "84": {
+  "words": 74963,
+  "language": 3,
+  "pace": 1
+ },
+ "86": {
+  "words": 117487,
+  "language": 3,
+  "pace": 3
+ },
+ "98": {
+  "words": 135636,
+  "language": 2,
+  "pace": 3
+ },
+ "103": {
+  "words": 62740,
+  "language": 3,
+  "pace": 4
+ },
+ "108": {
+  "words": 112021,
+  "language": 2,
+  "pace": 4
+ },
+ "113": {
+  "words": 80466,
+  "language": 2,
+  "pace": 2
+ },
+ "120": {
+  "words": 67855,
+  "language": 2,
+  "pace": 4
+ },
+ "121": {
+  "words": 77005,
+  "language": 2,
+  "pace": 3
+ },
+ "135": {
+  "words": 562715,
+  "language": 3,
+  "pace": 1
+ },
+ "139": {
+  "words": 75545,
+  "language": 3,
+  "pace": 4
+ },
+ "145": {
+  "words": 315621,
+  "language": 3,
+  "pace": 1
+ },
+ "155": {
+  "words": 194780,
+  "language": 2,
+  "pace": 2
+ },
+ "158": {
+  "words": 157434,
+  "language": 2,
+  "pace": 2
+ },
+ "160": {
+  "words": 63947,
+  "language": 2,
+  "pace": 2
+ },
+ "161": {
+  "words": 118748,
+  "language": 2,
+  "pace": 2
+ },
+ "164": {
+  "words": 104325,
+  "language": 4,
+  "pace": 2
+ },
+ "173": {
+  "words": 72770,
+  "language": 3,
+  "pace": 5
+ },
+ "174": {
+  "words": 78542,
+  "language": 2,
+  "pace": 3
+ },
+ "175": {
+  "words": 85347,
+  "language": 2,
+  "pace": 3
+ },
+ "202": {
+  "words": 127082,
+  "language": 4,
+  "pace": 2
+ },
+ "203": {
+  "words": 180631,
+  "language": 3,
+  "pace": 3
+ },
+ "204": {
+  "words": 78856,
+  "language": 3,
+  "pace": 3
+ },
+ "205": {
+  "words": 115720,
+  "language": 4,
+  "pace": 1
+ },
+ "209": {
+  "words": 42233,
+  "language": 4,
+  "pace": 1
+ },
+ "215": {
+  "words": 31742,
+  "language": 3,
+  "pace": 5
+ },
+ "219": {
+  "words": 37906,
+  "language": 3,
+  "pace": 1
+ },
+ "221": {
+  "words": 112307,
+  "language": 2,
+  "pace": 3
+ },
+ "223": {
+  "words": 71561,
+  "language": 3,
+  "pace": 3
+ },
+ "224": {
+  "words": 129802,
+  "language": 3,
+  "pace": 2
+ },
+ "228": {
+  "words": 107354,
+  "pace": 3
+ },
+ "236": {
+  "words": 50732,
+  "language": 2,
+  "pace": 3
+ },
+ "244": {
+  "words": 43282,
+  "language": 2,
+  "pace": 4
+ },
+ "245": {
+  "words": 140650,
+  "language": 4,
+  "pace": 3
+ },
+ "271": {
+  "words": 59685,
+  "language": 1,
+  "pace": 4
+ },
+ "345": {
+  "words": 161039,
+  "language": 2,
+  "pace": 4
+ },
+ "348": {
+  "words": 79262,
+  "language": 4,
+  "pace": 2
+ },
+ "389": {
+  "words": 21661,
+  "language": 2,
+  "pace": 4
+ },
+ "393": {
+  "words": 64195,
+  "language": 4,
+  "pace": 2
+ },
+ "394": {
+  "words": 70671,
+  "language": 3,
+  "pace": 2
+ },
+ "408": {
+  "words": 67977,
+  "language": 5,
+  "pace": 1
+ },
+ "421": {
+  "words": 79979,
+  "language": 2,
+  "pace": 4
+ },
+ "468": {
+  "words": 62266,
+  "language": 2,
+  "pace": 4
+ },
+ "500": {
+  "words": 39835,
+  "language": 1,
+  "pace": 4
+ },
+ "514": {
+  "words": 185883,
+  "language": 2,
+  "pace": 3
+ },
+ "521": {
+  "words": 120799,
+  "language": 2,
+  "pace": 2
+ },
+ "524": {
+  "words": 96005,
+  "language": 3,
+  "pace": 3
+ },
+ "537": {
+  "words": 75040,
+  "language": 2,
+  "pace": 3
+ },
+ "558": {
+  "words": 40779,
+  "language": 2,
+  "pace": 5
+ },
+ "560": {
+  "words": 128026,
+  "language": 3,
+  "pace": 4
+ },
+ "564": {
+  "words": 95607,
+  "language": 3,
+  "pace": 2
+ },
+ "580": {
+  "words": 298235,
+  "language": 3,
+  "pace": 2
+ },
+ "583": {
+  "words": 244638,
+  "language": 2,
+  "pace": 2
+ },
+ "589": {
+  "words": 100549,
+  "language": 2,
+  "pace": 2
+ },
+ "599": {
+  "words": 301304,
+  "language": 3,
+  "pace": 2
+ },
+ "600": {
+  "words": 43931,
+  "language": 2,
+  "pace": 2
+ },
+ "601": {
+  "words": 136536,
+  "language": 2,
+  "pace": 2
+ },
+ "674": {
+  "words": 740324,
+  "language": 4,
+  "pace": 2
+ },
+ "696": {
+  "words": 34575,
+  "language": 3,
+  "pace": 5
+ },
+ "730": {
+  "words": 157174,
+  "language": 2,
+  "pace": 3
+ },
+ "766": {
+  "words": 353903,
+  "language": 2,
+  "pace": 2
+ },
+ "768": {
+  "words": 115937,
+  "language": 2,
+  "pace": 2
+ },
+ "829": {
+  "words": 102993,
+  "language": 4,
+  "pace": 2
+ },
+ "831": {
+  "words": 186026,
+  "language": 2,
+  "pace": 2
+ },
+ "834": {
+  "words": 95424,
+  "language": 2,
+  "pace": 4
+ },
+ "844": {
+  "words": 20570,
+  "pace": 4
+ },
+ "851": {
+  "words": 20067,
+  "language": 2,
+  "pace": 3
+ },
+ "863": {
+  "words": 56455,
+  "language": 2,
+  "pace": 4
+ },
+ "910": {
+  "words": 72029,
+  "language": 3,
+  "pace": 4
+ },
+ "940": {
+  "words": 146982,
+  "language": 3,
+  "pace": 2
+ },
+ "967": {
+  "words": 320327,
+  "language": 3,
+  "pace": 2
+ },
+ "974": {
+  "words": 90227,
+  "language": 3,
+  "pace": 1
+ },
+ "996": {
+  "words": 404116,
+  "language": 3,
+  "pace": 2
+ },
+ "1001": {
+  "words": 37429,
+  "pace": 1
+ },
+ "1023": {
+  "words": 352395,
+  "language": 2,
+  "pace": 1
+ },
+ "1063": {
+  "words": 2308,
+  "language": 4,
+  "pace": 4
+ },
+ "1079": {
+  "words": 180764,
+  "language": 5,
+  "pace": 1
+ },
+ "1112": {
+  "words": 25182,
+  "pace": 3
+ },
+ "1153": {
+  "words": 88112,
+  "language": 2,
+  "pace": 5
+ },
+ "1155": {
+  "words": 75126,
+  "language": 2,
+  "pace": 5
+ },
+ "1170": {
+  "words": 94635,
+  "language": 3,
+  "pace": 3
+ },
+ "1184": {
+  "words": 460380,
+  "language": 3,
+  "pace": 3
+ },
+ "1200": {
+  "words": 303296,
+  "language": 5,
+  "pace": 2
+ },
+ "1212": {
+  "words": 33153,
+  "language": 3,
+  "pace": 4
+ },
+ "1251": {
+  "words": 158751,
+  "language": 2,
+  "pace": 3
+ },
+ "1257": {
+  "words": 228211,
+  "language": 2,
+  "pace": 4
+ },
+ "1259": {
+  "words": 220544,
+  "language": 2,
+  "pace": 3
+ },
+ "1260": {
+  "words": 184449,
+  "language": 3,
+  "pace": 2
+ },
+ "1268": {
+  "words": 193322,
+  "language": 3,
+  "pace": 2
+ },
+ "1342": {
+  "words": 122408,
+  "language": 2,
+  "pace": 4
+ },
+ "1399": {
+  "words": 349733,
+  "language": 2,
+  "pace": 2
+ },
+ "1400": {
+  "words": 184347,
+  "language": 2,
+  "pace": 2
+ },
+ "1497": {
+  "words": 209781,
+  "language": 3,
+  "pace": 1
+ },
+ "1510": {
+  "words": 22399,
+  "pace": 1
+ },
+ "1513": {
+  "words": 25514,
+  "pace": 4
+ },
+ "1514": {
+  "words": 17058,
+  "pace": 4
+ },
+ "1523": {
+  "words": 22812,
+  "pace": 2
+ },
+ "1564": {
+  "words": 213075,
+  "language": 3,
+  "pace": 2
+ },
+ "1597": {
+  "words": 55345,
+  "language": 2,
+  "pace": 4
+ },
+ "1600": {
+  "words": 22076,
+  "language": 3,
+  "pace": 2
+ },
+ "1608": {
+  "words": 66506,
+  "language": 1,
+  "pace": 3
+ },
+ "1656": {
+  "words": 11382,
+  "language": 3,
+  "pace": 3
+ },
+ "1658": {
+  "words": 27290,
+  "language": 2,
+  "pace": 1
+ },
+ "1661": {
+  "words": 104416,
+  "language": 2,
+  "pace": 4
+ },
+ "1685": {
+  "words": 73829,
+  "language": 3,
+  "pace": 3
+ },
+ "1686": {
+  "words": 96725,
+  "language": 2,
+  "pace": 4
+ },
+ "1695": {
+  "words": 57371,
+  "language": 2,
+  "pace": 4
+ },
+ "1719": {
+  "words": 16254,
+  "pace": 2
+ },
+ "1727": {
+  "words": 126721,
+  "language": 2,
+  "pace": 2
+ },
+ "1837": {
+  "words": 68846,
+  "language": 3,
+  "pace": 3
+ },
+ "1849": {
+  "words": 75755,
+  "language": 1,
+  "pace": 3
+ },
+ "1872": {
+  "words": 60098,
+  "language": 1,
+  "pace": 3
+ },
+ "1874": {
+  "words": 59267,
+  "language": 1,
+  "pace": 2
+ },
+ "1931": {
+  "words": 62248,
+  "language": 2,
+  "pace": 4
+ },
+ "1952": {
+  "words": 6077,
+  "language": 2,
+  "pace": 4
+ },
+ "2038": {
+  "words": 125035,
+  "language": 2,
+  "pace": 3
+ },
+ "2040": {
+  "words": 37280,
+  "language": 5,
+  "pace": 1
+ },
+ "2087": {
+  "words": 192554,
+  "language": 3,
+  "pace": 2
+ },
+ "2097": {
+  "words": 43001,
+  "language": 2,
+  "pace": 4
+ },
+ "2130": {
+  "words": 42145,
+  "pace": 2
+ },
+ "2147": {
+  "words": 81819,
+  "language": 5,
+  "pace": 3
+ },
+ "2148": {
+  "words": 94909,
+  "language": 5,
+  "pace": 2
+ },
+ "2160": {
+  "words": 142543,
+  "language": 5,
+  "pace": 2
+ },
+ "2199": {
+  "words": 152656,
+  "language": 3,
+  "pace": 2
+ },
+ "2350": {
+  "words": 58801,
+  "language": 2,
+  "pace": 3
+ },
+ "2360": {
+  "words": 107531,
+  "language": 4,
+  "pace": 2
+ },
+ "2376": {
+  "words": 73471,
+  "language": 3,
+  "pace": 2
+ },
+ "2383": {
+  "words": 267725,
+  "pace": 2
+ },
+ "2397": {
+  "words": 134396,
+  "language": 2,
+  "pace": 2
+ },
+ "2465": {
+  "words": 23943,
+  "language": 2,
+  "pace": 3
+ },
+ "2489": {
+  "words": 212458,
+  "language": 5,
+  "pace": 2
+ },
+ "2527": {
+  "words": 42384,
+  "language": 2,
+  "pace": 4
+ },
+ "2542": {
+  "words": 26429,
+  "pace": 5
+ },
+ "2554": {
+  "words": 202703,
+  "language": 2,
+  "pace": 3
+ },
+ "2600": {
+  "words": 562468,
+  "language": 3,
+  "pace": 2
+ },
+ "2610": {
+  "words": 183815,
+  "language": 4,
+  "pace": 2
+ },
+ "2638": {
+  "words": 241526,
+  "language": 2,
+  "pace": 2
+ },
+ "2641": {
+  "words": 66419,
+  "language": 2,
+  "pace": 4
+ },
+ "2701": {
+  "words": 208454,
+  "language": 5,
+  "pace": 2
+ },
+ "2760": {
+  "words": 621821,
+  "language": 3,
+  "pace": 2
+ },
+ "2806": {
+  "words": 45598,
+  "language": 3,
+  "pace": 3
+ },
+ "2813": {
+  "words": 67562,
+  "language": 2,
+  "pace": 5
+ },
+ "2825": {
+  "words": 31536,
+  "language": 2,
+  "pace": 4
+ },
+ "2833": {
+  "words": 110293,
+  "language": 4,
+  "pace": 1
+ },
+ "2848": {
+  "words": 536660,
+  "language": 3,
+  "pace": 1
+ },
+ "2852": {
+  "words": 59106,
+  "language": 2,
+  "pace": 5
+ },
+ "2868": {
+  "words": 87733,
+  "language": 2,
+  "pace": 2
+ },
+ "3011": {
+  "words": 77481,
+  "pace": 2
+ },
+ "3044": {
+  "words": 140106,
+  "language": 3,
+  "pace": 3
+ },
+ "3070": {
+  "words": 59120,
+  "language": 2,
+  "pace": 4
+ },
+ "3146": {
+  "words": 93952,
+  "language": 3,
+  "pace": 2
+ },
+ "3177": {
+  "words": 164505,
+  "language": 4,
+  "pace": 2
+ },
+ "3268": {
+  "words": 290180,
+  "language": 3,
+  "pace": 1
+ },
+ "3289": {
+  "words": 57606,
+  "language": 2,
+  "pace": 4
+ },
+ "3321": {
+  "words": 96324,
+  "language": 2,
+  "pace": 3
+ },
+ "3530": {
+  "words": 84342,
+  "language": 3,
+  "pace": 4
+ },
+ "3567": {
+  "words": 481932,
+  "language": 4,
+  "pace": 1
+ },
+ "3913": {
+  "words": 272785,
+  "language": 4,
+  "pace": 1
+ },
+ "3922": {
+  "words": 75725,
+  "language": 2,
+  "pace": 1
+ },
+ "4085": {
+  "words": 188659,
+  "language": 4,
+  "pace": 4
+ },
+ "4200": {
+  "words": 1261962,
+  "language": 2,
+  "pace": 2
+ },
+ "4300": {
+  "words": 264983,
+  "language": 5,
+  "pace": 1
+ },
+ "4367": {
+  "words": 279970,
+  "language": 3,
+  "pace": 2
+ },
+ "4488": {
+  "words": 155735,
+  "language": 4,
+  "pace": 1
+ },
+ "4499": {
+  "words": 168895,
+  "language": 3,
+  "pace": 1
+ },
+ "4599": {
+  "words": 256557,
+  "language": 1,
+  "pace": 2
+ },
+ "4693": {
+  "words": 135300,
+  "language": 3,
+  "pace": 2
+ },
+ "4712": {
+  "words": 101725,
+  "language": 3,
+  "pace": 3
+ },
+ "5131": {
+  "words": 37008,
+  "pace": 1
+ },
+ "5225": {
+  "words": 92511,
+  "language": 4,
+  "pace": 3
+ },
+ "5921": {
+  "words": 194265,
+  "language": 3,
+  "pace": 2
+ },
+ "6130": {
+  "words": 168800,
+  "pace": 2
+ },
+ "6133": {
+  "words": 53853,
+  "language": 2,
+  "pace": 4
+ },
+ "6400": {
+  "words": 227815,
+  "language": 5,
+  "pace": 3
+ },
+ "6593": {
+  "words": 343352,
+  "language": 4,
+  "pace": 2
+ },
+ "6635": {
+  "words": 81969,
+  "language": 3,
+  "pace": 3
+ },
+ "6761": {
+  "words": 157125,
+  "language": 5,
+  "pace": 1
+ },
+ "6768": {
+  "words": 100185,
+  "language": 2,
+  "pace": 4
+ },
+ "7184": {
+  "words": 108974,
+  "language": 3,
+  "pace": 1
+ },
+ "7326": {
+  "words": 116568,
+  "language": 3,
+  "pace": 4
+ },
+ "7452": {
+  "words": 153834,
+  "language": 5,
+  "pace": 2
+ },
+ "7524": {
+  "words": 47419,
+  "language": 5,
+  "pace": 2
+ },
+ "7700": {
+  "words": 12035,
+  "pace": 4
+ },
+ "7735": {
+  "words": 178099,
+  "language": 4,
+  "pace": 2
+ },
+ "8486": {
+  "words": 45205,
+  "language": 3,
+  "pace": 2
+ },
+ "8492": {
+  "words": 71466,
+  "language": 3,
+  "pace": 2
+ },
+ "8800": {
+  "words": 108392,
+  "pace": 1
+ },
+ "8954": {
+  "words": 148963,
+  "language": 3,
+  "pace": 3
+ },
+ "9473": {
+  "words": 216695,
+  "language": 2,
+  "pace": 2
+ },
+ "9911": {
+  "words": 85554,
+  "language": 2,
+  "pace": 2
+ },
+ "10002": {
+  "words": 50510,
+  "language": 2,
+  "pace": 2
+ },
+ "10102": {
+  "words": 90761,
+  "language": 2,
+  "pace": 5
+ },
+ "10148": {
+  "words": 110453,
+  "language": 3,
+  "pace": 3
+ },
+ "10441": {
+  "words": 47276,
+  "language": 4,
+  "pace": 3
+ },
+ "10636": {
+  "words": 231553,
+  "language": 4,
+  "pace": 1
+ },
+ "11030": {
+  "words": 82229,
+  "language": 1,
+  "pace": 3
+ },
+ "11339": {
+  "words": 38091,
+  "language": 1,
+  "pace": 4
+ },
+ "11982": {
+  "words": 132577,
+  "language": 4,
+  "pace": 2
+ },
+ "11987": {
+  "words": 68461,
+  "language": 4,
+  "pace": 3
+ },
+ "12345": {
+  "words": 47270,
+  "language": 3,
+  "pace": 3
+ },
+ "12758": {
+  "words": 101444,
+  "language": 3,
+  "pace": 3
+ },
+ "14140": {
+  "words": 233981,
+  "language": 3,
+  "pace": 2
+ },
+ "14244": {
+  "words": 25659,
+  "language": 1,
+  "pace": 4
+ },
+ "14328": {
+  "words": 41204,
+  "language": 4,
+  "pace": 2
+ },
+ "14471": {
+  "words": 66798,
+  "language": 2,
+  "pace": 2
+ },
+ "14568": {
+  "words": 39735,
+  "pace": 1
+ },
+ "14818": {
+  "words": 78359,
+  "language": 3,
+  "pace": 3
+ },
+ "14838": {
+  "words": 974,
+  "pace": 4
+ },
+ "15272": {
+  "words": 61725,
+  "pace": 2
+ },
+ "15381": {
+  "words": 35891,
+  "language": 3,
+  "pace": 3
+ },
+ "15384": {
+  "words": 202127,
+  "language": 3,
+  "pace": 2
+ },
+ "15399": {
+  "words": 80785,
+  "language": 3,
+  "pace": 3
+ },
+ "15474": {
+  "words": 629911,
+  "language": 4,
+  "pace": 1
+ },
+ "16328": {
+  "words": 35004,
+  "pace": 1
+ },
+ "16389": {
+  "words": 78202,
+  "language": 2,
+  "pace": 1
+ },
+ "16433": {
+  "words": 84719,
+  "language": 2,
+  "pace": 3
+ },
+ "16921": {
+  "words": 60019,
+  "language": 4,
+  "pace": 4
+ },
+ "17157": {
+  "words": 49493,
+  "language": 4,
+  "pace": 3
+ },
+ "17460": {
+  "words": 272620,
+  "language": 2,
+  "pace": 1
+ },
+ "18151": {
+  "words": 36621,
+  "language": 4,
+  "pace": 4
+ },
+ "18459": {
+  "words": 67727,
+  "pace": 1
+ },
+ "18575": {
+  "words": 142901,
+  "language": 2,
+  "pace": 4
+ },
+ "18591": {
+  "words": 117005,
+  "language": 5,
+  "pace": 1
+ },
+ "18592": {
+  "words": 128598,
+  "language": 4,
+  "pace": 1
+ },
+ "18857": {
+  "words": 85456,
+  "language": 3,
+  "pace": 3
+ },
+ "18875": {
+  "words": 53791,
+  "language": 3,
+  "pace": 2
+ },
+ "19146": {
+  "words": 179117,
+  "language": 4,
+  "pace": 2
+ },
+ "19412": {
+  "words": 121502,
+  "language": 3,
+  "pace": 3
+ },
+ "19476": {
+  "words": 63633,
+  "language": 3,
+  "pace": 2
+ },
+ "19742": {
+  "words": 123888,
+  "language": 2,
+  "pace": 2
+ },
+ "19771": {
+  "words": 128814,
+  "language": 2,
+  "pace": 1
+ },
+ "20121": {
+  "words": 30387,
+  "language": 4,
+  "pace": 4
+ },
+ "20203": {
+  "words": 66379,
+  "language": 5,
+  "pace": 3
+ },
+ "20439": {
+  "words": 119564,
+  "language": 4,
+  "pace": 3
+ },
+ "20546": {
+  "words": 106553,
+  "language": 3,
+  "pace": 2
+ },
+ "20628": {
+  "words": 70512,
+  "language": 3,
+  "pace": 4
+ },
+ "21027": {
+  "words": 183643,
+  "language": 2,
+  "pace": 2
+ },
+ "21091": {
+  "words": 250697,
+  "language": 4,
+  "pace": 1
+ },
+ "21092": {
+  "words": 52388,
+  "language": 4,
+  "pace": 5
+ },
+ "21339": {
+  "words": 137431,
+  "pace": 3
+ },
+ "21348": {
+  "words": 104764,
+  "language": 5,
+  "pace": 2
+ },
+ "21500": {
+  "words": 263920,
+  "language": 5,
+  "pace": 1
+ },
+ "21638": {
+  "words": 64312,
+  "language": 3,
+  "pace": 5
+ },
+ "21700": {
+  "words": 124028,
+  "pace": 3
+ },
+ "21765": {
+  "words": 121262,
+  "language": 3,
+  "pace": 2
+ },
+ "21767": {
+  "words": 136279,
+  "language": 3,
+  "pace": 2
+ },
+ "21986": {
+  "words": 148301,
+  "language": 2,
+  "pace": 3
+ },
+ "21990": {
+  "words": 164895,
+  "language": 3,
+  "pace": 2
+ },
+ "22066": {
+  "words": 259316,
+  "language": 3,
+  "pace": 2
+ },
+ "22088": {
+  "words": 133376,
+  "language": 3,
+  "pace": 1
+ },
+ "22094": {
+  "words": 265471,
+  "language": 4,
+  "pace": 2
+ },
+ "22163": {
+  "words": 48515,
+  "language": 1,
+  "pace": 4
+ },
+ "22210": {
+  "words": 133373,
+  "language": 4,
+  "pace": 2
+ },
+ "22304": {
+  "words": 110082,
+  "language": 2,
+  "pace": 2
+ },
+ "22342": {
+  "words": 70901,
+  "language": 2,
+  "pace": 4
+ },
+ "22400": {
+  "words": 260571,
+  "language": 4,
+  "pace": 3
+ },
+ "22536": {
+  "words": 129673,
+  "language": 2,
+  "pace": 2
+ },
+ "22541": {
+  "words": 11239,
+  "language": 4,
+  "pace": 5
+ },
+ "22749": {
+  "words": 117840,
+  "language": 4,
+  "pace": 1
+ },
+ "22903": {
+  "words": 170091,
+  "language": 4,
+  "pace": 2
+ },
+ "23172": {
+  "words": 3236,
+  "language": 3,
+  "pace": 4
+ },
+ "23184": {
+  "words": 84610,
+  "language": 3,
+  "pace": 4
+ },
+ "23500": {
+  "words": 121647,
+  "language": 3,
+  "pace": 3
+ },
+ "23599": {
+  "words": 9190,
+  "language": 4,
+  "pace": 4
+ },
+ "23637": {
+  "words": 153163,
+  "language": 4,
+  "pace": 1
+ },
+ "23700": {
+  "words": 302621,
+  "language": 4,
+  "pace": 3
+ },
+ "23731": {
+  "words": 10101,
+  "language": 4,
+  "pace": 4
+ },
+ "23745": {
+  "words": 86286,
+  "language": 4,
+  "pace": 3
+ },
+ "23761": {
+  "words": 87558,
+  "language": 4,
+  "pace": 3
+ },
+ "23784": {
+  "words": 253004,
+  "language": 4,
+  "pace": 1
+ },
+ "23789": {
+  "words": 108739,
+  "language": 2,
+  "pace": 4
+ },
+ "23790": {
+  "words": 30270,
+  "language": 5,
+  "pace": 3
+ },
+ "24149": {
+  "words": 7676,
+  "language": 5,
+  "pace": 4
+ },
+ "24375": {
+  "words": 7160,
+  "language": 1,
+  "pace": 4
+ },
+ "24793": {
+  "words": 139934,
+  "language": 3,
+  "pace": 3
+ },
+ "24869": {
+  "words": 363646,
+  "pace": 2
+ },
+ "24950": {
+  "words": 158732,
+  "pace": 1
+ },
+ "25001": {
+  "words": 74026,
+  "language": 1,
+  "pace": 1
+ },
+ "25049": {
+  "words": 89808,
+  "language": 4,
+  "pace": 3
+ },
+ "25087": {
+  "words": 112569,
+  "language": 2,
+  "pace": 4
+ },
+ "25112": {
+  "words": 146695,
+  "language": 4,
+  "pace": 1
+ },
+ "25132": {
+  "words": 122691,
+  "language": 2,
+  "pace": 3
+ },
+ "25344": {
+  "words": 68355,
+  "language": 4,
+  "pace": 1
+ },
+ "25440": {
+  "words": 87988,
+  "language": 2,
+  "pace": 3
+ },
+ "25502": {
+  "words": 103839,
+  "language": 3,
+  "pace": 3
+ },
+ "25551": {
+  "words": 104398,
+  "language": 2,
+  "pace": 2
+ },
+ "25695": {
+  "words": 116955,
+  "language": 2,
+  "pace": 3
+ },
+ "25789": {
+  "words": 68758,
+  "language": 4,
+  "pace": 3
+ },
+ "25810": {
+  "words": 125926,
+  "language": 3,
+  "pace": 2
+ },
+ "25868": {
+  "words": 74244,
+  "language": 3,
+  "pace": 4
+ },
+ "25911": {
+  "words": 134501,
+  "language": 5,
+  "pace": 1
+ },
+ "25919": {
+  "words": 85253,
+  "language": 3,
+  "pace": 4
+ },
+ "25948": {
+  "words": 150756,
+  "language": 2,
+  "pace": 3
+ },
+ "25971": {
+  "words": 153937,
+  "language": 2,
+  "pace": 2
+ },
+ "26009": {
+  "words": 97160,
+  "language": 4,
+  "pace": 2
+ },
+ "26240": {
+  "words": 88691,
+  "language": 3,
+  "pace": 2
+ },
+ "26416": {
+  "words": 161733,
+  "language": 5,
+  "pace": 3
+ },
+ "26429": {
+  "words": 109991,
+  "pace": 2
+ },
+ "26482": {
+  "words": 116684,
+  "language": 2,
+  "pace": 2
+ },
+ "26524": {
+  "words": 148788,
+  "language": 4,
+  "pace": 3
+ },
+ "26563": {
+  "words": 42376,
+  "language": 3,
+  "pace": 3
+ },
+ "26593": {
+  "words": 56338,
+  "language": 3,
+  "pace": 3
+ },
+ "26704": {
+  "words": 72120,
+  "language": 1,
+  "pace": 5
+ },
+ "26742": {
+  "words": 86969,
+  "language": 1,
+  "pace": 2
+ },
+ "26951": {
+  "words": 80989,
+  "language": 3,
+  "pace": 5
+ },
+ "26992": {
+  "words": 150683,
+  "language": 2,
+  "pace": 1
+ },
+ "27151": {
+  "words": 109177,
+  "language": 4,
+  "pace": 1
+ },
+ "27288": {
+  "words": 151321,
+  "language": 2,
+  "pace": 1
+ },
+ "27365": {
+  "words": 72296,
+  "language": 3,
+  "pace": 3
+ },
+ "27430": {
+  "words": 95597,
+  "language": 5,
+  "pace": 2
+ },
+ "27432": {
+  "words": 60157,
+  "language": 2,
+  "pace": 1
+ },
+ "27475": {
+  "words": 103086,
+  "language": 2,
+  "pace": 2
+ },
+ "27587": {
+  "words": 122321,
+  "language": 4,
+  "pace": 2
+ },
+ "27609": {
+  "words": 4321,
+  "language": 3,
+  "pace": 3
+ },
+ "27673": {
+  "words": 15962,
+  "pace": 5
+ },
+ "27743": {
+  "words": 120135,
+  "language": 4,
+  "pace": 2
+ },
+ "27761": {
+  "words": 31010,
+  "pace": 3
+ },
+ "27794": {
+  "words": 101217,
+  "language": 2,
+  "pace": 5
+ },
+ "27997": {
+  "words": 99064,
+  "language": 3,
+  "pace": 1
+ },
+ "28054": {
+  "words": 350001,
+  "language": 2,
+  "pace": 2
+ },
+ "28152": {
+  "words": 163420,
+  "language": 4,
+  "pace": 2
+ },
+ "28203": {
+  "words": 86073,
+  "language": 2,
+  "pace": 2
+ },
+ "28329": {
+  "words": 158789,
+  "language": 5,
+  "pace": 2
+ },
+ "28621": {
+  "words": 116851,
+  "pace": 2
+ },
+ "28780": {
+  "words": 90196,
+  "language": 4,
+  "pace": 5
+ },
+ "29391": {
+  "words": 62120,
+  "language": 3,
+  "pace": 3
+ },
+ "30254": {
+  "words": 188875,
+  "language": 4,
+  "pace": 3
+ },
+ "30340": {
+  "words": 104131,
+  "language": 4,
+  "pace": 2
+ },
+ "30434": {
+  "words": 67742,
+  "language": 3,
+  "pace": 4
+ },
+ "30849": {
+  "words": 133340,
+  "language": 3,
+  "pace": 3
+ },
+ "31257": {
+  "words": 53867,
+  "language": 3,
+  "pace": 5
+ },
+ "31469": {
+  "words": 10717,
+  "language": 5,
+  "pace": 3
+ },
+ "31472": {
+  "words": 82469,
+  "language": 3,
+  "pace": 2
+ },
+ "31635": {
+  "words": 83216,
+  "language": 3,
+  "pace": 3
+ },
+ "32398": {
+  "words": 60593,
+  "language": 3,
+  "pace": 5
+ },
+ "32474": {
+  "words": 178546,
+  "language": 4,
+  "pace": 1
+ },
+ "32562": {
+  "words": 11215,
+  "language": 3,
+  "pace": 5
+ },
+ "32759": {
+  "words": 31213,
+  "language": 3,
+  "pace": 5
+ },
+ "33118": {
+  "words": 85151,
+  "language": 4,
+  "pace": 3
+ },
+ "33644": {
+  "words": 46042,
+  "language": 4,
+  "pace": 4
+ },
+ "33823": {
+  "words": 77371,
+  "language": 3,
+  "pace": 3
+ },
+ "34206": {
+  "words": 233962,
+  "language": 4,
+  "pace": 3
+ },
+ "34856": {
+  "words": 94819,
+  "language": 4,
+  "pace": 3
+ },
+ "35548": {
+  "words": 123270,
+  "language": 3,
+  "pace": 3
+ },
+ "36034": {
+  "words": 118571,
+  "language": 2,
+  "pace": 3
+ },
+ "36223": {
+  "words": 89815,
+  "language": 3,
+  "pace": 3
+ },
+ "36462": {
+  "words": 95430,
+  "language": 2,
+  "pace": 4
+ },
+ "36725": {
+  "words": 163797,
+  "language": 3,
+  "pace": 1
+ },
+ "36965": {
+  "words": 70144,
+  "language": 4,
+  "pace": 2
+ },
+ "37106": {
+  "words": 192054,
+  "language": 2,
+  "pace": 2
+ },
+ "37499": {
+  "words": 83774,
+  "language": 4,
+  "pace": 2
+ },
+ "38177": {
+  "words": 107560,
+  "language": 4,
+  "pace": 2
+ },
+ "38311": {
+  "words": 149329,
+  "language": 3,
+  "pace": 2
+ },
+ "38477": {
+  "words": 58690,
+  "language": 4,
+  "pace": 2
+ },
+ "38983": {
+  "words": 53005,
+  "language": 2,
+  "pace": 3
+ },
+ "40058": {
+  "words": 180095,
+  "language": 3,
+  "pace": 1
+ },
+ "40059": {
+  "words": 105326,
+  "language": 3,
+  "pace": 1
+ },
+ "40284": {
+  "words": 31909,
+  "language": 2,
+  "pace": 4
+ },
+ "40361": {
+  "words": 60878,
+  "language": 2,
+  "pace": 4
+ },
+ "41537": {
+  "words": 115391,
+  "language": 4,
+  "pace": 1
+ },
+ "42188": {
+  "words": 12082,
+  "language": 3,
+  "pace": 5
+ },
+ "42196": {
+  "words": 12110,
+  "language": 3,
+  "pace": 5
+ },
+ "42236": {
+  "words": 17154,
+  "language": 4,
+  "pace": 5
+ },
+ "42243": {
+  "words": 72636,
+  "language": 3,
+  "pace": 4
+ },
+ "42259": {
+  "words": 30962,
+  "language": 3,
+  "pace": 5
+ },
+ "42389": {
+  "words": 190207,
+  "language": 5,
+  "pace": 1
+ },
+ "42486": {
+  "words": 76924,
+  "language": 4,
+  "pace": 2
+ },
+ "42681": {
+  "words": 78664,
+  "language": 2,
+  "pace": 2
+ },
+ "43063": {
+  "words": 80521,
+  "language": 2,
+  "pace": 2
+ },
+ "43936": {
+  "words": 39638,
+  "language": 1,
+  "pace": 4
+ },
+ "44608": {
+  "words": 344281,
+  "language": 5,
+  "pace": 1
+ },
+ "44833": {
+  "words": 191688,
+  "pace": 1
+ },
+ "45451": {
+  "words": 137322,
+  "language": 4,
+  "pace": 2
+ },
+ "45631": {
+  "words": 79983,
+  "language": 3,
+  "pace": 2
+ },
+ "46276": {
+  "words": 75032,
+  "language": 5,
+  "pace": 3
+ },
+ "47221": {
+  "words": 92415,
+  "language": 4,
+  "pace": 1
+ },
+ "47262": {
+  "words": 95769,
+  "language": 4,
+  "pace": 2
+ },
+ "47960": {
+  "words": 69781,
+  "pace": 3
+ },
+ "48296": {
+  "words": 125298,
+  "language": 3,
+  "pace": 2
+ },
+ "48320": {
+  "words": 106120,
+  "language": 2,
+  "pace": 4
+ },
+ "48893": {
+  "words": 52014,
+  "language": 4,
+  "pace": 1
+ },
+ "49402": {
+  "words": 140770,
+  "language": 3,
+  "pace": 1
+ },
+ "49987": {
+  "words": 168467,
+  "language": 3,
+  "pace": 2
+ },
+ "50133": {
+  "words": 17183,
+  "language": 5,
+  "pace": 2
+ },
+ "50290": {
+  "words": 49870,
+  "language": 3,
+  "pace": 4
+ },
+ "50498": {
+  "words": 142856,
+  "language": 2,
+  "pace": 2
+ },
+ "50508": {
+  "words": 182863,
+  "language": 4,
+  "pace": 2
+ },
+ "50559": {
+  "words": 138185,
+  "pace": 1
+ },
+ "51428": {
+  "words": 183092,
+  "language": 5,
+  "pace": 2
+ },
+ "51649": {
+  "words": 424862,
+  "language": 5,
+  "pace": 2
+ },
+ "52404": {
+  "words": 127664,
+  "language": 3,
+  "pace": 2
+ },
+ "53154": {
+  "words": 66399,
+  "language": 3,
+  "pace": 2
+ },
+ "53416": {
+  "words": 141104,
+  "language": 1,
+  "pace": 1
+ },
+ "53419": {
+  "words": 55458,
+  "language": 3,
+  "pace": 3
+ },
+ "53874": {
+  "words": 127612,
+  "language": 4,
+  "pace": 2
+ },
+ "54879": {
+  "words": 130033,
+  "language": 4,
+  "pace": 1
+ },
+ "55179": {
+  "words": 160873,
+  "language": 4,
+  "pace": 2
+ },
+ "55201": {
+  "words": 129899,
+  "language": 3,
+  "pace": 1
+ },
+ "57426": {
+  "words": 66670,
+  "language": 3,
+  "pace": 3
+ },
+ "57641": {
+  "words": 84076,
+  "language": 3,
+  "pace": 1
+ },
+ "57669": {
+  "words": 77647,
+  "language": 2,
+  "pace": 4
+ },
+ "58820": {
+  "words": 58705,
+  "language": 3,
+  "pace": 4
+ },
+ "58866": {
+  "words": 64452,
+  "language": 2,
+  "pace": 4
+ },
+ "59827": {
+  "words": 106273,
+  "language": 2,
+  "pace": 3
+ },
+ "59828": {
+  "words": 436264,
+  "language": 2,
+  "pace": 3
+ },
+ "59892": {
+  "words": 92260,
+  "language": 3,
+  "pace": 2
+ },
+ "60316": {
+  "words": 61481,
+  "language": 4,
+  "pace": 4
+ },
+ "60979": {
+  "words": 108982,
+  "language": 3,
+  "pace": 3
+ },
+ "61168": {
+  "words": 75131,
+  "language": 2,
+  "pace": 4
+ },
+ "61262": {
+  "words": 52494,
+  "language": 2,
+  "pace": 4
+ },
+ "64317": {
+  "words": 48150,
+  "language": 2,
+  "pace": 4
+ },
+ "65238": {
+  "words": 74413,
+  "language": 2,
+  "pace": 4
+ },
+ "66446": {
+  "words": 4809,
+  "language": 2,
+  "pace": 4
+ },
+ "67098": {
+  "words": 22135,
+  "language": 1,
+  "pace": 4
+ },
+ "67160": {
+  "words": 4301,
+  "language": 2,
+  "pace": 4
+ },
+ "67173": {
+  "words": 3245,
+  "language": 2,
+  "pace": 4
+ },
+ "67979": {
+  "words": 68161,
+  "language": 3,
+  "pace": 3
+ },
+ "68283": {
+  "words": 11829,
+  "language": 5,
+  "pace": 2
+ },
+ "69087": {
+  "words": 70525,
+  "language": 2,
+  "pace": 3
+ },
+ "69700": {
+  "words": 82115,
+  "language": 2,
+  "pace": 4
+ },
+ "70008": {
+  "words": 80315,
+  "language": 3,
+  "pace": 3
+ },
+ "70114": {
+  "words": 55374,
+  "language": 2,
+  "pace": 4
+ },
+ "70175": {
+  "words": 62926,
+  "language": 2,
+  "pace": 3
+ },
+ "70652": {
+  "words": 39905,
+  "language": 5,
+  "pace": 1
+ },
+ "70854": {
+  "words": 332925,
+  "language": 4,
+  "pace": 1
+ },
+ "71865": {
+  "words": 63475,
+  "language": 3,
+  "pace": 1
+ },
+ "72824": {
+  "words": 69833,
+  "language": 2,
+  "pace": 3
+ },
+ "75201": {
+  "words": 88598,
+  "language": 1,
+  "pace": 3
+ },
+ "75288": {
+  "words": 65118,
+  "language": 2,
+  "pace": 4
+ },
+ "75790": {
+  "words": 95856,
+  "language": 2,
+  "pace": 2
+ },
+ "76178": {
+  "words": 74936,
+  "language": 1,
+  "pace": 4
+ },
+ "76261": {
+  "words": 117969,
+  "language": 3,
+  "pace": 3
+ },
+ "76533": {
+  "words": 209920,
+  "language": 5,
+  "pace": 1
+ },
+ "76639": {
+  "words": 307436,
+  "language": 3,
+  "pace": 1
+ },
+ "76668": {
+  "words": 1423,
+  "pace": 5
+ },
+ "76728": {
+  "words": 130582,
+  "language": 3,
+  "pace": 2
+ },
+ "76737": {
+  "words": 52153,
+  "language": 2,
+  "pace": 2
+ },
+ "76812": {
+  "words": 50346,
+  "language": 2,
+  "pace": 5
+ },
+ "76857": {
+  "words": 3033,
+  "language": 2,
+  "pace": 5
+ },
+ "76927": {
+  "words": 163454,
+  "language": 3,
+  "pace": 2
+ },
+ "76950": {
+  "words": 69965,
+  "language": 2,
+  "pace": 3
+ },
+ "76960": {
+  "words": 8767,
+  "pace": 5
+ },
+ "76983": {
+  "words": 12334,
+  "language": 3,
+  "pace": 4
+ },
+ "76995": {
+  "words": 14967,
+  "language": 3,
+  "pace": 5
+ },
+ "77016": {
+  "words": 23732,
+  "language": 3,
+  "pace": 4
+ },
+ "77092": {
+  "words": 66739,
+  "language": 3,
+  "pace": 3
+ },
+ "77109": {
+  "words": 76724,
+  "language": 5,
+  "pace": 2
+ },
+ "78017": {
+  "words": 123064,
+  "language": 3,
+  "pace": 2
+ },
+ "78060": {
+  "words": 5881,
+  "language": 1,
+  "pace": 3
+ },
+ "78083": {
+  "words": 2342,
+  "language": 1,
+  "pace": 4
+ },
+ "78102": {
+  "words": 113192,
+  "language": 3,
+  "pace": 1
+ },
+ "78106": {
+  "words": 46639,
+  "language": 4,
+  "pace": 1
+ },
+ "78109": {
+  "words": 10143,
+  "language": 1,
+  "pace": 3
+ },
+ "78116": {
+  "words": 4905,
+  "language": 4,
+  "pace": 3
+ }
+}

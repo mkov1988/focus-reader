@@ -94,13 +94,15 @@ bytes (see ../docs/BACKUP.md for why that makes backups load bearing).
 | build scenes | `npm run build:scenes` | resolves anchors → `src/data/scenes.json` |
 | deep pass merge | `node scripts/merge-deep-pass.mjs <results.json>` | one funnel: updates the `deep-starts/` stores, appends to scenes-src, refreshes ../DEEP-PASS-CHECKLIST.md |
 | bulk starts file | `node scripts/build-starts-bundle.mjs` | → `public/starts-v1.json` (filename IS the version, never mutate v1) |
+| levels (pickup meters) | `node scripts/deep-starts/measure-levels.mjs` | → `deep-starts/levels.json`: story word count and language level (1 Effortless to 5 Demanding) for every book with an about entry. Fetches each served text once from the Pages site, measures the story only, keeps only counts; about 90 s. `--band` re-cuts the levels from the scratch cache; `--show=<ids>` prints a book's measures. `pace` (1 Slow burn to 5 Gripping) in the same file was rated by hand from each book's pacing sentence (2026-11-28) and the script never touches it. Rerun after a deep pass adds books, then rate the new books' pace. |
 | ship | `npm run export:native` | scenes + starts + about into the app |
 
 **What the app says about a book** (`about.json`, the Android pickup page: the
 page a held book opens to). The export builds it straight from the deep pass
 stores, for the bundled books only: hook, era, narrative voice and mood tags
 from `deep-starts/meta.json`; pacing, cast and themes from
-`deep-starts/details.json` (not the content notes: many name a twist or an
+`deep-starts/details.json`; word count, language level and pace from
+`deep-starts/levels.json` (not the content notes: many name a twist or an
 ending, so they need a spoiler pass before any page shows them). No build step of its own: merge a deep pass
 round, run the export. A book the deep pass never reached has no entry and
 the page says nothing about it (accuracy beats coverage). The export refuses
