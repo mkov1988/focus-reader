@@ -48,12 +48,14 @@ const levels = JSON.parse(readFileSync(LEVELS, 'utf8'));
 const chunkNo = 1 + Math.max(0, ...readdirSync(RESULTS).map((f) => Number(/^listed-(\d+)\.json$/.exec(f)?.[1] ?? 0)));
 
 /** A chapter's anchor: the words of the text from its first word on, as
- *  many as it takes for them to occur nowhere earlier. Null if 60 words do
+ *  many as it takes for them to occur nowhere earlier. Null if 240 words do
  *  not do it, or the text there is not the heading the parser reported. */
 function chapterAnchor(tokens, find, lines, chapter) {
     const first = norm((lines[chapter.line - 1] ?? '').trim().split(/\s+/)[0] ?? '');
     if (!first || norm(tokens[chapter.startIndex] ?? '') !== first) return null;
-    for (let k = 10; k <= 60; k += 5) {
+    // (A long descriptive heading is often repeated word for word in the
+    // contents, so the run may have to reach into the chapter's first lines.)
+    for (let k = 10; k <= 240; k += k < 60 ? 5 : 20) {
         const anchor = tokens.slice(chapter.startIndex, chapter.startIndex + k).join(' ');
         if (find(anchor) === chapter.startIndex) return anchor;
     }
