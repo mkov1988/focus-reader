@@ -75,11 +75,25 @@ export function notesProblems(id, segNo) {
     if (!Array.isArray(notes.beats) || notes.beats.length < 2 || notes.beats.length > 8) out.push('beats: 3 to 6 of them');
     else {
         let prev = lo - 1;
+        const at = [];
         notes.beats.forEach((b, i) => {
             const r = beatProblems(b, `beat ${i + 1}`, tokens, lo, hi, prev);
             out.push(...r.out);
+            if (r.at > prev) at.push(r.at);
             prev = r.at;
         });
+        // A book of one segment: spread over the whole of it. The editor
+        // can only build the book's parts from these, and a book whose last
+        // beat sits in its first half has no part for its second. (A longer
+        // book is covered by its other segments' beats.)
+        if (plan.segments.length === 1 && at.length === notes.beats.length && hi > lo) {
+            const pos = (t) => (t - lo) / (hi - lo);
+            if (pos(at[0]) > 0.35) out.push('beats: the first beat must be near the start of the segment (it begins more than a third of the way in). Add a beat near the start');
+            if (pos(at[at.length - 1]) < 0.6) out.push('beats: the beats stop too early. The last beat must begin in the last 40% of the segment. Read the later part again and add a beat there');
+            for (let i = 1; i < at.length; i += 1) {
+                if (pos(at[i]) - pos(at[i - 1]) > 0.45) out.push(`beats: almost half the segment lies between beat ${i} and beat ${i + 1}. Add a beat between them`);
+            }
+        }
     }
     if (!Array.isArray(notes.cast) || notes.cast.length > 8 || notes.cast.some((c) => !isText(c))) out.push('cast: up to 8 lines of text ([] when there are no people)');
     if (!isText(notes.pacing)) out.push('pacing: one sentence on how this stretch reads');

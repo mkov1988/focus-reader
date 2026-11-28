@@ -6,6 +6,7 @@
  *   node scripts/deep-starts/deep-queue.mjs --count 50     plan the next 50
  *   node scripts/deep-starts/deep-queue.mjs --ids 5197,100 plan these books
  *   node scripts/deep-starts/deep-queue.mjs --left         only say how many are left
+ *   node scripts/deep-starts/deep-queue.mjs --requeue      put back the planned books a finished chunk left without a result
  *
  * A whole book does not fit in one reader's head, so each is cut into
  * segments of about SEGMENT_BYTES at paragraph breaks. One reader takes each
@@ -23,7 +24,7 @@
  * (a pure reference work: { id, segments: 0, reference: true }).
  * Needs public/books/ (node scripts/fetch-data-plane.mjs).
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { listedBooks } from './listed-books.mjs';
@@ -57,7 +58,19 @@ const hasText = (b) => existsSync(path.join(ROOT, 'public', 'books', `${b.id}.tx
 const left = all.filter((b) => !src[b.id] && !ledger[b.id] && hasText(b));
 // Left to read: of those, the ones with no composed result waiting to be
 // gathered (build-listed-chunk.mjs).
-const unread = left.filter((b) => !existsSync(path.join(WORK, b.id, 'result.json')));
+// gathered (build-listed-chunk.mjs) and that are not out with a reader now
+// (a `queued` marker, written when a book is planned and cleared by
+// --requeue for the books a finished chunk left without a result).
+const unread = left.filter((b) => !existsSync(path.join(WORK, b.id, 'result.json')) && !existsSync(path.join(WORK, b.id, 'queued')));
+if (args.includes('--requeue')) {
+    let n = 0;
+    for (const b of left) {
+        const dir = path.join(WORK, b.id);
+        if (existsSync(path.join(dir, 'queued')) && !existsSync(path.join(dir, 'result.json'))) { rmSync(path.join(dir, 'queued')); n += 1; }
+    }
+    console.log(`${n} planned books had no result and are back in the queue`);
+    process.exit(0);
+}
 if (args.includes('--left')) { console.log(`${left.length} listed books still have no authored parts`); process.exit(0); }
 const wanted = opt('--ids') ? opt('--ids').split(',').map((id) => all.find((b) => b.id === id.trim())).filter(Boolean) : unread.slice(0, Number(opt('--count') ?? 50));
 
@@ -140,6 +153,7 @@ for (const book of wanted) {
             id: book.id, title: book.title, author: book.author, segment: s.n, of: segments.length, file: s.file, reads: s.reads, chapters: s.chapters,
         }, null, 1));
     }
+    writeFileSync(path.join(WORK, book.id, 'queued'), '');
     chunk.push(isReference ? { id: book.id, segments: 0, reference: true } : { id: book.id, segments: segments.length });
 }
 console.error(`planned ${chunk.length} books, ${chunk.reduce((n, b) => n + b.segments, 0)} segments; ${left.length} listed books had no authored parts before this chunk`);

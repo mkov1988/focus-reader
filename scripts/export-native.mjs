@@ -135,6 +135,8 @@ if (wanted('about.json')) {
     const levels = JSON.parse(readFileSync(path.join(ROOT, 'scripts', 'deep-starts', 'levels.json'), 'utf8'));
     const level = (v) => (Number.isInteger(v) && v >= 1 && v <= 5 ? v : undefined);
     const authoredParts = JSON.parse(scenes);
+    const listedDeepPath = path.join(ROOT, 'scripts', 'deep-starts', 'listed-deep.json');
+    const listedDeep = existsSync(listedDeepPath) ? JSON.parse(readFileSync(listedDeepPath, 'utf8')) : {};
     // "Name: what they are", "Name, what they are" or "Name — what they are":
     // the earliest separator ends the name. A line with no separator, or one
     // whose first separator falls inside a clause ("A young nurse whose merry,
@@ -166,6 +168,9 @@ if (wanted('about.json')) {
             // parts, whose page draws its parts from those chapters and
             // holds their place before the text has loaded.
             ...(!authoredParts[id] && Number.isInteger(levels[id]?.chapters) && levels[id].chapters >= 2 ? { chapters: levels[id].chapters } : {}),
+            // The listed-book deep pass kept this book's own chapters as its
+            // parts (a book that is not a story; listed-deep.json).
+            ...(authoredParts[id] && listedDeep[id]?.parts === 'chapters' ? { ownParts: true } : {}),
         };
     }
     const aboutJson = JSON.stringify(about);
